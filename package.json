@@ -1,7 +1,7 @@
 {
   "name": "bgsi-completionist",
   "version": "0.1.0",
-  "homepage": "https://borngame.github.io/react-gh-pages",
+  "homepage": "https://borngame.github.io/bgsi-completionist",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.14.0",
