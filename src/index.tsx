@@ -10,7 +10,16 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-const theme = createTheme({ palette: { mode: "dark" } });
+const theme = createTheme({ 
+  palette: { mode: "dark" }, 
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: (themeParam) => ({
+        a: { textDecoration: 'none !important' }
+      })
+    }
+  } 
+});
 
 root.render(
   <ThemeProvider theme={theme}>
