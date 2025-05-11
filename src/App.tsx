@@ -23,19 +23,45 @@ import {
 } from "@mui/material";
 import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-dom";
 import headerImage from "./assets/Bubble_Gum.webp";
-import { CompletionTracker } from "./pages/CompletionTracker";
+import { PetList } from "./pages/PetList";
 import { OddsCalculator } from "./pages/OddsCalculator";
 import petJson from "./assets/pets.json";
-import { Home } from "./pages/Home";
 
 // Types
-export type PetVariant = "Normal" | "Shiny" | "Mythic" | "Shiny Mythic";
 export type Rarity = "Common" | "Unique" | "Rare" | "Epic" | "Legendary" | "Secret";
+export type PetVariant = "Normal" | "Shiny" | "Mythic" | "Shiny Mythic";
+export type CurrencyVariant = "Coins" | "Tickets";
 
-export interface CategoryData { name: string, categories: SubCategoryData[]}
-export interface SubCategoryData { name: string; eggs: Egg[], category: CategoryData; discontinued: boolean }
-export interface Egg { name: string; image: string; pets: Pet[], subcategory: SubCategoryData; discontinued: boolean }
-export interface Pet { name: string; chance: string; rarity: Rarity; variants: PetVariant[]; image: string; egg: Egg; discontinued: boolean }
+export const variantScales: { [key in PetVariant]: number } = {
+  Normal: 1,
+  Shiny: 1.5,
+  Mythic: 1.75,
+  "Shiny Mythic": 2.25,
+};
+
+export const variantLevelScales: { [key in PetVariant]: number } = {
+  Normal: 1.35,
+  Shiny: 1.233333,
+  Mythic: 1.2,
+  "Shiny Mythic": 1.1556,
+};
+
+export const variantChanceMultipliers: { [key in PetVariant]: number } = {
+  Normal: 1,
+  Shiny: 40,
+  Mythic: 100,
+  "Shiny Mythic": 4000,
+};
+
+export const currencyImages: { [key in CurrencyVariant]: string } = {
+  Coins: "https://static.wikia.nocookie.net/bgs-infinity/images/f/f0/Coins.png",
+  Tickets: "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Tickets.png",
+};
+
+export interface CategoryData { name: string, categories: SubCategoryData[], ignoreCalculator: boolean }
+export interface SubCategoryData { name: string; eggs: Egg[], category: CategoryData; ignoreCalculator: boolean }
+export interface Egg { name: string; image: string; pets: Pet[], subcategory: SubCategoryData; ignoreCalculator: boolean }
+export interface Pet { name: string; chance: string; rarity: Rarity; bubbles: number; currencyVariant: CurrencyVariant; currency: number; gems: number; variants: PetVariant[]; image: string[]; egg: Egg; ignoreCalculator: boolean }
 
 // Data
 const petData = petJson as CategoryData[];
@@ -45,36 +71,33 @@ export type Tabs = "Completion" | "Odds";
 
 export default function App() {
   const [data, setData] = useState<CategoryData[]>([]);
-  const [showOdds, setShowOdds] = useState<Boolean>();
   const [currentTab, setCurrentTab] = useState<"Completion" | "Odds">("Completion");
 
   useEffect(() => {
 
-    petData.forEach((cat => {
+    petData.forEach((cat) => {
       cat.categories.forEach((subcat) => {
         subcat.category = cat;
+        if (cat.ignoreCalculator) subcat.ignoreCalculator = true;
+        if (!subcat.eggs) {
+          console.error(`Eggs not found for subcategory: ${subcat.name}`);
+          return;
+        }
         subcat.eggs.forEach((egg) => {
           egg.subcategory = subcat;
-          if (subcat.discontinued) {
-            egg.discontinued = true;
-          }
+          if (subcat.ignoreCalculator) egg.ignoreCalculator = true;
           egg.pets.forEach((pet) => {
             pet.egg = egg;
-            if (egg.discontinued) {
-              pet.discontinued = true;
-            }
-          })
-        })
-      })
-    }))
-    
-    setData(petData);
-    
+            if (egg.ignoreCalculator) pet.ignoreCalculator = true;
+            if (!pet.currencyVariant) pet.currencyVariant = "Coins";
+          });
+        });
+     });
+   });
+   
+   setData(petData);
+   
   }, []);
-
-  // NOTE: We are NOT using Router / URL location because this is a Github Pages site, and that is not supported.
-  // Tabs are controlled by the state of the currentTab variable.
-  // Therefore, <Link> is not used for the tabs, but rather the onChange event of the Tabs component.
 
   return (
     <>
@@ -83,17 +106,18 @@ export default function App() {
           <img src={headerImage} alt="Logo" style={{ width:32, height:32, marginRight:8 }} />
           <Typography variant="h6" sx={{ flexGrow:1 }}>BGSI Tools</Typography>
           <Tabs value={currentTab} onChange={(event, newValue) => setCurrentTab(newValue)} sx={{ flexGrow: 1 }}>
-            <Tab label="Completion Tracker" value="Completion" /> 
+            <Tab label="Pet List" value="Completion" /> 
             <Tab label="Odds Calculator" value="Odds" />
           </Tabs>
         </Toolbar>
       </AppBar>
       <Box sx={{ mt:2 }}>
+        {/* <Scraper /> */}
         <Container sx={{ mt: 4, display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'middle', maxWidth: '100% !important' }}>
-          <Box sx={{ display: currentTab === 'Completion' ? 'flex' : 'none', flexGrow: '1', justifyContent: 'center', alignItems: 'middle' }}>
-            <CompletionTracker data={data} />
+          <Box sx={{ display: currentTab === 'Completion' ? 'flex' : 'none', flexGrow: '1', justifyContent: 'center', alignItems: 'middle', maxWidth: '100% !important' }}>
+            <PetList data={data} />
           </Box>
-          <Box sx={{ display: currentTab === 'Odds' ? 'flex' : 'none', flexGrow: '1', justifyContent: 'center', alignItems: 'middle' }}>
+          <Box sx={{ display: currentTab === 'Odds' ? 'flex' : 'none', flexGrow: '1', justifyContent: 'center', alignItems: 'middle', maxWidth: '100% !important' }}>
             <OddsCalculator data={data} />
           </Box>
         </Container>
