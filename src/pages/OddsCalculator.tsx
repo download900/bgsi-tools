@@ -277,7 +277,7 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
                                             setSelectedEgg(newValue);
                                         }
                                     }}
-                                    renderInput={(params) => <TextField {...params} label="Select a pet" />}
+                                    renderInput={(params) => <TextField {...params} label="Select an egg" />}
                                     renderOption={(props, option) => (
                                         <li {...props} key={option.name}>
                                             <img src={option.image} alt={option.name} style={{ width: 32, height: 32, marginRight: 8 }} />

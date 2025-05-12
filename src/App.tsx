@@ -26,6 +26,7 @@ import headerImage from "./assets/Bubble_Gum.webp";
 import { PetList } from "./pages/PetList";
 import { OddsCalculator } from "./pages/OddsCalculator";
 import petJson from "./assets/pets.json";
+import { CompletionTracker } from "./pages/CompletionTracker";
 
 // Types
 export type Rarity = "Common" | "Unique" | "Rare" | "Epic" | "Legendary" | "Secret";
@@ -67,11 +68,11 @@ export interface Pet { name: string; chance: string; rarity: Rarity; bubbles: nu
 const petData = petJson as CategoryData[];
 
 // Tabs
-export type Tabs = "Completion" | "Odds";
+export type Tabs = "Completion" | "Stats" | "Odds";
 
 export default function App() {
   const [data, setData] = useState<CategoryData[]>([]);
-  const [currentTab, setCurrentTab] = useState<"Completion" | "Odds">("Completion");
+  const [currentTab, setCurrentTab] = useState<"Completion" | "Odds" | "Stats">("Completion");
 
   useEffect(() => {
 
@@ -106,8 +107,9 @@ export default function App() {
           <img src={headerImage} alt="Logo" style={{ width:32, height:32, marginRight:8 }} />
           <Typography variant="h6" sx={{ flexGrow:1 }}>BGSI Tools</Typography>
           <Tabs value={currentTab} onChange={(event, newValue) => setCurrentTab(newValue)} sx={{ flexGrow: 1 }}>
-            <Tab label="Pet List" value="Completion" /> 
-            <Tab label="Odds Calculator" value="Odds" />
+            <Tab label="Index" value="Completion" /> 
+            <Tab label="Stats" value="Stats" /> 
+            <Tab label="Calculator" value="Odds" />
           </Tabs>
         </Toolbar>
       </AppBar>
@@ -115,6 +117,9 @@ export default function App() {
         {/* <Scraper /> */}
         <Container sx={{ mt: 4, display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'middle', maxWidth: '100% !important' }}>
           <Box sx={{ display: currentTab === 'Completion' ? 'flex' : 'none', flexGrow: '1', justifyContent: 'center', alignItems: 'middle', maxWidth: '100% !important' }}>
+            <CompletionTracker data={data} />
+          </Box>
+          <Box sx={{ display: currentTab === 'Stats' ? 'flex' : 'none', flexGrow: '1', justifyContent: 'center', alignItems: 'middle', maxWidth: '100% !important' }}>
             <PetList data={data} />
           </Box>
           <Box sx={{ display: currentTab === 'Odds' ? 'flex' : 'none', flexGrow: '1', justifyContent: 'center', alignItems: 'middle', maxWidth: '100% !important' }}>

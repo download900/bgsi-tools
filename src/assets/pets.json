@@ -514,75 +514,6 @@
             ]
           },
           {
-            "name": "Dice Chest",
-            "image": "https://em-content.zobj.net/source/google/412/game-die_1f3b2.png",
-            "ignoreCalculator": true,
-            "pets": [
-              {
-                "name": "Dice Split",
-                "chance": "1/10,000",
-                "rarity": "Legendary",
-                "variants": ["Normal", "Shiny", "Mythic", "Shiny Mythic" ],
-                "image": [
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/6/60/Dice_Split.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Shiny_Dice_Split.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/1/12/Mythic_Dice_Split.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/4/45/Shiny_Mythic_Dice_Split.png"
-                ],
-                "bubbles": 1750,
-                "currency": 1800,
-                "currencyVariant": "Tickets",
-                "gems": 32
-              }
-            ]
-          },
-          {
-            "name": "Cart Escape",
-            "image": "https://em-content.zobj.net/source/huawei/375/train_1f686.png",
-            "ignoreCalculator": true,
-            "pets": [
-              {
-                "name": "Magmas",
-                "chance": "1/1,000",
-                "rarity": "Legendary",
-                "variants": ["Normal", "Shiny", "Mythic", "Shiny Mythic" ],
-                "image": [
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/7/78/Magmas.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Shiny_Magmas.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/6/62/Mythic_Magmas.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/c/cd/Shiny_Mythic_Magmas.png"
-                ],
-                "bubbles": 1700,
-                "currency": 1800,
-                "currencyVariant": "Tickets",
-                "gems": 32
-              }
-            ]
-          },
-          {
-            "name": "Robot Claw",
-            "image": "https://em-content.zobj.net/source/google/412/joystick_1f579-fe0f.png",
-            "ignoreCalculator": true,
-            "pets": [
-              {
-                "name": "Dragon Plushie",
-                "chance": "1/10,000",
-                "rarity": "Legendary",
-                "variants": ["Normal", "Shiny", "Mythic", "Shiny Mythic" ],
-                "image": [
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/c/c1/Dragon_Plushie.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/22/Shiny_Dragon_Plushie.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/f/fe/Mythic_Dragon_Plushie.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/e/ef/Shiny_Mythic_Dragon_Plushie.png"
-                ],
-                "bubbles": 2000,
-                "currency": 2100,
-                "currencyVariant": "Tickets",
-                "gems": 40
-              }
-            ]
-          },
-          {
             "name": "Underworld Egg",
             "image": "https://static.wikia.nocookie.net/bgs-infinity/images/f/ff/Underworld_Egg.png",
             "pets": [
@@ -651,11 +582,85 @@
                 "gems": 72
               }
             ]
+          },
+          {
+            "name": "Dice Chest",
+            "image": "https://em-content.zobj.net/source/google/412/game-die_1f3b2.png",
+            "ignoreCalculator": true,
+            "pets": [
+              {
+                "name": "Dice Split",
+                "chance": "1/10,000",
+                "rarity": "Legendary",
+                "variants": ["Normal", "Shiny", "Mythic", "Shiny Mythic" ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/6/60/Dice_Split.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Shiny_Dice_Split.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/1/12/Mythic_Dice_Split.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/4/45/Shiny_Mythic_Dice_Split.png"
+                ],
+                "bubbles": 1750,
+                "currency": 1800,
+                "currencyVariant": "Tickets",
+                "gems": 32
+              }
+            ]
+          },
+          {
+            "name": "Cart Escape",
+            "image": "https://em-content.zobj.net/source/huawei/375/train_1f686.png",
+            "ignoreCalculator": true,
+            "pets": [
+              {
+                "name": "Magmas",
+                "chance": "1/1,000",
+                "rarity": "Legendary",
+                "variants": ["Normal", "Shiny", "Mythic", "Shiny Mythic" ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/7/78/Magmas.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Shiny_Magmas.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/6/62/Mythic_Magmas.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/c/cd/Shiny_Mythic_Magmas.png"
+                ],
+                "bubbles": 1700,
+                "currency": 1800,
+                "currencyVariant": "Tickets",
+                "gems": 32
+              }
+            ]
+          },
+          {
+            "name": "Robot Claw",
+            "image": "https://em-content.zobj.net/source/google/412/joystick_1f579-fe0f.png",
+            "ignoreCalculator": true,
+            "pets": [
+              {
+                "name": "Dragon Plushie",
+                "chance": "1/10,000",
+                "rarity": "Legendary",
+                "variants": ["Normal", "Shiny", "Mythic", "Shiny Mythic" ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/c/c1/Dragon_Plushie.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/22/Shiny_Dragon_Plushie.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/f/fe/Mythic_Dragon_Plushie.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/e/ef/Shiny_Mythic_Dragon_Plushie.png"
+                ],
+                "bubbles": 2000,
+                "currency": 2100,
+                "currencyVariant": "Tickets",
+                "gems": 40
+              }
+            ]
           }
         ]
-      },
+      }
+    ]
+  },
+  {
+    "name": "⌛ Limited",
+    "categories": [
       {
-        "name": "Minigame Paradise (Other)",
+        "name": "Board Game",
         "eggs": [
           {
             "name": "Game Egg",
@@ -696,12 +701,7 @@
             ]
           }
         ]
-      }
-    ]
-  },
-  {
-    "name": "⌛ Limited",
-    "categories": [
+      },
       {
         "name": "Bubble Pass",
         "ignoreCalculator": true,
@@ -1005,7 +1005,7 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/1/10/Prismatic.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/7/7e/Shiny_Prismatic.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/3/3f/Mythic_Prismatic.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/c/cb/Shiny_Mythic_Prismatic.png"
                 ],
                 "bubbles": 650,
                 "currency": 650,
@@ -1019,8 +1019,8 @@
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/d/d0/Darkness_Creature.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/a/ac/Shiny_Darkness_Creature.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/4/4a/Mythic_Darkness_Creature.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/25/Shiny_Mythic_Darkness_Creature.png"
                 ],
                 "bubbles": 1450,
                 "currency": 1750,
@@ -1034,8 +1034,8 @@
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/f/f3/Corrupt_Glitch.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/8/86/Shiny_Corrupt_Glitch.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/c/cc/Mythic_Corrupt_Glitch.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/4/47/Shiny_Mythic_Corrupt_Glitch.png"
                 ],
                 "bubbles": 1950,
                 "currency": 2400,
@@ -1500,7 +1500,12 @@
             ]
           }
         ]
-      },
+      }
+    ]
+  },
+  {
+    "name": "🎁 Other",
+    "categories": [
       {
         "name": "Secrets Bounty Board",
         "eggs": [
@@ -1525,7 +1530,7 @@
               },
               {
                 "name": "Prophet",
-                "chance": "1/?",
+                "chance": "1/250,000,000",
                 "rarity": "Secret",
                 "variants": ["Normal","Shiny","Mythic","Shiny Mythic"],
                 "image": [
@@ -1544,7 +1549,7 @@
                 "rarity": "Secret",
                 "variants": ["Normal","Shiny","Mythic","Shiny Mythic"],
                 "image": [
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/3/36/D0ggy1337.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/d/d4/D0GGY1337.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/4/40/Shiny-d0ggy1337.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/a/a1/Mythic_D0GGY1337.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/f/fb/Shiny-mythic-d0ggy1337.png"
@@ -1556,12 +1561,7 @@
             ]
           }
         ]
-      }
-    ]
-  },
-  {
-    "name": "🎁 Global Rewards",
-    "categories": [
+      },
       {
         "name": "Lootable",
         "eggs": [
@@ -1627,7 +1627,7 @@
                 "variants": ["Normal","Shiny"],
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/c/c1/Vaporium.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/9/95/Shiny_Vaporium.png"
                 ],
                 "bubbles": 2025,
                 "currency": 2000,
