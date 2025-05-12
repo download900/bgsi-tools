@@ -31,15 +31,19 @@ interface CalculatorSettings {
 }
 
 interface CalculatorResults {
+    luckyBuff: number;
+    shinyRate: number;
+    mythicRate: number;
+    shinyMythicRate: number;
+    petResults: PetResult[];
+}
+
+interface PetResult {
     pet: Pet;
     normalChance: number;
     shinyChance: number;
     mythicChance: number;
     shinyMythicChance: number;
-    luckyValue: number;
-    shinyValue: number;
-    mythicValue: number;
-    shinyMythicValue: number;
 }
 
 interface OddsCalculatorProps {
@@ -92,11 +96,7 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
         friendBoost: 0,
         doubleLuckEvent: false
     });
-    const [calculatorResults, setCalculatorResults] = useState<CalculatorResults[]>([]);
-
-    // empirical test inputs
-    const [hatches, setHatches] = useState<number>(0);
-    const [received, setReceived] = useState<number>(0);
+    const [calculatorResults, setCalculatorResults] = useState<CalculatorResults>();
 
     // list of pets
     const [eggs, setEggs] = useState<Egg[]>([]);
@@ -108,9 +108,15 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
         }
     }, [ selectedEgg ]);
 
-    const loadSettings = () => {
+    // ~~~~~~~~~~~~~ Load egg data and settings ~~~~~~~~~~~~~
+
+    useEffect(() => {
+        loadCalculator();
+    }, [props.data]);
+    
+    const loadCalculator = () => {
         try {
-            // remove eggs which have 'ignoreCalculator' set to true
+            // process eggs into new list for calculator
             const eggs: Egg[] = [];
             props.data.forEach(category => {
                 category.categories.forEach((subcategory) => {
@@ -126,6 +132,7 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
                     });
                 });
             });
+
             // add infinity eggs
             infinityEggNames.forEach((infinityEggName) => {
                 const infinityEgg = infinityEggs[infinityEggName as InfinityEggNames];
@@ -159,11 +166,11 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
                 eggs.push({
                     name: `Infinity Egg (${infinityEgg.name})`,
                     image: "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png",
-                    // sort pets by least to most rare
                     pets: infinityEgg.pets.sort((a, b) => Number(a.chance.split("/")[1].replaceAll(",", "")) - Number(b.chance.split("/")[1].replaceAll(",", ""))),
                     subcategory: infinityEgg.subcategory
                 } as Egg)                
             })
+
             // sort eggs by name
             setEggs(eggs.sort((a, b) => a.name.localeCompare(b.name)));
 
@@ -185,9 +192,7 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
         try { localStorage.setItem(STORAGE_KEY, JSON.stringify(settings)); } catch {}
     }
 
-    useEffect(() => {
-        loadSettings();
-    }, [props.data]);
+    // ~~~~~~~~~~~~~ Calculation ~~~~~~~~~~~~~
 
     useEffect(() => {
         if (props.data?.length > 0) {
@@ -196,77 +201,110 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
         }
     }, [calculatorSettings]);
 
+    const calculateChance = (baseChance:number, luckyBuff: number) => {
+        // Calculate base drop chance
+        const n = Decimal(1).plus(luckyBuff / 100);
+        // The line below is: 1 - pow(1 - (1 / baseChance), n)
+        const dropRate = Decimal(1).minus(Decimal.pow(Decimal(1).minus((Decimal(1).dividedBy(baseChance))), n));
+        let normalChance = dropRate as unknown as any;
+        return normalChance;
+    }
+
     const handleCalculate = (egg: Egg) => {
         if (!egg)
             return;
 
-        let luckyValue = 0;
-        let shinyValue = 0;
-        let mythicValue = 0;
+        let luckyBuff = 0;
+        let shinyRate = 0;
+        let mythicRate = 0;
 
-        // Calculate Lucky Value:
+        // Calculate Lucky buff:
         // Add Raw buffs:
-        luckyValue = calculatorSettings.luckyPotion 
+        luckyBuff = calculatorSettings.luckyPotion 
             + calculatorSettings.luckyStreak 
             + (calculatorSettings.overworldNormalIndex && egg.subcategory.name === "Overworld" ? 50 : 0) 
             + (calculatorSettings.minigameNormalIndex && egg.subcategory.name === "Minigame Paradise" ? 50 : 0) 
             + (calculatorSettings.highRoller * 10);
         // Double luck gamepass
-        if (calculatorSettings.doubleLuckGamepass) luckyValue *= 2;
-        if (calculatorSettings.doubleLuckGamepass) luckyValue += 100;
+        if (calculatorSettings.doubleLuckGamepass) luckyBuff *= 2;
+        if (calculatorSettings.doubleLuckGamepass) luckyBuff += 100;
         // Double Luck Event and Infinity Potion don't multiply together, they each double the value so far:
-        const rawLuckyValue = luckyValue;
+        const rawLuckyValue = luckyBuff;
         // Double luck event
-        if (calculatorSettings.doubleLuckEvent) luckyValue += rawLuckyValue;
-        if (calculatorSettings.doubleLuckEvent) luckyValue += 100;
+        if (calculatorSettings.doubleLuckEvent) luckyBuff += rawLuckyValue;
+        if (calculatorSettings.doubleLuckEvent) luckyBuff += 100;
         // Infinity Potion
-        if (calculatorSettings.infinityPotion) luckyValue += rawLuckyValue;
-        if (calculatorSettings.infinityPotion) luckyValue += 100;
+        if (calculatorSettings.infinityPotion) luckyBuff += rawLuckyValue;
+        if (calculatorSettings.infinityPotion) luckyBuff += 100;
         // Add External buffs:
         // Friend boost
-        luckyValue += calculatorSettings.friendBoost * 10;
+        luckyBuff += calculatorSettings.friendBoost * 10;
         // Board Game Luck Boost
-        if (calculatorSettings.minigameLuckBoost) luckyValue += 200;
+        if (calculatorSettings.minigameLuckBoost) luckyBuff += 200;
         // Island multiplier
-        if (calculatorSettings.multiplier > 0) luckyValue += calculatorSettings.multiplier * 100;
+        if (calculatorSettings.multiplier > 0) luckyBuff += calculatorSettings.multiplier * 100;
 
         // Calculate Shiny rate:
         let shinyBuff = 0;
         if (calculatorSettings.overworldNormalIndex && egg.subcategory.name === "Overworld") shinyBuff += 50;
         if (calculatorSettings.minigameNormalIndex && egg.subcategory.name === "Minigame Paradise") shinyBuff += 50;
-        shinyValue = 1 / 40 * (1 + (shinyBuff / 100)) * (calculatorSettings.infinityPotion ? 2 : 1);
+        shinyRate = 1 / 40 * (1 + (shinyBuff / 100)) * (calculatorSettings.infinityPotion ? 2 : 1);
 
         // Calculate Mythic rate:
         let mythicBuff = 0;
         if (calculatorSettings.overworldShinyIndex && egg.subcategory.name === "Overworld") mythicBuff += 50;
         if (calculatorSettings.minigameShinyIndex && egg.subcategory.name === "Minigame Paradise") mythicBuff += 50;
         mythicBuff += calculatorSettings.mythicPotion;
-        mythicValue = 1 / 100 * (1 + (mythicBuff / 100)) * (calculatorSettings.infinityPotion ? 2 : 1);
+        mythicRate = 1 / 100 * (1 + (mythicBuff / 100)) * (calculatorSettings.infinityPotion ? 2 : 1);
 
-        const results: CalculatorResults[] = [];
+        const results: CalculatorResults = { 
+            luckyBuff: luckyBuff, 
+            shinyRate: shinyRate, 
+            mythicRate: mythicRate, 
+            shinyMythicRate: shinyRate * mythicRate, 
+            petResults: [] 
+        };
+        
+        // If infinity egg, calculate chance of any legendary or secret
+        if (egg.name.startsWith("Infinity Egg (")) {
+            const infinityName = egg.name.split("(")[1].replace(")", "");
+            const infinityEgg = infinityEggs[infinityName as InfinityEggNames];
+
+            const legendaryChance = calculateChance(1 / infinityEgg.legendaryChance, luckyBuff);
+            const secretChance = calculateChance(1 / infinityEgg.secretChance, luckyBuff);
+
+            results.petResults.push({
+                pet: { name: "Any Legendary", chance: `1/${infinityEgg.legendaryChance}`, image: ["https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png"] } as Pet,
+                normalChance: legendaryChance,
+                shinyChance: legendaryChance * shinyRate,
+                mythicChance: legendaryChance * mythicRate,
+                shinyMythicChance: legendaryChance * shinyRate * mythicRate
+            })
+            results.petResults.push({
+                pet: { name: "Any Secret", chance: `1/${infinityEgg.legendaryChance}`, image: ["https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png"] } as Pet,
+                normalChance: secretChance,
+                shinyChance: secretChance * shinyRate,
+                mythicChance: secretChance * mythicRate,
+                shinyMythicChance: secretChance * shinyRate * mythicRate
+            })
+        }
+
         egg.pets.forEach((pet) => {
             if (!pet.chance.startsWith("1/") || pet.ignoreCalculator) return;
 
             const baseChance = Number(pet.chance.split("/")[1].replaceAll(",", ""));
+            const normalChance = calculateChance(baseChance, luckyBuff);
 
-            // Calculate base drop chance
-            const n = Decimal(1).plus(luckyValue / 100);
-            // The line below is: 1 - pow(1 - (1 / baseChance), n)
-            const dropRate = Decimal(1).minus(Decimal.pow(Decimal(1).minus((Decimal(1).dividedBy(baseChance))), n));
-            let normalChance = dropRate as unknown as any;
-            
-            results.push({
+            results.petResults.push({
                 pet: pet,
-                luckyValue: luckyValue,
-                shinyValue: shinyValue,
-                mythicValue: mythicValue,
-                shinyMythicValue: shinyValue * mythicValue,
                 normalChance: normalChance,
-                shinyChance: normalChance * shinyValue,
-                mythicChance: normalChance * mythicValue,
-                shinyMythicChance: normalChance * shinyValue * mythicValue
+                shinyChance: normalChance * shinyRate,
+                mythicChance: normalChance * mythicRate,
+                shinyMythicChance: normalChance * shinyRate * mythicRate
             });
         });
+
+
         setCalculatorResults(results);
     }
 
@@ -522,7 +560,6 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
                     noValidate
                     autoComplete="off"
                 >
-                    <Typography variant="h6" align="center">🎲 Pet Odds</Typography>
                     <Paper sx={{ p: 1, mb: 2}} elevation={3}>
                         <Table size="small" sx={{ "& .MuiTableCell-root": { p: 0.5 } }}>
                             <TableHead>
@@ -546,7 +583,7 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
                             </TableHead>
                             <TableBody>
                                 {
-                                    calculatorResults.map((result, index) => {
+                                    calculatorResults && calculatorResults.petResults.map((result, index) => {
                                         return (
                                             <TableRow key={index}>
                                                 <TableCell sx={{ display: "flex", alignItems: "center" }}>
@@ -579,82 +616,37 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
                         </Table>
                     </Paper>
 
-                    {/* Empirical Test */}
-                    {/* <Typography variant="h6" align="center" gutterBottom>
-                        📊 Dry Checker:
-                    </Typography>
-                    <Paper sx={{ p: 2, m: 1 }} elevation={3}>
-                        <Box sx={{ display: "flex", gap: 2, mb: 2 }}>
-                            <TextField
-                            label="Eggs hatched"
-                            size="small"
-                            value={hatches}
-                            onChange={e => setHatches(+e.target.value)}
-                            fullWidth
-                            />
-                            <TextField
-                            label="Drops"
-                            size="small"
-                            value={received}
-                            onChange={e => setReceived(+e.target.value)}
-                            fullWidth
-                            />
-                        </Box>
-                        {hatches > 0 && (
-                            <Box>
-                            <Typography>
-                                Expected drops:{" "}
-                                <b>{(calculatorResults.normalChance * hatches).toLocaleString(undefined, { maximumFractionDigits: 5 })}</b>
-                            </Typography>
-                            {received < (Math.floor(calculatorResults.normalChance * hatches)) ? (
-                                <Box sx={{ color: "#f5877f" }}>
-                                <Typography>You went dry :(</Typography>
-                                </Box>
-                            ) : (
-                                <Box sx={{ color: "#7ff585" }}>
-                                <Typography>You haven't gone dry... yet.</Typography>
-                                </Box>
-                            )}
-                            <Box sx={{ mt: 1, fontStyle: "italic", color: "#888" }}>
-                                <Typography variant="body2">
-                                There was a <b>{(
-                                    (1 - Math.pow(1 - calculatorResults.normalChance, hatches)) *
-                                    100
-                                ).toFixed(1)}
-                                %</b> chance of getting at least one drop by now.
-                                </Typography>
-                            </Box>
-                            </Box>
-                        )}
-                    </Paper> */}
-
                     { /* Luck Debug for Advanced Mode */ }
                     <Typography variant="h6" align="center">⚙️ Luck Debug</Typography>
                     <Paper sx={{ p: 1, mb: 2, width: "350px !important"}} elevation={3}>
-                            <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
-                                <table style={{ borderCollapse: "collapse" }}>
-                                    <tbody>
-                                        <tr>
-                                            <td style={{ padding: "8px" }}>🍀 Lucky:</td>
-                                            <td style={{ padding: "8px" }}><b>{calculatorResults[0]?.luckyValue || 0}%</b></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td style={{ padding: "8px" }}>✨ Shiny:</td>
-                                            <td style={{ padding: "8px" }}><b>1 / {(1 / calculatorResults[0]?.shinyValue || 0).toLocaleString(undefined, { maximumFractionDigits: 1})}</b></td>
-                                        </tr>
-                                        <tr>
-                                            <td style={{ padding: "8px" }}>🔮 Mythic:</td>
-                                            <td style={{ padding: "8px" }}><b>1 / {(1 / calculatorResults[0]?.mythicValue || 0).toLocaleString(undefined, { maximumFractionDigits: 1})}</b></td>
-                                        </tr>
-                                        <tr>
-                                            <td style={{ padding: "8px" }}>💫 Shiny Mythic:</td>
-                                            <td style={{ padding: "8px" }}><b>1 / {(1 / calculatorResults[0]?.shinyMythicValue || 0).toLocaleString(undefined, { maximumFractionDigits: 1})}</b></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </Box>
-                        </Paper>
+                        {
+                            calculatorResults && (
+                                <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
+                                    <table style={{ borderCollapse: "collapse" }}>
+                                        <tbody>
+                                            <tr>
+                                                <td style={{ padding: "8px" }}>🍀 Lucky:</td>
+                                                <td style={{ padding: "8px" }}><b>{calculatorResults.luckyBuff || 0}%</b></td>
+                                            </tr>
+                                    
+                                            <tr>
+                                                <td style={{ padding: "8px" }}>✨ Shiny:</td>
+                                                <td style={{ padding: "8px" }}><b>1 / {(1 / calculatorResults.shinyRate || 0).toLocaleString(undefined, { maximumFractionDigits: 1})}</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td style={{ padding: "8px" }}>🔮 Mythic:</td>
+                                                <td style={{ padding: "8px" }}><b>1 / {(1 / calculatorResults.mythicRate || 0).toLocaleString(undefined, { maximumFractionDigits: 1})}</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td style={{ padding: "8px" }}>💫 Shiny Mythic:</td>
+                                                <td style={{ padding: "8px" }}><b>1 / {(1 / calculatorResults.shinyMythicRate || 0).toLocaleString(undefined, { maximumFractionDigits: 1})}</b></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </Box>
+                            )
+                        }
+                    </Paper>
                 </Box>
 
             </Container>

@@ -420,7 +420,7 @@ export function PetList(props: PetListProps) {
 
               return (
                 <>
-                <TableRow key={`${pet.name}-${variant}`} sx={{opacity: ownedPets[`${pet.name}__${variant}`] ? 1 : 0.4 }}>
+                <TableRow key={`${pet.name}-${variant}`} sx={{opacity: ownedPets[`${pet.name}__${variant}`] ? 1 : 0.7 }}>
                   <TableCell>
                     <Checkbox
                       size="small"
