@@ -71,7 +71,6 @@ export function PetList(props: PetListProps) {
   // ~~~~~~~~~~~ hooks ~~~~~~~~~~~
 
   useEffect(() => {
-    console.log("Loading settings");
     try {
       const saved = localStorage.getItem(SETTINGS_KEY);
       if (saved) {
@@ -102,7 +101,6 @@ export function PetList(props: PetListProps) {
 
   useEffect(() => {
     if (!props.data || props.data?.length < 1 || allPets?.length < 1) return;
-    console.log("Saving settings (allPets: ", allPets.length, ")");
     try {
       const settings = {
         obtainedFilter: obtainedFilter,
@@ -122,7 +120,6 @@ export function PetList(props: PetListProps) {
   }, [ obtainedFilter, rarityFilter, variantFilter, currencyFilter, previewMaxLevel, previewEnchant, enchantTeamSize, secondEnchant ]);
 
   useEffect(() => {
-    console.log("Loading owned pets");
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) setOwnedPets(JSON.parse(saved));
@@ -135,7 +132,6 @@ export function PetList(props: PetListProps) {
 
   useEffect(() => {
     if (!props.data || props.data?.length < 1 || allPets?.length < 1) return;
-    console.log("Rebuilding pet list (settings changed)");
     const pets = buildPetList();
     setAllPets(pets);
     sortAndFilterPets(pets);
@@ -143,7 +139,6 @@ export function PetList(props: PetListProps) {
 
   useEffect(() => {
     if (!props.data || props.data?.length < 1 || allPets?.length < 1) return;
-    console.log("Sorting pet list (filter changed)");
     sortAndFilterPets(allPets);
   }, [sortColumn,nameFilter, currencyFilter, obtainedFilter, rarityFilter, variantFilter]);
 

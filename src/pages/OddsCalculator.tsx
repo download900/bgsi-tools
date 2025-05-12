@@ -1,29 +1,12 @@
 import { JSX, useEffect, useState } from "react";
-import {
-  Container,
-  Typography,
-  Box,
-  TextField,
-  FormControl,
-  Select,
-  MenuItem,
-  Checkbox,
-  Paper,
-  Tooltip,
-  Autocomplete,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-  Link
-} from "@mui/material";
+import { Container, Typography, Box, TextField, FormControl, Select, MenuItem, Checkbox, Paper, Tooltip, Autocomplete, Table, TableBody, TableCell, TableHead,TableRow, Link } from "@mui/material";
 import { getRarityStyle } from "../util/StyleUtil";
-import { CategoryData, Egg, Pet } from "../util/PetUtil";
+import { CategoryData, Egg, Pet, SubCategoryData } from "../util/PetUtil";
 import Decimal from "decimal.js";
 
 const STORAGE_KEY = "oddsCalculatorSettings";
 
+// Buff data
 type LuckyPotion = 0 | 10 | 20 | 30 | 65 | 150 | 400;
 type MythicPotion = 0 | 10 | 20 | 30 | 75 | 150 | 250;
 type IslandMultiplier = 0 | 5 | 10 | 25;
@@ -31,7 +14,6 @@ type StreakBuff = 0 | 20 | 30;
 
 interface CalculatorSettings {
     selectedEgg: string,
-    //baseChance: number;
     multiplier: IslandMultiplier;
     luckyPotion: LuckyPotion;
     mythicPotion: MythicPotion;
@@ -62,6 +44,34 @@ interface CalculatorResults {
 
 interface OddsCalculatorProps {
   data: CategoryData[];
+}
+
+export interface InfinityEgg {
+    name: string;
+    pets: Pet[];
+    legendaryChance: number;
+    secretChance: number;
+    subcategory: SubCategoryData;
+}
+
+export type InfinityEggNames = "Overworld" | "Minigame Paradise";
+const infinityEggNames: string[] = ["Overworld", "Minigame Paradise"];
+
+export const infinityEggs: { [key in InfinityEggNames] : InfinityEgg } = {
+    "Overworld": {
+        name: "Overworld",
+        pets: [],
+        legendaryChance: 0.005,
+        secretChance: 0.000000025,
+        subcategory: { name: "Overworld" } as SubCategoryData
+    },
+    "Minigame Paradise": {
+        name: "Minigame Paradise",
+        pets: [],
+        legendaryChance: 0.005,
+        secretChance: 0.000000025,
+        subcategory: { name: "Minigame Paradise" } as SubCategoryData
+    }
 }
 
 export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
@@ -100,17 +110,60 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
 
     const loadSettings = () => {
         try {
-            // remove eggs which have 'ignoreCalculator' set to true, or have no valid pets
+            // remove eggs which have 'ignoreCalculator' set to true
             const eggs: Egg[] = [];
             props.data.forEach(category => {
                 category.categories.forEach((subcategory) => {
                     subcategory.eggs.forEach(egg => {
-                        if (egg.ignoreCalculator) return;
-                        if (!egg.pets.some(pet => pet.chance.startsWith("1/") && !pet.ignoreCalculator)) return;
+                        if (egg.ignoreCalculator || !egg.pets.some(pet => !pet.ignoreCalculator)) return;
+
                         eggs.push(egg);
+
+                        if (egg.infinityEgg) {
+                            const newPets = structuredClone(egg.pets);
+                            infinityEggs[egg.infinityEgg as InfinityEggNames].pets.push(...newPets);
+                        }
                     });
                 });
             });
+            // add infinity eggs
+            infinityEggNames.forEach((infinityEggName) => {
+                const infinityEgg = infinityEggs[infinityEggName as InfinityEggNames];
+                // 1. Add up the decimal chance of all pets
+                let totalDecimalLegendary = 0;
+                let totalDecimalSecret = 0;
+                infinityEgg.pets.forEach((pet) => {
+                    if (pet.rarity === "Legendary")
+                        totalDecimalLegendary += 1 / Number(pet.chance.split("/")[1].replaceAll(",", ""));
+                    else
+                        totalDecimalSecret += 1 / Number(pet.chance.split("/")[1].replaceAll(",", ""));
+                });
+                // 2. For each pet, recalculate the infinity egg chance:
+                infinityEgg.pets.forEach((pet) => {
+                    // - divide the pet's original decimal chance by the total decimal chance for the infinity egg
+                    let decimalChance = 1 / Number(pet.chance.split("/")[1].replaceAll(",", ""));
+                    if (pet.rarity === "Legendary")
+                        decimalChance /= totalDecimalLegendary;
+                    else
+                        decimalChance /= totalDecimalSecret;
+                    // - multiply this value by the infinity egg's legendaryChance or secretChance depending on pet rarity
+                    let fractionChance = 1 / decimalChance;
+                    let newChance = 0;
+                    if (pet.rarity === "Legendary")
+                        newChance = fractionChance * (1 / infinityEgg.legendaryChance);
+                    else 
+                        newChance = fractionChance * (1 / infinityEgg.secretChance);
+                    pet.chance = `1/${newChance}`;
+                });
+
+                eggs.push({
+                    name: `Infinity Egg (${infinityEgg.name})`,
+                    image: "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png",
+                    // sort pets by least to most rare
+                    pets: infinityEgg.pets.sort((a, b) => Number(a.chance.split("/")[1].replaceAll(",", "")) - Number(b.chance.split("/")[1].replaceAll(",", ""))),
+                    subcategory: infinityEgg.subcategory
+                } as Egg)                
+            })
             // sort eggs by name
             setEggs(eggs.sort((a, b) => a.name.localeCompare(b.name)));
 
@@ -152,7 +205,7 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
         let mythicValue = 0;
 
         // Calculate Lucky Value:
-        // Add Lucky Potion, Lucky Streak, Overworld Normal Index and High Roller buffs
+        // Add Raw buffs:
         luckyValue = calculatorSettings.luckyPotion 
             + calculatorSettings.luckyStreak 
             + (calculatorSettings.overworldNormalIndex && egg.subcategory.name === "Overworld" ? 50 : 0) 
@@ -161,6 +214,7 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
         // Double luck gamepass
         if (calculatorSettings.doubleLuckGamepass) luckyValue *= 2;
         if (calculatorSettings.doubleLuckGamepass) luckyValue += 100;
+        // Double Luck Event and Infinity Potion don't multiply together, they each double the value so far:
         const rawLuckyValue = luckyValue;
         // Double luck event
         if (calculatorSettings.doubleLuckEvent) luckyValue += rawLuckyValue;
@@ -168,31 +222,26 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
         // Infinity Potion
         if (calculatorSettings.infinityPotion) luckyValue += rawLuckyValue;
         if (calculatorSettings.infinityPotion) luckyValue += 100;
+        // Add External buffs:
         // Friend boost
         luckyValue += calculatorSettings.friendBoost * 10;
-        // Add Minigame Luck Boost
+        // Board Game Luck Boost
         if (calculatorSettings.minigameLuckBoost) luckyValue += 200;
         // Island multiplier
         if (calculatorSettings.multiplier > 0) luckyValue += calculatorSettings.multiplier * 100;
 
-        // Calculate Shiny Multiplier:
-        // For Shiny Chance, the only thing that affects it is the normal index and the infinity potion.
-        let shinyChance = 0;
-        if (calculatorSettings.overworldNormalIndex && egg.subcategory.name === "Overworld") shinyChance += 50;
-        if (calculatorSettings.minigameNormalIndex && egg.subcategory.name === "Minigame Paradise") shinyChance += 50;
-        let shinyMultiplier = 1 / 40 * (1 + (shinyChance / 100));
-        // Infinity potion only affects if shinyChance was not 0.
-        shinyValue = shinyChance > 0 ? shinyMultiplier * (calculatorSettings.infinityPotion ? 2 : 1) : shinyMultiplier;
+        // Calculate Shiny rate:
+        let shinyBuff = 0;
+        if (calculatorSettings.overworldNormalIndex && egg.subcategory.name === "Overworld") shinyBuff += 50;
+        if (calculatorSettings.minigameNormalIndex && egg.subcategory.name === "Minigame Paradise") shinyBuff += 50;
+        shinyValue = 1 / 40 * (1 + (shinyBuff / 100)) * (calculatorSettings.infinityPotion ? 2 : 1);
 
-        // Calculate Mythic multiplier:
-        // For Mythic Chance, the only thing that affects it is the shiny index, mythic potion and the infinity potion.
-        let mythicChance = 0;
-        if (calculatorSettings.overworldShinyIndex && egg.subcategory.name === "Overworld") mythicChance += 50;
-        if (calculatorSettings.minigameShinyIndex && egg.subcategory.name === "Minigame Paradise") mythicChance += 50;
-        mythicChance += calculatorSettings.mythicPotion;
-        let mythicMultiplier = 1 / 100 * (1 + (mythicChance / 100));
-        // Infinity potion only affects if mythicChance was not 0.
-        mythicValue = mythicChance > 0 ? mythicMultiplier * (calculatorSettings.infinityPotion ? 2 : 1) : mythicMultiplier;
+        // Calculate Mythic rate:
+        let mythicBuff = 0;
+        if (calculatorSettings.overworldShinyIndex && egg.subcategory.name === "Overworld") mythicBuff += 50;
+        if (calculatorSettings.minigameShinyIndex && egg.subcategory.name === "Minigame Paradise") mythicBuff += 50;
+        mythicBuff += calculatorSettings.mythicPotion;
+        mythicValue = 1 / 100 * (1 + (mythicBuff / 100)) * (calculatorSettings.infinityPotion ? 2 : 1);
 
         const results: CalculatorResults[] = [];
         egg.pets.forEach((pet) => {
@@ -201,8 +250,8 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
             const baseChance = Number(pet.chance.split("/")[1].replaceAll(",", ""));
 
             // Calculate base drop chance
-            const n = Decimal(1).plus(luckyValue / 100);//.plus(calculatorSettings.multiplier);
-            // 1 - pow(1 - (1 / baseChance), n)
+            const n = Decimal(1).plus(luckyValue / 100);
+            // The line below is: 1 - pow(1 - (1 / baseChance), n)
             const dropRate = Decimal(1).minus(Decimal.pow(Decimal(1).minus((Decimal(1).dividedBy(baseChance))), n));
             let normalChance = dropRate as unknown as any;
             
@@ -247,7 +296,7 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
               Odds Calculator
             </Typography>
 
-            <Container sx={{ display: "flex", justifyContent: "center", mb: 4, maxWidth: '1600px' }}>
+            <Container sx={{ display: "flex", justifyContent: "center", mb: 4, maxWidth: '1300px !important' }}>
                 { /* Left side box (Calculator) */ }
                 <Box
                     component="form"
@@ -463,8 +512,7 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
                 <Box
                     component="form"
                     sx={{
-                      width: "1600px !important",
-                      maxWidth: '1600px !important',
+                      maxWidth: '100% !important',
                       display: "flex",
                       flexDirection: "column",
                       alignItems: "center",

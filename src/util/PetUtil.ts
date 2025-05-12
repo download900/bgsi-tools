@@ -13,7 +13,7 @@ export interface CategoryData { name: string, categories: SubCategoryData[], ign
 
 export interface SubCategoryData { name: string; eggs: Egg[], category: CategoryData; ignoreCalculator: boolean }
 
-export interface Egg { name: string; image: string; pets: Pet[], subcategory: SubCategoryData; ignoreCalculator: boolean }
+export interface Egg { name: string; image: string; pets: Pet[], subcategory: SubCategoryData; ignoreCalculator: boolean; infinityEgg: string }
 
 export interface Pet { 
     name: string; 
