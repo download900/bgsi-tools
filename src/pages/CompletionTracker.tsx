@@ -25,12 +25,12 @@ import {
   SubCategoryData,
   Egg,
   Pet,
-  PetVariant
-} from "../App";
-import {
-  getNameAndChanceStyle,
-  getPercentStyle,
+  PetVariant,
   variants
+} from "../util/PetUtil";
+import {
+  getRarityStyle,
+  getPercentStyle,
 } from "../util/StyleUtil";
 
 const STORAGE_KEY = "petTrackerState";
@@ -361,7 +361,7 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
                   </TableHead>
                   <TableBody>
                     {egg.pets.map((pet) => {
-                      const style = getNameAndChanceStyle(pet.rarity);
+                      const style = getRarityStyle(pet.rarity);
                       return (
                         <TableRow key={pet.name}>
                           <TableCell>

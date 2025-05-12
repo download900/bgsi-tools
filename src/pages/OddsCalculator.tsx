@@ -1,16 +1,13 @@
-import React, { JSX, useEffect, useState } from "react";
+import { JSX, useEffect, useState } from "react";
 import {
   Container,
   Typography,
   Box,
   TextField,
   FormControl,
-  InputLabel,
   Select,
   MenuItem,
   Checkbox,
-  FormControlLabel,
-  Button,
   Paper,
   Tooltip,
   Autocomplete,
@@ -21,8 +18,8 @@ import {
   TableRow,
   Link
 } from "@mui/material";
-import { getNameAndChanceStyle, rarityColorMap, variants } from "../util/StyleUtil";
-import { CategoryData, Egg, Pet } from "../App";
+import { getRarityStyle } from "../util/StyleUtil";
+import { CategoryData, Egg, Pet } from "../util/PetUtil";
 import Decimal from "decimal.js";
 
 const STORAGE_KEY = "oddsCalculatorSettings";
@@ -511,7 +508,7 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
                                                       style={{ textDecoration: "none", color: "inherit", display: "flex", alignItems: "center" }}
                                                     >
                                                         <img src={result.pet.image[0]} alt={result.pet.name} style={{ width: 24, height: 24, marginRight: 8 }} />
-                                                        <span style={getNameAndChanceStyle(result.pet.rarity)}>{result.pet.name}</span>
+                                                        <span style={getRarityStyle(result.pet.rarity)}>{result.pet.name}</span>
                                                     </Link>
                                                 </TableCell>
                                                 <TableCell sx={{ fontWeight: "bold" }}>

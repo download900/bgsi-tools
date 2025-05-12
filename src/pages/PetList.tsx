@@ -1,12 +1,7 @@
 // src/pages/CompletionTracker.tsx
-import React, { use, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
-  Drawer,
-  List,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
   Avatar,
   Typography,
   Paper,
@@ -30,38 +25,27 @@ import {
   Egg,
   Pet,
   PetVariant,
-  variantScales,
   CurrencyVariant,
   Rarity,
-  variantChanceMultipliers,
   currencyImages,
-  variantLevelScales
-} from "../App";
+  variantData,
+  PetInstance,
+  variants,
+  getPetChance,
+  getPetStat,
+  getPetImage
+} from "../util/PetUtil";
 import {
-  getNameAndChanceStyle,
+  getRarityStyle,
   getPercentStyle,
-  variants
+  variantStyles,
 } from "../util/StyleUtil";
-import { get } from "http";
 
 const STORAGE_KEY = "petTrackerState";
 type PetKey = `${string}__${PetVariant}`;
 type OwnedPets = Record<PetKey, boolean>;
 
 const SETTINGS_KEY = "petTrackerSettings";
-
-interface PetInstance { 
-  name: string; chance: number; rarity: Rarity; bubbles: number; 
-  currencyVariant: CurrencyVariant; currency: number; gems: number; 
-  variantIndex: number; variant: PetVariant; image: string[]; egg: Egg; 
-}
-
-const variantStyles: { [key in PetVariant]: React.CSSProperties } = {
-  Normal: { color: "#ffffff" },
-  Shiny: { color: "#feffd4" },
-  Mythic: { color: "#d674b7" },
-  "Shiny Mythic": { color: "#9b74d6" },
-};
 
 type ObtainedFilter = "obtained" | "unobtained" | "all";
 type RarityFilter = "Legendary" | "Secret" | "all";
@@ -198,10 +182,10 @@ export function PetList(props: PetListProps) {
                 name: pet.name,
                 chance: getPetChance(pet, variant),
                 rarity: pet.rarity,
-                bubbles: getPetStat(pet, variant, "bubbles"),
+                bubbles: getPetStat(pet, variant, "bubbles", previewMaxLevel, previewEnchant, enchantTeamSize, secondEnchant),
                 currencyVariant: pet.currencyVariant,
-                currency: getPetStat(pet, variant, "currency"),
-                gems: getPetStat(pet, variant, "gems"),
+                currency: getPetStat(pet, variant, "currency", previewMaxLevel, previewEnchant, enchantTeamSize, secondEnchant),
+                gems: getPetStat(pet, variant, "gems", previewMaxLevel, previewEnchant, enchantTeamSize, secondEnchant),
                 variant,
                 variantIndex: pet.variants.indexOf(variant),
                 image: pet.image,
@@ -248,39 +232,6 @@ export function PetList(props: PetListProps) {
       }
       return 0;
     });
-  }
-
-  const getPetChance = (pet: Pet, variant: PetVariant) => {
-    if (!pet.chance.startsWith("1/")) {
-      return 0;
-    }
-    // extract the base chance from the string. It will be like "1/1,000" and we want "1000".
-    const baseChanceValue = Number(pet.chance.split("/")[1].replaceAll(",", ""));
-    const variantChance = baseChanceValue * variantChanceMultipliers[variant];
-    return variantChance;
-  }
-
-  const getPetImage = (pet: PetInstance, variantIndex: number) => {
-    if (variantIndex === -1) {
-      return pet.image[0]; // Fallback to the first image if the variant is not found
-    }
-    return pet.image[variantIndex];
-  }
-
-  const getPetStat = (pet: Pet, variant: PetVariant, stat: "bubbles" | "currency" | "gems") => {
-    let scale = variantScales[variant];
-    if (previewMaxLevel) scale *= variantLevelScales[variant];
-    let baseStat = pet[stat];
-    let multiplier = 1;
-    if (previewEnchant) {
-      if (variant === "Shiny" || variant === "Shiny Mythic") {
-        if ((secondEnchant === "bubbler" && stat === "bubbles") || (secondEnchant === "looter" && stat === "currency")) {
-          multiplier += 0.5;
-        }
-      }
-      multiplier += (enchantTeamSize * 0.25);
-    }
-    return Math.floor(baseStat * scale * multiplier);
   }
 
   // helper to get header sx
@@ -482,7 +433,7 @@ export function PetList(props: PetListProps) {
                     <TableCell>
                       <Typography variant="body2">
                         <Link href={`https://bgs-infinity.fandom.com/wiki/${pet.name}`} target="_blank">
-                          <span style={{ ...getNameAndChanceStyle(pet.rarity) }}>{variant === "Normal" ? pet.name : `${pet.name}`}</span>{" "}
+                          <span style={{ ...getRarityStyle(pet.rarity) }}>{variant === "Normal" ? pet.name : `${pet.name}`}</span>{" "}
                           {variant !== "Normal" && <span style={variantStyles[variant]}>{`(${variant})`}</span>}
                         </Link>
                       </Typography>

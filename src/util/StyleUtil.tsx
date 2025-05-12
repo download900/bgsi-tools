@@ -1,6 +1,5 @@
-import { PetVariant, Rarity } from "../App";
+import { PetVariant, Rarity } from "./PetUtil";
 
-export const variants: PetVariant[] = ["Normal", "Shiny", "Mythic", "Shiny Mythic"];
 export const rarityColorMap: Record<Rarity, string> = {
   Common: "#ffffff",
   Unique: "#fdc394",
@@ -10,7 +9,14 @@ export const rarityColorMap: Record<Rarity, string> = {
   Secret: "#ff9900"
 };
 
-export const getNameAndChanceStyle = (rarity: Rarity): React.CSSProperties => {
+export const variantStyles: { [key in PetVariant]: React.CSSProperties } = {
+  Normal: { color: "#ffffff" },
+  Shiny: { color: "#feffd4" },
+  Mythic: { color: "#d674b7" },
+  "Shiny Mythic": { color: "#9b74d6" },
+};
+
+export const getRarityStyle = (rarity: Rarity): React.CSSProperties => {
   const color = rarityColorMap[rarity];
   if (rarity === "Legendary") {
     return {
