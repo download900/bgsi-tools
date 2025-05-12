@@ -1,5 +1,5 @@
 // src/pages/CompletionTracker.tsx
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
   Box,
   Avatar,
@@ -21,24 +21,17 @@ import {
 
 import {
   CategoryData,
-  SubCategoryData,
-  Egg,
-  Pet,
+  PetInstance,
   PetVariant,
   CurrencyVariant,
-  Rarity,
-  currencyImages,
-  variantData,
-  PetInstance,
   variants,
+  currencyImages,
   getPetChance,
-  getPetStat,
-  getPetImage
+  getPetStat
 } from "../util/PetUtil";
 import {
   getRarityStyle,
-  getPercentStyle,
-  variantStyles,
+  variantStyles
 } from "../util/StyleUtil";
 
 const STORAGE_KEY = "petTrackerState";
@@ -72,6 +65,8 @@ export function PetList(props: PetListProps) {
   const [previewEnchant, setPreviewEnchant] = useState<boolean>(true);
   const [enchantTeamSize, setEnchantTeamSize] = useState<number>(11);
   const [secondEnchant, setSecondEnchant] = useState<"looter" | "bubbler">("bubbler");
+
+  const [visibleCount, setVisibleCount] = useState(20);
 
   // ~~~~~~~~~~~ hooks ~~~~~~~~~~~
 
@@ -152,6 +147,24 @@ export function PetList(props: PetListProps) {
     sortAndFilterPets(allPets);
   }, [sortColumn,nameFilter, currencyFilter, obtainedFilter, rarityFilter, variantFilter]);
 
+  // infinite‐scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      // how close to the bottom before loading more (px)
+      const threshold = 150;
+      const scrolledToBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - threshold;
+    
+      if (scrolledToBottom && visibleCount < sortedPets.length) {
+        setVisibleCount((c) => Math.min(c + 20, sortedPets.length));
+      }
+    };
+  
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [visibleCount, sortedPets]);
+
   // ~~~~~~~~~~~ functions  ~~~~~~~~~~~
 
   const saveState = (pets: OwnedPets) => {
@@ -171,7 +184,6 @@ export function PetList(props: PetListProps) {
 
   const buildPetList = () => {
     if (props.data?.length < 1) return [];
-    console.log("Building pet list");
     const allPets: PetInstance[] = [];
     props.data.forEach((cat) => {
       cat.categories.forEach((subcat) => {
@@ -187,8 +199,7 @@ export function PetList(props: PetListProps) {
                 currency: getPetStat(pet, variant, "currency", previewMaxLevel, previewEnchant, enchantTeamSize, secondEnchant),
                 gems: getPetStat(pet, variant, "gems", previewMaxLevel, previewEnchant, enchantTeamSize, secondEnchant),
                 variant,
-                variantIndex: pet.variants.indexOf(variant),
-                image: pet.image,
+                image: pet.image[pet.variants.indexOf(variant)],
                 egg,
               });
             });
@@ -196,7 +207,6 @@ export function PetList(props: PetListProps) {
         });
       });
     });
-    console.log("Built pet list, total pets:", allPets.length);
     return allPets;
   }
 
@@ -214,6 +224,7 @@ export function PetList(props: PetListProps) {
 
     const sorted = sortPets(filteredPets);
     setSortedPets(sorted);
+    setVisibleCount(20);
   }
 
   const sortPets = (pets: PetInstance[]) => {
@@ -243,7 +254,7 @@ export function PetList(props: PetListProps) {
   });
 
   return (
-    <Box component="main" sx={{ display: "flex", flexDirection: "column", alignItems: 'center', flexGrow: 1, p: 3, mt: 1, mx: "auto", maxWidth: "1200px" }} >
+        <Box component="main" sx={{ display: "flex", flexDirection: "column", alignItems: 'center', flexGrow: 1, p: 3, mt: 1, mx: "auto", maxWidth: "1200px" }} >
       { /* Filters */ }
       <Paper sx={{  padding: 2, marginBottom: 2, display: "flex", flexDirection: "column", alignItems: "center" }}>
         <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", p: 1 }}>
@@ -352,131 +363,128 @@ export function PetList(props: PetListProps) {
           </Box>
         </Box>
       </Paper>
-      { /* Table */ }
-      <Table size="small" sx={{ "& .MuiTableCell-root": { p: 0.5 } }}>
-        <TableHead>
-          <TableRow>
-            { /* Checkbox column */}
-            <TableCell sx={{ width: 24 }} />
-            {/* Pet image column */}
-            <TableCell sx={{ width: 24 }} />
-            <TableCell sx={{ ...headerSx("name") }}>
-              <Button
-                onClick={() => setSortColumn("name")}
-                sx={{ textTransform: "none", fontWeight: "bold", width: '100%', textAlign: 'left' }}
-              >
-                Pet
-              </Button>
-            </TableCell>
-            <TableCell sx={{ ...headerSx("chance") }}>
-              <Button
-                onClick={() => setSortColumn("chance")}
-                sx={{ textTransform: "none", fontWeight: "bold", width: '100%', textAlign: 'left' }}
-              >
-                Chance
-              </Button>
-            </TableCell>
-            <TableCell sx={{ ...headerSx("bubbles") }}>
-              <Button
-                onClick={() => setSortColumn("bubbles")}
-                sx={{ textTransform: "none", fontWeight: "bold", width: '100%', textAlign: 'left' }}
-              >
-                <img src="https://static.wikia.nocookie.net/bgs-infinity/images/0/0c/Bubbles.png" alt="Bubbles" style={{ width: 16, height: 16, verticalAlign: "middle", marginLeft: 4 }} />
-              </Button>
-            </TableCell>
-            <TableCell sx={{ ...headerSx("coins") }}>
-              <Button
-                onClick={() => setSortColumn("coins")}
-                sx={{ textTransform: "none", fontWeight: "bold", width: '100%', textAlign: 'left' }}
-              >
-                💰
-              </Button>
-            </TableCell>
-            <TableCell sx={{ ...headerSx("gems") }}>
-              <Button
-                onClick={() => setSortColumn("gems")}
-                sx={{ textTransform: "none", fontWeight: "bold", width: '100%', textAlign: 'left' }}
-              >
-                <img src="https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Gems.png" alt="Gems" style={{ width: 16, height: 16, verticalAlign: "middle", marginLeft: 4 }} />
-              </Button>
-            </TableCell>
-            {/* Egg image column */}
-            <TableCell sx={{ width: 24 }} />
-            <TableCell sx={{ width: 150, fontWeight: "bold" }}>
-                Source
-            </TableCell>
-          </TableRow>
-        </TableHead>
-          <TableBody>
-            {
-              sortedPets.flatMap((pet) => {
-                const variant = pet.variant;
-                const petImage = getPetImage(pet, pet.variantIndex);
 
-                return (
-                  <>
-                  <TableRow key={`${pet.name}-${variant}`} sx={{opacity: ownedPets[`${pet.name}__${variant}`] ? 1 : 0.4 }}>
-                    <TableCell>
-                      <Checkbox
-                        size="small"
-                        checked={!!ownedPets[`${pet.name}__${variant}`]}
-                        onChange={() => togglePet(pet.name, variant)}
-                      />
-                    </TableCell>
-                    <TableCell>
-                      <img
-                        src={petImage}
-                        alt={pet.name}
-                        style={{ width: 24, height: 24 }}
-                      />
-                    </TableCell>
-                    <TableCell>
-                      <Typography variant="body2">
-                        <Link href={`https://bgs-infinity.fandom.com/wiki/${pet.name}`} target="_blank">
-                          <span style={{ ...getRarityStyle(pet.rarity) }}>{variant === "Normal" ? pet.name : `${pet.name}`}</span>{" "}
-                          {variant !== "Normal" && <span style={variantStyles[variant]}>{`(${variant})`}</span>}
-                        </Link>
-                      </Typography>
-                    </TableCell>
-                    <TableCell>
-                      <Typography variant="body2">
-                        1/{pet.chance.toLocaleString(undefined, { maximumFractionDigits: 0 })}
-                      </Typography>
-                    </TableCell>
-                    <TableCell>
-                      <Typography variant="body2">
-                        +{pet.bubbles} <img src="https://static.wikia.nocookie.net/bgs-infinity/images/0/0c/Bubbles.png" alt="Bubbles" style={{ width: 16, height: 16, verticalAlign: "middle", marginLeft: 4 }} />
-                      </Typography>
-                    </TableCell>
-                    <TableCell>
-                      <Typography variant="body2">
-                        x{pet.currency} <img src={currencyImages[pet.currencyVariant]} alt={pet.currencyVariant} style={{ width: 16, height: 16, verticalAlign: "middle", marginLeft: 4 }} />
-                      </Typography>
-                    </TableCell>
-                    <TableCell>
-                      <Typography variant="body2">
-                        x{pet.gems} <img src="https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Gems.png" alt="Gems" style={{ width: 16, height: 16, verticalAlign: "middle", marginLeft: 4 }} />
-                      </Typography>
-                    </TableCell>
-                    <TableCell>
-                      <Avatar
-                        src={pet.egg.image}
-                        alt={pet.egg.name}
-                        sx={{ width: 24, height: 24 }}
-                      />
-                    </TableCell>
-                    <TableCell>
-                      <Typography variant="body2">
-                        {pet.egg.name}
-                      </Typography>
-                    </TableCell>
-                  </TableRow>
-                  </>
-                );
-              })
-            }
+      <Table size="small" sx={{ "& .MuiTableCell-root": { p: 0.5 } }}>
+          <TableHead>
+            <TableRow>
+              { /* Checkbox column */}
+              <TableCell sx={{ width: 24 }} />
+              {/* Pet image column */}
+              <TableCell sx={{ width: 24 }} />
+              <TableCell sx={{ ...headerSx("name") }}>
+                <Button
+                  onClick={() => setSortColumn("name")}
+                  sx={{ textTransform: "none", fontWeight: "bold", width: '100%', textAlign: 'left' }}
+                >
+                  Pet
+                </Button>
+              </TableCell>
+              <TableCell sx={{ ...headerSx("chance") }}>
+                <Button
+                  onClick={() => setSortColumn("chance")}
+                  sx={{ textTransform: "none", fontWeight: "bold", width: '100%', textAlign: 'left' }}
+                >
+                  Chance
+                </Button>
+              </TableCell>
+              <TableCell sx={{ ...headerSx("bubbles") }}>
+                <Button
+                  onClick={() => setSortColumn("bubbles")}
+                  sx={{ textTransform: "none", fontWeight: "bold", width: '100%', textAlign: 'left' }}
+                >
+                  <img src="https://static.wikia.nocookie.net/bgs-infinity/images/0/0c/Bubbles.png" alt="Bubbles" style={{ width: 16, height: 16, verticalAlign: "middle", marginLeft: 4 }} />
+                </Button>
+              </TableCell>
+              <TableCell sx={{ ...headerSx("coins") }}>
+                <Button
+                  onClick={() => setSortColumn("coins")}
+                  sx={{ textTransform: "none", fontWeight: "bold", width: '100%', textAlign: 'left' }}
+                >
+                  💰
+                </Button>
+              </TableCell>
+              <TableCell sx={{ ...headerSx("gems") }}>
+                <Button
+                  onClick={() => setSortColumn("gems")}
+                  sx={{ textTransform: "none", fontWeight: "bold", width: '100%', textAlign: 'left' }}
+                >
+                  <img src="https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Gems.png" alt="Gems" style={{ width: 16, height: 16, verticalAlign: "middle", marginLeft: 4 }} />
+                </Button>
+              </TableCell>
+              {/* Egg image column */}
+              <TableCell sx={{ width: 24 }} />
+              <TableCell sx={{ width: 150, fontWeight: "bold" }}>
+                  Source
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {sortedPets.slice(0, visibleCount).map(pet => {
+              const variant = pet.variant;
+              const petImage = pet.image;
+
+              return (
+                <>
+                <TableRow key={`${pet.name}-${variant}`} sx={{opacity: ownedPets[`${pet.name}__${variant}`] ? 1 : 0.4 }}>
+                  <TableCell>
+                    <Checkbox
+                      size="small"
+                      checked={!!ownedPets[`${pet.name}__${variant}`]}
+                      onChange={() => togglePet(pet.name, variant)}
+                    />
+                  </TableCell>
+                  <TableCell>
+                    <img
+                      src={petImage}
+                      alt={pet.name}
+                      style={{ width: 24, height: 24 }}
+                    />
+                  </TableCell>
+                  <TableCell>
+                    <Typography variant="body2">
+                      <Link href={`https://bgs-infinity.fandom.com/wiki/${pet.name}`} target="_blank">
+                        <span style={{ ...getRarityStyle(pet.rarity) }}>{variant === "Normal" ? pet.name : `${pet.name}`}</span>{" "}
+                        {variant !== "Normal" && <span style={variantStyles[variant]}>{`(${variant})`}</span>}
+                      </Link>
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography variant="body2">
+                      1/{pet.chance.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography variant="body2">
+                      +{pet.bubbles} <img src="https://static.wikia.nocookie.net/bgs-infinity/images/0/0c/Bubbles.png" alt="Bubbles" style={{ width: 16, height: 16, verticalAlign: "middle", marginLeft: 4 }} />
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography variant="body2">
+                      x{pet.currency} <img src={currencyImages[pet.currencyVariant]} alt={pet.currencyVariant} style={{ width: 16, height: 16, verticalAlign: "middle", marginLeft: 4 }} />
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography variant="body2">
+                      x{pet.gems} <img src="https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Gems.png" alt="Gems" style={{ width: 16, height: 16, verticalAlign: "middle", marginLeft: 4 }} />
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Avatar
+                      src={pet.egg.image}
+                      alt={pet.egg.name}
+                      sx={{ width: 24, height: 24 }}
+                    />
+                  </TableCell>
+                  <TableCell>
+                    <Typography variant="body2">
+                      {pet.egg.name}
+                    </Typography>
+                  </TableCell>
+                </TableRow>
+                </>)
+            })}
           </TableBody>
-      </Table>
+        </Table>
     </Box>
   );
 }

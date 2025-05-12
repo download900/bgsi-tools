@@ -38,9 +38,8 @@ export interface PetInstance {
   currencyVariant: CurrencyVariant; 
   currency: number; 
   gems: number; 
-  variantIndex: number; 
   variant: PetVariant; 
-  image: string[]; 
+  image: string; 
   egg: Egg; 
 }
 
