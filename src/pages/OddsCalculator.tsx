@@ -9,15 +9,15 @@ const STORAGE_KEY = "oddsCalculatorSettings";
 // Buff data
 type LuckyPotion = 0 | 10 | 20 | 30 | 65 | 150 | 400;
 type MythicPotion = 0 | 10 | 20 | 30 | 75 | 150 | 250;
-type IslandMultiplier = 0 | 5 | 10 | 25;
-type StreakBuff = 0 | 20 | 30;
+type RiftMultiplier = 0 | 5 | 10 | 25;
+type LuckyStreak = 0 | 20 | 30;
 
 interface CalculatorSettings {
     selectedEgg: string,
-    riftMultiplier: IslandMultiplier;
+    riftMultiplier: RiftMultiplier;
     luckyPotion: LuckyPotion;
     mythicPotion: MythicPotion;
-    luckyStreak: StreakBuff;
+    luckyStreak: LuckyStreak;
     overworldNormalIndex: boolean;
     overworldShinyIndex: boolean;
     minigameNormalIndex: boolean;
@@ -51,29 +51,7 @@ interface PetResult {
 export interface InfinityEgg {
     name: string;
     pets: Pet[];
-    legendaryRate: number;
-    secretRate: number;
     subcategory: SubCategoryData;
-}
-
-export type InfinityEggNames = "Overworld" | "Minigame Paradise";
-const infinityEggNames: string[] = ["Overworld", "Minigame Paradise"];
-
-export const infinityEggs: { [key in InfinityEggNames] : InfinityEgg } = {
-    "Overworld": {
-        name: "Overworld",
-        pets: [],
-        legendaryRate: 200,
-        secretRate: 40000000,
-        subcategory: { name: "Overworld" } as SubCategoryData
-    },
-    "Minigame Paradise": {
-        name: "Minigame Paradise",
-        pets: [],
-        legendaryRate: 200,
-        secretRate: 40000000,
-        subcategory: { name: "Minigame Paradise" } as SubCategoryData
-    }
 }
 
 interface OddsCalculatorProps {
@@ -131,10 +109,9 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
                 settings = calculatorSettings;
             }
             
-            // Reset infinity egg pets
-            infinityEggNames.forEach((eggName) => {
-                infinityEggs[eggName as InfinityEggNames].pets = [];
-            });
+            // Set up infinity eggs
+            const infinityEggs: Record<string, InfinityEgg> = {};
+            const infinityEggNames: string[] = [];
 
             // Load secret bounty pets
             const secretPets = props.data.find(cat => cat.name.includes("Other"))?.categories.find(subcat => subcat.name === "Secret Bounty Board")?.eggs[0].pets || [];
@@ -146,6 +123,12 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
                 if (category.ignoreCalculator) continue;
                 for (const subcat of category.categories) {
                     if (subcat.ignoreCalculator) continue;
+                    // push new infinity egg to infinityEggs
+                    if (category.name.includes("Worlds")) {
+                        const egg = { name: subcat.name, pets: [], subcategory: subcat } as InfinityEgg;
+                        infinityEggs[subcat.name] = egg;
+                        infinityEggNames.push(subcat.name);
+                    }
                     for (const egg of subcat.eggs) {
                         if (egg.ignoreCalculator) continue;
 
@@ -162,7 +145,7 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
 
                         if (egg.infinityEgg) {
                             const newPets = structuredClone(egg.pets);
-                            infinityEggs[egg.infinityEgg as InfinityEggNames].pets.push(...newPets);
+                            infinityEggs[egg.infinityEgg].pets.push(...newPets);
                         }
                     }
                 }
@@ -170,8 +153,8 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
 
             // Process Infinity Eggs:
             infinityEggNames.forEach((eggName) => {
-              const egg = infinityEggs[eggName as InfinityEggNames];
-              const { legendaryRate, secretRate, pets, subcategory, name } = egg;
+              const egg = infinityEggs[eggName];
+              const { pets, subcategory, name } = egg;
                         
               // 1) compute “sum of 1/droprate” per rarity
               const totals = pets.reduce((acc, pet) => {
@@ -182,15 +165,15 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
               );
           
               // 2) recalc each pet’s droprate: new = pet.droprate * (totalDecimalForThisRarity) / rateForThisRarity
-              const rateMap = { Legendary: legendaryRate, Secret: secretRate };
+              const rateMap = { Legendary: 200, Secret: 40000000 };
               let updatedPets = pets.map((pet) => ({ ...pet,
                   droprate: pet.droprate * totals[pet.rarity] / (1 / rateMap[pet.rarity]),
                 })).sort((a, b) => a.droprate - b.droprate);
 
               // After processing, add "Any Legendary" and "Any Secret" to top of the pet list.
               updatedPets = [
-                { name: "Any Legendary", droprate: legendaryRate, image: ["https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png"] } as Pet,
-                { name: "Any Secret", droprate: secretRate, image: ["https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png"] } as Pet,
+                { name: "Any Legendary", droprate: 200, image: ["https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png"] } as Pet,
+                { name: "Any Secret", droprate: 40000000, image: ["https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png"] } as Pet,
                 ...updatedPets
               ];
             
@@ -381,7 +364,7 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
                               value={calculatorSettings.riftMultiplier}
                               size="small"
                               sx={{ flexGrow: 1, mr: 1 }}
-                              onChange={(e) => setCalculatorSettings({ ...calculatorSettings, riftMultiplier: e.target.value as IslandMultiplier })}
+                              onChange={(e) => setCalculatorSettings({ ...calculatorSettings, riftMultiplier: e.target.value as RiftMultiplier })}
                             >
                                 <MenuItem value={0}>None</MenuItem>
                                 <MenuItem value={5}>5x (500%)</MenuItem>
@@ -517,7 +500,7 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
                                 value={calculatorSettings.luckyStreak}
                                 size="small"
                                 sx={{ flexGrow: 1, mr: 1 }}
-                                onChange={(e) => setCalculatorSettings({ ...calculatorSettings, luckyStreak: e.target.value as StreakBuff })}
+                                onChange={(e) => setCalculatorSettings({ ...calculatorSettings, luckyStreak: e.target.value as LuckyStreak })}
                             >
                                 <MenuItem value={0}>None</MenuItem>
                                 <MenuItem value={30}>Lucky II (30%)</MenuItem>
