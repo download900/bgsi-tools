@@ -1,5 +1,5 @@
 import { JSX, useEffect, useState } from "react";
-import { Container, Typography, Box, TextField, FormControl, Select, MenuItem, Checkbox, Paper, Tooltip, Autocomplete, Table, TableBody, TableCell, TableHead,TableRow, Link } from "@mui/material";
+import { Container, Typography, Box, TextField, Select, MenuItem, Checkbox, Paper, Tooltip, Table, TableBody, TableCell, TableHead,TableRow, Link } from "@mui/material";
 import { getRarityStyle, imgIcon } from "../util/StyleUtil";
 import { CategoryData, Egg, Pet, SubCategoryData } from "../util/PetUtil";
 import Decimal from "decimal.js";
@@ -290,9 +290,16 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
     const formatChanceResult = (chance: number) => {
         let oddsString = "";
         let tooltipString = "";
-        if (chance != 0) {
+        if (chance !== 0) {
             const odds = 1 / chance;
-            tooltipString = `${(chance * 100).toLocaleString(undefined, { maximumFractionDigits: 10 })}%`;
+            const percent = Number(100 * chance);
+            // if chance is less than 0.0001, use scientific notation
+            if (percent < 0.0001) {
+                tooltipString = `${percent.toExponential(2)}%`;
+            }
+            else {
+                tooltipString = `${(percent).toLocaleString(undefined, { maximumFractionDigits: 10 })}%`;
+            }
             oddsString = `1 / ${odds.toLocaleString(undefined, { maximumFractionDigits: 0})}`;
         }
         else {
