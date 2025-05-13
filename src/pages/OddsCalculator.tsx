@@ -1,6 +1,6 @@
 import { JSX, useEffect, useState } from "react";
 import { Container, Typography, Box, TextField, FormControl, Select, MenuItem, Checkbox, Paper, Tooltip, Autocomplete, Table, TableBody, TableCell, TableHead,TableRow, Link } from "@mui/material";
-import { getRarityStyle } from "../util/StyleUtil";
+import { getRarityStyle, imgIcon } from "../util/StyleUtil";
 import { CategoryData, Egg, Pet, SubCategoryData } from "../util/PetUtil";
 import Decimal from "decimal.js";
 
@@ -14,7 +14,7 @@ type StreakBuff = 0 | 20 | 30;
 
 interface CalculatorSettings {
     selectedEgg: string,
-    multiplier: IslandMultiplier;
+    riftMultiplier: IslandMultiplier;
     luckyPotion: LuckyPotion;
     mythicPotion: MythicPotion;
     luckyStreak: StreakBuff;
@@ -28,6 +28,8 @@ interface CalculatorSettings {
     infinityPotion: boolean;
     friendBoost: number;
     doubleLuckEvent: boolean;
+    secretsBountyPet: string;
+    secretsBountyEgg: string;
 }
 
 interface CalculatorResults {
@@ -40,21 +42,17 @@ interface CalculatorResults {
 
 interface PetResult {
     pet: Pet;
-    normalChance: number;
-    shinyChance: number;
-    mythicChance: number;
-    shinyMythicChance: number;
-}
-
-interface OddsCalculatorProps {
-  data: CategoryData[];
+    normalDroprate: number;
+    shinyDroprate: number;
+    mythicDroprate: number;
+    shinyMythicDroprate: number;
 }
 
 export interface InfinityEgg {
     name: string;
     pets: Pet[];
-    legendaryChance: number;
-    secretChance: number;
+    legendaryRate: number;
+    secretRate: number;
     subcategory: SubCategoryData;
 }
 
@@ -65,23 +63,27 @@ export const infinityEggs: { [key in InfinityEggNames] : InfinityEgg } = {
     "Overworld": {
         name: "Overworld",
         pets: [],
-        legendaryChance: 0.005,
-        secretChance: 0.000000025,
+        legendaryRate: 200,
+        secretRate: 40000000,
         subcategory: { name: "Overworld" } as SubCategoryData
     },
     "Minigame Paradise": {
         name: "Minigame Paradise",
         pets: [],
-        legendaryChance: 0.005,
-        secretChance: 0.000000025,
+        legendaryRate: 200,
+        secretRate: 40000000,
         subcategory: { name: "Minigame Paradise" } as SubCategoryData
     }
+}
+
+interface OddsCalculatorProps {
+  data: CategoryData[];
 }
 
 export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
     const [calculatorSettings, setCalculatorSettings] = useState<CalculatorSettings>({
         selectedEgg: "",
-        multiplier: 0,
+        riftMultiplier: 0,
         luckyPotion: 0,
         mythicPotion: 0,
         luckyStreak: 0,
@@ -94,12 +96,15 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
         doubleLuckGamepass: false,
         infinityPotion: false,
         friendBoost: 0,
-        doubleLuckEvent: false
+        doubleLuckEvent: false,
+        secretsBountyPet: "",
+        secretsBountyEgg: "",
     });
     const [calculatorResults, setCalculatorResults] = useState<CalculatorResults>();
 
     // list of pets
     const [eggs, setEggs] = useState<Egg[]>([]);
+    const [secretBountyPets, setSecretBountyPets] = useState<Pet[]>([]);
     const [selectedEgg, setSelectedEgg] = useState<Egg | null>(null);
 
     useEffect(() => {
@@ -116,12 +121,42 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
     
     const loadCalculator = () => {
         try {
-            // process eggs into new list for calculator
+            // Load settings
+            const saved = localStorage.getItem(STORAGE_KEY);
+            let settings: CalculatorSettings;
+            if (saved) {
+                settings = JSON.parse(saved);
+                setCalculatorSettings(settings);
+            } else {
+                settings = calculatorSettings;
+            }
+            
+            // Reset infinity egg pets
+            infinityEggNames.forEach((eggName) => {
+                infinityEggs[eggName as InfinityEggNames].pets = [];
+            });
+
+            // Load secret bounty pets
+            const secretPets = props.data.find(cat => cat.name.includes("Other"))?.categories.find(subcat => subcat.name === "Secret Bounty Board")?.eggs[0].pets || [];
+            setSecretBountyPets(secretPets);
+
+            // Process eggs for calculator
             const eggs: Egg[] = [];
-            props.data.forEach(category => {
-                category.categories.forEach((subcategory) => {
-                    subcategory.eggs.forEach(egg => {
-                        if (egg.ignoreCalculator || !egg.pets.some(pet => !pet.ignoreCalculator)) return;
+            for (const category of props.data) {
+                if (category.ignoreCalculator) continue;
+                for (const subcat of category.categories) {
+                    if (subcat.ignoreCalculator) continue;
+                    for (const egg of subcat.eggs) {
+                        if (egg.ignoreCalculator) continue;
+
+                        // add the secret bounty pet to the egg
+                        if (settings.secretsBountyPet && settings.secretsBountyEgg === egg.name) {
+                            const secretBountyPet = secretPets.find(pet => pet.name === settings.secretsBountyPet);
+                            if (secretBountyPet) {
+                                console.log("Adding secret bounty pet to egg:", secretBountyPet);
+                                egg.pets.push(secretBountyPet);
+                            }
+                        }
 
                         eggs.push(egg);
 
@@ -129,70 +164,55 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
                             const newPets = structuredClone(egg.pets);
                             infinityEggs[egg.infinityEgg as InfinityEggNames].pets.push(...newPets);
                         }
-                    });
-                });
-            });
-
-            // add infinity eggs
-            infinityEggNames.forEach((infinityEggName) => {
-                const infinityEgg = infinityEggs[infinityEggName as InfinityEggNames];
-                // 1. Add up the decimal chance of all pets
-                let totalDecimalLegendary = 0;
-                let totalDecimalSecret = 0;
-                infinityEgg.pets.forEach((pet) => {
-                    if (pet.rarity === "Legendary")
-                        totalDecimalLegendary += 1 / Number(pet.chance.split("/")[1].replaceAll(",", ""));
-                    else
-                        totalDecimalSecret += 1 / Number(pet.chance.split("/")[1].replaceAll(",", ""));
-                });
-                // 2. For each pet, recalculate the infinity egg chance:
-                infinityEgg.pets.forEach((pet) => {
-                    // - divide the pet's original decimal chance by the total decimal chance for the infinity egg
-                    let decimalChance = 1 / Number(pet.chance.split("/")[1].replaceAll(",", ""));
-                    if (pet.rarity === "Legendary")
-                        decimalChance /= totalDecimalLegendary;
-                    else
-                        decimalChance /= totalDecimalSecret;
-                    // - multiply this value by the infinity egg's legendaryChance or secretChance depending on pet rarity
-                    let fractionChance = 1 / decimalChance;
-                    let newChance = 0;
-                    if (pet.rarity === "Legendary")
-                        newChance = fractionChance * (1 / infinityEgg.legendaryChance);
-                    else 
-                        newChance = fractionChance * (1 / infinityEgg.secretChance);
-                    pet.chance = `1/${newChance}`;
-                });
-
-                eggs.push({
-                    name: `Infinity Egg (${infinityEgg.name})`,
-                    image: "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png",
-                    pets: infinityEgg.pets.sort((a, b) => Number(a.chance.split("/")[1].replaceAll(",", "")) - Number(b.chance.split("/")[1].replaceAll(",", ""))),
-                    subcategory: infinityEgg.subcategory
-                } as Egg)                
-            })
-
-            // sort eggs by name
-            setEggs(eggs.sort((a, b) => a.name.localeCompare(b.name)));
-
-            // load settings
-            const saved = localStorage.getItem(STORAGE_KEY);
-            if (saved) {
-                const newSettings = JSON.parse(saved);
-                setCalculatorSettings(newSettings);
-                if (eggs && eggs.length > 0) {
-                    const egg = eggs.find(egg => egg.name === newSettings.selectedEgg);
-                    setSelectedEgg(egg || eggs[0])
+                    }
                 }
             }
 
+            // Process Infinity Eggs:
+            infinityEggNames.forEach((eggName) => {
+              const egg = infinityEggs[eggName as InfinityEggNames];
+              const { legendaryRate, secretRate, pets, subcategory, name } = egg;
+                        
+              // 1) compute “sum of 1/droprate” per rarity
+              const totals = pets.reduce((acc, pet) => {
+                  const dec = 1 / pet.droprate;
+                  acc[pet.rarity] += dec;
+                  return acc;
+                }, { Legendary: 0, Secret: 0 } as Record<"Legendary" | "Secret", number>
+              );
+          
+              // 2) recalc each pet’s droprate: new = pet.droprate * (totalDecimalForThisRarity) / rateForThisRarity
+              const rateMap = { Legendary: legendaryRate, Secret: secretRate };
+              let updatedPets = pets.map((pet) => ({ ...pet,
+                  droprate: pet.droprate * totals[pet.rarity] / (1 / rateMap[pet.rarity]),
+                })).sort((a, b) => a.droprate - b.droprate);
+
+              // After processing, add "Any Legendary" and "Any Secret" to top of the pet list.
+              updatedPets = [
+                { name: "Any Legendary", droprate: legendaryRate, image: ["https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png"] } as Pet,
+                { name: "Any Secret", droprate: secretRate, image: ["https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png"] } as Pet,
+                ...updatedPets
+              ];
+            
+              eggs.push({
+                name: `Infinity Egg (${name})`,
+                image: "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png",
+                pets: updatedPets,
+                subcategory,
+              } as Egg);
+            });
+
+            // Sort all eggs by name
+            setEggs(eggs.sort((a, b) => a.name.localeCompare(b.name)));
+
+            // Set egg from settings
+            setSelectedEgg(eggs.find(egg => egg.name === settings.selectedEgg) || eggs[0]);
         } catch {}
     }
 
     const saveSettings = (settings: CalculatorSettings) => {
         try { localStorage.setItem(STORAGE_KEY, JSON.stringify(settings)); } catch {}
     }
-
-    // ~~~~~~~~~~~~~ Calculation ~~~~~~~~~~~~~
 
     useEffect(() => {
         if (props.data?.length > 0) {
@@ -201,13 +221,14 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
         }
     }, [calculatorSettings]);
 
-    const calculateChance = (baseChance:number, luckyBuff: number) => {
+    // ~~~~~~~~~~~~~ Calculation ~~~~~~~~~~~~~
+
+    const calculateChance = (baseDroprate:number, luckyBuff: number) => {
         // Calculate base drop chance
         const n = Decimal(1).plus(luckyBuff / 100);
         // The line below is: 1 - pow(1 - (1 / baseChance), n)
-        const dropRate = Decimal(1).minus(Decimal.pow(Decimal(1).minus((Decimal(1).dividedBy(baseChance))), n));
-        let normalChance = dropRate as unknown as any;
-        return normalChance;
+        const dropRate = Decimal(1).minus(Decimal.pow(Decimal(1).minus((Decimal(1).dividedBy(baseDroprate))), n));
+        return dropRate as unknown as any;
     }
 
     const handleCalculate = (egg: Egg) => {
@@ -229,20 +250,20 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
         if (calculatorSettings.doubleLuckGamepass) luckyBuff *= 2;
         if (calculatorSettings.doubleLuckGamepass) luckyBuff += 100;
         // Double Luck Event and Infinity Potion don't multiply together, they each double the value so far:
-        const rawLuckyValue = luckyBuff;
+        const luckyBuffSubtotal = luckyBuff;
         // Double luck event
-        if (calculatorSettings.doubleLuckEvent) luckyBuff += rawLuckyValue;
+        if (calculatorSettings.doubleLuckEvent) luckyBuff += luckyBuffSubtotal;
         if (calculatorSettings.doubleLuckEvent) luckyBuff += 100;
         // Infinity Potion
-        if (calculatorSettings.infinityPotion) luckyBuff += rawLuckyValue;
+        if (calculatorSettings.infinityPotion) luckyBuff += luckyBuffSubtotal;
         if (calculatorSettings.infinityPotion) luckyBuff += 100;
         // Add External buffs:
         // Friend boost
         luckyBuff += calculatorSettings.friendBoost * 10;
         // Board Game Luck Boost
         if (calculatorSettings.minigameLuckBoost) luckyBuff += 200;
-        // Island multiplier
-        if (calculatorSettings.multiplier > 0) luckyBuff += calculatorSettings.multiplier * 100;
+        // Rift egg multiplier
+        if (calculatorSettings.riftMultiplier > 0) luckyBuff += calculatorSettings.riftMultiplier * 100;
 
         // Calculate Shiny rate:
         let shinyBuff = 0;
@@ -264,49 +285,24 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
             shinyMythicRate: shinyRate * mythicRate, 
             petResults: [] 
         };
-        
-        // If infinity egg, calculate chance of any legendary or secret
-        if (egg.name.startsWith("Infinity Egg (")) {
-            const infinityName = egg.name.split("(")[1].replace(")", "");
-            const infinityEgg = infinityEggs[infinityName as InfinityEggNames];
-
-            const legendaryChance = calculateChance(1 / infinityEgg.legendaryChance, luckyBuff);
-            const secretChance = calculateChance(1 / infinityEgg.secretChance, luckyBuff);
-
-            results.petResults.push({
-                pet: { name: "Any Legendary", chance: `1/${infinityEgg.legendaryChance}`, image: ["https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png"] } as Pet,
-                normalChance: legendaryChance,
-                shinyChance: legendaryChance * shinyRate,
-                mythicChance: legendaryChance * mythicRate,
-                shinyMythicChance: legendaryChance * shinyRate * mythicRate
-            })
-            results.petResults.push({
-                pet: { name: "Any Secret", chance: `1/${infinityEgg.legendaryChance}`, image: ["https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png"] } as Pet,
-                normalChance: secretChance,
-                shinyChance: secretChance * shinyRate,
-                mythicChance: secretChance * mythicRate,
-                shinyMythicChance: secretChance * shinyRate * mythicRate
-            })
-        }
 
         egg.pets.forEach((pet) => {
-            if (!pet.chance.startsWith("1/") || pet.ignoreCalculator) return;
-
-            const baseChance = Number(pet.chance.split("/")[1].replaceAll(",", ""));
-            const normalChance = calculateChance(baseChance, luckyBuff);
+            const normalChance = calculateChance(pet.droprate, luckyBuff);
 
             results.petResults.push({
                 pet: pet,
-                normalChance: normalChance,
-                shinyChance: normalChance * shinyRate,
-                mythicChance: normalChance * mythicRate,
-                shinyMythicChance: normalChance * shinyRate * mythicRate
+                normalDroprate: normalChance,
+                shinyDroprate: normalChance * shinyRate,
+                mythicDroprate: normalChance * mythicRate,
+                shinyMythicDroprate: normalChance * shinyRate * mythicRate
             });
         });
 
 
         setCalculatorResults(results);
     }
+
+    // ~~~~~~~~~~~~~ Render ~~~~~~~~~~~~~
 
     const formatChanceResult = (chance: number) => {
         let oddsString = "";
@@ -328,239 +324,336 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
         )
     }
 
+    const horizontalLine = () => {
+        return (
+            <Box sx={{ width: "100%", height: '1px !important', backgroundColor: "#555555", my: 1, px: 2 }} />
+        )
+    }
+
+    // small supertext allcaps title
+    const subheading = (text: string) => {
+        return (
+            <Typography variant="subtitle2" sx={{ textTransform: "uppercase", fontSize: 10, fontWeight: "bold",  textAlign: "center", color: "#bbb" }}>
+                {text}
+            </Typography>
+        )
+    }
+
     return (
         <Container sx={{ mt: 4, display: "flex", justifyContent: "center", flexDirection: "column", maxWidth: '100% !important' }}>
-            <Typography variant="h4" align="center" gutterBottom>
-              Odds Calculator
-            </Typography>
-
             <Container sx={{ display: "flex", justifyContent: "center", mb: 4, maxWidth: '1300px !important' }}>
                 { /* Left side box (Calculator) */ }
-                <Box
-                    component="form"
-                    sx={{
-                      width: "100%",
-                      maxWidth: 450,
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: 1.5
-                    }}
-                    noValidate
-                    autoComplete="off"
-                >
-
+                <Box component="form" sx={{ width: "100%", maxWidth: 450, display: "flex", flexDirection: "column", gap: 1.5 }} noValidate autoComplete="off" >
                     <Paper sx={{ p: 1, mb: 2}} elevation={3}>
+                        {subheading("Egg Settings")}
                         <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
-                            <Typography variant="subtitle1" sx={{width: 250}}>🥚 Egg:</Typography>
-                            <FormControl fullWidth size="small" sx={{ flexGrow: 1, mr: 1 }}>
-                                <Autocomplete
-                                    options={eggs}
-                                    getOptionLabel={(option) => option.name}
-                                    onChange={(event, newValue) => {
-                                        if (newValue) {
-                                            setSelectedEgg(newValue);
-                                        }
-                                    }}
-                                    renderInput={(params) => <TextField {...params} label="Select an egg" />}
-                                    renderOption={(props, option) => (
-                                        <li {...props} key={option.name}>
-                                            <img src={option.image} alt={option.name} style={{ width: 32, height: 32, marginRight: 8 }} />
-                                            <span>{option.name}</span>
-                                        </li>
-                                    )}
-                                    isOptionEqualToValue={(option, value) => option.name === value.name}
-                                    noOptionsText="No eggs found"
-                                    value={selectedEgg}
-                                />
-                            </FormControl>
-                        </Box>
-
-                        <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
-                            <Typography variant="subtitle1" sx={{width: 250}}>🏝️ Island Multiplier: &nbsp;</Typography>
+                            <Typography variant="subtitle1" sx={{width: 250}}>
+                                {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/5/5b/Common_Egg.png", 20, 0, 4)}
+                                Egg:
+                            </Typography>
                             <Select
-                              value={calculatorSettings.multiplier}
-                              size="small"
-                              sx={{ flexGrow: 1, mr: 1 }}
-                              onChange={(e) => setCalculatorSettings({ ...calculatorSettings, multiplier: e.target.value as IslandMultiplier })}
+                                value={selectedEgg?.name || "None"}
+                                size="small"
+                                sx={{ flexGrow: 1, mr: 1 }}
+                                onChange={(e) => {
+                                    const selectedEgg = eggs.find(egg => egg.name === e.target.value);
+                                    if (selectedEgg) setSelectedEgg(selectedEgg);
+                                }}
                             >
-                                <MenuItem value={0}>None</MenuItem>
-                                <MenuItem value={5}>5x</MenuItem>
-                                <MenuItem value={10}>10x</MenuItem>
-                                <MenuItem value={25}>25x</MenuItem>
+                                <MenuItem value="None">None</MenuItem>
+                                {
+                                    eggs.map((egg) => (
+                                        <MenuItem key={egg.name} value={egg.name}>
+                                            <img src={egg.image} alt={egg.name} style={{ width: 20, height: 20, marginRight: 8 }} />
+                                            {egg.name}
+                                        </MenuItem>
+                                    ))
+                                }
                             </Select>
                         </Box>
 
-                            <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
-                                <Typography variant="subtitle1" sx={{width: 250}}>🍀 Lucky Potion:</Typography>
-                                <Select
-                                  value={calculatorSettings.luckyPotion}
-                                  size="small"
-                                  sx={{ flexGrow: 1, mr: 1 }}
-                                  onChange={(e) => setCalculatorSettings({ ...calculatorSettings, luckyPotion: e.target.value as LuckyPotion })}
-                                >
-                                    <MenuItem value={0}>None</MenuItem>
-                                    <MenuItem value={400}>Lucky Evolved</MenuItem>
-                                    <MenuItem value={150}>Lucky V</MenuItem>
-                                    <MenuItem value={65}>Lucky IV</MenuItem>
-                                    <MenuItem value={30}>Lucky III</MenuItem>
-                                    <MenuItem value={20}>Lucky II</MenuItem>
-                                    <MenuItem value={10}>Lucky I</MenuItem>
-                                </Select>
-                            </Box>
-    
-                            <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
-                                <Typography variant="subtitle1" sx={{width: 250}}>🔮 Mythic Potion:</Typography>
-                                <Select
-                                  value={calculatorSettings.mythicPotion}
-                                  size="small"
-                                  sx={{ flexGrow: 1, mr: 1 }}
-                                  onChange={(e) => setCalculatorSettings({ ...calculatorSettings, mythicPotion: e.target.value as MythicPotion })}
-                                >
-                                    <MenuItem value={0}>None</MenuItem>
-                                    <MenuItem value={250}>Mythic Evolved</MenuItem>
-                                    <MenuItem value={150}>Mythic V</MenuItem>
-                                    <MenuItem value={75}>Mythic IV</MenuItem>
-                                    <MenuItem value={30}>Mythic III</MenuItem>
-                                    <MenuItem value={20}>Mythic II</MenuItem>
-                                    <MenuItem value={10}>Mythic I</MenuItem>
-                                </Select>
-                            </Box>
-    
-                            <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
-                                <Typography variant="subtitle1" sx={{width: 250}}>♾️ Infinity Potion:</Typography>
-                                <Checkbox
-                                  checked={calculatorSettings.infinityPotion}
-                                  onChange={(e) => setCalculatorSettings({ ...calculatorSettings, infinityPotion: e.target.checked })}
-                                />
-                            </Box>
-    
-                            <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
-                                <Typography variant="subtitle1" sx={{width: 250}}>💸 Double Luck Gamepass:</Typography>
-                                <Checkbox
-                                  checked={calculatorSettings.doubleLuckGamepass}
-                                  onChange={(e) => setCalculatorSettings({ ...calculatorSettings, doubleLuckGamepass: e.target.checked })}
-                                />
-                            </Box>
-    
-                            {
-                                selectedEgg?.subcategory.name === "Overworld" && (
-                                    <>
-                                    <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
-                                        <Typography variant="subtitle1" sx={{width: 250}}>📘 Overworld Normal Index:</Typography>
-                                        <Checkbox
-                                          checked={calculatorSettings.overworldNormalIndex}
-                                          onChange={(e) => setCalculatorSettings({ ...calculatorSettings, overworldNormalIndex: e.target.checked })}
-                                        />
-                                    </Box>
-                                        
-                                    <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
-                                        <Typography variant="subtitle1" sx={{width: 250}}>📔 Overworld Shiny Index:</Typography>
-                                        <Checkbox
-                                          checked={calculatorSettings.overworldShinyIndex}
-                                          onChange={(e) => setCalculatorSettings({ ...calculatorSettings, overworldShinyIndex: e.target.checked })}
-                                        />
-                                    </Box> 
-                                    </>
-                                )
-                            }
-                            {
-                                selectedEgg?.subcategory.name === "Minigame Paradise" && (
-                                    <>
-                                    <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
-                                        <Typography variant="subtitle1" sx={{width: 250}}>📘 Minigame Normal Index:</Typography>
-                                        <Checkbox
-                                          checked={calculatorSettings.minigameNormalIndex}
-                                          onChange={(e) => setCalculatorSettings({ ...calculatorSettings, minigameNormalIndex: e.target.checked })}
-                                        />
-                                    </Box>
-                                        
-                                    <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
-                                        <Typography variant="subtitle1" sx={{width: 250}}>📔 Minigame Shiny Index:</Typography>
-                                        <Checkbox
-                                          checked={calculatorSettings.minigameShinyIndex}
-                                          onChange={(e) => setCalculatorSettings({ ...calculatorSettings, minigameShinyIndex: e.target.checked })}
-                                        />
-                                    </Box>
-                                    </>
-                                )
-                            }
-                            
-                            <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
-                                <Typography variant="subtitle1" sx={{width: 250}}>🌠 Board game +200%:</Typography>
-                                <Checkbox
-                                  checked={calculatorSettings.minigameLuckBoost}
-                                  onChange={(e) => setCalculatorSettings({ ...calculatorSettings, minigameLuckBoost: e.target.checked })}
-                                />
-                            </Box>
-    
-                            <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
-                                <Typography variant="subtitle1" sx={{width: 250}}>🎲 High Roller Pets:</Typography>
-                                <TextField
-                                  label="Pets"
-                                  variant="outlined"
-                                  size="small"
-                                  value={calculatorSettings.highRoller}
-                                  onChange={(e) => setCalculatorSettings({ ...calculatorSettings, highRoller: e.target.value ? Number(e.target.value) : 0 })}
-                                  sx={{ flexGrow: 1, mr: 1 }}
-                                />
-                            </Box>
-    
-                            <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
-                                <Typography variant="subtitle1" sx={{width: 250}}>👫 Friend Boost:</Typography>
-                                <TextField
-                                  label="Friends"
-                                  variant="outlined"
-                                  size="small"
-                                  value={calculatorSettings.friendBoost}
-                                  onChange={(e) => setCalculatorSettings({ ...calculatorSettings, friendBoost: e.target.value ? Number(e.target.value) : 0 })}
-                                  sx={{ flexGrow: 1, mr: 1 }}
-                                />
-                            </Box>
-    
-                            <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
-                                <Typography variant="subtitle1" sx={{width: 250}}>🔥 Lucky Streak:</Typography>
-                                <Select
-                                  value={calculatorSettings.luckyStreak}
-                                  size="small"
-                                  sx={{ flexGrow: 1, mr: 1 }}
-                                  onChange={(e) => setCalculatorSettings({ ...calculatorSettings, luckyStreak: e.target.value as StreakBuff })}
-                                >
-                                    <MenuItem value={0}>None</MenuItem>
-                                    <MenuItem value={30}>Streak II (30%)</MenuItem>
-                                    <MenuItem value={20}>Streak I (20%)</MenuItem>
-                                </Select>
-                            </Box>
+                        <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
+                            <Typography variant="subtitle1" sx={{width: 250}}>
+                                {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/f/fe/Floating_Island_Icon.png", 24, 0, 2)}
+                                Rift:
+                            </Typography>
+                            <Select
+                              value={calculatorSettings.riftMultiplier}
+                              size="small"
+                              sx={{ flexGrow: 1, mr: 1 }}
+                              onChange={(e) => setCalculatorSettings({ ...calculatorSettings, riftMultiplier: e.target.value as IslandMultiplier })}
+                            >
+                                <MenuItem value={0}>None</MenuItem>
+                                <MenuItem value={5}>5x (500%)</MenuItem>
+                                <MenuItem value={10}>10x (1000%)</MenuItem>
+                                <MenuItem value={25}>25x (2500%)</MenuItem>
+                            </Select>
+                        </Box>
 
-                            <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
-                                <Typography variant="subtitle1" sx={{width: 250}}>🎉 Double Luck event:</Typography>
-                                <Checkbox
-                                  checked={calculatorSettings.doubleLuckEvent}
-                                  onChange={(e) => setCalculatorSettings({ ...calculatorSettings, doubleLuckEvent: e.target.checked })}
-                                />
-                            </Box>
+                        { horizontalLine() }
+                        {subheading("Buff Settings")}
 
-                            {/* </>
-                        } */}
+                        <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
+                            <Typography variant="subtitle1" sx={{width: 250}}>
+                                {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/f/f1/Lucky_Evolved.png", 24)}
+                                Lucky Potion:</Typography>
+                            <Select
+                                value={calculatorSettings.luckyPotion}
+                                size="small"
+                                sx={{ flexGrow: 1, mr: 1 }}
+                                onChange={(e) => setCalculatorSettings({ ...calculatorSettings, luckyPotion: e.target.value as LuckyPotion })}
+                            >
+                                <MenuItem value={0}>None</MenuItem>
+                                <MenuItem value={400}>Lucky Evolved</MenuItem>
+                                <MenuItem value={150}>Lucky V</MenuItem>
+                                <MenuItem value={65}>Lucky IV</MenuItem>
+                                <MenuItem value={30}>Lucky III</MenuItem>
+                                <MenuItem value={20}>Lucky II</MenuItem>
+                                <MenuItem value={10}>Lucky I</MenuItem>
+                            </Select>
+                        </Box>
 
+                        <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
+                            <Typography variant="subtitle1" sx={{width: 250}}>
+                                {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/d/df/Mythic_Evolved.png", 24)} 
+                                Mythic Potion:
+                                </Typography>
+                            <Select
+                                value={calculatorSettings.mythicPotion}
+                                size="small"
+                                sx={{ flexGrow: 1, mr: 1 }}
+                                onChange={(e) => setCalculatorSettings({ ...calculatorSettings, mythicPotion: e.target.value as MythicPotion })}
+                            >
+                                <MenuItem value={0}>None</MenuItem>
+                                <MenuItem value={250}>Mythic Evolved</MenuItem>
+                                <MenuItem value={150}>Mythic V</MenuItem>
+                                <MenuItem value={75}>Mythic IV</MenuItem>
+                                <MenuItem value={30}>Mythic III</MenuItem>
+                                <MenuItem value={20}>Mythic II</MenuItem>
+                                <MenuItem value={10}>Mythic I</MenuItem>
+                            </Select>
+                        </Box>
+
+                        <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
+                            <Typography variant="subtitle1" sx={{width: 250}}>
+                                {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/c/ce/Infinity_Elixir.png", 24)}
+                                Infinity Elixir:
+                            </Typography>
+                            <Checkbox
+                                checked={calculatorSettings.infinityPotion}
+                                onChange={(e) => setCalculatorSettings({ ...calculatorSettings, infinityPotion: e.target.checked })}
+                            />
+                        </Box>
+
+                        <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
+                            <Typography variant="subtitle1" sx={{width: 250}}>
+                                {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/1/1f/Gamepass_-_Double_Luck.png", 16, 3, 5)}
+                                Double Luck Gamepass:
+                            </Typography>
+                            <Checkbox
+                                checked={calculatorSettings.doubleLuckGamepass}
+                                onChange={(e) => setCalculatorSettings({ ...calculatorSettings, doubleLuckGamepass: e.target.checked })}
+                            />
+                        </Box>
+                        {
+                            selectedEgg?.subcategory.name === "Overworld" && (
+                                <>
+                                <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
+                                    <Typography variant="subtitle1" sx={{width: 250}}>
+                                        {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/d/da/Index_Icon.png", 20, 0, 4)}
+                                        Overworld Index:
+                                    </Typography>
+                                    <Typography variant="subtitle1">
+                                        Normal:
+                                    </Typography>
+                                    <Checkbox
+                                        checked={calculatorSettings.overworldNormalIndex}
+                                        onChange={(e) => setCalculatorSettings({ ...calculatorSettings, overworldNormalIndex: e.target.checked })}
+                                    />
+                                    <Typography variant="subtitle1">
+                                        Shiny:
+                                    </Typography>
+                                    <Checkbox
+                                        checked={calculatorSettings.overworldShinyIndex}
+                                        onChange={(e) => setCalculatorSettings({ ...calculatorSettings, overworldShinyIndex: e.target.checked })}
+                                    />
+                                </Box>
+                                </>
+                            )
+                        }
+                        {
+                            selectedEgg?.subcategory.name === "Minigame Paradise" && (
+                                <>
+                                <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
+                                    <Typography variant="subtitle1" sx={{width: 250}}>
+                                        {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/d/da/Index_Icon.png", 20, 0, 4)}
+                                        Minigame Paradise Index:
+                                    </Typography>
+                                    <Typography variant="subtitle1">
+                                        Normal:
+                                    </Typography>
+                                    <Checkbox
+                                        checked={calculatorSettings.minigameNormalIndex}
+                                        onChange={(e) => setCalculatorSettings({ ...calculatorSettings, minigameNormalIndex: e.target.checked })}
+                                    />
+                                    <Typography variant="subtitle1">
+                                        Shiny:
+                                    </Typography>
+                                    <Checkbox
+                                        checked={calculatorSettings.minigameShinyIndex}
+                                        onChange={(e) => setCalculatorSettings({ ...calculatorSettings, minigameShinyIndex: e.target.checked })}
+                                    />
+                                </Box>
+                                </>
+                            )
+                        }
+
+                        <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
+                            <Typography variant="subtitle1" sx={{width: 250}}>
+                                {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/d/d7/Lucky_Streak_Icon.png", 24, 0, 4)}
+                                Lucky Streak:
+                            </Typography>
+                            <Select
+                                value={calculatorSettings.luckyStreak}
+                                size="small"
+                                sx={{ flexGrow: 1, mr: 1 }}
+                                onChange={(e) => setCalculatorSettings({ ...calculatorSettings, luckyStreak: e.target.value as StreakBuff })}
+                            >
+                                <MenuItem value={0}>None</MenuItem>
+                                <MenuItem value={30}>Lucky II (30%)</MenuItem>
+                                <MenuItem value={20}>Lucky I (20%)</MenuItem>
+                            </Select>
+                        </Box>
+
+                        <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
+                            <Typography variant="subtitle1" sx={{width: 250}}>🎲 High Roller Pets:</Typography>
+                            <TextField
+                                label="Pets"
+                                variant="outlined"
+                                size="small"
+                                value={calculatorSettings.highRoller}
+                                onChange={(e) => setCalculatorSettings({ ...calculatorSettings, highRoller: e.target.value ? Number(e.target.value) : 0 })}
+                                sx={{ flexGrow: 1, mr: 1, ml: 7.7 }}
+                            />
+                        </Box>
+
+                        <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
+                            <Typography variant="subtitle1" sx={{width: 250}}>
+                                {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/5/5d/Luckier_Together_Icon.png", 24, 0, 4)}
+                                Luckier Together:
+                            </Typography>
+                            <TextField
+                                label="Friends"
+                                variant="outlined"
+                                size="small"
+                                value={calculatorSettings.friendBoost}
+                                onChange={(e) => setCalculatorSettings({ ...calculatorSettings, friendBoost: e.target.value ? Number(e.target.value) : 0 })}
+                                sx={{ flexGrow: 1, mr: 1, ml: 7.7 }}
+                            />
+                        </Box>
+                        
+                        <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
+                            <Typography variant="subtitle1" sx={{width: 250}}>
+                                {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/a/ad/Dice_Icon.png", 20, 0, 4)} 
+                                Board game +200%:
+                            </Typography>
+                            <Checkbox
+                                checked={calculatorSettings.minigameLuckBoost}
+                                onChange={(e) => setCalculatorSettings({ ...calculatorSettings, minigameLuckBoost: e.target.checked })}
+                            />
+                        </Box>
+
+                        <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
+                            <Typography variant="subtitle1" sx={{width: 250}}>🎉 Double Luck event:</Typography>
+                            <Checkbox
+                                checked={calculatorSettings.doubleLuckEvent}
+                                onChange={(e) => setCalculatorSettings({ ...calculatorSettings, doubleLuckEvent: e.target.checked })}
+                            />
+                        </Box>
+
+                        { horizontalLine() }
+                        {subheading("Secret Bounty Board")}
+                        
+                        <Typography variant="subtitle1" sx={{width: '100%', fontSize: 13, textAlign: 'center', mb: 1}}>
+                            <b>Refresh page to reload eggs after secret bounty change.</b>
+                        </Typography>
+                        <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
+                            <Typography variant="subtitle1" sx={{width: 250}}>
+                                {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/2/28/Pet_Equips_Icon.png", 24, 0, 4)}
+                                Secret Bounty Pet:
+                            </Typography>
+                            <Select 
+                                value={calculatorSettings.secretsBountyPet || "None"}
+                                size="small"
+                                sx={{ flexGrow: 1, mr: 1 }}
+                                onChange={(e) => {
+                                    const selectedPet = secretBountyPets.find(pet => pet.name === e.target.value);
+                                    setCalculatorSettings({ ...calculatorSettings, secretsBountyPet: selectedPet?.name || "" });
+                                }}
+                                >
+                                <MenuItem value="None">None</MenuItem>
+                                {
+                                    secretBountyPets.map((pet) => (
+                                        <MenuItem key={pet.name} value={pet.name}>
+                                            <img src={pet.image[0]} alt={pet.name} style={{ width: 24, height: 24, marginRight: 8 }} />
+                                            {pet.name}
+                                        </MenuItem>
+                                    ))
+                                }
+                            </Select>
+                        </Box>
+                        <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
+                            <Typography variant="subtitle1" sx={{width: 250}}>
+                                {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/8/89/Multi_Egg_Icon.png", 20, 0, 8)}
+                                Secret Bounty Egg:
+                            </Typography>
+                            <Select 
+                                value={calculatorSettings.secretsBountyEgg || "None"}
+                                size="small"
+                                sx={{ flexGrow: 1, mr: 1 }}
+                                onChange={(e) => {
+                                    const selectedEgg = eggs.find(egg => egg.name === e.target.value);
+                                    setCalculatorSettings({ ...calculatorSettings, secretsBountyEgg: selectedEgg?.name || "" });
+                                }}
+                                >
+                                <MenuItem value="None">None</MenuItem>
+                                {
+                                    eggs.filter((egg) => !egg.name.includes("Infinity")).map((egg) => (
+                                        <MenuItem key={egg.name} value={egg.name}>
+                                            <img src={egg.image} alt={egg.name} style={{ width: 24, height: 24, marginRight: 8 }} />
+                                            {egg.name}
+                                        </MenuItem>
+                                    ))
+                                }
+                            </Select>
+                        </Box>
                     </Paper>
                 </Box>
                 
                 { /* Right box (Results) */ }
-                
-                <Box
-                    component="form"
-                    sx={{
-                      maxWidth: '100% !important',
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      gap: 1.5,
-                      paddingLeft: 2
-                    }}
-                    noValidate
-                    autoComplete="off"
-                >
-                    <Paper sx={{ p: 1, mb: 2}} elevation={3}>
+                <Box component="form" sx={{ width: "100%", maxWidth: '100% !important', display: "flex", flexDirection: "column", gap: 1.5, pl: 2, alignItems: 'center' }} noValidate autoComplete="off" >
+                    { /* Luck Debug */ }
+                    <Paper sx={{ p: 1,  width: "100% !important"}} elevation={3}>
+                        {
+                            calculatorResults && (
+                                <Box sx={{ display: "flex", justifyContent: "space-evenly", flexDirection: 'row' }}>
+                                    <Box>
+                                        🍀 Lucky: <b>{calculatorResults.luckyBuff || 0}%</b>
+                                    </Box>
+                                    <Box>
+                                        ✨ Shiny: <b>1 / {(1 / calculatorResults.shinyRate || 0).toLocaleString(undefined, { maximumFractionDigits: 1})}</b>
+                                    </Box>
+                                    <Box>
+                                        🔮 Mythic: <b>1 / {(1 / calculatorResults.mythicRate || 0).toLocaleString(undefined, { maximumFractionDigits: 1})}</b>
+                                    </Box>
+                                    <Box>
+                                        💫 Shiny Mythic: <b>1 / {(1 / calculatorResults.shinyMythicRate || 0).toLocaleString(undefined, { maximumFractionDigits: 1})}</b>
+                                    </Box>
+                                </Box>
+                            )
+                        }
+                    </Paper>
+                    <Paper sx={{ p: 1, mb: 2 }} elevation={3}>
                         <Table size="small" sx={{ "& .MuiTableCell-root": { p: 0.5 } }}>
                             <TableHead>
                               <TableRow>
@@ -585,8 +678,8 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
                                 {
                                     calculatorResults && calculatorResults.petResults.map((result, index) => {
                                         return (
-                                            <TableRow key={index}>
-                                                <TableCell sx={{ display: "flex", alignItems: "center" }}>
+                                            <TableRow key={index} sx={{ "&:last-child td, &:last-child th": { border: 0 }, "&:hover": { backgroundColor: "#333" } }}>
+                                                <TableCell>
                                                     <Link
                                                       href={`https://bgs-infinity.fandom.com/wiki/${result.pet.name}`}
                                                       target="_blank"
@@ -596,17 +689,17 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
                                                         <span style={getRarityStyle(result.pet.rarity)}>{result.pet.name}</span>
                                                     </Link>
                                                 </TableCell>
-                                                <TableCell sx={{ fontWeight: "bold" }}>
-                                                    {formatChanceResult(result.normalChance)}
+                                                <TableCell sx={{ display: 'table-cell !important' }}>
+                                                    {formatChanceResult(result.normalDroprate)}
                                                 </TableCell>
-                                                <TableCell sx={{ fontWeight: "bold" }}>
-                                                    {formatChanceResult(result.shinyChance)}
+                                                <TableCell>
+                                                    {formatChanceResult(result.shinyDroprate)}
                                                 </TableCell>
-                                                <TableCell sx={{ fontWeight: "bold" }}>
-                                                    {formatChanceResult(result.mythicChance)}
+                                                <TableCell>
+                                                    {formatChanceResult(result.mythicDroprate)}
                                                 </TableCell>
-                                                <TableCell sx={{ fontWeight: "bold" }}>
-                                                    {formatChanceResult(result.shinyMythicChance)}
+                                                <TableCell>
+                                                    {formatChanceResult(result.shinyMythicDroprate)}
                                                 </TableCell>
                                             </TableRow>
                                         )
@@ -614,38 +707,6 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
                                 }
                             </TableBody>
                         </Table>
-                    </Paper>
-
-                    { /* Luck Debug for Advanced Mode */ }
-                    <Typography variant="h6" align="center">⚙️ Luck Debug</Typography>
-                    <Paper sx={{ p: 1, mb: 2, width: "350px !important"}} elevation={3}>
-                        {
-                            calculatorResults && (
-                                <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
-                                    <table style={{ borderCollapse: "collapse" }}>
-                                        <tbody>
-                                            <tr>
-                                                <td style={{ padding: "8px" }}>🍀 Lucky:</td>
-                                                <td style={{ padding: "8px" }}><b>{calculatorResults.luckyBuff || 0}%</b></td>
-                                            </tr>
-                                    
-                                            <tr>
-                                                <td style={{ padding: "8px" }}>✨ Shiny:</td>
-                                                <td style={{ padding: "8px" }}><b>1 / {(1 / calculatorResults.shinyRate || 0).toLocaleString(undefined, { maximumFractionDigits: 1})}</b></td>
-                                            </tr>
-                                            <tr>
-                                                <td style={{ padding: "8px" }}>🔮 Mythic:</td>
-                                                <td style={{ padding: "8px" }}><b>1 / {(1 / calculatorResults.mythicRate || 0).toLocaleString(undefined, { maximumFractionDigits: 1})}</b></td>
-                                            </tr>
-                                            <tr>
-                                                <td style={{ padding: "8px" }}>💫 Shiny Mythic:</td>
-                                                <td style={{ padding: "8px" }}><b>1 / {(1 / calculatorResults.shinyMythicRate || 0).toLocaleString(undefined, { maximumFractionDigits: 1})}</b></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </Box>
-                            )
-                        }
                     </Paper>
                 </Box>
 

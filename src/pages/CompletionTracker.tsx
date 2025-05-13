@@ -347,12 +347,12 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
                         Pet
                       </TableCell>
                       <TableCell sx={{ width: 150, fontWeight: "bold" }}>
-                        Chance
+                        Drop Rate
                       </TableCell>
                       {variants.map((v) => (
                         <TableCell
                           key={v}
-                          sx={{ width: 70, fontWeight: "bold" }}
+                          sx={{ width: 100, fontWeight: "bold" }}
                         >
                           {v}
                         </TableCell>
@@ -389,7 +389,7 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
                           </TableCell>
                           <TableCell>
                             <Typography variant="body2" sx={style}>
-                              {pet.chance}
+                              1/{Number(pet.droprate).toLocaleString(undefined, { maximumFractionDigits: 0 })}
                             </Typography>
                           </TableCell>
                           {variants.map((v) => (

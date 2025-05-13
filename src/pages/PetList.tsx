@@ -31,6 +31,7 @@ import {
 } from "../util/PetUtil";
 import {
   getRarityStyle,
+  imgIcon,
   variantStyles
 } from "../util/StyleUtil";
 
@@ -187,7 +188,7 @@ export function PetList(props: PetListProps) {
             pet.variants.forEach((variant) => {
               allPets.push({
                 name: pet.name,
-                chance: getPetChance(pet, variant),
+                droprate: getPetChance(pet, variant),
                 rarity: pet.rarity,
                 bubbles: getPetStat(pet, variant, "bubbles", previewMaxLevel, previewEnchant, enchantTeamSize, secondEnchant),
                 currencyVariant: pet.currencyVariant,
@@ -228,7 +229,7 @@ export function PetList(props: PetListProps) {
       if (sortColumn === "name") {
         return a.name.localeCompare(b.name);
       } else if (sortColumn === "chance") {
-        return b.chance - a.chance;
+        return b.droprate - a.droprate;
       } else if (sortColumn === "bubbles") {
         return b.bubbles - a.bubbles;
       } else if (sortColumn === "coins") {
@@ -387,7 +388,7 @@ export function PetList(props: PetListProps) {
                   onClick={() => setSortColumn("bubbles")}
                   sx={{ textTransform: "none", fontWeight: "bold", width: '100%', textAlign: 'left' }}
                 >
-                  <img src="https://static.wikia.nocookie.net/bgs-infinity/images/0/0c/Bubbles.png" alt="Bubbles" style={{ width: 16, height: 16, verticalAlign: "middle", marginLeft: 4 }} />
+                  {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/0/0c/Bubbles.png")}
                 </Button>
               </TableCell>
               <TableCell sx={{ ...headerSx("coins") }}>
@@ -403,7 +404,7 @@ export function PetList(props: PetListProps) {
                   onClick={() => setSortColumn("gems")}
                   sx={{ textTransform: "none", fontWeight: "bold", width: '100%', textAlign: 'left' }}
                 >
-                  <img src="https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Gems.png" alt="Gems" style={{ width: 16, height: 16, verticalAlign: "middle", marginLeft: 4 }} />
+                  {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Gems.png")}
                 </Button>
               </TableCell>
               {/* Egg image column */}
@@ -420,7 +421,7 @@ export function PetList(props: PetListProps) {
 
               return (
                 <>
-                <TableRow key={`${pet.name}-${variant}`} sx={{opacity: ownedPets[`${pet.name}__${variant}`] ? 1 : 0.7 }}>
+                <TableRow key={`${pet.name}-${variant}`} sx={{opacity: ownedPets[`${pet.name}__${variant}`] ? 1 : 0.75 }}>
                   <TableCell>
                     <Checkbox
                       size="small"
@@ -445,22 +446,22 @@ export function PetList(props: PetListProps) {
                   </TableCell>
                   <TableCell>
                     <Typography variant="body2">
-                      1/{pet.chance.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+                      1/{pet.droprate.toLocaleString(undefined, { maximumFractionDigits: 0 })}
                     </Typography>
                   </TableCell>
                   <TableCell>
                     <Typography variant="body2">
-                      +{pet.bubbles} <img src="https://static.wikia.nocookie.net/bgs-infinity/images/0/0c/Bubbles.png" alt="Bubbles" style={{ width: 16, height: 16, verticalAlign: "middle", marginLeft: 4 }} />
+                      +{pet.bubbles} {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/0/0c/Bubbles.png")} 
                     </Typography>
                   </TableCell>
                   <TableCell>
                     <Typography variant="body2">
-                      x{pet.currency} <img src={currencyImages[pet.currencyVariant]} alt={pet.currencyVariant} style={{ width: 16, height: 16, verticalAlign: "middle", marginLeft: 4 }} />
+                      x{pet.currency} {imgIcon(currencyImages[pet.currencyVariant])}
                     </Typography>
                   </TableCell>
                   <TableCell>
                     <Typography variant="body2">
-                      x{pet.gems} <img src="https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Gems.png" alt="Gems" style={{ width: 16, height: 16, verticalAlign: "middle", marginLeft: 4 }} />
+                      x{pet.gems} {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Gems.png")}
                     </Typography>
                   </TableCell>
                   <TableCell>

@@ -1,10 +1,6 @@
 import { PetVariant, Rarity } from "./PetUtil";
 
 export const rarityColorMap: Record<Rarity, string> = {
-  Common: "#ffffff",
-  Unique: "#fdc394",
-  Rare: "#ff6161",
-  Epic: "#d166fd",
   Legendary: "rainbow",
   Secret: "#ff9900"
 };
@@ -15,6 +11,10 @@ export const variantStyles: { [key in PetVariant]: React.CSSProperties } = {
   Mythic: { color: "#d674b7" },
   "Shiny Mythic": { color: "#9b74d6" },
 };
+
+export const imgIcon = (src: string, size: number = 16, ml: number = 0, mr: number = 0) => {
+  return (<img src={src} style={{ width: size, height: size, marginLeft: ml, marginRight: mr, verticalAlign: "middle" }} />)
+}
 
 export const getRarityStyle = (rarity: Rarity): React.CSSProperties => {
   const color = rarityColorMap[rarity];

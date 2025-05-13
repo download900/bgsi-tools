@@ -3,7 +3,7 @@ import petJson from "../assets/pets.json";
 
 // ~~~~~~~~~~ Types ~~~~~~~~~~
 
-export type Rarity = "Common" | "Unique" | "Rare" | "Epic" | "Legendary" | "Secret";
+export type Rarity = "Legendary" | "Secret";
 export type PetVariant = "Normal" | "Shiny" | "Mythic" | "Shiny Mythic";
 export type CurrencyVariant = "Coins" | "Tickets";
 export type PetStat = "bubbles" | "currency" | "gems";
@@ -17,7 +17,7 @@ export interface Egg { name: string; image: string; pets: Pet[], subcategory: Su
 
 export interface Pet { 
     name: string; 
-    chance: string; 
+    droprate: number; 
     rarity: Rarity; 
     bubbles: number;
     currencyVariant: CurrencyVariant; 
@@ -25,14 +25,13 @@ export interface Pet {
     gems: number; 
     variants: PetVariant[]; 
     image: string[]; 
-    egg: Egg; 
-    ignoreCalculator: boolean 
+    egg: Egg
 }
 
 // for the pet stat list - to store an individual Normal/Shiny/Mythic variant of a pet.
 export interface PetInstance { 
   name: string; 
-  chance: number; 
+  droprate: number; 
   rarity: Rarity; 
   bubbles: number; 
   currencyVariant: CurrencyVariant; 
@@ -45,7 +44,7 @@ export interface PetInstance {
 
 // ~~~~~~~~~~ Data ~~~~~~~~~~
 
-const petData = petJson as CategoryData[];
+const petData = petJson as unknown as CategoryData[];
 
 export const variants: PetVariant[] = ["Normal", "Shiny", "Mythic", "Shiny Mythic"];
 
@@ -74,7 +73,6 @@ export const loadPetData = () => {
           if (subcat.ignoreCalculator) egg.ignoreCalculator = true;
           egg.pets.forEach((pet) => {
             pet.egg = egg;
-            if (egg.ignoreCalculator) pet.ignoreCalculator = true;
             if (!pet.currencyVariant) pet.currencyVariant = "Coins";
           });
         });
@@ -85,12 +83,10 @@ export const loadPetData = () => {
 }
 
 export const getPetChance = (pet: Pet, variant: PetVariant) => {
-  if (!pet.chance.startsWith("1/")) {
-    return 0;
-  }
+  if (!(pet.droprate as number))
+    return 1;
   // extract the base chance from the string. It will be like "1/1,000" and we want "1000".
-  const baseChanceValue = Number(pet.chance.split("/")[1].replaceAll(",", ""));
-  const variantChance = baseChanceValue * variantData[variant].chanceMultiplier;
+  const variantChance = Number(pet.droprate) * variantData[variant].chanceMultiplier;
   return variantChance;
 }
 

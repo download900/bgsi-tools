@@ -36,7 +36,7 @@ export default function App() {
           <Tabs value={currentTab} onChange={(event, newValue) => setCurrentTab(newValue)} sx={{ flexGrow: 1 }}>
             <Tab label="Calculator" value="Odds" />
             <Tab label="Index" value="Completion" /> 
-            <Tab label="Stats" value="Stats" /> 
+            <Tab label="Pet Stats" value="Stats" /> 
           </Tabs>
           <Link href="https://github.com/borngame/bgsi-tools" target="_blank" rel="noopener noreferrer" sx={{ color: "white", textDecoration: "none", marginLeft: 2 }}>
             <Typography variant="h5"><SiGithub /></Typography>
