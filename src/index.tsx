@@ -9,7 +9,7 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-const theme = createTheme({ 
+export const theme = createTheme({ 
   palette: { mode: "dark" }, 
   components: {
     MuiCssBaseline: {

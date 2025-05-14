@@ -32,6 +32,7 @@ import {
   getRarityStyle,
   getPercentStyle,
 } from "../util/StyleUtil";
+import { theme } from "..";
 
 const STORAGE_KEY = "petTrackerState";
 const drawerWidth = 340;
@@ -159,7 +160,10 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
           "& .MuiDrawer-paper": {
             width: drawerWidth,
             boxSizing: "border-box",
-            mt: 8
+            mt: 8,
+            // make its height fill the rest of the screen
+            height: `calc(100% - ${theme.mixins.toolbar.minHeight}px)`,
+            overflowY: "auto",
           }
         }}
       >
@@ -266,6 +270,7 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
               </Box>
             );
           })}
+          <Box sx={{ height: '50px' }} />
         </List>
       </Drawer>
 

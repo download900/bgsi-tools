@@ -367,8 +367,8 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
         let timeString = "";
         if (years > 0) timeString += `${years}y `;
         if (daysLeft > 0) timeString += `${daysLeft}d `;
-        if (years < 1 && hoursLeft > 0) timeString += `${hoursLeft}h `;
-        if (days < 1 && minutesLeft > 0) timeString += `${minutesLeft}m `;
+        if (years < 1 && (hoursLeft > 0 || daysLeft > 0)) timeString += `${hoursLeft}h `;
+        if (days < 1 && (minutesLeft > 0 || hoursLeft > 0)) timeString += `${minutesLeft}m `;
         if (hours < 1) timeString += `${secondsLeft.toFixed(minutesLeft > 0 ? 0 : 2)}s`;
 
         // gradient color map. less than 1 minute is green, less than 1 hour is yellow, less than 1 day is orange, and more than 1 day is red.
