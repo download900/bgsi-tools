@@ -37,6 +37,7 @@
             "name": "Common Egg",
             "image": "https://static.wikia.nocookie.net/bgs-infinity/images/5/5b/Common_Egg.png",
             "infinityEgg": "Overworld",
+            "index": "Overworld",
             "pets": [
               {
                 "name": "King Doggy",
@@ -65,6 +66,7 @@
             "name": "Spikey Egg",
             "image": "https://static.wikia.nocookie.net/bgs-infinity/images/9/93/Spikey_Egg.png",
             "infinityEgg": "Overworld",
+            "index": "Overworld",
             "pets": [
               {
                 "name": "Emerald Golem",
@@ -93,6 +95,7 @@
             "name": "Magma Egg",
             "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/63/Magma_Egg.png",
             "infinityEgg": "Overworld",
+            "index": "Overworld",
             "pets": [
               {
                 "name": "Inferno Dragon",
@@ -121,6 +124,7 @@
             "name": "Crystal Egg",
             "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/6d/Crystal_Egg.png",
             "infinityEgg": "Overworld",
+            "index": "Overworld",
             "pets": [
               {
                 "name": "Unicorn",
@@ -170,6 +174,7 @@
             "name": "Lunar Egg",
             "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/64/Lunar_Egg.png",
             "infinityEgg": "Overworld",
+            "index": "Overworld",
             "pets": [
               {
                 "name": "Lunar Serpent",
@@ -219,6 +224,7 @@
             "name": "Void Egg",
             "image": "https://static.wikia.nocookie.net/bgs-infinity/images/5/58/Void_Egg.png",
             "infinityEgg": "Overworld",
+            "index": "Overworld",
             "pets": [
               {
                 "name": "Dark Phoenix",
@@ -289,6 +295,7 @@
             "name": "Hell Egg",
             "image": "https://static.wikia.nocookie.net/bgs-infinity/images/a/a2/Hell_Egg.png",
             "infinityEgg": "Overworld",
+            "index": "Overworld",
             "pets": [
               {
                 "name": "Inferno Cube",
@@ -338,6 +345,7 @@
             "name": "Nightmare Egg",
             "image": "https://static.wikia.nocookie.net/bgs-infinity/images/4/43/Nightmare_Egg.png",
             "infinityEgg": "Overworld",
+            "index": "Overworld",
             "pets": [
               {
                 "name": "Green Hydra",
@@ -408,6 +416,7 @@
             "name": "Rainbow Egg",
             "image": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3f/Rainbow_Egg.png",
             "infinityEgg": "Overworld",
+            "index": "Overworld",
             "pets": [
               {
                 "name": "Hexarium",
@@ -542,6 +551,7 @@
             "name": "Mining Egg",
             "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/65/Mining_Egg.png",
             "infinityEgg": "Minigame Paradise",
+            "index": "Minigame Paradise",
             "pets": [
               {
                 "name": "Crystal Unicorn",
@@ -591,6 +601,7 @@
             "name": "Cyber Egg",
             "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/7b/Cyber_Egg.png",
             "infinityEgg": "Minigame Paradise",
+            "index": "Minigame Paradise",
             "pets": [
               {
                 "name": "Cyborg Phoenix",
@@ -681,6 +692,7 @@
           {
             "name": "Underworld Egg",
             "image": "https://static.wikia.nocookie.net/bgs-infinity/images/f/ff/Underworld_Egg.png",
+            "index": "Minigame Paradise",
             "pets": [
               {
                 "name": "Crimson Butterfly",

@@ -9,11 +9,28 @@ export type CurrencyVariant = "Coins" | "Tickets";
 export type PetStat = "bubbles" | "currency" | "gems";
 export type Enchant = "bubbler" | "looter";
 
-export interface CategoryData { name: string, categories: SubCategoryData[], ignoreCalculator: boolean }
+export interface CategoryData { 
+  name: string, 
+  categories: SubCategoryData[], 
+  ignoreCalculator: boolean 
+}
 
-export interface SubCategoryData { name: string; eggs: Egg[], category: CategoryData; ignoreCalculator: boolean }
+export interface SubCategoryData { 
+  name: string; 
+  eggs: Egg[], 
+  category: CategoryData; 
+  ignoreCalculator: boolean 
+}
 
-export interface Egg { name: string; image: string; pets: Pet[], subcategory: SubCategoryData; ignoreCalculator: boolean; infinityEgg: string }
+export interface Egg { 
+  name: string; 
+  image: string; 
+  pets: Pet[], 
+  subcategory: SubCategoryData; 
+  ignoreCalculator: boolean; 
+  infinityEgg: string;
+  index: string;
+}
 
 export interface Pet { 
     name: string; 
