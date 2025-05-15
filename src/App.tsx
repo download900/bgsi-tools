@@ -8,7 +8,7 @@ import {
   Box,
   Typography,
   Link} from "@mui/material";
-import headerImage from "./assets/Bubble_Gum.webp";
+import headerImage from "./assets/favicon.png";
 import { PetList } from "./pages/PetStats";
 import { OddsCalculator } from "./pages/OddsCalculator";
 import { CompletionTracker } from "./pages/PetIndex";
