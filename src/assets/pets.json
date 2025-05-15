@@ -3,46 +3,90 @@
     "name": "🌍 Worlds",
     "categories": [
       {
-        "name": "Overworld",
+        "name": "The Overworld",
         "eggs": [
-          {
-            "name": "Overworld Index",
-            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/da/Index_Icon.png",
-            "ignoreCalculator": true,
-            "pets": [
-              {
-                "name": "Trio Cube",
-                "droprate": "1",
-                "rarity": "Legendary",
-                "variants": [
-                  "Normal",
-                  "Shiny",
-                  "Mythic",
-                  "Shiny Mythic"
-                ],
-                "image": [
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/7/71/Trio_Cube.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/9/94/Shiny_Trio_Cube.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/d/dd/Mythic_Trio_Cube.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/9/90/Shiny_Mythic_Trio_Cube.png"
-                ],
-                "bubbles": 1400,
-                "currency": 1950,
-                "gems": 23,
-                "currencyVariant": "Coins"
-              }
-            ]
-          },
           {
             "name": "Common Egg",
             "image": "https://static.wikia.nocookie.net/bgs-infinity/images/5/5b/Common_Egg.png",
-            "infinityEgg": "Overworld",
-            "index": "Overworld",
+            "infinityEgg": "The Overworld",
+            "index": "The Overworld",
             "pets": [
               {
+                "name": "Doggy",
+                "rarity": "Common",
+                "droprate": 2.5,
+                "bubbles": 1,
+                "gems": 0,
+                "currency": 11,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/0/09/Doggy.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/e/e4/Shiny_Doggy.png"
+                ]
+              },
+              {
+                "name": "Kitty",
+                "rarity": "Common",
+                "droprate": 3.3333333333333335,
+                "bubbles": 1,
+                "gems": 0,
+                "currency": 11,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/5/59/Kitty.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/1/1f/Shiny_Kitty.png"
+                ]
+              },
+              {
+                "name": "Bunny",
+                "rarity": "Unique",
+                "droprate": 4,
+                "bubbles": 2,
+                "gems": 0,
+                "currency": 12,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/8/82/Bunny.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/e/e7/Shiny_Bunny.png"
+                ]
+              },
+              {
+                "name": "Bear",
+                "rarity": "Rare",
+                "droprate": 20,
+                "bubbles": 2,
+                "gems": 0,
+                "currency": 15,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/a/a4/Bear.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/9/97/Shiny_Bear.png"
+                ]
+              },
+              {
                 "name": "King Doggy",
-                "droprate": "100000000",
                 "rarity": "Secret",
+                "droprate": 100000000,
+                "bubbles": 2750,
+                "gems": 50,
+                "currency": 3300,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -54,24 +98,312 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/5/5b/Shiny_King_Doggy.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/7/78/Mythic_King_Doggy.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/5/52/Shiny_Mythic_King_Doggy.png"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Spotted Egg",
+            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/6f/Spotted_Egg.png",
+            "infinityEgg": "The Overworld",
+            "index": "The Overworld",
+            "pets": [
+              {
+                "name": "Mouse",
+                "rarity": "Common",
+                "droprate": 2.5,
+                "bubbles": 2,
+                "gems": 0,
+                "currency": 2,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
                 ],
-                "bubbles": 2750,
-                "currency": 3300,
-                "gems": 50,
-                "currencyVariant": "Coins"
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/5/5c/Mouse.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/a/aa/Shiny_Mouse.png"
+                ]
+              },
+              {
+                "name": "Wolf",
+                "rarity": "Common",
+                "droprate": 4,
+                "bubbles": 21,
+                "gems": 0,
+                "currency": 2,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/c/c8/Wolf.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/8/88/Shiny_Wolf.png"
+                ]
+              },
+              {
+                "name": "Fox",
+                "rarity": "Unique",
+                "droprate": 5,
+                "bubbles": 3,
+                "gems": 0,
+                "currency": 22,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/7/73/Fox.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/f/fc/Shiny_Fox.png"
+                ]
+              },
+              {
+                "name": "Polar Bear",
+                "rarity": "Rare",
+                "droprate": 10,
+                "bubbles": 4,
+                "gems": 0,
+                "currency": 25,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/7/78/Polar_Bear.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/27/Shiny_Polar_Bear.png"
+                ]
+              },
+              {
+                "name": "Panda",
+                "rarity": "Epic",
+                "droprate": 20,
+                "bubbles": 7,
+                "gems": 0,
+                "currency": 3,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/0/00/Panda.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/b/b9/Shiny_Panda.png"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Iceshard Egg",
+            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3e/Iceshard_Egg.png",
+            "infinityEgg": "The Overworld",
+            "index": "The Overworld",
+            "pets": [
+              {
+                "name": "Ice Kitty",
+                "rarity": "Common",
+                "droprate": 3.3333333333333335,
+                "bubbles": 4,
+                "gems": 0,
+                "currency": 3,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/7/70/Ice_Kitty.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/8/88/Shiny_Ice_Kitty.png"
+                ]
+              },
+              {
+                "name": "Deer",
+                "rarity": "Common",
+                "droprate": 4,
+                "bubbles": 5,
+                "gems": 0,
+                "currency": 35,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/27/Deer.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/e/e9/Shiny_Deer.png"
+                ]
+              },
+              {
+                "name": "Ice Wolf",
+                "rarity": "Unique",
+                "droprate": 5,
+                "bubbles": 7,
+                "gems": 0,
+                "currency": 5,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/d/de/Ice_Wolf.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/9/9c/Shiny_Ice_Wolf.png"
+                ]
+              },
+              {
+                "name": "Piggy",
+                "rarity": "Rare",
+                "droprate": 7.142857142857143,
+                "bubbles": 11,
+                "gems": 0,
+                "currency": 6,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/a/a0/Piggy.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/6/6b/Shiny_Piggy.png"
+                ]
+              },
+              {
+                "name": "Ice Deer",
+                "rarity": "Rare",
+                "droprate": 12.5,
+                "bubbles": 11,
+                "gems": 0,
+                "currency": 7,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/e/e6/Ice_Deer.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/7/76/Shiny_Ice_Deer.png"
+                ]
+              },
+              {
+                "name": "Ice Dragon",
+                "rarity": "Epic",
+                "droprate": 33.333333333333336,
+                "bubbles": 15,
+                "gems": 0,
+                "currency": 10,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/b/bb/Ice_Dragon.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/22/Shiny_Ice_Dragon.png"
+                ]
               }
             ]
           },
           {
             "name": "Spikey Egg",
             "image": "https://static.wikia.nocookie.net/bgs-infinity/images/9/93/Spikey_Egg.png",
-            "infinityEgg": "Overworld",
-            "index": "Overworld",
+            "infinityEgg": "The Overworld",
+            "index": "The Overworld",
             "pets": [
               {
+                "name": "Golem",
+                "rarity": "Common",
+                "droprate": 3.3333333333333335,
+                "bubbles": 3,
+                "gems": 0,
+                "currency": 4,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/c/ce/Golem.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/a/a6/Shiny_Golem.png"
+                ]
+              },
+              {
+                "name": "Dinosaur",
+                "rarity": "Common",
+                "droprate": 3.3333333333333335,
+                "bubbles": 3,
+                "gems": 0,
+                "currency": 2,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/8/89/Dinosaur.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/b/b4/Shiny_Dinosaur.png"
+                ]
+              },
+              {
+                "name": "Ruby Golem",
+                "rarity": "Unique",
+                "droprate": 5,
+                "bubbles": 4,
+                "gems": 0,
+                "currency": 5,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/7/77/Ruby_Golem.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/4/41/Shiny_Ruby_Golem.png"
+                ]
+              },
+              {
+                "name": "Dragon",
+                "rarity": "Rare",
+                "droprate": 8.333333333333334,
+                "bubbles": 12,
+                "gems": 0,
+                "currency": 8,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/c/c7/Dragon.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/5/59/Shiny_Dragon.png"
+                ]
+              },
+              {
+                "name": "Dark Dragon",
+                "rarity": "Epic",
+                "droprate": 20,
+                "bubbles": 16,
+                "gems": 0,
+                "currency": 12,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/3/33/Dark_Dragon.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/1/1e/Shiny_Dark_Dragon.png"
+                ]
+              },
+              {
                 "name": "Emerald Golem",
-                "droprate": "200",
                 "rarity": "Legendary",
+                "droprate": 200,
+                "bubbles": 45,
+                "gems": 0,
+                "currency": 25,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -83,24 +415,109 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/1/1a/Shiny_Emerald_Golem.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/5/53/Mythic_Emerald_Golem.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/5/59/Shiny_Mythic_Emerald_Golem.png"
-                ],
-                "bubbles": 45,
-                "currency": 25,
-                "gems": 0,
-                "currencyVariant": "Coins"
+                ]
               }
             ]
           },
           {
             "name": "Magma Egg",
             "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/63/Magma_Egg.png",
-            "infinityEgg": "Overworld",
-            "index": "Overworld",
+            "infinityEgg": "The Overworld",
+            "index": "The Overworld",
             "pets": [
               {
+                "name": "Magma Doggy",
+                "rarity": "Common",
+                "droprate": 2.2222222222222223,
+                "bubbles": 11,
+                "gems": 0,
+                "currency": 6,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/a/af/Magma_Doggy.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/3/3c/Shiny_Magma_Doggy.png"
+                ]
+              },
+              {
+                "name": "Magma Deer",
+                "rarity": "Unique",
+                "droprate": 20,
+                "bubbles": 12,
+                "gems": 0,
+                "currency": 8,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/5/5c/Magma_Deer.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/8/82/Shiny_Magma_Deer.png"
+                ]
+              },
+              {
+                "name": "Magma Fox",
+                "rarity": "Unique",
+                "droprate": 6.666666666666667,
+                "bubbles": 15,
+                "gems": 0,
+                "currency": 10,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/a/a6/Magma_Fox.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/e/ef/Shiny_Magma_Fox.png"
+                ]
+              },
+              {
+                "name": "Magma Bear",
+                "rarity": "Rare",
+                "droprate": 14.285714285714286,
+                "bubbles": 18,
+                "gems": 0,
+                "currency": 15,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/8/82/Magma_Bear.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/5/51/Shiny_Magma_Bear.png"
+                ]
+              },
+              {
+                "name": "Demon",
+                "rarity": "Epic",
+                "droprate": 50,
+                "bubbles": 25,
+                "gems": 0,
+                "currency": 20,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/c/c4/Demon.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/b/b6/Shiny_Demon.png"
+                ]
+              },
+              {
                 "name": "Inferno Dragon",
-                "droprate": "400",
                 "rarity": "Legendary",
+                "droprate": 400,
+                "bubbles": 75,
+                "gems": 14,
+                "currency": 65,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -112,24 +529,92 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/3/35/Shiny_Inferno_Dragon.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/4/41/Mythic_Inferno_Dragon.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/c/cd/ShinyMythicInfernoDragon.png"
-                ],
-                "bubbles": 75,
-                "currency": 65,
-                "gems": 1.4,
-                "currencyVariant": "Coins"
+                ]
               }
             ]
           },
           {
             "name": "Crystal Egg",
             "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/6d/Crystal_Egg.png",
-            "infinityEgg": "Overworld",
-            "index": "Overworld",
+            "infinityEgg": "The Overworld",
+            "index": "The Overworld",
             "pets": [
               {
+                "name": "Cave Bat",
+                "rarity": "Common",
+                "droprate": 1.6666666666666667,
+                "bubbles": 14,
+                "gems": 0,
+                "currency": 9,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/8/85/Cave_Bat.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/4/4d/Shiny_Cave_Bat.png"
+                ]
+              },
+              {
+                "name": "Dark Bat",
+                "rarity": "Unique",
+                "droprate": 11.11111111111111,
+                "bubbles": 25,
+                "gems": 0,
+                "currency": 12,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/a/ad/Dark_Bat.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/f/f4/Shiny_Dark_Bat.png"
+                ]
+              },
+              {
+                "name": "Angel",
+                "rarity": "Rare",
+                "droprate": 14.285714285714286,
+                "bubbles": 35,
+                "gems": 0,
+                "currency": 20,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/8/83/Angel.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/8/81/Shiny_Angel.png"
+                ]
+              },
+              {
+                "name": "Emerald Bat",
+                "rarity": "Epic",
+                "droprate": 50,
+                "bubbles": 50,
+                "gems": 0,
+                "currency": 35,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/d/d0/Emerald_Bat.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/d/d9/Shiny_Emerald_Bat.png"
+                ]
+              },
+              {
                 "name": "Unicorn",
-                "droprate": "400",
                 "rarity": "Legendary",
+                "droprate": 400,
+                "bubbles": 155,
+                "gems": 14,
+                "currency": 135,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -141,16 +626,16 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/8/80/Shiny_Unicorn.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/d/dc/Mythic_Unicorn.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/5/57/Shiny_Mythic_Unicorn.png"
-                ],
-                "bubbles": 155,
-                "currency": 135,
-                "gems": 1.4,
-                "currencyVariant": "Coins"
+                ]
               },
               {
                 "name": "Flying Pig",
-                "droprate": "1000",
                 "rarity": "Legendary",
+                "droprate": 1000,
+                "bubbles": 285,
+                "gems": 17,
+                "currency": 310,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -162,24 +647,92 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/d/dd/Shiny_Flying_Pig.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/4/45/Mythic_Flying_Pig.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/Shiny_Mythic_Flying_Pig.png"
-                ],
-                "bubbles": 285,
-                "currency": 310,
-                "gems": 1.7,
-                "currencyVariant": "Coins"
+                ]
               }
             ]
           },
           {
             "name": "Lunar Egg",
             "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/64/Lunar_Egg.png",
-            "infinityEgg": "Overworld",
-            "index": "Overworld",
+            "infinityEgg": "The Overworld",
+            "index": "The Overworld",
             "pets": [
               {
+                "name": "Space Mouse",
+                "rarity": "Common",
+                "droprate": 1.6666666666666667,
+                "bubbles": 16,
+                "gems": 0,
+                "currency": 14,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/4/4e/Space_Mouse.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/6/6e/Shiny_Space_Mouse.png"
+                ]
+              },
+              {
+                "name": "Space Bull",
+                "rarity": "Unique",
+                "droprate": 11.11111111111111,
+                "bubbles": 30,
+                "gems": 0,
+                "currency": 20,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/a/a5/Space_Bull.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/4/4a/Shiny_Space_Bull.png"
+                ]
+              },
+              {
+                "name": "Lunar Fox",
+                "rarity": "Rare",
+                "droprate": 14.285714285714286,
+                "bubbles": 45,
+                "gems": 0,
+                "currency": 32,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/4/47/Lunar_Fox.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/e/e0/Shiny_Lunar_Fox.png"
+                ]
+              },
+              {
+                "name": "Lunarcorn",
+                "rarity": "Epic",
+                "droprate": 50,
+                "bubbles": 70,
+                "gems": 0,
+                "currency": 55,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/7/77/Lunarcorn.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/3/35/Shiny_Lunarcorn.png"
+                ]
+              },
+              {
                 "name": "Lunar Serpent",
-                "droprate": "400",
                 "rarity": "Legendary",
+                "droprate": 400,
+                "bubbles": 195,
+                "gems": 2,
+                "currency": 220,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -191,16 +744,16 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/9/93/Shiny_Lunar_Serpent.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/f/f5/Mythic_Lunar_Serpent.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Shiny_Mythic_Lunar_Serpent.png"
-                ],
-                "bubbles": 195,
-                "currency": 220,
-                "gems": 2,
-                "currencyVariant": "Coins"
+                ]
               },
               {
                 "name": "Electra",
-                "droprate": "1000",
                 "rarity": "Legendary",
+                "droprate": 1000,
+                "bubbles": 295,
+                "gems": 4,
+                "currency": 395,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -212,24 +765,75 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/9/94/Shiny_Electra.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/d/df/Mythic_Electra.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/3/38/Shiny_Mythic_Electra.png"
-                ],
-                "bubbles": 295,
-                "currency": 395,
-                "gems": 4,
-                "currencyVariant": "Coins"
+                ]
               }
             ]
           },
           {
             "name": "Void Egg",
             "image": "https://static.wikia.nocookie.net/bgs-infinity/images/5/58/Void_Egg.png",
-            "infinityEgg": "Overworld",
-            "index": "Overworld",
+            "infinityEgg": "The Overworld",
+            "index": "The Overworld",
             "pets": [
               {
+                "name": "Void Kitty",
+                "rarity": "Common",
+                "droprate": 1.5384615384615385,
+                "bubbles": 18,
+                "gems": 0,
+                "currency": 16,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/f/f2/Void_Kitty.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/8/8e/Shiny_Void_Kitty.png"
+                ]
+              },
+              {
+                "name": "Void Bat",
+                "rarity": "Unique",
+                "droprate": 11.11111111111111,
+                "bubbles": 43,
+                "gems": 0,
+                "currency": 35,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/9/9c/Void_Bat.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/1/10/Shiny_Void_Bat.png"
+                ]
+              },
+              {
+                "name": "Void Demon",
+                "rarity": "Epic",
+                "droprate": 50,
+                "bubbles": 85,
+                "gems": 0,
+                "currency": 70,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/6/67/Void_Demon.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/0/0c/Shiny_Void_Demon.png"
+                ]
+              },
+              {
                 "name": "Dark Phoenix",
-                "droprate": "2000",
                 "rarity": "Legendary",
+                "droprate": 2000,
+                "bubbles": 350,
+                "gems": 45,
+                "currency": 410,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -241,16 +845,16 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/c/cf/Shiny_Dark_Phoenix.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/b/b0/Mythic_Dark_Phoenix.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/f/fc/Shiny_Mythic_Dark_Phoenix.png"
-                ],
-                "bubbles": 350,
-                "currency": 410,
-                "gems": 4.5,
-                "currencyVariant": "Coins"
+                ]
               },
               {
                 "name": "Neon Elemental",
-                "droprate": "5000",
                 "rarity": "Legendary",
+                "droprate": 5000,
+                "bubbles": 430,
+                "gems": 55,
+                "currency": 500,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -262,16 +866,16 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/d/db/Shiny_Neon_Elemental.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/b/ba/Mythic_Neon_Elemental.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/c/c1/Shiny_Mythic_Neon_Elemental.png"
-                ],
-                "bubbles": 430,
-                "currency": 500,
-                "gems": 5.5,
-                "currencyVariant": "Coins"
+                ]
               },
               {
                 "name": "NULLVoid",
-                "droprate": "1000000",
                 "rarity": "Legendary",
+                "droprate": 1000000,
+                "bubbles": 1350,
+                "gems": 24,
+                "currency": 1850,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -283,24 +887,92 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/0/0c/Shiny_NULLVoid.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/8/8e/Mythic_NULLVoid.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/1/18/Shiny_Mythic_NULLVoid.png"
-                ],
-                "bubbles": 1350,
-                "currency": 1850,
-                "gems": 24,
-                "currencyVariant": "Coins"
+                ]
               }
             ]
           },
           {
             "name": "Hell Egg",
             "image": "https://static.wikia.nocookie.net/bgs-infinity/images/a/a2/Hell_Egg.png",
-            "infinityEgg": "Overworld",
-            "index": "Overworld",
+            "infinityEgg": "The Overworld",
+            "index": "The Overworld",
             "pets": [
               {
+                "name": "Hell Piggy",
+                "rarity": "Common",
+                "droprate": 1.6666666666666667,
+                "bubbles": 24,
+                "gems": 0,
+                "currency": 20,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/c/c9/Hell_Piggy.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/5/57/Shiny_Hell_Piggy.png"
+                ]
+              },
+              {
+                "name": "Hell Dragon",
+                "rarity": "Unique",
+                "droprate": 11.11111111111111,
+                "bubbles": 45,
+                "gems": 0,
+                "currency": 45,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/f/f8/Hell_Dragon.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/f/fe/Shiny_Hell_Dragon.png"
+                ]
+              },
+              {
+                "name": "Hell Crawler",
+                "rarity": "Rare",
+                "droprate": 14.285714285714286,
+                "bubbles": 75,
+                "gems": 0,
+                "currency": 75,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/3/31/Hell_Crawler.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/1/1f/Shiny_Hell_Crawler.png"
+                ]
+              },
+              {
+                "name": "Inferno Demon",
+                "rarity": "Epic",
+                "droprate": 50,
+                "bubbles": 135,
+                "gems": 0,
+                "currency": 135,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/a/a2/Inferno_Demon.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/a/ae/Shiny_Inferno_Demon.png"
+                ]
+              },
+              {
                 "name": "Inferno Cube",
-                "droprate": "4000",
                 "rarity": "Legendary",
+                "droprate": 4000,
+                "bubbles": 480,
+                "gems": 6,
+                "currency": 520,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -312,16 +984,16 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/c/cc/Shiny_Inferno_Cube.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/9/99/Mythic_Inferno_Cube.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/3/30/Shiny_Mythic_Inferno_Cube.png"
-                ],
-                "bubbles": 480,
-                "currency": 520,
-                "gems": 6,
-                "currencyVariant": "Coins"
+                ]
               },
               {
                 "name": "Virus",
-                "droprate": "50000",
                 "rarity": "Legendary",
+                "droprate": 50000,
+                "bubbles": 785,
+                "gems": 9,
+                "currency": 850,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -333,24 +1005,92 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/c/cf/Shiny_Virus.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/7/71/Mythic_Virus.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/d/dd/Shiny_Mythic_Virus.png"
-                ],
-                "bubbles": 785,
-                "currency": 850,
-                "gems": 9,
-                "currencyVariant": "Coins"
+                ]
               }
             ]
           },
           {
             "name": "Nightmare Egg",
             "image": "https://static.wikia.nocookie.net/bgs-infinity/images/4/43/Nightmare_Egg.png",
-            "infinityEgg": "Overworld",
-            "index": "Overworld",
+            "infinityEgg": "The Overworld",
+            "index": "The Overworld",
             "pets": [
               {
+                "name": "Demon Doggy",
+                "rarity": "Common",
+                "droprate": 1.6666666666666667,
+                "bubbles": 35,
+                "gems": 0,
+                "currency": 32,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/e/e6/Demon_Doggy.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/6/69/Shiny_Demon_Doggy.png"
+                ]
+              },
+              {
+                "name": "Skeletal Deer",
+                "rarity": "Unique",
+                "droprate": 11.11111111111111,
+                "bubbles": 50,
+                "gems": 0,
+                "currency": 52,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/b/b7/Skeletal_Deer.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/9/97/Shiny_Skeletal_Deer.png"
+                ]
+              },
+              {
+                "name": "Night Crawler",
+                "rarity": "Rare",
+                "droprate": 14.285714285714286,
+                "bubbles": 95,
+                "gems": 0,
+                "currency": 105,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/5/5d/Night_Crawler.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/3/3d/Shiny_Night_Crawler.png"
+                ]
+              },
+              {
+                "name": "Hell Bat",
+                "rarity": "Epic",
+                "droprate": 50,
+                "bubbles": 185,
+                "gems": 0,
+                "currency": 250,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/29/Hell_Bat.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/e/ef/Shiny_Hell_Bat.png"
+                ]
+              },
+              {
                 "name": "Green Hydra",
-                "droprate": "25000",
                 "rarity": "Legendary",
+                "droprate": 25000,
+                "bubbles": 600,
+                "gems": 10,
+                "currency": 710,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -362,16 +1102,16 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/4/40/Shiny_Green_Hydra.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/6/6a/Mythic_Green_Hydra.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/0/06/Shiny_Mythic_Green_Hydra.png"
-                ],
-                "bubbles": 600,
-                "currency": 710,
-                "gems": 10,
-                "currencyVariant": "Coins"
+                ]
               },
               {
                 "name": "Demonic Hydra",
-                "droprate": "100000",
                 "rarity": "Legendary",
+                "droprate": 100000,
+                "bubbles": 925,
+                "gems": 15,
+                "currency": 1200,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -383,16 +1123,16 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/1/10/Shiny_Demonic_Hydra.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/3/33/Mythic_Demonic_Hydra.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/f/f9/Shiny_Mythic_Demonic_Hydra.png"
-                ],
-                "bubbles": 925,
-                "currency": 1200,
-                "gems": 15,
-                "currencyVariant": "Coins"
+                ]
               },
               {
                 "name": "The Overlord",
-                "droprate": "50000000",
                 "rarity": "Secret",
+                "droprate": 50000000,
+                "bubbles": 2100,
+                "gems": 40,
+                "currency": 2900,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -404,24 +1144,92 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/e/ed/Shiny_The_Overlord.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/a/aa/Mythic_The_Overlord.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/3/36/Shiny_Mythic_The_Overlord.png"
-                ],
-                "bubbles": 2100,
-                "currency": 2900,
-                "gems": 40,
-                "currencyVariant": "Coins"
+                ]
               }
             ]
           },
           {
             "name": "Rainbow Egg",
             "image": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3f/Rainbow_Egg.png",
-            "infinityEgg": "Overworld",
-            "index": "Overworld",
+            "infinityEgg": "The Overworld",
+            "index": "The Overworld",
             "pets": [
               {
+                "name": "Red Golem",
+                "rarity": "Common",
+                "droprate": 1.6666666666666667,
+                "bubbles": 45,
+                "gems": 12,
+                "currency": 58,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/8/89/Red_Golem.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/1/12/Shiny_Red_Golem.png"
+                ]
+              },
+              {
+                "name": "Orange Deer",
+                "rarity": "Unique",
+                "droprate": 11.11111111111111,
+                "bubbles": 82,
+                "gems": 14,
+                "currency": 97,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/6/6b/Orange_Deer.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/29/Shiny_Orange_Deer.png"
+                ]
+              },
+              {
+                "name": "Yellow Fox",
+                "rarity": "Rare",
+                "droprate": 14.285714285714286,
+                "bubbles": 120,
+                "gems": 175,
+                "currency": 145,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/9/99/Yellow_Fox.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/23/Shiny_Yellow_Fox.png"
+                ]
+              },
+              {
+                "name": "Green Angel",
+                "rarity": "Epic",
+                "droprate": 50,
+                "bubbles": 225,
+                "gems": 2,
+                "currency": 285,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/b/b8/Green_Angel.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/8/8c/Shiny_Green_Angel.png"
+                ]
+              },
+              {
                 "name": "Hexarium",
-                "droprate": "100000",
                 "rarity": "Legendary",
+                "droprate": 100000,
+                "bubbles": 1025,
+                "gems": 165,
+                "currency": 1350,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -433,16 +1241,16 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/2/2f/Shiny_Hexarium.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/0/02/Mythic_Hexarium.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/e/ea/Shiny_Mythic_Hexarium.png"
-                ],
-                "bubbles": 1025,
-                "currency": 1350,
-                "gems": 16.5,
-                "currencyVariant": "Coins"
+                ]
               },
               {
                 "name": "Rainbow Shock",
-                "droprate": "200000",
                 "rarity": "Legendary",
+                "droprate": 200000,
+                "bubbles": 1250,
+                "gems": 20,
+                "currency": 1700,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -454,99 +1262,74 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/8/8b/Shiny_Rainbow_Shock.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/b/b8/Mythic_Rainbow_Shock.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/7/71/Shiny_Mythic_Rainbow_Shock.png"
-                ],
-                "bubbles": 1250,
-                "currency": 1700,
-                "gems": 20,
-                "currencyVariant": "Coins"
+                ]
               }
             ]
-          },
+          }
+        ]
+      },    
+      {
+        "name": "Minigame Paradise",
+        "eggs": [
           {
-            "name": "Wheel Spin",
-            "ignoreCalculator": true,
-            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/0b/Spin_Ticket.png",
+            "name": "Showman Egg",
+            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/1/1a/Showman_Egg.png",
+            "infinityEgg": "Minigame Paradise",
+            "index": "Minigame Paradise",
             "pets": [
               {
-                "name": "Umbra",
-                "droprate": "1000",
-                "rarity": "Legendary",
+                "name": "Game Doggy",
+                "rarity": "Common",
+                "droprate": 1.8181818181818181,
+                "bubbles": 1,
+                "gems": 0,
+                "currency": 0,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny"
                 ],
                 "image": [
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/a/a2/Umbra.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/f/fe/Shiny_Umbra.png"
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/f/fc/Game_Doggy.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/9/9e/Shiny_Game_Doggy.png"
+                ]
+              },
+              {
+                "name": "Gamer Boi",
+                "rarity": "Common",
+                "droprate": 2.5,
+                "bubbles": 1,
+                "gems": 0,
+                "currency": 0,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
                 ],
-                "bubbles": 975,
-                "currency": 1300,
-                "gems": 15,
-                "currencyVariant": "Coins"
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/b/b9/Gamer_Boi.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/c/ce/Shiny_Gamer_Boi.png"
+                ]
+              },
+              {
+                "name": "Queen of Hearts",
+                "rarity": "Rare",
+                "droprate": 20,
+                "bubbles": 2,
+                "gems": 0,
+                "currency": 0,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/d/da/Queen_of_Hearts.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/1/15/Shiny_Queen_of_Hearts.png"
+                ]
               }
             ]
           },
-          {
-            "name": "Golden Chest",
-            "ignoreCalculator": true,
-            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/e/ec/Golden_Key.png",
-            "pets": [
-              {
-                "name": "Abyssal Dragon",
-                "droprate": "4000",
-                "rarity": "Legendary",
-                "variants": [
-                  "Normal",
-                  "Shiny",
-                  "Mythic",
-                  "Shiny Mythic"
-                ],
-                "image": [
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/5/5a/Abyssal_Dragon.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/0/00/Shiny_Abyssal_Dragon.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/4/4d/Mythic_Abyssal_Dragon.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/9/9c/Shiny_Mythic_Abyssal_Dragon.png"
-                ],
-                "bubbles": 1250,
-                "currency": 1700,
-                "gems": 20,
-                "currencyVariant": "Coins"
-              }
-            ]
-          },
-          {
-            "name": "Royal Chest",
-            "ignoreCalculator": true,
-            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/e/eb/Royal_Key.png",
-            "pets": [
-              {
-                "name": "Hacker Prism",
-                "droprate": "4000",
-                "rarity": "Legendary",
-                "variants": [
-                  "Normal",
-                  "Shiny",
-                  "Mythic",
-                  "Shiny Mythic"
-                ],
-                "image": [
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/c/c2/Hacker_Prism.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/b/ba/Shiny_Hacker_Prism.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/4/46/Mythic_Hacker_Prism.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/e/e0/Shiny_Mythic_Hacker_Prism.png"
-                ],
-                "bubbles": 1450,
-                "currency": 1850,
-                "gems": 22,
-                "currencyVariant": "Coins"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "name": "Minigame Paradise",
-        "eggs": [
           {
             "name": "Mining Egg",
             "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/65/Mining_Egg.png",
@@ -554,46 +1337,114 @@
             "index": "Minigame Paradise",
             "pets": [
               {
+                "name": "Mining Doggy",
+                "rarity": "Common",
+                "droprate": 1.6666666666666667,
+                "bubbles": 24,
+                "gems": 0,
+                "currency": 20,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/1/15/Mining_Doggy.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/2e/Shiny_Mining_Doggy.png"
+                ]
+              },
+              {
+                "name": "Mining Bat",
+                "rarity": "Unique",
+                "droprate": 3.3333333333333335,
+                "bubbles": 45,
+                "gems": 0,
+                "currency": 0,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/9/9e/Mining_Bat.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/7/77/Shiny_Mining_Bat.png"
+                ]
+              },
+              {
+                "name": "Cave Mole",
+                "rarity": "Rare",
+                "droprate": 14.285714285714286,
+                "bubbles": 75,
+                "gems": 0,
+                "currency": 0,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/b/b7/Cave_Mole.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/6/6c/Shiny_Cave_Mole.png"
+                ]
+              },
+              {
+                "name": "Ore Golem",
+                "rarity": "Epic",
+                "droprate": 33.333333333333336,
+                "bubbles": 135,
+                "gems": 0,
+                "currency": 0,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/d/d8/Ore_Golem.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/5/55/Shiny_Ore_Golem.png"
+                ]
+              },
+              {
                 "name": "Crystal Unicorn",
-                "droprate": "200",
                 "rarity": "Legendary",
+                "droprate": 200,
+                "bubbles": 480,
+                "gems": 6,
+                "currency": 0,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny",
+                  "Mythic",
+                  "Shiny Mythic"
+                ],
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/a/a3/Crystal_Unicorn.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/c/c4/Shiny_Crystal_Unicorn.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Mythic_Crystal_Unicorn.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/4/4e/Shiny_Mythic_Crystal_Unicorn.png"
-                ],
+                ]
+              },
+              {
+                "name": "Stone Gargoyle",
+                "rarity": "Legendary",
+                "droprate": 20000,
+                "bubbles": 785,
+                "gems": 22,
+                "currency": 0,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
                   "Mythic",
                   "Shiny Mythic"
                 ],
-                "bubbles": 480,
-                "currency": 180,
-                "currencyVariant": "Tickets",
-                "gems": 6
-              },
-              {
-                "name": "Stone Gargoyle",
-                "droprate": "20000",
-                "rarity": "Legendary",
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/2/23/Stone_Gargoyle.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/e/e6/Shiny_Stone_Gargoyle.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/3/3c/Mythic_Stone_Gargoyle.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/b/b9/Shiny_Mythic_Stone_Gargoyle.png"
-                ],
-                "variants": [
-                  "Normal",
-                  "Shiny",
-                  "Mythic",
-                  "Shiny Mythic"
-                ],
-                "bubbles": 785,
-                "currency": 320,
-                "currencyVariant": "Tickets",
-                "gems": 22
+                ]
               }
             ]
           },
@@ -604,88 +1455,139 @@
             "index": "Minigame Paradise",
             "pets": [
               {
-                "name": "Cyborg Phoenix",
-                "image": [
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/8/83/Cyber_Phoenix.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/c/c8/Shiny_Cyborg_Phoenix.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/25/Mythic_Cyborg_Phoenix.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/7/75/Shiny_Mythic_Cyborg_Phoenix.png"
+                "name": "Robo Kitty",
+                "rarity": "Common",
+                "droprate": 1.5625,
+                "bubbles": 65,
+                "gems": 18,
+                "currency": 0,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
                 ],
-                "droprate": "2500",
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/3/3f/Robo_Kitty.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+                ]
+              },
+              {
+                "name": "Martian Kitty",
+                "rarity": "Unique",
+                "droprate": 4,
+                "bubbles": 115,
+                "gems": 25,
+                "currency": 0,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/d/da/Martian_Kitty.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/6/6b/Shiny_Martian_Kitty.png"
+                ]
+              },
+              {
+                "name": "Cyber Wolf",
+                "rarity": "Epic",
+                "droprate": 33.333333333333336,
+                "bubbles": 130,
+                "gems": 0,
+                "currency": 0,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/9/97/Cyber_Wolf.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/4/41/Shiny_Cyber_Wolf.png"
+                ]
+              },
+              {
+                "name": "Cyborg Phoenix",
                 "rarity": "Legendary",
+                "droprate": 2500,
+                "bubbles": 630,
+                "gems": 12,
+                "currency": 0,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
                   "Mythic",
                   "Shiny Mythic"
                 ],
-                "bubbles": 630,
-                "currency": 400,
-                "currencyVariant": "Tickets",
-                "gems": 12
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/7/76/Cyborg_Phoenix.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/c/c8/Shiny_Cyborg_Phoenix.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/25/Mythic_Cyborg_Phoenix.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/7/75/Shiny_Mythic_Cyborg_Phoenix.png"
+                ]
               },
               {
                 "name": "Space Invader",
+                "rarity": "Legendary",
+                "droprate": 50000,
+                "bubbles": 1325,
+                "gems": 23,
+                "currency": 0,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny",
+                  "Mythic",
+                  "Shiny Mythic"
+                ],
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/1/1d/Space_Invader.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/6/6d/Shiny_Space_Invader.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/d/df/Mythic_Space_Invader.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/f/fd/Shiny_Mythic_Space_Invader.png"
-                ],
-                "droprate": "50000",
+                ]
+              },
+              {
+                "name": "Bionic Shard",
                 "rarity": "Legendary",
+                "droprate": 666666,
+                "bubbles": 1550,
+                "gems": 32,
+                "currency": 0,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
                   "Mythic",
                   "Shiny Mythic"
                 ],
-                "bubbles": 1325,
-                "currency": 850,
-                "currencyVariant": "Tickets",
-                "gems": 23
-              },
-              {
-                "name": "Bionic Shard",
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/6/6c/Bionic_Shard.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/8/8d/Shiny_Bionic_Shard.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/c/c7/Mythic_Bionic_Shard.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/0/0c/Shiny_Mythic_Bionic_Shard.png"
-                ],
-                "droprate": "666666",
-                "rarity": "Legendary",
+                ]
+              },
+              {
+                "name": "Mech Robot",
+                "rarity": "Secret",
+                "droprate": 66666666,
+                "bubbles": 3000,
+                "gems": 65,
+                "currency": 0,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
                   "Mythic",
                   "Shiny Mythic"
                 ],
-                "bubbles": 1550,
-                "currency": 1900,
-                "currencyVariant": "Tickets",
-                "gems": 32
-              },
-              {
-                "name": "Mech Robot",
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/1/1d/Mech_Robot.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/4/4b/Shiny_Mech_Robot.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/7/7b/Mythic_Mech_Robot.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/4/44/Shiny_Mythic_Mech_Robot.png"
-                ],
-                "droprate": "66666666",
-                "rarity": "Secret",
-                "variants": [
-                  "Normal",
-                  "Shiny",
-                  "Mythic",
-                  "Shiny Mythic"
-                ],
-                "bubbles": 3000,
-                "currency": 3500,
-                "currencyVariant": "Tickets",
-                "gems": 65
+                ]
               }
             ]
           },
@@ -695,9 +1597,47 @@
             "index": "Minigame Paradise",
             "pets": [
               {
+                "name": "Hell Demon",
+                "rarity": "Common",
+                "droprate": 1.5384615384615385,
+                "bubbles": 65,
+                "gems": 18,
+                "currency": 0,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/8/8c/Hell_Demon.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/26/Shiny_Hell_Demon.png"
+                ]
+              },
+              {
+                "name": "Demon Angel",
+                "rarity": "Rare",
+                "droprate": 3.3333333333333335,
+                "bubbles": 130,
+                "gems": 0,
+                "currency": 0,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/a/aa/Demon_Angel.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/0/05/Shiny_Demon_Angel.png"
+                ]
+              },
+              {
                 "name": "Crimson Butterfly",
-                "droprate": "2000",
                 "rarity": "Legendary",
+                "droprate": 2000,
+                "bubbles": 650,
+                "gems": 14,
+                "currency": 0,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -709,16 +1649,16 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/e/e4/Shiny_Crimson_Butterfly.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/b/b0/Mythic_Crimson_Butterfly.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/e/ea/Shiny_Mythic_Crimson_Butterfly.png"
-                ],
-                "bubbles": 650,
-                "currency": 435,
-                "currencyVariant": "Tickets",
-                "gems": 14
+                ]
               },
               {
                 "name": "Demonweb",
-                "droprate": "40000",
                 "rarity": "Legendary",
+                "droprate": 40000,
+                "bubbles": 1450,
+                "gems": 24,
+                "currency": 0,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -730,16 +1670,16 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/7/73/Shiny_Demonweb.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/a/a1/Mythic_Demonweb.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/3/39/Shiny_Mythic_Demonweb.png"
-                ],
-                "bubbles": 1450,
-                "currency": 890,
-                "currencyVariant": "Tickets",
-                "gems": 24
+                ]
               },
               {
                 "name": "Crimson Bloodmoon",
-                "droprate": "833333",
                 "rarity": "Legendary",
+                "droprate": 833333,
+                "bubbles": 2000,
+                "gems": 40,
+                "currency": 0,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -751,16 +1691,16 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/f/f8/Shiny_Crimson_Bloodmoon.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/4/4e/Mythic_Crimson_Bloodmoon.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/c/c7/Shiny_Mythic_Crimson_Bloodmoon.png"
-                ],
-                "bubbles": 2000,
-                "currency": 2100,
-                "currencyVariant": "Tickets",
-                "gems": 40
+                ]
               },
               {
                 "name": "Lord Shock",
-                "droprate": "500000000",
                 "rarity": "Secret",
+                "droprate": 500000000,
+                "bubbles": 3500,
+                "gems": 72,
+                "currency": 0,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -772,95 +1712,7 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/3/33/Shiny_Lord_Shock.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/e/e8/Mythic_Lord_Shock.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/5/59/Shiny_Mythic_Lord_Shock.png"
-                ],
-                "bubbles": 3500,
-                "currency": 4000,
-                "currencyVariant": "Tickets",
-                "gems": 72
-              }
-            ]
-          },
-          {
-            "name": "Dice Chest",
-            "image": "https://em-content.zobj.net/source/google/412/game-die_1f3b2.png",
-            "ignoreCalculator": true,
-            "pets": [
-              {
-                "name": "Dice Split",
-                "droprate": "10000",
-                "rarity": "Legendary",
-                "variants": [
-                  "Normal",
-                  "Shiny",
-                  "Mythic",
-                  "Shiny Mythic"
-                ],
-                "image": [
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/6/60/Dice_Split.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Shiny_Dice_Split.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/1/12/Mythic_Dice_Split.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/4/45/Shiny_Mythic_Dice_Split.png"
-                ],
-                "bubbles": 1750,
-                "currency": 1800,
-                "currencyVariant": "Tickets",
-                "gems": 32
-              }
-            ]
-          },
-          {
-            "name": "Cart Escape",
-            "image": "https://em-content.zobj.net/source/huawei/375/train_1f686.png",
-            "ignoreCalculator": true,
-            "pets": [
-              {
-                "name": "Magmas",
-                "droprate": "1000",
-                "rarity": "Legendary",
-                "variants": [
-                  "Normal",
-                  "Shiny",
-                  "Mythic",
-                  "Shiny Mythic"
-                ],
-                "image": [
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/7/78/Magmas.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Shiny_Magmas.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/6/62/Mythic_Magmas.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/c/cd/Shiny_Mythic_Magmas.png"
-                ],
-                "bubbles": 1700,
-                "currency": 1800,
-                "currencyVariant": "Tickets",
-                "gems": 32
-              }
-            ]
-          },
-          {
-            "name": "Robot Claw",
-            "image": "https://em-content.zobj.net/source/google/412/joystick_1f579-fe0f.png",
-            "ignoreCalculator": true,
-            "pets": [
-              {
-                "name": "Dragon Plushie",
-                "droprate": "10000",
-                "rarity": "Legendary",
-                "variants": [
-                  "Normal",
-                  "Shiny",
-                  "Mythic",
-                  "Shiny Mythic"
-                ],
-                "image": [
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/c/c1/Dragon_Plushie.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/22/Shiny_Dragon_Plushie.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/f/fe/Mythic_Dragon_Plushie.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/e/ef/Shiny_Mythic_Dragon_Plushie.png"
-                ],
-                "bubbles": 2000,
-                "currency": 2100,
-                "currencyVariant": "Tickets",
-                "gems": 40
+                ]
               }
             ]
           }
@@ -879,53 +1731,87 @@
             "image": "https://static.wikia.nocookie.net/bgs-infinity/images/9/98/Game_Egg.png",
             "pets": [
               {
+                "name": "Fancy Demon",
+                "rarity": "Rare",
+                "droprate": 2,
+                "bubbles": 40,
+                "gems": 0,
+                "currency": 0,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/23/Fancy_Demon.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/e/e2/Shiny_Fancy_Demon.png"
+                ]
+              },
+              {
+                "name": "Happy Dice",
+                "rarity": "Epic",
+                "droprate": 10,
+                "bubbles": 195,
+                "gems": 0,
+                "currency": 0,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/23/Happy_Dice.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/c/cc/Shiny_Happy_Dice.png"
+                ]
+              },
+              {
                 "name": "Game Master",
-                "droprate": "100000",
                 "rarity": "Legendary",
+                "droprate": 100000,
+                "bubbles": 1850,
+                "gems": 35,
+                "currency": 0,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny",
+                  "Mythic",
+                  "Shiny Mythic"
+                ],
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/4/46/Game_Master.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/5/50/Shiny_Game_Master.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/0/01/Mythic_Game_Master.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/0/00/Shiny_Mythic_Game_Master.png"
-                ],
+                ]
+              },
+              {
+                "name": "Jackpot",
+                "rarity": "Legendary",
+                "droprate": 20000000,
+                "bubbles": 3050,
+                "gems": 70,
+                "currency": 0,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
                   "Mythic",
                   "Shiny Mythic"
                 ],
-                "bubbles": 1850,
-                "currency": 1900,
-                "currencyVariant": "Tickets",
-                "gems": 35
-              },
-              {
-                "name": "Jackpot",
-                "droprate": "20000000",
-                "rarity": "Legendary",
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/1/10/Jackpot.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/5/5e/Shiny_Jackpot.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/6/6b/Mythic_Jackpot.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/f/fa/Shiny_Mythic_Jackpot.png"
-                ],
-                "variants": [
-                  "Normal",
-                  "Shiny",
-                  "Mythic",
-                  "Shiny Mythic"
-                ],
-                "bubbles": 3050,
-                "currency": 3550,
-                "currencyVariant": "Tickets",
-                "gems": 70
+                ]
               }
             ]
           }
         ]
       },
       {
-        "name": "Bubble Pass",
+        "name": "Seasonal",
         "ignoreCalculator": true,
         "eggs": [
           {
@@ -933,9 +1819,47 @@
             "image": "https://static.wikia.nocookie.net/bgs-infinity/images/f/f9/Season_2_Egg.png",
             "pets": [
               {
+                "name": "Sleepy Bunny",
+                "rarity": "Rare",
+                "droprate": 1.1111111111111112,
+                "bubbles": 40,
+                "gems": 0,
+                "currency": 20,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/b/bd/Sleepy_Bunny.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/a/a4/Shiny_Sleepy_Bunny.png"
+                ]
+              },
+              {
+                "name": "Starry Lamb",
+                "rarity": "Epic",
+                "droprate": 10,
+                "bubbles": 195,
+                "gems": 0,
+                "currency": 265,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/5/51/Starry_Lamb.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/a/a1/Shiny_Starry_Lamb.png"
+                ]
+              },
+              {
                 "name": "Moon Deer",
-                "droprate": "200",
                 "rarity": "Legendary",
+                "droprate": 200,
+                "bubbles": 1000,
+                "gems": 22,
+                "currency": 1150,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -947,16 +1871,16 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Shiny_Moon_Deer.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/2/2f/Mythic_Moon_Deer.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/5/54/Shiny_Mythic_Moon_Deer.png"
-                ],
-                "bubbles": 1000,
-                "currency": 1150,
-                "gems": 22,
-                "currencyVariant": "Coins"
+                ]
               },
               {
                 "name": "Nebula",
-                "droprate": "10000",
                 "rarity": "Legendary",
+                "droprate": 10000,
+                "bubbles": 1850,
+                "gems": 35,
+                "currency": 2450,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -966,13 +1890,9 @@
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/e/ea/Nebula.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/a/af/Shiny-nebula.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/1/18/Mythic-nebula.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/27/Mythic_Nebula.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/5/58/Shiny-mythic-nebula.png"
-                ],
-                "bubbles": 1850,
-                "currency": 2450,
-                "gems": 35,
-                "currencyVariant": "Coins"
+                ]
               }
             ]
           },
@@ -982,8 +1902,12 @@
             "pets": [
               {
                 "name": "Dusk",
-                "droprate": "1",
                 "rarity": "Legendary",
+                "droprate": 1,
+                "bubbles": 975,
+                "gems": 15,
+                "currency": 0,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny"
@@ -991,16 +1915,16 @@
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/5/5d/Dusk.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/2/22/Shiny-dusk.png"
-                ],
-                "bubbles": 975,
-                "currency": 1300,
-                "gems": 15,
-                "currencyVariant": "Coins"
+                ]
               },
               {
                 "name": "Dawn",
-                "droprate": "1",
                 "rarity": "Legendary",
+                "droprate": 1,
+                "bubbles": 1050,
+                "gems": 18,
+                "currency": 0,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny"
@@ -1008,16 +1932,16 @@
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/8/8e/Dawn.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/2/27/Shiny-dawn.png"
-                ],
-                "bubbles": 1050,
-                "currency": 1400,
-                "gems": 18,
-                "currencyVariant": "Coins"
+                ]
               },
               {
                 "name": "Moonlight",
-                "droprate": "1000",
                 "rarity": "Legendary",
+                "droprate": 1000,
+                "bubbles": 1325,
+                "gems": 23,
+                "currency": 0,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -1027,18 +1951,18 @@
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/1/10/Moonlight.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/9/97/Shiny-moonlight.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/23/Mythic-moonlight.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/c/c7/Mythic_Moonlight.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/c/ce/Shiny-mythic-moonlight.png"
-                ],
-                "bubbles": 1325,
-                "currency": 850,
-                "gems": 23,
-                "currencyVariant": "Coins"
+                ]
               },
               {
                 "name": "Luminosity",
-                "droprate": "20000",
                 "rarity": "Secret",
+                "droprate": 20000,
+                "bubbles": 3050,
+                "gems": 70,
+                "currency": 0,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -1050,11 +1974,7 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/4/45/Shiny_Luminosity.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/3/38/Mythic_Luminosity.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/c/c4/Shiny_Mythic_Luminosity.png"
-                ],
-                "bubbles": 3050,
-                "currency": 3550,
-                "gems": 70,
-                "currencyVariant": "Coins"
+                ]
               }
             ]
           },
@@ -1063,9 +1983,47 @@
             "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/7c/Season_1_Egg.png",
             "pets": [
               {
+                "name": "Enlightened Kitty",
+                "rarity": "Rare",
+                "droprate": 1.1111111111111112,
+                "bubbles": 35,
+                "gems": 0,
+                "currency": 15,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/d/d9/Enlightened_Kitty.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/3/3e/Shiny_Enlightened_Kitty.png"
+                ]
+              },
+              {
+                "name": "Judgement",
+                "rarity": "Epic",
+                "droprate": 10,
+                "bubbles": 185,
+                "gems": 0,
+                "currency": 250,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/b/b0/Judgement.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/1/19/Shiny_Judgement.png"
+                ]
+              },
+              {
                 "name": "Ophanim",
-                "droprate": "200",
                 "rarity": "Legendary",
+                "droprate": 200,
+                "bubbles": 925,
+                "gems": 15,
+                "currency": 1200,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -1077,16 +2035,16 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/a/ab/Shiny_Ophanim.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/9/93/Mythic_Ophanim.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/f/fc/Shiny_Mythic_Ophanim.png"
-                ],
-                "bubbles": 925,
-                "currency": 1200,
-                "gems": 15,
-                "currencyVariant": "Coins"
+                ]
               },
               {
                 "name": "Seraph",
-                "droprate": "10000",
                 "rarity": "Legendary",
+                "droprate": 10000,
+                "bubbles": 1600,
+                "gems": 22,
+                "currency": 2300,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -1098,11 +2056,7 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/f/f4/Shiny_Seraph.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/b/ba/Mythic_Seraph.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/1/11/Shiny_Mythic_Seraph.png"
-                ],
-                "bubbles": 1600,
-                "currency": 2300,
-                "gems": 22,
-                "currencyVariant": "Coins"
+                ]
               }
             ]
           },
@@ -1112,8 +2066,12 @@
             "pets": [
               {
                 "name": "Lunar Deity",
-                "droprate": "1",
                 "rarity": "Legendary",
+                "droprate": 1,
+                "bubbles": 975,
+                "gems": 15,
+                "currency": 1300,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny"
@@ -1121,16 +2079,16 @@
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/c/c7/Lunar_Deity.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/1/1c/Shiny_Lunar_Deity.png"
-                ],
-                "bubbles": 975,
-                "currency": 1300,
-                "gems": 15,
-                "currencyVariant": "Coins"
+                ]
               },
               {
                 "name": "Solar Deity",
-                "droprate": "1",
                 "rarity": "Legendary",
+                "droprate": 1,
+                "bubbles": 1050,
+                "gems": 18,
+                "currency": 1400,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny"
@@ -1138,16 +2096,16 @@
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/6/65/Solar_Deity.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/e/e9/Shiny_Solar_Deity.png"
-                ],
-                "bubbles": 1050,
-                "currency": 1400,
-                "gems": 18,
-                "currencyVariant": "Coins"
+                ]
               },
               {
                 "name": "Crescent Empress",
-                "droprate": "1000",
                 "rarity": "Legendary",
+                "droprate": 1000,
+                "bubbles": 1100,
+                "gems": 19,
+                "currency": 1425,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -1159,16 +2117,16 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/9/97/Shiny_Crescent_Empress.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/4/4a/Mythic_Crescent_Empress.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/a/ac/Shiny_Mythic_Crescent_Empress.png"
-                ],
-                "bubbles": 1100,
-                "currency": 1425,
-                "gems": 19,
-                "currencyVariant": "Coins"
+                ]
               },
               {
                 "name": "Avernus",
-                "droprate": "20000",
                 "rarity": "Secret",
+                "droprate": 20000,
+                "bubbles": 1900,
+                "gems": 35,
+                "currency": 2600,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -1180,28 +2138,62 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/b/b5/Shiny_Avernus.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/b/ba/Mythic_Avernus.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/5/59/Shiny_Mythic_Avernus.png"
-                ],
-                "bubbles": 1900,
-                "currency": 2600,
-                "gems": 35,
-                "currencyVariant": "Coins"
+                ]
               }
             ]
           }
         ]
       },
       {
-        "name": "Competitive Series",
+        "name": "Competitive",
         "ignoreCalculator": true,
         "eggs": [
           {
-            "name": "Series 1",
+            "name": "Series 1 Egg",
             "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/70/Series_1_Egg.png",
             "pets": [
               {
+                "name": "Competitor Doggy",
+                "rarity": "Rare",
+                "droprate": 1.1111111111111112,
+                "bubbles": 40,
+                "gems": 0,
+                "currency": 20,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/7/7e/Competitor_Doggy.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/c/cd/Shiny-competitor-doggy.png"
+                ]
+              },
+              {
+                "name": "Golden Golem",
+                "rarity": "Epic",
+                "droprate": 11.11111111111111,
+                "bubbles": 195,
+                "gems": 0,
+                "currency": 265,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/1/1e/Golden_Golem.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/f/f6/Shiny-golden-golem.png"
+                ]
+              },
+              {
                 "name": "Parasite",
                 "rarity": "Legendary",
-                "droprate": "1000",
+                "droprate": 1000,
+                "bubbles": 980,
+                "gems": 18,
+                "currency": 1250,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -1213,16 +2205,16 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/e/e7/Shiny_Parasite.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/7/71/Mythic_Parasite.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/8/87/Shiny_Mythic_Parasite.png"
-                ],
-                "bubbles": 980,
-                "currency": 1250,
-                "gems": 18,
-                "currencyVariant": "Coins"
+                ]
               },
               {
                 "name": "Starlight",
                 "rarity": "Legendary",
-                "droprate": "10000",
+                "droprate": 10000,
+                "bubbles": 1700,
+                "gems": 25,
+                "currency": 2350,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -1234,16 +2226,16 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/5/58/Shiny_Starlight.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/3/3b/Mythic_Starlight.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/7/77/Shiny_Mythic_Starlight.png"
-                ],
-                "bubbles": 1700,
-                "currency": 2350,
-                "gems": 25,
-                "currencyVariant": "Coins"
+                ]
               },
               {
                 "name": "Overseer",
                 "rarity": "Legendary",
-                "droprate": "100000",
+                "droprate": 100000,
+                "bubbles": 2300,
+                "gems": 50,
+                "currency": 3150,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -1255,16 +2247,22 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/1/16/Shiny_Overseer.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/9/98/Mythic_Overseer.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/6/69/Shiny_Mythic_Overseer.png"
-                ],
-                "bubbles": 2300,
-                "currency": 3150,
-                "gems": 50,
-                "currencyVariant": "Coins"
-              },
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Series 1 Competitive Leaderboards",
+            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/79/Competitive_Icon.png",
+            "pets": [
               {
                 "name": "Elite Challenger",
                 "rarity": "Legendary",
-                "droprate": "1",
+                "droprate": 1,
+                "bubbles": 2350,
+                "gems": 50,
+                "currency": 3200,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny"
@@ -1272,16 +2270,16 @@
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/b/b7/Elite_Challenger.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/2/2f/Shiny_Elite_Challenger.png"
-                ],
-                "bubbles": 2350,
-                "currency": 3200,
-                "gems": 50,
-                "currencyVariant": "Coins"
+                ]
               },
               {
                 "name": "Elite Soul",
                 "rarity": "Legendary",
-                "droprate": "1",
+                "droprate": 1,
+                "bubbles": 3000,
+                "gems": 65,
+                "currency": 3500,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -1293,11 +2291,7 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/7/7d/Shiny_Elite_Soul.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/0/0a/Mythic_Elite_Soul.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/2/26/Shiny_Mythic_Elite_Soul.png"
-                ],
-                "bubbles": 3000,
-                "currency": 3500,
-                "gems": 65,
-                "currencyVariant": "Coins"
+                ]
               }
             ]
           }
@@ -1309,12 +2303,50 @@
           {
             "name": "200M Egg",
             "image": "https://static.wikia.nocookie.net/bgs-infinity/images/f/f7/200M_Egg.png",
-            "infinityEgg": "Overworld",
+            "infinityEgg": "The Overworld",
             "pets": [
+              {
+                "name": "Cute Deer",
+                "rarity": "Common",
+                "droprate": 1.5384615384615385,
+                "bubbles": 65,
+                "gems": 0,
+                "currency": 75,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/5/59/Cute_Deer.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/8/8a/Shiny_Cute_Deer.png"
+                ]
+              },
+              {
+                "name": "Emerald Wolf",
+                "rarity": "Rare",
+                "droprate": 3.3333333333333335,
+                "bubbles": 130,
+                "gems": 22,
+                "currency": 140,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/3/31/Emerald_Wolf.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/2e/Shiny_Emerald_Wolf.png"
+                ]
+              },
               {
                 "name": "Prismatic",
                 "rarity": "Legendary",
-                "droprate": "2500",
+                "droprate": 2500,
+                "bubbles": 650,
+                "gems": 14,
+                "currency": 650,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -1326,16 +2358,16 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/7/7e/Shiny_Prismatic.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/3/3f/Mythic_Prismatic.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/c/cb/Shiny_Mythic_Prismatic.png"
-                ],
-                "bubbles": 650,
-                "currency": 650,
-                "gems": 14,
-                "currencyVariant": "Coins"
+                ]
               },
               {
                 "name": "Darkness Creature",
                 "rarity": "Legendary",
-                "droprate": "50000",
+                "droprate": 50000,
+                "bubbles": 1450,
+                "gems": 24,
+                "currency": 1750,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -1347,16 +2379,16 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/a/ac/Shiny_Darkness_Creature.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/4/4a/Mythic_Darkness_Creature.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/2/25/Shiny_Mythic_Darkness_Creature.png"
-                ],
-                "bubbles": 1450,
-                "currency": 1750,
-                "gems": 24,
-                "currencyVariant": "Coins"
+                ]
               },
               {
                 "name": "Corrupt Glitch",
                 "rarity": "Legendary",
-                "droprate": "800000",
+                "droprate": 800000,
+                "bubbles": 1950,
+                "gems": 38,
+                "currency": 2400,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -1368,16 +2400,16 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/8/86/Shiny_Corrupt_Glitch.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/c/cc/Mythic_Corrupt_Glitch.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/4/47/Shiny_Mythic_Corrupt_Glitch.png"
-                ],
-                "bubbles": 1950,
-                "currency": 2400,
-                "gems": 38,
-                "currencyVariant": "Coins"
+                ]
               },
               {
                 "name": "Wolflord",
                 "rarity": "Secret",
-                "droprate": "100000000",
+                "droprate": 100000000,
+                "bubbles": 3350,
+                "gems": 70,
+                "currency": 3650,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -1389,102 +2421,149 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/7/78/Shiny_Wolflord.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/0/05/Mythic_Wolflord.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/3/30/Shiny_Mythic_Wolflord.png"
-                ],
-                "bubbles": 3350,
-                "currency": 3650,
-                "gems": 70,
-                "currencyVariant": "Coins"
+                ]
               }
             ]
           },
           {
             "name": "100M Egg",
-            "ignoreCalculator": true,
             "image": "https://static.wikia.nocookie.net/bgs-infinity/images/5/55/100M_Egg.png",
+            "ignoreCalculator": true,
             "pets": [
+              {
+                "name": "Bronze Bunny",
+                "rarity": "Common",
+                "droprate": 1.5625,
+                "bubbles": 60,
+                "gems": 18,
+                "currency": 75,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Bronze_Bunny.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/a/a6/Shiny_Bronze_Bunny.png"
+                ]
+              },
+              {
+                "name": "Silver Fox",
+                "rarity": "Unique",
+                "droprate": 3.3333333333333335,
+                "bubbles": 110,
+                "gems": 25,
+                "currency": 125,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/9/94/Silver_Fox.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/8/82/Shiny-silver-fox.png"
+                ]
+              },
+              {
+                "name": "Golden Dragon",
+                "rarity": "Epic",
+                "droprate": 33.333333333333336,
+                "bubbles": 125,
+                "gems": 0,
+                "currency": 140,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/4/45/Golden_Dragon.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/c/c5/Shiny-golden-dragon.png"
+                ]
+              },
               {
                 "name": "Diamond Serpent",
                 "rarity": "Legendary",
-                "droprate": "2500",
+                "droprate": 2500,
+                "bubbles": 600,
+                "gems": 12,
+                "currency": 625,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny",
+                  "Mythic",
+                  "Shiny Mythic"
+                ],
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/0/00/Diamond_Serpent.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/d/d3/Shiny_Diamond_Serpent.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/e/e2/Mythic_Diamond_Serpent.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/b/b8/Shiny_Mythic_Diamond_Serpent.png"
-                ],
+                ]
+              },
+              {
+                "name": "Diamond Hexarium",
+                "rarity": "Legendary",
+                "droprate": 50000,
+                "bubbles": 1250,
+                "gems": 23,
+                "currency": 1600,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
                   "Mythic",
                   "Shiny Mythic"
                 ],
-                "bubbles": 600,
-                "currency": 625,
-                "gems": 12,
-                "currencyVariant": "Coins"
-              },
-              {
-                "name": "Diamond Hexarium",
-                "rarity": "Legendary",
-                "droprate": "50000",
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Diamond_Hexarium.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/8/86/Shiny_Diamond_Hexarium.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/8/8a/Mythic_Diamond_Hexarium.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/b/b0/Shiny_Mythic_Diamond_Hexarium.png"
-                ],
+                ]
+              },
+              {
+                "name": "King Pufferfish",
+                "rarity": "Legendary",
+                "droprate": 800000,
+                "bubbles": 1475,
+                "gems": 32,
+                "currency": 2300,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
                   "Mythic",
                   "Shiny Mythic"
                 ],
-                "bubbles": 1250,
-                "currency": 1600,
-                "gems": 23,
-                "currencyVariant": "Coins"
-              },
-              {
-                "name": "King Pufferfish",
-                "rarity": "Legendary",
-                "droprate": "800000",
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/c/c9/King_Pufferfish.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/6/66/Shiny_King_Pufferfish.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Mythic_King_Pufferfish.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/e/e0/Shiny_Mythic_King_Pufferfish.png"
-                ],
+                ]
+              },
+              {
+                "name": "Royal Trophy",
+                "rarity": "Secret",
+                "droprate": 50000000,
+                "bubbles": 3000,
+                "gems": 65,
+                "currency": 3500,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
                   "Mythic",
                   "Shiny Mythic"
                 ],
-                "bubbles": 1475,
-                "currency": 2300,
-                "gems": 32,
-                "currencyVariant": "Coins"
-              },
-              {
-                "name": "Royal Trophy",
-                "rarity": "Secret",
-                "droprate": "50000000",
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/3/32/Royal_Trophy.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/8/81/Shiny_Royal_Trophy.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/1/16/Mythic_Royal_Trophy.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/6/6a/Shiny_Mythic_Royal_Trophy.png"
-                ],
-                "variants": [
-                  "Normal",
-                  "Shiny",
-                  "Mythic",
-                  "Shiny Mythic"
-                ],
-                "bubbles": 3000,
-                "currency": 3500,
-                "gems": 65,
-                "currencyVariant": "Coins"
+                ]
               }
             ]
           },
@@ -1576,175 +2655,69 @@
             ]
           },
           {
-            "name": "Pastel Egg",
-            "ignoreCalculator": true,
-            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/cc/Pastel_Egg.png",
-            "pets": [
-              {
-                "name": "Sweet Treat",
-                "droprate": "25000",
-                "rarity": "Legendary",
-                "variants": [
-                  "Normal",
-                  "Shiny",
-                  "Mythic",
-                  "Shiny Mythic"
-                ],
-                "image": [
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/0/0e/Sweet_Treat.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/8/8d/Shiny_Sweet_Treat.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/21/Mythic_Sweet_Treat.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/6/6c/Shiny_Mythic_Sweet_Treat.png"
-                ],
-                "bubbles": 620,
-                "currency": 725,
-                "gems": 12,
-                "currencyVariant": "Coins"
-              },
-              {
-                "name": "Rainbow Marshmellow",
-                "droprate": "125000",
-                "rarity": "Legendary",
-                "variants": [
-                  "Normal",
-                  "Shiny",
-                  "Mythic",
-                  "Shiny Mythic"
-                ],
-                "image": [
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Rainbow_Marshmellow.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/3/3c/Shiny_Rainbow_Marshmellow.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/d/de/Mythic_Rainbow_Marshmellow.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/a/a8/Shiny_Mythic_Rainbow_Marshmellow.png"
-                ],
-                "bubbles": 1250,
-                "currency": 1700,
-                "gems": 20,
-                "currencyVariant": "Coins"
-              },
-              {
-                "name": "Giant Chocolate Chicken",
-                "droprate": "50000000",
-                "rarity": "Secret",
-                "variants": [
-                  "Normal",
-                  "Shiny",
-                  "Mythic",
-                  "Shiny Mythic"
-                ],
-                "image": [
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/e/ef/Giant_Chocolate_Chicken.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/c/c0/Shiny_Giant_Chocolate_Chicken.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/0/06/Mythic_Giant_Chocolate_Chicken.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/6/63/Shiny_Mythic_Giant_Chocolate_Chicken.png"
-                ],
-                "bubbles": 2225,
-                "currency": 3100,
-                "gems": 45,
-                "currencyVariant": "Coins"
-              }
-            ]
-          },
-          {
-            "name": "Bunny Egg",
-            "ignoreCalculator": true,
-            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/4/4d/Bunny_Egg.png",
-            "pets": [
-              {
-                "name": "Seraphic Bunny",
-                "droprate": "5000",
-                "rarity": "Legendary",
-                "variants": [
-                  "Normal",
-                  "Shiny",
-                  "Mythic",
-                  "Shiny Mythic"
-                ],
-                "image": [
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/d/d7/Seraphic_Bunny.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/0/09/Shiny_Seraphic_Bunny.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/d/d2/Mythic_Seraphic_Bunny.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/5/52/Shiny_Mythic_Seraphic_Bunny.png"
-                ],
-                "bubbles": 500,
-                "currency": 550,
-                "gems": 8,
-                "currencyVariant": "Coins"
-              },
-              {
-                "name": "Ethereal Bunny",
-                "droprate": "100000",
-                "rarity": "Legendary",
-                "variants": [
-                  "Normal",
-                  "Shiny",
-                  "Mythic",
-                  "Shiny Mythic"
-                ],
-                "image": [
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/b/b9/Ethereal_Bunny.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/5/58/Shiny_Ethereal_Bunny.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/a/ac/Mythic_Ethereal_Bunny.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/7/7e/Shiny_Mythic_Ethereal_Bunny.png"
-                ],
-                "bubbles": 1075,
-                "currency": 1400,
-                "gems": 19,
-                "currencyVariant": "Coins"
-              },
-              {
-                "name": "Cardinal Bunny",
-                "droprate": "1000000",
-                "rarity": "Legendary",
-                "variants": [
-                  "Normal",
-                  "Shiny",
-                  "Mythic",
-                  "Shiny Mythic"
-                ],
-                "image": [
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/3/33/Cardinal_Bunny.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/6/63/Shiny_Cardinal_Bunny.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/b/bb/Mythic_Cardinal_Bunny.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/4/45/Shiny_Mythic_Cardinal_Bunny.png"
-                ],
-                "bubbles": 1425,
-                "currency": 2000,
-                "gems": 28,
-                "currencyVariant": "Coins"
-              },
-              {
-                "name": "Easter Basket",
-                "droprate": "100000000",
-                "rarity": "Secret",
-                "variants": [
-                  "Normal",
-                  "Shiny",
-                  "Mythic",
-                  "Shiny Mythic"
-                ],
-                "image": [
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/0/00/Easter_Basket.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/25/Shiny_Easter_Basket.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/a/a1/Mythic_Easter_Basket.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/c/ce/Shiny_Mythic_Easter_Basket.png"
-                ],
-                "bubbles": 2900,
-                "currency": 3500,
-                "gems": 60,
-                "currencyVariant": "Coins"
-              }
-            ]
-          },
-          {
             "name": "Throwback Egg",
-            "ignoreCalculator": true,
             "image": "https://static.wikia.nocookie.net/bgs-infinity/images/8/86/Throwback_Egg.png",
+            "ignoreCalculator": true,
             "pets": [
+              {
+                "name": "Bow Bunny",
+                "rarity": "Common",
+                "droprate": 1.5625,
+                "bubbles": 55,
+                "gems": 15,
+                "currency": 70,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/3/31/Bow_Bunny.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/5/5d/Shiny_Bow_Bunny.png"
+                ]
+              },
+              {
+                "name": "Easter Egg",
+                "rarity": "Unique",
+                "droprate": 3.3333333333333335,
+                "bubbles": 100,
+                "gems": 22,
+                "currency": 120,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/4/47/Easter_Egg.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/9/9c/Shiny_Easter_Egg.png"
+                ]
+              },
+              {
+                "name": "Flying Bunny",
+                "rarity": "Epic",
+                "droprate": 33.333333333333336,
+                "bubbles": 115,
+                "gems": 0,
+                "currency": 125,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/7/7a/Flying_Bunny.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/a/ac/Shiny_Flying_Bunny.png"
+                ]
+              },
               {
                 "name": "Easter Serpent",
-                "droprate": "2500",
                 "rarity": "Legendary",
+                "droprate": 2500,
+                "bubbles": 550,
+                "gems": 10,
+                "currency": 600,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -1756,16 +2729,16 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/8/84/Shiny_Easter_Serpent.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/9/99/Mythic_Easter_Serpent.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/8/8d/Shiny_Mythic_Easter_Serpent.png"
-                ],
-                "bubbles": 550,
-                "currency": 600,
-                "gems": 10,
-                "currencyVariant": "Coins"
+                ]
               },
               {
                 "name": "Dualcorn",
-                "droprate": "50000",
                 "rarity": "Legendary",
+                "droprate": 50000,
+                "bubbles": 1200,
+                "gems": 21,
+                "currency": 1550,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -1777,16 +2750,16 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/e/e8/Shiny_Dualcorn.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/3/3f/Mythic_Dualcorn.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/4/40/Shiny_Mythic_Dualcorn.png"
-                ],
-                "bubbles": 1200,
-                "currency": 1550,
-                "gems": 21,
-                "currencyVariant": "Coins"
+                ]
               },
               {
                 "name": "Holy Egg",
-                "droprate": "500000",
                 "rarity": "Legendary",
+                "droprate": 500000,
+                "bubbles": 1425,
+                "gems": 28,
+                "currency": 2200,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -1798,16 +2771,16 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/1/18/Shiny_Holy_Egg.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/a/a4/Mythic_Holy_Egg.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/d/d4/Shiny_Mythic_Holy_Egg.png"
-                ],
-                "bubbles": 1425,
-                "currency": 2200,
-                "gems": 28,
-                "currencyVariant": "Coins"
+                ]
               },
               {
                 "name": "Godly Gem",
-                "droprate": "250000000",
                 "rarity": "Secret",
+                "droprate": 250000000,
+                "bubbles": 3200,
+                "gems": 70,
+                "currency": 3750,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -1819,16 +2792,16 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/5/52/Shiny_Godly_Gem.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/0/00/Mythic_Godly_Gem.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/8/8e/Shiny_Mythic_Godly_Gem.png"
-                ],
-                "bubbles": 3200,
-                "currency": 3750,
-                "gems": 70,
-                "currencyVariant": "Coins"
+                ]
               },
               {
                 "name": "Dementor",
-                "droprate": "1000000000",
                 "rarity": "Secret",
+                "droprate": 1000000000,
+                "bubbles": 3750,
+                "gems": 85,
+                "currency": 4250,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -1840,11 +2813,287 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Shiny_Dementor.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/f/f4/Mythic_Dementor.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/3/3b/Shiny_Mythic_Dementor.png"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Bunny Egg",
+            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/4/4d/Bunny_Egg.png",
+            "ignoreCalculator": true,
+            "pets": [
+              {
+                "name": "Bunny Doggy",
+                "rarity": "Common",
+                "droprate": 1.5625,
+                "bubbles": 50,
+                "gems": 15,
+                "currency": 62,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
                 ],
-                "bubbles": 3750,
-                "currency": 4250,
-                "gems": 85,
-                "currencyVariant": "Coins"
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/d/db/Bunny_Doggy.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/8/8e/Shiny_Bunny_Doggy.png"
+                ]
+              },
+              {
+                "name": "Egg Bunny",
+                "rarity": "Rare",
+                "droprate": 3.3333333333333335,
+                "bubbles": 88,
+                "gems": 18,
+                "currency": 105,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/f/fa/Egg_Bunny.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/5/5a/Shiny_Egg_Bunny.png"
+                ]
+              },
+              {
+                "name": "Angel Bunny",
+                "rarity": "Epic",
+                "droprate": 33.333333333333336,
+                "bubbles": 95,
+                "gems": 0,
+                "currency": 105,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/4/46/Angel_Bunny.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/e/e3/Shiny_Angel_Bunny.png"
+                ]
+              },
+              {
+                "name": "Seraphic Bunny",
+                "rarity": "Legendary",
+                "droprate": 5000,
+                "bubbles": 500,
+                "gems": 8,
+                "currency": 550,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny",
+                  "Mythic",
+                  "Shiny Mythic"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/d/d7/Seraphic_Bunny.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/0/09/Shiny_Seraphic_Bunny.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/d/d2/Mythic_Seraphic_Bunny.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/5/52/Shiny_Mythic_Seraphic_Bunny.png"
+                ]
+              },
+              {
+                "name": "Ethereal Bunny",
+                "rarity": "Legendary",
+                "droprate": 100000,
+                "bubbles": 1075,
+                "gems": 19,
+                "currency": 1400,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny",
+                  "Mythic",
+                  "Shiny Mythic"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/b/b9/Ethereal_Bunny.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/5/58/Shiny_Ethereal_Bunny.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/a/ac/Mythic_Ethereal_Bunny.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/7/7e/Shiny_Mythic_Ethereal_Bunny.png"
+                ]
+              },
+              {
+                "name": "Cardinal Bunny",
+                "rarity": "Legendary",
+                "droprate": 1000000,
+                "bubbles": 1425,
+                "gems": 28,
+                "currency": 2000,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny",
+                  "Mythic",
+                  "Shiny Mythic"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/3/33/Cardinal_Bunny.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/6/63/Shiny_Cardinal_Bunny.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/b/bb/Mythic_Cardinal_Bunny.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/4/45/Shiny_Mythic_Cardinal_Bunny.png"
+                ]
+              },
+              {
+                "name": "Easter Basket",
+                "rarity": "Secret",
+                "droprate": 100000000,
+                "bubbles": 2900,
+                "gems": 60,
+                "currency": 3500,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny",
+                  "Mythic",
+                  "Shiny Mythic"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/0/00/Easter_Basket.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/25/Shiny_Easter_Basket.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/a/a1/Mythic_Easter_Basket.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/c/ce/Shiny_Mythic_Easter_Basket.png"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Pastel Egg",
+            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/cc/Pastel_Egg.png",
+            "ignoreCalculator": true,
+            "pets": [
+              {
+                "name": "Paper Doggy",
+                "rarity": "Common",
+                "droprate": 1.6666666666666667,
+                "bubbles": 40,
+                "gems": 0,
+                "currency": 36,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/d/d9/Paper_Doggy.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/28/Shiny_Paper_Doggy.png"
+                ]
+              },
+              {
+                "name": "Paper Bunny",
+                "rarity": "Unique",
+                "droprate": 11.11111111111111,
+                "bubbles": 55,
+                "gems": 0,
+                "currency": 60,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/3/31/Paper_Bunny.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/f/ff/Shiny_Paper_Bunny.png"
+                ]
+              },
+              {
+                "name": "Chubby Bunny",
+                "rarity": "Rare",
+                "droprate": 14.285714285714286,
+                "bubbles": 100,
+                "gems": 1,
+                "currency": 115,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/a/a6/Chubby_Bunny.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/b/bc/Shiny_Chubby_Bunny.png"
+                ]
+              },
+              {
+                "name": "Hatchling",
+                "rarity": "Epic",
+                "droprate": 50,
+                "bubbles": 190,
+                "gems": 0,
+                "currency": 265,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/d/de/Hatchling.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/d/d9/Shiny_Hatchling.png"
+                ]
+              },
+              {
+                "name": "Sweet Treat",
+                "rarity": "Legendary",
+                "droprate": 25000,
+                "bubbles": 620,
+                "gems": 12,
+                "currency": 725,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny",
+                  "Mythic",
+                  "Shiny Mythic"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/0/0e/Sweet_Treat.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/8/8d/Shiny_Sweet_Treat.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/21/Mythic_Sweet_Treat.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/6/6c/Shiny_Mythic_Sweet_Treat.png"
+                ]
+              },
+              {
+                "name": "Rainbow Marshmellow",
+                "rarity": "Legendary",
+                "droprate": 125000,
+                "bubbles": 1250,
+                "gems": 20,
+                "currency": 1700,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny",
+                  "Mythic",
+                  "Shiny Mythic"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Rainbow_Marshmellow.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/3/3c/Shiny_Rainbow_Marshmellow.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/d/de/Mythic_Rainbow_Marshmellow.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/a/a8/Shiny_Mythic_Rainbow_Marshmellow.png"
+                ]
+              },
+              {
+                "name": "Giant Chocolate Chicken",
+                "rarity": "Secret",
+                "droprate": 50000000,
+                "bubbles": 2225,
+                "gems": 45,
+                "currency": 3100,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny",
+                  "Mythic",
+                  "Shiny Mythic"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/e/ef/Giant_Chocolate_Chicken.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/c/c0/Shiny_Giant_Chocolate_Chicken.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/0/06/Mythic_Giant_Chocolate_Chicken.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/6/63/Shiny_Mythic_Giant_Chocolate_Chicken.png"
+                ]
               }
             ]
           }
@@ -1855,13 +3104,51 @@
         "eggs": [
           {
             "name": "Aura Egg",
-            "ignoreCalculator": true,
             "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2e/Aura_Egg.png",
+            "ignoreCalculator": true,
             "pets": [
               {
+                "name": "Manny",
+                "rarity": "Rare",
+                "droprate": 1.5384615384615385,
+                "bubbles": 120,
+                "gems": 2,
+                "currency": 145,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/0/05/Manny.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/3/3f/Shiny_Manny.png"
+                ]
+              },
+              {
+                "name": "Manicorn",
+                "rarity": "Epic",
+                "droprate": 3.3333333333333335,
+                "bubbles": 185,
+                "gems": 0,
+                "currency": 250,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/6/64/Manicorn.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/b/ba/ShinyManicorn.png"
+                ]
+              },
+              {
                 "name": "Sigma Serpent",
-                "droprate": "10000",
                 "rarity": "Legendary",
+                "droprate": 10000,
+                "bubbles": 1300,
+                "gems": 17,
+                "currency": 1800,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -1873,16 +3160,16 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/8/8f/Shiny_Sigma_Serpent.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/1/11/Mythic_Sigma_Serpent.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/f/fe/Shiny_Mythic_Sigma_Serpent.png"
-                ],
-                "bubbles": 1300,
-                "currency": 1800,
-                "gems": 17,
-                "currencyVariant": "Coins"
+                ]
               },
               {
                 "name": "Manarium",
-                "droprate": "20000",
                 "rarity": "Legendary",
+                "droprate": 20000,
+                "bubbles": 1500,
+                "gems": 22,
+                "currency": 1900,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -1894,16 +3181,16 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/9/9b/Shiny_Manarium.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/b/bf/Mythic_Manarium.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/4/42/Shiny_Mythic_Manarium.png"
-                ],
-                "bubbles": 1500,
-                "currency": 1900,
-                "gems": 22,
-                "currencyVariant": "Coins"
+                ]
               },
               {
                 "name": "MAN FACE GOD",
-                "droprate": "1000000",
                 "rarity": "Secret",
+                "droprate": 1000000,
+                "bubbles": 2600,
+                "gems": 45,
+                "currency": 3100,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -1915,11 +3202,7 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/1/13/Shiny_MAN_FACE_GOD.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/9/9c/Mythic_MAN_FACE_GOD.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Shiny_Mythic_MAN_FACE_GOD.png"
-                ],
-                "bubbles": 2600,
-                "currency": 3100,
-                "gems": 45,
-                "currencyVariant": "Coins"
+                ]
               }
             ]
           },
@@ -1928,9 +3211,47 @@
             "image": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3a/Silly_Egg.png",
             "pets": [
               {
+                "name": "Bunnnny",
+                "rarity": "Common",
+                "droprate": 1.5384615384615385,
+                "bubbles": 135,
+                "gems": 2,
+                "currency": 155,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Bunnnny.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/7/75/Shiny-bunnnny.png"
+                ]
+              },
+              {
+                "name": "Long Kitty",
+                "rarity": "Rare",
+                "droprate": 3.3333333333333335,
+                "bubbles": 210,
+                "gems": 0,
+                "currency": 270,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/f/f6/Long_Kitty.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/6/63/Shiny-long-kitty.png"
+                ]
+              },
+              {
                 "name": "DOOF",
                 "rarity": "Legendary",
-                "droprate": "10000",
+                "droprate": 10000,
+                "bubbles": 1350,
+                "gems": 18,
+                "currency": 1900,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -1942,16 +3263,16 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/7/77/Shiny_DOOF.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/f/f1/Mythic_DOOF.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/1/1c/Shiny_Mythic_DOOF.png"
-                ],
-                "bubbles": 1350,
-                "currency": 1900,
-                "gems": 18,
-                "currencyVariant": "Coins"
+                ]
               },
               {
                 "name": "ROUND",
                 "rarity": "Legendary",
-                "droprate": "250000",
+                "droprate": 250000,
+                "bubbles": 1500,
+                "gems": 22,
+                "currency": 1900,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -1963,16 +3284,16 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/f/fb/Shiny_ROUND.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/b/b0/Mythic_ROUND.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/a/a6/Shiny_Mythic_ROUND.png"
-                ],
-                "bubbles": 1500,
-                "currency": 1900,
-                "gems": 22,
-                "currencyVariant": "Coins"
+                ]
               },
               {
-                "name": "Silly Doggy",
+                "name": "Silly Doggy :)",
                 "rarity": "Secret",
-                "droprate": "1000000",
+                "droprate": 1000000,
+                "bubbles": 2700,
+                "gems": 50,
+                "currency": 3250,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -1984,11 +3305,203 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/5/5c/Shiny_Silly_Doggy.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/7/76/Mythic_Silly_Doggy.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/c/cc/Shiny_Mythic_Silly_Doggy.png"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Robux Shop",
+        "eggs": [
+          {
+            "name": "Wave 4",
+            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
+            "pets": [
+              {
+                "name": "Toilet Doggy",
+                "rarity": "Legendary",
+                "droprate": 1,
+                "bubbles": 925,
+                "gems": 16,
+                "currency": 1050,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny",
+                  "Mythic",
+                  "Shiny Mythic"
                 ],
-                "bubbles": 2700,
-                "currency": 3250,
-                "gems": 50,
-                "currencyVariant": "Coins"
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/1/12/Toilet_Doggy.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/6/6b/Shiny_Toilet_Doggy.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/f/f3/Mythic_Toilet_Doggy.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/0/0b/Shiny_Mythic_Toilet_Doggy.png"
+                ]
+              },
+              {
+                "name": "Capybara Plushie",
+                "rarity": "Legendary",
+                "droprate": 1,
+                "bubbles": 1250,
+                "gems": 20,
+                "currency": 1700,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny",
+                  "Mythic",
+                  "Shiny Mythic"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/1/1f/Capybara_Plushie.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/25/Shiny_Capybara_Plushie.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/5/5b/Mythic_Capybara_Plushie.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/b/b8/Shiny_Mythic_Capybara_Plushie.png"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Wave 3",
+            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
+            "pets": [
+              {
+                "name": "Enraged Phoenix",
+                "rarity": "Legendary",
+                "droprate": 1,
+                "bubbles": 120,
+                "gems": 16,
+                "currency": 120,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/6/64/Enraged_Phoenix.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/2e/Shiny_Enraged_Phoenix.png"
+                ]
+              },
+              {
+                "name": "Electra Hydra",
+                "rarity": "Legendary",
+                "droprate": 1,
+                "bubbles": 130,
+                "gems": 2,
+                "currency": 140,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/a/a3/Electra_Hydra.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/3/36/Shiny_Electra_Hydra.png"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Wave 2",
+            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
+            "pets": [
+              {
+                "name": "Dark Serpent",
+                "rarity": "Legendary",
+                "droprate": 1,
+                "bubbles": 120,
+                "gems": 16,
+                "currency": 120,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/f/f1/Dark_Serpent.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/4/47/Shiny_Dark_Serpent.png"
+                ]
+              },
+              {
+                "name": "Infernus",
+                "rarity": "Legendary",
+                "droprate": 1,
+                "bubbles": 130,
+                "gems": 2,
+                "currency": 140,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/d/d2/Infernus.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/22/Shiny_Infernus.png"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Wave 1",
+            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
+            "pets": [
+              {
+                "name": "Beta TV",
+                "rarity": "Legendary",
+                "droprate": 1,
+                "bubbles": 110,
+                "gems": 135,
+                "currency": 95,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/6/69/Beta_TV.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/9/9e/Shiny_Beta_TV.png"
+                ]
+              },
+              {
+                "name": "Dowodle",
+                "rarity": "Legendary",
+                "droprate": 1,
+                "bubbles": 120,
+                "gems": 15,
+                "currency": 135,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/6/69/Dowodle.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/9/98/Shiny_Dowodle.png"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Gem Bundles",
+            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
+            "pets": [
+              {
+                "name": "Flying Gem",
+                "rarity": "Legendary",
+                "droprate": 10,
+                "bubbles": 50,
+                "gems": 45,
+                "currency": 35,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/1/1a/Flying_Gem.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/5/5c/Shiny_Flying_Gem.png"
+                ]
               }
             ]
           }
@@ -2000,8 +3513,7 @@
     "name": "🎁 Other",
     "categories": [
       {
-        "name": "Secret Bounty Board",
-        "ignoreCalculator": true,
+        "name": "Secret Bounty",
         "eggs": [
           {
             "name": "Secret Bounty",
@@ -2009,8 +3521,12 @@
             "pets": [
               {
                 "name": "Queen Kitty",
-                "droprate": "80000000",
                 "rarity": "Secret",
+                "droprate": 80000000,
+                "bubbles": 3400,
+                "gems": 72,
+                "currency": 3100,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -2022,37 +3538,16 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/0/09/Shiny_Queen_Kitty.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Mythic_Queen_Kitty.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/f/ff/Shiny_Mythic_Queen_Kitty.png"
-                ],
-                "bubbles": 3400,
-                "currency": 3100,
-                "gems": 72,
-                "currencyVariant": "Coins"
-              },
-              {
-                "name": "Prophet",
-                "droprate": "250000000",
-                "rarity": "Secret",
-                "variants": [
-                  "Normal",
-                  "Shiny",
-                  "Mythic",
-                  "Shiny Mythic"
-                ],
-                "image": [
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/4/4a/Prophet.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/9/90/Shiny_Prophet.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/3/3d/Mythic_Prophet.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/1/13/Shiny_Mythic_Prophet.png"
-                ],
-                "bubbles": 3500,
-                "currency": 3800,
-                "gems": 75,
-                "currencyVariant": "Coins"
+                ]
               },
               {
                 "name": "D0GGY1337",
-                "droprate": "50000000",
                 "rarity": "Secret",
+                "droprate": 50000000,
+                "bubbles": 3350,
+                "gems": 70,
+                "currency": 3000,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -2064,11 +3559,28 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/4/40/Shiny-d0ggy1337.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/a/a1/Mythic_D0GGY1337.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/f/fb/Shiny-mythic-d0ggy1337.png"
+                ]
+              },
+              {
+                "name": "Prophet",
+                "rarity": "Secret",
+                "droprate": 250000000,
+                "bubbles": 3500,
+                "gems": 75,
+                "currency": 3800,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny",
+                  "Mythic",
+                  "Shiny Mythic"
                 ],
-                "bubbles": 3350,
-                "currency": 3000,
-                "gems": 70,
-                "currencyVariant": "Coins"
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/4/4a/Prophet.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/9/90/Shiny_Prophet.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/3/3d/Mythic_Prophet.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/1/13/Shiny_Mythic_Prophet.png"
+                ]
               }
             ]
           }

@@ -1,7 +1,13 @@
 import { PetVariant, Rarity } from "./PetUtil";
 
 export const rarityColorMap: Record<Rarity, string> = {
+  Common: "#ffffff",
+  Unique: "#fec394",
+  Rare: "#ff6161",
+  Epic: "#d166fd",
   Legendary: "rainbow",
+  //'Legendary Tier II': "rainbow",
+  //'Legendary Tier III': "rainbow",
   Secret: "#ff9900"
 };
 

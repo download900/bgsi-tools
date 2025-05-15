@@ -3,7 +3,7 @@ import petJson from "../assets/pets.json";
 
 // ~~~~~~~~~~ Types ~~~~~~~~~~
 
-export type Rarity = "Legendary" | "Secret";
+export type Rarity = "Common" | "Unique" | "Rare" | "Epic" | "Legendary" | "Secret"; // "Legendary" | "Legendary Tier II"
 export type PetVariant = "Normal" | "Shiny" | "Mythic" | "Shiny Mythic";
 export type CurrencyVariant = "Coins" | "Tickets";
 export type PetStat = "bubbles" | "currency" | "gems";

@@ -1,265 +1,330 @@
-// import { JSX, useEffect, useState } from "react";
+import { JSX, SetStateAction, useEffect, useState } from "react";
 
-// import * as cheerio from 'cheerio';
-// import { Button, Container, FormControl, Input, Typography } from "@mui/material";
+import * as cheerio from 'cheerio';
+import { Button, Container, FormControl, Input, Typography } from "@mui/material";
 
-// export interface Pet {
-//   name: string;
-//   chance: string;
-//   rarity: Rarity;
-//   bubbleStat: number;
-//   currencyStat: number;
-//   gemsStat: number;
-//   variant: PetVariant;
-//   image: string;
-//   eggName: string;
-//   eggImage: string;
-// }
-// export type PetVariant = 'Normal' | 'Shiny' | 'Mythic' | 'Shiny Mythic';
-// export type Rarity = 'Common' | 'Unique' | 'Rare' | 'Epic' | 'Legendary' | 'Secret';
+import { Pet, Rarity, PetVariant, CurrencyVariant, Egg, SubCategoryData } from "../util/PetUtil";
 
-// // fetch raw HTML
-// async function fetchHTML(url: string): Promise<string> {
-//   const res = await fetch(url);
-//   if (!res.ok) throw new Error(`Failed to fetch ${url}: ${res.status}`);
-//   return res.text();
-// }
+interface Subcategory {
+  name:   string;        // e.g. "The Overworld", "Minigame Paradise", …
+  eggs:   EggResult[];   // one per egg in that subcategory
+}
 
-// interface EggEntry {
-//   petName: string;
-//   eggName:  string;
-// }
+interface EggResult {
+  eggName:  string;      // e.g. "Common Egg"
+  petNames: string[];    // e.g. ["Doggy","Kitty","Bunny",…]
+}
 
-// function parseEggEntries(src: string): EggEntry[] {
-//   const entries: EggEntry[] = [];
-//   const openTag = '{{#tag:tabber|';
-//   let pos = 0;
+// (1) This little helper scans a chunk for ALL inner {{#tag:tabber|…}} blocks
+//     and returns a flat list of { eggName, petName } entries.
+function parseEggEntries(src: string): { eggName: string; petName: string }[] {
+  const out: { eggName: string; petName: string }[] = [];
+  const openTag = '{{#tag:tabber|';
+  let pos = 0;
 
-//   while (true) {
-//     // find the next "{{#tag:tabber|"
-//     const start = src.indexOf(openTag, pos);
-//     if (start === -1) {
-//         break;
-//     }
+  while (true) {
+    const start = src.indexOf(openTag, pos);
+    if (start === -1) break;
 
-//     // walk forward, counting {{ vs }} so we stop at the matching close
-//     let depth = 1;
-//     let i     = start + openTag.length;
-//     while (i < src.length && depth > 0) {
-//       if (src.startsWith('{{', i)) { depth++; i += 2; }
-//       else if (src.startsWith('}}', i)) { depth--; i += 2; }
-//       else { i++; }
-//     }
+    // find matching closing “}}”
+    let depth = 1, i = start + openTag.length;
+    while (i < src.length && depth > 0) {
+      if (src.startsWith('{{', i)) { depth++; i += 2; }
+      else if (src.startsWith('}}', i)) { depth--; i += 2; }
+      else { i++; }
+    }
 
-//     // now [start+openTag.length .. i-2] is the full inner content
-//     const block = src.slice(start + openTag.length, i - 2);
-//     pos = i;
+    // inner of this tabber
+    const block = src.slice(start + openTag.length, i - 2);
+    pos = i;
 
-//     // split on "{{!}}-{{!}}" and extract eggName + petName
-//     for (const section of block.split('{{!}}-{{!}}')) {
-//       // first line like "Common Egg="
-//       const eggMatch = section.match(/^([^=\n]+)=/m);
-//       if (!eggMatch) continue;
-//       const eggName = eggMatch[1].trim();
+    // each “{{!}}-{{!}}” section is one egg
+    for (const section of block.split('{{!}}-{{!}}')) {
+      const eggM = section.match(/^([^=\n]+)=/m);
+      if (!eggM) continue;
+      const eggName = eggM[1].trim();
 
-//       // find the Pet-List in that chunk
-//       // This isn't working, but I don't know why
-//       const listMatch = section.match(/\{\{Pet-List\s*\|([\s\S]+?)\}\}/);
-//       if (!listMatch) continue;
+      // allow newline between "Pet-List" and "|"
+      const listM = section.match(/\{\{Pet-List\s*\|([\s\S]+?)\}\}/);
+      if (!listM) continue;
 
-//       for (const item of listMatch[1].split('|').map(s => s.trim())) {
-//         const m = item.match(/name:([^;]+);/);
-//         if (m) entries.push({
-//           petName: m[1].trim(),
-//           eggName
-//         });
-//       }
-//     }
-//   }
+      // split on lines beginning with "|" → each pet entry
+      const items = listM[1]
+        .split(/\n\|/)
+        .map(s => s.trim())
+        .filter(s => s);
 
-//   return entries;
-// }
+      for (const item of items) {
+        const nameM = item.match(/name:([^;]+);/);
+        //const rarity = item.match(/rarity:([^;\n]+)(;|\n|$)/);
+        //if (!rarity) continue;
+        //if (rarity[1].trim() !== 'Legendary' && rarity[1].trim() !== 'Secret') continue;
+        if (nameM) {
+          out.push({ eggName, petName: nameM[1].trim() });
+        }
+      }
+    }
+  }
 
-// function extractNumber(str: string): number {
-//   const num = str.replace(/[^\d]/g, '');
-//   return parseInt(num, 10) || 0;
-// }
-// function formatWithCommas(n: number): string {
-//   return n.toLocaleString();
-// }
-// function computeChance(base: string, mult: number): string {
-//   if (base.includes('/')) {
-//     const denom = parseInt(base.split('/')[1].replace(/,/g, ''), 10);
-//     return `1/${formatWithCommas(denom * mult)}`;
-//   } else if (base.includes('%')) {
-//     const pct = parseFloat(base.replace('%',''));
-//     return `${(pct * mult).toFixed(3)}%`;
-//   }
-//   return base;
-// }
+  return out;
+}
 
-// async function fetchPetHTML(petName: string): Promise<string> {
-//     const api =
-//       `https://bubblegum-simulator.fandom.com/api.php` +
-//       `?action=parse` +
-//       `&page=${encodeURIComponent(petName)}` +
-//       `&prop=text` +
-//       `&format=json` +
-//       `&origin=*`;
-//     const res  = await fetch(api);
-//     const json = await res.json() as any;
-//     if (json.error) {
-//         console.error(`Error fetching ${petName}: ${json.error}`);
-//         return '';
-//     }
-//     return json.parse.text['*'];  // the HTML fragment you can feed into cheerio.load()
-// }
+function parsePetList(src: string): Subcategory[] {
+  const subs: Subcategory[] = [];
+  const outerRE = /\|\-\|([^\n=]+)=/g;
+  const markers: { name: string; idx: number }[] = [];
+  let m: RegExpExecArray | null;
 
-// // 2) Fetch each pet page and scrape rarity + egg info
-// async function fetchPetVariants(entry: EggEntry): Promise<Pet[]> {
-//     const html = await fetchPetHTML(entry.petName);
-//     const $ = cheerio.load(html);
+  // 1) find every sub-category marker (“|-|Secret Bounty=” etc)
+  while ((m = outerRE.exec(src))) {
+    markers.push({ name: m[1].trim(), idx: m.index });
+  }
 
-//     console.log(html);
+  // 2) for each sub-category slice out its chunk
+  for (let i = 0; i < markers.length; i++) {
+    const { name, idx } = markers[i];
+    const endIdx = (i + 1 < markers.length ? markers[i+1].idx : src.length);
+    const chunk  = src.slice(idx, endIdx);
 
-//     // We need to iterate through the "<div class="pi-item pi-data pi-item-spacing pi-border-color">" elements and check the h3 title to determine the data.
-//     // This will be used for Rarity, Bubble stat, Currency stat and Gems stat.
+    // 3) primary parse via #tag:tabber
+    const pairs = parseEggEntries(chunk);
+    const eggs: EggResult[] = [];
 
-//     // For example, for Rarity, we have:
-//     // HTML will look like this:
-//     // <div class="pi-item pi-data pi-item-spacing pi-border-color">
-//     // 		<h3 class="pi-data-label pi-secondary-font">Rarity</h3>
-//     // 	<div class="pi-data-value pi-font"><span class="common">Common</span></div>
-//     // </div>
-//     // And we want the "Common" part (may say something else)
-//     // We need to get the pi-item pi-data pi-item-spacing pi-border-color class and check the h3 title to determine the data.
-//     // Then, we can get the value from the <div class="pi-data-value pi-font"> span element.
+    if (pairs.length > 0) {
+      // group by eggName
+      const byEgg: Record<string, string[]> = {};
+      for (const { eggName, petName } of pairs) {
+        (byEgg[eggName] ??= []).push(petName);
+      }
+      for (const [eggName, petNames] of Object.entries(byEgg)) {
+        eggs.push({ eggName, petNames });
+      }
+    } else {
+      // 4) fallback: look for any standalone Pet-List blocks
+      const petListRE = /\{\{Pet-List\s*\|([\s\S]+?)\}\}/g;
+      for (const listM of chunk.matchAll(petListRE)) {
+        const inner = listM[1];
+        const petNames = inner
+          .split(/\n\|/)           // split on leading pipe
+          .map(s => s.trim())
+          .map(item => item.match(/name:([^;]+);/))
+          .filter((x): x is RegExpMatchArray => !!x)
+          .map(x => x[1].trim());
 
-//     // Iterate through the <div class="pi-item pi-data pi-item-spacing pi-border-color"> elements and check the h3 title to determine the data.
+        if (petNames.length) {
+          // use the sub-category name itself as the egg name
+          eggs.push({ eggName: name, petNames });
+        }
+      }
+    }
 
-//     // Rarity
+    subs.push({ name, eggs });
+  }
 
+  return subs;
+}
 
-//     // Obtained-from → eggName + eggImage
-//     const obt = $('div.pi-item[data-source="obtained-from"] .pi-data-value');
-//     const eggImage = obt.find('img').attr('data-src') || '';
-//     const eggName  = obt.find('a').first().text().trim();
+function extractNumber(str: string): number {
+  const num = str.replace(/[^\d]/g, '');
+  return parseInt(num, 10) || 0;
+}
 
-//     // Base stats
-//     const bubbleStat   = extractNumber($('div.pi-item[data-source="bubbles"] b').text());
-//     const currencyStat = extractNumber($('div.pi-item[data-source="tickets"] b').text());
-//     const gemsStat     = extractNumber($('div.pi-item[data-source="gems"] b').text() || '0');
+async function fetchWikitext(pageName: string): Promise<string> {
+  const api = 
+    `https://bgs-infinity.fandom.com/api.php` +
+    `?action=query` +
+    `&prop=revisions` +
+    `&rvprop=content` +
+    `&format=json` +
+    `&titles=${encodeURIComponent(pageName)}` +
+    `&origin=*`;
 
-//     // Base chance text: prefer the “1 in X”
-//     const chanceRaw = $('div.pi-item[data-source="norm-petchance"] .pi-data-value b').text();
-//     const baseChance = (
-//       chanceRaw.match(/\(1 in ([\d,]+)\)/)?.[1] ? `1/${chanceRaw.match(/\(1 in ([\d,]+)\)/)![1]}` :
-//       chanceRaw.match(/[\d.]+%/)?.[0] || ''
-//     );
+  const res  = await fetch(api);
+  const json = await res.json() as any;
+  const pages = json.query.pages;
+  const pageId = Object.keys(pages)[0];
+  return pages[pageId].revisions[0]['*'];         // the raw wikitext
+}
 
-//     // 3) Build one Pet object per variant if its image exists
-//     const variants: [string, PetVariant, number][] = [
-//       ['normal-image',      'Normal',       1],
-//       ['shiny-image',       'Shiny',       40],
-//       ['mythic-image',      'Mythic',     100],
-//       ['shiny-mythic-image','Shiny Mythic',4000],
-//     ];
+async function fetchPetHTML(petName: string): Promise<string> {
+    const api =
+      `https://bgs-infinity.fandom.com/api.php` +
+      `?action=parse` +
+      `&page=${encodeURIComponent(petName)}` +
+      `&prop=text` +
+      `&format=json` +
+      `&origin=*`;
+    const res  = await fetch(api);
+    const json = await res.json() as any;
+    if (json.error) {
+        console.error(`Error fetching ${petName}: ${json.error}`);
+        return '';
+    }
+    return json.parse.text['*'];  // the HTML fragment you can feed into cheerio.load()
+}
 
-//     return variants
-//       .map(([ds, variant, mult]) => {
-//         const img = $(`figure.pi-item.pi-image[data-source="${ds}"] a.image-thumbnail`)
-//                       .attr('href');
-//         if (!img) return null;
-//         return {
-//           name: entry.petName,
-//           rarity,
-//           bubbleStat,
-//           currencyStat,
-//           gemsStat,
-//           variant,
-//           image: img,
-//           eggName,
-//           eggImage,
-//           chance: computeChance(baseChance, mult),
-//         } as Pet;
-//       })
-//       .filter((p): p is Pet => !!p);
-// }
+// 2) Fetch each pet page and scrape rarity + egg info
+async function parsePet(petName: string, debugLog: (msg: string) => void): Promise<{pet: Pet, eggImage: string}> {
+    const html = await fetchPetHTML(petName);
+    const $ = cheerio.load(html);
 
-// // 4) Orchestrator
-// export async function scrapeAllPets(input: string): Promise<Pet[]> {
-//     if (!input) {
-//         console.error('No input provided');
-//         return [];
-//     }
-//     console.log('Scraping pet list...');
-//     const entries    = parseEggEntries(input);
-//     const all: Pet[] = [];
-//     console.log(`Found ${entries.length} entries`);
-//     console.log('Scraping pet variants...');
+    //debugLog(html);
 
-//     for (const e of entries) {
-//         console.log(`Scraping ${e.petName}...`);
-//         const pets = await fetchPetVariants(e);
-//         all.push(...pets);
+    // Obtained-from → eggName
+    const obt = $('div.pi-item[data-source="obtained-from"] .pi-data-value');
+    const eggImage = obt.find('img').attr('src')?.split('/revision')[0];
 
-//         break; // ← REMOVE THIS LINE TO SCRAPE ALL PETS
+    // Base stats
+    const bubbleStat = extractNumber($('div.pi-item[data-source="bubbles"] b').first().text());
+    const gemsStat = extractNumber($('div.pi-item[data-source="gems"] b').first().text() || '0');
+    let currencyStat = 0;
+    let currencyVariant = 'Coins' as CurrencyVariant;
+    const coinsMatch = $('div.pi-item[data-source="coins"] b');
+    if (coinsMatch) currencyStat = extractNumber(coinsMatch.first().text());
+    else {
+        const ticketsMatch = $('div.pi-item[data-source="tickets"] b');
+        currencyStat = extractNumber(ticketsMatch.first().text());
+        currencyVariant = 'Tickets' as CurrencyVariant;
+    }
 
-//         // ← consider a small delay here to be polite to the server
-//         await new Promise(resolve => setTimeout(resolve, 10000));
-//     }
+    // Rarity
+    const rarityMatch = $('div.pi-item[data-source="rarity"] .pi-data-value b');
+    let rarity = rarityMatch.first().text().trim();
+    //if (rarity.includes('Legendary')) rarity = 'Legendary';
 
-//     return all;
-// }
+    // Base chance text: find the “1 in X”
+    let baseChance: number = 1;
+    const chanceRaw = $('div.pi-item[data-source="norm-petchance"] .pi-data-value')?.first().text();
+    if (chanceRaw) {
+        const oddsMatch = chanceRaw.match(/1 in ([\d,]+)/);
+        if (oddsMatch) {
+            baseChance = extractNumber(oddsMatch![1]);
+        }
+        else {
+            const percentMatch = chanceRaw.match(/(\d+(\.\d+)?)%/);
+            baseChance = 100 / (percentMatch![1] as unknown as number);
+        }
+    }
 
-// export function Scraper(): JSX.Element {
-//     const [input, setInput] = useState<string>('');
+    // 3) Build one Pet object per variant if its image exists
+    const variantDataSourceMap: [string, PetVariant][] = [
+        ['normal-image', 'Normal'],
+        ['shiny-image', 'Shiny'],
+        ['mythic-image', 'Mythic'],
+        ['shiny-mythic-image', 'Shiny Mythic'],
+    ];
 
-//     const handleScrape = async () => {
-//         scrapeAllPets(input).then((pets) => {
-//             if (pets.length === 0) {
-//                 console.error('No pets found');
-//                 return;
-//             }
+    // PetVariant, image url
+    const petVariants: [string, string][] = [];
 
-//             // save pets to json to downloads folder via Document.click
-//             const blob = new Blob([JSON.stringify(pets, null, 2)], { type: 'application/json' });
-//             const url = URL.createObjectURL(blob);
-//             const a = document.createElement('a');
-//             a.href = url;
-//             a.download = 'pets.json';
-//             document.body.appendChild(a);
-//             a.click();
-//             document.body.removeChild(a);
-//         });
-//     }
+    variantDataSourceMap.forEach(([ds, variant]) => {
+        const img = $(`figure.pi-item.pi-image[data-source="${ds}"] a.image-thumbnail`);
+        if (img.length > 0) {
+            const imgSrc = img.attr('href')?.split('/revision')[0];
+            if (imgSrc) petVariants.push([variant, imgSrc]);
+        }
+    });
+    
+    return { pet: {
+        name: petName,
+        rarity: rarity as Rarity,
+        droprate: baseChance,
+        bubbles: bubbleStat,
+        gems: gemsStat,
+        currency: currencyStat,
+        currencyVariant,
+        variants: petVariants.map(([variant]) => variant as PetVariant),
+        image: petVariants.map(([, img]) => img),
+    }, eggImage } as { pet: Pet, eggImage: string };
+}
 
-//     return (
-//         <Container sx={{ mt: 4, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'middle', maxWidth: '600px' }}>
-//             <Typography variant="h4" sx={{ mb: 2 }}>Scraper</Typography>
-//             <FormControl sx={{ mb: 2 }}>
-//                 {/* MAKE THIS MULTILINE INPUT, ALIGNED TO TOP LEFT: */}
-//                 <Input
-//                     type="text"
-//                     value={input}
-//                     onChange={(e) => setInput(e.target.value)}
-//                     style={{ width: '100%', height: '200px', backgroundColor: '#444444', borderRadius: '4px', padding: '8px' }}
-//                     multiline
-//                     rows={8}
-//                 />
-//             </FormControl>
-//             <Button
-//                 variant="contained"
-//                 onClick={handleScrape}
-//                 sx={{ mb: 2 }}
-//                 style={{ maxWidth: '200px' }}
-//             >
-//                 Scrape Pets
-//             </Button>
-//         </Container>
-//     );
-// }
+// 4) Orchestrator
+export async function scrapeAllPets(debugLog: (msg: string) => void): Promise<SubCategoryData[]> {
+    debugLog('Fetching egg list...');
+    const input = await fetchWikitext('Bubble_Gum_Simulator_INFINITY_Wiki:Data/Pets');
+    if (!input) {
+        console.error('Failed to fetch pet list');
+        return [];
+    }
 
-export default function Scraper() {
-    return <>   </>;
+    debugLog('Scraping category list...');
+    const entries    = parsePetList(input);
+    const all: SubCategoryData[] = [];
+    debugLog('Scraping pets...');
+
+    for (const s of entries) {
+        debugLog(`Scraping ${s.name}... [${s.eggs.length} eggs]`);
+        const category = { name: s.name, eggs: [] } as any as SubCategoryData;
+        for (const e of s.eggs) {
+            debugLog(`Scraping ${e.eggName}... [${e.petNames.length} pets]`);
+            const egg = { name: e.eggName, image: '', pets: [] } as any as Egg;
+            for (const petName of e.petNames) {
+                debugLog(`Scraping ${petName}...`);
+                const result = await parsePet(petName, debugLog);
+                egg.pets.push(result.pet);
+                if (egg.image === '') egg.image = result.eggImage;
+                //// wait 1 second
+                //await new Promise((resolve) => setTimeout(resolve, 1000));
+            }
+
+            if (egg.pets.length > 0) {
+                category.eggs.push(egg);
+            }
+        }
+        all.push(category);
+    }
+
+    return all;
+}
+
+export function Scraper(): JSX.Element {
+    const [debug, setDebug] = useState<string[]>([ 'Ready to scrape...' ]);
+    const debugLog = (msg: string) => {
+        setDebug((prev) => {
+            const newDebug = [msg, ...prev];
+            if (newDebug.length > 20) newDebug.shift();
+            return newDebug;
+        });
+    }
+
+    const handleScrape = async () => {
+        setDebug([]);
+        scrapeAllPets(debugLog).then((eggs) => {
+            if (eggs.length === 0) {
+                console.error('No eggs found');
+                return;
+            }
+
+            // save pets to json to downloads folder via Document.click
+            const blob = new Blob([JSON.stringify(eggs, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'wikiscrape.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        });
+    }
+
+    return (
+        <Container sx={{ mt: 4, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'middle', maxWidth: '600px' }}>
+            <Typography variant="h4" sx={{ mb: 2 }}>Scraper</Typography>
+            <Button
+                variant="contained"
+                onClick={handleScrape}
+                sx={{ mb: 2 }}
+                style={{ maxWidth: '200px' }}
+            >
+                Scrape Pets
+            </Button>
+            <pre style={{ maxHeight: '400px', overflowY: 'auto', width: '100%', backgroundColor: '#333', color: '#fff', padding: '10px', borderRadius: '5px' }}>
+                <code>
+                    {debug.map((line, index) => (
+                        <div key={index}>{line}</div>
+                    ))}
+                </code>
+            </pre>
+        </Container>
+    );
 }

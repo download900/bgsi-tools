@@ -158,7 +158,6 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
                         if (settings.secretsBountyPet && settings.secretsBountyEgg === egg.name) {
                             const secretBountyPet = secretPets.find(pet => pet.name === settings.secretsBountyPet);
                             if (secretBountyPet) {
-                                console.log("Adding secret bounty pet to egg:", secretBountyPet);
                                 egg.pets.push(secretBountyPet);
                             }
                         }
@@ -167,7 +166,7 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
 
                         // check for infinity egg, clone pets to infinity egg
                         if (egg.infinityEgg) {
-                            const newPets = structuredClone(egg.pets);
+                            const newPets = structuredClone(egg.pets.filter(pet => pet.rarity.includes('Legendary') || pet.rarity === 'Secret'));
                             infinityEggs[egg.infinityEgg].pets.push(...newPets);
                         }
                     }
@@ -185,7 +184,10 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
                 // 1) compute “sum of 1/droprate” per rarity
                 const totals = pets.reduce((acc, pet) => {
                         const dec = 1 / pet.droprate;
-                        acc[pet.rarity] += dec;
+                        let rarity: "Legendary" | "Secret";
+                        if (pet.rarity === 'Secret') rarity = 'Secret';
+                        else rarity = 'Legendary';
+                        acc[rarity] += dec;
                         return acc;
                     }, { Legendary: 0, Secret: 0 } as Record<"Legendary" | "Secret", number>
                 );
@@ -193,7 +195,7 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
                 // 2) recalc each pet’s droprate: new = pet.droprate * (totalDecimalForThisRarity) / rateForThisRarity
                 const rateMap = { Legendary: legendaryRate, Secret: secretRate };
                 let updatedPets = pets.map((pet) => ({ ...pet,
-                    droprate: pet.droprate * totals[pet.rarity] / (1 / rateMap[pet.rarity]),
+                    droprate: pet.droprate * totals[pet.rarity === 'Secret' ? 'Secret' : 'Legendary'] / (1 / rateMap[pet.rarity === 'Secret' ? 'Secret' : 'Legendary']),
                 })).sort((a, b) => a.droprate - b.droprate);
 
                 // After processing, add "Any Legendary" and "Any Secret" to top of the pet list.
@@ -304,6 +306,7 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
         };
 
         egg.pets.forEach((pet) => {
+            if (pet.rarity && pet.rarity !== 'Secret' && !pet.rarity.includes('Legendary')) return;
             const normalChance = calculateChance(pet.droprate, luckyBuff);
             results.petResults.push({
                 pet: pet,

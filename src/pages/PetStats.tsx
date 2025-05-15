@@ -93,7 +93,6 @@ export function PetList(props: PetListProps) {
         setPreviewEnchant(settings.previewEnchant || true);
         setEnchantTeamSize(settings.enchantTeamSize || 11);
         setSecondEnchant(settings.secondEnchant || "bubbler");
-        console.log("Loaded settings");
       }
     } catch (e) {
       console.warn("could not load settings", e);
@@ -114,7 +113,6 @@ export function PetList(props: PetListProps) {
         secondEnchant
       };
       localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings));
-      console.log("Saved settings");
     } catch (e) {
       console.warn("could not save settings", e);
     }
@@ -207,8 +205,6 @@ export function PetList(props: PetListProps) {
   }
 
   const sortAndFilterPets = (pets: PetInstance[]) => {
-    console.log("Sorting and filtering pets");
-
     const filteredPets = pets.filter((pet) => {
       const isOwned = !!ownedPets[`${pet.name}__${pet.variant}`];
       const matchesCurrency = currencyFilter ? currencyFilter.includes(pet.currencyVariant) : true;
@@ -224,7 +220,6 @@ export function PetList(props: PetListProps) {
   }
 
   const sortPets = (pets: PetInstance[]) => {
-    console.log("Sorting pets by", sortColumn);
     return pets.sort((a, b) => {
       if (sortColumn === "name") {
         return a.name.localeCompare(b.name);

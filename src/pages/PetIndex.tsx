@@ -394,7 +394,12 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
                           </TableCell>
                           <TableCell>
                             <Typography variant="body2" sx={style}>
-                              1/{Number(pet.droprate).toLocaleString(undefined, { maximumFractionDigits: 0 })}
+                              { /* If drop rate below 100, show as percent. */
+                                pet.droprate < 100 ? 
+                                (<>{Number(100 / pet.droprate).toLocaleString(undefined, { maximumFractionDigits: 2 })}%</>) 
+                                : 
+                                (<>1/{Number(pet.droprate).toLocaleString(undefined, { maximumFractionDigits: 0 })}</>)
+                              }
                             </Typography>
                           </TableCell>
                           {variants.map((v) => (
