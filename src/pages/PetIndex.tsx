@@ -47,6 +47,8 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
   const [ownedPets, setOwnedPets] = useState<OwnedPets>({});
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [selectedSubCategory, setSelectedSubCategory] = useState<string>("");
+  
+  const [visibleCount, setVisibleCount] = useState(10);
 
   // load saved state
   useEffect(() => {
@@ -146,7 +148,23 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
     : selectedCategory;
   const headerStats = calculateCompletion(eggsToShow.flatMap((e) => e.pets));
 
-  const discontinuedStyle = { textDecoration: "line-through", fontStyle: "italic", color: "gray" };
+  // infinite‐scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      // how close to the bottom before loading more (px)
+      const threshold = 150;
+      const scrolledToBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - threshold;
+    
+      if (scrolledToBottom && visibleCount < eggsToShow.length) {
+        setVisibleCount((c) => Math.min(c + 10, eggsToShow.length));
+      }
+    };
+  
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [visibleCount, eggsToShow]);
 
   return (
     <Box sx={{ display: "flex", flexGrow: 1 }}>
@@ -324,7 +342,7 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
         </Paper>
 
         {/* Eggs list */}
-        {eggsToShow.map((egg) => {
+        {eggsToShow.slice(0, visibleCount).map((egg) => {
           const stats = calculateCompletion(egg.pets);
           const id = egg.name.replace(/\s+/g, "_");
           return (

@@ -190,7 +190,7 @@ async function parsePet(petName: string, debugLog: (msg: string) => void): Promi
     // Rarity
     const rarityMatch = $('div.pi-item[data-source="rarity"] .pi-data-value b');
     let rarity = rarityMatch.first().text().trim();
-    //if (rarity.includes('Legendary')) rarity = 'Legendary';
+    if (rarity.includes('Legendary')) rarity = 'Legendary';
 
     // Base chance text: find the “1 in X”
     let baseChance: number = 1;
@@ -282,7 +282,6 @@ export function Scraper(): JSX.Element {
     const debugLog = (msg: string) => {
         setDebug((prev) => {
             const newDebug = [msg, ...prev];
-            if (newDebug.length > 20) newDebug.shift();
             return newDebug;
         });
     }

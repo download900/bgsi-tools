@@ -183,6 +183,7 @@ export function PetList(props: PetListProps) {
       cat.categories.forEach((subcat) => {
         subcat.eggs.forEach((egg) => {
           egg.pets.forEach((pet) => {
+            if (pet.rarity !== 'Legendary' && pet.rarity !== 'Secret') return;
             pet.variants.forEach((variant) => {
               allPets.push({
                 name: pet.name,

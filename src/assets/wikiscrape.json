@@ -371,7 +371,7 @@
           {
             "name": "Dark Dragon",
             "rarity": "Epic",
-            "droprate": 20,
+            "droprate": 15.384615384615385,
             "bubbles": 16,
             "gems": 0,
             "currency": 12,
@@ -432,7 +432,7 @@
           {
             "name": "Magma Deer",
             "rarity": "Unique",
-            "droprate": 20,
+            "droprate": 3.278688524590164,
             "bubbles": 12,
             "gems": 0,
             "currency": 8,
@@ -483,7 +483,7 @@
           {
             "name": "Demon",
             "rarity": "Epic",
-            "droprate": 50,
+            "droprate": 45.45454545454545,
             "bubbles": 25,
             "gems": 0,
             "currency": 20,
@@ -544,7 +544,7 @@
           {
             "name": "Dark Bat",
             "rarity": "Unique",
-            "droprate": 11.11111111111111,
+            "droprate": 3.3444816053511706,
             "bubbles": 25,
             "gems": 0,
             "currency": 12,
@@ -578,7 +578,7 @@
           {
             "name": "Emerald Bat",
             "rarity": "Epic",
-            "droprate": 50,
+            "droprate": 45.45454545454545,
             "bubbles": 50,
             "gems": 0,
             "currency": 35,
@@ -660,7 +660,7 @@
           {
             "name": "Space Bull",
             "rarity": "Unique",
-            "droprate": 11.11111111111111,
+            "droprate": 3.3444816053511706,
             "bubbles": 30,
             "gems": 0,
             "currency": 20,
@@ -694,7 +694,7 @@
           {
             "name": "Lunarcorn",
             "rarity": "Epic",
-            "droprate": 50,
+            "droprate": 45.45454545454545,
             "bubbles": 70,
             "gems": 0,
             "currency": 55,
@@ -776,7 +776,7 @@
           {
             "name": "Void Bat",
             "rarity": "Unique",
-            "droprate": 11.11111111111111,
+            "droprate": 3.134796238244514,
             "bubbles": 43,
             "gems": 0,
             "currency": 35,
@@ -793,7 +793,7 @@
           {
             "name": "Void Demon",
             "rarity": "Epic",
-            "droprate": 50,
+            "droprate": 45.45454545454545,
             "bubbles": 85,
             "gems": 0,
             "currency": 70,
@@ -896,7 +896,7 @@
           {
             "name": "Hell Dragon",
             "rarity": "Unique",
-            "droprate": 11.11111111111111,
+            "droprate": 3.3444816053511706,
             "bubbles": 45,
             "gems": 0,
             "currency": 45,
@@ -930,7 +930,7 @@
           {
             "name": "Inferno Demon",
             "rarity": "Epic",
-            "droprate": 50,
+            "droprate": 45.45454545454545,
             "bubbles": 135,
             "gems": 0,
             "currency": 135,
@@ -1012,7 +1012,7 @@
           {
             "name": "Skeletal Deer",
             "rarity": "Unique",
-            "droprate": 11.11111111111111,
+            "droprate": 3.3444816053511706,
             "bubbles": 50,
             "gems": 0,
             "currency": 52,
@@ -1046,7 +1046,7 @@
           {
             "name": "Hell Bat",
             "rarity": "Epic",
-            "droprate": 50,
+            "droprate": 45.45454545454545,
             "bubbles": 185,
             "gems": 0,
             "currency": 250,
@@ -1149,7 +1149,7 @@
           {
             "name": "Orange Deer",
             "rarity": "Unique",
-            "droprate": 11.11111111111111,
+            "droprate": 3.3444816053511706,
             "bubbles": 82,
             "gems": 14,
             "currency": 97,
@@ -1183,7 +1183,7 @@
           {
             "name": "Green Angel",
             "rarity": "Epic",
-            "droprate": 50,
+            "droprate": 45.45454545454545,
             "bubbles": 225,
             "gems": 2,
             "currency": 285,
@@ -2464,7 +2464,7 @@
           {
             "name": "Golden Golem",
             "rarity": "Epic",
-            "droprate": 11.11111111111111,
+            "droprate": 10.1010101010101,
             "bubbles": 195,
             "gems": 0,
             "currency": 265,
@@ -3369,7 +3369,7 @@
           {
             "name": "Paper Bunny",
             "rarity": "Unique",
-            "droprate": 11.11111111111111,
+            "droprate": 3.3444816053511706,
             "bubbles": 55,
             "gems": 0,
             "currency": 60,
@@ -3403,7 +3403,7 @@
           {
             "name": "Hatchling",
             "rarity": "Epic",
-            "droprate": 50,
+            "droprate": 45.45454545454545,
             "bubbles": 190,
             "gems": 0,
             "currency": 265,
