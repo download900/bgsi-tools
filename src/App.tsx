@@ -38,7 +38,7 @@ export default function App() {
             <Tab label="Calculator" value="Odds" />
             <Tab label="Index" value="Completion" /> 
             <Tab label="Pet Stats" value="Stats" /> 
-            <Tab label="Scraper" value="Scraper" /> 
+            {/* <Tab label="Scraper" value="Scraper" />  */}
           </Tabs>
           <Link href="https://github.com/borngame/bgsi-tools" target="_blank" rel="noopener noreferrer" sx={{ color: "white", textDecoration: "none", marginLeft: 2 }}>
             <Typography variant="h5"><SiGithub /></Typography>
@@ -56,9 +56,9 @@ export default function App() {
           <Box sx={{ display: currentTab === 'Stats' ? 'flex' : 'none', flexGrow: '1', justifyContent: 'center', alignItems: 'middle', maxWidth: '100% !important' }}>
             <PetList data={data} />
           </Box>
-          <Box sx={{ display: currentTab === 'Scraper' ? 'flex' : 'none', flexGrow: '1', justifyContent: 'center', alignItems: 'middle', maxWidth: '100% !important' }}>
+          {/* <Box sx={{ display: currentTab === 'Scraper' ? 'flex' : 'none', flexGrow: '1', justifyContent: 'center', alignItems: 'middle', maxWidth: '100% !important' }}>
             <Scraper />
-          </Box>
+          </Box> */}
         </Container>
       </Box>
     </>
