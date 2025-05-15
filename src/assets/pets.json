@@ -45,7 +45,7 @@
                 "droprate": 2.5,
                 "bubbles": 1,
                 "gems": 0,
-                "currency": 11,
+                "currency": 1.1,
                 "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
@@ -62,7 +62,7 @@
                 "droprate": 3.3333333333333335,
                 "bubbles": 1,
                 "gems": 0,
-                "currency": 11,
+                "currency": 1.1,
                 "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
@@ -79,7 +79,7 @@
                 "droprate": 4,
                 "bubbles": 2,
                 "gems": 0,
-                "currency": 12,
+                "currency": 1.2,
                 "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
@@ -96,7 +96,7 @@
                 "droprate": 20,
                 "bubbles": 2,
                 "gems": 0,
-                "currency": 15,
+                "currency": 1.5,
                 "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
@@ -157,7 +157,7 @@
                 "name": "Wolf",
                 "rarity": "Common",
                 "droprate": 4,
-                "bubbles": 21,
+                "bubbles": 2.1,
                 "gems": 0,
                 "currency": 2,
                 "currencyVariant": "Coins",
@@ -176,7 +176,7 @@
                 "droprate": 5,
                 "bubbles": 3,
                 "gems": 0,
-                "currency": 22,
+                "currency": 2.2,
                 "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
@@ -193,7 +193,7 @@
                 "droprate": 10,
                 "bubbles": 4,
                 "gems": 0,
-                "currency": 25,
+                "currency": 2.5,
                 "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
@@ -252,7 +252,7 @@
                 "droprate": 4,
                 "bubbles": 5,
                 "gems": 0,
-                "currency": 35,
+                "currency": 3.5,
                 "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
@@ -543,7 +543,7 @@
                 "rarity": "Legendary",
                 "droprate": 400,
                 "bubbles": 75,
-                "gems": 14,
+                "gems": 1.4,
                 "currency": 65,
                 "currencyVariant": "Coins",
                 "variants": [
@@ -640,7 +640,7 @@
                 "rarity": "Legendary",
                 "droprate": 400,
                 "bubbles": 155,
-                "gems": 14,
+                "gems": 1.4,
                 "currency": 135,
                 "currencyVariant": "Coins",
                 "variants": [
@@ -661,7 +661,7 @@
                 "rarity": "Legendary",
                 "droprate": 1000,
                 "bubbles": 285,
-                "gems": 17,
+                "gems": 1.7,
                 "currency": 310,
                 "currencyVariant": "Coins",
                 "variants": [
@@ -859,7 +859,7 @@
                 "rarity": "Legendary",
                 "droprate": 2000,
                 "bubbles": 350,
-                "gems": 45,
+                "gems": 4.5,
                 "currency": 410,
                 "currencyVariant": "Coins",
                 "variants": [
@@ -880,7 +880,7 @@
                 "rarity": "Legendary",
                 "droprate": 5000,
                 "bubbles": 430,
-                "gems": 55,
+                "gems": 5.5,
                 "currency": 500,
                 "currencyVariant": "Coins",
                 "variants": [
@@ -1187,7 +1187,7 @@
                 "rarity": "Common",
                 "droprate": 1.6666666666666667,
                 "bubbles": 45,
-                "gems": 12,
+                "gems": 1.2,
                 "currency": 58,
                 "currencyVariant": "Coins",
                 "variants": [
@@ -1204,7 +1204,7 @@
                 "rarity": "Unique",
                 "droprate": 3.3444816053511706,
                 "bubbles": 82,
-                "gems": 14,
+                "gems": 1.4,
                 "currency": 97,
                 "currencyVariant": "Coins",
                 "variants": [
@@ -1221,7 +1221,7 @@
                 "rarity": "Rare",
                 "droprate": 14.285714285714286,
                 "bubbles": 120,
-                "gems": 175,
+                "gems": 1.75,
                 "currency": 145,
                 "currencyVariant": "Coins",
                 "variants": [
@@ -1255,7 +1255,7 @@
                 "rarity": "Legendary",
                 "droprate": 100000,
                 "bubbles": 1025,
-                "gems": 165,
+                "gems": 16.5,
                 "currency": 1350,
                 "currencyVariant": "Coins",
                 "variants": [
@@ -1391,8 +1391,8 @@
                 "droprate": 1.8181818181818181,
                 "bubbles": 1,
                 "gems": 0,
-                "currency": 0,
-                "currencyVariant": "Coins",
+                "currency": 1.1,
+                "currencyVariant": "Tickets",
                 "variants": [
                   "Normal",
                   "Shiny"
@@ -1408,8 +1408,8 @@
                 "droprate": 2.5,
                 "bubbles": 1,
                 "gems": 0,
-                "currency": 0,
-                "currencyVariant": "Coins",
+                "currency": 1.5,
+                "currencyVariant": "Tickets",
                 "variants": [
                   "Normal",
                   "Shiny"
@@ -1425,8 +1425,8 @@
                 "droprate": 20,
                 "bubbles": 2,
                 "gems": 0,
-                "currency": 0,
-                "currencyVariant": "Coins",
+                "currency": 2,
+                "currencyVariant": "Tickets",
                 "variants": [
                   "Normal",
                   "Shiny"
@@ -1467,8 +1467,8 @@
                 "droprate": 3.3333333333333335,
                 "bubbles": 45,
                 "gems": 0,
-                "currency": 0,
-                "currencyVariant": "Coins",
+                "currency": 25,
+                "currencyVariant": "Tickets",
                 "variants": [
                   "Normal",
                   "Shiny"
@@ -1484,8 +1484,8 @@
                 "droprate": 14.285714285714286,
                 "bubbles": 75,
                 "gems": 0,
-                "currency": 0,
-                "currencyVariant": "Coins",
+                "currency": 40,
+                "currencyVariant": "Tickets",
                 "variants": [
                   "Normal",
                   "Shiny"
@@ -1501,8 +1501,8 @@
                 "droprate": 33.333333333333336,
                 "bubbles": 135,
                 "gems": 0,
-                "currency": 0,
-                "currencyVariant": "Coins",
+                "currency": 70,
+                "currencyVariant": "Tickets",
                 "variants": [
                   "Normal",
                   "Shiny"
@@ -1518,8 +1518,8 @@
                 "droprate": 200,
                 "bubbles": 480,
                 "gems": 6,
-                "currency": 0,
-                "currencyVariant": "Coins",
+                "currency": 180,
+                "currencyVariant": "Tickets",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -1539,8 +1539,8 @@
                 "droprate": 20000,
                 "bubbles": 785,
                 "gems": 22,
-                "currency": 0,
-                "currencyVariant": "Coins",
+                "currency": 320,
+                "currencyVariant": "Tickets",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -1567,9 +1567,9 @@
                 "rarity": "Common",
                 "droprate": 1.5625,
                 "bubbles": 65,
-                "gems": 18,
-                "currency": 0,
-                "currencyVariant": "Coins",
+                "gems": 1.8,
+                "currency": 75,
+                "currencyVariant": "Tickets",
                 "variants": [
                   "Normal",
                   "Shiny"
@@ -1584,9 +1584,9 @@
                 "rarity": "Unique",
                 "droprate": 4,
                 "bubbles": 115,
-                "gems": 25,
-                "currency": 0,
-                "currencyVariant": "Coins",
+                "gems": 2.5,
+                "currency": 125,
+                "currencyVariant": "Tickets",
                 "variants": [
                   "Normal",
                   "Shiny"
@@ -1602,8 +1602,8 @@
                 "droprate": 33.333333333333336,
                 "bubbles": 130,
                 "gems": 0,
-                "currency": 0,
-                "currencyVariant": "Coins",
+                "currency": 140,
+                "currencyVariant": "Tickets",
                 "variants": [
                   "Normal",
                   "Shiny"
@@ -1619,8 +1619,8 @@
                 "droprate": 2500,
                 "bubbles": 630,
                 "gems": 12,
-                "currency": 0,
-                "currencyVariant": "Coins",
+                "currency": 400,
+                "currencyVariant": "Tickets",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -1640,8 +1640,8 @@
                 "droprate": 50000,
                 "bubbles": 1325,
                 "gems": 23,
-                "currency": 0,
-                "currencyVariant": "Coins",
+                "currency": 850,
+                "currencyVariant": "Tickets",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -1661,8 +1661,8 @@
                 "droprate": 666666,
                 "bubbles": 1550,
                 "gems": 32,
-                "currency": 0,
-                "currencyVariant": "Coins",
+                "currency": 1900,
+                "currencyVariant": "Tickets",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -1682,8 +1682,8 @@
                 "droprate": 66666666,
                 "bubbles": 3000,
                 "gems": 65,
-                "currency": 0,
-                "currencyVariant": "Coins",
+                "currency": 3500,
+                "currencyVariant": "Tickets",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -1709,9 +1709,9 @@
                 "rarity": "Common",
                 "droprate": 1.5384615384615385,
                 "bubbles": 65,
-                "gems": 18,
-                "currency": 0,
-                "currencyVariant": "Coins",
+                "gems": 1.8,
+                "currency": 75,
+                "currencyVariant": "Tickets",
                 "variants": [
                   "Normal",
                   "Shiny"
@@ -1727,8 +1727,8 @@
                 "droprate": 3.3333333333333335,
                 "bubbles": 130,
                 "gems": 0,
-                "currency": 0,
-                "currencyVariant": "Coins",
+                "currency": 140,
+                "currencyVariant": "Tickets",
                 "variants": [
                   "Normal",
                   "Shiny"
@@ -1744,8 +1744,8 @@
                 "droprate": 2000,
                 "bubbles": 650,
                 "gems": 14,
-                "currency": 0,
-                "currencyVariant": "Coins",
+                "currency": 435,
+                "currencyVariant": "Tickets",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -1765,8 +1765,8 @@
                 "droprate": 40000,
                 "bubbles": 1450,
                 "gems": 24,
-                "currency": 0,
-                "currencyVariant": "Coins",
+                "currency": 890,
+                "currencyVariant": "Tickets",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -1786,8 +1786,8 @@
                 "droprate": 833333,
                 "bubbles": 2000,
                 "gems": 40,
-                "currency": 0,
-                "currencyVariant": "Coins",
+                "currency": 2100,
+                "currencyVariant": "Tickets",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -1807,8 +1807,8 @@
                 "droprate": 500000000,
                 "bubbles": 3500,
                 "gems": 72,
-                "currency": 0,
-                "currencyVariant": "Coins",
+                "currency": 4000,
+                "currencyVariant": "Tickets",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -1835,8 +1835,8 @@
                 "droprate": 10000,
                 "bubbles": 1750,
                 "gems": 32,
-                "currency": 0,
-                "currencyVariant": "Coins",
+                "currency": 1800,
+                "currencyVariant": "Tickets",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -1863,8 +1863,8 @@
                 "droprate": 1000,
                 "bubbles": 1700,
                 "gems": 32,
-                "currency": 0,
-                "currencyVariant": "Coins",
+                "currency": 1800,
+                "currencyVariant": "Tickets",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -1891,8 +1891,8 @@
                 "droprate": 10000,
                 "bubbles": 2000,
                 "gems": 40,
-                "currency": 0,
-                "currencyVariant": "Coins",
+                "currency": 2100,
+                "currencyVariant": "Tickets",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -1928,8 +1928,8 @@
                 "droprate": 2,
                 "bubbles": 40,
                 "gems": 0,
-                "currency": 0,
-                "currencyVariant": "Coins",
+                "currency": 20,
+                "currencyVariant": "Tickets",
                 "variants": [
                   "Normal",
                   "Shiny"
@@ -1945,8 +1945,8 @@
                 "droprate": 10,
                 "bubbles": 195,
                 "gems": 0,
-                "currency": 0,
-                "currencyVariant": "Coins",
+                "currency": 130,
+                "currencyVariant": "Tickets",
                 "variants": [
                   "Normal",
                   "Shiny"
@@ -1962,8 +1962,8 @@
                 "droprate": 100000,
                 "bubbles": 1850,
                 "gems": 35,
-                "currency": 0,
-                "currencyVariant": "Coins",
+                "currency": 1900,
+                "currencyVariant": "Tickets",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -1983,8 +1983,8 @@
                 "droprate": 20000000,
                 "bubbles": 3050,
                 "gems": 70,
-                "currency": 0,
-                "currencyVariant": "Coins",
+                "currency": 3550,
+                "currencyVariant": "Tickets",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -2098,8 +2098,8 @@
                 "droprate": 1,
                 "bubbles": 975,
                 "gems": 15,
-                "currency": 0,
-                "currencyVariant": "Coins",
+                "currency": 1300,
+                "currencyVariant": "Tickets",
                 "variants": [
                   "Normal",
                   "Shiny"
@@ -2115,8 +2115,8 @@
                 "droprate": 1,
                 "bubbles": 1050,
                 "gems": 18,
-                "currency": 0,
-                "currencyVariant": "Coins",
+                "currency": 1400,
+                "currencyVariant": "Tickets",
                 "variants": [
                   "Normal",
                   "Shiny"
@@ -2132,8 +2132,8 @@
                 "droprate": 1000,
                 "bubbles": 1325,
                 "gems": 23,
-                "currency": 0,
-                "currencyVariant": "Coins",
+                "currency": 850,
+                "currencyVariant": "Tickets",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -2153,8 +2153,8 @@
                 "droprate": 20000,
                 "bubbles": 3050,
                 "gems": 70,
-                "currency": 0,
-                "currencyVariant": "Coins",
+                "currency": 3550,
+                "currencyVariant": "Tickets",
                 "variants": [
                   "Normal",
                   "Shiny",
@@ -2519,7 +2519,7 @@
                 "rarity": "Rare",
                 "droprate": 3.3333333333333335,
                 "bubbles": 130,
-                "gems": 22,
+                "gems": 2.2,
                 "currency": 140,
                 "currencyVariant": "Coins",
                 "variants": [
@@ -2627,7 +2627,7 @@
                 "rarity": "Common",
                 "droprate": 1.5625,
                 "bubbles": 60,
-                "gems": 18,
+                "gems": 1.8,
                 "currency": 75,
                 "currencyVariant": "Coins",
                 "variants": [
@@ -2644,7 +2644,7 @@
                 "rarity": "Unique",
                 "droprate": 3.3333333333333335,
                 "bubbles": 110,
-                "gems": 25,
+                "gems": 2.5,
                 "currency": 125,
                 "currencyVariant": "Coins",
                 "variants": [
@@ -2856,7 +2856,7 @@
                 "rarity": "Common",
                 "droprate": 1.5625,
                 "bubbles": 55,
-                "gems": 15,
+                "gems": 1.5,
                 "currency": 70,
                 "currencyVariant": "Coins",
                 "variants": [
@@ -2873,7 +2873,7 @@
                 "rarity": "Unique",
                 "droprate": 3.3333333333333335,
                 "bubbles": 100,
-                "gems": 22,
+                "gems": 2.2,
                 "currency": 120,
                 "currencyVariant": "Coins",
                 "variants": [
@@ -3019,7 +3019,7 @@
                 "rarity": "Common",
                 "droprate": 1.5625,
                 "bubbles": 50,
-                "gems": 15,
+                "gems": 1.5,
                 "currency": 62,
                 "currencyVariant": "Coins",
                 "variants": [
@@ -3036,7 +3036,7 @@
                 "rarity": "Rare",
                 "droprate": 3.3333333333333335,
                 "bubbles": 88,
-                "gems": 18,
+                "gems": 1.8,
                 "currency": 105,
                 "currencyVariant": "Coins",
                 "variants": [
@@ -3563,7 +3563,7 @@
                 "rarity": "Legendary",
                 "droprate": 1,
                 "bubbles": 120,
-                "gems": 16,
+                "gems": 1.6,
                 "currency": 120,
                 "currencyVariant": "Coins",
                 "variants": [
@@ -3603,7 +3603,7 @@
                 "rarity": "Legendary",
                 "droprate": 1,
                 "bubbles": 120,
-                "gems": 16,
+                "gems": 1.6,
                 "currency": 120,
                 "currencyVariant": "Coins",
                 "variants": [
@@ -3643,7 +3643,7 @@
                 "rarity": "Legendary",
                 "droprate": 1,
                 "bubbles": 110,
-                "gems": 135,
+                "gems": 1.35,
                 "currency": 95,
                 "currencyVariant": "Coins",
                 "variants": [
@@ -3660,7 +3660,7 @@
                 "rarity": "Legendary",
                 "droprate": 1,
                 "bubbles": 120,
-                "gems": 15,
+                "gems": 1.5,
                 "currency": 135,
                 "currencyVariant": "Coins",
                 "variants": [
@@ -3683,7 +3683,7 @@
                 "rarity": "Legendary",
                 "droprate": 10,
                 "bubbles": 50,
-                "gems": 45,
+                "gems": 4.5,
                 "currency": 35,
                 "currencyVariant": "Coins",
                 "variants": [
@@ -3882,8 +3882,12 @@
             "pets": [
               {
                 "name": "Holy Shock",
-                "droprate": "1",
                 "rarity": "Legendary",
+                "droprate": 1,
+                "bubbles": 975,
+                "gems": 15.5,
+                "currency": 1300,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny"
@@ -3891,16 +3895,16 @@
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/7/76/Holy_Shock.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/a/af/Shiny_Holy_Shock.png"
-                ],
-                "bubbles": 975,
-                "currency": 1300,
-                "gems": 15.5,
-                "currencyVariant": "Coins"
+                ]
               },
               {
                 "name": "Evil Shock",
-                "droprate": "1",
                 "rarity": "Legendary",
+                "droprate": 1,
+                "bubbles": 975,
+                "gems": 15,
+                "currency": 1300,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny"
@@ -3908,16 +3912,16 @@
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/b/b1/Evil_Shock.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/4/40/Shiny_Evil_Shock.png"
-                ],
-                "bubbles": 975,
-                "currency": 1300,
-                "gems": 15,
-                "currencyVariant": "Coins"
+                ]
               },
               {
                 "name": "Rainbow Blitz",
-                "droprate": "1",
                 "rarity": "Legendary",
+                "droprate": 1,
+                "bubbles": 1250,
+                "gems": 20,
+                "currency": 1700,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny"
@@ -3925,16 +3929,16 @@
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/1/13/Rainbow_Blitz.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/a/a6/Shiny_Rainbow_Blitz.png"
-                ],
-                "bubbles": 1250,
-                "currency": 1700,
-                "gems": 20,
-                "currencyVariant": "Coins"
+                ]
               },
               {
                 "name": "King Soul",
-                "droprate": "1",
                 "rarity": "Legendary",
+                "droprate": 1,
+                "bubbles": 2225,
+                "gems": 45,
+                "currency": 3100,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny"
@@ -3942,16 +3946,33 @@
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/5/50/King_Soul.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/a/ae/Shiny_King_Soul.png"
+                ]
+              },
+              {
+                "name": "Discord Imp",
+                "rarity": "Legendary",
+                "droprate": 1,
+                "bubbles": 25,
+                "gems": 2,
+                "currency": 20,
+                "currencyVariant": "Coins",
+                "variants": [
+                  "Normal",
+                  "Shiny"
                 ],
-                "bubbles": 2225,
-                "currency": 3100,
-                "gems": 45,
-                "currencyVariant": "Coins"
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/b/b0/Discord_Imp.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/e/e5/Shiny_Discord_Imp.png"
+                ]
               },
               {
                 "name": "Demonic Dogcat",
-                "droprate": "1",
                 "rarity": "Legendary",
+                "droprate": 1,
+                "bubbles": 1300,
+                "gems": 22,
+                "currency": 1800,
+                "currencyVariant": "Coins",
                 "variants": [
                   "Normal",
                   "Shiny"
@@ -3959,11 +3980,7 @@
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/c/c2/Demonic_Dogcat.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/3/35/Shiny_Demonic_Dogcat.png"
-                ],
-                "bubbles": 1300,
-                "currency": 1800,
-                "gems": 22,
-                "currencyVariant": "Coins"
+                ]
               }
             ]
           }

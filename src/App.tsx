@@ -23,6 +23,9 @@ export default function App() {
   const [data, setData] = useState<CategoryData[]>([]);
   const [currentTab, setCurrentTab] = useState<"Completion" | "Odds" | "Stats" | "Scraper">("Odds");
 
+  // only show Scraper if running in localhost
+  const isLocalhost = window.location.hostname === "localhost";
+
   useEffect(() => {
     const petData = loadPetData();
     setData(petData);
@@ -38,7 +41,7 @@ export default function App() {
             <Tab label="Calculator" value="Odds" />
             <Tab label="Index" value="Completion" /> 
             <Tab label="Pet Stats" value="Stats" /> 
-            {/* <Tab label="Scraper" value="Scraper" />  */}
+            { isLocalhost && <Tab label="Scraper" value="Scraper" /> }
           </Tabs>
           <Link href="https://github.com/borngame/bgsi-tools" target="_blank" rel="noopener noreferrer" sx={{ color: "white", textDecoration: "none", marginLeft: 2 }}>
             <Typography variant="h5"><SiGithub /></Typography>
@@ -56,9 +59,12 @@ export default function App() {
           <Box sx={{ display: currentTab === 'Stats' ? 'flex' : 'none', flexGrow: '1', justifyContent: 'center', alignItems: 'middle', maxWidth: '100% !important' }}>
             <PetList data={data} />
           </Box>
-          {/* <Box sx={{ display: currentTab === 'Scraper' ? 'flex' : 'none', flexGrow: '1', justifyContent: 'center', alignItems: 'middle', maxWidth: '100% !important' }}>
-            <Scraper />
-          </Box> */}
+          {
+            isLocalhost && 
+            <Box sx={{ display: currentTab === 'Scraper' ? 'flex' : 'none', flexGrow: '1', justifyContent: 'center', alignItems: 'middle', maxWidth: '100% !important' }}>
+              <Scraper />
+            </Box>
+          }
         </Container>
       </Box>
     </>

@@ -125,8 +125,14 @@ function parsePetList(src: string): Subcategory[] {
 }
 
 function extractNumber(str: string): number {
-  const num = str.replace(/[^\d]/g, '');
-  return parseInt(num, 10) || 0;
+  // 1. Remove commas so "1,234.56" → "1234.56"
+  // 2. Find the first integer or decimal, including an optional leading “-”
+  const match = str
+    .replace(/,/g, '')
+    .match(/-?\d+(\.\d+)?/);
+
+  // 3. parseFloat the match, or return 0 if none found
+  return match ? parseFloat(match[0]) : 0;
 }
 
 async function fetchWikitext(pageName: string): Promise<string> {
@@ -180,7 +186,9 @@ async function parsePet(petName: string, debugLog: (msg: string) => void): Promi
     let currencyStat = 0;
     let currencyVariant = 'Coins' as CurrencyVariant;
     const coinsMatch = $('div.pi-item[data-source="coins"] b');
-    if (coinsMatch) currencyStat = extractNumber(coinsMatch.first().text());
+    if (coinsMatch.length > 0) {
+        currencyStat = extractNumber(coinsMatch.first().text());
+    }
     else {
         const ticketsMatch = $('div.pi-item[data-source="tickets"] b');
         currencyStat = extractNumber(ticketsMatch.first().text());
@@ -293,6 +301,7 @@ export function Scraper(): JSX.Element {
                 console.error('No eggs found');
                 return;
             }
+            debugLog('Scraping complete');
 
             // save pets to json to downloads folder via Document.click
             const blob = new Blob([JSON.stringify(eggs, null, 2)], { type: 'application/json' });
