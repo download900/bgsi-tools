@@ -3505,6 +3505,7 @@
       },
       {
         "name": "Robux Shop",
+        "ignoreCalculator": true,
         "eggs": [
           {
             "name": "Wave 4",
@@ -3706,6 +3707,7 @@
     "categories": [
       {
         "name": "Secret Bounty",
+        "ignoreCalculator": true,
         "eggs": [
           {
             "name": "Secret Bounty",

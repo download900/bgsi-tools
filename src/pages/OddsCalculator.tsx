@@ -134,7 +134,7 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
             const infinityEggNames: string[] = [];
 
             // Load secret bounty pets
-            const secretPets = props.data.find(cat => cat.name.includes("Other"))?.categories.find(subcat => subcat.name === "Secret Bounty Board")?.eggs[0].pets || [];
+            const secretPets = props.data.find(cat => cat.name.includes("Other"))?.categories.find(subcat => subcat.name === "Secret Bounty")?.eggs[0].pets || [];
             setSecretBountyPets(secretPets);
 
             // Process eggs for calculator
@@ -162,12 +162,13 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
                             }
                         }
 
-                        eggs.push(egg);
-
-                        // check for infinity egg, clone pets to infinity egg
-                        if (egg.infinityEgg) {
-                            const newPets = structuredClone(egg.pets.filter(pet => pet.rarity.includes('Legendary') || pet.rarity === 'Secret'));
-                            infinityEggs[egg.infinityEgg].pets.push(...newPets);
+                        if (egg.pets.some((pet) => pet.rarity === "Secret" || pet.rarity.includes("Legendary"))) {
+                            eggs.push(egg);
+                            // check for infinity egg, clone pets to infinity egg
+                            if (egg.infinityEgg) {
+                                const newPets = structuredClone(egg.pets.filter(pet => pet.rarity.includes('Legendary') || pet.rarity === 'Secret'));
+                                infinityEggs[egg.infinityEgg].pets.push(...newPets);
+                            }
                         }
                     }
                 }
