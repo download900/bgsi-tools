@@ -139,7 +139,9 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
 
             // Process eggs for calculator
             const eggs: Egg[] = [];
-            for (const category of props.data) {
+            // make a clone to avoid mutating the original data
+            const clonedData = structuredClone(props.data);
+            for (const category of clonedData) {
                 if (category.ignoreCalculator) continue;
                 for (const subcat of category.categories) {
                     if (subcat.ignoreCalculator) continue;
@@ -162,11 +164,11 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
                             }
                         }
 
-                        if (egg.pets.some((pet) => pet.rarity === "Secret" || pet.rarity.includes("Legendary"))) {
+                        if (egg.pets.some((pet: Pet) => pet.rarity === "Secret" || pet.rarity.includes("Legendary"))) {
                             eggs.push(egg);
                             // check for infinity egg, clone pets to infinity egg
                             if (egg.infinityEgg) {
-                                const newPets = structuredClone(egg.pets.filter(pet => pet.rarity.includes('Legendary') || pet.rarity === 'Secret'));
+                                const newPets = structuredClone(egg.pets.filter((pet: Pet) => pet.rarity.includes('Legendary') || pet.rarity === 'Secret'));
                                 infinityEggs[egg.infinityEgg].pets.push(...newPets);
                             }
                         }

@@ -1375,7 +1375,7 @@
             ]
           }
         ]
-      },    
+      },
       {
         "name": "Minigame Paradise",
         "eggs": [
@@ -2086,7 +2086,8 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/5/58/Shiny-mythic-nebula.png"
                 ]
               }
-            ]
+            ],
+            "ignoreCalculator": true
           },
           {
             "name": "Season 2 Pass",
@@ -2168,7 +2169,8 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/c/c4/Shiny_Mythic_Luminosity.png"
                 ]
               }
-            ]
+            ],
+            "ignoreCalculator": true
           },
           {
             "name": "Season 1 Egg",
@@ -2250,7 +2252,8 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/1/11/Shiny_Mythic_Seraph.png"
                 ]
               }
-            ]
+            ],
+            "ignoreCalculator": true
           },
           {
             "name": "Season 1 Pass",
@@ -2332,7 +2335,8 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/5/59/Shiny_Mythic_Avernus.png"
                 ]
               }
-            ]
+            ],
+            "ignoreCalculator": true
           }
         ]
       },
@@ -2441,7 +2445,8 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/6/69/Shiny_Mythic_Overseer.png"
                 ]
               }
-            ]
+            ],
+            "ignoreCalculator": true
           },
           {
             "name": "Series 1 Competitive Leaderboards",
@@ -2485,7 +2490,8 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/2/26/Shiny_Mythic_Elite_Soul.png"
                 ]
               }
-            ]
+            ],
+            "ignoreCalculator": true
           }
         ]
       },
@@ -3553,7 +3559,8 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/b/b8/Shiny_Mythic_Capybara_Plushie.png"
                 ]
               }
-            ]
+            ],
+            "ignoreCalculator": true
           },
           {
             "name": "Wave 3",
@@ -3593,7 +3600,8 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/3/36/Shiny_Electra_Hydra.png"
                 ]
               }
-            ]
+            ],
+            "ignoreCalculator": true
           },
           {
             "name": "Wave 2",
@@ -3633,7 +3641,8 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/2/22/Shiny_Infernus.png"
                 ]
               }
-            ]
+            ],
+            "ignoreCalculator": true
           },
           {
             "name": "Wave 1",
@@ -3673,7 +3682,8 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/9/98/Shiny_Dowodle.png"
                 ]
               }
-            ]
+            ],
+            "ignoreCalculator": true
           },
           {
             "name": "Gem Bundles",
@@ -3696,7 +3706,8 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/5/5c/Shiny_Flying_Gem.png"
                 ]
               }
-            ]
+            ],
+            "ignoreCalculator": true
           }
         ]
       }
@@ -3776,7 +3787,8 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/1/13/Shiny_Mythic_Prophet.png"
                 ]
               }
-            ]
+            ],
+            "ignoreCalculator": true
           }
         ]
       },
@@ -3830,7 +3842,8 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/e/ea/Shiny_Mythic_Moonburst.png"
                 ]
               }
-            ]
+            ],
+            "ignoreCalculator": true
           },
           {
             "name": "Playtime Gift",
@@ -3870,7 +3883,8 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/9/95/Shiny_Vaporium.png"
                 ]
               }
-            ]
+            ],
+            "ignoreCalculator": true
           }
         ]
       },
@@ -3984,7 +3998,8 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/3/35/Shiny_Demonic_Dogcat.png"
                 ]
               }
-            ]
+            ],
+            "ignoreCalculator": true
           }
         ]
       }

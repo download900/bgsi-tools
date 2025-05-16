@@ -62,7 +62,7 @@ export default function App() {
           {
             isLocalhost && 
             <Box sx={{ display: currentTab === 'Scraper' ? 'flex' : 'none', flexGrow: '1', justifyContent: 'center', alignItems: 'middle', maxWidth: '100% !important' }}>
-              <Scraper />
+              <Scraper data={data} />
             </Box>
           }
         </Container>
