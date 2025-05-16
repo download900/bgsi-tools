@@ -5,7 +5,7 @@ import { Button, Container, FormControl, Input, Typography } from "@mui/material
 
 import { Pet, Rarity, PetVariant, CurrencyVariant, Egg, SubCategoryData, CategoryData } from "../util/PetUtil";
 
-interface Subcategory {
+interface CategoryResult {
   name:   string;        // e.g. "The Overworld", "Minigame Paradise", …
   eggs:   EggResult[];   // one per egg in that subcategory
 }
@@ -60,8 +60,8 @@ export async function scrapeWiki(data: CategoryData[], debug: (msg: string) => v
 }
 
 // (2) This function scans the Project:Data/Pets page
-function parsePetList(src: string): Subcategory[] {
-  const subs: Subcategory[] = [];
+function parsePetList(src: string): CategoryResult[] {
+  const subs: CategoryResult[] = [];
   const outerRE = /\|\-\|([^\n=]+)=/g;
   const markers: { name: string; idx: number }[] = [];
   let m: RegExpExecArray | null;
@@ -215,7 +215,7 @@ async function parsePet(petName: string): Promise<{pet: Pet, eggImage: string}> 
     }
   }
 
-  // Build one Pet object per variant if its image exists
+  // Get variants and their images
   const variantDataSourceMap: [string, PetVariant][] = [
     ['normal-image', 'Normal'],
     ['shiny-image', 'Shiny'],
@@ -223,8 +223,7 @@ async function parsePet(petName: string): Promise<{pet: Pet, eggImage: string}> 
     ['shiny-mythic-image', 'Shiny Mythic'],
   ];
 
-  // PetVariant, image url
-  const petVariants: [string, string][] = [];
+  const petVariants: [string, string][] = []; // PetVariant, image url
 
   variantDataSourceMap.forEach(([ds, variant]) => {
     const img = $(`figure.pi-item.pi-image[data-source="${ds}"] a.image-thumbnail`);
@@ -352,7 +351,6 @@ const findExistingPet = (petName: string, data: CategoryData[]) => {
   return false;
 }
 
-// Handles cyclic object values by skipping circular references
 const saveJSON = (data: any, filename: string) => {
   const blob = new Blob([JSON.stringify(data, undefined, 2)], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
