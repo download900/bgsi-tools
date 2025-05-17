@@ -1,5 +1,5 @@
 import { JSX, useEffect, useState } from "react";
-import { Container, Typography, Box, TextField, Select, MenuItem, Checkbox, Paper, Tooltip, Table, TableBody, TableCell, TableHead,TableRow, Link, Tabs, Tab, List, ListItem } from "@mui/material";
+import { Container, Typography, Box, TextField, Select, MenuItem, Checkbox, Paper, Tooltip, Table, TableBody, TableCell, TableHead,TableRow, Link, Tabs, Tab, List, ListItem, FormControlLabel } from "@mui/material";
 import { getRarityStyle, imgIcon } from "../util/StyleUtil";
 import { CategoryData, Egg, Pet, SubCategoryData } from "../util/PetUtil";
 import Decimal from "decimal.js";
@@ -98,6 +98,7 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
 
     const [settingsTab, setSettingsTab] = useState(0);
     const [resultsTab, setResultsTab] = useState(0);
+    const [usePercentResults, setUsePercentResults] = useState(false);
 
     // list of pets
     const [eggs, setEggs] = useState<Egg[]>([]);
@@ -212,7 +213,6 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
                 eggs.push({
                     name: `Infinity Egg (${name})`,
                     image: "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png",
-                    index: subcategory.name,
                     pets: updatedPets,
                     subcategory,
                 } as Egg);
@@ -333,31 +333,28 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
 
     const formatChanceResult = (chance: number) => {
         let oddsString = "";
-        let tooltipString = "";
+        let percentString = "";
         if (chance !== 0) {
             const odds = 1 / chance;
             const percent = Number(100 * chance);
             // if chance is less than 0.0001, use scientific notation
             if (percent < 0.0001) {
-                tooltipString = `${percent.toExponential(5)}%`;
+                percentString = `${percent.toExponential(3)}%`;
                 // replace the "e-" with "e-0" to match how the game displays it
-                tooltipString = tooltipString.replace("e-", "e-0");
+                percentString = percentString.replace("e-", "e-0");
             }
             else {
-                tooltipString = `${(percent).toLocaleString(undefined, { maximumFractionDigits: 5 })}%`;
+                percentString = `${(percent).toLocaleString(undefined, { maximumFractionDigits: 6 })}%`;
             }
             oddsString = `1 / ${odds.toLocaleString(undefined, { maximumFractionDigits: 1})}`;
         }
         else {
             oddsString = "1 / ∞";
-            tooltipString = "Cannot divide by 0.";
+            percentString = "Cannot divide by 0.";
         }
 
-        return (
-            <Tooltip title={tooltipString} arrow>
-                <b>{oddsString}</b>
-            </Tooltip>
-        )
+        return usePercentResults ? (<Tooltip title={oddsString}><b>{percentString}</b></Tooltip>) : (<Tooltip title={percentString} arrow><b>{oddsString}</b></Tooltip>
+        );
     }
 
     const formatTimeResult = (seconds: number) => {
@@ -438,7 +435,6 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
                                     if (selectedEgg) setSelectedEgg(selectedEgg);
                                 }}
                             >
-                                <MenuItem value="None">None</MenuItem>
                                 {
                                     eggs.map((egg) => (
                                         <MenuItem key={egg.name} value={egg.name}>
@@ -808,6 +804,25 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
                         }
                     </Paper>
                     <Paper sx={{ p: 1, mb: 2 }} elevation={3}>
+                        {
+                            resultsTab === 0 ? (
+                                <>
+                                <Box sx={{display: "flex", justifyContent: "center", flexDirection: 'row', m: 0, p: 0 }}>
+                                    <FormControlLabel 
+                                        sx={{ m: 0, p: 0 }}
+                                        label="Use percent chances" 
+                                        control={
+                                            <Checkbox 
+                                                checked={usePercentResults} 
+                                                onChange={(e) => setUsePercentResults(e.target.checked)} 
+                                                sx={{ m: 0, p: 0, ml: 0.5, mr: 0.5, fontSize: 10 }} 
+                                            />
+                                        } 
+                                    />    
+                                </Box>
+                                </>
+                            ) : (<></>)
+                        }
                         <Table size="small" sx={{ "& .MuiTableCell-root": { p: 0.5 } }}>
                             <TableHead>
                               <TableRow>
