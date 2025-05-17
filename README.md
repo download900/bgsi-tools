@@ -1,6 +1,6 @@
 # 🫧 BGSI Tools
 
-Various tools for Bubble Gum Simulator Infinity.
+Tools for Bubble Gum Simulator Infinity.
 - Odds Calculator
 - Full Pet Index
 - Pet Stat Table
