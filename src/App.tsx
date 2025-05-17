@@ -14,16 +14,16 @@ import { OddsCalculator } from "./pages/OddsCalculator";
 import { CompletionTracker } from "./pages/PetIndex";
 import { CategoryData, loadPetData } from "./util/PetUtil";
 import { SiGithub } from "react-icons/si";
-import { Scraper } from "./pages/Scraper";
+import { WikiTools } from "./pages/WikiTools";
 
 // Tabs
 export type Tabs = "Completion" | "Stats" | "Odds";
 
 export default function App() {
   const [data, setData] = useState<CategoryData[]>([]);
-  const [currentTab, setCurrentTab] = useState<"Completion" | "Odds" | "Stats" | "Scraper">("Odds");
+  const [currentTab, setCurrentTab] = useState<"Completion" | "Odds" | "Stats" | "WikiTools">("Odds");
 
-  // only show Scraper if running in localhost
+  // only show WikiTools if running in localhost
   const isLocalhost = window.location.hostname === "localhost";
 
   useEffect(() => {
@@ -41,7 +41,7 @@ export default function App() {
             <Tab label="Calculator" value="Odds" />
             <Tab label="Index" value="Completion" /> 
             <Tab label="Pet Stats" value="Stats" /> 
-            { isLocalhost && <Tab label="Scraper" value="Scraper" /> }
+            { isLocalhost && <Tab label="WikiTools" value="WikiTools" /> }
           </Tabs>
           <Link href="https://github.com/borngame/bgsi-tools" target="_blank" rel="noopener noreferrer" sx={{ color: "white", textDecoration: "none", marginLeft: 2 }}>
             <Typography variant="h5"><SiGithub /></Typography>
@@ -61,8 +61,8 @@ export default function App() {
           </Box>
           {
             isLocalhost && 
-            <Box sx={{ display: currentTab === 'Scraper' ? 'flex' : 'none', flexGrow: '1', justifyContent: 'center', alignItems: 'middle', maxWidth: '100% !important' }}>
-              <Scraper data={data} />
+            <Box sx={{ display: currentTab === 'WikiTools' ? 'flex' : 'none', flexGrow: '1', justifyContent: 'center', alignItems: 'middle', maxWidth: '100% !important' }}>
+              <WikiTools data={data} />
             </Box>
           }
         </Container>

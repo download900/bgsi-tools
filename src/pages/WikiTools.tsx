@@ -362,11 +362,45 @@ const saveJSON = (data: any, filename: string) => {
   document.body.removeChild(a);
 }
 
-export interface ScraperProps {
+export interface WikiToolsProps {
     data: CategoryData[];
 }
 
-export function Scraper(props: ScraperProps): JSX.Element {
+// LUA Export Tool - export Pet data to a Lua table
+export function exportToLua(data: CategoryData[]): string {
+  let luaTable = '';
+  for (const category of data) {
+    if (category.ignoreCalculator) continue;
+    for (const subcategory of category.categories) {
+      if (subcategory.ignoreCalculator) continue;
+      for (const egg of subcategory.eggs) {
+        if (egg.ignoreCalculator) continue;
+        if (!egg.pets.some((pet) => pet.rarity === 'Secret' || pet.rarity === 'Legendary')) continue;
+        luaTable += `  { name = "${egg.name}",`;
+        if (egg.index) luaTable += ` index = "${egg.index}",`;
+        if (egg.infinityEgg) luaTable += ` infinityEgg = "${egg.infinityEgg}",`;
+        luaTable += ` pets = {\n`;
+        for (const pet of egg.pets) {
+          if (pet.rarity !== 'Secret' && pet.rarity !== 'Legendary') continue;
+          luaTable += `    { name = "${pet.name}"`;
+          luaTable += `, rarity = "${pet.rarity}"`;
+          luaTable += `, droprate = ${pet.droprate}`;
+          // luaTable += `, bubbles = ${pet.bubbles}`;
+          // luaTable += `, gems = ${pet.gems}`;
+          // luaTable += `, currency = ${pet.currency}`;
+          // luaTable += `, currencyVariant = "${pet.currencyVariant}"`;
+          // luaTable += `, hasMythic = ${pet.variants.includes('Mythic')}`;
+          luaTable += `},\n`;     
+        }
+        luaTable += `  } },\n`;
+      }
+    }
+  }
+
+  return `local eggs = {\n${luaTable}\n}`;
+}
+
+export function WikiTools(props: WikiToolsProps): JSX.Element {
   const [debug, setDebug] = useState<string[]>([ 'Ready to scrape...' ]);
   
   const debugLog = (msg: string) => {
@@ -381,6 +415,19 @@ export function Scraper(props: ScraperProps): JSX.Element {
     scrapeWiki(props.data, debugLog);
   }
 
+  const handleLuaExport = () => {
+    const lua = exportToLua(props.data); 
+    const blob = new Blob([lua], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'pets.lua';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
   return (
     <Container sx={{ mt: 4, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'middle', maxWidth: '600px' }}>
       <Typography variant="h4" sx={{ mb: 2 }}>Scraper</Typography>
@@ -390,7 +437,7 @@ export function Scraper(props: ScraperProps): JSX.Element {
         sx={{ mb: 2 }}
         style={{ maxWidth: '200px' }}
       >
-        Scrape Pets
+        Scrape Pet Pages
       </Button>
       <pre style={{ maxHeight: '400px', overflowY: 'auto', width: '100%', backgroundColor: '#333', color: '#fff', padding: '10px', borderRadius: '5px' }}>
         <code>
@@ -399,6 +446,14 @@ export function Scraper(props: ScraperProps): JSX.Element {
           ))}
         </code>
       </pre>
+      <Button
+        variant="contained"
+        onClick={handleLuaExport}
+        sx={{ mt: 2 }}
+        style={{ maxWidth: '200px' }}
+      >
+        Export to Lua
+      </Button>
     </Container>
   );
 }
