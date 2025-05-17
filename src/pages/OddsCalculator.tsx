@@ -3,6 +3,7 @@ import { Container, Typography, Box, TextField, Select, MenuItem, Checkbox, Pape
 import { getRarityStyle, imgIcon } from "../util/StyleUtil";
 import { CategoryData, Egg, Pet, SubCategoryData } from "../util/PetUtil";
 import Decimal from "decimal.js";
+import { index } from "cheerio/dist/commonjs/api/traversing";
 
 const STORAGE_KEY = "oddsCalculatorSettings";
 
@@ -41,11 +42,11 @@ interface CalculatorSettings {
 
 interface CalculatorResults {
     luckyBuff: number;
-    shinyRate: number;
-    mythicRate: number;
+    shinyChance: number;
+    mythicChance: number;
+    shinyMythicChance: number;
     speed: number;
     hatchesPerSecond: number;
-    shinyMythicRate: number;
     petResults: PetResult[];
 }
 
@@ -241,8 +242,8 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
     const calculateChance = (baseDroprate:number, luckyBuff: number) => {
         // Calculate base drop chance
         const n = Decimal(1).plus(luckyBuff / 100);
-        // The line below is: 1 - pow(1 - (1 / baseChance), n)
-        const dropRate = Decimal(1).minus(Decimal.pow(Decimal(1).minus((Decimal(1).dividedBy(baseDroprate))), n));
+        // (1 / baseDroprate) * (1 + (luckyBuff / 100))
+        const dropRate = n.times(Decimal(1).dividedBy(baseDroprate));
         return dropRate as unknown as any;
     }
 
@@ -300,9 +301,9 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
 
         const results: CalculatorResults = { 
             luckyBuff: luckyBuff, 
-            shinyRate: shinyChance, 
-            mythicRate: mythicChance, 
-            shinyMythicRate: shinyChance * mythicChance,
+            shinyChance: shinyChance, 
+            mythicChance: mythicChance, 
+            shinyMythicChance: shinyChance * mythicChance,
             speed: speed,
             hatchesPerSecond: hatchesPerSecond,
             petResults: [] 
@@ -782,13 +783,13 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
                                                 🍀 Luck: <b>{calculatorResults.luckyBuff || 0}%</b>
                                             </Box>
                                             <Box>
-                                                ✨ Shiny: <b>1 / {(1 / calculatorResults.shinyRate || 0).toLocaleString(undefined, { maximumFractionDigits: 1})}</b>
+                                                ✨ Shiny: <b>1 / {(1 / calculatorResults.shinyChance || 0).toLocaleString(undefined, { maximumFractionDigits: 1})}</b>
                                             </Box>
                                             <Box>
-                                                🔮 Mythic: <b>1 / {(1 / calculatorResults.mythicRate || 0).toLocaleString(undefined, { maximumFractionDigits: 1})}</b>
+                                                🔮 Mythic: <b>1 / {(1 / calculatorResults.mythicChance || 0).toLocaleString(undefined, { maximumFractionDigits: 1})}</b>
                                             </Box>
                                             <Box>
-                                                💫 Shiny Mythic: <b>1 / {(1 / calculatorResults.shinyMythicRate || 0).toLocaleString(undefined, { maximumFractionDigits: 1})}</b>
+                                                💫 Shiny Mythic: <b>1 / {(1 / calculatorResults.shinyMythicChance || 0).toLocaleString(undefined, { maximumFractionDigits: 1})}</b>
                                             </Box>
                                             </>
                                         ) : (
