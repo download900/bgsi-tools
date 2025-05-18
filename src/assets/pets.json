@@ -1576,7 +1576,7 @@
                 ],
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/3/3f/Robo_Kitty.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/a/a8/Shiny_Robo_Kitty.png"
                 ]
               },
               {
@@ -1695,131 +1695,6 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/4/4b/Shiny_Mech_Robot.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/7/7b/Mythic_Mech_Robot.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/4/44/Shiny_Mythic_Mech_Robot.png"
-                ]
-              }
-            ]
-          },
-          {
-            "name": "Underworld Egg",
-            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/f/ff/Underworld_Egg.png",
-            "index": "Minigame Paradise",
-            "pets": [
-              {
-                "name": "Hell Demon",
-                "rarity": "Common",
-                "droprate": 1.5384615384615385,
-                "bubbles": 65,
-                "gems": 1.8,
-                "currency": 75,
-                "currencyVariant": "Tickets",
-                "variants": [
-                  "Normal",
-                  "Shiny"
-                ],
-                "image": [
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/8/8c/Hell_Demon.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/26/Shiny_Hell_Demon.png"
-                ]
-              },
-              {
-                "name": "Demon Angel",
-                "rarity": "Rare",
-                "droprate": 3.3333333333333335,
-                "bubbles": 130,
-                "gems": 0,
-                "currency": 140,
-                "currencyVariant": "Tickets",
-                "variants": [
-                  "Normal",
-                  "Shiny"
-                ],
-                "image": [
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/a/aa/Demon_Angel.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/0/05/Shiny_Demon_Angel.png"
-                ]
-              },
-              {
-                "name": "Crimson Butterfly",
-                "rarity": "Legendary",
-                "droprate": 2000,
-                "bubbles": 650,
-                "gems": 14,
-                "currency": 435,
-                "currencyVariant": "Tickets",
-                "variants": [
-                  "Normal",
-                  "Shiny",
-                  "Mythic",
-                  "Shiny Mythic"
-                ],
-                "image": [
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/b/b9/Crimson_Butterfly.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/e/e4/Shiny_Crimson_Butterfly.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/b/b0/Mythic_Crimson_Butterfly.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/e/ea/Shiny_Mythic_Crimson_Butterfly.png"
-                ]
-              },
-              {
-                "name": "Demonweb",
-                "rarity": "Legendary",
-                "droprate": 40000,
-                "bubbles": 1450,
-                "gems": 24,
-                "currency": 890,
-                "currencyVariant": "Tickets",
-                "variants": [
-                  "Normal",
-                  "Shiny",
-                  "Mythic",
-                  "Shiny Mythic"
-                ],
-                "image": [
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/f/fd/Demonweb.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/7/73/Shiny_Demonweb.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/a/a1/Mythic_Demonweb.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/3/39/Shiny_Mythic_Demonweb.png"
-                ]
-              },
-              {
-                "name": "Crimson Bloodmoon",
-                "rarity": "Legendary",
-                "droprate": 833333,
-                "bubbles": 2000,
-                "gems": 40,
-                "currency": 2100,
-                "currencyVariant": "Tickets",
-                "variants": [
-                  "Normal",
-                  "Shiny",
-                  "Mythic",
-                  "Shiny Mythic"
-                ],
-                "image": [
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/8/84/Crimson_Bloodmoon.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/f/f8/Shiny_Crimson_Bloodmoon.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/4/4e/Mythic_Crimson_Bloodmoon.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/c/c7/Shiny_Mythic_Crimson_Bloodmoon.png"
-                ]
-              },
-              {
-                "name": "Lord Shock",
-                "rarity": "Secret",
-                "droprate": 500000000,
-                "bubbles": 3500,
-                "gems": 72,
-                "currency": 4000,
-                "currencyVariant": "Tickets",
-                "variants": [
-                  "Normal",
-                  "Shiny",
-                  "Mythic",
-                  "Shiny Mythic"
-                ],
-                "image": [
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/d/d3/Lord_Shock.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/3/33/Shiny_Lord_Shock.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/e/e8/Mythic_Lord_Shock.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/5/59/Shiny_Mythic_Lord_Shock.png"
                 ]
               }
             ]
@@ -1960,9 +1835,9 @@
                 ],
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/d/d4/D0GGY1337.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/4/40/Shiny-d0ggy1337.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/7/7a/Shiny_D0GGY1337.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/a/a1/Mythic_D0GGY1337.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/f/fb/Shiny-mythic-d0ggy1337.png"
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/25/Shiny_Mythic_D0GGY1337.png"
                 ]
               },
               {
@@ -2180,7 +2055,8 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/3/35/Shiny_Demonic_Dogcat.png"
                 ]
               }
-            ]
+            ],
+            "ignoreCalculator": true
           },
           {
             "name": "Other Quests",
@@ -2204,7 +2080,6 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/e/e5/Shiny_Discord_Imp.png"
                 ]
               }
-                  
             ]
           }
         ]
@@ -2298,6 +2173,130 @@
                 ]
               }
             ]
+          },
+          {
+            "name": "Underworld Egg",
+            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/f/ff/Underworld_Egg.png",
+            "pets": [
+              {
+                "name": "Hell Demon",
+                "rarity": "Common",
+                "droprate": 1.5384615384615385,
+                "bubbles": 65,
+                "gems": 1.8,
+                "currency": 75,
+                "currencyVariant": "Tickets",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/8/8c/Hell_Demon.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/26/Shiny_Hell_Demon.png"
+                ]
+              },
+              {
+                "name": "Demon Angel",
+                "rarity": "Rare",
+                "droprate": 3.3333333333333335,
+                "bubbles": 130,
+                "gems": 0,
+                "currency": 140,
+                "currencyVariant": "Tickets",
+                "variants": [
+                  "Normal",
+                  "Shiny"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/a/aa/Demon_Angel.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/0/05/Shiny_Demon_Angel.png"
+                ]
+              },
+              {
+                "name": "Crimson Butterfly",
+                "rarity": "Legendary",
+                "droprate": 2000,
+                "bubbles": 650,
+                "gems": 14,
+                "currency": 435,
+                "currencyVariant": "Tickets",
+                "variants": [
+                  "Normal",
+                  "Shiny",
+                  "Mythic",
+                  "Shiny Mythic"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/b/b9/Crimson_Butterfly.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/e/e4/Shiny_Crimson_Butterfly.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/b/b0/Mythic_Crimson_Butterfly.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/e/ea/Shiny_Mythic_Crimson_Butterfly.png"
+                ]
+              },
+              {
+                "name": "Demonweb",
+                "rarity": "Legendary",
+                "droprate": 40000,
+                "bubbles": 1450,
+                "gems": 24,
+                "currency": 890,
+                "currencyVariant": "Tickets",
+                "variants": [
+                  "Normal",
+                  "Shiny",
+                  "Mythic",
+                  "Shiny Mythic"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/f/fd/Demonweb.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/7/73/Shiny_Demonweb.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/a/a1/Mythic_Demonweb.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/3/39/Shiny_Mythic_Demonweb.png"
+                ]
+              },
+              {
+                "name": "Crimson Bloodmoon",
+                "rarity": "Legendary",
+                "droprate": 833333,
+                "bubbles": 2000,
+                "gems": 40,
+                "currency": 2100,
+                "currencyVariant": "Tickets",
+                "variants": [
+                  "Normal",
+                  "Shiny",
+                  "Mythic",
+                  "Shiny Mythic"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/8/84/Crimson_Bloodmoon.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/f/f8/Shiny_Crimson_Bloodmoon.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/4/4e/Mythic_Crimson_Bloodmoon.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/c/c7/Shiny_Mythic_Crimson_Bloodmoon.png"
+                ]
+              },
+              {
+                "name": "Lord Shock",
+                "rarity": "Secret",
+                "droprate": 500000000,
+                "bubbles": 3500,
+                "gems": 72,
+                "currency": 4000,
+                "currencyVariant": "Tickets",
+                "variants": [
+                  "Normal",
+                  "Shiny",
+                  "Mythic",
+                  "Shiny Mythic"
+                ],
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/d/d3/Lord_Shock.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/3/33/Shiny_Lord_Shock.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/e/e8/Mythic_Lord_Shock.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/5/59/Shiny_Mythic_Lord_Shock.png"
+                ]
+              }
+            ]
           }
         ]
       },
@@ -2380,9 +2379,9 @@
                 ],
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/e/ea/Nebula.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/a/af/Shiny-nebula.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/a/a3/Shiny_Nebula.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/2/27/Mythic_Nebula.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/5/58/Shiny-mythic-nebula.png"
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/5/59/Shiny_Mythic_Nebula.png"
                 ]
               }
             ],
@@ -2406,7 +2405,7 @@
                 ],
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/5/5d/Dusk.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/22/Shiny-dusk.png"
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Shiny_Dusk.png"
                 ]
               },
               {
@@ -2423,7 +2422,7 @@
                 ],
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/8/8e/Dawn.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/27/Shiny-dawn.png"
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/1/1b/Shiny_Dawn.png"
                 ]
               },
               {
@@ -2442,9 +2441,9 @@
                 ],
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/1/10/Moonlight.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/9/97/Shiny-moonlight.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/b/b5/Shiny_Moonlight.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/c/c7/Mythic_Moonlight.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/c/ce/Shiny-mythic-moonlight.png"
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/9/93/Shiny_Mythic_Moonlight.png"
                 ]
               },
               {
@@ -2661,7 +2660,7 @@
                 ],
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/7/7e/Competitor_Doggy.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/c/cd/Shiny-competitor-doggy.png"
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/8/88/Shiny_Competitor_Doggy.png"
                 ]
               },
               {
@@ -2678,7 +2677,7 @@
                 ],
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/1/1e/Golden_Golem.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/f/f6/Shiny-golden-golem.png"
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/e/e0/Shiny_Golden_Golem.png"
                 ]
               },
               {
@@ -2958,7 +2957,7 @@
                 ],
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/9/94/Silver_Fox.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/8/82/Shiny-silver-fox.png"
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/8/8d/Shiny_Silver_Fox.png"
                 ]
               },
               {
@@ -2975,7 +2974,7 @@
                 ],
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/4/45/Golden_Dragon.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/c/c5/Shiny-golden-dragon.png"
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/4/46/Shiny_Golden_Dragon.png"
                 ]
               },
               {
@@ -3721,7 +3720,7 @@
                 ],
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Bunnnny.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/7/75/Shiny-bunnnny.png"
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/b/b6/Shiny_Bunnnny.png"
                 ]
               },
               {
@@ -3738,7 +3737,7 @@
                 ],
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/f/f6/Long_Kitty.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/6/63/Shiny-long-kitty.png"
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/29/Shiny_Long_Kitty.png"
                 ]
               },
               {
