@@ -385,11 +385,11 @@ export function exportToLua(data: CategoryData[]): string {
           luaTable += `    { name = "${pet.name}"`;
           luaTable += `, rarity = "${pet.rarity}"`;
           luaTable += `, droprate = ${pet.droprate}`;
-          // luaTable += `, bubbles = ${pet.bubbles}`;
-          // luaTable += `, gems = ${pet.gems}`;
-          // luaTable += `, currency = ${pet.currency}`;
-          // luaTable += `, currencyVariant = "${pet.currencyVariant}"`;
-          // luaTable += `, hasMythic = ${pet.variants.includes('Mythic')}`;
+          luaTable += `, bubbles = ${pet.bubbles}`;
+          luaTable += `, gems = ${pet.gems}`;
+          luaTable += `, currency = ${pet.currency}`;
+          luaTable += `, currencyVariant = "${pet.currencyVariant}"`;
+          luaTable += `, hasMythic = ${pet.variants.includes('Mythic')}`;
           luaTable += `},\n`;     
         }
         luaTable += `  } },\n`;
