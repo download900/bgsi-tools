@@ -447,17 +447,17 @@ export function PetList(props: PetListProps) {
                   </TableCell>
                   <TableCell>
                     <Typography variant="body2">
-                      +{pet.bubbles} {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/0/0c/Bubbles.png")} 
+                      {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/0/0c/Bubbles.png")} +{pet.bubbles}
                     </Typography>
                   </TableCell>
                   <TableCell>
                     <Typography variant="body2">
-                      x{pet.currency} {imgIcon(currencyImages[pet.currencyVariant])}
+                      {imgIcon(currencyImages[pet.currencyVariant])} x{pet.currency}
                     </Typography>
                   </TableCell>
                   <TableCell>
                     <Typography variant="body2">
-                      x{pet.gems} {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Gems.png")}
+                      {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Gems.png")} x{pet.gems}
                     </Typography>
                   </TableCell>
                   <TableCell>

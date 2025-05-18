@@ -17,7 +17,8 @@ import {
   TableBody,
   Checkbox,
   Link,
-  Button
+  Button,
+  Tab
 } from "@mui/material";
 
 import {
@@ -26,11 +27,13 @@ import {
   Egg,
   Pet,
   PetVariant,
-  variants
+  variants,
+  currencyImages
 } from "../util/PetUtil";
 import {
   getRarityStyle,
   getPercentStyle,
+  imgIcon,
 } from "../util/StyleUtil";
 import { theme } from "..";
 
@@ -372,6 +375,15 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
                       <TableCell sx={{ width: 150, fontWeight: "bold" }}>
                         Drop Rate
                       </TableCell>
+                      <TableCell sx={{ width: 100, textAlign: "center" }}>
+                        {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/0/0c/Bubbles.png")}
+                      </TableCell>
+                      <TableCell sx={{ width: 100, textAlign: "center" }}>
+                        💰
+                      </TableCell>
+                      <TableCell sx={{ width: 100, textAlign: "center" }}>
+                        {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Gems.png")}
+                      </TableCell>
                       {variants.map((v) => (
                         <TableCell
                           key={v}
@@ -419,6 +431,15 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
                                 (<>1/{Number(pet.droprate).toLocaleString(undefined, { maximumFractionDigits: 0 })}</>)
                               }
                             </Typography>
+                          </TableCell>
+                          <TableCell sx={{ textAlign: "center" }}>
+                            {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/0/0c/Bubbles.png")} +{pet.bubbles}
+                          </TableCell>
+                          <TableCell sx={{ textAlign: "center" }}>
+                            {imgIcon(currencyImages[pet.currencyVariant])} x{pet.currency}
+                          </TableCell>
+                          <TableCell sx={{ textAlign: "center" }}>
+                            {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Gems.png")} x{pet.gems}
                           </TableCell>
                           {variants.map((v) => (
                             <TableCell key={v}>
