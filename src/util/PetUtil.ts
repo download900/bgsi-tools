@@ -3,46 +3,43 @@ import petJson from "../assets/pets.json";
 
 // ~~~~~~~~~~ Types ~~~~~~~~~~
 
-export type Rarity = "Common" | "Unique" | "Rare" | "Epic" | "Legendary" | "Secret"; // "Legendary" | "Legendary Tier II"
+export type Rarity = "Common" | "Unique" | "Rare" | "Epic" | "Legendary" | "Secret";
 export type PetVariant = "Normal" | "Shiny" | "Mythic" | "Shiny Mythic";
 export type CurrencyVariant = "Coins" | "Tickets";
 export type PetStat = "bubbles" | "currency" | "gems";
 export type Enchant = "bubbler" | "looter";
 
-export interface CategoryData { 
+export interface Category { 
   name: string, 
-  categories: SubCategoryData[], 
-  ignoreCalculator: boolean 
-}
-
-export interface SubCategoryData { 
-  name: string; 
-  eggs: Egg[], 
-  category: CategoryData; 
-  ignoreCalculator: boolean 
+  image: string,
+  eggs: Egg[]
 }
 
 export interface Egg { 
   name: string; 
   image: string; 
   pets: Pet[], 
-  subcategory: SubCategoryData; 
-  ignoreCalculator: boolean; 
+  luckIgnored: boolean; 
   infinityEgg: string;
   index: string;
+  limited: boolean;
+  available: boolean;
 }
 
 export interface Pet { 
-    name: string; 
-    droprate: number; 
-    rarity: Rarity; 
-    bubbles: number;
-    currencyVariant: CurrencyVariant; 
-    currency: number;
-    gems: number; 
-    variants: PetVariant[]; 
-    image: string[]; 
-    egg: Egg
+  name: string; 
+  droprate: number; 
+  rarity: Rarity; 
+  bubbles: number;
+  currencyVariant: CurrencyVariant; 
+  currency: number;
+  gems: number; 
+  limited: boolean;
+  available: boolean;
+  obtainedFrom: string;
+  obtainedFromImage: string;
+  variants: PetVariant[]; 
+  image: string[]; 
 }
 
 // for the pet stat list - to store an individual Normal/Shiny/Mythic variant of a pet.
@@ -56,12 +53,14 @@ export interface PetInstance {
   gems: number; 
   variant: PetVariant; 
   image: string; 
-  egg: Egg; 
+  //egg: Egg; 
+  obtainedFrom: string;
+  obtainedFromImage: string;
 }
 
 // ~~~~~~~~~~ Data ~~~~~~~~~~
 
-const petData = petJson as unknown as CategoryData[];
+export const petData = petJson as unknown as Category[];
 
 export const variants: PetVariant[] = ["Normal", "Shiny", "Mythic", "Shiny Mythic"];
 
@@ -78,26 +77,6 @@ export const currencyImages: { [key in CurrencyVariant]: string } = {
 };
 
 // ~~~~~~~~~~ Functions ~~~~~~~~~~
-
-// Parse the petData JSON and do some basic data manipulation
-export const loadPetData = () => {
-    petData.forEach((cat) => {
-      cat.categories.forEach((subcat) => {
-        subcat.category = cat;
-        if (cat.ignoreCalculator) subcat.ignoreCalculator = true;
-        subcat.eggs.forEach((egg) => {
-          egg.subcategory = subcat;
-          if (subcat.ignoreCalculator) egg.ignoreCalculator = true;
-          egg.pets.forEach((pet) => {
-            pet.egg = egg;
-            if (!pet.currencyVariant) pet.currencyVariant = "Coins";
-          });
-        });
-     });
-   });
-
-   return petData;
-}
 
 export const getPetChance = (pet: Pet, variant: PetVariant) => {
   if (!(pet.droprate as number))

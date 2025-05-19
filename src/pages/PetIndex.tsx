@@ -22,8 +22,7 @@ import {
 } from "@mui/material";
 
 import {
-  CategoryData,
-  SubCategoryData,
+  Category,
   Egg,
   Pet,
   PetVariant,
@@ -43,13 +42,12 @@ type PetKey = `${string}__${PetVariant}`;
 type OwnedPets = Record<PetKey, boolean>;
 
 interface CompletionTrackerProps {
-  data: CategoryData[];
+  data: Category[];
 }
 
 export function CompletionTracker({ data }: CompletionTrackerProps) {
   const [ownedPets, setOwnedPets] = useState<OwnedPets>({});
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
-  const [selectedSubCategory, setSelectedSubCategory] = useState<string>("");
   
   const [visibleCount, setVisibleCount] = useState(10);
 
@@ -64,7 +62,7 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
   // scroll to top on category/subcategory change
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [selectedCategory, selectedSubCategory]);
+  }, [selectedCategory]);
 
   const saveState = (pets: OwnedPets) => {
     try {
@@ -118,37 +116,17 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
   };
 
   // flatten all eggs
-  const allEggs: Egg[] = data.flatMap((cat) =>
-    cat.categories.flatMap((sub) => sub.eggs)
-  );
+  const allEggs: Egg[] = data.flatMap((cat) => cat.eggs);
   const allStats = calculateCompletion(allEggs.flatMap((e) => e.pets));
 
   // determine subcategories/eggs to show
   const isAll = selectedCategory === "All";
-  const categoryData = isAll
-    ? null
-    : data.find((cat) => cat.name === selectedCategory)!;
-  const subCategories: SubCategoryData[] = isAll
-    ? []
-    : categoryData!.categories;
-  const isSub =
-    !isAll && selectedSubCategory !== "" && categoryData !== null;
-  const subData: SubCategoryData | undefined = isSub
-    ? subCategories.find((sub) => sub.name === selectedSubCategory)
-    : undefined;
+  const categoryData = isAll ? null : data.find((cat) => cat.name === selectedCategory)!;
 
   // eggs to show in main content
-  const eggsToShow: Egg[] = isAll
-    ? allEggs
-    : isSub
-    ? subData!.eggs
-    : subCategories.flatMap((sub) => sub.eggs);
+  const eggsToShow: Egg[] = categoryData ? categoryData.eggs : allEggs;
 
-  const headerName = isAll
-    ? "All Pets"
-    : isSub
-    ? `${selectedSubCategory}`
-    : selectedCategory;
+  const headerName = categoryData ? categoryData.name : "All Pets";
   const headerStats = calculateCompletion(eggsToShow.flatMap((e) => e.pets));
 
   // infinite‐scroll effect
@@ -194,7 +172,6 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
             selected={isAll}
             onClick={() => {
               setSelectedCategory("All");
-              setSelectedSubCategory("");
             }}
           >
             <ListItemText
@@ -204,90 +181,50 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
 
           {/* Categories */}
           {data.map((cat) => {
-            const catStats = calculateCompletion(
-              cat.categories.flatMap((sub) => sub.eggs).flatMap((e) => e.pets)
-            );
+            const catStats = calculateCompletion(cat.eggs.flatMap((e) => e.pets));
             const catSelected = selectedCategory === cat.name;
             return (
               <Box key={cat.name}>
                 <ListItemButton
-                  selected={catSelected && !isSub}
+                  selected={catSelected}
                   onClick={() => {
                     if (catSelected) {
                       setSelectedCategory("All");
                     } else {
                       setSelectedCategory(cat.name);
                     }
-                    setSelectedSubCategory("");
                   }}
                 >
+                  <ListItemIcon>
+                    <Avatar src={cat.image} variant="square" sx={{ width: 24, height: 24 }} />
+                  </ListItemIcon>
                   <ListItemText>
                     <Typography sx={{ fontWeight: "bold" }}>
                       {cat.name} ({catStats.overall}%)
                     </Typography>
                   </ListItemText>
                 </ListItemButton>
-
-                {/* Subcategories */}
-                {catSelected &&
-                  cat.categories.map((sub) => {
-                    const subStats = calculateCompletion(
-                      sub.eggs.flatMap((e) => e.pets)
-                    );
-                    const subSelected =
-                      selectedCategory === cat.name &&
-                      selectedSubCategory === sub.name;
-                    return (
-                      <Box key={sub.name}>
-                        <ListItemButton
-                          sx={{ pl: 4 }}
-                          selected={subSelected}
-                          onClick={() => {
-                            if (subSelected) {
-                              setSelectedSubCategory("");
-                            } else {
-                              setSelectedSubCategory(sub.name);
-                            }
-                          }}
-                        >
-                          <ListItemText
-                            primary={`• ${sub.name} (${subStats.overall}%)`}
-                          />
+                {
+                  catSelected && cat.eggs.length > 1 && (
+                    cat.eggs.map((egg) => {
+                      const id = egg.name.replace(/\s+/g, "_");
+                      const eggStats = calculateCompletion(
+                        egg.pets
+                      );
+                      return (
+                        <ListItemButton key={egg.name} component="a" href={`#${id}`} sx={{ pl: 4, backgroundColor: '#222' }} >
+                          <ListItemIcon>
+                            <Avatar src={egg.image} variant="square" sx={{ width: 24, height: 24 }} />
+                          </ListItemIcon>
+                          <ListItemText primary={egg.name} />
+                            <Typography sx={{ ...getPercentStyle(eggStats.overall) }} >
+                              ({eggStats.overall}%)
+                            </Typography>
                         </ListItemButton>
-
-                        {/* Eggs */}
-                        {subSelected &&
-                          sub.eggs.map((egg) => {
-                            const id = egg.name.replace(/\s+/g, "_");
-                            const eggStats = calculateCompletion(
-                              egg.pets
-                            );
-                            return (
-                              <ListItemButton
-                                key={egg.name}
-                                component="a"
-                                href={`#${id}`}
-                                sx={{ pl: 8 }}
-                              >
-                                <ListItemIcon>
-                                  <Avatar
-                                    src={egg.image}
-                                    variant="square"
-                                    sx={{ width: 24, height: 24 }}
-                                  />
-                                </ListItemIcon>
-                                <ListItemText primary={egg.name} />
-                                  <Typography
-                                    sx={{ ...getPercentStyle(eggStats.overall) }}
-                                  >
-                                    ({eggStats.overall}%)
-                                  </Typography>
-                              </ListItemButton>
-                            );
-                          })}
-                      </Box>
-                    );
-                  })}
+                      );
+                    })
+                  )
+                }
               </Box>
             );
           })}
@@ -296,16 +233,7 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
       </Drawer>
 
       {/* Main content */}
-      <Box
-        component="main"
-        sx={{
-          flexGrow: 1,
-          p: 3,
-          mt: 1,
-          mx: "auto",
-          maxWidth: "900px"
-        }}
-      >
+      <Box component="main" sx={{ flexGrow: 1, p: 3, mt: 1, mx: "auto", maxWidth: "1000px" }} >
         {/* Header */}
         <Typography variant="h4" gutterBottom>
           {headerName}:{" "}
@@ -375,7 +303,7 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
                       <TableCell sx={{ width: 150, fontWeight: "bold" }}>
                         Drop Rate
                       </TableCell>
-                      <TableCell sx={{ width: 100, textAlign: "center" }}>
+                      {/* <TableCell sx={{ width: 100, textAlign: "center" }}>
                         {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/0/0c/Bubbles.png")}
                       </TableCell>
                       <TableCell sx={{ width: 100, textAlign: "center" }}>
@@ -383,15 +311,20 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
                       </TableCell>
                       <TableCell sx={{ width: 100, textAlign: "center" }}>
                         {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Gems.png")}
-                      </TableCell>
+                      </TableCell> */}
                       {variants.map((v) => (
                         <TableCell
                           key={v}
-                          sx={{ width: 100, fontWeight: "bold" }}
+                          sx={{ width: 100, fontWeight: "bold", textAlign: "left" }}
                         >
                           {v}
                         </TableCell>
                       ))}
+                      {/* Egg image column */}
+                      <TableCell sx={{ width: 24 }} />
+                      <TableCell sx={{ width: 150, fontWeight: "bold" }}>
+                          Source
+                      </TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
@@ -432,7 +365,7 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
                               }
                             </Typography>
                           </TableCell>
-                          <TableCell sx={{ textAlign: "center" }}>
+                          {/* <TableCell sx={{ textAlign: "center" }}>
                             {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/0/0c/Bubbles.png")} +{pet.bubbles}
                           </TableCell>
                           <TableCell sx={{ textAlign: "center" }}>
@@ -440,7 +373,7 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
                           </TableCell>
                           <TableCell sx={{ textAlign: "center" }}>
                             {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Gems.png")} x{pet.gems}
-                          </TableCell>
+                          </TableCell> */}
                           {variants.map((v) => (
                             <TableCell key={v}>
                               {pet.variants.includes(v) && (
@@ -452,6 +385,18 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
                               )}
                             </TableCell>
                           ))}
+                          <TableCell>
+                            <Avatar
+                              src={pet.obtainedFromImage}
+                              alt={pet.obtainedFrom}
+                              sx={{ width: 24, height: 24 }}
+                            />
+                          </TableCell>
+                          <TableCell>
+                            <Typography variant="body2">
+                              {pet.obtainedFrom}
+                            </Typography>
+                          </TableCell>
                         </TableRow>
                       );
                     })}

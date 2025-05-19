@@ -20,7 +20,7 @@ import {
 } from "@mui/material";
 
 import {
-  CategoryData,
+  Category,
   PetInstance,
   PetVariant,
   CurrencyVariant,
@@ -46,7 +46,7 @@ type RarityFilter = "Legendary" | "Secret" | "all";
 type SortKey = "name" | "chance" | "bubbles" | "coins" | "gems";
 
 interface PetListProps {
-  data: CategoryData[];
+  data: Category[];
 }
 
 export function PetList(props: PetListProps) {
@@ -180,23 +180,22 @@ export function PetList(props: PetListProps) {
     if (props.data?.length < 1) return [];
     const allPets: PetInstance[] = [];
     props.data.forEach((cat) => {
-      cat.categories.forEach((subcat) => {
-        subcat.eggs.forEach((egg) => {
-          egg.pets.forEach((pet) => {
-            if (pet.rarity !== 'Legendary' && pet.rarity !== 'Secret') return;
-            pet.variants.forEach((variant) => {
-              allPets.push({
-                name: pet.name,
-                droprate: getPetChance(pet, variant),
-                rarity: pet.rarity,
-                bubbles: getPetStat(pet, variant, "bubbles", previewMaxLevel, previewEnchant, enchantTeamSize, secondEnchant),
-                currencyVariant: pet.currencyVariant,
-                currency: getPetStat(pet, variant, "currency", previewMaxLevel, previewEnchant, enchantTeamSize, secondEnchant),
-                gems: getPetStat(pet, variant, "gems", previewMaxLevel, previewEnchant, enchantTeamSize, secondEnchant),
-                variant,
-                image: pet.image[pet.variants.indexOf(variant)],
-                egg,
-              });
+      cat.eggs.forEach((egg) => {
+        egg.pets.forEach((pet) => {
+          if (pet.rarity !== 'Legendary' && pet.rarity !== 'Secret') return;
+          pet.variants.forEach((variant) => {
+            allPets.push({
+              name: pet.name,
+              droprate: getPetChance(pet, variant),
+              rarity: pet.rarity,
+              bubbles: getPetStat(pet, variant, "bubbles", previewMaxLevel, previewEnchant, enchantTeamSize, secondEnchant),
+              currencyVariant: pet.currencyVariant,
+              currency: getPetStat(pet, variant, "currency", previewMaxLevel, previewEnchant, enchantTeamSize, secondEnchant),
+              gems: getPetStat(pet, variant, "gems", previewMaxLevel, previewEnchant, enchantTeamSize, secondEnchant),
+              variant,
+              image: pet.image[pet.variants.indexOf(variant)],
+              obtainedFrom: pet.obtainedFrom,
+              obtainedFromImage: pet.obtainedFromImage
             });
           });
         });
@@ -462,14 +461,14 @@ export function PetList(props: PetListProps) {
                   </TableCell>
                   <TableCell>
                     <Avatar
-                      src={pet.egg.image}
-                      alt={pet.egg.name}
+                      src={pet.obtainedFromImage}
+                      alt={pet.obtainedFrom}
                       sx={{ width: 24, height: 24 }}
                     />
                   </TableCell>
                   <TableCell>
                     <Typography variant="body2">
-                      {pet.egg.name}
+                      {pet.obtainedFrom}
                     </Typography>
                   </TableCell>
                 </TableRow>

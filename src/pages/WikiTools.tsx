@@ -1,9 +1,9 @@
-import { JSX, SetStateAction, useEffect, useState } from "react";
+import { JSX, SetStateAction, useEffect, useRef, useState } from "react";
 
 import * as cheerio from 'cheerio';
 import { Button, Container, FormControl, Input, Typography } from "@mui/material";
 
-import { Pet, Rarity, PetVariant, CurrencyVariant, Egg, SubCategoryData, CategoryData } from "../util/PetUtil";
+import { Pet, Rarity, PetVariant, CurrencyVariant, Egg, Category } from "../util/PetUtil";
 
 interface CategoryResult {
   name:   string;        // e.g. "The Overworld", "Minigame Paradise", …
@@ -16,19 +16,19 @@ interface EggResult {
 }
 
 // (1) Orchestrator
-export async function scrapeWiki(data: CategoryData[], debug: (msg: string) => void): Promise<void> {
+export async function scrapeWiki(data: Category[], debug: (msg: string) => void): Promise<void> {
   debug('Fetching pet data page...');
   const petsData = await fetchWikitext('Bubble_Gum_Simulator_INFINITY_Wiki:Data/Pets');
 
   debug('Scraping pet list...');
   const entries = parsePetList(petsData);
 
-  const all: SubCategoryData[] = [];
+  const all: Category[] = [];
   debug('Scraping pets...');
   
   for (const s of entries) {
     debug(`Scraping ${s.name}... [${s.eggs.length} eggs]`);
-    const category = { name: s.name, eggs: [] } as any as SubCategoryData;
+    const category = { name: s.name, eggs: [] } as any as Category;
 
     for (const e of s.eggs) {
       debug(`Scraping ${e.eggName}... [${e.petNames.length} pets]`);
@@ -37,9 +37,9 @@ export async function scrapeWiki(data: CategoryData[], debug: (msg: string) => v
       for (const petName of e.petNames) {
         debug(`Scraping ${petName}...`);
         const result = await parsePet(petName);
-        egg.pets.push(result.pet);
+        egg.pets.push(result);
         if (!egg.image) {
-          egg.image = result.eggImage;
+          egg.image = result.obtainedFromImage;
         }
       }
 
@@ -157,11 +157,6 @@ function parseEggEntries(src: string): { eggName: string; petName: string }[] {
       for (const item of items) {
         const nameM = item.match(/name:([^;]+);/);
 
-        //// If we want to filter by rarity, uncomment this
-        // const rarity = item.match(/rarity:([^;\n]+)(;|\n|$)/);
-        // if (!rarity) continue;
-        // if (rarity[1].trim() !== 'Legendary' && rarity[1].trim() !== 'Secret') continue;
-
         if (nameM) {
           out.push({ eggName, petName: nameM[1].trim() });
         }
@@ -173,7 +168,7 @@ function parseEggEntries(src: string): { eggName: string; petName: string }[] {
 }
 
 // (4) Fetch each pet page and scrape pet and egg info
-async function parsePet(petName: string): Promise<{pet: Pet, eggImage: string}> {
+async function parsePet(petName: string): Promise<Pet> {
   const html = await fetchHTML(petName);
   const $ = cheerio.load(html);
 
@@ -201,7 +196,7 @@ async function parsePet(petName: string): Promise<{pet: Pet, eggImage: string}> 
   let rarity = rarityMatch.first().text().trim();
   if (rarity.includes('Legendary')) rarity = 'Legendary';
 
-  // Base chance text: find the “1 in X”
+  // Base chance text
   let baseChance: number = 1;
   const chanceRaw = $('div.pi-item[data-source="norm-petchance"] .pi-data-value')?.first().text();
   if (chanceRaw) {
@@ -232,8 +227,23 @@ async function parsePet(petName: string): Promise<{pet: Pet, eggImage: string}> 
       if (imgSrc) petVariants.push([variant, imgSrc]);
     }
   });
+
+  // Pull the raw wikitext for the pet
+  const petWikitext = await fetchWikitext(petName);
+  let limited = false;
+  let available = true;
+  // Find |limited= yes/no or | limited=yes/no
+  const limitedMatch = petWikitext.match(/\|\s*limited\s*=\s*(yes|no)/);
+  if (limitedMatch) {
+    limited = limitedMatch[1].trim() === 'yes';
+  }
+  // Find |available= yes/no
+  const availableMatch = petWikitext.match(/\|\s*available\s*=\s*(yes|no)/);
+  if (availableMatch) {
+    available = availableMatch[1].trim() === 'yes';
+  }
   
-  return { pet: {
+  return {
     name: petName,
     rarity: rarity as Rarity,
     droprate: baseChance,
@@ -241,9 +251,13 @@ async function parsePet(petName: string): Promise<{pet: Pet, eggImage: string}> 
     gems: gemsStat,
     currency: currencyStat,
     currencyVariant,
+    limited,
+    available,
+    obtainedFrom: obt.first().text().trim(),
+    obtainedFromImage: eggImage || '',
     variants: petVariants.map(([variant]) => variant as PetVariant),
     image: petVariants.map(([, img]) => img),
-  }, eggImage } as { pet: Pet, eggImage: string };
+  } as Pet;
 }
 
 function extractNumber(str: string): number {
@@ -293,13 +307,13 @@ async function fetchHTML(petName: string): Promise<string> {
 
 // (5) This function processes the scraped data. First it updates our current data and saves that,
 //     then it saves the remaining new pets to a JSON file.
-const processEggs = (cats: SubCategoryData[], data: CategoryData[]) => {
+const processEggs = (wikiData: Category[], existingData: Category[]) => {
   const newPets: Pet[] = [];
   // update current data
-  for (const cat of cats) {
+  for (const cat of wikiData) {
     for (const egg of cat.eggs) {
       for (const pet of egg.pets) {
-        const existingPet = findExistingPet(pet.name, data);
+        const existingPet = findExistingPet(pet.name, existingData);
         if (existingPet) {
           // update existing pet
           existingPet.droprate = pet.droprate;
@@ -309,6 +323,10 @@ const processEggs = (cats: SubCategoryData[], data: CategoryData[]) => {
           existingPet.currencyVariant = pet.currencyVariant;
           existingPet.variants = pet.variants;
           existingPet.image = pet.image;
+          existingPet.limited = pet.limited;
+          existingPet.available = pet.available;
+          existingPet.obtainedFrom = pet.obtainedFrom;
+          existingPet.obtainedFromImage = pet.obtainedFromImage;
         } else {
           // add new pet
           newPets.push(pet);
@@ -317,33 +335,17 @@ const processEggs = (cats: SubCategoryData[], data: CategoryData[]) => {
     }
   }
 
-  // Remove cyclic references from current data
-  const newData = data as any;
-  for (const category of newData) {
-    for (const subcat of category.categories) {
-      subcat.category = undefined;
-      for (const egg of subcat.eggs) {
-        egg.subcategory = undefined;
-        for (const pet of egg.pets) {
-          pet.egg = undefined;
-        } 
-      }
-    }
-  }
-
   // Save JSONs
-  saveJSON(newData, 'pets');
+  saveJSON(existingData, 'pets');
   saveJSON(newPets, 'new_pets');
 }
 
-const findExistingPet = (petName: string, data: CategoryData[]) => {
+const findExistingPet = (petName: string, data: Category[]) => {
   for (const category of data) {
-    for (const subcat of category.categories) {
-      for (const egg of subcat.eggs) {
-        for (const pet of egg.pets) {
-          if (pet.name === petName) {
-            return pet;
-          }
+    for (const egg of category.eggs) {
+      for (const pet of egg.pets) {
+        if (pet.name === petName) {
+          return pet;
         }
       }
     }
@@ -363,45 +365,85 @@ const saveJSON = (data: any, filename: string) => {
 }
 
 export interface WikiToolsProps {
-    data: CategoryData[];
+    data: Category[];
 }
 
-// LUA Export Tool - export Pet data to a Lua table
-export function exportToLua(data: CategoryData[]): string {
-  let luaTable = '';
-  for (const category of data) {
-    if (category.ignoreCalculator) continue;
-    for (const subcategory of category.categories) {
-      if (subcategory.ignoreCalculator) continue;
-      for (const egg of subcategory.eggs) {
-        if (egg.ignoreCalculator) continue;
-        if (!egg.pets.some((pet) => pet.rarity === 'Secret' || pet.rarity === 'Legendary')) continue;
-        luaTable += `  { name = "${egg.name}",`;
-        if (egg.index) luaTable += ` index = "${egg.index}",`;
-        if (egg.infinityEgg) luaTable += ` infinityEgg = "${egg.infinityEgg}",`;
-        luaTable += ` pets = {\n`;
-        for (const pet of egg.pets) {
-          if (pet.rarity !== 'Secret' && pet.rarity !== 'Legendary') continue;
-          luaTable += `    { name = "${pet.name}"`;
-          luaTable += `, rarity = "${pet.rarity}"`;
-          luaTable += `, droprate = ${pet.droprate}`;
-          luaTable += `, bubbles = ${pet.bubbles}`;
-          luaTable += `, gems = ${pet.gems}`;
-          luaTable += `, currency = ${pet.currency}`;
-          luaTable += `, currencyVariant = "${pet.currencyVariant}"`;
-          luaTable += `, hasMythic = ${pet.variants.includes('Mythic')}`;
-          luaTable += `},\n`;     
+// 2) Build your “eggs” array purely in JS,
+export function exportToLua(data: Category[]): string {
+  const pets: any[] = [];
+
+  for (const cat of data) {
+    const c: any = { name: cat.name, eggs: [] }
+    for (const egg of cat.eggs) {
+      for (const pet of egg.pets) {
+        const p: any = {
+          name: pet.name,
+          obtainedFrom: pet.obtainedFrom,
+          rarity: pet.rarity === 'Legendary' ? pet.droprate <= 5000 ? 'Legendary' : pet.droprate <= 49999 ? 'Legendary II' : 'Legendary III' : pet.rarity,
+          chance:
+            pet.droprate < 100
+              ? `${100 / pet.droprate}%`
+              : `1/${pet.droprate}`,
+          bubbles: pet.bubbles,
+          gems: pet.gems,
+          currency: pet.currency,
+          currencyType: pet.currencyVariant,
+          hasMythic: pet.variants.includes("Mythic"),
+          ...(pet.limited !== false && { limited: pet.limited }),
+          ...(pet.limited !== false && { available: pet.available }),
         }
-        luaTable += `  } },\n`;
+        pets.push(p);
       }
     }
   }
 
-  return `local eggs = {\n${luaTable}\n}`;
+  // 3) Serialize it all as Lua
+  const body = luaStringify(pets, "");
+  return `local data = ${body}`;
 }
 
+// 1) Serialize any JS value into a pretty-printed Lua literal.
+function luaStringify(value: any, indent = ""): string {
+  const nextIndent = indent + "  ";
+
+  if (Array.isArray(value)) {
+    if (value.length === 0) return "{}";
+    const items = value
+      .map(v => nextIndent + luaStringify(v, nextIndent))
+      .join(",\n");
+    return `{\n${items}\n${indent}}`;
+  }
+
+  if (value && typeof value === "object") {
+    const entries = Object.entries(value)
+      // skip undefined
+      .filter(([, v]) => v !== undefined)
+      .map(
+        ([k, v]) =>
+          `${nextIndent}${k} = ${luaStringify(v, nextIndent)}`
+      )
+      .join(",\n");
+    return `{\n${entries}\n${indent}}`;
+  }
+
+  if (typeof value === "string") {
+    // escape quotes/backslashes
+    const esc = value.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
+    return `"${esc}"`;
+  }
+
+  if (typeof value === "boolean" || typeof value === "number") {
+    return String(value);
+  }
+
+  // fallback
+  return "nil";
+}
+
+
 export function WikiTools(props: WikiToolsProps): JSX.Element {
-  const [debug, setDebug] = useState<string[]>([ 'Ready to scrape...' ]);
+  const [debug, setDebug] = useState<string[]>([ 'Ready to scrape...' ]); 
+  const preRef = useRef<HTMLPreElement>(null);
   
   const debugLog = (msg: string) => {
     setDebug((prev) => {
@@ -428,6 +470,14 @@ export function WikiTools(props: WikiToolsProps): JSX.Element {
     URL.revokeObjectURL(url);
   }
 
+  useEffect(() => {
+    const pre = preRef.current;
+    if (pre) {
+      pre.scrollTop = pre.scrollHeight;
+    }
+  }, [debug]);
+
+
   return (
     <Container sx={{ mt: 4, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'middle', maxWidth: '600px' }}>
       <Typography variant="h4" sx={{ mb: 2 }}>Scraper</Typography>
@@ -439,8 +489,8 @@ export function WikiTools(props: WikiToolsProps): JSX.Element {
       >
         Scrape Pet Pages
       </Button>
-      <pre style={{ maxHeight: '400px', overflowY: 'auto', width: '100%', backgroundColor: '#333', color: '#fff', padding: '10px', borderRadius: '5px' }}>
-        <code>
+      <pre ref={preRef} style={{ maxHeight: '400px', overflowY: 'auto', width: '100%', backgroundColor: '#333', color: '#fff', padding: '10px', borderRadius: '5px' }}>
+        <code style={{ whiteSpace: 'pre-wrap', wordWrap: 'break-word' }}>
           {debug.map((line, index) => (
             <div key={index}>{line}</div>
           ))}
@@ -452,7 +502,15 @@ export function WikiTools(props: WikiToolsProps): JSX.Element {
         sx={{ mt: 2 }}
         style={{ maxWidth: '200px' }}
       >
-        Export to Lua
+        Export Pets.lua
+      </Button>
+      <Button
+        variant="contained"
+        onClick={() => saveJSON(props.data, 'pets')}
+        sx={{ mt: 2 }}
+        style={{ maxWidth: '200px' }}
+      >
+        Export Pets.json
       </Button>
     </Container>
   );

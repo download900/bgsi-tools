@@ -1,7 +1,7 @@
 import { JSX, useEffect, useState } from "react";
 import { Container, Typography, Box, TextField, Select, MenuItem, Checkbox, Paper, Tooltip, Table, TableBody, TableCell, TableHead,TableRow, Link, Tabs, Tab, List, ListItem, FormControlLabel } from "@mui/material";
 import { getRarityStyle, imgIcon } from "../util/StyleUtil";
-import { CategoryData, Egg, Pet, SubCategoryData } from "../util/PetUtil";
+import { Category, Egg, Pet } from "../util/PetUtil";
 import Decimal from "decimal.js";
 import { index } from "cheerio/dist/commonjs/api/traversing";
 
@@ -65,11 +65,10 @@ interface PetResult {
 export interface InfinityEgg {
     name: string;
     pets: Pet[];
-    subcategory: SubCategoryData;
 }
 
 interface OddsCalculatorProps {
-  data: CategoryData[];
+  data: Category[];
 }
 
 export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
@@ -116,6 +115,11 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
     useEffect(() => {
         loadCalculator();
     }, [props.data]);
+
+    const shouldCalculateEgg = (egg: Egg) => {
+        if (egg.luckIgnored || !egg.available) return false;
+        return egg.pets.some((pet: Pet) => pet.available && (pet.rarity === "Secret" || pet.rarity === "Legendary"));
+    }
     
     const loadCalculator = () => {
         try {
@@ -136,7 +140,7 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
             const infinityEggNames: string[] = [];
 
             // Load secret bounty pets
-            const secretPets = props.data.find(cat => cat.name.includes("Other"))?.categories.find(subcat => subcat.name === "Secret Bounty")?.eggs[0].pets || [];
+            const secretPets = props.data.find(cat => cat.name === "Secret Bounty")?.eggs[0].pets || [];
             setSecretBountyPets(secretPets);
 
             // Process eggs for calculator
@@ -144,35 +148,30 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
             // make a clone to avoid mutating the original data
             const clonedData = structuredClone(props.data);
             for (const category of clonedData) {
-                if (category.ignoreCalculator) continue;
-                for (const subcat of category.categories) {
-                    if (subcat.ignoreCalculator) continue;
+                // check for infinity egg
+                if (category.eggs.some((egg: Egg) => egg.infinityEgg)) {
+                    const egg = { name: category.name, pets: [] } as InfinityEgg;
+                    infinityEggs[category.name] = egg;
+                    infinityEggNames.push(category.name);
+                }
 
-                    // if we're parsing Worlds, push new infinity egg
-                    if (category.name.includes("Worlds")) {
-                        const egg = { name: subcat.name, pets: [], subcategory: subcat } as InfinityEgg;
-                        infinityEggs[subcat.name] = egg;
-                        infinityEggNames.push(subcat.name);
+                for (const egg of category.eggs) {
+                    if (!shouldCalculateEgg(egg)) continue;
+
+                    // check for secret bounty
+                    if (settings.secretsBountyPet && settings.secretsBountyEgg === egg.name) {
+                        const secretBountyPet = secretPets.find(pet => pet.name === settings.secretsBountyPet);
+                        if (secretBountyPet) {
+                            egg.pets.push(secretBountyPet);
+                        }
                     }
 
-                    for (const egg of subcat.eggs) {
-                        if (egg.ignoreCalculator) continue;
-
-                        // check for secret bounty
-                        if (settings.secretsBountyPet && settings.secretsBountyEgg === egg.name) {
-                            const secretBountyPet = secretPets.find(pet => pet.name === settings.secretsBountyPet);
-                            if (secretBountyPet) {
-                                egg.pets.push(secretBountyPet);
-                            }
-                        }
-
-                        if (egg.pets.some((pet: Pet) => pet.rarity === "Secret" || pet.rarity.includes("Legendary"))) {
-                            eggs.push(egg);
-                            // check for infinity egg, clone pets to infinity egg
-                            if (egg.infinityEgg) {
-                                const newPets = structuredClone(egg.pets.filter((pet: Pet) => pet.rarity.includes('Legendary') || pet.rarity === 'Secret'));
-                                infinityEggs[egg.infinityEgg].pets.push(...newPets);
-                            }
+                    if (egg.pets.some((pet: Pet) => pet.rarity === "Secret" || pet.rarity.includes("Legendary"))) {
+                        eggs.push(egg);
+                        // check for infinity egg, clone pets to infinity egg
+                        if (egg.infinityEgg) {
+                            const newPets = structuredClone(egg.pets.filter((pet: Pet) => pet.rarity.includes('Legendary') || pet.rarity === 'Secret'));
+                            infinityEggs[egg.infinityEgg].pets.push(...newPets);
                         }
                     }
                 }
@@ -181,7 +180,7 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
             // Process Infinity Eggs:
             infinityEggNames.forEach((eggName) => {
                 const egg = infinityEggs[eggName];
-                const { pets, subcategory, name } = egg;
+                const { pets, name } = egg;
 
                 const legendaryRate = 200;
                 const secretRate = 40000000;
@@ -213,8 +212,7 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
                 eggs.push({
                     name: `Infinity Egg (${name})`,
                     image: "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png",
-                    pets: updatedPets,
-                    subcategory,
+                    pets: updatedPets
                 } as Egg);
             });
 

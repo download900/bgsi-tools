@@ -12,7 +12,7 @@ import headerImage from "./assets/favicon.png";
 import { PetList } from "./pages/PetStats";
 import { OddsCalculator } from "./pages/OddsCalculator";
 import { CompletionTracker } from "./pages/PetIndex";
-import { CategoryData, loadPetData } from "./util/PetUtil";
+import { Category, petData } from "./util/PetUtil";
 import { SiGithub } from "react-icons/si";
 import { WikiTools } from "./pages/WikiTools";
 
@@ -20,14 +20,13 @@ import { WikiTools } from "./pages/WikiTools";
 export type Tabs = "Completion" | "Stats" | "Odds";
 
 export default function App() {
-  const [data, setData] = useState<CategoryData[]>([]);
+  const [data, setData] = useState<Category[]>([]);
   const [currentTab, setCurrentTab] = useState<"Completion" | "Odds" | "Stats" | "WikiTools">("Odds");
 
   // only show WikiTools if running in localhost
   const isLocalhost = window.location.hostname === "localhost";
 
   useEffect(() => {
-    const petData = loadPetData();
     setData(petData);
   }, []);
 
