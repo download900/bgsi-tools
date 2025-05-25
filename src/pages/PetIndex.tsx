@@ -290,6 +290,12 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
                     {stats.raw.owned} / {stats.raw.total} ({stats.overall}
                     %)
                   </span>
+                  { !egg.available && (
+                    <span style={{ color: "#666", fontSize: "0.8em" }}>
+                      {" "}
+                      (Discontinued)
+                    </span>
+                  )}
                 </Typography>
               </Box>
               <Paper sx={{ p: 1 }} elevation={2}>

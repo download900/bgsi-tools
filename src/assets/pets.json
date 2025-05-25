@@ -639,7 +639,7 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/0/06/Inferno_Dragon.png",
               "https://static.wikia.nocookie.net/bgs-infinity/images/3/35/Shiny_Inferno_Dragon.png",
               "https://static.wikia.nocookie.net/bgs-infinity/images/4/41/Mythic_Inferno_Dragon.png",
-              "https://static.wikia.nocookie.net/bgs-infinity/images/c/cd/ShinyMythicInfernoDragon.png"
+              "https://static.wikia.nocookie.net/bgs-infinity/images/1/15/Shiny_Mythic_Inferno_Dragon.png"
             ],
             "limited": false,
             "available": true,
@@ -2642,7 +2642,7 @@
         "name": "Season 2 Egg",
         "image": "https://static.wikia.nocookie.net/bgs-infinity/images/f/f9/Season_2_Egg.png",
         "luckIgnored": true,
-        "available": true,
+        "available": false,
         "pets": [
           {
             "name": "Sleepy Bunny",
@@ -2661,7 +2661,7 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/a/a4/Shiny_Sleepy_Bunny.png"
             ],
             "limited": true,
-            "available": true,
+            "available": false,
             "obtainedFrom": "Season 2 Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/f/f9/Season_2_Egg.png"
           },
@@ -2682,7 +2682,7 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/a/a1/Shiny_Starry_Lamb.png"
             ],
             "limited": true,
-            "available": true,
+            "available": false,
             "obtainedFrom": "Season 2 Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/f/f9/Season_2_Egg.png"
           },
@@ -2707,7 +2707,7 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/5/54/Shiny_Mythic_Moon_Deer.png"
             ],
             "limited": true,
-            "available": true,
+            "available": false,
             "obtainedFrom": "Season 2 Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/f/f9/Season_2_Egg.png"
           },
@@ -2732,7 +2732,7 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/5/59/Shiny_Mythic_Nebula.png"
             ],
             "limited": true,
-            "available": true,
+            "available": false,
             "obtainedFrom": "Season 2 Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/f/f9/Season_2_Egg.png"
           }
@@ -2742,7 +2742,7 @@
         "name": "Season 2 Pass",
         "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Bubble_Pass_Icon.png",
         "luckIgnored": true,
-        "available": true,
+        "available": false,
         "pets": [
           {
             "name": "Dusk",
@@ -2761,7 +2761,7 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Shiny_Dusk.png"
             ],
             "limited": true,
-            "available": true,
+            "available": false,
             "obtainedFrom": "Season 2 Bubble Pass",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Bubble_Pass_Icon.png"
           },
@@ -2782,7 +2782,7 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/1/1b/Shiny_Dawn.png"
             ],
             "limited": true,
-            "available": true,
+            "available": false,
             "obtainedFrom": "Season 2 Bubble Pass",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Bubble_Pass_Icon.png"
           },
@@ -2807,7 +2807,7 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/9/93/Shiny_Mythic_Moonlight.png"
             ],
             "limited": true,
-            "available": true,
+            "available": false,
             "obtainedFrom": "Season 2 Infinite Track",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/7/7d/Infinite_Track_Icon.png"
           },
@@ -2832,7 +2832,7 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/c/c4/Shiny_Mythic_Luminosity.png"
             ],
             "limited": true,
-            "available": true,
+            "available": false,
             "obtainedFrom": "Season 2 Infinite Track",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/7/7d/Infinite_Track_Icon.png"
           }
@@ -2962,7 +2962,7 @@
             ],
             "limited": true,
             "available": false,
-            "obtainedFrom": "Bubble Pass",
+            "obtainedFrom": "Season 1 Bubble Pass",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Bubble_Pass_Icon.png"
           },
           {
@@ -2983,7 +2983,7 @@
             ],
             "limited": true,
             "available": false,
-            "obtainedFrom": "Bubble Pass",
+            "obtainedFrom": "Season 1 Bubble Pass",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Bubble_Pass_Icon.png"
           },
           {
@@ -3048,7 +3048,7 @@
         "name": "Series 2 Egg",
         "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/75/Series_2_Egg.png",
         "luckIgnored": true,
-        "available": true,
+        "available": false,
         "pets": [
           {
             "name": "Ground Golem",
@@ -3067,7 +3067,7 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/5/51/Shiny_Ground_Golem.png"
             ],
             "limited": true,
-            "available": true,
+            "available": false,
             "obtainedFrom": "Series 2 Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/7/75/Series_2_Egg.png"
           },
@@ -3088,7 +3088,7 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/5/53/Shiny_Wind_Fairy.png"
             ],
             "limited": true,
-            "available": true,
+            "available": false,
             "obtainedFrom": "Series 2 Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/7/75/Series_2_Egg.png"
           },
@@ -3113,7 +3113,7 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/7/7b/Shiny_Mythic_Water_Serpent.png"
             ],
             "limited": true,
-            "available": true,
+            "available": false,
             "obtainedFrom": "Series 2 Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/7/75/Series_2_Egg.png"
           },
@@ -3138,7 +3138,7 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/8/8c/Shiny_Mythic_Fire_Guardian.png"
             ],
             "limited": true,
-            "available": true,
+            "available": false,
             "obtainedFrom": "Series 2 Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/7/75/Series_2_Egg.png"
           }
@@ -3148,7 +3148,7 @@
         "name": "Series 2 Competitive Leaderboards",
         "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/79/Competitive_Icon.png",
         "luckIgnored": true,
-        "available": true,
+        "available": false,
         "pets": [
           {
             "name": "The Moon",
@@ -3167,7 +3167,7 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/9/9c/Shiny_The_Moon.png"
             ],
             "limited": true,
-            "available": true,
+            "available": false,
             "obtainedFrom": "S2 Competitive",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/7/79/Competitive_Icon.png"
           },
@@ -3192,7 +3192,7 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/8/80/Shiny_Mythic_The_Sun.png"
             ],
             "limited": true,
-            "available": true,
+            "available": false,
             "obtainedFrom": "S2 Competitive",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/7/79/Competitive_Icon.png"
           }
@@ -4223,7 +4223,7 @@
             "rarity": "Rare",
             "droprate": 14.285714285714286,
             "bubbles": 100,
-            "gems": 1,
+            "gems": 0,
             "currency": 115,
             "currencyVariant": "Coins",
             "variants": [
@@ -4364,7 +4364,7 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/6/66/Galaxy_Dice.png",
               "https://static.wikia.nocookie.net/bgs-infinity/images/b/b0/Shiny_Galaxy_Dice.png"
             ],
-            "limited": true,
+            "limited": false,
             "available": true,
             "obtainedFrom": "Chance Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d8/Chance_Egg.png"
@@ -4385,7 +4385,7 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/5/57/Chance_Dragon.png",
               "https://static.wikia.nocookie.net/bgs-infinity/images/c/cd/Shiny_Chance_Dragon.png"
             ],
-            "limited": true,
+            "limited": false,
             "available": true,
             "obtainedFrom": "Chance Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d8/Chance_Egg.png"
@@ -4410,7 +4410,7 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/b/b0/Mythic_Ring_Master.png",
               "https://static.wikia.nocookie.net/bgs-infinity/images/f/f1/Shiny_Mythic_Ring_Master.png"
             ],
-            "limited": true,
+            "limited": false,
             "available": true,
             "obtainedFrom": "Chance Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d8/Chance_Egg.png"
@@ -4435,7 +4435,7 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/4/49/Mythic_Royal_Guardian.png",
               "https://static.wikia.nocookie.net/bgs-infinity/images/1/10/Shiny_Mythic_Royal_Guardian.png"
             ],
-            "limited": true,
+            "limited": false,
             "available": true,
             "obtainedFrom": "Chance Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d8/Chance_Egg.png"
@@ -5066,7 +5066,7 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/e/ec/Shiny_Mythic_Noctis.png"
             ],
             "limited": true,
-            "available": true,
+            "available": false,
             "obtainedFrom": "Robux Shop",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png"
           },
@@ -5091,7 +5091,7 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/3/31/Shiny_Mythic_Bongo_Kitty.png"
             ],
             "limited": true,
-            "available": true,
+            "available": false,
             "obtainedFrom": "Robux Shop",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png"
           }
@@ -5266,7 +5266,7 @@
             "rarity": "Legendary",
             "droprate": 1,
             "bubbles": 110,
-            "gems": 1.35,
+            "gems": 1.4,
             "currency": 95,
             "currencyVariant": "Coins",
             "variants": [
@@ -5327,7 +5327,7 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/1/1a/Flying_Gem.png",
               "https://static.wikia.nocookie.net/bgs-infinity/images/5/5c/Shiny_Flying_Gem.png"
             ],
-            "limited": false,
+            "limited": true,
             "available": true,
             "obtainedFrom": "Robux Shop",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png"

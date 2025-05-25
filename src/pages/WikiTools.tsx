@@ -204,7 +204,7 @@ async function parsePet(petName: string): Promise<Pet> {
     if (oddsMatch) {
       baseChance = extractNumber(oddsMatch![1]);
     }
-    else {
+    if (!oddsMatch || baseChance < 100) {
       const percentMatch = chanceRaw.match(/(\d+(\.\d+)?)%/);
       baseChance = 100 / (percentMatch![1] as unknown as number);
     }
@@ -233,9 +233,10 @@ async function parsePet(petName: string): Promise<Pet> {
   let limited = false;
   let available = true;
   // Find |limited= yes/no or | limited=yes/no
-  const limitedMatch = petWikitext.match(/\|\s*limited\s*=\s*(yes|no)/);
+  const limitedMatch = petWikitext.match(/\|\s*limited\s*=\s*(yes|no|exclusive)/);
   if (limitedMatch) {
-    limited = limitedMatch[1].trim() === 'yes';
+    const t = limitedMatch[1].trim();
+    limited = t === 'yes' || t === 'exclusive';
   }
   // Find |available= yes/no
   const availableMatch = petWikitext.match(/\|\s*available\s*=\s*(yes|no)/);
@@ -368,75 +369,91 @@ export interface WikiToolsProps {
     data: Category[];
 }
 
-// 2) Build your “eggs” array purely in JS,
-export function exportToLua(data: Category[]): string {
-  const pets: any[] = [];
+// ────────────────────────────────────────────────────────────
+// Export the data as a Lua *lookup* table keyed by pet name
+export function exportPetsToLua(data: Category[]): string {
+  const pets: Record<string, any> = {};
 
   for (const cat of data) {
-    const c: any = { name: cat.name, eggs: [] }
     for (const egg of cat.eggs) {
       for (const pet of egg.pets) {
-        const p: any = {
-          name: pet.name,
-          obtainedFrom: pet.obtainedFrom,
-          rarity: pet.rarity === 'Legendary' ? pet.droprate <= 5000 ? 'Legendary' : pet.droprate <= 49999 ? 'Legendary II' : 'Legendary III' : pet.rarity,
-          chance:
-            pet.droprate < 100
-              ? `${100 / pet.droprate}%`
-              : `1/${pet.droprate}`,
-          bubbles: pet.bubbles,
-          gems: pet.gems,
-          currency: pet.currency,
-          currencyType: pet.currencyVariant,
-          hasMythic: pet.variants.includes("Mythic"),
-          ...(pet.limited !== false && { limited: pet.limited }),
-          ...(pet.limited !== false && { available: pet.available }),
-        }
-        pets.push(p);
+        pets[pet.name] = {
+          obtainedFrom : pet.obtainedFrom,
+          rarity       : pet.rarity === "Legendary"
+              ? pet.droprate <= 5_000   ? "Legendary"
+              : pet.droprate <= 49_999 ? "Legendary II"
+              :                          "Legendary III"
+              : pet.rarity,
+          chance       : pet.droprate < 100 ? `${100 / pet.droprate}%` : `1/${pet.droprate}`,
+          bubbles      : pet.bubbles,
+          gems         : pet.gems,
+          currency     : pet.currency,
+          currencyType : pet.currencyVariant,
+          hasMythic    : pet.variants.includes("Mythic"),
+          ...(pet.limited  !== false && { limited  : pet.limited  }),
+          ...(pet.limited  !== false && { available: pet.available }),
+        };
       }
     }
   }
 
-  // 3) Serialize it all as Lua
-  const body = luaStringify(pets, "");
-  return `local data = ${body}`;
+  // Serialize as Lua and prepend `return `
+  return `return ${luaStringify(pets)}`;
 }
 
-// 1) Serialize any JS value into a pretty-printed Lua literal.
-function luaStringify(value: any, indent = ""): string {
-  const nextIndent = indent + "  ";
+export function exportEggsToLua(data: Category[]): string {
+  const eggs: Record<string, any> = {};
+  for (const cat of data) {
+    for (const egg of cat.eggs) {
+      eggs[egg.name] = {
+        available: egg.available,
+        limited: egg.limited,
+        luckAffected: !egg.luckIgnored,
+        pets: egg.pets.map(pet => pet.name),
+      };
+    }
+  }
+  // Serialize as Lua and prepend `return `
+  return `return ${luaStringify(eggs)}`;
+}
 
+// ────────────────────────────────────────────────────────────
+// Serialize any JS value into a pretty-printed Lua literal
+function luaStringify(value: any, indent = ""): string {
+  const next = indent + "  ";
+
+  // Arrays  ──────────────────────────────────────────
   if (Array.isArray(value)) {
     if (value.length === 0) return "{}";
-    const items = value
-      .map(v => nextIndent + luaStringify(v, nextIndent))
-      .join(",\n");
-    return `{\n${items}\n${indent}}`;
+    const body = value.map(v => next + luaStringify(v, next)).join(",\n");
+    return `{\n${body}\n${indent}}`;
   }
 
+  // Objects  ─────────────────────────────────────────
   if (value && typeof value === "object") {
-    const entries = Object.entries(value)
-      // skip undefined
+    const body = Object.entries(value)
       .filter(([, v]) => v !== undefined)
-      .map(
-        ([k, v]) =>
-          `${nextIndent}${k} = ${luaStringify(v, nextIndent)}`
-      )
+      .map(([k, v]) => {
+        // use bareword key if legal in Lua, otherwise ["quoted"]
+        const isId  = /^[A-Za-z_][A-Za-z0-9_]*$/.test(k);
+        const esc   = k.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
+        const key   = isId ? k : `["${esc}"]`;
+        return `${next}${key} = ${luaStringify(v, next)}`;
+      })
       .join(",\n");
-    return `{\n${entries}\n${indent}}`;
+    return `{\n${body}\n${indent}}`;
   }
 
+  // Primitives  ─────────────────────────────────────
   if (typeof value === "string") {
-    // escape quotes/backslashes
     const esc = value.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
     return `"${esc}"`;
   }
-
-  if (typeof value === "boolean" || typeof value === "number") {
+  if (typeof value === "number" || typeof value === "boolean") {
     return String(value);
   }
 
-  // fallback
+  // Fallback
   return "nil";
 }
 
@@ -457,13 +474,22 @@ export function WikiTools(props: WikiToolsProps): JSX.Element {
     scrapeWiki(props.data, debugLog);
   }
 
-  const handleLuaExport = () => {
-    const lua = exportToLua(props.data); 
+  const handlePetsLuaExport = () => {
+    const lua = exportPetsToLua(props.data);
+    exportLuaToFile(lua, 'pets.lua');
+  }
+
+  const handleEggsLuaExport = () => {
+    const lua = exportPetsToLua(props.data);
+    exportLuaToFile(lua, 'pets.lua');
+  }
+
+  const exportLuaToFile = (lua: string, filename: string) => {
     const blob = new Blob([lua], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'pets.lua';
+    a.download = `${filename}.lua`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -480,7 +506,34 @@ export function WikiTools(props: WikiToolsProps): JSX.Element {
 
   return (
     <Container sx={{ mt: 4, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'middle', maxWidth: '600px' }}>
-      <Typography variant="h4" sx={{ mb: 2 }}>Scraper</Typography>
+      <Typography variant="h4" sx={{ mb: 2 }}>Data Export</Typography>
+      <Typography variant="h5" sx={{ m: 1 }}>Pets</Typography>
+      <Button
+        variant="contained"
+        onClick={handlePetsLuaExport}
+        sx={{ mt: 2 }}
+        style={{ maxWidth: '200px' }}
+      >
+        Export LUA
+      </Button>
+      <Button
+        variant="contained"
+        onClick={() => saveJSON(props.data, 'pets')}
+        sx={{ mt: 2 }}
+        style={{ maxWidth: '200px' }}
+      >
+        Export JSON
+      </Button>
+      <Typography variant="h5" sx={{ m: 1 }}>Eggs</Typography>
+      <Button
+        variant="contained"
+        onClick={handleEggsLuaExport}
+        sx={{ mt: 2 }}
+        style={{ maxWidth: '200px' }}
+      >
+        Export LUA
+      </Button>
+      <Typography variant="h4" sx={{ mb: 2, mt: 2 }}>Wiki Scraper</Typography>
       <Button
         variant="contained"
         onClick={handleScrape}
@@ -496,22 +549,6 @@ export function WikiTools(props: WikiToolsProps): JSX.Element {
           ))}
         </code>
       </pre>
-      <Button
-        variant="contained"
-        onClick={handleLuaExport}
-        sx={{ mt: 2 }}
-        style={{ maxWidth: '200px' }}
-      >
-        Export Pets.lua
-      </Button>
-      <Button
-        variant="contained"
-        onClick={() => saveJSON(props.data, 'pets')}
-        sx={{ mt: 2 }}
-        style={{ maxWidth: '200px' }}
-      >
-        Export Pets.json
-      </Button>
     </Container>
   );
 }
