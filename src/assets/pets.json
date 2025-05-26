@@ -2860,7 +2860,7 @@
             ],
             "image": [
               "https://static.wikia.nocookie.net/bgs-infinity/images/f/fa/Rune_Stone.png",
-              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+              "https://static.wikia.nocookie.net/bgs-infinity/images/9/97/Shiny_Rune_Stone.png"
             ]
           },
           {
@@ -2881,7 +2881,7 @@
             ],
             "image": [
               "https://static.wikia.nocookie.net/bgs-infinity/images/3/3b/Rune_Guardian.png",
-              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+              "https://static.wikia.nocookie.net/bgs-infinity/images/b/b2/Shiny_Rune_Guardian.png"
             ]
           },
           {
@@ -2990,8 +2990,8 @@
             "droprate": 1000,
             "bubbles": 2700,
             "gems": 55,
-            "currency": 0,
-            "currencyVariant": "Coins",
+            "currency": 800,
+            "currencyVariant": "Seashells",
             "limited": true,
             "available": true,
             "obtainedFrom": "Season 3 Infinite Track",
@@ -3004,9 +3004,9 @@
             ],
             "image": [
               "https://static.wikia.nocookie.net/bgs-infinity/images/d/dc/Ancient_One.png",
-              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
-              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
-              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+              "https://static.wikia.nocookie.net/bgs-infinity/images/d/d8/Shiny_Ancient_One.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/4/40/Mythic_Ancient_One.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/b/b0/Shiny_Mythic_Ancient_One.png"
             ]
           },
           {
@@ -3015,8 +3015,8 @@
             "droprate": 20000,
             "bubbles": 4200,
             "gems": 90,
-            "currency": 0,
-            "currencyVariant": "Coins",
+            "currency": 2000,
+            "currencyVariant": "Seashells",
             "limited": true,
             "available": true,
             "obtainedFrom": "Season 3 Infinite Track",
@@ -3946,7 +3946,7 @@
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/c/c4/Popsicle_Trio.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/b/be/Shiny_Popsicle_Trio.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/0/0e/Mythic_Popsicle_Trio.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/b/bc/Shiny_Mythic_Popsicle_Trio.png"
                 ]
               },
@@ -3971,8 +3971,8 @@
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/a/ac/Soarin%27_Surfer.png",
                   "https://static.wikia.nocookie.net/bgs-infinity/images/6/64/Shiny_Soarin%27_Surfer.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/d/d2/Mythic_Soarin%27_Surfer.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/6/68/Shiny_Mythic_Soarin%27_Surfer.png"
                 ]
               },
               {
@@ -4266,9 +4266,9 @@
                 ],
                 "image": [
                   "https://static.wikia.nocookie.net/bgs-infinity/images/5/5a/Dragonfruit.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
-                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/a/ab/Shiny_Dragonfruit.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/e/e4/Mythic_Dragonfruit.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/20/Shiny_Mythic_Dragonfruit.png"
                 ]
               }
             ]
@@ -5859,8 +5859,8 @@
             "droprate": 1,
             "bubbles": 1350,
             "gems": 25,
-            "currency": 0,
-            "currencyVariant": "Coins",
+            "currency": 125,
+            "currencyVariant": "Seashells",
             "limited": true,
             "available": true,
             "obtainedFrom": "Robux Shop",
