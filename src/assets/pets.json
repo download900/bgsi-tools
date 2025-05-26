@@ -3726,7 +3726,7 @@
           {
             "name": "Popsicle Trio",
             "rarity": "Legendary",
-            "droprate": 500,
+            "droprate": 1000,
             "bubbles": 720,
             "gems": 18,
             "currency": 50,
@@ -3751,7 +3751,7 @@
           {
             "name": "Soarin' Surfer",
             "rarity": "Legendary",
-            "droprate": 5000,
+            "droprate": 10000,
             "bubbles": 1600,
             "gems": 30,
             "currency": 200,
