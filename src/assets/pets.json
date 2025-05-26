@@ -2639,6 +2639,206 @@
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Bubble_Pass_Icon.png",
     "eggs": [
       {
+        "name": "Season 3 Egg",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/e/ed/Season_3_Egg.png",
+        "luckIgnored": true,
+        "available": true,
+        "pets": [
+          {
+            "name": "Rune Stone",
+            "rarity": "Rare",
+            "droprate": 1.1111111111111112,
+            "bubbles": 40,
+            "gems": 0,
+            "currency": 4,
+            "currencyVariant": "Seashells",
+            "limited": true,
+            "available": true,
+            "obtainedFrom": "Season 3 Egg",
+            "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/e/ed/Season_3_Egg.png",
+            "variants": [
+              "Normal",
+              "Shiny"
+            ],
+            "image": [
+              "https://static.wikia.nocookie.net/bgs-infinity/images/f/fa/Rune_Stone.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+            ]
+          },
+          {
+            "name": "Rune Guardian",
+            "rarity": "Epic",
+            "droprate": 10,
+            "bubbles": 210,
+            "gems": 0,
+            "currency": 30,
+            "currencyVariant": "Seashells",
+            "limited": true,
+            "available": true,
+            "obtainedFrom": "Season 3 Egg",
+            "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/e/ed/Season_3_Egg.png",
+            "variants": [
+              "Normal",
+              "Shiny"
+            ],
+            "image": [
+              "https://static.wikia.nocookie.net/bgs-infinity/images/3/3b/Rune_Guardian.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+            ]
+          },
+          {
+            "name": "Runic Defender",
+            "rarity": "Legendary",
+            "droprate": 200,
+            "bubbles": 1600,
+            "gems": 30,
+            "currency": 150,
+            "currencyVariant": "Seashells",
+            "limited": true,
+            "available": true,
+            "obtainedFrom": "Season 3 Egg",
+            "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/e/ed/Season_3_Egg.png",
+            "variants": [
+              "Normal",
+              "Shiny",
+              "Mythic",
+              "Shiny Mythic"
+            ],
+            "image": [
+              "https://static.wikia.nocookie.net/bgs-infinity/images/8/84/Runic_Defender.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/0/0c/Shiny_Runic_Defender.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/28/Mythic_Runic_Defender.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/a/a1/Shiny_Mythic_Runic_Defender.png"
+            ]
+          },
+          {
+            "name": "Glyph Warrior",
+            "rarity": "Legendary",
+            "droprate": 10000,
+            "bubbles": 3500,
+            "gems": 80,
+            "currency": 0,
+            "currencyVariant": "Coins",
+            "limited": true,
+            "available": true,
+            "obtainedFrom": "Season 3 Egg",
+            "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/e/ed/Season_3_Egg.png",
+            "variants": [
+              "Normal",
+              "Shiny",
+              "Mythic",
+              "Shiny Mythic"
+            ],
+            "image": [
+              "https://static.wikia.nocookie.net/bgs-infinity/images/e/ea/Glyph_Warrior.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/1/16/Mythic_Glyph_Warrior.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/9/95/Shiny_Mythic_Glyph_Warrior.png"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Season 3 Pass",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Bubble_Pass_Icon.png",
+        "luckIgnored": true,
+        "available": true,
+        "pets": [
+          {
+            "name": "Runic Master",
+            "rarity": "Legendary",
+            "droprate": 1,
+            "bubbles": 1000,
+            "gems": 20,
+            "currency": 35,
+            "currencyVariant": "Seashells",
+            "limited": true,
+            "available": true,
+            "obtainedFrom": "Season 3 Bubble Pass",
+            "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Bubble_Pass_Icon.png",
+            "variants": [
+              "Normal",
+              "Shiny"
+            ],
+            "image": [
+              "https://static.wikia.nocookie.net/bgs-infinity/images/1/1e/Runic_Master.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/d/d1/Shiny_Runic_Master.png"
+            ]
+          },
+          {
+            "name": "Runic Prism",
+            "rarity": "Legendary",
+            "droprate": 1,
+            "bubbles": 1200,
+            "gems": 30,
+            "currency": 50,
+            "currencyVariant": "Seashells",
+            "limited": true,
+            "available": true,
+            "obtainedFrom": "Season 3 Bubble Pass",
+            "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Bubble_Pass_Icon.png",
+            "variants": [
+              "Normal",
+              "Shiny"
+            ],
+            "image": [
+              "https://static.wikia.nocookie.net/bgs-infinity/images/c/c9/Runic_Prism.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/6/64/Shiny_Runic_Prism.png"
+            ]
+          },
+          {
+            "name": "Ancient One",
+            "rarity": "Legendary",
+            "droprate": 1000,
+            "bubbles": 2700,
+            "gems": 55,
+            "currency": 0,
+            "currencyVariant": "Coins",
+            "limited": true,
+            "available": true,
+            "obtainedFrom": "Bubble Pass",
+            "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Bubble_Pass_Icon.png",
+            "variants": [
+              "Normal",
+              "Shiny",
+              "Mythic",
+              "Shiny Mythic"
+            ],
+            "image": [
+              "https://static.wikia.nocookie.net/bgs-infinity/images/d/dc/Ancient_One.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+            ]
+          },
+          {
+            "name": "Monolith",
+            "rarity": "Secret",
+            "droprate": 20000,
+            "bubbles": 4200,
+            "gems": 90,
+            "currency": 0,
+            "currencyVariant": "Coins",
+            "limited": true,
+            "available": true,
+            "obtainedFrom": "Bubble Pass",
+            "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Bubble_Pass_Icon.png",
+            "variants": [
+              "Normal",
+              "Shiny",
+              "Mythic",
+              "Shiny Mythic"
+            ],
+            "image": [
+              "https://static.wikia.nocookie.net/bgs-infinity/images/5/56/Monolith.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/4/48/Shiny_Monolith.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/6/62/Mythic_Monolith.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/26/Shiny_Mythic_Monolith.png"
+            ]
+          }
+        ]
+      },
+      {
         "name": "Season 2 Egg",
         "image": "https://static.wikia.nocookie.net/bgs-infinity/images/f/f9/Season_2_Egg.png",
         "luckIgnored": true,
@@ -3383,6 +3583,493 @@
     "name": "Events",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d4/Daily.png",
     "eggs": [
+      {
+        "name": "Beach Egg",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/cd/Beach_Egg.png",
+        "luckIgnored": false,
+        "available": true,
+        "pets": [
+          {
+            "name": "Tourist Doggy",
+            "rarity": "Common",
+            "droprate": 1.8181818181818181,
+            "bubbles": 1,
+            "gems": 0,
+            "currency": 1.5,
+            "currencyVariant": "Seashells",
+            "limited": true,
+            "available": true,
+            "obtainedFrom": "Beach Egg",
+            "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/cd/Beach_Egg.png",
+            "variants": [
+              "Normal",
+              "Shiny"
+            ],
+            "image": [
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/25/Tourist_Doggy.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/0/0f/Shiny_Tourist_Doggy.png"
+            ]
+          },
+          {
+            "name": "Seagull",
+            "rarity": "Common",
+            "droprate": 2.857142857142857,
+            "bubbles": 1,
+            "gems": 0,
+            "currency": 2,
+            "currencyVariant": "Seashells",
+            "limited": true,
+            "available": true,
+            "obtainedFrom": "Beach Egg",
+            "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/cd/Beach_Egg.png",
+            "variants": [
+              "Normal",
+              "Shiny"
+            ],
+            "image": [
+              "https://static.wikia.nocookie.net/bgs-infinity/images/9/9a/Seagull.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/9/97/Shiny_Seagull.png"
+            ]
+          },
+          {
+            "name": "Beach Boi",
+            "rarity": "Rare",
+            "droprate": 10,
+            "bubbles": 2,
+            "gems": 0,
+            "currency": 4,
+            "currencyVariant": "Seashells",
+            "limited": true,
+            "available": true,
+            "obtainedFrom": "Beach Egg",
+            "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/cd/Beach_Egg.png",
+            "variants": [
+              "Normal",
+              "Shiny"
+            ],
+            "image": [
+              "https://static.wikia.nocookie.net/bgs-infinity/images/8/8c/Beach_Boi.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/f/f3/Shiny_Beach_Boi.png"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Icecream Egg",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d2/Icecream_Egg.png",
+        "luckIgnored": false,
+        "available": true,
+        "pets": [
+          {
+            "name": "Sundae Doggy",
+            "rarity": "Common",
+            "droprate": 1.6835016835016836,
+            "bubbles": 20,
+            "gems": 0,
+            "currency": 4,
+            "currencyVariant": "Seashells",
+            "limited": true,
+            "available": true,
+            "obtainedFrom": "Icecream Egg",
+            "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d2/Icecream_Egg.png",
+            "variants": [
+              "Normal",
+              "Shiny"
+            ],
+            "image": [
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/25/Tourist_Doggy.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/0/0f/Shiny_Tourist_Doggy.png"
+            ]
+          },
+          {
+            "name": "Bunny Cone",
+            "rarity": "Rare",
+            "droprate": 3.508771929824561,
+            "bubbles": 35,
+            "gems": 2.5,
+            "currency": 6,
+            "currencyVariant": "Seashells",
+            "limited": true,
+            "available": true,
+            "obtainedFrom": "Icecream Egg",
+            "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d2/Icecream_Egg.png",
+            "variants": [
+              "Normal",
+              "Shiny"
+            ],
+            "image": [
+              "https://static.wikia.nocookie.net/bgs-infinity/images/0/01/Bunny_Cone.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/e/ed/Shiny_Bunny_Cone.png"
+            ]
+          },
+          {
+            "name": "Neapolitan Stack",
+            "rarity": "Epic",
+            "droprate": 16.666666666666668,
+            "bubbles": 80,
+            "gems": 0,
+            "currency": 9.5,
+            "currencyVariant": "Seashells",
+            "limited": true,
+            "available": true,
+            "obtainedFrom": "Icecream Egg",
+            "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d2/Icecream_Egg.png",
+            "variants": [
+              "Normal",
+              "Shiny"
+            ],
+            "image": [
+              "https://static.wikia.nocookie.net/bgs-infinity/images/4/45/Neapolitan_Stack.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/0/0b/Shiny_Neapolitan_Stack.png"
+            ]
+          },
+          {
+            "name": "Popsicle Trio",
+            "rarity": "Legendary",
+            "droprate": 500,
+            "bubbles": 720,
+            "gems": 18,
+            "currency": 50,
+            "currencyVariant": "Seashells",
+            "limited": true,
+            "available": true,
+            "obtainedFrom": "Icecream Egg",
+            "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d2/Icecream_Egg.png",
+            "variants": [
+              "Normal",
+              "Shiny",
+              "Mythic",
+              "Shiny Mythic"
+            ],
+            "image": [
+              "https://static.wikia.nocookie.net/bgs-infinity/images/c/c4/Popsicle_Trio.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/b/be/Shiny_Popsicle_Trio.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/b/bc/Shiny_Mythic_Popsicle_Trio.png"
+            ]
+          },
+          {
+            "name": "Soarin' Surfer",
+            "rarity": "Legendary",
+            "droprate": 5000,
+            "bubbles": 1600,
+            "gems": 30,
+            "currency": 200,
+            "currencyVariant": "Seashells",
+            "limited": true,
+            "available": true,
+            "obtainedFrom": "Icecream Egg",
+            "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d2/Icecream_Egg.png",
+            "variants": [
+              "Normal",
+              "Shiny",
+              "Shiny Mythic"
+            ],
+            "image": [
+              "https://static.wikia.nocookie.net/bgs-infinity/images/a/ac/Soarin%27_Surfer.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/6/64/Shiny_Soarin%27_Surfer.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+            ]
+          },
+          {
+            "name": "Sundae Cone",
+            "rarity": "Legendary",
+            "droprate": 1250000,
+            "bubbles": 2600,
+            "gems": 50,
+            "currency": 750,
+            "currencyVariant": "Seashells",
+            "limited": true,
+            "available": true,
+            "obtainedFrom": "Icecream Egg",
+            "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d2/Icecream_Egg.png",
+            "variants": [
+              "Normal",
+              "Shiny",
+              "Mythic",
+              "Shiny Mythic"
+            ],
+            "image": [
+              "https://static.wikia.nocookie.net/bgs-infinity/images/c/ca/Sundae_Cone.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/c/c0/Shiny_Sundae_Cone.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/6/68/Mythic_Sundae_Cone.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/28/Shiny_Mythic_Sundae_Cone.png"
+            ]
+          },
+          {
+            "name": "Mint Sundae Champion",
+            "rarity": "Secret",
+            "droprate": 50000000,
+            "bubbles": 3800,
+            "gems": 80,
+            "currency": 1500,
+            "currencyVariant": "Seashells",
+            "limited": false,
+            "available": true,
+            "obtainedFrom": "Icecream Egg",
+            "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d2/Icecream_Egg.png",
+            "variants": [
+              "Normal",
+              "Shiny",
+              "Mythic",
+              "Shiny Mythic"
+            ],
+            "image": [
+              "https://static.wikia.nocookie.net/bgs-infinity/images/e/eb/Mint_Sundae_Champion.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+            ]
+          },
+          {
+            "name": "Vanilla Sundae Champion",
+            "rarity": "Secret",
+            "droprate": 50000000,
+            "bubbles": 3800,
+            "gems": 80,
+            "currency": 1500,
+            "currencyVariant": "Seashells",
+            "limited": false,
+            "available": true,
+            "obtainedFrom": "Icecream Egg",
+            "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d2/Icecream_Egg.png",
+            "variants": [
+              "Normal",
+              "Shiny",
+              "Mythic",
+              "Shiny Mythic"
+            ],
+            "image": [
+              "https://static.wikia.nocookie.net/bgs-infinity/images/1/11/Vanilla_Sundae_Champion.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/b/b4/Mythic_Vanilla_Sundae_Champion.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/5/58/Shiny_Mythic_Vanilla_Sundae_Champion.png"
+            ]
+          },
+          {
+            "name": "Chocolate Sundae Champion",
+            "rarity": "Secret",
+            "droprate": 50000000,
+            "bubbles": 3800,
+            "gems": 80,
+            "currency": 1500,
+            "currencyVariant": "Seashells",
+            "limited": false,
+            "available": true,
+            "obtainedFrom": "Icecream Egg",
+            "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d2/Icecream_Egg.png",
+            "variants": [
+              "Normal",
+              "Shiny",
+              "Mythic",
+              "Shiny Mythic"
+            ],
+            "image": [
+              "https://static.wikia.nocookie.net/bgs-infinity/images/a/ab/Chocolate_Sundae_Champion.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/29/Mythic_Chocolate_Sundae_Champion.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+            ]
+          },
+          {
+            "name": "Strawberry Sundae Champion",
+            "rarity": "Secret",
+            "droprate": 50000000,
+            "bubbles": 3800,
+            "gems": 80,
+            "currency": 1500,
+            "currencyVariant": "Seashells",
+            "limited": false,
+            "available": true,
+            "obtainedFrom": "Icecream Egg",
+            "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d2/Icecream_Egg.png",
+            "variants": [
+              "Normal",
+              "Shiny",
+              "Mythic",
+              "Shiny Mythic"
+            ],
+            "image": [
+              "https://static.wikia.nocookie.net/bgs-infinity/images/8/83/Strawberry_Sundae_Champion.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+            ]
+          }
+        ]
+      },
+      
+      {
+        "name": "Fruit Egg",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/73/Fruit_Egg.png",
+        "luckIgnored": false,
+        "available": true,
+        "pets": [
+          {
+            "name": "Strawberry Doggy",
+            "rarity": "Common",
+            "droprate": 1.492537313432836,
+            "bubbles": 20,
+            "gems": 0,
+            "currency": 15,
+            "currencyVariant": "Seashells",
+            "limited": true,
+            "available": true,
+            "obtainedFrom": "Fruit Egg",
+            "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/7/73/Fruit_Egg.png",
+            "variants": [
+              "Normal",
+              "Shiny"
+            ],
+            "image": [
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2f/Strawberry_Doggy.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/9/9a/Shiny_Strawberry_Doggy.png"
+            ]
+          },
+          {
+            "name": "Lemon Dragon",
+            "rarity": "Rare",
+            "droprate": 3.3333333333333335,
+            "bubbles": 35,
+            "gems": 2.5,
+            "currency": 18,
+            "currencyVariant": "Seashells",
+            "limited": true,
+            "available": true,
+            "obtainedFrom": "Fruit Egg",
+            "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/7/73/Fruit_Egg.png",
+            "variants": [
+              "Normal",
+              "Shiny"
+            ],
+            "image": [
+              "https://static.wikia.nocookie.net/bgs-infinity/images/4/40/Lemon_Dragon.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/8/80/Shiny_Lemon_Dragon.png"
+            ]
+          },
+          {
+            "name": "Watermelon Boi",
+            "rarity": "Epic",
+            "droprate": 33.333333333333336,
+            "bubbles": 80,
+            "gems": 0,
+            "currency": 30,
+            "currencyVariant": "Seashells",
+            "limited": true,
+            "available": true,
+            "obtainedFrom": "Fruit Egg",
+            "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/7/73/Fruit_Egg.png",
+            "variants": [
+              "Normal",
+              "Shiny"
+            ],
+            "image": [
+              "https://static.wikia.nocookie.net/bgs-infinity/images/c/c0/Watermelon_Boi.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/a/af/Shiny_Watermelon_Boi.png"
+            ]
+          },
+          {
+            "name": "Kiwi Dragon",
+            "rarity": "Legendary",
+            "droprate": 5000,
+            "bubbles": 740,
+            "gems": 18,
+            "currency": 95,
+            "currencyVariant": "Seashells",
+            "limited": true,
+            "available": true,
+            "obtainedFrom": "Fruit Egg",
+            "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/7/73/Fruit_Egg.png",
+            "variants": [
+              "Normal",
+              "Shiny",
+              "Mythic",
+              "Shiny Mythic"
+            ],
+            "image": [
+              "https://static.wikia.nocookie.net/bgs-infinity/images/f/fa/Kiwi_Dragon.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/a/a3/Shiny_Kiwi_Dragon.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/6/6f/Mythic_Kiwi_Dragon.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/3/3c/Mythic_Shiny_Kiwi_Dragon.png"
+            ]
+          },
+          {
+            "name": "Mangorium",
+            "rarity": "Legendary",
+            "droprate": 50000,
+            "bubbles": 1850,
+            "gems": 30,
+            "currency": 300,
+            "currencyVariant": "Seashells",
+            "limited": true,
+            "available": true,
+            "obtainedFrom": "Fruit Egg",
+            "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/7/73/Fruit_Egg.png",
+            "variants": [
+              "Normal",
+              "Shiny",
+              "Mythic",
+              "Shiny Mythic"
+            ],
+            "image": [
+              "https://static.wikia.nocookie.net/bgs-infinity/images/9/90/Mangorium.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/a/ac/Shiny_Mangorium.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/5/52/Mythic_Mangorium.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/3/38/Shiny_Mythic_Mangorium.png"
+            ]
+          },
+          {
+            "name": "Pineapple Tourist",
+            "rarity": "Legendary",
+            "droprate": 666666,
+            "bubbles": 2300,
+            "gems": 45,
+            "currency": 680,
+            "currencyVariant": "Seashells",
+            "limited": true,
+            "available": true,
+            "obtainedFrom": "Fruit Egg",
+            "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/7/73/Fruit_Egg.png",
+            "variants": [
+              "Normal",
+              "Shiny",
+              "Mythic",
+              "Shiny Mythic"
+            ],
+            "image": [
+              "https://static.wikia.nocookie.net/bgs-infinity/images/7/72/Pineapple_Tourist.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+            ]
+          },
+          {
+            "name": "Dragonfruit",
+            "rarity": "Secret",
+            "droprate": 500000000,
+            "bubbles": 4200,
+            "gems": 90,
+            "currency": 2000,
+            "currencyVariant": "Seashells",
+            "limited": true,
+            "available": true,
+            "obtainedFrom": "Fruit Egg",
+            "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/7/73/Fruit_Egg.png",
+            "variants": [
+              "Normal",
+              "Shiny",
+              "Mythic",
+              "Shiny Mythic"
+            ],
+            "image": [
+              "https://static.wikia.nocookie.net/bgs-infinity/images/5/5a/Dragonfruit.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+            ]
+          }
+        ]
+      },
       {
         "name": "200M Egg",
         "image": "https://static.wikia.nocookie.net/bgs-infinity/images/f/f7/200M_Egg.png",
@@ -4957,6 +5644,81 @@
         "available": true,
         "pets": [
           {
+            "name": "Overlord Plushie",
+            "rarity": "Secret",
+            "droprate": 125000000,
+            "bubbles": 4000,
+            "gems": 80,
+            "currency": 0,
+            "currencyVariant": "Coins",
+            "limited": true,
+            "available": true,
+            "obtainedFrom": "Secret Bounty",
+            "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png",
+            "variants": [
+              "Normal",
+              "Shiny",
+              "Mythic",
+              "Shiny Mythic"
+            ],
+            "image": [
+              "https://static.wikia.nocookie.net/bgs-infinity/images/7/73/Overlord_Plushie.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/9/92/Shiny_Overlord_Plushie.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/7/74/Mythic_Overlord_Plushie.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/a/a0/Shiny_Mythic_Overlord_Plushie.png"
+            ]
+          },
+          {
+            "name": "Everblaze",
+            "rarity": "Secret",
+            "droprate": 250000000,
+            "bubbles": 4200,
+            "gems": 90,
+            "currency": 0,
+            "currencyVariant": "Coins",
+            "limited": true,
+            "available": true,
+            "obtainedFrom": "Secret Bounty",
+            "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png",
+            "variants": [
+              "Normal",
+              "Shiny",
+              "Mythic",
+              "Shiny Mythic"
+            ],
+            "image": [
+              "https://static.wikia.nocookie.net/bgs-infinity/images/1/1b/Everblaze.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+            ]
+          },
+          {
+            "name": "Beelzebub",
+            "rarity": "Secret",
+            "droprate": 50000000,
+            "bubbles": 3800,
+            "gems": 80,
+            "currency": 1350,
+            "currencyVariant": "Seashells",
+            "limited": true,
+            "available": true,
+            "obtainedFrom": "Secret Bounty",
+            "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png",
+            "variants": [
+              "Normal",
+              "Shiny",
+              "Mythic",
+              "Shiny Mythic"
+            ],
+            "image": [
+              "https://static.wikia.nocookie.net/bgs-infinity/images/b/bf/Beelzebub.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+            ]
+          },
+          {
             "name": "Queen Kitty",
             "rarity": "Secret",
             "droprate": 80000000,
@@ -5040,10 +5802,68 @@
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
     "eggs": [
       {
-        "name": "Wave 5",
+        "name": "Wave 6",
         "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
         "luckIgnored": true,
         "available": true,
+        "pets": [
+          {
+            "name": "Rigby",
+            "rarity": "Legendary",
+            "droprate": 1,
+            "bubbles": 1000,
+            "gems": 20,
+            "currency": 80,
+            "currencyVariant": "Seashells",
+            "limited": true,
+            "available": true,
+            "obtainedFrom": "Robux Shop",
+            "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
+            "variants": [
+              "Normal",
+              "Shiny",
+              "Mythic",
+              "Shiny Mythic"
+            ],
+            "image": [
+              "https://static.wikia.nocookie.net/bgs-infinity/images/d/dd/Rigby.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/1/17/Mythic_Rigby.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+            ]
+          },
+          {
+            "name": "Dreamscape",
+            "rarity": "Legendary",
+            "droprate": 1,
+            "bubbles": 1350,
+            "gems": 25,
+            "currency": 0,
+            "currencyVariant": "Coins",
+            "limited": true,
+            "available": true,
+            "obtainedFrom": "Robux Shop",
+            "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
+            "variants": [
+              "Normal",
+              "Shiny",
+              "Mythic",
+              "Shiny Mythic"
+            ],
+            "image": [
+              "https://static.wikia.nocookie.net/bgs-infinity/images/1/1b/Dreamscape.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/6/67/Mythic_Dreamscape.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Wave 5",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
+        "luckIgnored": true,
+        "available": false,
         "pets": [
           {
             "name": "Noctis",

@@ -5,7 +5,7 @@ import petJson from "../assets/pets.json";
 
 export type Rarity = "Common" | "Unique" | "Rare" | "Epic" | "Legendary" | "Secret";
 export type PetVariant = "Normal" | "Shiny" | "Mythic" | "Shiny Mythic";
-export type CurrencyVariant = "Coins" | "Tickets";
+export type CurrencyVariant = "Coins" | "Tickets" | "Seashells";
 export type PetStat = "bubbles" | "currency" | "gems";
 export type Enchant = "bubbler" | "looter";
 
@@ -74,6 +74,7 @@ export const variantData: { [key in PetVariant]: { baseScale: number, levelScale
 export const currencyImages: { [key in CurrencyVariant]: string } = {
   Coins: "https://static.wikia.nocookie.net/bgs-infinity/images/f/f0/Coins.png",
   Tickets: "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Tickets.png",
+  Seashells: "https://static.wikia.nocookie.net/bgs-infinity/images/4/49/Seashells.png"
 };
 
 // ~~~~~~~~~~ Functions ~~~~~~~~~~
