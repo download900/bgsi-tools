@@ -147,34 +147,46 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
             const eggs: Egg[] = [];
             // make a clone to avoid mutating the original data
             const clonedData = structuredClone(props.data);
+
+            // process categories
+            const processCategory = (category: Category) => {
+                if (category.eggs) {
+                    if (category.eggs.some((egg: Egg) => egg.infinityEgg)) {
+                        const egg = { name: category.name, pets: [] } as InfinityEgg;
+                        infinityEggs[category.name] = egg;
+                        infinityEggNames.push(category.name);
+                    }
+
+                    for (const egg of category.eggs) {
+                        if (!shouldCalculateEgg(egg)) continue;
+
+                        // check for secret bounty
+                        if (settings.secretsBountyPet && settings.secretsBountyEgg === egg.name) {
+                            const secretBountyPet = secretPets.find(pet => pet.name === settings.secretsBountyPet);
+                            if (secretBountyPet) {
+                                egg.pets.push(secretBountyPet);
+                            }
+                        }
+
+                        if (egg.pets.some((pet: Pet) => pet.rarity === "Secret" || pet.rarity.includes("Legendary"))) {
+                            eggs.push(egg);
+                            // check for infinity egg, clone pets to infinity egg
+                            if (egg.infinityEgg) {
+                                const newPets = structuredClone(egg.pets.filter((pet: Pet) => pet.rarity.includes('Legendary') || pet.rarity === 'Secret'));
+                                infinityEggs[egg.infinityEgg].pets.push(...newPets);
+                            }
+                        }
+                    }
+                }
+                if (category.categories) {
+                    for (const subCategory of category.categories) {
+                        processCategory(subCategory);
+                    }
+                }
+            }
+            
             for (const category of clonedData) {
-                // check for infinity egg
-                if (category.eggs.some((egg: Egg) => egg.infinityEgg)) {
-                    const egg = { name: category.name, pets: [] } as InfinityEgg;
-                    infinityEggs[category.name] = egg;
-                    infinityEggNames.push(category.name);
-                }
-
-                for (const egg of category.eggs) {
-                    if (!shouldCalculateEgg(egg)) continue;
-
-                    // check for secret bounty
-                    if (settings.secretsBountyPet && settings.secretsBountyEgg === egg.name) {
-                        const secretBountyPet = secretPets.find(pet => pet.name === settings.secretsBountyPet);
-                        if (secretBountyPet) {
-                            egg.pets.push(secretBountyPet);
-                        }
-                    }
-
-                    if (egg.pets.some((pet: Pet) => pet.rarity === "Secret" || pet.rarity.includes("Legendary"))) {
-                        eggs.push(egg);
-                        // check for infinity egg, clone pets to infinity egg
-                        if (egg.infinityEgg) {
-                            const newPets = structuredClone(egg.pets.filter((pet: Pet) => pet.rarity.includes('Legendary') || pet.rarity === 'Secret'));
-                            infinityEggs[egg.infinityEgg].pets.push(...newPets);
-                        }
-                    }
-                }
+                processCategory(category);                
             }
 
             // Process Infinity Eggs:

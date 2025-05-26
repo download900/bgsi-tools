@@ -314,31 +314,39 @@ async function fetchHTML(petName: string): Promise<string> {
 // (5) This function processes the scraped data. First it updates our current data and saves that,
 //     then it saves the remaining new pets to a JSON file.
 const processEggs = (wikiData: Category[], existingData: Category[]) => {
+  const processEgg = (egg: Egg) => {
+    for (const pet of egg.pets) {
+      const existingPet = findExistingPet(pet.name, existingData);
+      if (existingPet) {
+        // update existing pet
+        existingPet.droprate = pet.droprate;
+        existingPet.bubbles = pet.bubbles;
+        existingPet.gems = pet.gems;
+        existingPet.currency = pet.currency;
+        existingPet.currencyVariant = pet.currencyVariant;
+        existingPet.variants = pet.variants;
+        existingPet.image = pet.image;
+        existingPet.limited = pet.limited;
+        existingPet.available = pet.available;
+        existingPet.obtainedFrom = pet.obtainedFrom;
+        existingPet.obtainedFromImage = pet.obtainedFromImage;
+      } else {
+        // add new pet
+        newPets.push(pet);
+      }
+    }
+  }
   const newPets: Pet[] = [];
   // update current data
   for (const cat of wikiData) {
-    for (const egg of cat.eggs) {
-      for (const pet of egg.pets) {
-        const existingPet = findExistingPet(pet.name, existingData);
-        if (existingPet) {
-          // update existing pet
-          existingPet.droprate = pet.droprate;
-          existingPet.bubbles = pet.bubbles;
-          existingPet.gems = pet.gems;
-          existingPet.currency = pet.currency;
-          existingPet.currencyVariant = pet.currencyVariant;
-          existingPet.variants = pet.variants;
-          existingPet.image = pet.image;
-          existingPet.limited = pet.limited;
-          existingPet.available = pet.available;
-          existingPet.obtainedFrom = pet.obtainedFrom;
-          existingPet.obtainedFromImage = pet.obtainedFromImage;
-        } else {
-          // add new pet
-          newPets.push(pet);
-        }
-      }
-    }
+    cat.eggs?.forEach(egg => {
+      processEgg(egg);
+    });
+    cat.categories?.forEach(subCat => {
+      subCat.eggs?.forEach(egg => {
+        processEgg(egg);
+      });
+    });
   }
 
   // Save JSONs
@@ -348,10 +356,25 @@ const processEggs = (wikiData: Category[], existingData: Category[]) => {
 
 const findExistingPet = (petName: string, data: Category[]) => {
   for (const category of data) {
-    for (const egg of category.eggs) {
-      for (const pet of egg.pets) {
-        if (pet.name === petName) {
-          return pet;
+    if (category.eggs) {
+      for (const egg of category.eggs) {
+        for (const pet of egg.pets) {
+          if (pet.name === petName) {
+            return pet;
+          }
+        }
+      }
+    }
+    if (category.categories) {
+      for (const subCategory of category.categories) {
+        if (subCategory.eggs) {
+          for (const egg of subCategory.eggs) {
+            for (const pet of egg.pets) {
+              if (pet.name === petName) {
+                return pet;
+              }
+            }
+          }
         }
       }
     }

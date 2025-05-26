@@ -79,7 +79,22 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
     });
   };
 
-  const calculateCompletion = (pets: Pet[]) => {
+  const getEggsInCategory = (category: Category): Egg[] => {
+    // Flatten all eggs in the category and its subcategories
+    const eggs: Egg[] = [];
+    const collectEggs = (cat: Category) => {
+      if (cat.eggs) {
+        eggs.push(...cat.eggs);
+      }
+      if (cat.categories) {
+        cat.categories.forEach(collectEggs);
+      }
+    }
+    collectEggs(category);
+    return eggs;
+  }
+
+  const calculateCompletion = (eggs: Egg[]) => {
     const totals: Record<PetVariant, number> = {
       Normal: 0,
       Shiny: 0,
@@ -88,12 +103,14 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
     };
     const owned: Record<PetVariant, number> = { ...totals };
 
-    pets.forEach((pet) =>
-      pet.variants.forEach((v) => {
-        totals[v]++;
-        if (ownedPets[`${pet.name}__${v}`]) owned[v]++;
-      })
-    );
+    for (const egg of eggs) {
+      for (const pet of egg.pets) {
+        pet.variants.forEach((v) => {
+          totals[v]++;
+          if (ownedPets[`${pet.name}__${v}`]) owned[v]++;
+        });
+      }
+    }
 
     const totalAll = Object.values(totals).reduce((a, b) => a + b, 0);
     const ownedAll = Object.values(owned).reduce((a, b) => a + b, 0);
@@ -115,19 +132,39 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
     };
   };
 
-  // flatten all eggs
-  const allEggs: Egg[] = data.flatMap((cat) => cat.eggs);
-  const allStats = calculateCompletion(allEggs.flatMap((e) => e.pets));
+  // flatten all categories
+  const allCats: Category[] = [];
+  for (const cat of data) {
+    allCats.push(cat);
+    if (cat.categories) {
+      allCats.push(...cat.categories);
+    }
+  }
+  const allStats = calculateCompletion(allCats.flatMap((c) => getEggsInCategory(c)));
 
   // determine subcategories/eggs to show
   const isAll = selectedCategory === "All";
-  const categoryData = isAll ? null : data.find((cat) => cat.name === selectedCategory)!;
+  let categoryData = null;
+  if (!isAll) {
+    // find the category or subcategory that matches the selectedCategory
+    const findCategory = (cats: Category[]): Category | null => {
+      for (const cat of cats) {
+        if (cat.name === selectedCategory) return cat;
+        if (cat.categories) {
+          const subCat = findCategory(cat.categories);
+          if (subCat) return subCat;
+        }
+      }
+      return null;
+    };
+    categoryData = findCategory(data);
+  }
 
   // eggs to show in main content
-  const eggsToShow: Egg[] = categoryData ? categoryData.eggs : allEggs;
+  const eggsToShow: Egg[] = categoryData ? getEggsInCategory(categoryData) : allCats.flatMap((c) => getEggsInCategory(c));
 
   const headerName = categoryData ? categoryData.name : "All Pets";
-  const headerStats = calculateCompletion(eggsToShow.flatMap((e) => e.pets));
+  const headerStats = calculateCompletion(eggsToShow);
 
   // infinite‐scroll effect
   useEffect(() => {
@@ -146,6 +183,58 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [visibleCount, eggsToShow]);
+
+  const displayCategoryDrawerItem = (cat: Category, depth: number) => {
+    const catStats = calculateCompletion(getEggsInCategory(cat));
+    const catSelected = selectedCategory === cat.name;
+    const childSelected = cat.categories && cat.categories.some((c) => selectedCategory === c.name);
+    const hex = depth === 0 ? '#111' : '#222';
+    return (
+    <Box key={cat.name}>
+      <ListItemButton
+      sx={{ pl: (depth + 1) * 2, backgroundColor: catSelected ? '#111122' : hex }}
+        selected={catSelected}
+        onClick={() => {
+          if (catSelected || childSelected) {
+            setSelectedCategory("All");
+          } else {
+            setSelectedCategory(cat.name);
+          }
+        }}
+      >
+        <ListItemIcon>
+          <Avatar src={cat.image} variant="square" sx={{ width: 24, height: 24 }} />
+        </ListItemIcon>
+        <ListItemText>
+          <Typography sx={{ fontWeight: "bold" }}>
+            {cat.name} ({catStats.overall}%)
+          </Typography>
+        </ListItemText>
+      </ListItemButton>
+      {
+        (catSelected || childSelected) && cat.categories?.length > 0 ? cat.categories.map((subCat) => displayCategoryDrawerItem(subCat, depth + 1)) : null
+      }
+      {
+        (catSelected || childSelected) && cat.eggs?.length > 1 && (
+          cat.eggs.map((egg) => {
+            const id = egg.name.replace(/\s+/g, "_");
+            const eggStats = calculateCompletion([ egg ]);
+            return (
+              <ListItemButton key={egg.name} component="a" href={`#${id}`} sx={{ pl: 4 * (depth + 1), backgroundColor: '#222' }} >
+                <ListItemIcon>
+                  <Avatar src={egg.image} variant="square" sx={{ width: 24, height: 24 }} />
+                </ListItemIcon>
+                <ListItemText primary={egg.name} />
+                  <Typography sx={{ ...getPercentStyle(eggStats.overall) }} >
+                    ({eggStats.overall}%)
+                  </Typography>
+              </ListItemButton>
+            );
+          })
+        )
+      }
+    </Box>);
+  }
 
   return (
     <Box sx={{ display: "flex", flexGrow: 1 }}>
@@ -180,54 +269,7 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
           </ListItemButton>
 
           {/* Categories */}
-          {data.map((cat) => {
-            const catStats = calculateCompletion(cat.eggs.flatMap((e) => e.pets));
-            const catSelected = selectedCategory === cat.name;
-            return (
-              <Box key={cat.name}>
-                <ListItemButton
-                  selected={catSelected}
-                  onClick={() => {
-                    if (catSelected) {
-                      setSelectedCategory("All");
-                    } else {
-                      setSelectedCategory(cat.name);
-                    }
-                  }}
-                >
-                  <ListItemIcon>
-                    <Avatar src={cat.image} variant="square" sx={{ width: 24, height: 24 }} />
-                  </ListItemIcon>
-                  <ListItemText>
-                    <Typography sx={{ fontWeight: "bold" }}>
-                      {cat.name} ({catStats.overall}%)
-                    </Typography>
-                  </ListItemText>
-                </ListItemButton>
-                {
-                  catSelected && cat.eggs.length > 1 && (
-                    cat.eggs.map((egg) => {
-                      const id = egg.name.replace(/\s+/g, "_");
-                      const eggStats = calculateCompletion(
-                        egg.pets
-                      );
-                      return (
-                        <ListItemButton key={egg.name} component="a" href={`#${id}`} sx={{ pl: 4, backgroundColor: '#222' }} >
-                          <ListItemIcon>
-                            <Avatar src={egg.image} variant="square" sx={{ width: 24, height: 24 }} />
-                          </ListItemIcon>
-                          <ListItemText primary={egg.name} />
-                            <Typography sx={{ ...getPercentStyle(eggStats.overall) }} >
-                              ({eggStats.overall}%)
-                            </Typography>
-                        </ListItemButton>
-                      );
-                    })
-                  )
-                }
-              </Box>
-            );
-          })}
+          {data.map((cat) => displayCategoryDrawerItem(cat, 0))}
           <Box sx={{ height: '50px' }} />
         </List>
       </Drawer>
@@ -274,7 +316,7 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
 
         {/* Eggs list */}
         {eggsToShow.slice(0, visibleCount).map((egg) => {
-          const stats = calculateCompletion(egg.pets);
+          const stats = calculateCompletion([ egg ]);
           const id = egg.name.replace(/\s+/g, "_");
           return (
             <Box key={egg.name} id={id} sx={{ mb: 6, scrollMarginTop: "80px" }}>

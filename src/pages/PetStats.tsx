@@ -27,7 +27,8 @@ import {
   variants,
   currencyImages,
   getPetChance,
-  getPetStat
+  getPetStat,
+  Egg
 } from "../util/PetUtil";
 import {
   getRarityStyle,
@@ -177,27 +178,36 @@ export function PetList(props: PetListProps) {
   };
 
   const buildPetList = () => {
+    const addPetsFromEgg = (egg: Egg) => {
+    egg.pets.forEach((pet) => {
+      if (pet.rarity !== 'Legendary' && pet.rarity !== 'Secret') return;
+      pet.variants.forEach((variant) => {
+        allPets.push({
+          name: pet.name,
+          droprate: getPetChance(pet, variant),
+          rarity: pet.rarity,
+          bubbles: getPetStat(pet, variant, "bubbles", previewMaxLevel, previewEnchant, enchantTeamSize, secondEnchant),
+          currencyVariant: pet.currencyVariant,
+          currency: getPetStat(pet, variant, "currency", previewMaxLevel, previewEnchant, enchantTeamSize, secondEnchant),
+          gems: getPetStat(pet, variant, "gems", previewMaxLevel, previewEnchant, enchantTeamSize, secondEnchant),
+          variant,
+          image: pet.image[pet.variants.indexOf(variant)],
+          obtainedFrom: pet.obtainedFrom,
+          obtainedFromImage: pet.obtainedFromImage
+        });
+      });
+    });
+  }
+
     if (props.data?.length < 1) return [];
     const allPets: PetInstance[] = [];
     props.data.forEach((cat) => {
-      cat.eggs.forEach((egg) => {
-        egg.pets.forEach((pet) => {
-          if (pet.rarity !== 'Legendary' && pet.rarity !== 'Secret') return;
-          pet.variants.forEach((variant) => {
-            allPets.push({
-              name: pet.name,
-              droprate: getPetChance(pet, variant),
-              rarity: pet.rarity,
-              bubbles: getPetStat(pet, variant, "bubbles", previewMaxLevel, previewEnchant, enchantTeamSize, secondEnchant),
-              currencyVariant: pet.currencyVariant,
-              currency: getPetStat(pet, variant, "currency", previewMaxLevel, previewEnchant, enchantTeamSize, secondEnchant),
-              gems: getPetStat(pet, variant, "gems", previewMaxLevel, previewEnchant, enchantTeamSize, secondEnchant),
-              variant,
-              image: pet.image[pet.variants.indexOf(variant)],
-              obtainedFrom: pet.obtainedFrom,
-              obtainedFromImage: pet.obtainedFromImage
-            });
-          });
+      cat.eggs?.forEach((egg) => {
+        addPetsFromEgg(egg);
+      });
+      cat.categories?.forEach((subCat) => {
+        subCat.eggs?.forEach((egg) => {
+          addPetsFromEgg(egg);
         });
       });
     });

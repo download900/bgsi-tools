@@ -12,7 +12,8 @@ export type Enchant = "bubbler" | "looter";
 export interface Category { 
   name: string, 
   image: string,
-  eggs: Egg[]
+  eggs: Egg[],
+  categories: Category[],
 }
 
 export interface Egg { 
