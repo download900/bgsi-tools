@@ -1,7 +1,7 @@
 import { JSX, SetStateAction, useEffect, useRef, useState } from "react";
 
 import * as cheerio from 'cheerio';
-import { Button, Container, FormControl, Input, Typography } from "@mui/material";
+import { Box, Button, Container, FormControl, Input, Typography } from "@mui/material";
 
 import { Pet, Rarity, PetVariant, CurrencyVariant, Egg, Category } from "../util/PetUtil";
 
@@ -185,10 +185,15 @@ async function parsePet(petName: string): Promise<Pet> {
   if (coinsMatch.length > 0) {
     currencyStat = extractNumber(coinsMatch.first().text());
   }
-  else {
-    const ticketsMatch = $('td.pi-horizontal-group-item[data-source="tickets"] b');
+  const ticketsMatch = $('td.pi-horizontal-group-item[data-source="tickets"] b');
+  if (ticketsMatch.length > 0) {
     currencyStat = extractNumber(ticketsMatch.first().text());
     currencyVariant = 'Tickets' as CurrencyVariant;
+  }
+  const seashellsMatch = $('td.pi-horizontal-group-item[data-source="seashells"] b');
+  if (seashellsMatch.length > 0) {
+    currencyStat = extractNumber(seashellsMatch.first().text());
+    currencyVariant = 'Seashells' as CurrencyVariant;
   }
 
   // Rarity
@@ -506,33 +511,6 @@ export function WikiTools(props: WikiToolsProps): JSX.Element {
 
   return (
     <Container sx={{ mt: 4, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'middle', maxWidth: '600px' }}>
-      <Typography variant="h4" sx={{ mb: 2 }}>Data Export</Typography>
-      <Typography variant="h5" sx={{ m: 1 }}>Pets</Typography>
-      <Button
-        variant="contained"
-        onClick={handlePetsLuaExport}
-        sx={{ mt: 2 }}
-        style={{ maxWidth: '200px' }}
-      >
-        Export LUA
-      </Button>
-      <Button
-        variant="contained"
-        onClick={() => saveJSON(props.data, 'pets')}
-        sx={{ mt: 2 }}
-        style={{ maxWidth: '200px' }}
-      >
-        Export JSON
-      </Button>
-      <Typography variant="h5" sx={{ m: 1 }}>Eggs</Typography>
-      <Button
-        variant="contained"
-        onClick={handleEggsLuaExport}
-        sx={{ mt: 2 }}
-        style={{ maxWidth: '200px' }}
-      >
-        Export LUA
-      </Button>
       <Typography variant="h4" sx={{ mb: 2, mt: 2 }}>Wiki Scraper</Typography>
       <Button
         variant="contained"
@@ -549,6 +527,35 @@ export function WikiTools(props: WikiToolsProps): JSX.Element {
           ))}
         </code>
       </pre>
+      <Typography variant="h4" sx={{ mb: 2 }}>Data Export</Typography>
+      <Typography variant="h5" sx={{ m: 1 }}>Pets</Typography>
+      <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+        <Button
+          variant="contained"
+          onClick={handlePetsLuaExport}
+          sx={{ mt: 2, mr: 2 }}
+          style={{ maxWidth: '200px' }}
+        >
+          Export LUA
+        </Button>
+        <Button
+          variant="contained"
+          onClick={() => saveJSON(props.data, 'pets')}
+          sx={{ mt: 2 }}
+          style={{ maxWidth: '200px' }}
+        >
+          Export JSON
+        </Button>
+      </Box>
+      <Typography variant="h5" sx={{ m: 1 }}>Eggs</Typography>
+      <Button
+        variant="contained"
+        onClick={handleEggsLuaExport}
+        sx={{ mt: 2 }}
+        style={{ maxWidth: '200px' }}
+      >
+        Export LUA
+      </Button>
     </Container>
   );
 }
