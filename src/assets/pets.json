@@ -4563,7 +4563,7 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/2/26/Shiny_Hell_Demon.png"
             ],
             "limited": true,
-            "available": true,
+            "available": false,
             "obtainedFrom": "Underworld Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/f/ff/Underworld_Egg.png"
           },
@@ -4584,7 +4584,7 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/0/05/Shiny_Demon_Angel.png"
             ],
             "limited": true,
-            "available": true,
+            "available": false,
             "obtainedFrom": "Underworld Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/f/ff/Underworld_Egg.png"
           },
@@ -4609,7 +4609,7 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/e/ea/Shiny_Mythic_Crimson_Butterfly.png"
             ],
             "limited": true,
-            "available": true,
+            "available": false,
             "obtainedFrom": "Underworld Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/f/ff/Underworld_Egg.png"
           },
@@ -4634,7 +4634,7 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/3/39/Shiny_Mythic_Demonweb.png"
             ],
             "limited": true,
-            "available": true,
+            "available": false,
             "obtainedFrom": "Underworld Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/f/ff/Underworld_Egg.png"
           },
@@ -4659,7 +4659,7 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/c/c7/Shiny_Mythic_Crimson_Bloodmoon.png"
             ],
             "limited": true,
-            "available": true,
+            "available": false,
             "obtainedFrom": "Underworld Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/f/ff/Underworld_Egg.png"
           },
@@ -4684,7 +4684,7 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/5/59/Shiny_Mythic_Lord_Shock.png"
             ],
             "limited": true,
-            "available": true,
+            "available": false,
             "obtainedFrom": "Underworld Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/f/ff/Underworld_Egg.png"
           }
@@ -4976,8 +4976,8 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Mythic_Queen_Kitty.png",
               "https://static.wikia.nocookie.net/bgs-infinity/images/f/ff/Shiny_Mythic_Queen_Kitty.png"
             ],
-            "limited": false,
-            "available": true,
+            "limited": true,
+            "available": false,
             "obtainedFrom": "Secret Bounty",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png"
           },
@@ -5001,8 +5001,8 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/a/a1/Mythic_D0GGY1337.png",
               "https://static.wikia.nocookie.net/bgs-infinity/images/2/25/Shiny_Mythic_D0GGY1337.png"
             ],
-            "limited": false,
-            "available": true,
+            "limited": true,
+            "available": false,
             "obtainedFrom": "Secret Bounty",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png"
           },
@@ -5026,8 +5026,8 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/3/3d/Mythic_Prophet.png",
               "https://static.wikia.nocookie.net/bgs-infinity/images/1/13/Shiny_Mythic_Prophet.png"
             ],
-            "limited": false,
-            "available": true,
+            "limited": true,
+            "available": false,
             "obtainedFrom": "Secret Bounty",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png"
           }
