@@ -10,11 +10,11 @@
         "index": "The Overworld",
         "available": true,
         "canSpawnAsRift": false,
+        "secretBountyExcluded": true,
         "pets": [
           {
             "name": "Doggy",
             "rarity": "Common",
-            "droprate": 2.5,
             "bubbles": 1,
             "gems": 0,
             "currency": 1.1,
@@ -28,12 +28,12 @@
             "obtainedFrom": "Common Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/5/5b/Common_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 40
           },
           {
             "name": "Kitty",
             "rarity": "Common",
-            "droprate": 3.3333333333333335,
             "bubbles": 1,
             "gems": 0,
             "currency": 1.1,
@@ -47,12 +47,12 @@
             "obtainedFrom": "Common Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/5/5b/Common_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 30
           },
           {
             "name": "Bunny",
             "rarity": "Unique",
-            "droprate": 4,
             "bubbles": 2,
             "gems": 0,
             "currency": 1.2,
@@ -66,12 +66,12 @@
             "obtainedFrom": "Common Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/5/5b/Common_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 25
           },
           {
             "name": "Bear",
             "rarity": "Rare",
-            "droprate": 20,
             "bubbles": 2,
             "gems": 0,
             "currency": 1.5,
@@ -85,12 +85,12 @@
             "obtainedFrom": "Common Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/5/5b/Common_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 5
           },
           {
             "name": "King Doggy",
             "rarity": "Secret",
-            "droprate": 100000000,
             "bubbles": 2750,
             "gems": 50,
             "currency": 3300,
@@ -106,7 +106,8 @@
             "obtainedFrom": "Common Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/5/5b/Common_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.000001
           }
         ]
       },
@@ -117,11 +118,11 @@
         "index": "The Overworld",
         "available": true,
         "canSpawnAsRift": false,
+        "secretBountyExcluded": true,
         "pets": [
           {
             "name": "Mouse",
             "rarity": "Common",
-            "droprate": 2.5,
             "bubbles": 2,
             "gems": 0,
             "currency": 2,
@@ -135,12 +136,12 @@
             "obtainedFrom": "Spotted Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/6/6f/Spotted_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 40
           },
           {
             "name": "Wolf",
             "rarity": "Common",
-            "droprate": 4,
             "bubbles": 2.1,
             "gems": 0,
             "currency": 2,
@@ -154,12 +155,12 @@
             "obtainedFrom": "Spotted Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/6/6f/Spotted_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 25
           },
           {
             "name": "Fox",
             "rarity": "Unique",
-            "droprate": 5,
             "bubbles": 3,
             "gems": 0,
             "currency": 2.2,
@@ -173,12 +174,12 @@
             "obtainedFrom": "Spotted Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/6/6f/Spotted_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 20
           },
           {
             "name": "Polar Bear",
             "rarity": "Rare",
-            "droprate": 10,
             "bubbles": 4,
             "gems": 0,
             "currency": 2.5,
@@ -192,12 +193,12 @@
             "obtainedFrom": "Spotted Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/6/6f/Spotted_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 10
           },
           {
             "name": "Panda",
             "rarity": "Epic",
-            "droprate": 20,
             "bubbles": 7,
             "gems": 0,
             "currency": 3,
@@ -211,7 +212,8 @@
             "obtainedFrom": "Spotted Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/6/6f/Spotted_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 5
           }
         ]
       },
@@ -222,11 +224,11 @@
         "index": "The Overworld",
         "available": true,
         "canSpawnAsRift": false,
+        "secretBountyExcluded": true,
         "pets": [
           {
             "name": "Ice Kitty",
             "rarity": "Common",
-            "droprate": 3.3333333333333335,
             "bubbles": 4,
             "gems": 0,
             "currency": 3,
@@ -240,12 +242,12 @@
             "obtainedFrom": "Iceshard Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3e/Iceshard_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 30
           },
           {
             "name": "Deer",
             "rarity": "Common",
-            "droprate": 4,
             "bubbles": 5,
             "gems": 0,
             "currency": 3.5,
@@ -259,12 +261,12 @@
             "obtainedFrom": "Iceshard Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3e/Iceshard_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 25
           },
           {
             "name": "Ice Wolf",
             "rarity": "Unique",
-            "droprate": 5,
             "bubbles": 7,
             "gems": 0,
             "currency": 5,
@@ -278,12 +280,12 @@
             "obtainedFrom": "Iceshard Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3e/Iceshard_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 20
           },
           {
             "name": "Piggy",
             "rarity": "Rare",
-            "droprate": 7.142857142857143,
             "bubbles": 11,
             "gems": 0,
             "currency": 6,
@@ -297,12 +299,12 @@
             "obtainedFrom": "Iceshard Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3e/Iceshard_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 14
           },
           {
             "name": "Ice Deer",
             "rarity": "Rare",
-            "droprate": 12.5,
             "bubbles": 11,
             "gems": 0,
             "currency": 7,
@@ -316,12 +318,12 @@
             "obtainedFrom": "Iceshard Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3e/Iceshard_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 8
           },
           {
             "name": "Ice Dragon",
             "rarity": "Epic",
-            "droprate": 33.333333333333336,
             "bubbles": 15,
             "gems": 0,
             "currency": 10,
@@ -335,7 +337,8 @@
             "obtainedFrom": "Iceshard Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3e/Iceshard_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 3
           }
         ]
       },
@@ -350,7 +353,6 @@
           {
             "name": "Golem",
             "rarity": "Common",
-            "droprate": 3.3333333333333335,
             "bubbles": 3,
             "gems": 0,
             "currency": 4,
@@ -364,12 +366,12 @@
             "obtainedFrom": "Spikey Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/9/93/Spikey_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 30
           },
           {
             "name": "Dinosaur",
             "rarity": "Common",
-            "droprate": 3.3333333333333335,
             "bubbles": 3,
             "gems": 0,
             "currency": 2,
@@ -383,12 +385,12 @@
             "obtainedFrom": "Spikey Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/9/93/Spikey_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 30
           },
           {
             "name": "Ruby Golem",
             "rarity": "Unique",
-            "droprate": 5,
             "bubbles": 4,
             "gems": 0,
             "currency": 5,
@@ -402,12 +404,12 @@
             "obtainedFrom": "Spikey Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/9/93/Spikey_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 20
           },
           {
             "name": "Dragon",
             "rarity": "Rare",
-            "droprate": 8.333333333333334,
             "bubbles": 12,
             "gems": 0,
             "currency": 8,
@@ -421,12 +423,12 @@
             "obtainedFrom": "Spikey Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/9/93/Spikey_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 12
           },
           {
             "name": "Dark Dragon",
             "rarity": "Epic",
-            "droprate": 15.384615384615385,
             "bubbles": 16,
             "gems": 0,
             "currency": 12,
@@ -440,12 +442,12 @@
             "obtainedFrom": "Spikey Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/9/93/Spikey_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 6.5
           },
           {
             "name": "Emerald Golem",
             "rarity": "Legendary",
-            "droprate": 200,
             "bubbles": 45,
             "gems": 0,
             "currency": 25,
@@ -461,7 +463,8 @@
             "obtainedFrom": "Spikey Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/9/93/Spikey_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.5
           }
         ]
       },
@@ -476,7 +479,6 @@
           {
             "name": "Magma Doggy",
             "rarity": "Common",
-            "droprate": 2.2222222222222223,
             "bubbles": 11,
             "gems": 0,
             "currency": 6,
@@ -490,12 +492,12 @@
             "obtainedFrom": "Magma Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/6/63/Magma_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 45
           },
           {
             "name": "Magma Deer",
             "rarity": "Unique",
-            "droprate": 3.278688524590164,
             "bubbles": 12,
             "gems": 0,
             "currency": 8,
@@ -509,12 +511,12 @@
             "obtainedFrom": "Magma Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/6/63/Magma_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 30.5
           },
           {
             "name": "Magma Fox",
             "rarity": "Unique",
-            "droprate": 6.666666666666667,
             "bubbles": 15,
             "gems": 0,
             "currency": 10,
@@ -528,12 +530,12 @@
             "obtainedFrom": "Magma Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/6/63/Magma_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 15
           },
           {
             "name": "Magma Bear",
             "rarity": "Rare",
-            "droprate": 14.285714285714286,
             "bubbles": 18,
             "gems": 0,
             "currency": 15,
@@ -547,12 +549,12 @@
             "obtainedFrom": "Magma Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/6/63/Magma_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 7
           },
           {
             "name": "Demon",
             "rarity": "Epic",
-            "droprate": 45.45454545454545,
             "bubbles": 25,
             "gems": 0,
             "currency": 20,
@@ -566,12 +568,12 @@
             "obtainedFrom": "Magma Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/6/63/Magma_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 2.2
           },
           {
             "name": "Inferno Dragon",
             "rarity": "Legendary",
-            "droprate": 400,
             "bubbles": 75,
             "gems": 1.4,
             "currency": 65,
@@ -587,7 +589,8 @@
             "obtainedFrom": "Magma Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/6/63/Magma_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.25
           }
         ]
       },
@@ -602,7 +605,6 @@
           {
             "name": "Cave Bat",
             "rarity": "Common",
-            "droprate": 1.6666666666666667,
             "bubbles": 14,
             "gems": 0,
             "currency": 9,
@@ -616,12 +618,12 @@
             "obtainedFrom": "Crystal Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/6/6d/Crystal_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 60
           },
           {
             "name": "Dark Bat",
             "rarity": "Unique",
-            "droprate": 3.3444816053511706,
             "bubbles": 25,
             "gems": 0,
             "currency": 12,
@@ -635,12 +637,12 @@
             "obtainedFrom": "Crystal Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/6/6d/Crystal_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 29.9
           },
           {
             "name": "Angel",
             "rarity": "Rare",
-            "droprate": 14.285714285714286,
             "bubbles": 35,
             "gems": 0,
             "currency": 20,
@@ -654,12 +656,12 @@
             "obtainedFrom": "Crystal Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/6/6d/Crystal_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 7
           },
           {
             "name": "Emerald Bat",
             "rarity": "Epic",
-            "droprate": 45.45454545454545,
             "bubbles": 50,
             "gems": 0,
             "currency": 35,
@@ -673,12 +675,12 @@
             "obtainedFrom": "Crystal Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/6/6d/Crystal_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 2.2
           },
           {
             "name": "Unicorn",
             "rarity": "Legendary",
-            "droprate": 400,
             "bubbles": 155,
             "gems": 1.4,
             "currency": 135,
@@ -694,12 +696,12 @@
             "obtainedFrom": "Crystal Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/6/6d/Crystal_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.25
           },
           {
             "name": "Flying Pig",
             "rarity": "Legendary",
-            "droprate": 1000,
             "bubbles": 285,
             "gems": 1.7,
             "currency": 310,
@@ -715,7 +717,8 @@
             "obtainedFrom": "Crystal Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/6/6d/Crystal_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.1
           }
         ]
       },
@@ -730,7 +733,6 @@
           {
             "name": "Space Mouse",
             "rarity": "Common",
-            "droprate": 1.6666666666666667,
             "bubbles": 16,
             "gems": 0,
             "currency": 14,
@@ -744,12 +746,12 @@
             "obtainedFrom": "Lunar Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/6/64/Lunar_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 60
           },
           {
             "name": "Space Bull",
             "rarity": "Unique",
-            "droprate": 3.3444816053511706,
             "bubbles": 30,
             "gems": 0,
             "currency": 20,
@@ -763,12 +765,12 @@
             "obtainedFrom": "Lunar Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/6/64/Lunar_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 29.9
           },
           {
             "name": "Lunar Fox",
             "rarity": "Rare",
-            "droprate": 14.285714285714286,
             "bubbles": 45,
             "gems": 0,
             "currency": 32,
@@ -782,12 +784,12 @@
             "obtainedFrom": "Lunar Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/6/64/Lunar_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 7
           },
           {
             "name": "Lunarcorn",
             "rarity": "Epic",
-            "droprate": 45.45454545454545,
             "bubbles": 70,
             "gems": 0,
             "currency": 55,
@@ -801,12 +803,12 @@
             "obtainedFrom": "Lunar Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/6/64/Lunar_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 2.2
           },
           {
             "name": "Lunar Serpent",
             "rarity": "Legendary",
-            "droprate": 400,
             "bubbles": 195,
             "gems": 2,
             "currency": 220,
@@ -822,12 +824,12 @@
             "obtainedFrom": "Lunar Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/6/64/Lunar_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.25
           },
           {
             "name": "Electra",
             "rarity": "Legendary",
-            "droprate": 1000,
             "bubbles": 295,
             "gems": 4,
             "currency": 395,
@@ -843,7 +845,8 @@
             "obtainedFrom": "Lunar Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/6/64/Lunar_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.1
           }
         ]
       },
@@ -858,7 +861,6 @@
           {
             "name": "Void Kitty",
             "rarity": "Common",
-            "droprate": 1.5384615384615385,
             "bubbles": 18,
             "gems": 0,
             "currency": 16,
@@ -872,12 +874,12 @@
             "obtainedFrom": "Void Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/5/58/Void_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 65
           },
           {
             "name": "Void Bat",
             "rarity": "Unique",
-            "droprate": 3.134796238244514,
             "bubbles": 43,
             "gems": 0,
             "currency": 35,
@@ -891,12 +893,12 @@
             "obtainedFrom": "Void Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/5/58/Void_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 31.9
           },
           {
             "name": "Void Demon",
             "rarity": "Epic",
-            "droprate": 45.45454545454545,
             "bubbles": 85,
             "gems": 0,
             "currency": 70,
@@ -910,12 +912,12 @@
             "obtainedFrom": "Void Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/5/58/Void_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 2.2
           },
           {
             "name": "Dark Phoenix",
             "rarity": "Legendary",
-            "droprate": 2000,
             "bubbles": 350,
             "gems": 4.5,
             "currency": 410,
@@ -931,12 +933,12 @@
             "obtainedFrom": "Void Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/5/58/Void_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.05
           },
           {
             "name": "Neon Elemental",
             "rarity": "Legendary",
-            "droprate": 5000,
             "bubbles": 430,
             "gems": 5.5,
             "currency": 500,
@@ -952,12 +954,12 @@
             "obtainedFrom": "Void Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/5/58/Void_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.02
           },
           {
             "name": "NULLVoid",
             "rarity": "Legendary",
-            "droprate": 1000000,
             "bubbles": 1350,
             "gems": 24,
             "currency": 1850,
@@ -973,7 +975,8 @@
             "obtainedFrom": "Void Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/5/58/Void_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.0001
           }
         ]
       },
@@ -988,7 +991,6 @@
           {
             "name": "Hell Piggy",
             "rarity": "Common",
-            "droprate": 1.6666666666666667,
             "bubbles": 24,
             "gems": 0,
             "currency": 20,
@@ -1002,12 +1004,12 @@
             "obtainedFrom": "Hell Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/a/a2/Hell_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 60
           },
           {
             "name": "Hell Dragon",
             "rarity": "Unique",
-            "droprate": 3.3444816053511706,
             "bubbles": 45,
             "gems": 0,
             "currency": 45,
@@ -1021,12 +1023,12 @@
             "obtainedFrom": "Hell Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/a/a2/Hell_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 29.9
           },
           {
             "name": "Hell Crawler",
             "rarity": "Rare",
-            "droprate": 14.285714285714286,
             "bubbles": 75,
             "gems": 0,
             "currency": 75,
@@ -1040,12 +1042,12 @@
             "obtainedFrom": "Hell Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/a/a2/Hell_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 7
           },
           {
             "name": "Inferno Demon",
             "rarity": "Epic",
-            "droprate": 45.45454545454545,
             "bubbles": 135,
             "gems": 0,
             "currency": 135,
@@ -1059,12 +1061,12 @@
             "obtainedFrom": "Hell Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/a/a2/Hell_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 2.2
           },
           {
             "name": "Inferno Cube",
             "rarity": "Legendary",
-            "droprate": 4000,
             "bubbles": 480,
             "gems": 6,
             "currency": 520,
@@ -1080,12 +1082,12 @@
             "obtainedFrom": "Hell Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/a/a2/Hell_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.025
           },
           {
             "name": "Virus",
             "rarity": "Legendary",
-            "droprate": 50000,
             "bubbles": 785,
             "gems": 9,
             "currency": 850,
@@ -1101,7 +1103,8 @@
             "obtainedFrom": "Hell Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/a/a2/Hell_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.002
           }
         ]
       },
@@ -1116,7 +1119,6 @@
           {
             "name": "Demon Doggy",
             "rarity": "Common",
-            "droprate": 1.6666666666666667,
             "bubbles": 35,
             "gems": 0,
             "currency": 32,
@@ -1130,12 +1132,12 @@
             "obtainedFrom": "Nightmare Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/4/43/Nightmare_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 60
           },
           {
             "name": "Skeletal Deer",
             "rarity": "Unique",
-            "droprate": 3.3444816053511706,
             "bubbles": 50,
             "gems": 0,
             "currency": 52,
@@ -1149,12 +1151,12 @@
             "obtainedFrom": "Nightmare Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/4/43/Nightmare_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 29.9
           },
           {
             "name": "Night Crawler",
             "rarity": "Rare",
-            "droprate": 14.285714285714286,
             "bubbles": 95,
             "gems": 0,
             "currency": 105,
@@ -1168,12 +1170,12 @@
             "obtainedFrom": "Nightmare Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/4/43/Nightmare_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 7
           },
           {
             "name": "Hell Bat",
             "rarity": "Epic",
-            "droprate": 45.45454545454545,
             "bubbles": 185,
             "gems": 0,
             "currency": 250,
@@ -1187,12 +1189,12 @@
             "obtainedFrom": "Nightmare Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/4/43/Nightmare_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 2.2
           },
           {
             "name": "Green Hydra",
             "rarity": "Legendary",
-            "droprate": 25000,
             "bubbles": 600,
             "gems": 10,
             "currency": 710,
@@ -1208,12 +1210,12 @@
             "obtainedFrom": "Nightmare Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/4/43/Nightmare_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.004
           },
           {
             "name": "Demonic Hydra",
             "rarity": "Legendary",
-            "droprate": 100000,
             "bubbles": 925,
             "gems": 15,
             "currency": 1200,
@@ -1229,12 +1231,12 @@
             "obtainedFrom": "Nightmare Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/4/43/Nightmare_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.001
           },
           {
             "name": "The Overlord",
             "rarity": "Secret",
-            "droprate": 50000000,
             "bubbles": 2100,
             "gems": 40,
             "currency": 2900,
@@ -1250,7 +1252,8 @@
             "obtainedFrom": "Nightmare Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/4/43/Nightmare_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.000002
           }
         ]
       },
@@ -1265,7 +1268,6 @@
           {
             "name": "Red Golem",
             "rarity": "Common",
-            "droprate": 1.6666666666666667,
             "bubbles": 45,
             "gems": 1.2,
             "currency": 58,
@@ -1279,12 +1281,12 @@
             "obtainedFrom": "Rainbow Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3f/Rainbow_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 60
           },
           {
             "name": "Orange Deer",
             "rarity": "Unique",
-            "droprate": 3.3444816053511706,
             "bubbles": 82,
             "gems": 1.4,
             "currency": 97,
@@ -1298,12 +1300,12 @@
             "obtainedFrom": "Rainbow Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3f/Rainbow_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 29.9
           },
           {
             "name": "Yellow Fox",
             "rarity": "Rare",
-            "droprate": 14.285714285714286,
             "bubbles": 120,
             "gems": 1.75,
             "currency": 145,
@@ -1317,12 +1319,12 @@
             "obtainedFrom": "Rainbow Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3f/Rainbow_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 7
           },
           {
             "name": "Green Angel",
             "rarity": "Epic",
-            "droprate": 45.45454545454545,
             "bubbles": 225,
             "gems": 2,
             "currency": 285,
@@ -1336,12 +1338,12 @@
             "obtainedFrom": "Rainbow Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3f/Rainbow_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 2.2
           },
           {
             "name": "Hexarium",
             "rarity": "Legendary",
-            "droprate": 100000,
             "bubbles": 1025,
             "gems": 16.5,
             "currency": 1350,
@@ -1357,12 +1359,12 @@
             "obtainedFrom": "Rainbow Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3f/Rainbow_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.001
           },
           {
             "name": "Rainbow Shock",
             "rarity": "Legendary",
-            "droprate": 200000,
             "bubbles": 1250,
             "gems": 20,
             "currency": 1700,
@@ -1378,7 +1380,8 @@
             "obtainedFrom": "Rainbow Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3f/Rainbow_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.0005
           }
         ]
       }
@@ -1395,11 +1398,11 @@
         "index": "Minigame Paradise",
         "available": true,
         "canSpawnAsRift": false,
+        "secretBountyExcluded": true,
         "pets": [
           {
             "name": "Game Doggy",
             "rarity": "Common",
-            "droprate": 1.8181818181818181,
             "bubbles": 1,
             "gems": 0,
             "currency": 1.1,
@@ -1413,12 +1416,12 @@
             "obtainedFrom": "Showman Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/1/1a/Showman_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 55
           },
           {
             "name": "Gamer Boi",
             "rarity": "Common",
-            "droprate": 2.5,
             "bubbles": 1,
             "gems": 0,
             "currency": 1.5,
@@ -1432,12 +1435,12 @@
             "obtainedFrom": "Showman Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/1/1a/Showman_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 40
           },
           {
             "name": "Queen of Hearts",
             "rarity": "Rare",
-            "droprate": 20,
             "bubbles": 2,
             "gems": 0,
             "currency": 2,
@@ -1451,7 +1454,8 @@
             "obtainedFrom": "Showman Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/1/1a/Showman_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 5
           }
         ]
       },
@@ -1466,7 +1470,6 @@
           {
             "name": "Mining Doggy",
             "rarity": "Common",
-            "droprate": 1.6666666666666667,
             "bubbles": 24,
             "gems": 0,
             "currency": 20,
@@ -1480,12 +1483,12 @@
             "obtainedFrom": "Mining Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/6/65/Mining_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 60
           },
           {
             "name": "Mining Bat",
             "rarity": "Unique",
-            "droprate": 3.3333333333333335,
             "bubbles": 45,
             "gems": 0,
             "currency": 25,
@@ -1499,12 +1502,12 @@
             "obtainedFrom": "Mining Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/6/65/Mining_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 30
           },
           {
             "name": "Cave Mole",
             "rarity": "Rare",
-            "droprate": 14.285714285714286,
             "bubbles": 75,
             "gems": 0,
             "currency": 40,
@@ -1518,12 +1521,12 @@
             "obtainedFrom": "Mining Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/6/65/Mining_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 7
           },
           {
             "name": "Ore Golem",
             "rarity": "Epic",
-            "droprate": 33.333333333333336,
             "bubbles": 135,
             "gems": 0,
             "currency": 70,
@@ -1537,12 +1540,12 @@
             "obtainedFrom": "Mining Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/6/65/Mining_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 3
           },
           {
             "name": "Crystal Unicorn",
             "rarity": "Legendary",
-            "droprate": 200,
             "bubbles": 480,
             "gems": 6,
             "currency": 180,
@@ -1558,12 +1561,12 @@
             "obtainedFrom": "Mining Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/6/65/Mining_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.5
           },
           {
             "name": "Stone Gargoyle",
             "rarity": "Legendary",
-            "droprate": 20000,
             "bubbles": 785,
             "gems": 9,
             "currency": 320,
@@ -1579,7 +1582,8 @@
             "obtainedFrom": "Mining Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/6/65/Mining_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.005
           }
         ]
       },
@@ -1594,7 +1598,6 @@
           {
             "name": "Robo Kitty",
             "rarity": "Common",
-            "droprate": 1.5625,
             "bubbles": 65,
             "gems": 1.8,
             "currency": 75,
@@ -1608,12 +1611,12 @@
             "obtainedFrom": "Cyber Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/7/7b/Cyber_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 64
           },
           {
             "name": "Martian Kitty",
             "rarity": "Unique",
-            "droprate": 4,
             "bubbles": 115,
             "gems": 2.5,
             "currency": 125,
@@ -1627,12 +1630,12 @@
             "obtainedFrom": "Cyber Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/7/7b/Cyber_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 25
           },
           {
             "name": "Cyber Wolf",
             "rarity": "Epic",
-            "droprate": 33.333333333333336,
             "bubbles": 130,
             "gems": 0,
             "currency": 140,
@@ -1646,12 +1649,12 @@
             "obtainedFrom": "Cyber Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/7/7b/Cyber_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 3
           },
           {
             "name": "Cyborg Phoenix",
             "rarity": "Legendary",
-            "droprate": 2500,
             "bubbles": 630,
             "gems": 12,
             "currency": 400,
@@ -1667,12 +1670,12 @@
             "obtainedFrom": "Cyber Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/7/7b/Cyber_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.04
           },
           {
             "name": "Space Invader",
             "rarity": "Legendary",
-            "droprate": 50000,
             "bubbles": 1325,
             "gems": 23,
             "currency": 850,
@@ -1688,12 +1691,12 @@
             "obtainedFrom": "Cyber Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/7/7b/Cyber_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.002
           },
           {
             "name": "Bionic Shard",
             "rarity": "Legendary",
-            "droprate": 666666,
             "bubbles": 1550,
             "gems": 32,
             "currency": 1900,
@@ -1709,12 +1712,12 @@
             "obtainedFrom": "Cyber Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/7/7b/Cyber_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.00015
           },
           {
             "name": "Mech Robot",
             "rarity": "Secret",
-            "droprate": 66666666,
             "bubbles": 3000,
             "gems": 65,
             "currency": 3500,
@@ -1730,7 +1733,8 @@
             "obtainedFrom": "Cyber Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/7/7b/Cyber_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.0000015
           }
         ]
       },
@@ -1745,7 +1749,6 @@
           {
             "name": "Neon Doggy",
             "rarity": "Common",
-            "droprate": 1.680672268907563,
             "bubbles": 70,
             "gems": 0,
             "currency": 80,
@@ -1759,12 +1762,12 @@
             "obtainedFrom": "Neon Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/b/b1/Neon_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 59.5
           },
           {
             "name": "Hologram Dragon",
             "rarity": "Rare",
-            "droprate": 3.9215686274509802,
             "bubbles": 135,
             "gems": 2.5,
             "currency": 150,
@@ -1778,12 +1781,12 @@
             "obtainedFrom": "Neon Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/b/b1/Neon_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 25.5
           },
           {
             "name": "Disco Ball",
             "rarity": "Epic",
-            "droprate": 8.333333333333334,
             "bubbles": 200,
             "gems": 0,
             "currency": 190,
@@ -1797,12 +1800,12 @@
             "obtainedFrom": "Neon Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/b/b1/Neon_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 12
           },
           {
             "name": "Neon Wyvern",
             "rarity": "Legendary",
-            "droprate": 3333,
             "bubbles": 675,
             "gems": 16,
             "currency": 675,
@@ -1818,12 +1821,12 @@
             "obtainedFrom": "Neon Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/b/b1/Neon_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.03
           },
           {
             "name": "Neon Wire Eye",
             "rarity": "Legendary",
-            "droprate": 66666,
             "bubbles": 1525,
             "gems": 25,
             "currency": 1800,
@@ -1839,12 +1842,12 @@
             "obtainedFrom": "Neon Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/b/b1/Neon_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.0015
           },
           {
             "name": "Equalizer",
             "rarity": "Legendary",
-            "droprate": 833333,
             "bubbles": 2100,
             "gems": 40,
             "currency": 2550,
@@ -1860,12 +1863,12 @@
             "obtainedFrom": "Neon Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/b/b1/Neon_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.00012
           },
           {
             "name": "Hyperwave Kitty",
             "rarity": "Secret",
-            "droprate": 125000000,
             "bubbles": 3600,
             "gems": 75,
             "currency": 4000,
@@ -1881,7 +1884,8 @@
             "obtainedFrom": "Neon Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/b/b1/Neon_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 8e-7
           }
         ]
       },
@@ -1895,7 +1899,6 @@
           {
             "name": "Galaxy Dice",
             "rarity": "Rare",
-            "droprate": 1.6666666666666667,
             "bubbles": 45,
             "gems": 0,
             "currency": 22,
@@ -1909,12 +1912,12 @@
             "obtainedFrom": "Chance Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d8/Chance_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 60
           },
           {
             "name": "Chance Dragon",
             "rarity": "Epic",
-            "droprate": 2.5,
             "bubbles": 210,
             "gems": 0,
             "currency": 140,
@@ -1928,12 +1931,12 @@
             "obtainedFrom": "Chance Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d8/Chance_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 40
           },
           {
             "name": "Ring Master",
             "rarity": "Legendary",
-            "droprate": 100000,
             "bubbles": 1950,
             "gems": 40,
             "currency": 1950,
@@ -1949,12 +1952,12 @@
             "obtainedFrom": "Chance Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d8/Chance_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.001
           },
           {
             "name": "Royal Guardian",
             "rarity": "Secret",
-            "droprate": 200000000,
             "bubbles": 3900,
             "gems": 85,
             "currency": 4250,
@@ -1970,7 +1973,8 @@
             "obtainedFrom": "Chance Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d8/Chance_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 5e-7
           }
         ]
       },
@@ -1985,7 +1989,6 @@
           {
             "name": "Fancy Demon",
             "rarity": "Rare",
-            "droprate": 2,
             "bubbles": 40,
             "gems": 0,
             "currency": 20,
@@ -1999,12 +2002,12 @@
             "obtainedFrom": "Game Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/9/98/Game_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 50
           },
           {
             "name": "Happy Dice",
             "rarity": "Epic",
-            "droprate": 10,
             "bubbles": 195,
             "gems": 0,
             "currency": 130,
@@ -2018,12 +2021,12 @@
             "obtainedFrom": "Game Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/9/98/Game_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 10
           },
           {
             "name": "Game Master",
             "rarity": "Legendary",
-            "droprate": 100000,
             "bubbles": 1850,
             "gems": 35,
             "currency": 1900,
@@ -2039,12 +2042,12 @@
             "obtainedFrom": "Game Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/9/98/Game_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.001
           },
           {
             "name": "Jackpot",
             "rarity": "Legendary",
-            "droprate": 20000000,
             "bubbles": 3050,
             "gems": 70,
             "currency": 3550,
@@ -2060,7 +2063,8 @@
             "obtainedFrom": "Game Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/9/98/Game_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.000005
           }
         ]
       }
@@ -2079,7 +2083,6 @@
           {
             "name": "Trio Cube",
             "rarity": "Legendary",
-            "droprate": 1,
             "bubbles": 1400,
             "gems": 23,
             "currency": 1950,
@@ -2097,12 +2100,12 @@
             "hasMythic": true,
             "tags": [
               "Index Pet"
-            ]
+            ],
+            "chance": 1
           },
           {
             "name": "Sir Doggyton",
             "rarity": "Legendary",
-            "droprate": 1,
             "bubbles": 2025,
             "gems": 40,
             "currency": 2000,
@@ -2118,7 +2121,8 @@
             "obtainedFrom": "Index",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/da/Index_Icon.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 1
           }
         ]
       },
@@ -2131,7 +2135,6 @@
           {
             "name": "Sunburst",
             "rarity": "Legendary",
-            "droprate": 5000,
             "bubbles": 1300,
             "gems": 22,
             "currency": 1800,
@@ -2149,12 +2152,12 @@
             "hasMythic": true,
             "tags": [
               "Mystery Box"
-            ]
+            ],
+            "chance": 0.02
           },
           {
             "name": "Moonburst",
             "rarity": "Legendary",
-            "droprate": 10000,
             "bubbles": 1250,
             "gems": 20,
             "currency": 1700,
@@ -2172,12 +2175,12 @@
             "hasMythic": true,
             "tags": [
               "Mystery Box"
-            ]
+            ],
+            "chance": 0.01
           },
           {
             "name": "Kitsune",
             "rarity": "Legendary",
-            "droprate": 50000,
             "bubbles": 1300,
             "gems": 22,
             "currency": 1800,
@@ -2193,12 +2196,12 @@
             "hasMythic": false,
             "tags": [
               "Reward Pet"
-            ]
+            ],
+            "chance": 0.002
           },
           {
             "name": "Vaporium",
             "rarity": "Legendary",
-            "droprate": 125000,
             "bubbles": 2025,
             "gems": 40,
             "currency": 2000,
@@ -2214,12 +2217,12 @@
             "hasMythic": false,
             "tags": [
               "Reward Pet"
-            ]
+            ],
+            "chance": 0.0008
           },
           {
             "name": "Umbra",
             "rarity": "Legendary",
-            "droprate": 1000,
             "bubbles": 975,
             "gems": 15,
             "currency": 1300,
@@ -2235,12 +2238,12 @@
             "hasMythic": false,
             "tags": [
               "Reward Pet"
-            ]
+            ],
+            "chance": 0.1
           },
           {
             "name": "Abyssal Dragon",
             "rarity": "Legendary",
-            "droprate": 4000,
             "bubbles": 1250,
             "gems": 20,
             "currency": 1700,
@@ -2258,12 +2261,12 @@
             "hasMythic": true,
             "tags": [
               "Rift Chest"
-            ]
+            ],
+            "chance": 0.025
           },
           {
             "name": "Hacker Prism",
             "rarity": "Legendary",
-            "droprate": 4000,
             "bubbles": 1450,
             "gems": 22,
             "currency": 1850,
@@ -2281,12 +2284,12 @@
             "hasMythic": true,
             "tags": [
               "Rift Chest"
-            ]
+            ],
+            "chance": 0.025
           },
           {
             "name": "Dice Split",
             "rarity": "Legendary",
-            "droprate": 10000,
             "bubbles": 1750,
             "gems": 32,
             "currency": 1800,
@@ -2304,12 +2307,12 @@
             "hasMythic": true,
             "tags": [
               "Dice Chest"
-            ]
+            ],
+            "chance": 0.01
           },
           {
             "name": "Magmas",
             "rarity": "Legendary",
-            "droprate": 1000,
             "bubbles": 1700,
             "gems": 32,
             "currency": 1800,
@@ -2327,12 +2330,12 @@
             "hasMythic": true,
             "tags": [
               "Game Prize"
-            ]
+            ],
+            "chance": 0.1
           },
           {
             "name": "Dragon Plushie",
             "rarity": "Legendary",
-            "droprate": 10000,
             "bubbles": 2000,
             "gems": 40,
             "currency": 2100,
@@ -2350,12 +2353,12 @@
             "hasMythic": true,
             "tags": [
               "Game Prize"
-            ]
+            ],
+            "chance": 0.01
           },
           {
             "name": "Star Charm",
             "rarity": "Legendary",
-            "droprate": 4000,
             "bubbles": 2150,
             "gems": 42,
             "currency": 2600,
@@ -2371,7 +2374,8 @@
             "obtainedFrom": "Hyper Darts",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/9/90/Multi_Darts.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.025
           }
         ]
       },
@@ -2384,7 +2388,6 @@
           {
             "name": "Holy Shock",
             "rarity": "Legendary",
-            "droprate": 1,
             "bubbles": 975,
             "gems": 15.5,
             "currency": 1300,
@@ -2400,12 +2403,12 @@
             "hasMythic": false,
             "tags": [
               "Milestone Pet"
-            ]
+            ],
+            "chance": 1
           },
           {
             "name": "Evil Shock",
             "rarity": "Legendary",
-            "droprate": 1,
             "bubbles": 975,
             "gems": 15,
             "currency": 1300,
@@ -2421,12 +2424,12 @@
             "hasMythic": false,
             "tags": [
               "Milestone Pet"
-            ]
+            ],
+            "chance": 1
           },
           {
             "name": "Rainbow Blitz",
             "rarity": "Legendary",
-            "droprate": 1,
             "bubbles": 1250,
             "gems": 20,
             "currency": 1700,
@@ -2442,12 +2445,12 @@
             "hasMythic": false,
             "tags": [
               "Milestone Pet"
-            ]
+            ],
+            "chance": 1
           },
           {
             "name": "King Soul",
             "rarity": "Legendary",
-            "droprate": 1,
             "bubbles": 2225,
             "gems": 45,
             "currency": 3100,
@@ -2463,12 +2466,12 @@
             "hasMythic": false,
             "tags": [
               "Milestone Pet"
-            ]
+            ],
+            "chance": 1
           },
           {
             "name": "Demonic Dogcat",
             "rarity": "Legendary",
-            "droprate": 1,
             "bubbles": 1300,
             "gems": 22,
             "currency": 1800,
@@ -2484,12 +2487,12 @@
             "hasMythic": false,
             "tags": [
               "Milestone Pet"
-            ]
+            ],
+            "chance": 1
           },
           {
             "name": "Chronos",
             "rarity": "Secret",
-            "droprate": 1,
             "bubbles": 4000,
             "gems": 100,
             "currency": 4500,
@@ -2503,12 +2506,12 @@
             "obtainedFrom": "Quest",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c2/Quests_Icon.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 1
           },
           {
             "name": "Dark Lord",
             "rarity": "Secret",
-            "droprate": 1,
             "bubbles": 4000,
             "gems": 100,
             "currency": 4500,
@@ -2522,12 +2525,12 @@
             "obtainedFrom": "Quest",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c2/Quests_Icon.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 1
           },
           {
             "name": "Cerberus",
             "rarity": "Legendary",
-            "droprate": 1,
             "bubbles": 2150,
             "gems": 42,
             "currency": 2600,
@@ -2541,12 +2544,12 @@
             "obtainedFrom": "World Rewards",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/dc/The_Overworld_Icon.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 1
           },
           {
             "name": "Security System",
             "rarity": "Legendary",
-            "droprate": 1,
             "bubbles": 2150,
             "gems": 42,
             "currency": 2600,
@@ -2560,7 +2563,8 @@
             "obtainedFrom": "World Rewards",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/dc/The_Overworld_Icon.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 1
           }
         ]
       }
@@ -2579,7 +2583,6 @@
           {
             "name": "Rune Stone",
             "rarity": "Rare",
-            "droprate": 1.1111111111111112,
             "bubbles": 40,
             "gems": 0,
             "currency": 4,
@@ -2593,12 +2596,12 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/9/97/Shiny_Rune_Stone.png"
             ],
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 90
           },
           {
             "name": "Rune Guardian",
             "rarity": "Epic",
-            "droprate": 10,
             "bubbles": 210,
             "gems": 0,
             "currency": 30,
@@ -2612,12 +2615,12 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/b/b2/Shiny_Rune_Guardian.png"
             ],
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 10
           },
           {
             "name": "Runic Defender",
             "rarity": "Legendary",
-            "droprate": 200,
             "bubbles": 1600,
             "gems": 30,
             "currency": 150,
@@ -2633,12 +2636,12 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/a/a1/Shiny_Mythic_Runic_Defender.png"
             ],
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.5
           },
           {
             "name": "Glyph Warrior",
             "rarity": "Legendary",
-            "droprate": 10000,
             "bubbles": 3500,
             "gems": 80,
             "currency": 0,
@@ -2654,7 +2657,8 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/9/95/Shiny_Mythic_Glyph_Warrior.png"
             ],
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.01
           }
         ]
       },
@@ -2667,7 +2671,6 @@
           {
             "name": "Runic Master",
             "rarity": "Legendary",
-            "droprate": 1,
             "bubbles": 1000,
             "gems": 20,
             "currency": 35,
@@ -2681,12 +2684,12 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/d/d1/Shiny_Runic_Master.png"
             ],
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 1
           },
           {
             "name": "Runic Prism",
             "rarity": "Legendary",
-            "droprate": 1,
             "bubbles": 1200,
             "gems": 30,
             "currency": 50,
@@ -2700,12 +2703,12 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/6/64/Shiny_Runic_Prism.png"
             ],
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 1
           },
           {
             "name": "Ancient One",
             "rarity": "Legendary",
-            "droprate": 1000,
             "bubbles": 2700,
             "gems": 55,
             "currency": 800,
@@ -2721,12 +2724,12 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/b/b0/Shiny_Mythic_Ancient_One.png"
             ],
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.1
           },
           {
             "name": "Monolith",
             "rarity": "Secret",
-            "droprate": 20000,
             "bubbles": 4200,
             "gems": 90,
             "currency": 2000,
@@ -2742,7 +2745,8 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/2/26/Shiny_Mythic_Monolith.png"
             ],
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.005
           }
         ]
       },
@@ -2755,7 +2759,6 @@
           {
             "name": "Sleepy Bunny",
             "rarity": "Rare",
-            "droprate": 1.1111111111111112,
             "bubbles": 40,
             "gems": 0,
             "currency": 20,
@@ -2771,12 +2774,12 @@
             "hasMythic": false,
             "tags": [
               "Season 2"
-            ]
+            ],
+            "chance": 90
           },
           {
             "name": "Starry Lamb",
             "rarity": "Epic",
-            "droprate": 10,
             "bubbles": 195,
             "gems": 0,
             "currency": 265,
@@ -2792,12 +2795,12 @@
             "hasMythic": false,
             "tags": [
               "Season 2"
-            ]
+            ],
+            "chance": 10
           },
           {
             "name": "Moon Deer",
             "rarity": "Legendary",
-            "droprate": 200,
             "bubbles": 1000,
             "gems": 22,
             "currency": 1150,
@@ -2815,12 +2818,12 @@
             "hasMythic": true,
             "tags": [
               "Season 2"
-            ]
+            ],
+            "chance": 0.5
           },
           {
             "name": "Nebula",
             "rarity": "Legendary",
-            "droprate": 10000,
             "bubbles": 1850,
             "gems": 35,
             "currency": 2450,
@@ -2838,7 +2841,8 @@
             "hasMythic": true,
             "tags": [
               "Season 2"
-            ]
+            ],
+            "chance": 0.01
           }
         ]
       },
@@ -2851,7 +2855,6 @@
           {
             "name": "Dusk",
             "rarity": "Legendary",
-            "droprate": 1,
             "bubbles": 975,
             "gems": 15,
             "currency": 1300,
@@ -2867,12 +2870,12 @@
             "hasMythic": false,
             "tags": [
               "Season 2"
-            ]
+            ],
+            "chance": 1
           },
           {
             "name": "Dawn",
             "rarity": "Legendary",
-            "droprate": 1,
             "bubbles": 1050,
             "gems": 18,
             "currency": 1400,
@@ -2888,12 +2891,12 @@
             "hasMythic": false,
             "tags": [
               "Season 2"
-            ]
+            ],
+            "chance": 1
           },
           {
             "name": "Moonlight",
             "rarity": "Legendary",
-            "droprate": 1000,
             "bubbles": 1325,
             "gems": 23,
             "currency": 850,
@@ -2911,12 +2914,12 @@
             "hasMythic": true,
             "tags": [
               "Season 2"
-            ]
+            ],
+            "chance": 0.1
           },
           {
             "name": "Luminosity",
             "rarity": "Secret",
-            "droprate": 20000,
             "bubbles": 3050,
             "gems": 70,
             "currency": 3550,
@@ -2934,7 +2937,8 @@
             "hasMythic": true,
             "tags": [
               "Season 2"
-            ]
+            ],
+            "chance": 0.005
           }
         ]
       },
@@ -2947,7 +2951,6 @@
           {
             "name": "Enlightened Kitty",
             "rarity": "Rare",
-            "droprate": 1.1111111111111112,
             "bubbles": 35,
             "gems": 0,
             "currency": 15,
@@ -2963,12 +2966,12 @@
             "hasMythic": false,
             "tags": [
               "Season 1"
-            ]
+            ],
+            "chance": 90
           },
           {
             "name": "Judgement",
             "rarity": "Epic",
-            "droprate": 10,
             "bubbles": 185,
             "gems": 0,
             "currency": 250,
@@ -2984,12 +2987,12 @@
             "hasMythic": false,
             "tags": [
               "Season 1"
-            ]
+            ],
+            "chance": 10
           },
           {
             "name": "Ophanim",
             "rarity": "Legendary",
-            "droprate": 200,
             "bubbles": 925,
             "gems": 15,
             "currency": 1200,
@@ -3007,12 +3010,12 @@
             "hasMythic": true,
             "tags": [
               "Season 1"
-            ]
+            ],
+            "chance": 0.5
           },
           {
             "name": "Seraph",
             "rarity": "Legendary",
-            "droprate": 10000,
             "bubbles": 1600,
             "gems": 22,
             "currency": 2300,
@@ -3030,7 +3033,8 @@
             "hasMythic": true,
             "tags": [
               "Season 1"
-            ]
+            ],
+            "chance": 0.01
           }
         ]
       },
@@ -3043,7 +3047,6 @@
           {
             "name": "Lunar Deity",
             "rarity": "Legendary",
-            "droprate": 1,
             "bubbles": 975,
             "gems": 15,
             "currency": 1300,
@@ -3059,12 +3062,12 @@
             "hasMythic": false,
             "tags": [
               "Season 1"
-            ]
+            ],
+            "chance": 1
           },
           {
             "name": "Solar Deity",
             "rarity": "Legendary",
-            "droprate": 1,
             "bubbles": 1050,
             "gems": 18,
             "currency": 1400,
@@ -3080,12 +3083,12 @@
             "hasMythic": false,
             "tags": [
               "Season 1"
-            ]
+            ],
+            "chance": 1
           },
           {
             "name": "Crescent Empress",
             "rarity": "Legendary",
-            "droprate": 1000,
             "bubbles": 1100,
             "gems": 19,
             "currency": 1425,
@@ -3103,12 +3106,12 @@
             "hasMythic": true,
             "tags": [
               "Season 1"
-            ]
+            ],
+            "chance": 0.1
           },
           {
             "name": "Avernus",
             "rarity": "Secret",
-            "droprate": 20000,
             "bubbles": 1900,
             "gems": 35,
             "currency": 2600,
@@ -3126,7 +3129,8 @@
             "hasMythic": true,
             "tags": [
               "Season 1"
-            ]
+            ],
+            "chance": 0.005
           }
         ]
       }
@@ -3145,7 +3149,6 @@
           {
             "name": "Ground Golem",
             "rarity": "Rare",
-            "droprate": 1.1111111111111112,
             "bubbles": 40,
             "gems": 0,
             "currency": 10,
@@ -3159,12 +3162,12 @@
             "obtainedFrom": "Series 2 Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/7/75/Series_2_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 90
           },
           {
             "name": "Wind Fairy",
             "rarity": "Epic",
-            "droprate": 10.1010101010101,
             "bubbles": 195,
             "gems": 0,
             "currency": 265,
@@ -3178,12 +3181,12 @@
             "obtainedFrom": "Series 2 Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/7/75/Series_2_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 9.9
           },
           {
             "name": "Water Serpent",
             "rarity": "Legendary",
-            "droprate": 1333,
             "bubbles": 1050,
             "gems": 22,
             "currency": 1400,
@@ -3199,12 +3202,12 @@
             "obtainedFrom": "Series 2 Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/7/75/Series_2_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.075
           },
           {
             "name": "Fire Guardian",
             "rarity": "Legendary",
-            "droprate": 20000,
             "bubbles": 2700,
             "gems": 65,
             "currency": 3750,
@@ -3220,7 +3223,8 @@
             "obtainedFrom": "Series 2 Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/7/75/Series_2_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.005
           }
         ]
       },
@@ -3233,7 +3237,6 @@
           {
             "name": "The Moon",
             "rarity": "Legendary",
-            "droprate": 1,
             "bubbles": 2700,
             "gems": 65,
             "currency": 3750,
@@ -3247,12 +3250,12 @@
             "obtainedFrom": "S2 Competitive",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/7/79/Competitive_Icon.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 1
           },
           {
             "name": "The Sun",
             "rarity": "Legendary",
-            "droprate": 1,
             "bubbles": 3500,
             "gems": 70,
             "currency": 3800,
@@ -3268,7 +3271,8 @@
             "obtainedFrom": "S2 Competitive",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/7/79/Competitive_Icon.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 1
           }
         ]
       },
@@ -3281,7 +3285,6 @@
           {
             "name": "Competitor Doggy",
             "rarity": "Rare",
-            "droprate": 1.1111111111111112,
             "bubbles": 40,
             "gems": 0,
             "currency": 20,
@@ -3297,12 +3300,12 @@
             "hasMythic": false,
             "tags": [
               "Series 1"
-            ]
+            ],
+            "chance": 90
           },
           {
             "name": "Golden Golem",
             "rarity": "Epic",
-            "droprate": 10.1010101010101,
             "bubbles": 195,
             "gems": 0,
             "currency": 265,
@@ -3318,12 +3321,12 @@
             "hasMythic": false,
             "tags": [
               "Series 1"
-            ]
+            ],
+            "chance": 9.9
           },
           {
             "name": "Parasite",
             "rarity": "Legendary",
-            "droprate": 1000,
             "bubbles": 980,
             "gems": 18,
             "currency": 1250,
@@ -3341,12 +3344,12 @@
             "hasMythic": true,
             "tags": [
               "Series 1"
-            ]
+            ],
+            "chance": 0.1
           },
           {
             "name": "Starlight",
             "rarity": "Legendary",
-            "droprate": 10000,
             "bubbles": 1700,
             "gems": 25,
             "currency": 2350,
@@ -3364,12 +3367,12 @@
             "hasMythic": true,
             "tags": [
               "Series 1"
-            ]
+            ],
+            "chance": 0.01
           },
           {
             "name": "Overseer",
             "rarity": "Legendary",
-            "droprate": 100000,
             "bubbles": 2300,
             "gems": 50,
             "currency": 3150,
@@ -3387,7 +3390,8 @@
             "hasMythic": true,
             "tags": [
               "Series 1"
-            ]
+            ],
+            "chance": 0.001
           }
         ]
       },
@@ -3400,7 +3404,6 @@
           {
             "name": "Elite Challenger",
             "rarity": "Legendary",
-            "droprate": 1,
             "bubbles": 2350,
             "gems": 50,
             "currency": 3200,
@@ -3416,12 +3419,12 @@
             "hasMythic": false,
             "tags": [
               "Competitive"
-            ]
+            ],
+            "chance": 1
           },
           {
             "name": "Elite Soul",
             "rarity": "Legendary",
-            "droprate": 1,
             "bubbles": 3000,
             "gems": 65,
             "currency": 3500,
@@ -3439,7 +3442,8 @@
             "hasMythic": true,
             "tags": [
               "Competitive"
-            ]
+            ],
+            "chance": 1
           }
         ]
       }
@@ -3464,7 +3468,6 @@
               {
                 "name": "Tourist Doggy",
                 "rarity": "Common",
-                "droprate": 1.8181818181818181,
                 "bubbles": 1,
                 "gems": 0,
                 "currency": 1.5,
@@ -3478,12 +3481,12 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/0/0f/Shiny_Tourist_Doggy.png"
                 ],
                 "hasMythic": false,
-                "tags": []
+                "tags": [],
+                "chance": 55
               },
               {
                 "name": "Seagull",
                 "rarity": "Common",
-                "droprate": 2.857142857142857,
                 "bubbles": 1,
                 "gems": 0,
                 "currency": 2,
@@ -3497,12 +3500,12 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/9/97/Shiny_Seagull.png"
                 ],
                 "hasMythic": false,
-                "tags": []
+                "tags": [],
+                "chance": 35
               },
               {
                 "name": "Beach Boi",
                 "rarity": "Rare",
-                "droprate": 10,
                 "bubbles": 2,
                 "gems": 0,
                 "currency": 4,
@@ -3516,7 +3519,8 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/f/f3/Shiny_Beach_Boi.png"
                 ],
                 "hasMythic": false,
-                "tags": []
+                "tags": [],
+                "chance": 10
               }
             ]
           },
@@ -3531,7 +3535,6 @@
               {
                 "name": "Sundae Doggy",
                 "rarity": "Common",
-                "droprate": 1.6835016835016836,
                 "bubbles": 20,
                 "gems": 0,
                 "currency": 4,
@@ -3545,12 +3548,12 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/0/0f/Shiny_Tourist_Doggy.png"
                 ],
                 "hasMythic": false,
-                "tags": []
+                "tags": [],
+                "chance": 59.4
               },
               {
                 "name": "Bunny Cone",
                 "rarity": "Rare",
-                "droprate": 3.508771929824561,
                 "bubbles": 35,
                 "gems": 2.5,
                 "currency": 6,
@@ -3564,12 +3567,12 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/e/ed/Shiny_Bunny_Cone.png"
                 ],
                 "hasMythic": false,
-                "tags": []
+                "tags": [],
+                "chance": 28.5
               },
               {
                 "name": "Neapolitan Stack",
                 "rarity": "Epic",
-                "droprate": 16.666666666666668,
                 "bubbles": 80,
                 "gems": 0,
                 "currency": 9.5,
@@ -3583,12 +3586,12 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/0/0b/Shiny_Neapolitan_Stack.png"
                 ],
                 "hasMythic": false,
-                "tags": []
+                "tags": [],
+                "chance": 6
               },
               {
                 "name": "Popsicle Trio",
                 "rarity": "Legendary",
-                "droprate": 1000,
                 "bubbles": 720,
                 "gems": 18,
                 "currency": 50,
@@ -3604,12 +3607,12 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/b/bc/Shiny_Mythic_Popsicle_Trio.png"
                 ],
                 "hasMythic": true,
-                "tags": []
+                "tags": [],
+                "chance": 0.1
               },
               {
                 "name": "Soarin' Surfer",
                 "rarity": "Legendary",
-                "droprate": 10000,
                 "bubbles": 1600,
                 "gems": 30,
                 "currency": 200,
@@ -3625,12 +3628,12 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/6/68/Shiny_Mythic_Soarin%27_Surfer.png"
                 ],
                 "hasMythic": true,
-                "tags": []
+                "tags": [],
+                "chance": 0.01
               },
               {
                 "name": "Sundae Cone",
                 "rarity": "Legendary",
-                "droprate": 1250000,
                 "bubbles": 2600,
                 "gems": 50,
                 "currency": 750,
@@ -3646,12 +3649,12 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/2/28/Shiny_Mythic_Sundae_Cone.png"
                 ],
                 "hasMythic": true,
-                "tags": []
+                "tags": [],
+                "chance": 0.00008
               },
               {
                 "name": "Mint Sundae Champion",
                 "rarity": "Secret",
-                "droprate": 50000000,
                 "bubbles": 3800,
                 "gems": 80,
                 "currency": 1500,
@@ -3667,12 +3670,12 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/8/8b/Shiny_Mythic_Mint_Sundae_Champion.png"
                 ],
                 "hasMythic": true,
-                "tags": []
+                "tags": [],
+                "chance": 0.000002
               },
               {
                 "name": "Vanilla Sundae Champion",
                 "rarity": "Secret",
-                "droprate": 50000000,
                 "bubbles": 3800,
                 "gems": 80,
                 "currency": 1500,
@@ -3688,12 +3691,12 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/5/58/Shiny_Mythic_Vanilla_Sundae_Champion.png"
                 ],
                 "hasMythic": true,
-                "tags": []
+                "tags": [],
+                "chance": 0.000002
               },
               {
                 "name": "Chocolate Sundae Champion",
                 "rarity": "Secret",
-                "droprate": 50000000,
                 "bubbles": 3800,
                 "gems": 80,
                 "currency": 1500,
@@ -3709,12 +3712,12 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/b/bc/Shiny_Mythic_Chocolate_Sundae_Champion.png"
                 ],
                 "hasMythic": true,
-                "tags": []
+                "tags": [],
+                "chance": 0.000002
               },
               {
                 "name": "Strawberry Sundae Champion",
                 "rarity": "Secret",
-                "droprate": 50000000,
                 "bubbles": 3800,
                 "gems": 80,
                 "currency": 1500,
@@ -3730,7 +3733,8 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/4/49/Shiny_Mythic_Strawberry_Sundae_Champion.png"
                 ],
                 "hasMythic": true,
-                "tags": []
+                "tags": [],
+                "chance": 0.000002
               }
             ]
           },
@@ -3745,7 +3749,6 @@
               {
                 "name": "Strawberry Doggy",
                 "rarity": "Common",
-                "droprate": 1.492537313432836,
                 "bubbles": 20,
                 "gems": 0,
                 "currency": 15,
@@ -3759,12 +3762,12 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/9/9a/Shiny_Strawberry_Doggy.png"
                 ],
                 "hasMythic": false,
-                "tags": []
+                "tags": [],
+                "chance": 67
               },
               {
                 "name": "Lemon Dragon",
                 "rarity": "Rare",
-                "droprate": 3.3333333333333335,
                 "bubbles": 35,
                 "gems": 2.5,
                 "currency": 18,
@@ -3778,12 +3781,12 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/8/80/Shiny_Lemon_Dragon.png"
                 ],
                 "hasMythic": false,
-                "tags": []
+                "tags": [],
+                "chance": 30
               },
               {
                 "name": "Watermelon Boi",
                 "rarity": "Epic",
-                "droprate": 33.333333333333336,
                 "bubbles": 80,
                 "gems": 0,
                 "currency": 30,
@@ -3797,12 +3800,12 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/a/af/Shiny_Watermelon_Boi.png"
                 ],
                 "hasMythic": false,
-                "tags": []
+                "tags": [],
+                "chance": 3
               },
               {
                 "name": "Kiwi Dragon",
                 "rarity": "Legendary",
-                "droprate": 5000,
                 "bubbles": 740,
                 "gems": 18,
                 "currency": 95,
@@ -3818,12 +3821,12 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/3/3c/Mythic_Shiny_Kiwi_Dragon.png"
                 ],
                 "hasMythic": true,
-                "tags": []
+                "tags": [],
+                "chance": 0.02
               },
               {
                 "name": "Mangorium",
                 "rarity": "Legendary",
-                "droprate": 50000,
                 "bubbles": 1850,
                 "gems": 30,
                 "currency": 300,
@@ -3839,12 +3842,12 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/3/38/Shiny_Mythic_Mangorium.png"
                 ],
                 "hasMythic": true,
-                "tags": []
+                "tags": [],
+                "chance": 0.002
               },
               {
                 "name": "Pineapple Tourist",
                 "rarity": "Legendary",
-                "droprate": 666666,
                 "bubbles": 2300,
                 "gems": 45,
                 "currency": 680,
@@ -3860,12 +3863,12 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/8/84/Shiny_Mythic_Pineapple_Tourist.png"
                 ],
                 "hasMythic": true,
-                "tags": []
+                "tags": [],
+                "chance": 0.00015
               },
               {
                 "name": "Dragonfruit",
                 "rarity": "Secret",
-                "droprate": 500000000,
                 "bubbles": 4200,
                 "gems": 90,
                 "currency": 2000,
@@ -3881,7 +3884,8 @@
                   "https://static.wikia.nocookie.net/bgs-infinity/images/2/20/Shiny_Mythic_Dragonfruit.png"
                 ],
                 "hasMythic": true,
-                "tags": []
+                "tags": [],
+                "chance": 2e-7
               }
             ]
           }
@@ -3900,7 +3904,6 @@
               {
                 "name": "Cute Deer",
                 "rarity": "Common",
-                "droprate": 1.5384615384615385,
                 "bubbles": 65,
                 "gems": 0,
                 "currency": 75,
@@ -3914,12 +3917,12 @@
                 "obtainedFrom": "200M Egg",
                 "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/f/f7/200M_Egg.png",
                 "hasMythic": false,
-                "tags": []
+                "tags": [],
+                "chance": 65
               },
               {
                 "name": "Emerald Wolf",
                 "rarity": "Rare",
-                "droprate": 3.3333333333333335,
                 "bubbles": 130,
                 "gems": 2.2,
                 "currency": 140,
@@ -3933,12 +3936,12 @@
                 "obtainedFrom": "200M Egg",
                 "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/f/f7/200M_Egg.png",
                 "hasMythic": false,
-                "tags": []
+                "tags": [],
+                "chance": 30
               },
               {
                 "name": "Prismatic",
                 "rarity": "Legendary",
-                "droprate": 2500,
                 "bubbles": 650,
                 "gems": 14,
                 "currency": 650,
@@ -3954,12 +3957,12 @@
                 "obtainedFrom": "200M Egg",
                 "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/f/f7/200M_Egg.png",
                 "hasMythic": true,
-                "tags": []
+                "tags": [],
+                "chance": 0.04
               },
               {
                 "name": "Darkness Creature",
                 "rarity": "Legendary",
-                "droprate": 50000,
                 "bubbles": 1450,
                 "gems": 24,
                 "currency": 1750,
@@ -3975,12 +3978,12 @@
                 "obtainedFrom": "200M Egg",
                 "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/f/f7/200M_Egg.png",
                 "hasMythic": true,
-                "tags": []
+                "tags": [],
+                "chance": 0.002
               },
               {
                 "name": "Corrupt Glitch",
                 "rarity": "Legendary",
-                "droprate": 800000,
                 "bubbles": 1950,
                 "gems": 38,
                 "currency": 2400,
@@ -3996,12 +3999,12 @@
                 "obtainedFrom": "200M Egg",
                 "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/f/f7/200M_Egg.png",
                 "hasMythic": true,
-                "tags": []
+                "tags": [],
+                "chance": 0.000125
               },
               {
                 "name": "Wolflord",
                 "rarity": "Secret",
-                "droprate": 100000000,
                 "bubbles": 3350,
                 "gems": 70,
                 "currency": 3650,
@@ -4017,7 +4020,8 @@
                 "obtainedFrom": "200M Egg",
                 "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/f/f7/200M_Egg.png",
                 "hasMythic": true,
-                "tags": []
+                "tags": [],
+                "chance": 0.000001
               }
             ]
           },
@@ -4030,7 +4034,6 @@
               {
                 "name": "Bronze Bunny",
                 "rarity": "Common",
-                "droprate": 1.5625,
                 "bubbles": 60,
                 "gems": 1.8,
                 "currency": 75,
@@ -4044,12 +4047,12 @@
                 "obtainedFrom": "100M Egg",
                 "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/5/55/100M_Egg.png",
                 "hasMythic": false,
-                "tags": []
+                "tags": [],
+                "chance": 64
               },
               {
                 "name": "Silver Fox",
                 "rarity": "Unique",
-                "droprate": 3.3333333333333335,
                 "bubbles": 110,
                 "gems": 2.5,
                 "currency": 125,
@@ -4063,12 +4066,12 @@
                 "obtainedFrom": "100M Egg",
                 "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/5/55/100M_Egg.png",
                 "hasMythic": false,
-                "tags": []
+                "tags": [],
+                "chance": 30
               },
               {
                 "name": "Golden Dragon",
                 "rarity": "Epic",
-                "droprate": 33.333333333333336,
                 "bubbles": 125,
                 "gems": 0,
                 "currency": 140,
@@ -4082,12 +4085,12 @@
                 "obtainedFrom": "100M Egg",
                 "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/5/55/100M_Egg.png",
                 "hasMythic": false,
-                "tags": []
+                "tags": [],
+                "chance": 3
               },
               {
                 "name": "Diamond Serpent",
                 "rarity": "Legendary",
-                "droprate": 2500,
                 "bubbles": 600,
                 "gems": 12,
                 "currency": 625,
@@ -4103,12 +4106,12 @@
                 "obtainedFrom": "100M Egg",
                 "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/5/55/100M_Egg.png",
                 "hasMythic": true,
-                "tags": []
+                "tags": [],
+                "chance": 0.04
               },
               {
                 "name": "Diamond Hexarium",
                 "rarity": "Legendary",
-                "droprate": 50000,
                 "bubbles": 1250,
                 "gems": 23,
                 "currency": 1600,
@@ -4124,12 +4127,12 @@
                 "obtainedFrom": "100M Egg",
                 "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/5/55/100M_Egg.png",
                 "hasMythic": true,
-                "tags": []
+                "tags": [],
+                "chance": 0.002
               },
               {
                 "name": "King Pufferfish",
                 "rarity": "Legendary",
-                "droprate": 800000,
                 "bubbles": 1475,
                 "gems": 32,
                 "currency": 2300,
@@ -4145,12 +4148,12 @@
                 "obtainedFrom": "100M Egg",
                 "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/5/55/100M_Egg.png",
                 "hasMythic": true,
-                "tags": []
+                "tags": [],
+                "chance": 0.000125
               },
               {
                 "name": "Royal Trophy",
                 "rarity": "Secret",
-                "droprate": 50000000,
                 "bubbles": 3000,
                 "gems": 65,
                 "currency": 3500,
@@ -4166,7 +4169,8 @@
                 "obtainedFrom": "100M Egg",
                 "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/5/55/100M_Egg.png",
                 "hasMythic": true,
-                "tags": []
+                "tags": [],
+                "chance": 0.000002
               }
             ]
           }
@@ -4177,7 +4181,7 @@
         "image": "https://static.wikia.nocookie.net/bgs-infinity/images/4/47/Easter_Egg.png",
         "eggs": [
           {
-            "name": "Rewards",
+            "name": "Easter Event 2025",
             "image": "https://static.wikia.nocookie.net/bgs-infinity/images/a/a2/Golden_Box.png",
             "available": false,
             "luckIgnored": true,
@@ -4186,7 +4190,6 @@
               {
                 "name": "Easter Fluffle",
                 "rarity": "Legendary",
-                "droprate": 1,
                 "bubbles": 1075,
                 "gems": 19,
                 "currency": 1400,
@@ -4202,12 +4205,12 @@
                 "hasMythic": false,
                 "tags": [
                   "2025 Egg Hunt"
-                ]
+                ],
+                "chance": 1
               },
               {
                 "name": "Chocolate Bunny",
                 "rarity": "Legendary",
-                "droprate": 1,
                 "bubbles": 1450,
                 "gems": 25,
                 "currency": 1950,
@@ -4225,12 +4228,12 @@
                 "hasMythic": true,
                 "tags": [
                   "2025 Egg Hunt"
-                ]
+                ],
+                "chance": 1
               },
               {
                 "name": "Midas",
                 "rarity": "Legendary",
-                "droprate": 1000,
                 "bubbles": 1325,
                 "gems": 25,
                 "currency": 1850,
@@ -4248,12 +4251,12 @@
                 "hasMythic": true,
                 "tags": [
                   "Golden Mystery Box"
-                ]
+                ],
+                "chance": 0.1
               },
               {
                 "name": "Patronus",
                 "rarity": "Legendary",
-                "droprate": 10000,
                 "bubbles": 2300,
                 "gems": 50,
                 "currency": 3250,
@@ -4271,7 +4274,8 @@
                 "hasMythic": true,
                 "tags": [
                   "Golden Mystery Box"
-                ]
+                ],
+                "chance": 0.01
               }
             ]
           },
@@ -4284,7 +4288,6 @@
               {
                 "name": "Bow Bunny",
                 "rarity": "Common",
-                "droprate": 1.5625,
                 "bubbles": 55,
                 "gems": 1.5,
                 "currency": 70,
@@ -4298,12 +4301,12 @@
                 "obtainedFrom": "Throwback Egg",
                 "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/8/86/Throwback_Egg.png",
                 "hasMythic": false,
-                "tags": []
+                "tags": [],
+                "chance": 64
               },
               {
                 "name": "Easter Egg",
                 "rarity": "Unique",
-                "droprate": 3.3333333333333335,
                 "bubbles": 100,
                 "gems": 2.2,
                 "currency": 120,
@@ -4317,12 +4320,12 @@
                 "obtainedFrom": "Throwback Egg",
                 "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/8/86/Throwback_Egg.png",
                 "hasMythic": false,
-                "tags": []
+                "tags": [],
+                "chance": 30
               },
               {
                 "name": "Flying Bunny",
                 "rarity": "Epic",
-                "droprate": 33.333333333333336,
                 "bubbles": 115,
                 "gems": 0,
                 "currency": 125,
@@ -4336,12 +4339,12 @@
                 "obtainedFrom": "Throwback Egg",
                 "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/8/86/Throwback_Egg.png",
                 "hasMythic": false,
-                "tags": []
+                "tags": [],
+                "chance": 3
               },
               {
                 "name": "Easter Serpent",
                 "rarity": "Legendary",
-                "droprate": 2500,
                 "bubbles": 550,
                 "gems": 10,
                 "currency": 600,
@@ -4357,12 +4360,12 @@
                 "obtainedFrom": "Throwback Egg",
                 "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/8/86/Throwback_Egg.png",
                 "hasMythic": true,
-                "tags": []
+                "tags": [],
+                "chance": 0.04
               },
               {
                 "name": "Dualcorn",
                 "rarity": "Legendary",
-                "droprate": 50000,
                 "bubbles": 1200,
                 "gems": 21,
                 "currency": 1550,
@@ -4378,12 +4381,12 @@
                 "obtainedFrom": "Throwback Egg",
                 "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/8/86/Throwback_Egg.png",
                 "hasMythic": true,
-                "tags": []
+                "tags": [],
+                "chance": 0.002
               },
               {
                 "name": "Holy Egg",
                 "rarity": "Legendary",
-                "droprate": 500000,
                 "bubbles": 1425,
                 "gems": 28,
                 "currency": 2200,
@@ -4399,12 +4402,12 @@
                 "obtainedFrom": "Throwback Egg",
                 "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/8/86/Throwback_Egg.png",
                 "hasMythic": true,
-                "tags": []
+                "tags": [],
+                "chance": 0.0002
               },
               {
                 "name": "Godly Gem",
                 "rarity": "Secret",
-                "droprate": 250000000,
                 "bubbles": 3200,
                 "gems": 70,
                 "currency": 3750,
@@ -4420,12 +4423,12 @@
                 "obtainedFrom": "Throwback Egg",
                 "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/8/86/Throwback_Egg.png",
                 "hasMythic": true,
-                "tags": []
+                "tags": [],
+                "chance": 4e-7
               },
               {
                 "name": "Dementor",
                 "rarity": "Secret",
-                "droprate": 1000000000,
                 "bubbles": 3750,
                 "gems": 85,
                 "currency": 4250,
@@ -4441,7 +4444,8 @@
                 "obtainedFrom": "Throwback Egg",
                 "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/8/86/Throwback_Egg.png",
                 "hasMythic": true,
-                "tags": []
+                "tags": [],
+                "chance": 1e-7
               }
             ]
           },
@@ -4454,7 +4458,6 @@
               {
                 "name": "Bunny Doggy",
                 "rarity": "Common",
-                "droprate": 1.5625,
                 "bubbles": 50,
                 "gems": 1.5,
                 "currency": 62,
@@ -4468,12 +4471,12 @@
                 "obtainedFrom": "Bunny Egg",
                 "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/4/4d/Bunny_Egg.png",
                 "hasMythic": false,
-                "tags": []
+                "tags": [],
+                "chance": 64
               },
               {
                 "name": "Egg Bunny",
                 "rarity": "Rare",
-                "droprate": 3.3333333333333335,
                 "bubbles": 88,
                 "gems": 1.8,
                 "currency": 105,
@@ -4487,12 +4490,12 @@
                 "obtainedFrom": "Bunny Egg",
                 "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/4/4d/Bunny_Egg.png",
                 "hasMythic": false,
-                "tags": []
+                "tags": [],
+                "chance": 30
               },
               {
                 "name": "Angel Bunny",
                 "rarity": "Epic",
-                "droprate": 33.333333333333336,
                 "bubbles": 95,
                 "gems": 0,
                 "currency": 105,
@@ -4506,12 +4509,12 @@
                 "obtainedFrom": "Bunny Egg",
                 "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/4/4d/Bunny_Egg.png",
                 "hasMythic": false,
-                "tags": []
+                "tags": [],
+                "chance": 3
               },
               {
                 "name": "Seraphic Bunny",
                 "rarity": "Legendary",
-                "droprate": 5000,
                 "bubbles": 500,
                 "gems": 8,
                 "currency": 550,
@@ -4527,12 +4530,12 @@
                 "obtainedFrom": "Bunny Egg",
                 "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/4/4d/Bunny_Egg.png",
                 "hasMythic": true,
-                "tags": []
+                "tags": [],
+                "chance": 0.02
               },
               {
                 "name": "Ethereal Bunny",
                 "rarity": "Legendary",
-                "droprate": 100000,
                 "bubbles": 1075,
                 "gems": 19,
                 "currency": 1400,
@@ -4548,12 +4551,12 @@
                 "obtainedFrom": "Bunny Egg",
                 "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/4/4d/Bunny_Egg.png",
                 "hasMythic": true,
-                "tags": []
+                "tags": [],
+                "chance": 0.001
               },
               {
                 "name": "Cardinal Bunny",
                 "rarity": "Legendary",
-                "droprate": 1000000,
                 "bubbles": 1425,
                 "gems": 28,
                 "currency": 2000,
@@ -4569,12 +4572,12 @@
                 "obtainedFrom": "Bunny Egg",
                 "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/4/4d/Bunny_Egg.png",
                 "hasMythic": true,
-                "tags": []
+                "tags": [],
+                "chance": 0.0001
               },
               {
                 "name": "Easter Basket",
                 "rarity": "Secret",
-                "droprate": 100000000,
                 "bubbles": 2900,
                 "gems": 60,
                 "currency": 3500,
@@ -4590,7 +4593,8 @@
                 "obtainedFrom": "Bunny Egg",
                 "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/4/4d/Bunny_Egg.png",
                 "hasMythic": true,
-                "tags": []
+                "tags": [],
+                "chance": 0.000001
               }
             ]
           },
@@ -4603,7 +4607,6 @@
               {
                 "name": "Paper Doggy",
                 "rarity": "Common",
-                "droprate": 1.6666666666666667,
                 "bubbles": 40,
                 "gems": 0,
                 "currency": 36,
@@ -4617,12 +4620,12 @@
                 "obtainedFrom": "Pastel Egg",
                 "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/cc/Pastel_Egg.png",
                 "hasMythic": false,
-                "tags": []
+                "tags": [],
+                "chance": 60
               },
               {
                 "name": "Paper Bunny",
                 "rarity": "Unique",
-                "droprate": 3.3444816053511706,
                 "bubbles": 55,
                 "gems": 0,
                 "currency": 60,
@@ -4636,12 +4639,12 @@
                 "obtainedFrom": "Pastel Egg",
                 "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/cc/Pastel_Egg.png",
                 "hasMythic": false,
-                "tags": []
+                "tags": [],
+                "chance": 29.9
               },
               {
                 "name": "Chubby Bunny",
                 "rarity": "Rare",
-                "droprate": 14.285714285714286,
                 "bubbles": 100,
                 "gems": 0,
                 "currency": 115,
@@ -4655,12 +4658,12 @@
                 "obtainedFrom": "Pastel Egg",
                 "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/cc/Pastel_Egg.png",
                 "hasMythic": false,
-                "tags": []
+                "tags": [],
+                "chance": 7
               },
               {
                 "name": "Hatchling",
                 "rarity": "Epic",
-                "droprate": 45.45454545454545,
                 "bubbles": 190,
                 "gems": 0,
                 "currency": 265,
@@ -4674,12 +4677,12 @@
                 "obtainedFrom": "Pastel Egg",
                 "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/cc/Pastel_Egg.png",
                 "hasMythic": false,
-                "tags": []
+                "tags": [],
+                "chance": 2.2
               },
               {
                 "name": "Sweet Treat",
                 "rarity": "Legendary",
-                "droprate": 25000,
                 "bubbles": 620,
                 "gems": 12,
                 "currency": 725,
@@ -4695,12 +4698,12 @@
                 "obtainedFrom": "Pastel Egg",
                 "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/cc/Pastel_Egg.png",
                 "hasMythic": true,
-                "tags": []
+                "tags": [],
+                "chance": 0.004
               },
               {
                 "name": "Rainbow Marshmellow",
                 "rarity": "Legendary",
-                "droprate": 125000,
                 "bubbles": 1250,
                 "gems": 20,
                 "currency": 1700,
@@ -4716,12 +4719,12 @@
                 "obtainedFrom": "Pastel Egg",
                 "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/cc/Pastel_Egg.png",
                 "hasMythic": true,
-                "tags": []
+                "tags": [],
+                "chance": 0.0008
               },
               {
                 "name": "Giant Chocolate Chicken",
                 "rarity": "Secret",
-                "droprate": 50000000,
                 "bubbles": 2225,
                 "gems": 45,
                 "currency": 3100,
@@ -4737,7 +4740,8 @@
                 "obtainedFrom": "Pastel Egg",
                 "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/cc/Pastel_Egg.png",
                 "hasMythic": true,
-                "tags": []
+                "tags": [],
+                "chance": 0.000002
               }
             ]
           }
@@ -4758,7 +4762,6 @@
           {
             "name": "Hell Demon",
             "rarity": "Common",
-            "droprate": 1.5384615384615385,
             "bubbles": 65,
             "gems": 1.8,
             "currency": 75,
@@ -4772,12 +4775,12 @@
             "obtainedFrom": "Underworld Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/f/ff/Underworld_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 65
           },
           {
             "name": "Demon Angel",
             "rarity": "Rare",
-            "droprate": 3.3333333333333335,
             "bubbles": 130,
             "gems": 0,
             "currency": 140,
@@ -4791,12 +4794,12 @@
             "obtainedFrom": "Underworld Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/f/ff/Underworld_Egg.png",
             "hasMythic": false,
-            "tags": []
+            "tags": [],
+            "chance": 30
           },
           {
             "name": "Crimson Butterfly",
             "rarity": "Legendary",
-            "droprate": 2000,
             "bubbles": 650,
             "gems": 14,
             "currency": 435,
@@ -4812,12 +4815,12 @@
             "obtainedFrom": "Underworld Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/f/ff/Underworld_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.05
           },
           {
             "name": "Demonweb",
             "rarity": "Legendary",
-            "droprate": 40000,
             "bubbles": 1450,
             "gems": 24,
             "currency": 890,
@@ -4833,12 +4836,12 @@
             "obtainedFrom": "Underworld Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/f/ff/Underworld_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.0025
           },
           {
             "name": "Crimson Bloodmoon",
             "rarity": "Legendary",
-            "droprate": 833333,
             "bubbles": 2000,
             "gems": 40,
             "currency": 2100,
@@ -4854,12 +4857,12 @@
             "obtainedFrom": "Underworld Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/f/ff/Underworld_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.00012
           },
           {
             "name": "Lord Shock",
             "rarity": "Secret",
-            "droprate": 500000000,
             "bubbles": 3500,
             "gems": 72,
             "currency": 4000,
@@ -4875,7 +4878,8 @@
             "obtainedFrom": "Underworld Egg",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/f/ff/Underworld_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 2e-7
           }
         ]
       },
@@ -4888,7 +4892,6 @@
           {
             "name": "Bunnnny",
             "rarity": "Common",
-            "droprate": 1.5384615384615385,
             "bubbles": 135,
             "gems": 2,
             "currency": 155,
@@ -4904,12 +4907,12 @@
             "hasMythic": false,
             "tags": [
               "Silly"
-            ]
+            ],
+            "chance": 65
           },
           {
             "name": "Long Kitty",
             "rarity": "Rare",
-            "droprate": 3.3333333333333335,
             "bubbles": 210,
             "gems": 0,
             "currency": 270,
@@ -4925,12 +4928,12 @@
             "hasMythic": false,
             "tags": [
               "Silly"
-            ]
+            ],
+            "chance": 30
           },
           {
             "name": "DOOF",
             "rarity": "Legendary",
-            "droprate": 10000,
             "bubbles": 1350,
             "gems": 18,
             "currency": 1900,
@@ -4948,12 +4951,12 @@
             "hasMythic": true,
             "tags": [
               "Silly"
-            ]
+            ],
+            "chance": 0.01
           },
           {
             "name": "ROUND",
             "rarity": "Legendary",
-            "droprate": 250000,
             "bubbles": 1500,
             "gems": 22,
             "currency": 1900,
@@ -4971,12 +4974,12 @@
             "hasMythic": true,
             "tags": [
               "😂Silly😂"
-            ]
+            ],
+            "chance": 0.0004
           },
           {
             "name": "Silly Doggy :)",
             "rarity": "Secret",
-            "droprate": 1000000,
             "bubbles": 2700,
             "gems": 50,
             "currency": 3250,
@@ -4994,7 +4997,8 @@
             "hasMythic": true,
             "tags": [
               "Silly"
-            ]
+            ],
+            "chance": 0.0001
           }
         ]
       },
@@ -5007,7 +5011,6 @@
           {
             "name": "Manny",
             "rarity": "Rare",
-            "droprate": 1.5384615384615385,
             "bubbles": 120,
             "gems": 2,
             "currency": 145,
@@ -5023,12 +5026,12 @@
             "hasMythic": false,
             "tags": [
               "Aura"
-            ]
+            ],
+            "chance": 65
           },
           {
             "name": "Manicorn",
             "rarity": "Epic",
-            "droprate": 3.3333333333333335,
             "bubbles": 185,
             "gems": 0,
             "currency": 250,
@@ -5044,12 +5047,12 @@
             "hasMythic": false,
             "tags": [
               "Aura"
-            ]
+            ],
+            "chance": 30
           },
           {
             "name": "Sigma Serpent",
             "rarity": "Legendary",
-            "droprate": 10000,
             "bubbles": 1300,
             "gems": 17,
             "currency": 1800,
@@ -5067,12 +5070,12 @@
             "hasMythic": true,
             "tags": [
               "Aura"
-            ]
+            ],
+            "chance": 0.01
           },
           {
             "name": "Manarium",
             "rarity": "Legendary",
-            "droprate": 20000,
             "bubbles": 1500,
             "gems": 22,
             "currency": 1900,
@@ -5090,12 +5093,12 @@
             "hasMythic": true,
             "tags": [
               "Aura"
-            ]
+            ],
+            "chance": 0.005
           },
           {
             "name": "MAN FACE GOD",
             "rarity": "Secret",
-            "droprate": 1000000,
             "bubbles": 2600,
             "gems": 45,
             "currency": 3100,
@@ -5113,7 +5116,8 @@
             "hasMythic": true,
             "tags": [
               "Aura"
-            ]
+            ],
+            "chance": 0.0001
           }
         ]
       }
@@ -5133,7 +5137,6 @@
           {
             "name": "Overlord Plushie",
             "rarity": "Secret",
-            "droprate": 125000000,
             "bubbles": 4000,
             "gems": 80,
             "currency": 0,
@@ -5149,12 +5152,12 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/a/a0/Shiny_Mythic_Overlord_Plushie.png"
             ],
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 8e-7
           },
           {
             "name": "Everblaze",
             "rarity": "Secret",
-            "droprate": 250000000,
             "bubbles": 4200,
             "gems": 90,
             "currency": 0,
@@ -5170,12 +5173,12 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/f/fc/Shiny_Mythic_Everblaze.png"
             ],
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 4e-7
           },
           {
             "name": "Beelzebub",
             "rarity": "Secret",
-            "droprate": 50000000,
             "bubbles": 3800,
             "gems": 80,
             "currency": 1350,
@@ -5191,7 +5194,8 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/5/5a/Shiny_Mythic_Beelzebub.png"
             ],
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.000002
           }
         ]
       },
@@ -5205,7 +5209,6 @@
           {
             "name": "Queen Kitty",
             "rarity": "Secret",
-            "droprate": 80000000,
             "bubbles": 3400,
             "gems": 72,
             "currency": 3100,
@@ -5221,12 +5224,12 @@
             "obtainedFrom": "Secret Bounty",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.00000125
           },
           {
             "name": "D0GGY1337",
             "rarity": "Secret",
-            "droprate": 50000000,
             "bubbles": 3350,
             "gems": 70,
             "currency": 3000,
@@ -5242,12 +5245,12 @@
             "obtainedFrom": "Secret Bounty",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 0.000002
           },
           {
             "name": "Prophet",
             "rarity": "Secret",
-            "droprate": 250000000,
             "bubbles": 3500,
             "gems": 75,
             "currency": 3800,
@@ -5263,7 +5266,8 @@
             "obtainedFrom": "Secret Bounty",
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png",
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 4e-7
           }
         ]
       }
@@ -5282,7 +5286,6 @@
           {
             "name": "Rigby",
             "rarity": "Legendary",
-            "droprate": 1,
             "bubbles": 1000,
             "gems": 20,
             "currency": 80,
@@ -5298,12 +5301,12 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/9/9d/Shiny_Mythic_Rigby.png"
             ],
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 1
           },
           {
             "name": "Dreamscape",
             "rarity": "Legendary",
-            "droprate": 1,
             "bubbles": 1350,
             "gems": 25,
             "currency": 125,
@@ -5319,7 +5322,8 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
             ],
             "hasMythic": true,
-            "tags": []
+            "tags": [],
+            "chance": 1
           }
         ]
       },
@@ -5333,7 +5337,6 @@
           {
             "name": "Noctis",
             "rarity": "Legendary",
-            "droprate": 1,
             "bubbles": 950,
             "gems": 18,
             "currency": 1075,
@@ -5351,12 +5354,12 @@
             "hasMythic": true,
             "tags": [
               "Exclusive Pet"
-            ]
+            ],
+            "chance": 1
           },
           {
             "name": "Bongo Kitty",
             "rarity": "Legendary",
-            "droprate": 1,
             "bubbles": 1300,
             "gems": 22,
             "currency": 1725,
@@ -5374,7 +5377,8 @@
             "hasMythic": true,
             "tags": [
               "Exclusive Pet"
-            ]
+            ],
+            "chance": 1
           }
         ]
       },
@@ -5388,7 +5392,6 @@
           {
             "name": "Toilet Doggy",
             "rarity": "Legendary",
-            "droprate": 1,
             "bubbles": 925,
             "gems": 16,
             "currency": 1050,
@@ -5406,12 +5409,12 @@
             "hasMythic": true,
             "tags": [
               "Exclusive Pet"
-            ]
+            ],
+            "chance": 1
           },
           {
             "name": "Capybara Plushie",
             "rarity": "Legendary",
-            "droprate": 1,
             "bubbles": 1250,
             "gems": 20,
             "currency": 1700,
@@ -5429,7 +5432,8 @@
             "hasMythic": true,
             "tags": [
               "Exclusive Pet"
-            ]
+            ],
+            "chance": 1
           }
         ]
       },
@@ -5443,7 +5447,6 @@
           {
             "name": "Enraged Phoenix",
             "rarity": "Legendary",
-            "droprate": 1,
             "bubbles": 120,
             "gems": 1.6,
             "currency": 120,
@@ -5459,12 +5462,12 @@
             "hasMythic": false,
             "tags": [
               "Exclusive Pet"
-            ]
+            ],
+            "chance": 1
           },
           {
             "name": "Electra Hydra",
             "rarity": "Legendary",
-            "droprate": 1,
             "bubbles": 130,
             "gems": 2,
             "currency": 140,
@@ -5480,7 +5483,8 @@
             "hasMythic": false,
             "tags": [
               "Exclusive Pet"
-            ]
+            ],
+            "chance": 1
           }
         ]
       },
@@ -5494,7 +5498,6 @@
           {
             "name": "Dark Serpent",
             "rarity": "Legendary",
-            "droprate": 1,
             "bubbles": 120,
             "gems": 1.6,
             "currency": 120,
@@ -5510,12 +5513,12 @@
             "hasMythic": false,
             "tags": [
               "Exclusive Pet"
-            ]
+            ],
+            "chance": 1
           },
           {
             "name": "Infernus",
             "rarity": "Legendary",
-            "droprate": 1,
             "bubbles": 130,
             "gems": 2,
             "currency": 140,
@@ -5531,7 +5534,8 @@
             "hasMythic": false,
             "tags": [
               "Exclusive Pet"
-            ]
+            ],
+            "chance": 1
           }
         ]
       },
@@ -5545,7 +5549,6 @@
           {
             "name": "Beta TV",
             "rarity": "Legendary",
-            "droprate": 1,
             "bubbles": 110,
             "gems": 1.4,
             "currency": 95,
@@ -5561,12 +5564,12 @@
             "hasMythic": false,
             "tags": [
               "Exclusive Pet"
-            ]
+            ],
+            "chance": 1
           },
           {
             "name": "Dowodle",
             "rarity": "Legendary",
-            "droprate": 1,
             "bubbles": 120,
             "gems": 1.5,
             "currency": 135,
@@ -5582,7 +5585,8 @@
             "hasMythic": false,
             "tags": [
               "Exclusive Pet"
-            ]
+            ],
+            "chance": 1
           }
         ]
       },
@@ -5596,7 +5600,6 @@
           {
             "name": "Flying Gem",
             "rarity": "Legendary",
-            "droprate": 10,
             "bubbles": 50,
             "gems": 4.5,
             "currency": 35,
@@ -5612,7 +5615,8 @@
             "hasMythic": false,
             "tags": [
               "Exclusive Pet"
-            ]
+            ],
+            "chance": 10
           }
         ]
       },
@@ -5626,7 +5630,6 @@
           {
             "name": "Discord Imp",
             "rarity": "Legendary",
-            "droprate": 1,
             "bubbles": 25,
             "gems": 2,
             "currency": 20,
@@ -5642,7 +5645,8 @@
             "hasMythic": false,
             "tags": [
               "Reward Pet"
-            ]
+            ],
+            "chance": 1
           }
         ]
       }

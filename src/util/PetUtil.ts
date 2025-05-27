@@ -32,7 +32,7 @@ export interface Egg {
 
 export interface Pet { 
   name: string; 
-  droprate: number; 
+  chance: number; 
   rarity: Rarity; 
   bubbles: number;
   currencyVariant: CurrencyVariant; 
@@ -50,7 +50,7 @@ export interface Pet {
 // for the pet stat list - to store an individual Normal/Shiny/Mythic variant of a pet.
 export interface PetInstance { 
   name: string; 
-  droprate: number; 
+  chance: number; 
   rarity: Rarity; 
   bubbles: number; 
   currencyVariant: CurrencyVariant; 
@@ -83,10 +83,7 @@ export const currencyImages: { [key in CurrencyVariant]: string } = {
 // ~~~~~~~~~~ Functions ~~~~~~~~~~
 
 export const getPetChance = (pet: Pet, variant: PetVariant) => {
-  if (!(pet.droprate as number))
-    return 1;
-  // extract the base chance from the string. It will be like "1/1,000" and we want "1000".
-  const variantChance = Number(pet.droprate) * variantData[variant].chanceMultiplier;
+  const variantChance = pet.chance / variantData[variant].chanceMultiplier;
   return variantChance;
 }
 

@@ -184,7 +184,7 @@ export function PetList(props: PetListProps) {
       petVariants.forEach((variant) => {
         allPets.push({
           name: pet.name,
-          droprate: getPetChance(pet, variant),
+          chance: getPetChance(pet, variant),
           rarity: pet.rarity,
           bubbles: getPetStat(pet, variant, "bubbles", previewMaxLevel, previewEnchant, enchantTeamSize, secondEnchant),
           currencyVariant: pet.currencyVariant,
@@ -234,7 +234,7 @@ export function PetList(props: PetListProps) {
       if (sortColumn === "name") {
         return a.name.localeCompare(b.name);
       } else if (sortColumn === "chance") {
-        return b.droprate - a.droprate;
+        return b.chance - a.chance;
       } else if (sortColumn === "bubbles") {
         return b.bubbles - a.bubbles;
       } else if (sortColumn === "coins") {
@@ -451,7 +451,7 @@ export function PetList(props: PetListProps) {
                   </TableCell>
                   <TableCell>
                     <Typography variant="body2">
-                      1/{pet.droprate.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+                      1/{(100 / pet.chance).toLocaleString(undefined, { maximumFractionDigits: 0 })}
                     </Typography>
                   </TableCell>
                   <TableCell>

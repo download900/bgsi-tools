@@ -4,6 +4,7 @@ import * as cheerio from 'cheerio';
 import { Box, Button, Container, FormControl, Input, Typography } from "@mui/material";
 
 import { Pet, Rarity, PetVariant, CurrencyVariant, Egg, Category } from "../util/PetUtil";
+import Decimal from "decimal.js";
 
 interface CategoryResult {
   name:   string;        // e.g. "The Overworld", "Minigame Paradise", …
@@ -205,13 +206,24 @@ async function parsePet(petName: string): Promise<Pet> {
   let baseChance: number = 1;
   const chanceRaw = $('div.pi-item[data-source="norm-petchance"] .pi-data-value')?.first().text();
   if (chanceRaw) {
-    const oddsMatch = chanceRaw.match(/1 in ([\d,]+)/);
-    if (oddsMatch) {
-      baseChance = extractNumber(oddsMatch![1]);
+    // ChanceRaw will either by like "60% (1 in 2)" or "1.5e-06% (1 in 66,666,666)", etc.
+    // We just want the percent.
+    // Check if scientific notation
+    if (chanceRaw.includes('e')) {
+      // Scientific notation, e.g. "1.5e-06%"
+      const match = chanceRaw.match(/([\d.]+)e([+-]?\d+)%/);
+      if (match) {
+        const base = parseFloat(match[1]);
+        const exponent = parseInt(match[2], 10);
+        baseChance = Decimal(base).times(Decimal(10).pow(exponent)).toNumber();
+      }
     }
-    if (!oddsMatch || baseChance < 100) {
-      const percentMatch = chanceRaw.match(/(\d+(\.\d+)?)%/);
-      baseChance = 100 / (percentMatch![1] as unknown as number);
+    else {
+      // Regular percentage, e.g. "60%"
+      const match = chanceRaw.match(/([\d.]+)%/);
+      if (match) {
+        baseChance = Number(match[1]);
+      }
     }
   }
 
@@ -260,7 +272,7 @@ async function parsePet(petName: string): Promise<Pet> {
   return {
     name: petName,
     rarity: rarity as Rarity,
-    droprate: baseChance,
+    chance: baseChance,
     bubbles: bubbleStat,
     gems: gemsStat,
     currency: currencyStat,
@@ -328,7 +340,7 @@ const processEggs = (wikiData: Category[], existingData: Category[]) => {
       const existingPet = findExistingPet(pet.name, existingData);
       if (existingPet) {
         // update existing pet
-        existingPet.droprate = pet.droprate;
+        existingPet.chance = pet.chance;
         existingPet.bubbles = pet.bubbles;
         existingPet.gems = pet.gems;
         existingPet.currency = pet.currency;
@@ -375,13 +387,13 @@ const processEggs = (wikiData: Category[], existingData: Category[]) => {
   for (const category of existing) {
     for (const egg of category.eggs || []) {
       for (const pet of egg.pets) {
-        pet.variants = undefined; // remove variants
+        pet.droprate = undefined;
       }
     }
     for (const subCategory of category.categories || []) {
       for (const egg of subCategory.eggs) {
         for (const pet of egg.pets) {
-          pet.variants = undefined; // remove variants
+          pet.droprate = undefined;
         }
       }
     }
@@ -440,91 +452,84 @@ export interface WikiToolsProps {
 // ────────────────────────────────────────────────────────────
 // Export the data as a Lua *lookup* table keyed by pet name
 export function exportPetsToLua(data: Category[]): string {
-  const pets: Record<string, any> = {};
-
+  let lua = '';
   for (const cat of data) {
-    for (const egg of cat.eggs) {
+    for (const egg of cat.eggs || []) {
+      lua += `\n-- ${egg.name}\n`;
+      const pets = [];
       for (const pet of egg.pets) {
-        pets[pet.name] = {
-          obtainedFrom : pet.obtainedFrom,
-          rarity       : pet.rarity === "Legendary"
-              ? pet.droprate <= 5_000   ? "Legendary"
-              : pet.droprate <= 49_999 ? "Legendary II"
-              :                          "Legendary III"
-              : pet.rarity,
-          chance       : pet.droprate < 100 ? `${100 / pet.droprate}%` : `1/${pet.droprate}`,
-          bubbles      : pet.bubbles,
-          gems         : pet.gems,
-          currency     : pet.currency,
-          currencyType : pet.currencyVariant,
-          hasMythic    : pet.hasMythic,
-          ...(pet.limited  !== false && { limited  : pet.limited  }),
-          ...(pet.limited  !== false && { available: pet.available }),
-        };
+        pets.push(exportPetToLua(pet));
+      }
+      lua += pets.join(',\n') + ',\n';
+    }
+    for (const subCat of cat.categories || []) {
+      for (const egg of subCat.eggs || []) {
+        lua += `\n-- ${egg.name}\n`;
+        const pets = [];
+        for (const pet of egg.pets) {
+          pets.push(exportPetToLua(pet));
+        }
+        lua += pets.join(',\n') + ',\n';
       }
     }
   }
 
   // Serialize as Lua and prepend `return `
-  return `return ${luaStringify(pets)}`;
+  return lua;
 }
 
-export function exportEggsToLua(data: Category[]): string {
-  const eggs: Record<string, any> = {};
+const exportPetToLua = (pet: Pet): string => {
+  let lua = "";
+  lua += `  ["${pet.name}"] = {\n`;
+  lua += `    ["Rarity"] = "${pet.rarity}",\n`;
+  lua += `    ["Chance"] = ${pet.chance},\n`;
+  lua += `    ["Stats"] = {\n`;
+  lua += `      ["Bubbles"] = ${pet.bubbles},\n`;
+  lua += `      ["${pet.currencyVariant}"] = ${pet.currency},\n`;
+  pet.gems > 0 && (lua += `      ["Gems"] = ${pet.gems},\n`);
+  lua += `    },\n`;
+  lua += `    ["Mythic"] = ${pet.hasMythic ? '"yes"' : '"no"'},\n`;
+  pet.tags?.length > 0 && (lua += `    ["Tag"] = "${pet.tags.join(', ')}",\n`);
+  pet.limited && (lua += `    ["Limited"] = ${pet.limited && pet.obtainedFrom === "Robux Shop" ? '"exclusive"' : '"yes"'},\n`);
+  pet.limited && (lua += `    ["Available"] = ${pet.available ? '"yes"' : '"no"'},\n`);
+  lua += `    ["Source"] = "${pet.obtainedFrom}",\n`;
+  lua += '  }'
+  return lua;
+}
+
+export function exportSourcesToLua(data: Category[]): string {
+  let lua = '';
   for (const cat of data) {
-    for (const egg of cat.eggs) {
-      eggs[egg.name] = {
-        available: egg.available,
-        limited: egg.limited,
-        luckAffected: !egg.luckIgnored,
-        pets: egg.pets.map(pet => pet.name),
-      };
+    lua += `\n-- ${cat.name}\n`;
+    for (const egg of cat.eggs || []) {
+      lua += exportEggToLua(egg);
+    }
+    for (const subCat of cat.categories || []) {
+      lua += `\n-- ${subCat.name}\n`;
+      for (const egg of subCat.eggs || []) {
+        lua += exportEggToLua(egg);
+      }
     }
   }
-  // Serialize as Lua and prepend `return `
-  return `return ${luaStringify(eggs)}`;
+  return lua;
 }
 
-// ────────────────────────────────────────────────────────────
-// Serialize any JS value into a pretty-printed Lua literal
-function luaStringify(value: any, indent = ""): string {
-  const next = indent + "  ";
-
-  // Arrays  ──────────────────────────────────────────
-  if (Array.isArray(value)) {
-    if (value.length === 0) return "{}";
-    const body = value.map(v => next + luaStringify(v, next)).join(",\n");
-    return `{\n${body}\n${indent}}`;
-  }
-
-  // Objects  ─────────────────────────────────────────
-  if (value && typeof value === "object") {
-    const body = Object.entries(value)
-      .filter(([, v]) => v !== undefined)
-      .map(([k, v]) => {
-        // use bareword key if legal in Lua, otherwise ["quoted"]
-        const isId  = /^[A-Za-z_][A-Za-z0-9_]*$/.test(k);
-        const esc   = k.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
-        const key   = isId ? k : `["${esc}"]`;
-        return `${next}${key} = ${luaStringify(v, next)}`;
-      })
-      .join(",\n");
-    return `{\n${body}\n${indent}}`;
-  }
-
-  // Primitives  ─────────────────────────────────────
-  if (typeof value === "string") {
-    const esc = value.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
-    return `"${esc}"`;
-  }
-  if (typeof value === "number" || typeof value === "boolean") {
-    return String(value);
-  }
-
-  // Fallback
-  return "nil";
+export function exportEggToLua(egg: Egg): string {
+  //${egg.pets.map((pet) => `"${pet.name}"`).join(', ')}
+  let lua = '';
+  lua += `  ["${egg.name}"] = {\n`;
+  lua += `    ["Pets"] = [ ${egg.pets.map((pet) => `"${pet.name}"`).join(', ')} ],\n`;
+  egg.luckIgnored           && (lua += `    ["LuckIgnored"] = ${egg.luckIgnored ? '"yes"' : '"no"'},\n`);
+  egg.infinityEgg           && (lua += `    ["InfinityEgg"] = "${egg.infinityEgg}",\n`);
+  egg.index                 && (lua += `    ["Index"] = "${egg.index}",\n`);
+  egg.limited               && (lua += `    ["Limited"] = ${egg.limited ? '"yes"' : '"no"'},\n`);
+  egg.limited               && (lua += `    ["Available"] = ${egg.available ? '"yes"' : '"no"'},\n`);
+  egg.canSpawnAsRift        && (lua += `    ["CanSpawnAsRift"] = ${egg.canSpawnAsRift ? '"yes"' : '"no"'},\n`);
+  !egg.secretBountyExcluded 
+      && egg.canSpawnAsRift && (lua += `    ["CanHaveSecretBounty"] = ${!egg.secretBountyExcluded ? '"yes"' : '"no"'},\n`);
+  lua += `  },\n`;
+  return lua;
 }
-
 
 export function WikiTools(props: WikiToolsProps): JSX.Element {
   const [debug, setDebug] = useState<string[]>([ 'Ready to scrape...' ]); 
@@ -544,16 +549,16 @@ export function WikiTools(props: WikiToolsProps): JSX.Element {
 
   const handlePetsLuaExport = () => {
     const lua = exportPetsToLua(props.data);
-    exportLuaToFile(lua, 'pets.lua');
+    exportLuaToFile(lua, 'pets');
   }
 
   const handleEggsLuaExport = () => {
-    const lua = exportPetsToLua(props.data);
-    exportLuaToFile(lua, 'pets.lua');
+    const lua = exportSourcesToLua(props.data);
+    exportLuaToFile(lua, 'eggs');
   }
 
   const handlePetsJsonExport = () => {
-    saveJSON(props.data, 'pets.json');
+    saveJSON(props.data, 'pets');
   }
 
   const exportLuaToFile = (lua: string, filename: string) => {

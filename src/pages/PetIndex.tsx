@@ -406,10 +406,10 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
                           <TableCell>
                             <Typography variant="body2" sx={style}>
                               { /* If drop rate below 100, show as percent. */
-                                pet.droprate < 100 ? 
-                                (<>{Number(100 / pet.droprate).toLocaleString(undefined, { maximumFractionDigits: 2 })}%</>) 
+                                pet.chance > 1 ? 
+                                (<>{pet.chance.toLocaleString(undefined, { maximumFractionDigits: 2 })}%</>) 
                                 : 
-                                (<>1/{Number(pet.droprate).toLocaleString(undefined, { maximumFractionDigits: 0 })}</>)
+                                (<>1/{(100 / pet.chance).toLocaleString(undefined, { maximumFractionDigits: 0 })}</>)
                               }
                             </Typography>
                           </TableCell>
