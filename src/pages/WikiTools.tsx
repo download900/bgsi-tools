@@ -224,10 +224,12 @@ async function parsePet(petName: string): Promise<Pet> {
   ];
 
   const petVariants: [string, string][] = []; // PetVariant, image url
+  let hasMythic = false;
 
   variantDataSourceMap.forEach(([ds, variant]) => {
     const img = $(`figure.pi-item.pi-image[data-source="${ds}"] a.image-thumbnail`);
     if (img.length > 0) {
+      if (variant === 'Mythic') hasMythic = true; // Track if Mythic variant exists
       const imgSrc = img.attr('href')?.split('/revision')[0];
       if (imgSrc) petVariants.push([variant, imgSrc]);
     }
@@ -248,6 +250,12 @@ async function parsePet(petName: string): Promise<Pet> {
   if (availableMatch) {
     available = availableMatch[1].trim() === 'yes';
   }
+  // Find Tags
+  const tags: string[] = [];
+  $('div.pi-item[data-source="tags"] .pi-data-value span').each((_, el) => {
+    const tag = $(el).first().text().trim();
+    if (tag && !tags.find((t) => t === tag)) tags.push(tag);
+  });
   
   return {
     name: petName,
@@ -257,11 +265,12 @@ async function parsePet(petName: string): Promise<Pet> {
     gems: gemsStat,
     currency: currencyStat,
     currencyVariant,
+    hasMythic,
+    tags,
     limited,
     available,
     obtainedFrom: obt.first().text().trim(),
     obtainedFromImage: eggImage || '',
-    variants: petVariants.map(([variant]) => variant as PetVariant),
     image: petVariants.map(([, img]) => img),
   } as Pet;
 }
@@ -324,7 +333,8 @@ const processEggs = (wikiData: Category[], existingData: Category[]) => {
         existingPet.gems = pet.gems;
         existingPet.currency = pet.currency;
         existingPet.currencyVariant = pet.currencyVariant;
-        existingPet.variants = pet.variants;
+        existingPet.hasMythic = pet.hasMythic;
+        existingPet.tags = pet.tags;
         existingPet.image = pet.image;
         existingPet.limited = pet.limited;
         existingPet.available = pet.available;
@@ -332,26 +342,56 @@ const processEggs = (wikiData: Category[], existingData: Category[]) => {
         existingPet.obtainedFromImage = pet.obtainedFromImage;
       } else {
         // add new pet
-        newPets.push(pet);
+        const existingEgg = newPets.find((egg) => egg.name === pet.obtainedFrom);
+        if (existingEgg) {
+          existingEgg.pets.push(pet);
+        } else {
+          newPets.push({
+            name: pet.obtainedFrom,
+            image: pet.obtainedFromImage,
+            pets: [pet],
+            luckIgnored: false, // default value, can be updated later
+            infinityEgg: '',
+            index: '',
+            limited: pet.limited,
+            available: pet.available,
+            canSpawnAsRift: false, // default value, can be updated later
+            secretBountyExcluded: false // default value, can be updated later
+          });
+        }
       }
     }
   }
-  const newPets: Pet[] = [];
-  // update current data
+
+  const newPets: Egg[] = [];
   for (const cat of wikiData) {
     cat.eggs?.forEach(egg => {
       processEgg(egg);
     });
-    cat.categories?.forEach(subCat => {
-      subCat.eggs?.forEach(egg => {
-        processEgg(egg);
-      });
-    });
+  }
+  
+  // Process existingData JSON - remove "pet.variants", set to undefined.
+  const existing = existingData as any;
+  for (const category of existing) {
+    for (const egg of category.eggs || []) {
+      for (const pet of egg.pets) {
+        pet.variants = undefined; // remove variants
+      }
+    }
+    for (const subCategory of category.categories || []) {
+      for (const egg of subCategory.eggs) {
+        for (const pet of egg.pets) {
+          pet.variants = undefined; // remove variants
+        }
+      }
+    }
   }
 
   // Save JSONs
-  saveJSON(existingData, 'pets');
-  saveJSON(newPets, 'new_pets');
+  saveJSON(existing, 'pets');
+  if (newPets.length > 0) {
+    saveJSON(newPets, 'new_pets');
+  }
 }
 
 const findExistingPet = (petName: string, data: Category[]) => {
@@ -417,7 +457,7 @@ export function exportPetsToLua(data: Category[]): string {
           gems         : pet.gems,
           currency     : pet.currency,
           currencyType : pet.currencyVariant,
-          hasMythic    : pet.variants.includes("Mythic"),
+          hasMythic    : pet.hasMythic,
           ...(pet.limited  !== false && { limited  : pet.limited  }),
           ...(pet.limited  !== false && { available: pet.available }),
         };
@@ -512,6 +552,10 @@ export function WikiTools(props: WikiToolsProps): JSX.Element {
     exportLuaToFile(lua, 'pets.lua');
   }
 
+  const handlePetsJsonExport = () => {
+    saveJSON(props.data, 'pets.json');
+  }
+
   const exportLuaToFile = (lua: string, filename: string) => {
     const blob = new Blob([lua], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
@@ -563,7 +607,7 @@ export function WikiTools(props: WikiToolsProps): JSX.Element {
         </Button>
         <Button
           variant="contained"
-          onClick={() => saveJSON(props.data, 'pets')}
+          onClick={() => handlePetsJsonExport}
           sx={{ mt: 2 }}
           style={{ maxWidth: '200px' }}
         >

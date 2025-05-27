@@ -24,7 +24,7 @@ import {
   PetInstance,
   PetVariant,
   CurrencyVariant,
-  variants,
+  petVariants,
   currencyImages,
   getPetChance,
   getPetStat,
@@ -181,7 +181,7 @@ export function PetList(props: PetListProps) {
     const addPetsFromEgg = (egg: Egg) => {
     egg.pets.forEach((pet) => {
       if (pet.rarity !== 'Legendary' && pet.rarity !== 'Secret') return;
-      pet.variants.forEach((variant) => {
+      petVariants.forEach((variant) => {
         allPets.push({
           name: pet.name,
           droprate: getPetChance(pet, variant),
@@ -191,7 +191,7 @@ export function PetList(props: PetListProps) {
           currency: getPetStat(pet, variant, "currency", previewMaxLevel, previewEnchant, enchantTeamSize, secondEnchant),
           gems: getPetStat(pet, variant, "gems", previewMaxLevel, previewEnchant, enchantTeamSize, secondEnchant),
           variant,
-          image: pet.image[pet.variants.indexOf(variant)],
+          image: pet.image[petVariants.indexOf(variant)],
           obtainedFrom: pet.obtainedFrom,
           obtainedFromImage: pet.obtainedFromImage
         });
@@ -303,7 +303,7 @@ export function PetList(props: PetListProps) {
               displayEmpty
               sx={{ minWidth: 120 }}
             >
-              {variants.map((variant) => (
+              {petVariants.map((variant) => (
                 <MenuItem key={variant} value={variant}>
                   <Checkbox checked={variantFilter.includes(variant)} />
                   {variant}

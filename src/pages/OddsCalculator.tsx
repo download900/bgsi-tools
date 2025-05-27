@@ -101,6 +101,7 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
 
     // list of pets
     const [eggs, setEggs] = useState<Egg[]>([]);
+    const [secretBountyEggs, setSecretBountyEggs] = useState<Egg[]>([]);
     const [secretBountyPets, setSecretBountyPets] = useState<Pet[]>([]);
     const [selectedEgg, setSelectedEgg] = useState<Egg | null>(null);
 
@@ -143,24 +144,16 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
             const secretPets = props.data.find(cat => cat.name === "Secret Bounty")?.eggs[0].pets || [];
             setSecretBountyPets(secretPets);
 
-            // Process eggs for calculator
-            const eggs: Egg[] = [];
-            // make a clone to avoid mutating the original data
-            const clonedData = structuredClone(props.data);
-
-            // process categories
             const processCategory = (category: Category) => {
                 if (category.eggs) {
                     if (category.eggs.some((egg: Egg) => egg.infinityEgg)) {
-                        const egg = { name: category.name, pets: [] } as InfinityEgg;
-                        infinityEggs[category.name] = egg;
+                        const infinityEgg = { name: category.name, pets: [] } as InfinityEgg;
+                        infinityEggs[category.name] = infinityEgg;
                         infinityEggNames.push(category.name);
                     }
 
                     for (const egg of category.eggs) {
-                        if (!shouldCalculateEgg(egg)) continue;
-
-                        // check for secret bounty
+                        
                         if (settings.secretsBountyPet && settings.secretsBountyEgg === egg.name) {
                             const secretBountyPet = secretPets.find(pet => pet.name === settings.secretsBountyPet);
                             if (secretBountyPet) {
@@ -168,13 +161,32 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
                             }
                         }
 
-                        if (egg.pets.some((pet: Pet) => pet.rarity === "Secret" || pet.rarity.includes("Legendary"))) {
-                            eggs.push(egg);
-                            // check for infinity egg, clone pets to infinity egg
-                            if (egg.infinityEgg) {
-                                const newPets = structuredClone(egg.pets.filter((pet: Pet) => pet.rarity.includes('Legendary') || pet.rarity === 'Secret'));
-                                infinityEggs[egg.infinityEgg].pets.push(...newPets);
-                            }
+                        if (!egg.secretBountyExcluded && !egg.limited && !egg.luckIgnored && !egg.name.includes("Infinity Egg")) {
+                            secretBountyEggs.push(egg);
+                        }
+
+                        if (!shouldCalculateEgg(egg)) continue;
+
+                        eggs.push(egg);
+
+                        // if more than 1 secret, add "Any Secret"
+                        if (egg.pets.filter((pet: Pet) => pet.rarity === 'Secret').length > 1) {
+                            // calculate sum of droprates for secrets
+                            const totalSecretDroprate = egg.pets
+                                .filter((pet: Pet) => pet.rarity === 'Secret')
+                                .reduce((sum, pet) => sum + (1 / pet.droprate), 0);
+                            egg.pets.push({
+                                name: "Any Secret",
+                                droprate: 1 / totalSecretDroprate,
+                                image: ["https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png"],
+                                rarity: "Secret"
+                            } as Pet);
+                        }
+
+                        // check for infinity egg, clone pets to infinity egg
+                        if (egg.infinityEgg) {
+                            const newPets = structuredClone(egg.pets.filter((pet: Pet) => pet.rarity.includes('Legendary') || pet.rarity === 'Secret'));
+                            infinityEggs[egg.infinityEgg].pets.push(...newPets);
                         }
                     }
                 }
@@ -184,6 +196,11 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
                     }
                 }
             }
+
+            // Process eggs for calculator
+            const eggs: Egg[] = [];
+            // make a clone to avoid mutating the original data
+            const clonedData = structuredClone(props.data);
             
             for (const category of clonedData) {
                 processCategory(category);                
@@ -199,14 +216,13 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
                         
                 // 1) compute “sum of 1/droprate” per rarity
                 const totals = pets.reduce((acc, pet) => {
-                        const dec = 1 / pet.droprate;
-                        let rarity: "Legendary" | "Secret";
-                        if (pet.rarity === 'Secret') rarity = 'Secret';
-                        else rarity = 'Legendary';
-                        acc[rarity] += dec;
-                        return acc;
-                    }, { Legendary: 0, Secret: 0 } as Record<"Legendary" | "Secret", number>
-                );
+                    const dec = 1 / pet.droprate;
+                    let rarity: "Legendary" | "Secret";
+                    if (pet.rarity === 'Secret') rarity = 'Secret';
+                    else rarity = 'Legendary';
+                    acc[rarity] += dec;
+                    return acc;
+                }, { Legendary: 0, Secret: 0 } as Record<"Legendary" | "Secret", number>);
               
                 // 2) recalc each pet’s droprate: new = pet.droprate * (totalDecimalForThisRarity) / rateForThisRarity
                 const rateMap = { Legendary: legendaryRate, Secret: secretRate };
@@ -288,7 +304,7 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
         // Board Game Luck Boost
         if (calculatorSettings.boardGameLuckBoost) luckyBuff += 200;
         // Rift egg multiplier
-        if (calculatorSettings.riftMultiplier > 0) luckyBuff += calculatorSettings.riftMultiplier * 100;
+        if (selectedEgg?.canSpawnAsRift && calculatorSettings.riftMultiplier > 0) luckyBuff += calculatorSettings.riftMultiplier * 100;
 
         // Calculate Shiny rate:
         let shinyBuff = 0;
@@ -455,23 +471,27 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
                                 }
                             </Select>
                         </Box>
-                        <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
-                            <Typography variant="subtitle1" sx={{width: 250}}>
-                                {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/f/fe/Floating_Island_Icon.png", 24, 0, 2)}
-                                Rift:
-                            </Typography>
-                            <Select
-                                value={calculatorSettings.riftMultiplier}
-                                size="small"
-                                sx={{ flexGrow: 1, mr: 1 }}
-                                onChange={(e) => setCalculatorSettings({ ...calculatorSettings, riftMultiplier: e.target.value as RiftMultiplier })}
-                            >
-                                <MenuItem value={0}>None</MenuItem>
-                                <MenuItem value={5}>5x (500%)</MenuItem>
-                                <MenuItem value={10}>10x (1000%)</MenuItem>
-                                <MenuItem value={25}>25x (2500%)</MenuItem>
-                            </Select>
-                        </Box>
+                        {
+                            selectedEgg?.canSpawnAsRift && (
+                            <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
+                                <Typography variant="subtitle1" sx={{width: 250}}>
+                                    {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/f/fe/Floating_Island_Icon.png", 24, 0, 2)}
+                                    Rift:
+                                </Typography>
+                                <Select
+                                    value={calculatorSettings.riftMultiplier}
+                                    size="small"
+                                    sx={{ flexGrow: 1, mr: 1 }}
+                                    onChange={(e) => setCalculatorSettings({ ...calculatorSettings, riftMultiplier: e.target.value as RiftMultiplier })}
+                                >
+                                    <MenuItem value={0}>None</MenuItem>
+                                    <MenuItem value={5}>5x (500%)</MenuItem>
+                                    <MenuItem value={10}>10x (1000%)</MenuItem>
+                                    <MenuItem value={25}>25x (2500%)</MenuItem>
+                                </Select>
+                            </Box>
+                            )
+                        }
                         <Tabs value={settingsTab} onChange={(_e, newValue) => setSettingsTab(newValue)} variant="fullWidth" sx={{ width: "100%", mb: 1 }}>
                             <Tab sx={{fontSize:12}} label="Luck Settings" value={0} />
                             <Tab sx={{fontSize:12}} label="Speed Settings" value={1} />
@@ -747,13 +767,13 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
                                         size="small"
                                         sx={{ flexGrow: 1, mr: 1 }}
                                         onChange={(e) => {
-                                            const selectedEgg = eggs.find(egg => egg.name === e.target.value);
+                                            const selectedEgg = secretBountyEggs.find(egg => egg.name === e.target.value);
                                             setCalculatorSettings({ ...calculatorSettings, secretsBountyEgg: selectedEgg?.name || "" });
                                         }}
                                         >
                                         <MenuItem value="None">None</MenuItem>
                                         {
-                                            eggs.filter((egg) => !egg.name.includes("Infinity")).map((egg) => (
+                                            secretBountyEggs.map((egg) => (
                                                 <MenuItem key={egg.name} value={egg.name}>
                                                     <img src={egg.image} alt={egg.name} style={{ width: 24, height: 24, marginRight: 8 }} />
                                                     {egg.name}
@@ -774,8 +794,8 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
                 { /* Right box (Results) */ }
                 <Box component="form" sx={{ width: "100%", maxWidth: '100% !important', display: "flex", flexDirection: "column", gap: 1.5, pl: 2, alignItems: 'center' }} noValidate autoComplete="off" >
                     <Tabs value={resultsTab} onChange={(_e, newValue) => setResultsTab(newValue)} variant="fullWidth" sx={{ width: "100%", mb: 1 }}>
-                        <Tab label="Hatch Rates" value={0} />
-                        <Tab label="Average Hatch Times" value={1} />
+                        <Tab label="Hatch Chances" value={0} />
+                        <Tab label="Hatch Times" value={1} />
                     </Tabs>
                     { /* Luck Debug */ }
                     <Paper sx={{ p: 1,  width: "100% !important"}} elevation={3}>

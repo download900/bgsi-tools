@@ -26,7 +26,7 @@ import {
   Egg,
   Pet,
   PetVariant,
-  variants,
+  petVariants,
   currencyImages
 } from "../util/PetUtil";
 import {
@@ -105,7 +105,7 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
 
     for (const egg of eggs) {
       for (const pet of egg.pets) {
-        pet.variants.forEach((v) => {
+        petVariants.forEach((v) => {
           totals[v]++;
           if (ownedPets[`${pet.name}__${v}`]) owned[v]++;
         });
@@ -118,7 +118,7 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
     return {
       overall: totalAll ? Math.round((ownedAll / totalAll) * 100) : 0,
       perVariant: Object.fromEntries(
-        variants.map((v) => [
+        petVariants.map((v) => [
           v,
           totals[v] ? Math.round((owned[v] / totals[v]) * 100) : 0
         ])
@@ -290,7 +290,7 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
           <Table size="small">
             <TableHead>
               <TableRow>
-                {variants.map((v) => (
+                {petVariants.map((v) => (
                   <TableCell key={v}>
                     <b>{v}</b>
                   </TableCell>
@@ -299,7 +299,7 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
             </TableHead>
             <TableBody>
               <TableRow>
-                {variants.map((v) => (
+                {petVariants.map((v) => (
                   <TableCell
                     key={v}
                     sx={getPercentStyle(headerStats.perVariant[v])}
@@ -360,7 +360,7 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
                       <TableCell sx={{ width: 100, textAlign: "center" }}>
                         {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Gems.png")}
                       </TableCell> */}
-                      {variants.map((v) => (
+                      {petVariants.map((v) => (
                         <TableCell
                           key={v}
                           sx={{ width: 100, fontWeight: "bold", textAlign: "left" }}
@@ -413,18 +413,9 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
                               }
                             </Typography>
                           </TableCell>
-                          {/* <TableCell sx={{ textAlign: "center" }}>
-                            {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/0/0c/Bubbles.png")} +{pet.bubbles}
-                          </TableCell>
-                          <TableCell sx={{ textAlign: "center" }}>
-                            {imgIcon(currencyImages[pet.currencyVariant])} x{pet.currency}
-                          </TableCell>
-                          <TableCell sx={{ textAlign: "center" }}>
-                            {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Gems.png")} x{pet.gems}
-                          </TableCell> */}
-                          {variants.map((v) => (
+                          {petVariants.map((v) => (
                             <TableCell key={v}>
-                              {pet.variants.includes(v) && (
+                              {(!v.includes("Mythic") || (v.includes("Mythic") && pet.hasMythic)) && (
                                 <Checkbox
                                   size="small"
                                   checked={!!ownedPets[`${pet.name}__${v}`]}

@@ -5,6 +5,7 @@ import petJson from "../assets/pets.json";
 
 export type Rarity = "Common" | "Unique" | "Rare" | "Epic" | "Legendary" | "Secret";
 export type PetVariant = "Normal" | "Shiny" | "Mythic" | "Shiny Mythic";
+export const petVariants: PetVariant[] = ["Normal", "Shiny", "Mythic", "Shiny Mythic"];
 export type CurrencyVariant = "Coins" | "Tickets" | "Seashells";
 export type PetStat = "bubbles" | "currency" | "gems";
 export type Enchant = "bubbler" | "looter";
@@ -25,6 +26,8 @@ export interface Egg {
   index: string;
   limited: boolean;
   available: boolean;
+  canSpawnAsRift: boolean;
+  secretBountyExcluded: boolean;
 }
 
 export interface Pet { 
@@ -35,11 +38,12 @@ export interface Pet {
   currencyVariant: CurrencyVariant; 
   currency: number;
   gems: number; 
+  hasMythic: boolean;
+  tags: string[];
   limited: boolean;
   available: boolean;
   obtainedFrom: string;
   obtainedFromImage: string;
-  variants: PetVariant[]; 
   image: string[]; 
 }
 
@@ -62,8 +66,6 @@ export interface PetInstance {
 // ~~~~~~~~~~ Data ~~~~~~~~~~
 
 export const petData = petJson as unknown as Category[];
-
-export const variants: PetVariant[] = ["Normal", "Shiny", "Mythic", "Shiny Mythic"];
 
 export const variantData: { [key in PetVariant]: { baseScale: number, levelScale: number, chanceMultiplier: number } } = { 
     Normal: { baseScale: 1, levelScale: 1.35, chanceMultiplier: 1 },
