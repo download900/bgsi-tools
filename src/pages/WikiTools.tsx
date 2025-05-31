@@ -3,229 +3,235 @@ import { JSX, SetStateAction, useEffect, useRef, useState } from "react";
 import * as cheerio from 'cheerio';
 import { Box, Button, Container, FormControl, Input, Typography } from "@mui/material";
 
-import { Pet, Rarity, PetVariant, CurrencyVariant, Egg, Category } from "../util/PetUtil";
+import { Pet, Rarity, PetVariant, CurrencyVariant, Egg, Category } from "../util/DataUtil";
 import Decimal from "decimal.js";
-
-interface CategoryResult {
-  name:   string;        // e.g. "The Overworld", "Minigame Paradise", …
-  eggs:   EggResult[];   // one per egg in that subcategory
-}
-
-interface EggResult {
-  eggName:  string;      // e.g. "Common Egg"
-  petNames: string[];    // e.g. ["Doggy","Kitty","Bunny",…]
-}
 
 // (1) Orchestrator
 export async function scrapeWiki(data: Category[], debug: (msg: string) => void): Promise<void> {
-  debug('Fetching pet data page...');
-  const petsData = await fetchWikitext('Bubble_Gum_Simulator_INFINITY_Wiki:Data/Pets');
+  debug('Fetching pets...');
+  const petList = await fetchCategoryPages('Pets');
+  debug(`Found ${petList.length} pets to scrape.`);
 
-  debug('Scraping pet list...');
-  const entries = parsePetList(petsData);
+  const eggs: Egg[] = [];
 
-  const all: Category[] = [];
-  debug('Scraping pets...');
-  
-  for (const s of entries) {
-    debug(`Scraping ${s.name}... [${s.eggs.length} eggs]`);
-    const category = { name: s.name, eggs: [] } as any as Category;
-
-    for (const e of s.eggs) {
-      debug(`Scraping ${e.eggName}... [${e.petNames.length} pets]`);
-      const egg = { name: e.eggName, image: '', pets: [] } as any as Egg;
-
-      for (const petName of e.petNames) {
-        debug(`Scraping ${petName}...`);
-        const result = await parsePet(petName);
-        egg.pets.push(result);
-        if (!egg.image) {
-          egg.image = result.obtainedFromImage;
-        }
-      }
-
-      if (egg.pets.length > 0) {
-        category.eggs.push(egg);
-      }
+  for (const petName of petList) {
+    if (petName.includes('Template') || petName.includes('User') || petName === 'Pets') {
+      continue; // Skip templates and eggs
     }
-
-    if (category.eggs.length > 0) {
-      all.push(category);
+    debug(`Scraping ${petName}...`);
+    const result = await parsePet(petName);
+    if (result) {
+      // Check if the pet already exists in the eggs array
+      const existingEgg = eggs.find(egg => egg.name === result.obtainedFrom);
+      if (existingEgg) {
+        existingEgg.pets.push(result);
+      } else {
+        // Create a new egg entry if it doesn't exist
+        const egg = await parseEgg(result.obtainedFrom);
+        egg.image = result.obtainedFromImage; // Set the egg image from the pet
+        egg.pets.push(result);
+        eggs.push(egg);
+      }
     }
   }
 
   debug('Processing scraped data...');
-  processEggs(all, data);
+  processEggs(eggs, data);
 
   debug('Scraping complete!');
 }
 
-// (2) This function scans the Project:Data/Pets page
-function parsePetList(src: string): CategoryResult[] {
-  const subs: CategoryResult[] = [];
-  const outerRE = /\|\-\|([^\n=]+)=/g;
-  const markers: { name: string; idx: number }[] = [];
-  let m: RegExpExecArray | null;
+async function parseEgg(eggname: string): Promise<Egg> {
+  const egg: Egg = {
+    name: eggname,
+    pets: [],
+    // dateAdded: '',
+    // dateRemoved: '',
+    luckIgnored: false,
+    infinityEgg: '',
+    index: '',
+    canSpawnAsRift: false,
+    secretBountyExcluded: false,
+  } as any as Egg;
 
-  // find every sub-category marker (“|-|Secret Bounty=” etc)
-  while ((m = outerRE.exec(src))) {
-    markers.push({ name: m[1].trim(), idx: m.index });
+  const wikitext = (await fetchWikitext(eggname)).toLowerCase();
+
+  if (!wikitext) {
+    console.error(`No wikitext found for egg: ${eggname}`);
+    return egg; // Return empty egg if no wikitext found
   }
 
-  // for each sub-category slice out its chunk
-  for (let i = 0; i < markers.length; i++) {
-    const { name, idx } = markers[i];
-    const endIdx = (i + 1 < markers.length ? markers[i+1].idx : src.length);
-    const chunk  = src.slice(idx, endIdx);
-
-    // primary parse via #tag:tabber
-    const pairs = parseEggEntries(chunk);
-    const eggs: EggResult[] = [];
-
-    if (pairs.length > 0) {
-      // group by eggName
-      const byEgg: Record<string, string[]> = {};
-      for (const { eggName, petName } of pairs) {
-        (byEgg[eggName] ??= []).push(petName);
-      }
-      for (const [eggName, petNames] of Object.entries(byEgg)) {
-        eggs.push({ eggName, petNames });
-      }
-    } else {
-      // fallback: look for any standalone Pet-List blocks
-      const petListRE = /\{\{Pet-List\s*\|([\s\S]+?)\}\}/g;
-      for (const listM of chunk.matchAll(petListRE)) {
-        const inner = listM[1];
-        const petNames = inner
-          .split(/\n\|/)           // split on leading pipe
-          .map(s => s.trim())
-          .map(item => item.match(/name:([^;]+);/))
-          .filter((x): x is RegExpMatchArray => !!x)
-          .map(x => x[1].trim());
-
-        if (petNames.length) {
-          // use the sub-category name itself as the egg name
-          eggs.push({ eggName: name, petNames });
-        }
-      }
-    }
-
-    subs.push({ name, eggs });
+  // Find |limited= yes/no or | limited=yes/no
+  const limitedMatch = wikitext.match(/\|\s*limited\s*=\s*(yes|no|exclusive)/);
+  if (limitedMatch) {
+    const t = limitedMatch[1].trim();
+    egg.limited = t === 'yes' || t === 'exclusive';
   }
+  // Find |available= yes/no
+  const availableMatch = wikitext.match(/\|\s*available\s*=\s*(yes|no)/);
+  if (availableMatch) {
+    egg.available = availableMatch[1].trim() === 'yes';
+  }
+  else {
+    egg.available = true; // Default to true if not specified
+  }
+  // Find |currency= <>
+  const currencyMatch = wikitext.match(/\|\s*currency\s*=\s*(\w+)/);
+  if (currencyMatch) {
+    egg.hatchCurrency = currencyMatch[1].trim().toLowerCase() as CurrencyVariant;
+  }
+  // Find |cost= <number>
+  const costMatch = wikitext.match(/\|\s*cost\s*=\s*([\d.,]+)/);
+  if (costMatch) {
+    egg.hatchCost = Number(costMatch[1].trim().replaceAll(',', ''));
+  }
+  
+  // // Fetch HTML
+  // const html = await fetchHTML(eggname);
+  // const $ = cheerio.load(html);
 
-  return subs;
+  // const updateRelease = $('td.pi-horizontal-group-item[data-source="update-release"] pi-data-value a');
+  // if (updateRelease.length > 0) {
+  //   egg.dateAdded = convertDateToISO(updateRelease.text());
+  // }
+  // const updateRemoved = $('td.pi-horizontal-group-item[data-source="update-removed"] pi-data-value a');
+  // if (updateRemoved.length > 0) {
+  //   egg.dateRemoved = convertDateToISO(updateRemoved.text());
+  // }
+
+  return egg;
 }
 
-// (3) This scans a chunk for ALL inner {{#tag:tabber|…}} blocks
-//     and returns a flat list of { eggName, petName } entries.
-function parseEggEntries(src: string): { eggName: string; petName: string }[] {
-  const out: { eggName: string; petName: string }[] = [];
-  const openTag = '{{#tag:tabber|';
-  let pos = 0;
-
-  while (true) {
-    const start = src.indexOf(openTag, pos);
-    if (start === -1) break;
-
-    // find matching closing “}}”
-    let depth = 1, i = start + openTag.length;
-    while (i < src.length && depth > 0) {
-      if (src.startsWith('{{', i)) { depth++; i += 2; }
-      else if (src.startsWith('}}', i)) { depth--; i += 2; }
-      else { i++; }
-    }
-
-    // inner of this tabber
-    const block = src.slice(start + openTag.length, i - 2);
-    pos = i;
-
-    // each “{{!}}-{{!}}” section is one egg
-    for (const section of block.split('{{!}}-{{!}}')) {
-      const eggM = section.match(/^([^=\n]+)=/m);
-      if (!eggM) continue;
-      const eggName = eggM[1].trim();
-
-      // allow newline between "Pet-List" and "|"
-      const listM = section.match(/\{\{Pet-List\s*\|([\s\S]+?)\}\}/);
-      if (!listM) continue;
-
-      // split on lines beginning with "|" → each pet entry
-      const items = listM[1]
-        .split(/\n\|/)
-        .map(s => s.trim())
-        .filter(s => s);
-
-      for (const item of items) {
-        const nameM = item.match(/name:([^;]+);/);
-
-        if (nameM) {
-          out.push({ eggName, petName: nameM[1].trim() });
-        }
-      }
-    }
-  }
-
-  return out;
-}
+// const convertDateToISO = (dateStr: string): string => {
+//   // match the date in parentheses
+//   const dateMatch = dateStr.match(/\(([^)]+)\)/);
+//   if (dateMatch) {
+//     // convert to YYYY-MM-DD format
+//     const dateParts = dateMatch[1].split(',')[0].trim().split(' ');
+//     const monthMap: { [key: string]: string } = {
+//       'January':   '01',
+//       'February':  '02',
+//       'March':     '03',
+//       'April':     '04',
+//       'May':       '05',
+//       'June':      '06',
+//       'July':      '07',
+//       'August':    '08',
+//       'September': '09',
+//       'October':   '10',
+//       'November':  '11',
+//       'December':  '12'
+//     };
+//     const month = monthMap[dateParts[0]];
+//     const day = dateParts[1].padStart(2, '0'); // pad with zero if single digit
+//     const year = dateParts[2];
+//     return `${year}-${month}-${day}`;
+//   }
+//   return ''; // return empty string if no date found
+// }
 
 // (4) Fetch each pet page and scrape pet and egg info
 async function parsePet(petName: string): Promise<Pet> {
+  const pet = { name: petName } as Pet;
+
+  const petWikitext = (await fetchWikitext(petName)).toLowerCase();
+
+  // Find |rarity= <Rarity>
+  const rarityMatch = petWikitext.match(/\|\s*rarity\s*=\s*(\w+)/);
+  if (rarityMatch) {
+    const rarity = rarityMatch[1].trim().toLowerCase();
+    // legendaries can have -t2 or -t3 suffixes, so we remove those
+    if (rarity.endsWith('-t2') || rarity.endsWith('-t3')) {
+      pet.name = pet.name.replace(/-t[23]$/, '');
+    }
+    pet.rarity = rarity as Rarity;
+  } else {
+    pet.rarity = 'common';
+  }
+
+  // Find |norm-petchance. Can be scientific notation, e.g. 1.23e-4
+  const chanceMatch = petWikitext.match(/\|\s*norm-petchance\s*=\s*([\d.e-]+)/);
+  if (chanceMatch) {
+    const chanceStr = chanceMatch[1].trim();
+    pet.chance = new Decimal(chanceStr).toNumber();
+  } else {
+    pet.chance = 1;
+  }
+
+  // Find |bubbles= <number>.<number>
+  const bubblesMatch = petWikitext.match(/\|\s*bubbles\s*=\s*([\d.,]+)/);
+  if (bubblesMatch) {
+    pet.bubbles = Number(bubblesMatch[1].trim().replaceAll(',', ''));
+  } else {
+    pet.bubbles = 0; 
+  }
+  
+  // Find |gems= <number>.<number>
+  const gemsMatch = petWikitext.match(/\|\s*gems\s*=\s*([\d.,]+)/);
+  if (gemsMatch) {
+    pet.gems = Number(gemsMatch[1].trim().replaceAll(',', ''));
+  } else {
+    pet.gems = 0;
+  }
+
+  // Find |coins=1.1 or | tickets=1.1 or | seashells=1.1
+  const currencyMatch = petWikitext.match(/\|\s*(coins|tickets|seashells)\s*=\s*([\d.,]+)/);
+  if (currencyMatch) {
+    const currencyType = currencyMatch[1].trim().toLowerCase() as CurrencyVariant;
+    const currencyValue = Number(currencyMatch[2].trim().replaceAll(',', ''));
+    pet.currency = currencyValue;
+    pet.currencyVariant = currencyType;
+  } else {
+    pet.currency = 0;
+    pet.currencyVariant = 'coins'; // default to coins
+  }
+
+  // Find |has-mythic= yes/no
+  const mythicMatch = petWikitext.match(/\|\s*has-mythic\s*=\s*(yes|no)/);
+  if (mythicMatch) {
+    pet.hasMythic = mythicMatch[1].trim() === 'yes';
+  } else {
+    pet.hasMythic = false;
+  }
+
+  // Find |limited= yes/no or | limited=yes/no
+  const limitedMatch = petWikitext.match(/\|\s*limited\s*=\s*(yes|no|exclusive)/);
+  if (limitedMatch) {
+    const t = limitedMatch[1].trim();
+    pet.limited = t === 'yes' || t === 'exclusive';
+  }
+  // Find |available= yes/no
+  const availableMatch = petWikitext.match(/\|\s*available\s*=\s*(yes|no)/);
+  if (availableMatch) {
+    pet.available = availableMatch[1].trim() === 'yes';
+  }
+  else {
+    pet.available = true; // Default to true if not specified
+  }
+  // Find |hatchable= yes/no
+  const hatchableMatch = petWikitext.match(/\|\s*hatchable\s*=\s*(yes|no)/);
+  if (hatchableMatch) {
+    pet.hatchable = hatchableMatch[1].trim() === 'yes';
+  }
+  else {
+    pet.hatchable = true; // Default to true if not specified
+  }
   const html = await fetchHTML(petName);
   const $ = cheerio.load(html);
+
+  // Find Tags
+  pet.tags = [];
+  $('div.pi-item[data-source="tags"] .pi-data-value span').each((_, el) => {
+    const tag = $(el).first().text().trim();
+    if (tag && !pet.tags.find((t) => t === tag)) pet.tags.push(tag);
+  });
 
   // Obtained-from → eggName
   const obt = $('div.pi-item[data-source="obtained-from"] .pi-data-value');
   const eggImage = obt.find('img').attr('src')?.split('/revision')[0];
-
-  // Base stats
-  const bubbleStat = extractNumber($('td.pi-horizontal-group-item[data-source="bubbles"] b').first().text() || '0');
-  const gemsStat = extractNumber($('td.pi-horizontal-group-item[data-source="gems"] b').first().text() || '0');
-  let currencyStat = 0;
-  let currencyVariant = 'Coins' as CurrencyVariant;
-  const coinsMatch = $('td.pi-horizontal-group-item[data-source="coins"] b');
-  if (coinsMatch.length > 0) {
-    currencyStat = extractNumber(coinsMatch.first().text());
-  }
-  const ticketsMatch = $('td.pi-horizontal-group-item[data-source="tickets"] b');
-  if (ticketsMatch.length > 0) {
-    currencyStat = extractNumber(ticketsMatch.first().text());
-    currencyVariant = 'Tickets' as CurrencyVariant;
-  }
-  const seashellsMatch = $('td.pi-horizontal-group-item[data-source="seashells"] b');
-  if (seashellsMatch.length > 0) {
-    currencyStat = extractNumber(seashellsMatch.first().text());
-    currencyVariant = 'Seashells' as CurrencyVariant;
-  }
-
-  // Rarity
-  const rarityMatch = $('div.pi-item[data-source="rarity"] .pi-data-value b');
-  let rarity = rarityMatch.first().text().trim();
-  if (rarity.includes('Legendary')) rarity = 'Legendary';
-
-  // Base chance text
-  let baseChance: number = 1;
-  const chanceRaw = $('div.pi-item[data-source="norm-petchance"] .pi-data-value')?.first().text();
-  if (chanceRaw) {
-    // ChanceRaw will either by like "60% (1 in 2)" or "1.5e-06% (1 in 66,666,666)", etc.
-    // We just want the percent.
-    // Check if scientific notation
-    if (chanceRaw.includes('e')) {
-      // Scientific notation, e.g. "1.5e-06%"
-      const match = chanceRaw.match(/([\d.]+)e([+-]?\d+)%/);
-      if (match) {
-        const base = parseFloat(match[1]);
-        const exponent = parseInt(match[2], 10);
-        baseChance = Decimal(base).times(Decimal(10).pow(exponent)).toNumber();
-      }
-    }
-    else {
-      // Regular percentage, e.g. "60%"
-      const match = chanceRaw.match(/([\d.]+)%/);
-      if (match) {
-        baseChance = Number(match[1]);
-      }
-    }
-  }
+  pet.obtainedFromImage = eggImage || '';
+  const eggName = obt.first().text().trim();
+  pet.obtainedFrom = eggName || 'Unknown';
 
   // Get variants and their images
   const variantDataSourceMap: [string, PetVariant][] = [
@@ -236,83 +242,75 @@ async function parsePet(petName: string): Promise<Pet> {
   ];
 
   const petVariants: [string, string][] = []; // PetVariant, image url
-  let hasMythic = false;
 
   variantDataSourceMap.forEach(([ds, variant]) => {
     const img = $(`figure.pi-item.pi-image[data-source="${ds}"] a.image-thumbnail`);
     if (img.length > 0) {
-      if (variant === 'Mythic') hasMythic = true; // Track if Mythic variant exists
       const imgSrc = img.attr('href')?.split('/revision')[0];
       if (imgSrc) petVariants.push([variant, imgSrc]);
     }
   });
 
-  // Pull the raw wikitext for the pet
-  const petWikitext = await fetchWikitext(petName);
-  let limited = false;
-  let available = true;
-  // Find |limited= yes/no or | limited=yes/no
-  const limitedMatch = petWikitext.match(/\|\s*limited\s*=\s*(yes|no|exclusive)/);
-  if (limitedMatch) {
-    const t = limitedMatch[1].trim();
-    limited = t === 'yes' || t === 'exclusive';
-  }
-  // Find |available= yes/no
-  const availableMatch = petWikitext.match(/\|\s*available\s*=\s*(yes|no)/);
-  if (availableMatch) {
-    available = availableMatch[1].trim() === 'yes';
-  }
-  // Find Tags
-  const tags: string[] = [];
-  $('div.pi-item[data-source="tags"] .pi-data-value span').each((_, el) => {
-    const tag = $(el).first().text().trim();
-    if (tag && !tags.find((t) => t === tag)) tags.push(tag);
-  });
-  
-  return {
-    name: petName,
-    rarity: rarity as Rarity,
-    chance: baseChance,
-    bubbles: bubbleStat,
-    gems: gemsStat,
-    currency: currencyStat,
-    currencyVariant,
-    hasMythic,
-    tags,
-    limited,
-    available,
-    obtainedFrom: obt.first().text().trim(),
-    obtainedFromImage: eggImage || '',
-    image: petVariants.map(([, img]) => img),
-  } as Pet;
+
+  return pet;
 }
 
-function extractNumber(str: string): number {
-  // 1. Remove commas so "1,234.56" → "1234.56"
-  // 2. Find the first integer or decimal, including an optional leading “-”
-  const match = str
-    .replace(/,/g, '')
-    .match(/-?\d+(\.\d+)?/);
-
-  // 3. parseFloat the match, or return 0 if none found
-  return match ? parseFloat(match[0]) : 0;
-}
-
-async function fetchWikitext(pageName: string): Promise<string> {
+async function fetchCategoryPages(categoryName: string): Promise<string[]> {
   const api = 
     `https://bgs-infinity.fandom.com/api.php` +
     `?action=query` +
-    `&prop=revisions` +
-    `&rvprop=content` +
+    `&list=categorymembers` +
+    `&cmtitle=${encodeURIComponent(`Category:${categoryName}`)}` +
+    `&cmlimit=max` + // max is 500, but we can fetch more in batches
     `&format=json` +
-    `&titles=${encodeURIComponent(pageName)}` +
     `&origin=*`;
 
   const res  = await fetch(api);
   const json = await res.json() as any;
-  const pages = json.query.pages;
-  const pageId = Object.keys(pages)[0];
-  return pages[pageId].revisions[0]['*'];         // the raw wikitext
+  const pages = json.query.categorymembers;
+
+  // Check if we got all pages, if not, fetch more
+  if (json.continue) {
+    let continueApi = api + `&cmcontinue=${json.continue.cmcontinue}`;
+    while (json.continue) {
+      const res = await fetch(continueApi);
+      const json = await res.json() as any;
+      pages.push(...json.query.categorymembers);
+      if (json.continue) {
+        continueApi = api + `&cmcontinue=${json.continue.cmcontinue}`;
+      } else {
+        break;
+      }
+    }
+  }
+
+  return pages.map((page: any) => page.title);
+}
+
+async function fetchWikitext(pageName: string): Promise<string> {
+  try {
+    const api = 
+      `https://bgs-infinity.fandom.com/api.php` +
+      `?action=query` +
+      `&prop=revisions` +
+      `&rvprop=content` +
+      `&format=json` +
+      `&titles=${encodeURIComponent(pageName)}` +
+      `&origin=*`;
+
+    console.log(`Fetching wikitext for ${pageName} from ${api}`);
+
+    const res  = await fetch(api);
+    const json = await res.json() as any;
+    console.log(`Received response for ${pageName}:`, json);
+    const pages = json.query.pages;
+    const pageId = Object.keys(pages)[0];
+    return pages[pageId].revisions[0]['*'];         // the raw wikitext
+  }
+  catch (error) {
+    console.error(`Error fetching wikitext for ${pageName}:`, error);
+    return '';
+  }
 }
 
 async function fetchHTML(petName: string): Promise<string> {
@@ -334,104 +332,84 @@ async function fetchHTML(petName: string): Promise<string> {
 
 // (5) This function processes the scraped data. First it updates our current data and saves that,
 //     then it saves the remaining new pets to a JSON file.
-const processEggs = (wikiData: Category[], existingData: Category[]) => {
-  const processEgg = (egg: Egg) => {
-    for (const pet of egg.pets) {
-      const existingPet = findExistingPet(pet.name, existingData);
-      if (existingPet) {
-        // update existing pet
-        existingPet.chance = pet.chance;
-        existingPet.bubbles = pet.bubbles;
-        existingPet.gems = pet.gems;
-        existingPet.currency = pet.currency;
-        existingPet.currencyVariant = pet.currencyVariant;
-        existingPet.hasMythic = pet.hasMythic;
-        existingPet.tags = pet.tags;
-        existingPet.image = pet.image;
-        existingPet.limited = pet.limited;
-        existingPet.available = pet.available;
-        existingPet.obtainedFrom = pet.obtainedFrom;
-        existingPet.obtainedFromImage = pet.obtainedFromImage;
-      } else {
-        // add new pet
-        const existingEgg = newPets.find((egg) => egg.name === pet.obtainedFrom);
-        if (existingEgg) {
-          existingEgg.pets.push(pet);
-        } else {
-          newPets.push({
-            name: pet.obtainedFrom,
-            image: pet.obtainedFromImage,
-            pets: [pet],
-            luckIgnored: false, // default value, can be updated later
-            infinityEgg: '',
-            index: '',
-            limited: pet.limited,
-            available: pet.available,
-            canSpawnAsRift: false, // default value, can be updated later
-            secretBountyExcluded: false // default value, can be updated later
-          });
-        }
-      }
-    }
-  }
-
+const processEggs = (wikiData: Egg[], existingData: Category[]) => {
   const newPets: Egg[] = [];
-  for (const cat of wikiData) {
-    cat.eggs?.forEach(egg => {
-      processEgg(egg);
-    });
-  }
-  
-  // Process existingData JSON - remove "pet.variants", set to undefined.
-  const existing = existingData as any;
-  for (const category of existing) {
-    for (const egg of category.eggs || []) {
-      for (const pet of egg.pets) {
-        pet.droprate = undefined;
-      }
-    }
-    for (const subCategory of category.categories || []) {
-      for (const egg of subCategory.eggs) {
-        for (const pet of egg.pets) {
-          pet.droprate = undefined;
-        }
-      }
-    }
+  for (const egg of wikiData) {
+    processEgg(egg, existingData, newPets);
   }
 
   // Save JSONs
-  saveJSON(existing, 'pets');
+  saveJSON(existingData, 'pets');
   if (newPets.length > 0) {
     saveJSON(newPets, 'new_pets');
   }
 }
 
-const findExistingPet = (petName: string, data: Category[]) => {
-  for (const category of data) {
-    if (category.eggs) {
-      for (const egg of category.eggs) {
-        for (const pet of egg.pets) {
-          if (pet.name === petName) {
-            return pet;
-          }
-        }
-      }
+const processEgg = (egg: Egg, existingData: Category[], newPets: Egg[]) => {
+  for (const pet of egg.pets) {
+    // Check if the pet already exists in the existing data
+    const existingPet = findExistingPet(pet.name, existingData);
+    if (existingPet) {
+      // Update existing pet properties
+      existingPet.chance = pet.chance;
+      existingPet.rarity = pet.rarity;
+      existingPet.bubbles = pet.bubbles;
+      existingPet.currency = pet.currency;
+      existingPet.currencyVariant = pet.currencyVariant;
+      existingPet.gems = pet.gems;
+      existingPet.hasMythic = pet.hasMythic;
+      existingPet.tags = pet.tags || [];
+      existingPet.limited = pet.limited;
+      existingPet.available = pet.available;
+      existingPet.hatchable = pet.hatchable;
+      existingPet.obtainedFrom = pet.obtainedFrom;
+      existingPet.obtainedFromImage = pet.obtainedFromImage;
+
+      // remove the pet from the egg's pets array if it already exists
+      egg.pets = egg.pets.filter(p => p.name !== pet.name);
     }
-    if (category.categories) {
-      for (const subCategory of category.categories) {
-        if (subCategory.eggs) {
-          for (const egg of subCategory.eggs) {
-            for (const pet of egg.pets) {
-              if (pet.name === petName) {
-                return pet;
-              }
-            }
-          }
-        }
+  }
+
+  // Check if the egg already exists in the existing data
+  const existingEgg = findExistingEgg(egg.name, existingData);
+  if (existingEgg) {
+    // Update existing egg properties
+    existingEgg.hatchCost = egg.hatchCost;
+    existingEgg.hatchCurrency = egg.hatchCurrency;
+    existingEgg.limited = egg.limited;
+    existingEgg.available = egg.available;
+  }
+  else if (egg.pets?.length > 0) {
+    newPets.push(egg);
+  } 
+}
+
+const findExistingEgg = (eggName: string, data: Category[]): Egg | undefined => {
+  for (const category of data) {
+    const egg = category.eggs?.find(e => e.name === eggName);
+    if (egg) return egg;
+    for (const subCategory of category.categories || []) {
+      const subEgg = subCategory.eggs.find(e => e.name === eggName);
+      if (subEgg) return subEgg;
+    }
+  }
+  return undefined;
+}
+
+const findExistingPet = (petName: string, data: Category[]): Pet | undefined => {
+  for (const category of data) {
+    for (const egg of category.eggs || []) {
+      const pet = egg.pets.find(p => p.name === petName);
+      if (pet) return pet;
+    }
+    for (const subCategory of category.categories || []) {
+      for (const egg of subCategory.eggs || []) {
+        const pet = egg.pets.find(p => p.name === petName);
+        if (pet) return pet;
       }
     }
   }
-  return false;
+  return undefined;
 }
 
 const saveJSON = (data: any, filename: string) => {
@@ -445,12 +423,49 @@ const saveJSON = (data: any, filename: string) => {
   document.body.removeChild(a);
 }
 
-export interface WikiToolsProps {
-    data: Category[];
+// ────────────────────────────────────────────────────────────
+
+const capitalizeFirstLetter = (str: string): string => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-// ────────────────────────────────────────────────────────────
-// Export the data as a Lua *lookup* table keyed by pet name
+export function exportEggsToLua(data: Category[]): string {
+  let lua = '';
+  for (const cat of data) {
+    lua += `\n-- ${cat.name}\n`;
+    for (const egg of cat.eggs || []) {
+      lua += exportEggToLua(egg);
+    }
+    for (const subCat of cat.categories || []) {
+      lua += `\n-- ${subCat.name}\n`;
+      for (const egg of subCat.eggs || []) {
+        lua += exportEggToLua(egg);
+      }
+    }
+  }
+  return lua;
+}
+
+export function exportEggToLua(egg: Egg): string {
+  if (!egg.name.includes("Egg"))
+    return '';
+  //${egg.pets.map((pet) => `"${pet.name}"`).join(', ')}
+  let lua = '';
+  lua += `  ["${egg.name}"] = {\n`;
+  lua += `    Name = "${egg.name}",\n`;
+  lua += `    Pets = { ${egg.pets.map((pet) => `"${pet.name}"`).join(', ')} },\n`;
+  egg.hatchCost             && (lua += `    HatchCost = ${egg.hatchCost},\n`);
+  egg.hatchCurrency         && (lua += `    HatchCurrency = "${capitalizeFirstLetter(egg.hatchCurrency)}",\n`);
+  egg.limited               && (lua += `    Limited = ${egg.limited ? '"yes"' : '"no"'},\n`);
+  egg.limited               && (lua += `    Available = ${egg.available ? '"yes"' : '"no"'},\n`);
+  egg.luckIgnored           && (lua += `    LuckIgnored = ${egg.luckIgnored ? '"yes"' : '"no"'},\n`);
+  egg.canSpawnAsRift        && (lua += `    CanSpawnAsRift = ${egg.canSpawnAsRift ? '"yes"' : '"no"'},\n`);
+  !egg.secretBountyExcluded && egg.canSpawnAsRift && (lua += `    CanHaveSecretBounty = ${!egg.secretBountyExcluded ? '"yes"' : '"no"'},\n`);
+  egg.infinityEgg           && (lua += `    InfinityEgg = "${egg.infinityEgg}",\n`);
+  lua += `  },\n`;
+  return lua;
+}
+
 export function exportPetsToLua(data: Category[]): string {
   let lua = '';
   for (const cat of data) {
@@ -474,61 +489,33 @@ export function exportPetsToLua(data: Category[]): string {
     }
   }
 
-  // Serialize as Lua and prepend `return `
   return lua;
 }
 
 const exportPetToLua = (pet: Pet): string => {
   let lua = "";
   lua += `  ["${pet.name}"] = {\n`;
-  lua += `    ["Rarity"] = "${pet.rarity}",\n`;
-  lua += `    ["Chance"] = ${pet.chance},\n`;
-  lua += `    ["Stats"] = {\n`;
-  lua += `      ["Bubbles"] = ${pet.bubbles},\n`;
-  lua += `      ["${pet.currencyVariant}"] = ${pet.currency},\n`;
-  pet.gems > 0 && (lua += `      ["Gems"] = ${pet.gems},\n`);
-  lua += `    },\n`;
-  lua += `    ["Mythic"] = ${pet.hasMythic ? '"yes"' : '"no"'},\n`;
-  pet.tags?.length > 0 && (lua += `    ["Tag"] = "${pet.tags.join(', ')}",\n`);
-  pet.limited && (lua += `    ["Limited"] = ${pet.limited && pet.obtainedFrom === "Robux Shop" ? '"exclusive"' : '"yes"'},\n`);
-  pet.limited && (lua += `    ["Available"] = ${pet.available ? '"yes"' : '"no"'},\n`);
-  lua += `    ["Source"] = "${pet.obtainedFrom}",\n`;
+  lua += `    Name = "${pet.name}",\n`;
+  lua += `    Rarity = "${capitalizeFirstLetter(pet.rarity)}",\n`;
+  lua += `    Chance = ${pet.chance},\n`;
+  lua += `    Bubbles = ${pet.bubbles},\n`;
+  lua += `    Currency = ${pet.currency},\n`;
+  lua += `    CurrencyType = "${capitalizeFirstLetter(pet.currencyVariant)}",\n`;
+  lua += `    Gems = ${pet.gems},\n`;
+  lua += `    Mythic = ${pet.hasMythic ? '"yes"' : '"no"'},\n`;
+  lua += `    Hatchable = ${pet.hatchable ? '"yes"' : '"no"'},\n`;
+  lua += `    Source = "${pet.obtainedFrom}",\n`;
+  pet.tags?.length > 0 && (lua += `    Tag = "${pet.tags.join(', ')}",\n`);
+  pet.limited && (lua += `    Limited = ${pet.limited && pet.obtainedFrom === "Robux Shop" ? '"exclusive"' : '"yes"'},\n`);
+  pet.limited && (lua += `    Available = ${pet.available ? '"yes"' : '"no"'},\n`);
   lua += '  }'
   return lua;
 }
 
-export function exportSourcesToLua(data: Category[]): string {
-  let lua = '';
-  for (const cat of data) {
-    lua += `\n-- ${cat.name}\n`;
-    for (const egg of cat.eggs || []) {
-      lua += exportEggToLua(egg);
-    }
-    for (const subCat of cat.categories || []) {
-      lua += `\n-- ${subCat.name}\n`;
-      for (const egg of subCat.eggs || []) {
-        lua += exportEggToLua(egg);
-      }
-    }
-  }
-  return lua;
-}
+// ────────────────────────────────────────────────────────────
 
-export function exportEggToLua(egg: Egg): string {
-  //${egg.pets.map((pet) => `"${pet.name}"`).join(', ')}
-  let lua = '';
-  lua += `  ["${egg.name}"] = {\n`;
-  lua += `    ["Pets"] = [ ${egg.pets.map((pet) => `"${pet.name}"`).join(', ')} ],\n`;
-  egg.luckIgnored           && (lua += `    ["LuckIgnored"] = ${egg.luckIgnored ? '"yes"' : '"no"'},\n`);
-  egg.infinityEgg           && (lua += `    ["InfinityEgg"] = "${egg.infinityEgg}",\n`);
-  egg.index                 && (lua += `    ["Index"] = "${egg.index}",\n`);
-  egg.limited               && (lua += `    ["Limited"] = ${egg.limited ? '"yes"' : '"no"'},\n`);
-  egg.limited               && (lua += `    ["Available"] = ${egg.available ? '"yes"' : '"no"'},\n`);
-  egg.canSpawnAsRift        && (lua += `    ["CanSpawnAsRift"] = ${egg.canSpawnAsRift ? '"yes"' : '"no"'},\n`);
-  !egg.secretBountyExcluded 
-      && egg.canSpawnAsRift && (lua += `    ["CanHaveSecretBounty"] = ${!egg.secretBountyExcluded ? '"yes"' : '"no"'},\n`);
-  lua += `  },\n`;
-  return lua;
+export interface WikiToolsProps {
+    data: Category[];
 }
 
 export function WikiTools(props: WikiToolsProps): JSX.Element {
@@ -549,12 +536,12 @@ export function WikiTools(props: WikiToolsProps): JSX.Element {
 
   const handlePetsLuaExport = () => {
     const lua = exportPetsToLua(props.data);
-    exportLuaToFile(lua, 'pets');
+    exportLuaToFile(lua, 'Pet_Data');
   }
 
   const handleEggsLuaExport = () => {
-    const lua = exportSourcesToLua(props.data);
-    exportLuaToFile(lua, 'eggs');
+    const lua = exportEggsToLua(props.data);
+    exportLuaToFile(lua, 'Egg_Data');
   }
 
   const handlePetsJsonExport = () => {
@@ -600,34 +587,29 @@ export function WikiTools(props: WikiToolsProps): JSX.Element {
         </code>
       </pre>
       <Typography variant="h4" sx={{ mb: 2 }}>Data Export</Typography>
-      <Typography variant="h5" sx={{ m: 1 }}>Pets</Typography>
       <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
         <Button
           variant="contained"
           onClick={handlePetsLuaExport}
-          sx={{ mt: 2, mr: 2 }}
-          style={{ maxWidth: '200px' }}
+          sx={{ mr: 2, maxWidth: '300px' }}
         >
-          Export LUA
+          Export Pet_Data.lua
         </Button>
         <Button
           variant="contained"
           onClick={() => handlePetsJsonExport}
-          sx={{ mt: 2 }}
-          style={{ maxWidth: '200px' }}
+          sx={{ mr: 2, maxWidth: '300px' }}
         >
-          Export JSON
+          Export pets.JSON
         </Button>
-      </Box>
-      <Typography variant="h5" sx={{ m: 1 }}>Eggs</Typography>
       <Button
         variant="contained"
         onClick={handleEggsLuaExport}
-        sx={{ mt: 2 }}
-        style={{ maxWidth: '200px' }}
+        sx={{ mr: 2, maxWidth: '300px' }}
       >
-        Export LUA
+        Export Egg_Data.LUA
       </Button>
+      </Box>
     </Container>
   );
 }

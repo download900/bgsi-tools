@@ -3,10 +3,10 @@ import petJson from "../assets/pets.json";
 
 // ~~~~~~~~~~ Types ~~~~~~~~~~
 
-export type Rarity = "Common" | "Unique" | "Rare" | "Epic" | "Legendary" | "Secret";
+export type Rarity = "common" | "unique" | "rare" | "epic" | "legendary" | "secret";
 export type PetVariant = "Normal" | "Shiny" | "Mythic" | "Shiny Mythic";
 export const petVariants: PetVariant[] = ["Normal", "Shiny", "Mythic", "Shiny Mythic"];
-export type CurrencyVariant = "Coins" | "Tickets" | "Seashells";
+export type CurrencyVariant = "coins" | "tickets" | "seashells";
 export type PetStat = "bubbles" | "currency" | "gems";
 export type Enchant = "bubbler" | "looter";
 
@@ -21,6 +21,8 @@ export interface Egg {
   name: string; 
   image: string; 
   pets: Pet[], 
+  hatchCost: number;
+  hatchCurrency: CurrencyVariant;
   luckIgnored: boolean; 
   infinityEgg: string;
   index: string;
@@ -28,6 +30,8 @@ export interface Egg {
   available: boolean;
   canSpawnAsRift: boolean;
   secretBountyExcluded: boolean;
+  // dateAdded: string;
+  // dateRemoved: string;
 }
 
 export interface Pet { 
@@ -42,9 +46,12 @@ export interface Pet {
   tags: string[];
   limited: boolean;
   available: boolean;
+  hatchable: boolean;
   obtainedFrom: string;
   obtainedFromImage: string;
   image: string[]; 
+  // dateAdded: string;
+  // dateRemoved: string;
 }
 
 // for the pet stat list - to store an individual Normal/Shiny/Mythic variant of a pet.
@@ -58,7 +65,6 @@ export interface PetInstance {
   gems: number; 
   variant: PetVariant; 
   image: string; 
-  //egg: Egg; 
   obtainedFrom: string;
   obtainedFromImage: string;
 }
@@ -75,9 +81,9 @@ export const variantData: { [key in PetVariant]: { baseScale: number, levelScale
 };
 
 export const currencyImages: { [key in CurrencyVariant]: string } = {
-  Coins: "https://static.wikia.nocookie.net/bgs-infinity/images/f/f0/Coins.png",
-  Tickets: "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Tickets.png",
-  Seashells: "https://static.wikia.nocookie.net/bgs-infinity/images/4/49/Seashells.png"
+  coins: "https://static.wikia.nocookie.net/bgs-infinity/images/f/f0/Coins.png",
+  tickets: "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Tickets.png",
+  seashells: "https://static.wikia.nocookie.net/bgs-infinity/images/4/49/Seashells.png"
 };
 
 // ~~~~~~~~~~ Functions ~~~~~~~~~~

@@ -28,7 +28,7 @@ import {
   PetVariant,
   petVariants,
   currencyImages
-} from "../util/PetUtil";
+} from "../util/DataUtil";
 import {
   getRarityStyle,
   getPercentStyle,
@@ -106,6 +106,7 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
     for (const egg of eggs) {
       for (const pet of egg.pets) {
         petVariants.forEach((v) => {
+          if (!pet.hasMythic && v.includes("Mythic")) return;
           totals[v]++;
           if (ownedPets[`${pet.name}__${v}`]) owned[v]++;
         });

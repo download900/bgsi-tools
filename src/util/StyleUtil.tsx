@@ -1,14 +1,12 @@
-import { PetVariant, Rarity } from "./PetUtil";
+import { PetVariant, Rarity } from "./DataUtil";
 
 export const rarityColorMap: Record<Rarity, string> = {
-  Common: "#ffffff",
-  Unique: "#fec394",
-  Rare: "#ff6161",
-  Epic: "#d166fd",
-  Legendary: "rainbow",
-  //'Legendary Tier II': "rainbow",
-  //'Legendary Tier III': "rainbow",
-  Secret: "#ff9900"
+  common: "#ffffff",
+  unique: "#fec394",
+  rare: "#ff6161",
+  epic: "#d166fd",
+  legendary: "rainbow",
+  secret: "#ff9900"
 };
 
 export const variantStyles: { [key in PetVariant]: React.CSSProperties } = {
@@ -24,14 +22,14 @@ export const imgIcon = (src: string, size: number = 16, ml: number = 0, mr: numb
 
 export const getRarityStyle = (rarity: Rarity): React.CSSProperties => {
   const color = rarityColorMap[rarity];
-  if (rarity === "Legendary") {
+  if (rarity === "legendary") {
     return {
       background: "linear-gradient(90deg, #ff9999, #ffd699, #fffd99, #99ffb4, #99ffff, #99b3ff, #c599ff)",
       WebkitBackgroundClip: "text" as const,
       color: "transparent", fontWeight: "bold"
     };
   }
-  if (rarity === "Secret") {
+  if (rarity === "secret") {
     return { color, fontWeight: "bold" };
   }
   return { color };

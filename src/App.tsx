@@ -12,7 +12,7 @@ import headerImage from "./assets/favicon.png";
 import { PetList } from "./pages/PetStats";
 import { OddsCalculator } from "./pages/OddsCalculator";
 import { CompletionTracker } from "./pages/PetIndex";
-import { Category, petData } from "./util/PetUtil";
+import { Category, petData } from "./util/DataUtil";
 import { SiGithub } from "react-icons/si";
 import { WikiTools } from "./pages/WikiTools";
 

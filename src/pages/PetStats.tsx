@@ -29,7 +29,7 @@ import {
   getPetChance,
   getPetStat,
   Egg
-} from "../util/PetUtil";
+} from "../util/DataUtil";
 import {
   getRarityStyle,
   imgIcon,
@@ -43,7 +43,7 @@ type OwnedPets = Record<PetKey, boolean>;
 const SETTINGS_KEY = "petTrackerSettings";
 
 type ObtainedFilter = "obtained" | "unobtained" | "all";
-type RarityFilter = "Legendary" | "Secret" | "all";
+type RarityFilter = "legendary" | "secret" | "all";
 type SortKey = "name" | "chance" | "bubbles" | "coins" | "gems";
 
 interface PetListProps {
@@ -180,8 +180,9 @@ export function PetList(props: PetListProps) {
   const buildPetList = () => {
     const addPetsFromEgg = (egg: Egg) => {
     egg.pets.forEach((pet) => {
-      if (pet.rarity !== 'Legendary' && pet.rarity !== 'Secret') return;
+      if (pet.rarity !== 'legendary' && pet.rarity !== 'secret') return;
       petVariants.forEach((variant) => {
+        if (variant.includes("Mythic") && !pet.hasMythic) return; // skip Mythic if pet doesn't have it
         allPets.push({
           name: pet.name,
           chance: getPetChance(pet, variant),
@@ -289,8 +290,8 @@ export function PetList(props: PetListProps) {
               sx={{ minWidth: 120 }}
             >
               <MenuItem value="all">All</MenuItem>
-              <MenuItem value="Legendary">Legendary</MenuItem>
-              <MenuItem value="Secret">Secret</MenuItem>
+              <MenuItem value="legendary">Legendary</MenuItem>
+              <MenuItem value="secret">Secret</MenuItem>
             </Select>
           </Box>
           <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", p: 1 }}>
