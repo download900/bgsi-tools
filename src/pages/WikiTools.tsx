@@ -232,6 +232,9 @@ async function parsePet(petName: string): Promise<Pet> {
   pet.obtainedFromImage = eggImage || '';
   const eggName = obt.first().text().trim();
   pet.obtainedFrom = eggName || 'Unknown';
+  if (pet.obtainedFrom === 'Quest') {
+    pet.obtainedFrom = 'Quests';
+  }
 
   // Get variants and their images
   const variantDataSourceMap: [string, PetVariant][] = [
@@ -241,13 +244,14 @@ async function parsePet(petName: string): Promise<Pet> {
     ['shiny-mythic-image', 'Shiny Mythic'],
   ];
 
-  const petVariants: [string, string][] = []; // PetVariant, image url
-
   variantDataSourceMap.forEach(([ds, variant]) => {
     const img = $(`figure.pi-item.pi-image[data-source="${ds}"] a.image-thumbnail`);
     if (img.length > 0) {
       const imgSrc = img.attr('href')?.split('/revision')[0];
-      if (imgSrc) petVariants.push([variant, imgSrc]);
+      if (imgSrc) {
+        if (!pet.image) pet.image = [];
+        pet.image.push(imgSrc);
+      }
     }
   });
 
@@ -364,6 +368,7 @@ const processEgg = (egg: Egg, existingData: Category[], newPets: Egg[]) => {
       existingPet.hatchable = pet.hatchable;
       existingPet.obtainedFrom = pet.obtainedFrom;
       existingPet.obtainedFromImage = pet.obtainedFromImage;
+      existingPet.image = pet.image;
 
       // remove the pet from the egg's pets array if it already exists
       egg.pets = egg.pets.filter(p => p.name !== pet.name);
@@ -378,9 +383,13 @@ const processEgg = (egg: Egg, existingData: Category[], newPets: Egg[]) => {
     existingEgg.hatchCurrency = egg.hatchCurrency;
     existingEgg.limited = egg.limited;
     existingEgg.available = egg.available;
+
+    existingEgg.pets.push(...egg.pets); // Add new pets to existing egg
+    existingEgg.pets.sort((a, b) => { return b.chance - a.chance; });
   }
   else if (egg.pets?.length > 0) {
     newPets.push(egg);
+    egg.pets.sort((a, b) => { return b.chance - a.chance; });
   } 
 }
 

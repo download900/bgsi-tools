@@ -4014,6 +4014,444 @@
             "hatchCost": 50000,
             "hatchCurrency": "seashells",
             "available": true
+          },
+          {
+            "name": "Fossil Egg",
+            "pets": [
+              {
+                "name": "Researcher Doggy",
+                "rarity": "common",
+                "chance": 64,
+                "bubbles": 25,
+                "gems": 0,
+                "currency": 6,
+                "currencyVariant": "seashells",
+                "hasMythic": false,
+                "limited": true,
+                "available": true,
+                "hatchable": true,
+                "tags": [],
+                "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Fossil_Egg.png",
+                "obtainedFrom": "Fossil Egg",
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/d/db/Researcher_Doggy.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/3/3f/Shiny_Researcher_Doggy.png"
+                ]
+              },
+              {
+                "name": "Monkey",
+                "rarity": "rare",
+                "chance": 30,
+                "bubbles": 40,
+                "gems": 2.5,
+                "currency": 8,
+                "currencyVariant": "seashells",
+                "hasMythic": false,
+                "limited": true,
+                "available": true,
+                "hatchable": true,
+                "tags": [],
+                "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Fossil_Egg.png",
+                "obtainedFrom": "Fossil Egg",
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/27/Monkey.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+                ]
+              },
+              {
+                "name": "Fossil Dragon",
+                "rarity": "epic",
+                "chance": 3,
+                "bubbles": 100,
+                "gems": 0,
+                "currency": 15,
+                "currencyVariant": "seashells",
+                "hasMythic": false,
+                "limited": true,
+                "available": true,
+                "hatchable": true,
+                "tags": [],
+                "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Fossil_Egg.png",
+                "obtainedFrom": "Fossil Egg",
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/f/f0/Fossil_Dragon.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/9/90/Shiny_Fossil_Dragon.png"
+                ]
+              },
+              {
+                "name": "Fossilus",
+                "rarity": "legendary",
+                "chance": 0.02,
+                "bubbles": 800,
+                "gems": 18,
+                "currency": 75,
+                "currencyVariant": "seashells",
+                "hasMythic": true,
+                "limited": true,
+                "available": true,
+                "hatchable": true,
+                "tags": [],
+                "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Fossil_Egg.png",
+                "obtainedFrom": "Fossil Egg",
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/b/b6/Fossilus.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/4/4f/Shiny_Fossilus.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/5/53/Mythic_Fossilus.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/f/f0/Shiny_Mythic_Fossilus.png"
+                ]
+              },
+              {
+                "name": "Bug Amber",
+                "rarity": "legendary",
+                "chance": 0.001,
+                "bubbles": 2000,
+                "gems": 30,
+                "currency": 225,
+                "currencyVariant": "seashells",
+                "hasMythic": true,
+                "limited": true,
+                "available": true,
+                "hatchable": true,
+                "tags": [],
+                "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Fossil_Egg.png",
+                "obtainedFrom": "Fossil Egg",
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/b/be/Bug_Amber.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/d/da/Shiny_Bug_Amber.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/d/df/Mythic_Bug_Amber.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/3/37/Shiny_Mythic_Bug_Amber.png"
+                ]
+              },
+              {
+                "name": "Fossil Ghost",
+                "rarity": "legendary",
+                "chance": 0.00005,
+                "bubbles": 2750,
+                "gems": 45,
+                "currency": 850,
+                "currencyVariant": "seashells",
+                "hasMythic": true,
+                "limited": true,
+                "available": true,
+                "hatchable": true,
+                "tags": [],
+                "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Fossil_Egg.png",
+                "obtainedFrom": "Fossil Egg",
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Fossil_Ghost.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/f/f0/Shiny_Fossil_Ghost.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/9/9a/Mythic_Fossil_Ghost.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/9/97/Shiny_Mythic_Fossil_Ghost.png"
+                ]
+              },
+              {
+                "name": "Kraken",
+                "rarity": "secret",
+                "chance": 0.000001,
+                "bubbles": 4500,
+                "gems": 95,
+                "currency": 2250,
+                "currencyVariant": "seashells",
+                "hasMythic": true,
+                "limited": true,
+                "available": true,
+                "hatchable": true,
+                "tags": [],
+                "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Fossil_Egg.png",
+                "obtainedFrom": "Fossil Egg",
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/d/d3/Kraken.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/b/b8/Shiny_Kraken.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/a/a1/Mythic_Kraken.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/a/ac/Shiny_Mythic_Kraken.png"
+                ]
+              },
+              {
+                "name": "Air Basilisk",
+                "rarity": "secret",
+                "chance": 1e-7,
+                "bubbles": 4750,
+                "gems": 100,
+                "currency": 2500,
+                "currencyVariant": "seashells",
+                "hasMythic": true,
+                "limited": true,
+                "available": true,
+                "hatchable": true,
+                "tags": [],
+                "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Fossil_Egg.png",
+                "obtainedFrom": "Fossil Egg",
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/0/07/Air_Basilisk.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/e/e1/Shiny_Air_Basilisk.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/1/1c/Mythic_Air_Basilisk.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/b/bd/Shiny_Mythic_Air_Basilisk.png"
+                ]
+              },
+              {
+                "name": "Electric Basilisk",
+                "rarity": "secret",
+                "chance": 1e-7,
+                "bubbles": 4750,
+                "gems": 100,
+                "currency": 2500,
+                "currencyVariant": "seashells",
+                "hasMythic": true,
+                "limited": true,
+                "available": true,
+                "hatchable": true,
+                "tags": [],
+                "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Fossil_Egg.png",
+                "obtainedFrom": "Fossil Egg",
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/a/a3/Electric_Basilisk.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/7/7c/Shiny_Electric_Basilisk.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/3/34/Mythic_Electric_Basilisk.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/a/ad/Shiny_Mythic_Electric_Basilisk.png"
+                ]
+              },
+              {
+                "name": "Fire Basilisk",
+                "rarity": "secret",
+                "chance": 1e-7,
+                "bubbles": 4750,
+                "gems": 100,
+                "currency": 2500,
+                "currencyVariant": "seashells",
+                "hasMythic": true,
+                "limited": true,
+                "available": true,
+                "hatchable": true,
+                "tags": [],
+                "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Fossil_Egg.png",
+                "obtainedFrom": "Fossil Egg",
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/a/a5/Fire_Basilisk.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/21/Shiny_Fire_Basilisk.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/3/32/Mythic_Fire_Basilisk.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/5/5a/Shiny_Mythic_Fire_Basilisk.png"
+                ]
+              },
+              {
+                "name": "Ice Basilisk",
+                "rarity": "secret",
+                "chance": 1e-7,
+                "bubbles": 4750,
+                "gems": 100,
+                "currency": 2500,
+                "currencyVariant": "seashells",
+                "hasMythic": true,
+                "limited": true,
+                "available": true,
+                "hatchable": true,
+                "tags": [],
+                "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Fossil_Egg.png",
+                "obtainedFrom": "Fossil Egg",
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/1/17/Ice_Basilisk.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/6/69/Shiny_Ice_Basilisk.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/8/88/Mythic_Ice_Basilisk.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/8/81/Shiny_Mythic_Ice_Basilisk.png"
+                ]
+              }
+            ],
+            "luckIgnored": false,
+            "infinityEgg": "",
+            "index": "",
+            "canSpawnAsRift": false,
+            "secretBountyExcluded": true,
+            "limited": true,
+            "available": true,
+            "hatchCurrency": "seashells",
+            "hatchCost": 10000000,
+            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Fossil_Egg.png"
+          },
+          {
+            "name": "Pirate Egg",
+            "pets": [
+              {
+                "name": "Pirate Kitty",
+                "rarity": "common",
+                "chance": 90,
+                "bubbles": 25,
+                "gems": 0,
+                "currency": 6,
+                "currencyVariant": "seashells",
+                "hasMythic": false,
+                "limited": true,
+                "available": true,
+                "hatchable": true,
+                "tags": [],
+                "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d1/Pirate_Egg.png",
+                "obtainedFrom": "Pirate Egg",
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/0/09/Pirate_Kitty.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/9/9c/Shiny_Pirate_Kitty.png"
+                ]
+              },
+              {
+                "name": "Strawhat Dragon",
+                "rarity": "epic",
+                "chance": 9.9,
+                "bubbles": 100,
+                "gems": 0,
+                "currency": 15,
+                "currencyVariant": "seashells",
+                "hasMythic": false,
+                "limited": true,
+                "available": true,
+                "hatchable": true,
+                "tags": [],
+                "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d1/Pirate_Egg.png",
+                "obtainedFrom": "Pirate Egg",
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/e/e5/Strawhat_Dragon.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/a/af/Shiny_Strawhat_Dragon.png"
+                ]
+              },
+              {
+                "name": "Captain Monkey",
+                "rarity": "legendary",
+                "chance": 0.1,
+                "bubbles": 1500,
+                "gems": 35,
+                "currency": 300,
+                "currencyVariant": "seashells",
+                "hasMythic": true,
+                "limited": true,
+                "available": true,
+                "hatchable": true,
+                "tags": [],
+                "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d1/Pirate_Egg.png",
+                "obtainedFrom": "Pirate Egg",
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/9/9e/Captain_Monkey.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/f/f2/Shiny_Captain_Monkey.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/b/b5/Mythic_Captain_Monkey.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/b/b3/Shiny_Mythic_Captain_Monkey.png"
+                ]
+              },
+              {
+                "name": "Chest Mimic",
+                "rarity": "legendary",
+                "chance": 0.01,
+                "bubbles": 2750,
+                "gems": 45,
+                "currency": 850,
+                "currencyVariant": "seashells",
+                "hasMythic": true,
+                "limited": true,
+                "available": true,
+                "hatchable": true,
+                "tags": [],
+                "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d1/Pirate_Egg.png",
+                "obtainedFrom": "Pirate Egg",
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/5/56/Chest_Mimic.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/c/cd/Shiny_Chest_Mimic.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/d/d0/Mythic_Chest_Mimic.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/8/8b/Shiny_Mythic_Chest_Mimic.png"
+                ]
+              },
+              {
+                "name": "Captains Curse",
+                "rarity": "legendary",
+                "chance": 0.0005,
+                "bubbles": 4350,
+                "gems": 92,
+                "currency": 2100,
+                "currencyVariant": "seashells",
+                "hasMythic": true,
+                "limited": true,
+                "available": true,
+                "hatchable": true,
+                "tags": [],
+                "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d1/Pirate_Egg.png",
+                "obtainedFrom": "Pirate Egg",
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/6/6d/Captains_Curse.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/e/ec/Shiny_Captains_Curse.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/d/d2/Mythic_Captains_Curse.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/c/cc/Shiny_Mythic_Captains_Curse.png"
+                ]
+              }
+            ],
+            "luckIgnored": true,
+            "infinityEgg": "",
+            "index": "",
+            "canSpawnAsRift": false,
+            "secretBountyExcluded": true,
+            "limited": true,
+            "available": true,
+            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d1/Pirate_Egg.png"
+          },
+          {
+            "name": "Ancient Chest",
+            "pets": [
+              {
+                "name": "Infernal",
+                "rarity": "legendary",
+                "chance": 0.002,
+                "bubbles": 4600,
+                "gems": 97,
+                "currency": 2300,
+                "currencyVariant": "seashells",
+                "hasMythic": true,
+                "limited": true,
+                "available": true,
+                "hatchable": true,
+                "tags": [],
+                "obtainedFromImage": "",
+                "obtainedFrom": "Ancient Chest",
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/7/77/Infernal.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+                ]
+              }
+            ],
+            "luckIgnored": false,
+            "infinityEgg": "",
+            "index": "",
+            "canSpawnAsRift": false,
+            "secretBountyExcluded": false,
+            "image": "",
+            "limited": true,
+            "available": true
+          },
+          {
+            "name": "Summer Login Rewards",
+            "pets": [
+              {
+                "name": "Doggy Pile",
+                "rarity": "legendary",
+                "chance": 1,
+                "bubbles": 2500,
+                "gems": 35,
+                "currency": 700,
+                "currencyVariant": "seashells",
+                "hasMythic": false,
+                "limited": true,
+                "available": true,
+                "hatchable": false,
+                "tags": [],
+                "obtainedFromImage": "",
+                "obtainedFrom": "Summer Login Rewards",
+                "image": [
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/7/72/Doggy_Pile.png",
+                  "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+                ]
+              }
+            ],
+            "luckIgnored": true,
+            "infinityEgg": "",
+            "index": "",
+            "canSpawnAsRift": false,
+            "secretBountyExcluded": true,
+            "image": "",
+            "limited": true,
+            "available": true
           }
         ]
       },
@@ -5480,6 +5918,58 @@
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
     "eggs": [
       {
+        "name": "Wave 7",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
+        "luckIgnored": true,
+        "available": true,
+        "pets": [
+          {
+            "name": "Carrot Pufferfish",
+            "rarity": "legendary",
+            "chance": 1,
+            "bubbles": 1100,
+            "gems": 22,
+            "currency": 100,
+            "currencyVariant": "seashells",
+            "hasMythic": true,
+            "limited": true,
+            "available": true,
+            "hatchable": false,
+            "tags": [ "Exclusive Pet" ],
+            "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
+            "obtainedFrom": "Robux Shop",
+            "image": [
+              "https://static.wikia.nocookie.net/bgs-infinity/images/5/56/Carrot_Pufferfish.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/e/e9/Shiny_Carrot_Pufferfish.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/6/64/Mythic_Carrot_Pufferfish.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/7/75/Shiny_Mythic_Carrot_Pufferfish.png"
+            ]
+          },
+          {
+            "name": "Crystal Teddy",
+            "rarity": "legendary",
+            "chance": 1,
+            "bubbles": 1500,
+            "gems": 27,
+            "currency": 150,
+            "currencyVariant": "seashells",
+            "hasMythic": true,
+            "limited": true,
+            "available": true,
+            "hatchable": true,
+            "tags": [ "Exclusive Pet" ],
+            "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
+            "obtainedFrom": "Robux Shop",
+            "image": [
+              "https://static.wikia.nocookie.net/bgs-infinity/images/e/e6/Crystal_Teddy.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/c/c4/Shiny_Crystal_Teddy.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/c/c0/Mythic_Crystal_Teddy.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/2/22/Shiny_Mythic_Crystal_Teddy.png"
+            ]
+          }
+        ]
+      },
+      {
         "name": "Wave 6",
         "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
         "luckIgnored": true,
@@ -5498,12 +5988,12 @@
             "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
             "image": [
               "https://static.wikia.nocookie.net/bgs-infinity/images/d/dd/Rigby.png",
-              "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+              "https://static.wikia.nocookie.net/bgs-infinity/images/a/a2/Shiny_Rigby.png",
               "https://static.wikia.nocookie.net/bgs-infinity/images/1/17/Mythic_Rigby.png",
               "https://static.wikia.nocookie.net/bgs-infinity/images/9/9d/Shiny_Mythic_Rigby.png"
             ],
             "hasMythic": true,
-            "tags": [],
+            "tags": [ "Exclusive Pet" ],
             "chance": 1,
             "hatchable": false
           },
@@ -5525,7 +6015,7 @@
               "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
             ],
             "hasMythic": true,
-            "tags": [],
+            "tags": [ "Exclusive Pet" ],
             "chance": 1,
             "hatchable": false
           }

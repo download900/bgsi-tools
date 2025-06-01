@@ -30,6 +30,7 @@ interface CalculatorSettings {
     friendBoost: number;
     boardGameLuckBoost: boolean;
     doubleLuckEvent: boolean;
+    fastHatchEvent: boolean;
     // speed buffs
     speedPotion: SpeedPotion;
     fastHatchGamepass: boolean;
@@ -90,6 +91,7 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
         fastHatchMastery: false,
         eggsPerHatch: 1,
         doubleLuckEvent: false,
+        fastHatchEvent: false,
         secretsBountyPet: "",
         secretsBountyEgg: "",
     });
@@ -322,6 +324,7 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
         if (calculatorSettings.fastHatchMastery) speed += 10;
         if (calculatorSettings.infinityElixir) speed *= 2;
         if (calculatorSettings.fastHatchGamepass) speed += 50;
+        if (calculatorSettings.fastHatchEvent) speed += 30;
         // base hatches per second is 1 egg per 4.5 seconds. multipy that by speed, then by eggsPerHatch
         const hatchesPerSecond = (1 / 4.5) * (speed / 100) * calculatorSettings.eggsPerHatch;
 
@@ -724,6 +727,16 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
                                         value={calculatorSettings.eggsPerHatch}
                                         onChange={(e) => setCalculatorSettings({ ...calculatorSettings, eggsPerHatch: e.target.value ? Number(e.target.value) : 1 })}
                                         sx={{ flexGrow: 1, mr: 1, ml: 7.7 }}
+                                    />
+                                </Box>
+
+                                <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
+                                    <Typography variant="subtitle1" sx={{width: 250}}>
+                                        🚀 Fast Hatch Event:
+                                    </Typography>
+                                    <Checkbox
+                                        checked={calculatorSettings.fastHatchEvent}
+                                        onChange={(e) => setCalculatorSettings({ ...calculatorSettings, fastHatchEvent: e.target.checked })}
                                     />
                                 </Box>
                                 </>
