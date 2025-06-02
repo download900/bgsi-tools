@@ -3,11 +3,12 @@ import { JSX, SetStateAction, useEffect, useRef, useState } from "react";
 import * as cheerio from 'cheerio';
 import { Box, Button, Container, FormControl, Input, Typography } from "@mui/material";
 
-import { Pet, Rarity, PetVariant, CurrencyVariant, Egg, Category } from "../util/DataUtil";
+import { Pet, Rarity, PetVariant, CurrencyVariant, Egg, Category, PetData } from "../util/DataUtil";
 import Decimal from "decimal.js";
+import { data, val } from "cheerio/dist/commonjs/api/attributes";
 
 // (1) Orchestrator
-export async function scrapeWiki(data: Category[], debug: (msg: string) => void): Promise<void> {
+export async function scrapeWiki(data: PetData, debug: (msg: string) => void): Promise<void> {
   debug('Fetching pets...');
   const petList = await fetchCategoryPages('Pets');
   debug(`Found ${petList.length} pets to scrape.`);
@@ -45,8 +46,8 @@ async function parseEgg(eggname: string): Promise<Egg> {
   const egg: Egg = {
     name: eggname,
     pets: [],
-    // dateAdded: '',
-    // dateRemoved: '',
+    dateAdded: '',
+    dateRemoved: '',
     luckIgnored: false,
     infinityEgg: '',
     index: '',
@@ -54,7 +55,7 @@ async function parseEgg(eggname: string): Promise<Egg> {
     secretBountyExcluded: false,
   } as any as Egg;
 
-  const wikitext = (await fetchWikitext(eggname)).toLowerCase();
+  const wikitext = await fetchWikitext(eggname);
 
   if (!wikitext) {
     console.error(`No wikitext found for egg: ${eggname}`);
@@ -62,13 +63,13 @@ async function parseEgg(eggname: string): Promise<Egg> {
   }
 
   // Find |limited= yes/no or | limited=yes/no
-  const limitedMatch = wikitext.match(/\|\s*limited\s*=\s*(yes|no|exclusive)/);
+  const limitedMatch = wikitext.toLowerCase().match(/\|\s*limited\s*=\s*(yes|no|exclusive)/);
   if (limitedMatch) {
     const t = limitedMatch[1].trim();
     egg.limited = t === 'yes' || t === 'exclusive';
   }
   // Find |available= yes/no
-  const availableMatch = wikitext.match(/\|\s*available\s*=\s*(yes|no)/);
+  const availableMatch = wikitext.toLowerCase().match(/\|\s*available\s*=\s*(yes|no)/);
   if (availableMatch) {
     egg.available = availableMatch[1].trim() === 'yes';
   }
@@ -76,25 +77,36 @@ async function parseEgg(eggname: string): Promise<Egg> {
     egg.available = true; // Default to true if not specified
   }
   // Find |currency= <>
-  const currencyMatch = wikitext.match(/\|\s*currency\s*=\s*(\w+)/);
+  const currencyMatch = wikitext.toLowerCase().match(/\|\s*currency\s*=\s*(\w+)/);
   if (currencyMatch) {
     egg.hatchCurrency = currencyMatch[1].trim().toLowerCase() as CurrencyVariant;
   }
   // Find |cost= <number>
-  const costMatch = wikitext.match(/\|\s*cost\s*=\s*([\d.,]+)/);
+  const costMatch = wikitext.toLowerCase().match(/\|\s*cost\s*=\s*([\d.,]+)/);
   if (costMatch) {
     egg.hatchCost = Number(costMatch[1].trim().replaceAll(',', ''));
+  }
+
+  // Find |world= <World>
+  const worldMatch = wikitext.match(/\|\s*world\s*=\s*([\w\s]+)/);
+  if (worldMatch) {
+    egg.world = worldMatch[1].trim();
+  }
+  // Find |zone= <Zone>
+  const zoneMatch = wikitext.match(/\|\s*zone\s*=\s*([\w\s]+)/);
+  if (zoneMatch) {
+    egg.zone = zoneMatch[1].trim();
   }
   
   // // Fetch HTML
   // const html = await fetchHTML(eggname);
   // const $ = cheerio.load(html);
 
-  // const updateRelease = $('td.pi-horizontal-group-item[data-source="update-release"] pi-data-value a');
+  // const updateRelease = $('td[data-source="update-release"]');
   // if (updateRelease.length > 0) {
   //   egg.dateAdded = convertDateToISO(updateRelease.text());
   // }
-  // const updateRemoved = $('td.pi-horizontal-group-item[data-source="update-removed"] pi-data-value a');
+  // const updateRemoved = $('td[data-source="update-removed"]');
   // if (updateRemoved.length > 0) {
   //   egg.dateRemoved = convertDateToISO(updateRemoved.text());
   // }
@@ -105,9 +117,14 @@ async function parseEgg(eggname: string): Promise<Egg> {
 // const convertDateToISO = (dateStr: string): string => {
 //   // match the date in parentheses
 //   const dateMatch = dateStr.match(/\(([^)]+)\)/);
-//   if (dateMatch) {
-//     // convert to YYYY-MM-DD format
-//     const dateParts = dateMatch[1].split(',')[0].trim().split(' ');
+//   if (dateMatch && dateMatch?.length > 0) {
+//     // convert April 11th, 2025 to ISO format YYYY-MM-DD
+//     const date = dateMatch[1].trim();
+//     const parts = date.split(' ');
+//     if (parts.length < 3) {
+//       return ''; // return empty string if date format is unexpected
+//     }
+    
 //     const monthMap: { [key: string]: string } = {
 //       'January':   '01',
 //       'February':  '02',
@@ -122,9 +139,10 @@ async function parseEgg(eggname: string): Promise<Egg> {
 //       'November':  '11',
 //       'December':  '12'
 //     };
-//     const month = monthMap[dateParts[0]];
-//     const day = dateParts[1].padStart(2, '0'); // pad with zero if single digit
-//     const year = dateParts[2];
+//     const month = monthMap[parts[0]]; // e.g. 'April' -> '04'
+//     const day = parts[1].replace(/[^0-9]/g, '').padStart(2, '0'); // e.g. '11th' -> '11'
+//     const year = parts[2]; // e.g. '2025'
+
 //     return `${year}-${month}-${day}`;
 //   }
 //   return ''; // return empty string if no date found
@@ -336,39 +354,39 @@ async function fetchHTML(petName: string): Promise<string> {
 
 // (5) This function processes the scraped data. First it updates our current data and saves that,
 //     then it saves the remaining new pets to a JSON file.
-const processEggs = (wikiData: Egg[], existingData: Category[]) => {
-  const newPets: Egg[] = [];
+const processEggs = (wikiData: Egg[], existingData: PetData) => {
+  const newData: PetData = {
+    categories: [],
+    categoryLookup: {},
+    eggs: [],
+    eggLookup: {},
+    pets: [],
+    petLookup: {}
+  };
   for (const egg of wikiData) {
-    processEgg(egg, existingData, newPets);
+    processEgg(egg, existingData, newData);
   }
 
   // Save JSONs
-  saveJSON(existingData, 'pets');
-  if (newPets.length > 0) {
-    saveJSON(newPets, 'new_pets');
+  exportDataToJson(existingData);
+  if (newData.eggs.length > 0) {
+    exportDataToJson(newData);
   }
 }
 
-const processEgg = (egg: Egg, existingData: Category[], newPets: Egg[]) => {
+const processEgg = (egg: Egg, existingData: PetData, newData: PetData) => {
   for (const pet of egg.pets) {
     // Check if the pet already exists in the existing data
-    const existingPet = findExistingPet(pet.name, existingData);
+    const existingPet = existingData.petLookup[pet.name];
     if (existingPet) {
       // Update existing pet properties
-      existingPet.chance = pet.chance;
-      existingPet.rarity = pet.rarity;
-      existingPet.bubbles = pet.bubbles;
-      existingPet.currency = pet.currency;
-      existingPet.currencyVariant = pet.currencyVariant;
-      existingPet.gems = pet.gems;
-      existingPet.hasMythic = pet.hasMythic;
-      existingPet.tags = pet.tags || [];
-      existingPet.limited = pet.limited;
-      existingPet.available = pet.available;
-      existingPet.hatchable = pet.hatchable;
-      existingPet.obtainedFrom = pet.obtainedFrom;
-      existingPet.obtainedFromImage = pet.obtainedFromImage;
-      existingPet.image = pet.image;
+      for (const key of Object.keys(pet) as (keyof Pet)[]) {
+        const value = pet[key];
+        if (value != '' && value !== undefined && value !== null) {
+          // @ts-ignore
+          existingPet[key] = value;
+        }
+      }
 
       // remove the pet from the egg's pets array if it already exists
       egg.pets = egg.pets.filter(p => p.name !== pet.name);
@@ -376,52 +394,57 @@ const processEgg = (egg: Egg, existingData: Category[], newPets: Egg[]) => {
   }
 
   // Check if the egg already exists in the existing data
-  const existingEgg = findExistingEgg(egg.name, existingData);
+  const existingEgg = existingData.eggLookup[egg.name];
   if (existingEgg) {
     // Update existing egg properties
-    existingEgg.hatchCost = egg.hatchCost;
-    existingEgg.hatchCurrency = egg.hatchCurrency;
-    existingEgg.limited = egg.limited;
-    existingEgg.available = egg.available;
+    for (const key of Object.keys(egg) as (keyof Egg)[]) {
+      const value = egg[key];
+      if (value != '' && value !== undefined && value !== null) {
+        // @ts-ignore
+        existingEgg[key] = value;
+      }
+    }
 
     existingEgg.pets.push(...egg.pets); // Add new pets to existing egg
     existingEgg.pets.sort((a, b) => { return b.chance - a.chance; });
   }
   else if (egg.pets?.length > 0) {
-    newPets.push(egg);
+    newData.eggs.push(egg);
+    newData.pets.push(...egg.pets);
     egg.pets.sort((a, b) => { return b.chance - a.chance; });
   } 
 }
 
-const findExistingEgg = (eggName: string, data: Category[]): Egg | undefined => {
-  for (const category of data) {
-    const egg = category.eggs?.find(e => e.name === eggName);
-    if (egg) return egg;
-    for (const subCategory of category.categories || []) {
-      const subEgg = subCategory.eggs.find(e => e.name === eggName);
-      if (subEgg) return subEgg;
-    }
+// ────────────────────────────────────────────────────────────
+
+function exportDataToJson(data: PetData) {
+  saveJSON(data.pets, 'pets');
+  const eggsJson = data.eggs.map((egg) => {
+    return {
+      ...egg,
+      pets: egg.pets.map((pet) => pet.name)
+    };
+  });
+  saveJSON(eggsJson, 'eggs');
+  if (data.categories?.length > 0) {
+    const categories = data.categories.map((cat) => {
+      return {
+        name: cat.name,
+        image: cat.image,
+        eggs: cat.eggs?.map((egg) => egg.name),
+        categories: cat.categories?.map((subCat) => {
+          return {
+            ...subCat,
+            eggs: subCat.eggs?.map((egg) => egg.name)
+          }
+        })
+      };
+    });
+    saveJSON(categories, 'categories');
   }
-  return undefined;
 }
 
-const findExistingPet = (petName: string, data: Category[]): Pet | undefined => {
-  for (const category of data) {
-    for (const egg of category.eggs || []) {
-      const pet = egg.pets.find(p => p.name === petName);
-      if (pet) return pet;
-    }
-    for (const subCategory of category.categories || []) {
-      for (const egg of subCategory.eggs || []) {
-        const pet = egg.pets.find(p => p.name === petName);
-        if (pet) return pet;
-      }
-    }
-  }
-  return undefined;
-}
-
-const saveJSON = (data: any, filename: string) => {
+export const saveJSON = (data: any, filename: string) => {
   const blob = new Blob([JSON.stringify(data, undefined, 2)], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
@@ -435,22 +458,13 @@ const saveJSON = (data: any, filename: string) => {
 // ────────────────────────────────────────────────────────────
 
 const capitalizeFirstLetter = (str: string): string => {
-  return str.charAt(0).toUpperCase() + str.slice(1);
+  return str ? str.charAt(0).toUpperCase() + str.slice(1) : str;
 }
 
-export function exportEggsToLua(data: Category[]): string {
+export function exportEggsToLua(data: PetData): string {
   let lua = '';
-  for (const cat of data) {
-    lua += `\n-- ${cat.name}\n`;
-    for (const egg of cat.eggs || []) {
-      lua += exportEggToLua(egg);
-    }
-    for (const subCat of cat.categories || []) {
-      lua += `\n-- ${subCat.name}\n`;
-      for (const egg of subCat.eggs || []) {
-        lua += exportEggToLua(egg);
-      }
-    }
+  for (const egg of data.eggs) {
+    lua += exportEggToLua(egg);
   }
   return lua;
 }
@@ -463,39 +477,31 @@ export function exportEggToLua(egg: Egg): string {
   lua += `  ["${egg.name}"] = {\n`;
   lua += `    Name = "${egg.name}",\n`;
   lua += `    Pets = { ${egg.pets.map((pet) => `"${pet.name}"`).join(', ')} },\n`;
-  egg.hatchCost             && (lua += `    HatchCost = ${egg.hatchCost},\n`);
-  egg.hatchCurrency         && (lua += `    HatchCurrency = "${capitalizeFirstLetter(egg.hatchCurrency)}",\n`);
-  egg.limited               && (lua += `    Limited = ${egg.limited ? '"yes"' : '"no"'},\n`);
-  egg.limited               && (lua += `    Available = ${egg.available ? '"yes"' : '"no"'},\n`);
-  egg.luckIgnored           && (lua += `    LuckIgnored = ${egg.luckIgnored ? '"yes"' : '"no"'},\n`);
-  egg.canSpawnAsRift        && (lua += `    CanSpawnAsRift = ${egg.canSpawnAsRift ? '"yes"' : '"no"'},\n`);
-  !egg.secretBountyExcluded && egg.canSpawnAsRift && (lua += `    CanHaveSecretBounty = ${!egg.secretBountyExcluded ? '"yes"' : '"no"'},\n`);
-  egg.infinityEgg           && (lua += `    InfinityEgg = "${egg.infinityEgg}",\n`);
+  lua += `    HatchCost = ${egg.hatchCost || -1},\n`;
+  lua += `    HatchCurrency = "${capitalizeFirstLetter(egg.hatchCurrency) || ''}",\n`;
+  lua += `    World = "${egg.world || ''}",\n`;
+  lua += `    Zone = "${egg.zone || ''}",\n`;
+  lua += `    Limited = ${egg.limited == undefined ? false : egg.limited},\n`;
+  lua += `    Available = ${egg.available == undefined ? true : egg.available},\n`;
+  // lua += `    DateAdded = "${egg.dateAdded}",\n`;
+  // lua += `    DateUnavailable = "${egg.dateRemoved}",\n`;
+  lua += `    LuckIgnored = ${egg.luckIgnored == undefined ? false : egg.luckIgnored},\n`;
+  lua += `    HasEggRift = ${egg.canSpawnAsRift == undefined ? false : egg.canSpawnAsRift},\n`;
+  lua += `    SecretBountyRotation = ${egg.secretBountyExcluded == undefined ? egg.canSpawnAsRift == undefined ? false : egg.canSpawnAsRift : !egg.secretBountyExcluded},\n`;
+  lua += `    InfinityEgg = "${egg.infinityEgg || ''}",\n`;
   lua += `  },\n`;
   return lua;
 }
 
-export function exportPetsToLua(data: Category[]): string {
+export function exportPetsToLua(data: PetData): string {
   let lua = '';
-  for (const cat of data) {
-    for (const egg of cat.eggs || []) {
-      lua += `\n-- ${egg.name}\n`;
-      const pets = [];
-      for (const pet of egg.pets) {
-        pets.push(exportPetToLua(pet));
-      }
-      lua += pets.join(',\n') + ',\n';
+  for (const egg of data.eggs) {
+    lua += `\n-- ${egg.name}\n`;
+    const pets = [];
+    for (const pet of egg.pets) {
+      pets.push(exportPetToLua(pet));
     }
-    for (const subCat of cat.categories || []) {
-      for (const egg of subCat.eggs || []) {
-        lua += `\n-- ${egg.name}\n`;
-        const pets = [];
-        for (const pet of egg.pets) {
-          pets.push(exportPetToLua(pet));
-        }
-        lua += pets.join(',\n') + ',\n';
-      }
-    }
+    lua += pets.join(',\n') + ',\n';
   }
 
   return lua;
@@ -506,17 +512,22 @@ const exportPetToLua = (pet: Pet): string => {
   lua += `  ["${pet.name}"] = {\n`;
   lua += `    Name = "${pet.name}",\n`;
   lua += `    Rarity = "${capitalizeFirstLetter(pet.rarity)}",\n`;
-  lua += `    Chance = ${pet.chance},\n`;
-  lua += `    Bubbles = ${pet.bubbles},\n`;
-  lua += `    Currency = ${pet.currency},\n`;
-  lua += `    CurrencyType = "${capitalizeFirstLetter(pet.currencyVariant)}",\n`;
-  lua += `    Gems = ${pet.gems},\n`;
-  lua += `    Mythic = ${pet.hasMythic ? '"yes"' : '"no"'},\n`;
-  lua += `    Hatchable = ${pet.hatchable ? '"yes"' : '"no"'},\n`;
+  lua += `    Chance = ${pet.hatchable ? pet.chance : '100'},\n`;
+  // lua += `    Hatchable = ${pet.hatchable == undefined ? true : pet.hatchable},\n`;
+  lua += `    Stats = {\n`;
+  lua += `      Bubbles = ${pet.bubbles},\n`;
+  lua += `      Gems = ${pet.gems},\n`;
+  lua += `      Currency = ${pet.currency},\n`;
+  lua += `      CurrencyType = "${capitalizeFirstLetter(pet.currencyVariant)}",\n`;
+  lua += `    },\n`;
+  lua += `    HasMythic = ${pet.hasMythic == undefined ? false : pet.hasMythic},\n`;
+  lua += `    Limited = ${pet.limited == undefined ? false : pet.limited},\n`;
+  lua += `    Available = ${pet.limited == undefined ? true : pet.limited ? pet.available : true},\n`;
+  lua += `    Exclusive = ${pet.obtainedFrom === "Robux Shop"},\n`;
+  lua += `    Tag = "${pet.tags?.join(', ')}",\n`;
   lua += `    Source = "${pet.obtainedFrom}",\n`;
-  pet.tags?.length > 0 && (lua += `    Tag = "${pet.tags.join(', ')}",\n`);
-  pet.limited && (lua += `    Limited = ${pet.limited && pet.obtainedFrom === "Robux Shop" ? '"exclusive"' : '"yes"'},\n`);
-  pet.limited && (lua += `    Available = ${pet.available ? '"yes"' : '"no"'},\n`);
+  // lua += `    DateAdded = "${egg.dateAdded}",\n`;
+  // lua += `    DateUnavailable = "${egg.dateRemoved}",\n`;
   lua += '  }'
   return lua;
 }
@@ -524,7 +535,7 @@ const exportPetToLua = (pet: Pet): string => {
 // ────────────────────────────────────────────────────────────
 
 export interface WikiToolsProps {
-    data: Category[];
+  data: PetData | undefined;
 }
 
 export function WikiTools(props: WikiToolsProps): JSX.Element {
@@ -540,22 +551,22 @@ export function WikiTools(props: WikiToolsProps): JSX.Element {
 
   const handleScrape = () => {
     setDebug([ 'Scraping...' ]);
-    scrapeWiki(props.data, debugLog);
+    scrapeWiki(props.data!, debugLog);
   }
 
   const handlePetsLuaExport = () => {
-    const lua = exportPetsToLua(props.data);
+    const lua = exportPetsToLua(props.data!);
     exportLuaToFile(lua, 'Pet_Data');
   }
 
   const handleEggsLuaExport = () => {
-    const lua = exportEggsToLua(props.data);
+    const lua = exportEggsToLua(props.data!);
     exportLuaToFile(lua, 'Egg_Data');
   }
 
   const handlePetsJsonExport = () => {
-    saveJSON(props.data, 'pets');
-  }
+    exportDataToJson(props.data!);
+  };
 
   const exportLuaToFile = (lua: string, filename: string) => {
     const blob = new Blob([lua], { type: 'text/plain' });
@@ -595,8 +606,8 @@ export function WikiTools(props: WikiToolsProps): JSX.Element {
           ))}
         </code>
       </pre>
-      <Typography variant="h4" sx={{ mb: 2 }}>Data Export</Typography>
-      <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+      <Typography variant="h4" sx={{ mb: 2 }}>Lua Data Export</Typography>
+      <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', mb: 2 }}>
         <Button
           variant="contained"
           onClick={handlePetsLuaExport}
@@ -606,18 +617,21 @@ export function WikiTools(props: WikiToolsProps): JSX.Element {
         </Button>
         <Button
           variant="contained"
+          onClick={handleEggsLuaExport}
+          sx={{ mr: 2, maxWidth: '300px' }}
+        >
+          Export Egg_Data.lua
+        </Button>
+      </Box>
+      <Typography variant="h4" sx={{ mb: 2 }}>JSON Data Export</Typography>
+      <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', mb: 2 }}>
+        <Button
+          variant="contained"
           onClick={() => handlePetsJsonExport}
           sx={{ mr: 2, maxWidth: '300px' }}
         >
-          Export pets.JSON
+          Export JSON Data
         </Button>
-      <Button
-        variant="contained"
-        onClick={handleEggsLuaExport}
-        sx={{ mr: 2, maxWidth: '300px' }}
-      >
-        Export Egg_Data.LUA
-      </Button>
       </Box>
     </Container>
   );

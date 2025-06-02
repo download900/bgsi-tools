@@ -1,7 +1,7 @@
 import { JSX, useEffect, useState } from "react";
 import { Container, Typography, Box, TextField, Select, MenuItem, Checkbox, Paper, Tooltip, Table, TableBody, TableCell, TableHead,TableRow, Link, Tabs, Tab, List, ListItem, FormControlLabel } from "@mui/material";
 import { getRarityStyle, imgIcon } from "../util/StyleUtil";
-import { Category, Egg, Pet } from "../util/DataUtil";
+import { Category, Egg, Pet, PetData } from "../util/DataUtil";
 import Decimal from "decimal.js";
 import { index } from "cheerio/dist/commonjs/api/traversing";
 
@@ -69,10 +69,10 @@ export interface InfinityEgg {
 }
 
 interface OddsCalculatorProps {
-  data: Category[];
+  data: PetData | undefined;
 }
 
-export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
+export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
     const [calculatorSettings, setCalculatorSettings] = useState<CalculatorSettings>({
         selectedEgg: "",
         riftMultiplier: 0,
@@ -117,7 +117,7 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
 
     useEffect(() => {
         loadCalculator();
-    }, [props.data]);
+    }, [data]);
 
     const shouldCalculateEgg = (egg: Egg) => {
         if (egg.luckIgnored || !egg.available) return false;
@@ -126,6 +126,11 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
     
     const loadCalculator = () => {
         try {
+            if (!data || data.eggs?.length === 0) {
+                setEggs([]);
+                setSelectedEgg(null);
+                return;
+            }
             // Load settings
             const saved = localStorage.getItem(STORAGE_KEY);
             let settings: CalculatorSettings;
@@ -143,69 +148,57 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
             const infinityEggNames: string[] = [];
 
             // Load secret bounty pets
-            const secretPets = props.data.find(cat => cat.name === "Secret Bounty")?.eggs[0].pets || [];
+            const secretPets = data?.categoryLookup["Secret Bounty"].eggs.flatMap((egg) => egg.pets) || [];
             setSecretBountyPets(secretPets);
-
-            const processCategory = (category: Category) => {
-                if (category.eggs) {
-                    if (category.eggs.some((egg: Egg) => egg.infinityEgg)) {
-                        const infinityEgg = { name: category.name, pets: [] } as InfinityEgg;
-                        infinityEggs[category.name] = infinityEgg;
-                        infinityEggNames.push(category.name);
-                    }
-
-                    for (const egg of category.eggs) {
-                        
-                        if (settings.secretsBountyPet && settings.secretsBountyEgg === egg.name) {
-                            const secretBountyPet = secretPets.find(pet => pet.name === settings.secretsBountyPet);
-                            if (secretBountyPet) {
-                                egg.pets.push(secretBountyPet);
-                            }
-                        }
-
-                        if (!egg.secretBountyExcluded && !egg.limited && !egg.luckIgnored && !egg.name.includes("Infinity Egg")) {
-                            secretBountyEggs.push(egg);
-                        }
-
-                        if (!shouldCalculateEgg(egg)) continue;
-
-                        eggs.push(egg);
-
-                        // if more than 1 secret, add "Any Secret"
-                        if (egg.pets.filter((pet: Pet) => pet.rarity === 'secret').length > 1) {
-                            // calculate sum of droprates for secrets
-                            const totalSecretChance = egg.pets
-                                .filter((pet: Pet) => pet.rarity === 'secret')
-                                .reduce((sum, pet) => sum + pet.chance, 0);
-                            egg.pets.push({
-                                name: "Any Secret",
-                                chance: totalSecretChance,
-                                image: ["https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png"],
-                                rarity: "secret"
-                            } as Pet);
-                        }
-
-                        // check for infinity egg, clone pets to infinity egg
-                        if (egg.infinityEgg) {
-                            const newPets = structuredClone(egg.pets.filter((pet: Pet) => pet.rarity.includes('legendary') || pet.rarity === 'secret'));
-                            infinityEggs[egg.infinityEgg].pets.push(...newPets);
-                        }
-                    }
-                }
-                if (category.categories) {
-                    for (const subCategory of category.categories) {
-                        processCategory(subCategory);
-                    }
-                }
-            }
 
             // Process eggs for calculator
             const eggs: Egg[] = [];
             // make a clone to avoid mutating the original data
-            const clonedData = structuredClone(props.data);
+            const clonedData = structuredClone(data.eggs);
+
+            const processEgg = (egg: Egg) => {
+                if (settings.secretsBountyPet && settings.secretsBountyEgg === egg.name) {
+                    const secretBountyPet = secretPets.find(pet => pet.name === settings.secretsBountyPet);
+                    if (secretBountyPet) {
+                        egg.pets.push(secretBountyPet);
+                    }
+                }
+
+                if (!egg.secretBountyExcluded && !egg.limited && !egg.luckIgnored && !egg.name.includes("Infinity Egg")) {
+                    secretBountyEggs.push(egg);
+                }
+
+                if (!shouldCalculateEgg(egg)) return;
+
+                eggs.push(egg);
+
+                // if more than 1 secret, add "Any Secret"
+                if (egg.pets.filter((pet: Pet) => pet.rarity === 'secret').length > 1) {
+                    // calculate sum of droprates for secrets
+                    const totalSecretChance = egg.pets
+                        .filter((pet: Pet) => pet.rarity === 'secret')
+                        .reduce((sum, pet) => sum + pet.chance, 0);
+                    egg.pets.push({
+                        name: "Any Secret",
+                        chance: totalSecretChance,
+                        image: ["https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png"],
+                        rarity: "secret"
+                    } as Pet);
+                }
+
+                // check for infinity egg, clone pets to infinity egg
+                if (egg.infinityEgg) {
+                    if (!infinityEggs[egg.infinityEgg]) {
+                        infinityEggs[egg.infinityEgg] = { name: egg.infinityEgg, pets: [] };
+                        infinityEggNames.push(egg.infinityEgg);
+                    }
+                    const newPets = structuredClone(egg.pets.filter((pet: Pet) => pet.rarity.includes('legendary') || pet.rarity === 'secret'));
+                    infinityEggs[egg.infinityEgg].pets.push(...newPets);
+                }
+            }
             
-            for (const category of clonedData) {
-                processCategory(category);                
+            for (const egg of clonedData) {
+                processEgg(egg);                
             }
 
             // Process Infinity Eggs:
@@ -259,7 +252,7 @@ export function OddsCalculator(props: OddsCalculatorProps): JSX.Element {
     }
 
     useEffect(() => {
-        if (props.data?.length > 0) {
+        if (data && data.eggs?.length > 0 && selectedEgg) {
             saveSettings(calculatorSettings);
             handleCalculate(selectedEgg as Egg);
         }

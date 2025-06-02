@@ -1,0 +1,988 @@
+[
+  {
+    "name": "Common Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/5/5b/Common_Egg.png",
+    "pets": [
+      "Doggy",
+      "Kitty",
+      "Bunny",
+      "Bear",
+      "King Doggy"
+    ],
+    "hatchCost": 10,
+    "hatchCurrency": "coins",
+    "infinityEgg": "The Overworld",
+    "index": "The Overworld",
+    "available": true,
+    "canSpawnAsRift": false,
+    "secretBountyExcluded": true,
+    "world": "The Overworld",
+    "zone": "W1 Surface"
+  },
+  {
+    "name": "Spotted Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/6f/Spotted_Egg.png",
+    "pets": [
+      "Mouse",
+      "Wolf",
+      "Fox",
+      "Polar Bear",
+      "Panda"
+    ],
+    "hatchCost": 110,
+    "hatchCurrency": "coins",
+    "infinityEgg": "The Overworld",
+    "index": "The Overworld",
+    "available": true,
+    "canSpawnAsRift": false,
+    "secretBountyExcluded": true,
+    "world": "The Overworld",
+    "zone": "W1 Surface"
+  },
+  {
+    "name": "Iceshard Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3e/Iceshard_Egg.png",
+    "pets": [
+      "Ice Kitty",
+      "Deer",
+      "Ice Wolf",
+      "Piggy",
+      "Ice Deer",
+      "Ice Dragon"
+    ],
+    "hatchCost": 450,
+    "hatchCurrency": "coins",
+    "infinityEgg": "The Overworld",
+    "index": "The Overworld",
+    "available": true,
+    "canSpawnAsRift": false,
+    "secretBountyExcluded": true,
+    "world": "The Overworld",
+    "zone": "W1 Surface"
+  },
+  {
+    "name": "Spikey Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/9/93/Spikey_Egg.png",
+    "pets": [
+      "Golem",
+      "Dinosaur",
+      "Ruby Golem",
+      "Dragon",
+      "Dark Dragon",
+      "Emerald Golem"
+    ],
+    "hatchCost": 5000,
+    "hatchCurrency": "coins",
+    "infinityEgg": "The Overworld",
+    "index": "The Overworld",
+    "available": true,
+    "canSpawnAsRift": true,
+    "world": "The Overworld",
+    "zone": "Floating Island"
+  },
+  {
+    "name": "Magma Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/63/Magma_Egg.png",
+    "pets": [
+      "Magma Doggy",
+      "Magma Deer",
+      "Magma Fox",
+      "Magma Bear",
+      "Demon",
+      "Inferno Dragon"
+    ],
+    "hatchCost": 15000,
+    "hatchCurrency": "coins",
+    "infinityEgg": "The Overworld",
+    "index": "The Overworld",
+    "available": true,
+    "canSpawnAsRift": true,
+    "world": "The Overworld",
+    "zone": "Outer Space"
+  },
+  {
+    "name": "Crystal Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/6d/Crystal_Egg.png",
+    "pets": [
+      "Cave Bat",
+      "Dark Bat",
+      "Angel",
+      "Emerald Bat",
+      "Unicorn",
+      "Flying Pig"
+    ],
+    "hatchCost": 75000,
+    "hatchCurrency": "coins",
+    "infinityEgg": "The Overworld",
+    "index": "The Overworld",
+    "available": true,
+    "canSpawnAsRift": true,
+    "world": "The Overworld",
+    "zone": "Outer Space"
+  },
+  {
+    "name": "Lunar Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/64/Lunar_Egg.png",
+    "pets": [
+      "Space Mouse",
+      "Space Bull",
+      "Lunar Fox",
+      "Lunarcorn",
+      "Lunar Serpent",
+      "Electra"
+    ],
+    "hatchCost": 100000,
+    "hatchCurrency": "coins",
+    "infinityEgg": "The Overworld",
+    "index": "The Overworld",
+    "available": true,
+    "canSpawnAsRift": true,
+    "world": "The Overworld",
+    "zone": "Twilight"
+  },
+  {
+    "name": "Void Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/5/58/Void_Egg.png",
+    "pets": [
+      "Void Kitty",
+      "Void Bat",
+      "Void Demon",
+      "Dark Phoenix",
+      "Neon Elemental",
+      "NULLVoid"
+    ],
+    "hatchCost": 175000,
+    "hatchCurrency": "coins",
+    "infinityEgg": "The Overworld",
+    "index": "The Overworld",
+    "available": true,
+    "canSpawnAsRift": true,
+    "world": "The Overworld",
+    "zone": "The Void"
+  },
+  {
+    "name": "Hell Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/a/a2/Hell_Egg.png",
+    "pets": [
+      "Hell Piggy",
+      "Hell Dragon",
+      "Hell Crawler",
+      "Inferno Demon",
+      "Inferno Cube",
+      "Virus"
+    ],
+    "hatchCost": 300000,
+    "hatchCurrency": "coins",
+    "infinityEgg": "The Overworld",
+    "index": "The Overworld",
+    "available": true,
+    "canSpawnAsRift": true,
+    "world": "The Overworld",
+    "zone": "The Void"
+  },
+  {
+    "name": "Nightmare Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/4/43/Nightmare_Egg.png",
+    "pets": [
+      "Demon Doggy",
+      "Skeletal Deer",
+      "Night Crawler",
+      "Hell Bat",
+      "Green Hydra",
+      "Demonic Hydra",
+      "The Overlord"
+    ],
+    "hatchCost": 900000,
+    "hatchCurrency": "coins",
+    "infinityEgg": "The Overworld",
+    "index": "The Overworld",
+    "available": true,
+    "canSpawnAsRift": true,
+    "world": "The Overworld",
+    "zone": "The Void"
+  },
+  {
+    "name": "Rainbow Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3f/Rainbow_Egg.png",
+    "pets": [
+      "Red Golem",
+      "Orange Deer",
+      "Yellow Fox",
+      "Green Angel",
+      "Hexarium",
+      "Rainbow Shock"
+    ],
+    "hatchCost": 1500000,
+    "hatchCurrency": "coins",
+    "infinityEgg": "The Overworld",
+    "index": "The Overworld",
+    "available": true,
+    "canSpawnAsRift": true,
+    "world": "The Overworld",
+    "zone": "Zen"
+  },
+  {
+    "name": "Showman Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/1/1a/Showman_Egg.png",
+    "pets": [
+      "Game Doggy",
+      "Gamer Boi",
+      "Queen of Hearts"
+    ],
+    "hatchCost": 1000,
+    "hatchCurrency": "tickets",
+    "infinityEgg": "Minigame Paradise",
+    "index": "Minigame Paradise",
+    "available": true,
+    "canSpawnAsRift": false,
+    "secretBountyExcluded": true,
+    "world": "Minigame Paradise",
+    "zone": "Dice Island"
+  },
+  {
+    "name": "Mining Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/65/Mining_Egg.png",
+    "pets": [
+      "Mining Doggy",
+      "Mining Bat",
+      "Cave Mole",
+      "Ore Golem",
+      "Crystal Unicorn",
+      "Stone Gargoyle"
+    ],
+    "hatchCost": 120000,
+    "hatchCurrency": "tickets",
+    "infinityEgg": "Minigame Paradise",
+    "index": "Minigame Paradise",
+    "available": true,
+    "canSpawnAsRift": true,
+    "world": "Minigame Paradise",
+    "zone": "Minecart Forest"
+  },
+  {
+    "name": "Cyber Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/7b/Cyber_Egg.png",
+    "pets": [
+      "Robo Kitty",
+      "Martian Kitty",
+      "Cyber Wolf",
+      "Cyborg Phoenix",
+      "Space Invader",
+      "Bionic Shard",
+      "Mech Robot"
+    ],
+    "hatchCost": 450000,
+    "hatchCurrency": "tickets",
+    "infinityEgg": "Minigame Paradise",
+    "index": "Minigame Paradise",
+    "available": true,
+    "canSpawnAsRift": true,
+    "world": "Minigame Paradise",
+    "zone": "Robot Factory"
+  },
+  {
+    "name": "Neon Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/b/b1/Neon_Egg.png",
+    "pets": [
+      "Neon Doggy",
+      "Hologram Dragon",
+      "Disco Ball",
+      "Neon Wyvern",
+      "Neon Wire Eye",
+      "Equalizer",
+      "Hyperwave Kitty"
+    ],
+    "hatchCost": 1300000,
+    "hatchCurrency": "tickets",
+    "infinityEgg": "Minigame Paradise",
+    "index": "Minigame Paradise",
+    "available": true,
+    "canSpawnAsRift": true,
+    "world": "Minigame Paradise",
+    "zone": "Hyperwave Island"
+  },
+  {
+    "name": "Chance Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d8/Chance_Egg.png",
+    "pets": [
+      "Galaxy Dice",
+      "Chance Dragon",
+      "Ring Master",
+      "Royal Guardian"
+    ],
+    "hatchCost": 1500000,
+    "hatchCurrency": "tickets",
+    "limited": false,
+    "available": true,
+    "canSpawnAsRift": false,
+    "secretBountyExcluded": true,
+    "world": "Minigame Paradise",
+    "zone": "W2 Surface"
+  },
+  {
+    "name": "Game Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/9/98/Game_Egg.png",
+    "pets": [
+      "Fancy Demon",
+      "Happy Dice",
+      "Game Master",
+      "Jackpot"
+    ],
+    "hatchCost": 10000,
+    "hatchCurrency": "tickets",
+    "limited": true,
+    "available": false,
+    "canSpawnAsRift": false,
+    "secretBountyExcluded": true,
+    "world": "Minigame Paradise",
+    "zone": "W2 Surface"
+  },
+  {
+    "name": "Underworld Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/f/ff/Underworld_Egg.png",
+    "pets": [
+      "Hell Demon",
+      "Demon Angel",
+      "Crimson Butterfly",
+      "Demonweb",
+      "Crimson Bloodmoon",
+      "Lord Shock"
+    ],
+    "hatchCost": 5000000,
+    "hatchCurrency": "tickets",
+    "limited": true,
+    "available": false,
+    "canSpawnAsRift": true,
+    "secretBountyExcluded": true,
+    "world": "Minigame Paradise"
+  },
+  {
+    "name": "Index",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/da/Index_Icon.png",
+    "pets": [
+      "Trio Cube",
+      "Sir Doggyton"
+    ],
+    "luckIgnored": true,
+    "available": true
+  },
+  {
+    "name": "Mystery Box",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/8/87/Mystery_Box.png",
+    "pets": [
+      "Sunburst",
+      "Moonburst"
+    ],
+    "luckIgnored": true,
+    "available": true
+  },
+  {
+    "name": "Playtime",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/67/Playtime_Icon.png",
+    "pets": [
+      "Kitsune",
+      "Vaporium"
+    ],
+    "luckIgnored": true,
+    "available": true
+  },
+  {
+    "name": "Wheel Spin",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/5/54/Wheel_Spin_Icon.png",
+    "pets": [
+      "Umbra"
+    ],
+    "luckIgnored": true,
+    "available": true
+  },
+  {
+    "name": "Golden Chest",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/0a/Golden_Chest.png",
+    "pets": [
+      "Abyssal Dragon"
+    ],
+    "luckIgnored": true,
+    "available": true
+  },
+  {
+    "name": "Royal Chest",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/8/81/Royal_Chest.png",
+    "pets": [
+      "Hacker Prism"
+    ],
+    "luckIgnored": true,
+    "available": true
+  },
+  {
+    "name": "Dice Chest",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/1/18/Dice_Chest.png",
+    "pets": [
+      "Dice Split"
+    ],
+    "luckIgnored": true,
+    "available": true
+  },
+  {
+    "name": "Cart Escape",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/f/f9/Cart_Escape_Minigame_Icon.png",
+    "pets": [
+      "Magmas"
+    ],
+    "luckIgnored": true,
+    "available": true
+  },
+  {
+    "name": "Robot Claw",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/4/47/Robot_Claw_Minigame_Icon.png",
+    "pets": [
+      "Dragon Plushie"
+    ],
+    "luckIgnored": true,
+    "available": true
+  },
+  {
+    "name": "Hyper Darts",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/9/90/Multi_Darts.png",
+    "pets": [
+      "Star Charm"
+    ],
+    "luckIgnored": true,
+    "available": true
+  },
+  {
+    "name": "Quests",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c2/Quests_Icon.png",
+    "pets": [
+      "Holy Shock",
+      "Evil Shock",
+      "Rainbow Blitz",
+      "King Soul",
+      "Demonic Dogcat",
+      "Chronos",
+      "Dark Lord"
+    ],
+    "luckIgnored": true,
+    "available": true
+  },
+  {
+    "name": "World Rewards",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/dc/The_Overworld_Icon.png",
+    "pets": [
+      "Cerberus",
+      "Security System"
+    ],
+    "luckIgnored": true,
+    "available": true
+  },
+  {
+    "name": "Season 3 Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/e/ed/Season_3_Egg.png",
+    "pets": [
+      "Rune Stone",
+      "Rune Guardian",
+      "Runic Defender",
+      "Glyph Warrior"
+    ],
+    "luckIgnored": true,
+    "limited": true,
+    "available": true
+  },
+  {
+    "name": "Season 3 Bubble Pass",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Bubble_Pass_Icon.png",
+    "pets": [
+      "Runic Master",
+      "Runic Prism",
+      "Ancient One",
+      "Monolith"
+    ],
+    "luckIgnored": true,
+    "limited": true,
+    "available": true
+  },
+  {
+    "name": "Season 2 Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/f/f9/Season_2_Egg.png",
+    "pets": [
+      "Sleepy Bunny",
+      "Starry Lamb",
+      "Moon Deer",
+      "Nebula"
+    ],
+    "luckIgnored": true,
+    "limited": true,
+    "available": false
+  },
+  {
+    "name": "Season 2 Bubble Pass",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Bubble_Pass_Icon.png",
+    "pets": [
+      "Dusk",
+      "Dawn",
+      "Moonlight",
+      "Luminosity"
+    ],
+    "luckIgnored": true,
+    "limited": true,
+    "available": false
+  },
+  {
+    "name": "Season 1 Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/7c/Season_1_Egg.png",
+    "pets": [
+      "Enlightened Kitty",
+      "Judgement",
+      "Ophanim",
+      "Seraph"
+    ],
+    "luckIgnored": true,
+    "limited": true,
+    "available": false
+  },
+  {
+    "name": "Season 1 Bubble Pass",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Bubble_Pass_Icon.png",
+    "pets": [
+      "Lunar Deity",
+      "Solar Deity",
+      "Crescent Empress",
+      "Avernus"
+    ],
+    "luckIgnored": true,
+    "limited": true,
+    "available": false
+  },
+  {
+    "name": "Series 2 Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/75/Series_2_Egg.png",
+    "pets": [
+      "Ground Golem",
+      "Wind Fairy",
+      "Water Serpent",
+      "Fire Guardian"
+    ],
+    "luckIgnored": true,
+    "limited": true,
+    "available": false
+  },
+  {
+    "name": "Series 2 Leaderboards",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/79/Competitive_Icon.png",
+    "pets": [
+      "The Moon",
+      "The Sun"
+    ],
+    "luckIgnored": true,
+    "limited": true,
+    "available": false
+  },
+  {
+    "name": "Series 1 Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/70/Series_1_Egg.png",
+    "pets": [
+      "Competitor Doggy",
+      "Golden Golem",
+      "Parasite",
+      "Starlight",
+      "Overseer"
+    ],
+    "luckIgnored": true,
+    "limited": true,
+    "available": false
+  },
+  {
+    "name": "Series 1 Leaderboards",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/79/Competitive_Icon.png",
+    "pets": [
+      "Elite Challenger",
+      "Elite Soul"
+    ],
+    "luckIgnored": true,
+    "limited": true,
+    "available": false
+  },
+  {
+    "name": "Beach Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/cd/Beach_Egg.png",
+    "pets": [
+      "Tourist Doggy",
+      "Seagull",
+      "Beach Boi"
+    ],
+    "hatchCost": 50,
+    "hatchCurrency": "seashells",
+    "limited": true,
+    "available": true,
+    "world": "Beach Festival"
+  },
+  {
+    "name": "Icecream Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d2/Icecream_Egg.png",
+    "pets": [
+      "Sundae Doggy",
+      "Bunny Cone",
+      "Neapolitan Stack",
+      "Popsicle Trio",
+      "Soarin' Surfer",
+      "Sundae Cone",
+      "Mint Sundae Champion",
+      "Vanilla Sundae Champion",
+      "Chocolate Sundae Champion",
+      "Strawberry Sundae Champion"
+    ],
+    "hatchCost": 1750,
+    "hatchCurrency": "seashells",
+    "limited": true,
+    "available": true,
+    "world": "Beach Festival"
+  },
+  {
+    "name": "Fruit Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/73/Fruit_Egg.png",
+    "pets": [
+      "Strawberry Doggy",
+      "Lemon Dragon",
+      "Watermelon Boi",
+      "Kiwi Dragon",
+      "Mangorium",
+      "Pineapple Tourist",
+      "Dragonfruit"
+    ],
+    "hatchCost": 50000,
+    "hatchCurrency": "seashells",
+    "limited": true,
+    "available": true,
+    "world": "Beach Festival"
+  },
+  {
+    "name": "Fossil Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Fossil_Egg.png",
+    "pets": [
+      "Researcher Doggy",
+      "Monkey",
+      "Fossil Dragon",
+      "Fossilus",
+      "Bug Amber",
+      "Fossil Ghost",
+      "Kraken",
+      "Air Basilisk",
+      "Electric Basilisk",
+      "Fire Basilisk",
+      "Ice Basilisk"
+    ],
+    "hatchCost": 10000000,
+    "hatchCurrency": "seashells",
+    "limited": true,
+    "available": true,
+    "world": "Beach Festival"
+  },
+  {
+    "name": "Pirate Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d1/Pirate_Egg.png",
+    "pets": [
+      "Pirate Kitty",
+      "Strawhat Dragon",
+      "Captain Monkey",
+      "Chest Mimic",
+      "Captains Curse"
+    ],
+    "luckIgnored": true,
+    "limited": true,
+    "available": true,
+    "world": "Beach Festival"
+  },
+  {
+    "name": "Ancient Chest",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/b/b8/Ancient_Chest.png",
+    "pets": [
+      "Infernal"
+    ],
+    "luckIgnored": true,
+    "limited": true,
+    "available": true
+  },
+  {
+    "name": "Summer Login Rewards",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/a/ad/Beach_Festival_Icon.png",
+    "pets": [
+      "Doggy Pile"
+    ],
+    "luckIgnored": true,
+    "limited": true,
+    "available": true
+  },
+  {
+    "name": "200M Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/f/f7/200M_Egg.png",
+    "pets": [
+      "Cute Deer",
+      "Emerald Wolf",
+      "Prismatic",
+      "Darkness Creature",
+      "Corrupt Glitch",
+      "Wolflord"
+    ],
+    "hatchCost": 2000000,
+    "hatchCurrency": "coins",
+    "limited": true,
+    "available": false,
+    "world": "The Overworld",
+    "zone": "W1 Surface"
+  },
+  {
+    "name": "100M Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/5/55/100M_Egg.png",
+    "pets": [
+      "Bronze Bunny",
+      "Silver Fox",
+      "Golden Dragon",
+      "Diamond Serpent",
+      "Diamond Hexarium",
+      "King Pufferfish",
+      "Royal Trophy"
+    ],
+    "hatchCost": 1000000,
+    "hatchCurrency": "coins",
+    "limited": true,
+    "available": false,
+    "world": "The Overworld",
+    "zone": "W1 Surface"
+  },
+  {
+    "name": "Easter Event 2025",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/4/47/Easter_Egg.png",
+    "pets": [
+      "Easter Fluffle",
+      "Chocolate Bunny",
+      "Midas",
+      "Patronus"
+    ],
+    "luckIgnored": true,
+    "limited": true,
+    "available": true,
+    "world": "The Overworld"
+  },
+  {
+    "name": "Throwback Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/8/86/Throwback_Egg.png",
+    "pets": [
+      "Bow Bunny",
+      "Easter Egg",
+      "Flying Bunny",
+      "Easter Serpent",
+      "Dualcorn",
+      "Holy Egg",
+      "Godly Gem",
+      "Dementor"
+    ],
+    "hatchCost": 1400000,
+    "hatchCurrency": "coins",
+    "limited": true,
+    "available": false,
+    "canSpawnAsRift": true,
+    "secretBountyExcluded": true,
+    "world": "The Overworld",
+    "zone": "Hatching Zone"
+  },
+  {
+    "name": "Bunny Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/4/4d/Bunny_Egg.png",
+    "pets": [
+      "Bunny Doggy",
+      "Egg Bunny",
+      "Angel Bunny",
+      "Seraphic Bunny",
+      "Ethereal Bunny",
+      "Cardinal Bunny",
+      "Easter Basket"
+    ],
+    "hatchCost": 1200000,
+    "hatchCurrency": "coins",
+    "limited": true,
+    "available": false,
+    "canSpawnAsRift": true,
+    "secretBountyExcluded": true,
+    "world": "The Overworld",
+    "zone": "Easter Event 2025"
+  },
+  {
+    "name": "Pastel Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/cc/Pastel_Egg.png",
+    "pets": [
+      "Paper Doggy",
+      "Paper Bunny",
+      "Chubby Bunny",
+      "Hatchling",
+      "Sweet Treat",
+      "Rainbow Marshmellow",
+      "Giant Chocolate Chicken"
+    ],
+    "hatchCost": 800000,
+    "hatchCurrency": "coins",
+    "limited": true,
+    "available": false,
+    "canSpawnAsRift": true,
+    "secretBountyExcluded": true,
+    "world": "The Overworld",
+    "zone": "Easter Event 2025"
+  },
+  {
+    "name": "Silly Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3a/Silly_Egg.png",
+    "pets": [
+      "Bunnnny",
+      "Long Kitty",
+      "DOOF",
+      "ROUND",
+      "Silly Doggy :)"
+    ],
+    "hatchCost": 10000000,
+    "hatchCurrency": "coins",
+    "limited": true,
+    "available": true,
+    "canSpawnAsRift": true,
+    "secretBountyExcluded": true,
+    "riftChance": 0.002,
+    "world": "The Overworld"
+  },
+  {
+    "name": "Aura Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2e/Aura_Egg.png",
+    "pets": [
+      "Manny",
+      "Manicorn",
+      "Sigma Serpent",
+      "Manarium",
+      "MAN FACE GOD"
+    ],
+    "hatchCost": 7800000,
+    "hatchCurrency": "coins",
+    "limited": true,
+    "available": false,
+    "canSpawnAsRift": true,
+    "secretBountyExcluded": true,
+    "riftChance": 0.002,
+    "world": "The Overworld"
+  },
+  {
+    "name": "Secret Bounty Wave 2",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png",
+    "pets": [
+      "Beelzebub",
+      "Overlord Plushie",
+      "Everblaze"
+    ],
+    "luckIgnored": true,
+    "limited": true,
+    "available": true
+  },
+  {
+    "name": "Secret Bounty Wave 1",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png",
+    "pets": [
+      "D0GGY1337",
+      "Queen Kitty",
+      "Prophet"
+    ],
+    "luckIgnored": true,
+    "limited": true,
+    "available": false
+  },
+  {
+    "name": "Exclusive Wave 7",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
+    "pets": [
+      "Carrot Pufferfish",
+      "Crystal Teddy"
+    ],
+    "luckIgnored": true,
+    "limited": true,
+    "available": true
+  },
+  {
+    "name": "Exclusive Wave 6",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
+    "pets": [
+      "Rigby",
+      "Dreamscape"
+    ],
+    "luckIgnored": true,
+    "limited": true,
+    "available": false
+  },
+  {
+    "name": "Exclusive Wave 5",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
+    "pets": [
+      "Noctis",
+      "Bongo Kitty"
+    ],
+    "luckIgnored": true,
+    "limited": true,
+    "available": false
+  },
+  {
+    "name": "Exclusive Wave 4",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
+    "pets": [
+      "Toilet Doggy",
+      "Capybara Plushie"
+    ],
+    "luckIgnored": true,
+    "limited": true,
+    "available": false
+  },
+  {
+    "name": "Exclusive Wave 3",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
+    "pets": [
+      "Enraged Phoenix",
+      "Electra Hydra"
+    ],
+    "luckIgnored": true,
+    "limited": true,
+    "available": false
+  },
+  {
+    "name": "Exclusive Wave 2",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
+    "pets": [
+      "Dark Serpent",
+      "Infernus"
+    ],
+    "luckIgnored": true,
+    "limited": true,
+    "available": false
+  },
+  {
+    "name": "Exclusive Wave 1",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
+    "pets": [
+      "Beta TV",
+      "Dowodle"
+    ],
+    "luckIgnored": true,
+    "limited": true,
+    "available": false
+  },
+  {
+    "name": "Gem Bundles",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Gems.png",
+    "pets": [
+      "Flying Gem"
+    ],
+    "luckIgnored": true,
+    "limited": true,
+    "available": false
+  },
+  {
+    "name": "Robux Shop Quest",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
+    "pets": [
+      "Discord Imp"
+    ],
+    "luckIgnored": true,
+    "limited": true,
+    "available": false
+  }
+]

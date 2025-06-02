@@ -1,5 +1,69 @@
 
-import petJson from "../assets/pets.json";
+import categoriesJson from "../data/categories.json";
+import eggsJson from "../data/eggs.json";
+import petsJson from "../data/pets.json";
+
+export type PetData = {
+  categories: Category[];
+  categoryLookup: { [key: string]: Category };
+  eggs: Egg[];
+  eggLookup: { [key: string]: Egg };
+  pets: Pet[];
+  petLookup: { [key: string]: Pet };
+}
+
+export function loadData(): PetData {
+  // load pets
+  const petLookup: { [key: string]: Pet } = {};
+  const pets: Pet[] = [];
+  (petsJson as unknown as any).forEach((pet: Pet) => {
+    petLookup[pet.name] = pet;
+    pets.push(pet);
+  });
+  // load eggs
+  const eggLookup: { [key: string]: Egg } = {};
+  const eggs: Egg[] = [];
+  (eggsJson as unknown as any).forEach((e: any) => {
+    const egg: Egg = {
+      ...e,
+      pets: e.pets.map((petName: string) => petLookup[petName]),
+    };
+    eggLookup[egg.name] = egg;
+    eggs.push(egg);
+  });
+  // load categories
+  const categoryLookup: { [key: string]: Category } = {};
+  const categories: Category[] = [];
+  (categoriesJson as unknown as any).forEach((c: any) => {
+    const subCats: Category[] = [];
+    for (const sc of c.categories || []) {
+      const subCat: Category = {
+        ...sc,
+        eggs: sc.eggs?.map((eggName: string) => eggLookup[eggName]) || [],
+      };
+      categoryLookup[subCat.name] = subCat;
+      //categories.push(subCat);
+      subCats.push(subCat);
+    }
+    const cat: Category = {
+      ...c,
+      eggs: c.eggs?.map((eggName: string) => eggLookup[eggName]) || [],
+      categories: subCats.length > 0 ? subCats : undefined,
+    };
+    categoryLookup[cat.name] = cat;
+    categories.push(cat);
+  });
+
+  // return the data
+  return {
+    categories: categories,
+    categoryLookup: categoryLookup,
+    eggs: eggs,
+    eggLookup: eggLookup,
+    pets: pets,
+    petLookup: petLookup,
+  };
+}
 
 // ~~~~~~~~~~ Types ~~~~~~~~~~
 
@@ -23,12 +87,15 @@ export interface Egg {
   pets: Pet[], 
   hatchCost: number;
   hatchCurrency: CurrencyVariant;
+  world: string;
+  zone: string;
+  limited: boolean;
+  available: boolean;
   luckIgnored: boolean; 
   infinityEgg: string;
   index: string;
-  limited: boolean;
-  available: boolean;
   canSpawnAsRift: boolean;
+  riftChance: number;
   secretBountyExcluded: boolean;
   // dateAdded: string;
   // dateRemoved: string;
@@ -50,8 +117,6 @@ export interface Pet {
   obtainedFrom: string;
   obtainedFromImage: string;
   image: string[]; 
-  // dateAdded: string;
-  // dateRemoved: string;
 }
 
 // for the pet stat list - to store an individual Normal/Shiny/Mythic variant of a pet.
@@ -64,14 +129,13 @@ export interface PetInstance {
   currency: number; 
   gems: number; 
   variant: PetVariant; 
+  hatchable: boolean;
   image: string; 
   obtainedFrom: string;
   obtainedFromImage: string;
 }
 
 // ~~~~~~~~~~ Data ~~~~~~~~~~
-
-export const petData = petJson as unknown as Category[];
 
 export const variantData: { [key in PetVariant]: { baseScale: number, levelScale: number, chanceMultiplier: number } } = { 
     Normal: { baseScale: 1, levelScale: 1.35, chanceMultiplier: 1 },

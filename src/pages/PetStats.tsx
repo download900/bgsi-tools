@@ -28,7 +28,9 @@ import {
   currencyImages,
   getPetChance,
   getPetStat,
-  Egg
+  Egg,
+  PetData,
+  Pet
 } from "../util/DataUtil";
 import {
   getRarityStyle,
@@ -47,7 +49,7 @@ type RarityFilter = "legendary" | "secret" | "all";
 type SortKey = "name" | "chance" | "bubbles" | "coins" | "gems";
 
 interface PetListProps {
-  data: Category[];
+    data: PetData | undefined;
 }
 
 export function PetList(props: PetListProps) {
@@ -101,7 +103,7 @@ export function PetList(props: PetListProps) {
   }, []);
 
   useEffect(() => {
-    if (!props.data || props.data?.length < 1 || allPets?.length < 1) return;
+    if (!props.data || props.data?.eggs.length < 1 || allPets?.length < 1) return;
     try {
       const settings = {
         obtainedFilter: obtainedFilter,
@@ -131,14 +133,14 @@ export function PetList(props: PetListProps) {
   }, [props.data]);
 
   useEffect(() => {
-    if (!props.data || props.data?.length < 1 || allPets?.length < 1) return;
+    if (!props.data || props.data?.eggs.length < 1 || allPets?.length < 1) return;
     const pets = buildPetList();
     setAllPets(pets);
     sortAndFilterPets(pets);
   }, [previewMaxLevel, previewEnchant, enchantTeamSize, secondEnchant]);
 
   useEffect(() => {
-    if (!props.data || props.data?.length < 1 || allPets?.length < 1) return;
+    if (!props.data || props.data?.eggs.length < 1 || allPets?.length < 1) return;
     sortAndFilterPets(allPets);
   }, [sortColumn,nameFilter, currencyFilter, obtainedFilter, rarityFilter, variantFilter]);
 
@@ -178,14 +180,17 @@ export function PetList(props: PetListProps) {
   };
 
   const buildPetList = () => {
-    const addPetsFromEgg = (egg: Egg) => {
-    egg.pets.forEach((pet) => {
+    const allPets: PetInstance[] = [];
+    if (!props.data || props.data.eggs.length < 1) return [];
+
+    const addPet = (pet: Pet) => {
       if (pet.rarity !== 'legendary' && pet.rarity !== 'secret') return;
       petVariants.forEach((variant) => {
         if (variant.includes("Mythic") && !pet.hasMythic) return; // skip Mythic if pet doesn't have it
         allPets.push({
           name: pet.name,
           chance: getPetChance(pet, variant),
+          hatchable: pet.hatchable,
           rarity: pet.rarity,
           bubbles: getPetStat(pet, variant, "bubbles", previewMaxLevel, previewEnchant, enchantTeamSize, secondEnchant),
           currencyVariant: pet.currencyVariant,
@@ -197,20 +202,10 @@ export function PetList(props: PetListProps) {
           obtainedFromImage: pet.obtainedFromImage
         });
       });
-    });
-  }
+    }
 
-    if (props.data?.length < 1) return [];
-    const allPets: PetInstance[] = [];
-    props.data.forEach((cat) => {
-      cat.eggs?.forEach((egg) => {
-        addPetsFromEgg(egg);
-      });
-      cat.categories?.forEach((subCat) => {
-        subCat.eggs?.forEach((egg) => {
-          addPetsFromEgg(egg);
-        });
-      });
+    props.data?.pets.forEach((pet) => {
+      addPet(pet);
     });
     return allPets;
   }
@@ -452,7 +447,7 @@ export function PetList(props: PetListProps) {
                   </TableCell>
                   <TableCell>
                     <Typography variant="body2">
-                      1/{(100 / pet.chance).toLocaleString(undefined, { maximumFractionDigits: 0 })}
+                      { pet.hatchable ? `1/${(100 / pet.chance).toLocaleString(undefined, { maximumFractionDigits: 0 })}` : "100%" }
                     </Typography>
                   </TableCell>
                   <TableCell>

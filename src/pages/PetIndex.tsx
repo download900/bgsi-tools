@@ -27,7 +27,8 @@ import {
   Pet,
   PetVariant,
   petVariants,
-  currencyImages
+  currencyImages,
+  PetData
 } from "../util/DataUtil";
 import {
   getRarityStyle,
@@ -41,11 +42,11 @@ const drawerWidth = 340;
 type PetKey = `${string}__${PetVariant}`;
 type OwnedPets = Record<PetKey, boolean>;
 
-interface CompletionTrackerProps {
-  data: Category[];
+interface PetIndexProps {
+    data: PetData | undefined;
 }
 
-export function CompletionTracker({ data }: CompletionTrackerProps) {
+export function PetIndex({ data }: PetIndexProps) {
   const [ownedPets, setOwnedPets] = useState<OwnedPets>({});
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   
@@ -104,6 +105,8 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
     const owned: Record<PetVariant, number> = { ...totals };
 
     for (const egg of eggs) {
+      if (!egg) continue;
+      console.log(`Calculating completion for egg: ${egg.name}`);
       for (const pet of egg.pets) {
         petVariants.forEach((v) => {
           if (!pet.hasMythic && v.includes("Mythic")) return;
@@ -135,34 +138,23 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
 
   // flatten all categories
   const allCats: Category[] = [];
-  for (const cat of data) {
+  for (const cat of data?.categories || []) {
     allCats.push(cat);
     if (cat.categories) {
       allCats.push(...cat.categories);
     }
   }
-  const allStats = calculateCompletion(allCats.flatMap((c) => getEggsInCategory(c)));
+  const allStats = calculateCompletion(data?.eggs || []);
 
   // determine subcategories/eggs to show
   const isAll = selectedCategory === "All";
   let categoryData = null;
   if (!isAll) {
-    // find the category or subcategory that matches the selectedCategory
-    const findCategory = (cats: Category[]): Category | null => {
-      for (const cat of cats) {
-        if (cat.name === selectedCategory) return cat;
-        if (cat.categories) {
-          const subCat = findCategory(cat.categories);
-          if (subCat) return subCat;
-        }
-      }
-      return null;
-    };
-    categoryData = findCategory(data);
+    categoryData = data?.categoryLookup[selectedCategory];
   }
 
   // eggs to show in main content
-  const eggsToShow: Egg[] = categoryData ? getEggsInCategory(categoryData) : allCats.flatMap((c) => getEggsInCategory(c));
+  const eggsToShow: Egg[] = categoryData ? getEggsInCategory(categoryData) : data?.eggs || [];
 
   const headerName = categoryData ? categoryData.name : "All Pets";
   const headerStats = calculateCompletion(eggsToShow);
@@ -270,7 +262,7 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
           </ListItemButton>
 
           {/* Categories */}
-          {data.map((cat) => displayCategoryDrawerItem(cat, 0))}
+          {data?.categories.map((cat) => displayCategoryDrawerItem(cat, 0))}
           <Box sx={{ height: '50px' }} />
         </List>
       </Drawer>
@@ -407,10 +399,13 @@ export function CompletionTracker({ data }: CompletionTrackerProps) {
                           <TableCell>
                             <Typography variant="body2" sx={style}>
                               { /* If drop rate below 100, show as percent. */
+                                pet.hatchable ?
                                 pet.chance > 1 ? 
                                 (<>{pet.chance.toLocaleString(undefined, { maximumFractionDigits: 2 })}%</>) 
                                 : 
                                 (<>1/{(100 / pet.chance).toLocaleString(undefined, { maximumFractionDigits: 0 })}</>)
+                                :
+                                '100%'
                               }
                             </Typography>
                           </TableCell>

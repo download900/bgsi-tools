@@ -10,9 +10,9 @@ import {
   Link} from "@mui/material";
 import headerImage from "./assets/favicon.png";
 import { PetList } from "./pages/PetStats";
-import { OddsCalculator } from "./pages/OddsCalculator";
-import { CompletionTracker } from "./pages/PetIndex";
-import { Category, petData } from "./util/DataUtil";
+import { OddsCalculator } from "./pages/Calculator";
+import { PetIndex } from "./pages/PetIndex";
+import { PetData, loadData } from "./util/DataUtil";
 import { SiGithub } from "react-icons/si";
 import { WikiTools } from "./pages/WikiTools";
 
@@ -20,14 +20,14 @@ import { WikiTools } from "./pages/WikiTools";
 export type Tabs = "Completion" | "Stats" | "Odds";
 
 export default function App() {
-  const [data, setData] = useState<Category[]>([]);
+  const [data, setData] = useState<PetData>();
   const [currentTab, setCurrentTab] = useState<"Completion" | "Odds" | "Stats" | "WikiTools">("Odds");
 
   // only show WikiTools if running in localhost
-  const isLocalhost = window.location.hostname === "localhost";
+  const isLocalhost = true;// window.location.hostname === "localhost";
 
   useEffect(() => {
-    setData(petData);
+    setData(loadData());
   }, []);
 
   return (
@@ -53,7 +53,7 @@ export default function App() {
             <OddsCalculator data={data} />
           </Box>
           <Box sx={{ display: currentTab === 'Completion' ? 'flex' : 'none', flexGrow: '1', justifyContent: 'center', alignItems: 'middle', maxWidth: '100% !important' }}>
-            <CompletionTracker data={data} />
+            <PetIndex data={data} />
           </Box>
           <Box sx={{ display: currentTab === 'Stats' ? 'flex' : 'none', flexGrow: '1', justifyContent: 'center', alignItems: 'middle', maxWidth: '100% !important' }}>
             <PetList data={data} />
