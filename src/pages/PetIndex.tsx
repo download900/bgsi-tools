@@ -106,7 +106,6 @@ export function PetIndex({ data }: PetIndexProps) {
 
     for (const egg of eggs) {
       if (!egg) continue;
-      console.log(`Calculating completion for egg: ${egg.name}`);
       for (const pet of egg.pets) {
         petVariants.forEach((v) => {
           if (!pet.hasMythic && v.includes("Mythic")) return;

@@ -17,7 +17,8 @@
     "canSpawnAsRift": false,
     "secretBountyExcluded": true,
     "world": "The Overworld",
-    "zone": "W1 Surface"
+    "zone": "W1 Surface",
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Spotted Egg",
@@ -37,7 +38,8 @@
     "canSpawnAsRift": false,
     "secretBountyExcluded": true,
     "world": "The Overworld",
-    "zone": "W1 Surface"
+    "zone": "W1 Surface",
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Iceshard Egg",
@@ -58,7 +60,8 @@
     "canSpawnAsRift": false,
     "secretBountyExcluded": true,
     "world": "The Overworld",
-    "zone": "W1 Surface"
+    "zone": "W1 Surface",
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Spikey Egg",
@@ -78,7 +81,8 @@
     "available": true,
     "canSpawnAsRift": true,
     "world": "The Overworld",
-    "zone": "Floating Island"
+    "zone": "Floating Island",
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Magma Egg",
@@ -98,7 +102,8 @@
     "available": true,
     "canSpawnAsRift": true,
     "world": "The Overworld",
-    "zone": "Outer Space"
+    "zone": "Outer Space",
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Crystal Egg",
@@ -118,7 +123,8 @@
     "available": true,
     "canSpawnAsRift": true,
     "world": "The Overworld",
-    "zone": "Outer Space"
+    "zone": "Outer Space",
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Lunar Egg",
@@ -138,7 +144,8 @@
     "available": true,
     "canSpawnAsRift": true,
     "world": "The Overworld",
-    "zone": "Twilight"
+    "zone": "Twilight",
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Void Egg",
@@ -158,7 +165,8 @@
     "available": true,
     "canSpawnAsRift": true,
     "world": "The Overworld",
-    "zone": "The Void"
+    "zone": "The Void",
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Hell Egg",
@@ -178,7 +186,8 @@
     "available": true,
     "canSpawnAsRift": true,
     "world": "The Overworld",
-    "zone": "The Void"
+    "zone": "The Void",
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Nightmare Egg",
@@ -199,7 +208,8 @@
     "available": true,
     "canSpawnAsRift": true,
     "world": "The Overworld",
-    "zone": "The Void"
+    "zone": "The Void",
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Rainbow Egg",
@@ -219,7 +229,8 @@
     "available": true,
     "canSpawnAsRift": true,
     "world": "The Overworld",
-    "zone": "Zen"
+    "zone": "Zen",
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Showman Egg",
@@ -237,7 +248,8 @@
     "canSpawnAsRift": false,
     "secretBountyExcluded": true,
     "world": "Minigame Paradise",
-    "zone": "Dice Island"
+    "zone": "Dice Island",
+    "dateAdded": "2025-05-04"
   },
   {
     "name": "Mining Egg",
@@ -257,7 +269,8 @@
     "available": true,
     "canSpawnAsRift": true,
     "world": "Minigame Paradise",
-    "zone": "Minecart Forest"
+    "zone": "Minecart Forest",
+    "dateAdded": "2025-05-04"
   },
   {
     "name": "Cyber Egg",
@@ -278,7 +291,8 @@
     "available": true,
     "canSpawnAsRift": true,
     "world": "Minigame Paradise",
-    "zone": "Robot Factory"
+    "zone": "Robot Factory",
+    "dateAdded": "2025-05-04"
   },
   {
     "name": "Neon Egg",
@@ -299,7 +313,8 @@
     "available": true,
     "canSpawnAsRift": true,
     "world": "Minigame Paradise",
-    "zone": "Hyperwave Island"
+    "zone": "Hyperwave Island",
+    "dateAdded": "2025-05-17"
   },
   {
     "name": "Chance Egg",
@@ -317,7 +332,8 @@
     "canSpawnAsRift": false,
     "secretBountyExcluded": true,
     "world": "Minigame Paradise",
-    "zone": "W2 Surface"
+    "zone": "W2 Surface",
+    "dateAdded": "2025-05-17"
   },
   {
     "name": "Game Egg",
@@ -335,7 +351,9 @@
     "canSpawnAsRift": false,
     "secretBountyExcluded": true,
     "world": "Minigame Paradise",
-    "zone": "W2 Surface"
+    "zone": "W2 Surface",
+    "dateAdded": "2025-05-04",
+    "dateRemoved": "2025-05-17"
   },
   {
     "name": "Underworld Egg",
@@ -354,7 +372,9 @@
     "available": false,
     "canSpawnAsRift": true,
     "secretBountyExcluded": true,
-    "world": "Minigame Paradise"
+    "world": "Minigame Paradise",
+    "dateAdded": "2025-05-10",
+    "dateRemoved": "2025-05-25"
   },
   {
     "name": "Index",
@@ -485,7 +505,8 @@
     ],
     "luckIgnored": true,
     "limited": true,
-    "available": true
+    "available": true,
+    "dateAdded": "2025-05-25"
   },
   {
     "name": "Season 3 Bubble Pass",
@@ -498,7 +519,8 @@
     ],
     "luckIgnored": true,
     "limited": true,
-    "available": true
+    "available": true,
+    "dateAdded": "2025-05-25"
   },
   {
     "name": "Season 2 Egg",
@@ -511,7 +533,9 @@
     ],
     "luckIgnored": true,
     "limited": true,
-    "available": false
+    "available": false,
+    "dateAdded": "2025-05-04",
+    "dateRemoved": "2025-05-22"
   },
   {
     "name": "Season 2 Bubble Pass",
@@ -524,7 +548,9 @@
     ],
     "luckIgnored": true,
     "limited": true,
-    "available": false
+    "available": false,
+    "dateAdded": "2025-05-04",
+    "dateRemoved": "2025-05-22"
   },
   {
     "name": "Season 1 Egg",
@@ -537,7 +563,9 @@
     ],
     "luckIgnored": true,
     "limited": true,
-    "available": false
+    "available": false,
+    "dateAdded": "2025-04-11",
+    "dateRemoved": "2025-05-03"
   },
   {
     "name": "Season 1 Bubble Pass",
@@ -550,7 +578,9 @@
     ],
     "luckIgnored": true,
     "limited": true,
-    "available": false
+    "available": false,
+    "dateAdded": "2025-04-11",
+    "dateRemoved": "2025-05-03"
   },
   {
     "name": "Series 2 Egg",
@@ -563,7 +593,9 @@
     ],
     "luckIgnored": true,
     "limited": true,
-    "available": false
+    "available": false,
+    "dateAdded": "2025-05-17",
+    "dateRemoved": "2025-05-22"
   },
   {
     "name": "Series 2 Leaderboards",
@@ -574,7 +606,9 @@
     ],
     "luckIgnored": true,
     "limited": true,
-    "available": false
+    "available": false,
+    "dateAdded": "2025-05-17",
+    "dateRemoved": "2025-05-22"
   },
   {
     "name": "Series 1 Egg",
@@ -588,7 +622,9 @@
     ],
     "luckIgnored": true,
     "limited": true,
-    "available": false
+    "available": false,
+    "dateAdded": "2025-04-26",
+    "dateRemoved": "2025-04-30"
   },
   {
     "name": "Series 1 Leaderboards",
@@ -599,7 +635,9 @@
     ],
     "luckIgnored": true,
     "limited": true,
-    "available": false
+    "available": false,
+    "dateAdded": "2025-04-26",
+    "dateRemoved": "2025-04-30"
   },
   {
     "name": "Beach Egg",
@@ -613,7 +651,8 @@
     "hatchCurrency": "seashells",
     "limited": true,
     "available": true,
-    "world": "Beach Festival"
+    "world": "Beach Festival",
+    "dateAdded": "2025-05-25"
   },
   {
     "name": "Icecream Egg",
@@ -634,7 +673,8 @@
     "hatchCurrency": "seashells",
     "limited": true,
     "available": true,
-    "world": "Beach Festival"
+    "world": "Beach Festival",
+    "dateAdded": "2025-05-25"
   },
   {
     "name": "Fruit Egg",
@@ -652,7 +692,8 @@
     "hatchCurrency": "seashells",
     "limited": true,
     "available": true,
-    "world": "Beach Festival"
+    "world": "Beach Festival",
+    "dateAdded": "2025-05-25"
   },
   {
     "name": "Fossil Egg",
@@ -674,7 +715,8 @@
     "hatchCurrency": "seashells",
     "limited": true,
     "available": true,
-    "world": "Beach Festival"
+    "world": "Beach Festival",
+    "dateAdded": "2025-05-31"
   },
   {
     "name": "Pirate Egg",
@@ -689,7 +731,8 @@
     "luckIgnored": true,
     "limited": true,
     "available": true,
-    "world": "Beach Festival"
+    "world": "Beach Festival",
+    "dateAdded": "2025-05-31"
   },
   {
     "name": "Ancient Chest",
@@ -699,7 +742,8 @@
     ],
     "luckIgnored": true,
     "limited": true,
-    "available": true
+    "available": true,
+    "dateAdded": "2025-05-31"
   },
   {
     "name": "Summer Login Rewards",
@@ -709,7 +753,8 @@
     ],
     "luckIgnored": true,
     "limited": true,
-    "available": true
+    "available": true,
+    "dateAdded": "2025-05-31"
   },
   {
     "name": "200M Egg",
@@ -727,7 +772,9 @@
     "limited": true,
     "available": false,
     "world": "The Overworld",
-    "zone": "W1 Surface"
+    "zone": "W1 Surface",
+    "dateAdded": "2025-05-10",
+    "dateRemoved": "2025-05-17"
   },
   {
     "name": "100M Egg",
@@ -746,7 +793,9 @@
     "limited": true,
     "available": false,
     "world": "The Overworld",
-    "zone": "W1 Surface"
+    "zone": "W1 Surface",
+    "dateAdded": "2025-04-26",
+    "dateRemoved": "2025-05-04"
   },
   {
     "name": "Easter Event 2025",
@@ -760,7 +809,9 @@
     "luckIgnored": true,
     "limited": true,
     "available": true,
-    "world": "The Overworld"
+    "world": "The Overworld",
+    "dateAdded": "2025-04-18",
+    "dateRemoved": "2025-04-26"
   },
   {
     "name": "Throwback Egg",
@@ -782,7 +833,9 @@
     "canSpawnAsRift": true,
     "secretBountyExcluded": true,
     "world": "The Overworld",
-    "zone": "Hatching Zone"
+    "zone": "Hatching Zone",
+    "dateAdded": "2025-04-23",
+    "dateRemoved": "2025-04-30"
   },
   {
     "name": "Bunny Egg",
@@ -803,7 +856,9 @@
     "canSpawnAsRift": true,
     "secretBountyExcluded": true,
     "world": "The Overworld",
-    "zone": "Easter Event 2025"
+    "zone": "Easter Event 2025",
+    "dateAdded": "2025-04-18",
+    "dateRemoved": "2025-04-26"
   },
   {
     "name": "Pastel Egg",
@@ -824,7 +879,9 @@
     "canSpawnAsRift": true,
     "secretBountyExcluded": true,
     "world": "The Overworld",
-    "zone": "Easter Event 2025"
+    "zone": "Easter Event 2025",
+    "dateAdded": "2025-04-18",
+    "dateRemoved": "2025-04-26"
   },
   {
     "name": "Silly Egg",
@@ -843,7 +900,8 @@
     "canSpawnAsRift": true,
     "secretBountyExcluded": true,
     "riftChance": 0.002,
-    "world": "The Overworld"
+    "world": "The Overworld",
+    "dateAdded": "2025-04-26"
   },
   {
     "name": "Aura Egg",
@@ -862,7 +920,9 @@
     "canSpawnAsRift": true,
     "secretBountyExcluded": true,
     "riftChance": 0.002,
-    "world": "The Overworld"
+    "world": "The Overworld",
+    "dateAdded": "2025-04-11",
+    "dateRemoved": "2025-04-26"
   },
   {
     "name": "Secret Bounty Wave 2",
@@ -874,7 +934,8 @@
     ],
     "luckIgnored": true,
     "limited": true,
-    "available": true
+    "available": true,
+    "dateAdded": "2025-05-25"
   },
   {
     "name": "Secret Bounty Wave 1",
@@ -886,7 +947,9 @@
     ],
     "luckIgnored": true,
     "limited": true,
-    "available": false
+    "available": false,
+    "dateAdded": "2025-05-10",
+    "dateRemoved": "2025-05-25"
   },
   {
     "name": "Exclusive Wave 7",
@@ -897,7 +960,9 @@
     ],
     "luckIgnored": true,
     "limited": true,
-    "available": true
+    "available": true,
+    "dateAdded": "2025-05-31",
+    "dateRemoved": "2025-06-06"
   },
   {
     "name": "Exclusive Wave 6",
@@ -908,7 +973,9 @@
     ],
     "luckIgnored": true,
     "limited": true,
-    "available": false
+    "available": false,
+    "dateAdded": "2025-05-25",
+    "dateRemoved": "2025-05-30"
   },
   {
     "name": "Exclusive Wave 5",
@@ -919,7 +986,9 @@
     ],
     "luckIgnored": true,
     "limited": true,
-    "available": false
+    "available": false,
+    "dateAdded": "2025-05-17",
+    "dateRemoved": "2025-05-24"
   },
   {
     "name": "Exclusive Wave 4",
@@ -930,7 +999,9 @@
     ],
     "luckIgnored": true,
     "limited": true,
-    "available": false
+    "available": false,
+    "dateAdded": "2025-05-10",
+    "dateRemoved": "2025-05-14"
   },
   {
     "name": "Exclusive Wave 3",
@@ -941,7 +1012,9 @@
     ],
     "luckIgnored": true,
     "limited": true,
-    "available": false
+    "available": false,
+    "dateAdded": "2025-04-26",
+    "dateRemoved": "2025-04-29"
   },
   {
     "name": "Exclusive Wave 2",
@@ -952,7 +1025,9 @@
     ],
     "luckIgnored": true,
     "limited": true,
-    "available": false
+    "available": false,
+    "dateAdded": "2025-04-19",
+    "dateRemoved": "2025-04-21"
   },
   {
     "name": "Exclusive Wave 1",
@@ -963,7 +1038,9 @@
     ],
     "luckIgnored": true,
     "limited": true,
-    "available": false
+    "available": false,
+    "dateAdded": "2025-04-11",
+    "dateRemoved": "2025-04-14"
   },
   {
     "name": "Gem Bundles",
@@ -973,7 +1050,8 @@
     ],
     "luckIgnored": true,
     "limited": true,
-    "available": false
+    "available": false,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Robux Shop Quest",
@@ -983,6 +1061,8 @@
     ],
     "luckIgnored": true,
     "limited": true,
-    "available": false
+    "available": false,
+    "dateAdded": "2025-04-11",
+    "dateRemoved": "2025-04-12"
   }
 ]

@@ -42,6 +42,81 @@ export async function scrapeWiki(data: PetData, debug: (msg: string) => void): P
   debug('Scraping complete!');
 }
 
+async function fetchCategoryPages(categoryName: string): Promise<string[]> {
+  const api = 
+    `https://bgs-infinity.fandom.com/api.php` +
+    `?action=query` +
+    `&list=categorymembers` +
+    `&cmtitle=${encodeURIComponent(`Category:${categoryName}`)}` +
+    `&cmlimit=max` + // max is 500, but we can fetch more in batches
+    `&format=json` +
+    `&origin=*`;
+
+  const res  = await fetch(api);
+  const json = await res.json() as any;
+  const pages = json.query.categorymembers;
+
+  // Check if we got all pages, if not, fetch more
+  if (json.continue) {
+    let continueApi = api + `&cmcontinue=${json.continue.cmcontinue}`;
+    while (json.continue) {
+      const res = await fetch(continueApi);
+      const json = await res.json() as any;
+      pages.push(...json.query.categorymembers);
+      if (json.continue) {
+        continueApi = api + `&cmcontinue=${json.continue.cmcontinue}`;
+      } else {
+        break;
+      }
+    }
+  }
+
+  return pages.map((page: any) => page.title);
+}
+
+async function fetchWikitext(pageName: string): Promise<string> {
+  try {
+    const api = 
+      `https://bgs-infinity.fandom.com/api.php` +
+      `?action=query` +
+      `&prop=revisions` +
+      `&rvprop=content` +
+      `&format=json` +
+      `&titles=${encodeURIComponent(pageName)}` +
+      `&origin=*`;
+
+    console.log(`Fetching wikitext for ${pageName} from ${api}`);
+
+    const res  = await fetch(api);
+    const json = await res.json() as any;
+    console.log(`Received response for ${pageName}:`, json);
+    const pages = json.query.pages;
+    const pageId = Object.keys(pages)[0];
+    return pages[pageId].revisions[0]['*'];         // the raw wikitext
+  }
+  catch (error) {
+    console.error(`Error fetching wikitext for ${pageName}:`, error);
+    return '';
+  }
+}
+
+async function fetchHTML(petName: string): Promise<string> {
+    const api =
+      `https://bgs-infinity.fandom.com/api.php` +
+      `?action=parse` +
+      `&page=${encodeURIComponent(petName)}` +
+      `&prop=text` +
+      `&format=json` +
+      `&origin=*`;
+    const res  = await fetch(api);
+    const json = await res.json() as any;
+    if (json.error) {
+        console.error(`Error fetching ${petName}: ${json.error}`);
+        return '';
+    }
+    return json.parse.text['*'];  // the HTML fragment you can feed into cheerio.load()
+}
+
 async function parseEgg(eggname: string): Promise<Egg> {
   const egg: Egg = {
     name: eggname,
@@ -98,55 +173,55 @@ async function parseEgg(eggname: string): Promise<Egg> {
     egg.zone = zoneMatch[1].trim();
   }
   
-  // // Fetch HTML
-  // const html = await fetchHTML(eggname);
-  // const $ = cheerio.load(html);
+  // Fetch HTML
+  const html = await fetchHTML(eggname);
+  const $ = cheerio.load(html);
 
-  // const updateRelease = $('td[data-source="update-release"]');
-  // if (updateRelease.length > 0) {
-  //   egg.dateAdded = convertDateToISO(updateRelease.text());
-  // }
-  // const updateRemoved = $('td[data-source="update-removed"]');
-  // if (updateRemoved.length > 0) {
-  //   egg.dateRemoved = convertDateToISO(updateRemoved.text());
-  // }
+  const updateRelease = $('td[data-source="update-release"]');
+  if (updateRelease.length > 0) {
+    egg.dateAdded = convertDateToISO(updateRelease.text());
+  }
+  const updateRemoved = $('td[data-source="update-removed"]');
+  if (updateRemoved.length > 0) {
+    egg.dateRemoved = convertDateToISO(updateRemoved.text());
+  }
 
   return egg;
 }
 
-// const convertDateToISO = (dateStr: string): string => {
-//   // match the date in parentheses
-//   const dateMatch = dateStr.match(/\(([^)]+)\)/);
-//   if (dateMatch && dateMatch?.length > 0) {
-//     // convert April 11th, 2025 to ISO format YYYY-MM-DD
-//     const date = dateMatch[1].trim();
-//     const parts = date.split(' ');
-//     if (parts.length < 3) {
-//       return ''; // return empty string if date format is unexpected
-//     }
+const convertDateToISO = (dateStr: string): string => {
+  // match the date in parentheses
+  const dateMatch = dateStr.match(/\(([^)]+)\)/);
+  if (dateMatch && dateMatch?.length > 0) {
+    // convert April 11th, 2025 to ISO format YYYY-MM-DD
+    const date = dateMatch[1].trim();
+    const parts = date.split(' ');
+    if (parts.length < 3) {
+      return ''; // return empty string if date format is unexpected
+    }
     
-//     const monthMap: { [key: string]: string } = {
-//       'January':   '01',
-//       'February':  '02',
-//       'March':     '03',
-//       'April':     '04',
-//       'May':       '05',
-//       'June':      '06',
-//       'July':      '07',
-//       'August':    '08',
-//       'September': '09',
-//       'October':   '10',
-//       'November':  '11',
-//       'December':  '12'
-//     };
-//     const month = monthMap[parts[0]]; // e.g. 'April' -> '04'
-//     const day = parts[1].replace(/[^0-9]/g, '').padStart(2, '0'); // e.g. '11th' -> '11'
-//     const year = parts[2]; // e.g. '2025'
+    const monthMap: { [key: string]: string } = {
+      'January':   '01',
+      'February':  '02',
+      'March':     '03',
+      'April':     '04',
+      'May':       '05',
+      'June':      '06',
+      'July':      '07',
+      'August':    '08',
+      'September': '09',
+      'October':   '10',
+      'November':  '11',
+      'December':  '12'
+    };
+    const month = monthMap[parts[0]]; // e.g. 'April' -> '04'
+    const day = parts[1].replace(/[^0-9]/g, '').padStart(2, '0'); // e.g. '11th' -> '11'
+    const year = parts[2]; // e.g. '2025'
 
-//     return `${year}-${month}-${day}`;
-//   }
-//   return ''; // return empty string if no date found
-// }
+    return `${year}-${month}-${day}`;
+  }
+  return ''; // return empty string if no date found
+}
 
 // (4) Fetch each pet page and scrape pet and egg info
 async function parsePet(petName: string): Promise<Pet> {
@@ -277,81 +352,6 @@ async function parsePet(petName: string): Promise<Pet> {
   return pet;
 }
 
-async function fetchCategoryPages(categoryName: string): Promise<string[]> {
-  const api = 
-    `https://bgs-infinity.fandom.com/api.php` +
-    `?action=query` +
-    `&list=categorymembers` +
-    `&cmtitle=${encodeURIComponent(`Category:${categoryName}`)}` +
-    `&cmlimit=max` + // max is 500, but we can fetch more in batches
-    `&format=json` +
-    `&origin=*`;
-
-  const res  = await fetch(api);
-  const json = await res.json() as any;
-  const pages = json.query.categorymembers;
-
-  // Check if we got all pages, if not, fetch more
-  if (json.continue) {
-    let continueApi = api + `&cmcontinue=${json.continue.cmcontinue}`;
-    while (json.continue) {
-      const res = await fetch(continueApi);
-      const json = await res.json() as any;
-      pages.push(...json.query.categorymembers);
-      if (json.continue) {
-        continueApi = api + `&cmcontinue=${json.continue.cmcontinue}`;
-      } else {
-        break;
-      }
-    }
-  }
-
-  return pages.map((page: any) => page.title);
-}
-
-async function fetchWikitext(pageName: string): Promise<string> {
-  try {
-    const api = 
-      `https://bgs-infinity.fandom.com/api.php` +
-      `?action=query` +
-      `&prop=revisions` +
-      `&rvprop=content` +
-      `&format=json` +
-      `&titles=${encodeURIComponent(pageName)}` +
-      `&origin=*`;
-
-    console.log(`Fetching wikitext for ${pageName} from ${api}`);
-
-    const res  = await fetch(api);
-    const json = await res.json() as any;
-    console.log(`Received response for ${pageName}:`, json);
-    const pages = json.query.pages;
-    const pageId = Object.keys(pages)[0];
-    return pages[pageId].revisions[0]['*'];         // the raw wikitext
-  }
-  catch (error) {
-    console.error(`Error fetching wikitext for ${pageName}:`, error);
-    return '';
-  }
-}
-
-async function fetchHTML(petName: string): Promise<string> {
-    const api =
-      `https://bgs-infinity.fandom.com/api.php` +
-      `?action=parse` +
-      `&page=${encodeURIComponent(petName)}` +
-      `&prop=text` +
-      `&format=json` +
-      `&origin=*`;
-    const res  = await fetch(api);
-    const json = await res.json() as any;
-    if (json.error) {
-        console.error(`Error fetching ${petName}: ${json.error}`);
-        return '';
-    }
-    return json.parse.text['*'];  // the HTML fragment you can feed into cheerio.load()
-}
-
 // (5) This function processes the scraped data. First it updates our current data and saves that,
 //     then it saves the remaining new pets to a JSON file.
 const processEggs = (wikiData: Egg[], existingData: PetData) => {
@@ -368,9 +368,9 @@ const processEggs = (wikiData: Egg[], existingData: PetData) => {
   }
 
   // Save JSONs
-  exportDataToJson(existingData);
+  exportDataToJson(existingData, '-existing');
   if (newData.eggs.length > 0) {
-    exportDataToJson(newData);
+    exportDataToJson(newData, '-new');
   }
 }
 
@@ -417,15 +417,15 @@ const processEgg = (egg: Egg, existingData: PetData, newData: PetData) => {
 
 // ────────────────────────────────────────────────────────────
 
-function exportDataToJson(data: PetData) {
-  saveJSON(data.pets, 'pets');
+function exportDataToJson(data: PetData, suffix: string ): void {
+  saveJSON(data.pets, `pets${suffix}`);
   const eggsJson = data.eggs.map((egg) => {
     return {
       ...egg,
       pets: egg.pets.map((pet) => pet.name)
     };
   });
-  saveJSON(eggsJson, 'eggs');
+  saveJSON(eggsJson, `eggs${suffix}`);
   if (data.categories?.length > 0) {
     const categories = data.categories.map((cat) => {
       return {
@@ -440,7 +440,7 @@ function exportDataToJson(data: PetData) {
         })
       };
     });
-    saveJSON(categories, 'categories');
+    saveJSON(categories, `categories${suffix}`);
   }
 }
 
@@ -477,18 +477,19 @@ export function exportEggToLua(egg: Egg): string {
   lua += `  ["${egg.name}"] = {\n`;
   lua += `    name = "${egg.name}",\n`;
   lua += `    pets = { ${egg.pets.map((pet) => `"${pet.name}"`).join(', ')} },\n`;
-  lua += `    hatchCost = ${egg.hatchCost || -1},\n`;
-  lua += `    hatchCurrency = "${capitalizeFirstLetter(egg.hatchCurrency) || ''}",\n`;
-  lua += `    world = "${egg.world || ''}",\n`;
-  lua += `    zone = "${egg.zone || ''}",\n`;
-  lua += `    limited = ${egg.limited == undefined ? false : egg.limited},\n`;
-  lua += `    available = ${egg.available == undefined ? true : egg.available},\n`;
-  // lua += `    DateAdded = "${egg.dateAdded}",\n`;
-  // lua += `    DateUnavailable = "${egg.dateRemoved}",\n`;
-  lua += `    luckIgnored = ${egg.luckIgnored == undefined ? false : egg.luckIgnored},\n`;
-  lua += `    hasEggRift = ${egg.canSpawnAsRift == undefined ? false : egg.canSpawnAsRift},\n`;
-  lua += `    secretBountyRotation = ${egg.secretBountyExcluded == undefined ? egg.canSpawnAsRift == undefined ? false : egg.canSpawnAsRift : !egg.secretBountyExcluded},\n`;
-  lua += `    infinityEgg = "${egg.infinityEgg || ''}",\n`;
+  lua += `    limited = ${egg.limited === undefined ? false : egg.limited},\n`;
+  lua += `    available = ${egg.available === undefined ? true : egg.available},\n`;
+  lua += `    dateAdded = "${egg.dateAdded === undefined ? '????-??-??' : egg.dateAdded}",\n`;
+  egg.dateRemoved      && (lua += `    dateRemoved = "${egg.dateRemoved}",\n`);
+  egg.hatchCost        && (lua += `    hatchCost = ${egg.hatchCost},\n`);
+  egg.hatchCost        && (lua += `    hatchCurrency = "${capitalizeFirstLetter(egg.hatchCurrency)}",\n`);
+  egg.world            && (lua += `    world = "${egg.world || ''}",\n`);
+  egg.zone             && (lua += `    zone = "${egg.zone || ''}",\n`);
+  egg.luckIgnored      && (lua += `    luckIgnored = ${egg.luckIgnored},\n`);
+  egg.canSpawnAsRift   && (lua += `    hasEggRift = ${egg.canSpawnAsRift === undefined ? false : egg.canSpawnAsRift},\n`);
+  const secretBountyRotation = egg.secretBountyExcluded === undefined ? egg.canSpawnAsRift === undefined ? false : egg.canSpawnAsRift : !egg.secretBountyExcluded;
+  secretBountyRotation && (lua += `    secretBountyRotation = ${secretBountyRotation},\n`);
+  egg.infinityEgg      && (lua += `    infinityEgg = "${egg.infinityEgg}",\n`);
   lua += `  },\n`;
   return lua;
 }
@@ -499,7 +500,7 @@ export function exportPetsToLua(data: PetData): string {
     lua += `\n-- ${egg.name}\n`;
     const pets = [];
     for (const pet of egg.pets) {
-      pets.push(exportPetToLua(pet));
+      pets.push(exportPetToLua(pet, egg));
     }
     lua += pets.join(',\n') + ',\n';
   }
@@ -507,27 +508,31 @@ export function exportPetsToLua(data: PetData): string {
   return lua;
 }
 
-const exportPetToLua = (pet: Pet): string => {
+const exportPetToLua = (pet: Pet, egg: Egg): string => {
   let lua = "";
   lua += `  ["${pet.name}"] = {\n`;
   lua += `    name = "${pet.name}",\n`;
   lua += `    rarity = "${capitalizeFirstLetter(pet.rarity)}",\n`;
   lua += `    chance = ${pet.hatchable ? pet.chance : '100'},\n`;
-  // lua += `    Hatchable = ${pet.hatchable == undefined ? true : pet.hatchable},\n`;
   lua += `    stats = {\n`;
   lua += `      bubbles = ${pet.bubbles},\n`;
   lua += `      gems = ${pet.gems},\n`;
   lua += `      currency = ${pet.currency},\n`;
   lua += `      currencyType = "${capitalizeFirstLetter(pet.currencyVariant)}",\n`;
   lua += `    },\n`;
-  lua += `    hasMythic = ${pet.hasMythic == undefined ? false : pet.hasMythic},\n`;
   lua += `    limited = ${pet.limited == undefined ? false : pet.limited},\n`;
   lua += `    available = ${pet.limited == undefined ? true : pet.limited ? pet.available : true},\n`;
-  lua += `    exclusive = ${pet.obtainedFrom === "Robux Shop"},\n`;
-  lua += `    tag = "${pet.tags?.join(', ')}",\n`;
+  const dateAdded = pet.dateAdded || egg.dateAdded;
+  if (!dateAdded) {
+    console.warn(`Pet ${pet.name} has no dateAdded`);
+  }
+  lua += `    dateAdded = "${dateAdded}",\n`;
+  const dateRemoved = pet.dateRemoved || egg.dateRemoved;
+  dateRemoved && (lua += `    dateRemoved = "${dateRemoved}",\n`);
+  pet.obtainedFrom === 'Robux Shop' && (lua += `    exclusive = true,\n`);
+  pet.hasMythic && (lua += `    hasMythic = true,\n`);
+  pet.tags && pet.tags.length > 0 && (lua += `    tag = "${pet.tags?.join(', ')}",\n`);
   lua += `    source = "${pet.obtainedFrom}",\n`;
-  // lua += `    DateAdded = "${egg.dateAdded}",\n`;
-  // lua += `    DateUnavailable = "${egg.dateRemoved}",\n`;
   lua += '  }'
   return lua;
 }
@@ -565,7 +570,7 @@ export function WikiTools(props: WikiToolsProps): JSX.Element {
   }
 
   const handlePetsJsonExport = () => {
-    exportDataToJson(props.data!);
+    exportDataToJson(props.data!, '');
   };
 
   const exportLuaToFile = (lua: string, filename: string) => {

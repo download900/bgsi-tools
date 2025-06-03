@@ -1915,7 +1915,8 @@
     ],
     "chance": 1,
     "hatchable": false,
-    "available": true
+    "available": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Sir Doggyton",
@@ -1936,7 +1937,8 @@
     "tags": [],
     "chance": 1,
     "hatchable": false,
-    "available": true
+    "available": true,
+    "dateAdded": "2025-05-04"
   },
   {
     "name": "Sunburst",
@@ -1959,7 +1961,8 @@
     ],
     "chance": 0.02,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Moonburst",
@@ -1982,7 +1985,8 @@
     ],
     "chance": 0.01,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Kitsune",
@@ -2003,7 +2007,8 @@
     ],
     "chance": 0.002,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Vaporium",
@@ -2025,7 +2030,8 @@
     ],
     "chance": 0.0008,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-10"
   },
   {
     "name": "Umbra",
@@ -2046,7 +2052,8 @@
     ],
     "chance": 0.1,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Abyssal Dragon",
@@ -2069,7 +2076,8 @@
     ],
     "chance": 0.025,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Hacker Prism",
@@ -2092,7 +2100,8 @@
     ],
     "chance": 0.025,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Dice Split",
@@ -2115,7 +2124,8 @@
     ],
     "chance": 0.01,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-04"
   },
   {
     "name": "Magmas",
@@ -2138,7 +2148,8 @@
     ],
     "chance": 0.1,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-04"
   },
   {
     "name": "Dragon Plushie",
@@ -2161,7 +2172,8 @@
     ],
     "chance": 0.01,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-04"
   },
   {
     "name": "Star Charm",
@@ -2182,7 +2194,8 @@
     "tags": [],
     "chance": 0.025,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-17"
   },
   {
     "name": "Holy Shock",
@@ -2203,7 +2216,8 @@
     ],
     "chance": 1,
     "hatchable": false,
-    "available": true
+    "available": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Evil Shock",
@@ -2224,7 +2238,8 @@
     ],
     "chance": 1,
     "hatchable": false,
-    "available": true
+    "available": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Rainbow Blitz",
@@ -2245,7 +2260,8 @@
     ],
     "chance": 1,
     "hatchable": false,
-    "available": true
+    "available": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "King Soul",
@@ -2266,7 +2282,8 @@
     ],
     "chance": 1,
     "hatchable": false,
-    "available": true
+    "available": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Demonic Dogcat",
@@ -2287,7 +2304,8 @@
     ],
     "chance": 1,
     "hatchable": false,
-    "available": true
+    "available": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Chronos",
@@ -2306,7 +2324,8 @@
     "tags": [],
     "chance": 1,
     "hatchable": false,
-    "available": true
+    "available": true,
+    "dateAdded": "2025-05-17"
   },
   {
     "name": "Dark Lord",
@@ -2325,7 +2344,8 @@
     "tags": [],
     "chance": 1,
     "hatchable": false,
-    "available": true
+    "available": true,
+    "dateAdded": "2025-05-17"
   },
   {
     "name": "Cerberus",
@@ -2345,7 +2365,8 @@
     "hasMythic": false,
     "tags": [],
     "chance": 1,
-    "hatchable": false
+    "hatchable": false,
+    "dateAdded": "2025-05-17"
   },
   {
     "name": "Security System",
@@ -2364,7 +2385,8 @@
     "tags": [],
     "chance": 1,
     "hatchable": false,
-    "available": true
+    "available": true,
+    "dateAdded": "2025-05-17"
   },
   {
     "name": "Rune Stone",

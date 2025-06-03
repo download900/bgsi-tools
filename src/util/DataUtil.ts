@@ -97,8 +97,8 @@ export interface Egg {
   canSpawnAsRift: boolean;
   riftChance: number;
   secretBountyExcluded: boolean;
-  // dateAdded: string;
-  // dateRemoved: string;
+  dateAdded: string;
+  dateRemoved: string;
 }
 
 export interface Pet { 
@@ -117,6 +117,8 @@ export interface Pet {
   obtainedFrom: string;
   obtainedFromImage: string;
   image: string[]; 
+  dateAdded: string;
+  dateRemoved: string;
 }
 
 // for the pet stat list - to store an individual Normal/Shiny/Mythic variant of a pet.
