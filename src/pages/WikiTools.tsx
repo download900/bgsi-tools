@@ -227,7 +227,7 @@ const convertDateToISO = (dateStr: string): string => {
 async function parsePet(petName: string): Promise<Pet> {
   const pet = { name: petName } as Pet;
 
-  const petWikitext = (await fetchWikitext(petName)).toLowerCase();
+  const petWikitext = (await fetchWikitext(petName));
 
   // Find |rarity= <Rarity>
   const rarityMatch = petWikitext.match(/\|\s*rarity\s*=\s*(\w+)/);
@@ -282,7 +282,7 @@ async function parsePet(petName: string): Promise<Pet> {
   // Find |has-mythic= yes/no
   const mythicMatch = petWikitext.match(/\|\s*has-mythic\s*=\s*(yes|no)/);
   if (mythicMatch) {
-    pet.hasMythic = mythicMatch[1].trim() === 'yes';
+    pet.hasMythic = mythicMatch[1].trim().toLowerCase() === 'yes';
   } else {
     pet.hasMythic = false;
   }
@@ -290,13 +290,13 @@ async function parsePet(petName: string): Promise<Pet> {
   // Find |limited= yes/no or | limited=yes/no
   const limitedMatch = petWikitext.match(/\|\s*limited\s*=\s*(yes|no|exclusive)/);
   if (limitedMatch) {
-    const t = limitedMatch[1].trim();
+    const t = limitedMatch[1].trim().toLowerCase();
     pet.limited = t === 'yes' || t === 'exclusive';
   }
   // Find |available= yes/no
   const availableMatch = petWikitext.match(/\|\s*available\s*=\s*(yes|no)/);
   if (availableMatch) {
-    pet.available = availableMatch[1].trim() === 'yes';
+    pet.available = availableMatch[1].trim().toLowerCase() === 'yes';
   }
   else {
     pet.available = true; // Default to true if not specified
@@ -304,7 +304,7 @@ async function parsePet(petName: string): Promise<Pet> {
   // Find |hatchable= yes/no
   const hatchableMatch = petWikitext.match(/\|\s*hatchable\s*=\s*(yes|no)/);
   if (hatchableMatch) {
-    pet.hatchable = hatchableMatch[1].trim() === 'yes';
+    pet.hatchable = hatchableMatch[1].trim().toLowerCase() === 'yes';
   }
   else {
     pet.hatchable = true; // Default to true if not specified
@@ -522,18 +522,18 @@ const exportPetToLua = (pet: Pet, egg: Egg): string => {
   lua += `    name = "${pet.name}",\n`;
   lua += `    rarity = "${capitalizeFirstLetter(pet.rarity)}",\n`;
   lua += `    chance = ${pet.hatchable ? pet.chance : '100'},\n`;
+  lua += `    hatchable = ${pet.hatchable == undefined ? true : pet.hatchable},\n`;
+  lua += `    hasMythic = ${pet.hasMythic == undefined ? false : pet.hasMythic},\n`;
   lua += `    bubbles = ${pet.bubbles},\n`;
   lua += `    gems = ${pet.gems},\n`;
   lua += `    currency = ${pet.currency},\n`;
   lua += `    currencyType = "${capitalizeFirstLetter(pet.currencyVariant)}",\n`;
   lua += `    limited = ${pet.limited == undefined ? false : pet.limited},\n`;
   lua += `    available = ${pet.limited == undefined ? true : pet.limited ? pet.available : true},\n`;
-  const dateAdded = pet.dateAdded || egg.dateAdded;
-  lua += `    dateAdded = "${dateAdded}",\n`;
+  lua += `    dateAdded = "${pet.dateAdded || egg.dateAdded}",\n`;
   const dateRemoved = pet.dateRemoved || egg.dateRemoved;
   dateRemoved && (lua += `    dateRemoved = "${dateRemoved}",\n`);
   pet.obtainedFrom === 'Robux Shop' && (lua += `    exclusive = true,\n`);
-  pet.hasMythic && (lua += `    hasMythic = true,\n`);
   pet.tags && pet.tags.length > 0 && (lua += `    tag = "${pet.tags?.join(', ')}",\n`);
   lua += `    obtainedFrom = "${pet.obtainedFrom}",\n`;
   pet.obtainedFromInfo && (lua += `    obtainedFromInfo = "${pet.obtainedFromInfo}",\n`);
