@@ -116,6 +116,7 @@ export interface Pet {
   hatchable: boolean;
   obtainedFrom: string;
   obtainedFromImage: string;
+  obtainedFromInfo: string;
   image: string[]; 
   dateAdded: string;
   dateRemoved: string;

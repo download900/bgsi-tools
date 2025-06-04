@@ -309,6 +309,19 @@ async function parsePet(petName: string): Promise<Pet> {
   else {
     pet.hatchable = true; // Default to true if not specified
   }
+
+  // Find |obtained-from= <egg name>
+  const obtainedFromMatch = petWikitext.match(/\|\s*obtained-from\s*=\s*([^|]+)/);
+  if (obtainedFromMatch) {
+    pet.obtainedFrom = obtainedFromMatch[1].trim();
+  }
+  // Find |obtained-from-info=<info>
+  const obtainedFromInfoMatch = petWikitext.match(/\|\s*obtained-from-info\s*=\s*([^|]+)/);
+  if (obtainedFromInfoMatch) {
+    pet.obtainedFromInfo = obtainedFromInfoMatch[1].trim();
+  }
+
+  // Load HTML to find more info not included in wikitext
   const html = await fetchHTML(petName);
   const $ = cheerio.load(html);
 
@@ -319,15 +332,10 @@ async function parsePet(petName: string): Promise<Pet> {
     if (tag && !pet.tags.find((t) => t === tag)) pet.tags.push(tag);
   });
 
-  // Obtained-from → eggName
+  // Obtained-from image
   const obt = $('div.pi-item[data-source="obtained-from"] .pi-data-value');
   const eggImage = obt.find('img').attr('src')?.split('/revision')[0];
   pet.obtainedFromImage = eggImage || '';
-  const eggName = obt.first().text().trim();
-  pet.obtainedFrom = eggName || 'Unknown';
-  if (pet.obtainedFrom === 'Quest') {
-    pet.obtainedFrom = 'Quests';
-  }
 
   // Get variants and their images
   const variantDataSourceMap: [string, PetVariant][] = [
@@ -514,25 +522,21 @@ const exportPetToLua = (pet: Pet, egg: Egg): string => {
   lua += `    name = "${pet.name}",\n`;
   lua += `    rarity = "${capitalizeFirstLetter(pet.rarity)}",\n`;
   lua += `    chance = ${pet.hatchable ? pet.chance : '100'},\n`;
-  lua += `    stats = {\n`;
-  lua += `      bubbles = ${pet.bubbles},\n`;
-  lua += `      gems = ${pet.gems},\n`;
-  lua += `      currency = ${pet.currency},\n`;
-  lua += `      currencyType = "${capitalizeFirstLetter(pet.currencyVariant)}",\n`;
-  lua += `    },\n`;
+  lua += `    bubbles = ${pet.bubbles},\n`;
+  lua += `    gems = ${pet.gems},\n`;
+  lua += `    currency = ${pet.currency},\n`;
+  lua += `    currencyType = "${capitalizeFirstLetter(pet.currencyVariant)}",\n`;
   lua += `    limited = ${pet.limited == undefined ? false : pet.limited},\n`;
   lua += `    available = ${pet.limited == undefined ? true : pet.limited ? pet.available : true},\n`;
   const dateAdded = pet.dateAdded || egg.dateAdded;
-  if (!dateAdded) {
-    console.warn(`Pet ${pet.name} has no dateAdded`);
-  }
   lua += `    dateAdded = "${dateAdded}",\n`;
   const dateRemoved = pet.dateRemoved || egg.dateRemoved;
   dateRemoved && (lua += `    dateRemoved = "${dateRemoved}",\n`);
   pet.obtainedFrom === 'Robux Shop' && (lua += `    exclusive = true,\n`);
   pet.hasMythic && (lua += `    hasMythic = true,\n`);
   pet.tags && pet.tags.length > 0 && (lua += `    tag = "${pet.tags?.join(', ')}",\n`);
-  lua += `    source = "${pet.obtainedFrom}",\n`;
+  lua += `    obtainedFrom = "${pet.obtainedFrom}",\n`;
+  pet.obtainedFromInfo && (lua += `    obtainedFromInfo = "${pet.obtainedFromInfo}",\n`);
   lua += '  }'
   return lua;
 }
