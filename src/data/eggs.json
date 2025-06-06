@@ -15,7 +15,6 @@
     "index": "The Overworld",
     "available": true,
     "canSpawnAsRift": false,
-    "secretBountyExcluded": true,
     "world": "The Overworld",
     "zone": "W1 Surface",
     "dateAdded": "2025-04-11"
@@ -36,7 +35,6 @@
     "index": "The Overworld",
     "available": true,
     "canSpawnAsRift": false,
-    "secretBountyExcluded": true,
     "world": "The Overworld",
     "zone": "W1 Surface",
     "dateAdded": "2025-04-11"
@@ -58,7 +56,6 @@
     "index": "The Overworld",
     "available": true,
     "canSpawnAsRift": false,
-    "secretBountyExcluded": true,
     "world": "The Overworld",
     "zone": "W1 Surface",
     "dateAdded": "2025-04-11"
@@ -82,7 +79,8 @@
     "canSpawnAsRift": true,
     "world": "The Overworld",
     "zone": "Floating Island",
-    "dateAdded": "2025-04-11"
+    "dateAdded": "2025-04-11",
+    "secretBountyRotation": true
   },
   {
     "name": "Magma Egg",
@@ -103,7 +101,8 @@
     "canSpawnAsRift": true,
     "world": "The Overworld",
     "zone": "Outer Space",
-    "dateAdded": "2025-04-11"
+    "dateAdded": "2025-04-11",
+    "secretBountyRotation": true
   },
   {
     "name": "Crystal Egg",
@@ -124,7 +123,8 @@
     "canSpawnAsRift": true,
     "world": "The Overworld",
     "zone": "Outer Space",
-    "dateAdded": "2025-04-11"
+    "dateAdded": "2025-04-11",
+    "secretBountyRotation": true
   },
   {
     "name": "Lunar Egg",
@@ -145,7 +145,8 @@
     "canSpawnAsRift": true,
     "world": "The Overworld",
     "zone": "Twilight",
-    "dateAdded": "2025-04-11"
+    "dateAdded": "2025-04-11",
+    "secretBountyRotation": true
   },
   {
     "name": "Void Egg",
@@ -166,7 +167,8 @@
     "canSpawnAsRift": true,
     "world": "The Overworld",
     "zone": "The Void",
-    "dateAdded": "2025-04-11"
+    "dateAdded": "2025-04-11",
+    "secretBountyRotation": true
   },
   {
     "name": "Hell Egg",
@@ -187,7 +189,8 @@
     "canSpawnAsRift": true,
     "world": "The Overworld",
     "zone": "The Void",
-    "dateAdded": "2025-04-11"
+    "dateAdded": "2025-04-11",
+    "secretBountyRotation": true
   },
   {
     "name": "Nightmare Egg",
@@ -209,7 +212,8 @@
     "canSpawnAsRift": true,
     "world": "The Overworld",
     "zone": "The Void",
-    "dateAdded": "2025-04-11"
+    "dateAdded": "2025-04-11",
+    "secretBountyRotation": true
   },
   {
     "name": "Rainbow Egg",
@@ -230,7 +234,8 @@
     "canSpawnAsRift": true,
     "world": "The Overworld",
     "zone": "Zen",
-    "dateAdded": "2025-04-11"
+    "dateAdded": "2025-04-11",
+    "secretBountyRotation": true
   },
   {
     "name": "Showman Egg",
@@ -246,7 +251,6 @@
     "index": "Minigame Paradise",
     "available": true,
     "canSpawnAsRift": false,
-    "secretBountyExcluded": true,
     "world": "Minigame Paradise",
     "zone": "Dice Island",
     "dateAdded": "2025-05-04"
@@ -270,7 +274,8 @@
     "canSpawnAsRift": true,
     "world": "Minigame Paradise",
     "zone": "Minecart Forest",
-    "dateAdded": "2025-05-04"
+    "dateAdded": "2025-05-04",
+    "secretBountyRotation": true
   },
   {
     "name": "Cyber Egg",
@@ -292,7 +297,8 @@
     "canSpawnAsRift": true,
     "world": "Minigame Paradise",
     "zone": "Robot Factory",
-    "dateAdded": "2025-05-04"
+    "dateAdded": "2025-05-04",
+    "secretBountyRotation": true
   },
   {
     "name": "Neon Egg",
@@ -314,7 +320,8 @@
     "canSpawnAsRift": true,
     "world": "Minigame Paradise",
     "zone": "Hyperwave Island",
-    "dateAdded": "2025-05-17"
+    "dateAdded": "2025-05-17",
+    "secretBountyRotation": true
   },
   {
     "name": "Chance Egg",
@@ -330,7 +337,6 @@
     "limited": false,
     "available": true,
     "canSpawnAsRift": false,
-    "secretBountyExcluded": true,
     "world": "Minigame Paradise",
     "zone": "W2 Surface",
     "dateAdded": "2025-05-17"
@@ -349,7 +355,6 @@
     "limited": true,
     "available": false,
     "canSpawnAsRift": false,
-    "secretBountyExcluded": true,
     "world": "Minigame Paradise",
     "zone": "W2 Surface",
     "dateAdded": "2025-05-04",
@@ -371,7 +376,6 @@
     "limited": true,
     "available": false,
     "canSpawnAsRift": true,
-    "secretBountyExcluded": true,
     "world": "Minigame Paradise",
     "dateAdded": "2025-05-10",
     "dateRemoved": "2025-05-25"
@@ -831,7 +835,6 @@
     "limited": true,
     "available": false,
     "canSpawnAsRift": true,
-    "secretBountyExcluded": true,
     "world": "The Overworld",
     "zone": "Hatching Zone",
     "dateAdded": "2025-04-23",
@@ -854,7 +857,6 @@
     "limited": true,
     "available": false,
     "canSpawnAsRift": true,
-    "secretBountyExcluded": true,
     "world": "The Overworld",
     "zone": "Easter Event 2025",
     "dateAdded": "2025-04-18",
@@ -877,7 +879,6 @@
     "limited": true,
     "available": false,
     "canSpawnAsRift": true,
-    "secretBountyExcluded": true,
     "world": "The Overworld",
     "zone": "Easter Event 2025",
     "dateAdded": "2025-04-18",
@@ -898,7 +899,6 @@
     "limited": true,
     "available": true,
     "canSpawnAsRift": true,
-    "secretBountyExcluded": true,
     "riftChance": 0.002,
     "world": "The Overworld",
     "dateAdded": "2025-04-26"
@@ -918,7 +918,6 @@
     "limited": true,
     "available": false,
     "canSpawnAsRift": true,
-    "secretBountyExcluded": true,
     "riftChance": 0.002,
     "world": "The Overworld",
     "dateAdded": "2025-04-11",

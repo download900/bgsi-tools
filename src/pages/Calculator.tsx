@@ -164,7 +164,7 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
                     }
                 }
 
-                if (!egg.secretBountyExcluded && !egg.limited && !egg.luckIgnored && !egg.name.includes("Infinity Egg")) {
+                if (egg.secretBountyRotation && !egg.limited && !egg.luckIgnored && !egg.name.includes("Infinity Egg")) {
                     secretBountyEggs.push(egg);
                 }
 

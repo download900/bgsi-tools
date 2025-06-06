@@ -96,7 +96,7 @@ export interface Egg {
   index: string;
   canSpawnAsRift: boolean;
   riftChance: number;
-  secretBountyExcluded: boolean;
+  secretBountyRotation: boolean;
   dateAdded: string;
   dateRemoved: string;
 }
@@ -140,11 +140,11 @@ export interface PetInstance {
 
 // ~~~~~~~~~~ Data ~~~~~~~~~~
 
-export const variantData: { [key in PetVariant]: { baseScale: number, levelScale: number, chanceMultiplier: number } } = { 
-    Normal: { baseScale: 1, levelScale: 1.35, chanceMultiplier: 1 },
-    Shiny: { baseScale: 1.5, levelScale: 1.233333, chanceMultiplier: 40 },
-    Mythic: { baseScale: 1.75, levelScale: 1.2, chanceMultiplier: 100 },
-    "Shiny Mythic": { baseScale: 2.25, levelScale: 1.1556, chanceMultiplier: 4000 },
+export const variantData: { [key in PetVariant]: { baseScale: number, chanceMultiplier: number } } = { 
+    Normal: { baseScale: 1, chanceMultiplier: 1 },
+    Shiny: { baseScale: 1.5, chanceMultiplier: 40 },
+    Mythic: { baseScale: 1.75, chanceMultiplier: 100 },
+    "Shiny Mythic": { baseScale: 2.25, chanceMultiplier: 4000 },
 };
 
 export const currencyImages: { [key in CurrencyVariant]: string } = {
@@ -169,7 +169,7 @@ export const getPetImage = (pet: PetInstance, variantIndex: number) => {
 
 export const getPetStat = (pet: Pet, variant: PetVariant, stat: PetStat, maxLevel: boolean, enchanted: boolean, enchantTeamSize: number, secondEnchant: Enchant) => {
   let scale = variantData[variant].baseScale;
-  if (maxLevel) scale *= variantData[variant].levelScale;
+  if (maxLevel) scale += 0.35;
   let baseStat = pet[stat];
   let multiplier = 1;
   if (enchanted) {

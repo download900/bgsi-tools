@@ -16,7 +16,8 @@
     "tags": [],
     "chance": 40,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Kitty",
@@ -35,7 +36,8 @@
     "tags": [],
     "chance": 30,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Bunny",
@@ -54,7 +56,8 @@
     "tags": [],
     "chance": 25,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Bear",
@@ -73,7 +76,8 @@
     "tags": [],
     "chance": 5,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "King Doggy",
@@ -94,7 +98,8 @@
     "tags": [],
     "chance": 0.000001,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Mouse",
@@ -113,7 +118,8 @@
     "tags": [],
     "chance": 40,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Wolf",
@@ -132,7 +138,8 @@
     "tags": [],
     "chance": 25,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Fox",
@@ -151,7 +158,8 @@
     "tags": [],
     "chance": 20,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Polar Bear",
@@ -170,7 +178,8 @@
     "tags": [],
     "chance": 10,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Panda",
@@ -189,7 +198,8 @@
     "tags": [],
     "chance": 5,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Ice Kitty",
@@ -208,7 +218,8 @@
     "tags": [],
     "chance": 30,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Deer",
@@ -227,7 +238,8 @@
     "tags": [],
     "chance": 25,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Ice Wolf",
@@ -246,7 +258,8 @@
     "tags": [],
     "chance": 20,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Piggy",
@@ -265,7 +278,8 @@
     "tags": [],
     "chance": 14,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Ice Deer",
@@ -284,7 +298,8 @@
     "tags": [],
     "chance": 8,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Ice Dragon",
@@ -303,7 +318,8 @@
     "tags": [],
     "chance": 3,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Golem",
@@ -322,7 +338,8 @@
     "tags": [],
     "chance": 30,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Dinosaur",
@@ -341,7 +358,8 @@
     "tags": [],
     "chance": 30,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Ruby Golem",
@@ -360,7 +378,8 @@
     "tags": [],
     "chance": 20,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Dragon",
@@ -379,7 +398,8 @@
     "tags": [],
     "chance": 12,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Dark Dragon",
@@ -398,7 +418,8 @@
     "tags": [],
     "chance": 6.5,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Emerald Golem",
@@ -419,7 +440,8 @@
     "tags": [],
     "chance": 0.5,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Magma Doggy",
@@ -438,7 +460,8 @@
     "tags": [],
     "chance": 45,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Magma Deer",
@@ -457,7 +480,8 @@
     "tags": [],
     "chance": 30.5,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Magma Fox",
@@ -476,7 +500,8 @@
     "tags": [],
     "chance": 15,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Magma Bear",
@@ -495,7 +520,8 @@
     "tags": [],
     "chance": 7,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Demon",
@@ -514,7 +540,8 @@
     "tags": [],
     "chance": 2.2,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Inferno Dragon",
@@ -535,7 +562,8 @@
     "tags": [],
     "chance": 0.25,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Cave Bat",
@@ -554,7 +582,8 @@
     "tags": [],
     "chance": 60,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Dark Bat",
@@ -573,7 +602,8 @@
     "tags": [],
     "chance": 29.9,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Angel",
@@ -592,7 +622,8 @@
     "tags": [],
     "chance": 7,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Emerald Bat",
@@ -611,7 +642,8 @@
     "tags": [],
     "chance": 2.2,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Unicorn",
@@ -632,7 +664,8 @@
     "tags": [],
     "chance": 0.25,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Flying Pig",
@@ -653,7 +686,8 @@
     "tags": [],
     "chance": 0.1,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Space Mouse",
@@ -672,7 +706,8 @@
     "tags": [],
     "chance": 60,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Space Bull",
@@ -691,7 +726,8 @@
     "tags": [],
     "chance": 29.9,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Lunar Fox",
@@ -710,7 +746,8 @@
     "tags": [],
     "chance": 7,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Lunarcorn",
@@ -729,7 +766,8 @@
     "tags": [],
     "chance": 2.2,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Lunar Serpent",
@@ -750,7 +788,8 @@
     "tags": [],
     "chance": 0.25,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Electra",
@@ -771,7 +810,8 @@
     "tags": [],
     "chance": 0.1,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Void Kitty",
@@ -790,7 +830,8 @@
     "tags": [],
     "chance": 65,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Void Bat",
@@ -809,7 +850,8 @@
     "tags": [],
     "chance": 31.9,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Void Demon",
@@ -828,7 +870,8 @@
     "tags": [],
     "chance": 2.2,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Dark Phoenix",
@@ -849,7 +892,8 @@
     "tags": [],
     "chance": 0.05,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Neon Elemental",
@@ -870,7 +914,8 @@
     "tags": [],
     "chance": 0.02,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "NULLVoid",
@@ -891,7 +936,8 @@
     "tags": [],
     "chance": 0.0001,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Hell Piggy",
@@ -910,7 +956,8 @@
     "tags": [],
     "chance": 60,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Hell Dragon",
@@ -929,7 +976,8 @@
     "tags": [],
     "chance": 29.9,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Hell Crawler",
@@ -948,7 +996,8 @@
     "tags": [],
     "chance": 7,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Inferno Demon",
@@ -967,7 +1016,8 @@
     "tags": [],
     "chance": 2.2,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Inferno Cube",
@@ -988,7 +1038,8 @@
     "tags": [],
     "chance": 0.025,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Virus",
@@ -1009,7 +1060,8 @@
     "tags": [],
     "chance": 0.002,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Demon Doggy",
@@ -1028,7 +1080,8 @@
     "tags": [],
     "chance": 60,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Skeletal Deer",
@@ -1047,7 +1100,8 @@
     "tags": [],
     "chance": 29.9,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Night Crawler",
@@ -1066,7 +1120,8 @@
     "tags": [],
     "chance": 7,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Hell Bat",
@@ -1085,7 +1140,8 @@
     "tags": [],
     "chance": 2.2,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Green Hydra",
@@ -1106,7 +1162,8 @@
     "tags": [],
     "chance": 0.004,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Demonic Hydra",
@@ -1127,7 +1184,8 @@
     "tags": [],
     "chance": 0.001,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "The Overlord",
@@ -1148,7 +1206,8 @@
     "tags": [],
     "chance": 0.000002,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Red Golem",
@@ -1167,7 +1226,8 @@
     "tags": [],
     "chance": 60,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Orange Deer",
@@ -1186,7 +1246,8 @@
     "tags": [],
     "chance": 29.9,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Yellow Fox",
@@ -1205,7 +1266,8 @@
     "tags": [],
     "chance": 7,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Green Angel",
@@ -1224,7 +1286,8 @@
     "tags": [],
     "chance": 2.2,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Hexarium",
@@ -1245,7 +1308,8 @@
     "tags": [],
     "chance": 0.001,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Rainbow Shock",
@@ -1266,7 +1330,8 @@
     "tags": [],
     "chance": 0.0005,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Game Doggy",
@@ -1285,7 +1350,8 @@
     "tags": [],
     "chance": 55,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-04"
   },
   {
     "name": "Gamer Boi",
@@ -1304,7 +1370,8 @@
     "tags": [],
     "chance": 40,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-04"
   },
   {
     "name": "Queen of Hearts",
@@ -1323,7 +1390,8 @@
     "tags": [],
     "chance": 5,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-04"
   },
   {
     "name": "Mining Doggy",
@@ -1342,7 +1410,8 @@
     "tags": [],
     "chance": 60,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-04"
   },
   {
     "name": "Mining Bat",
@@ -1361,7 +1430,8 @@
     "tags": [],
     "chance": 30,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-04"
   },
   {
     "name": "Cave Mole",
@@ -1380,7 +1450,8 @@
     "tags": [],
     "chance": 7,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-04"
   },
   {
     "name": "Ore Golem",
@@ -1399,7 +1470,8 @@
     "tags": [],
     "chance": 3,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-04"
   },
   {
     "name": "Crystal Unicorn",
@@ -1420,7 +1492,8 @@
     "tags": [],
     "chance": 0.5,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-04"
   },
   {
     "name": "Stone Gargoyle",
@@ -1441,7 +1514,8 @@
     "tags": [],
     "chance": 0.005,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-04"
   },
   {
     "name": "Robo Kitty",
@@ -1460,7 +1534,8 @@
     "tags": [],
     "chance": 64,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-04"
   },
   {
     "name": "Martian Kitty",
@@ -1479,7 +1554,8 @@
     "tags": [],
     "chance": 25,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-04"
   },
   {
     "name": "Cyber Wolf",
@@ -1498,7 +1574,8 @@
     "tags": [],
     "chance": 3,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-04"
   },
   {
     "name": "Cyborg Phoenix",
@@ -1519,7 +1596,8 @@
     "tags": [],
     "chance": 0.04,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-04"
   },
   {
     "name": "Space Invader",
@@ -1540,7 +1618,8 @@
     "tags": [],
     "chance": 0.002,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-04"
   },
   {
     "name": "Bionic Shard",
@@ -1561,7 +1640,8 @@
     "tags": [],
     "chance": 0.00015,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-04"
   },
   {
     "name": "Mech Robot",
@@ -1582,7 +1662,8 @@
     "tags": [],
     "chance": 0.0000015,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-04"
   },
   {
     "name": "Neon Doggy",
@@ -1601,7 +1682,8 @@
     "tags": [],
     "chance": 59.5,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-17"
   },
   {
     "name": "Hologram Dragon",
@@ -1620,7 +1702,8 @@
     "tags": [],
     "chance": 25.5,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-17"
   },
   {
     "name": "Disco Ball",
@@ -1639,7 +1722,8 @@
     "tags": [],
     "chance": 12,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-17"
   },
   {
     "name": "Neon Wyvern",
@@ -1660,7 +1744,8 @@
     "tags": [],
     "chance": 0.03,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-17"
   },
   {
     "name": "Neon Wire Eye",
@@ -1682,7 +1767,8 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.0015,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-17"
   },
   {
     "name": "Equalizer",
@@ -1703,7 +1789,8 @@
     "tags": [],
     "chance": 0.00012,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-17"
   },
   {
     "name": "Hyperwave Kitty",
@@ -1724,7 +1811,8 @@
     "tags": [],
     "chance": 8e-7,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-17"
   },
   {
     "name": "Galaxy Dice",
@@ -1744,7 +1832,8 @@
     "hasMythic": false,
     "tags": [],
     "chance": 60,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-17"
   },
   {
     "name": "Chance Dragon",
@@ -1764,7 +1853,8 @@
     "hasMythic": false,
     "tags": [],
     "chance": 40,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-17"
   },
   {
     "name": "Ring Master",
@@ -1786,7 +1876,8 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.001,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-17"
   },
   {
     "name": "Royal Guardian",
@@ -1808,7 +1899,8 @@
     "hasMythic": true,
     "tags": [],
     "chance": 5e-7,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-17"
   },
   {
     "name": "Fancy Demon",
@@ -1828,7 +1920,9 @@
     "hasMythic": false,
     "tags": [],
     "chance": 50,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-04",
+    "dateRemoved": "2025-05-17"
   },
   {
     "name": "Happy Dice",
@@ -1848,7 +1942,9 @@
     "hasMythic": false,
     "tags": [],
     "chance": 10,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-04",
+    "dateRemoved": "2025-05-17"
   },
   {
     "name": "Game Master",
@@ -1870,7 +1966,9 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.001,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-04",
+    "dateRemoved": "2025-05-17"
   },
   {
     "name": "Jackpot",
@@ -1892,7 +1990,9 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.000005,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-04",
+    "dateRemoved": "2025-05-17"
   },
   {
     "name": "Trio Cube",
@@ -1913,7 +2013,7 @@
     "tags": [
       "Index Pet"
     ],
-    "chance": 1,
+    "chance": 100,
     "hatchable": false,
     "available": true,
     "dateAdded": "2025-04-11"
@@ -1935,7 +2035,7 @@
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/da/Index_Icon.png",
     "hasMythic": true,
     "tags": [],
-    "chance": 1,
+    "chance": 100,
     "hatchable": false,
     "available": true,
     "dateAdded": "2025-05-04"
@@ -2130,9 +2230,9 @@
   {
     "name": "Magmas",
     "rarity": "legendary",
-    "bubbles": 1700,
-    "gems": 32,
-    "currency": 1800,
+    "bubbles": 2000,
+    "gems": 40,
+    "currency": 2100,
     "currencyVariant": "tickets",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/7/78/Magmas.png",
@@ -2214,7 +2314,7 @@
     "tags": [
       "Milestone Pet"
     ],
-    "chance": 1,
+    "chance": 100,
     "hatchable": false,
     "available": true,
     "dateAdded": "2025-04-11",
@@ -2237,7 +2337,7 @@
     "tags": [
       "Milestone Pet"
     ],
-    "chance": 1,
+    "chance": 100,
     "hatchable": false,
     "available": true,
     "dateAdded": "2025-04-11",
@@ -2260,7 +2360,7 @@
     "tags": [
       "Milestone Pet"
     ],
-    "chance": 1,
+    "chance": 100,
     "hatchable": false,
     "available": true,
     "dateAdded": "2025-04-11",
@@ -2283,7 +2383,7 @@
     "tags": [
       "Milestone Pet"
     ],
-    "chance": 1,
+    "chance": 100,
     "hatchable": false,
     "available": true,
     "dateAdded": "2025-04-11",
@@ -2292,9 +2392,9 @@
   {
     "name": "Demonic Dogcat",
     "rarity": "legendary",
-    "bubbles": 1300,
-    "gems": 22,
-    "currency": 1800,
+    "bubbles": 2225,
+    "gems": 45,
+    "currency": 3100,
     "currencyVariant": "coins",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/c/c2/Demonic_Dogcat.png",
@@ -2306,7 +2406,7 @@
     "tags": [
       "Milestone Pet"
     ],
-    "chance": 1,
+    "chance": 100,
     "hatchable": false,
     "available": true,
     "dateAdded": "2025-04-11",
@@ -2327,7 +2427,7 @@
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c2/Quests_Icon.png",
     "hasMythic": false,
     "tags": [],
-    "chance": 1,
+    "chance": 100,
     "hatchable": false,
     "available": true,
     "dateAdded": "2025-05-17",
@@ -2348,7 +2448,7 @@
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c2/Quests_Icon.png",
     "hasMythic": false,
     "tags": [],
-    "chance": 1,
+    "chance": 100,
     "hatchable": false,
     "available": true,
     "dateAdded": "2025-05-17",
@@ -2371,7 +2471,7 @@
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/dc/The_Overworld_Icon.png",
     "hasMythic": false,
     "tags": [],
-    "chance": 1,
+    "chance": 100,
     "hatchable": false,
     "dateAdded": "2025-05-17",
     "obtainedFromInfo": "The Overworld"
@@ -2391,7 +2491,7 @@
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/dc/The_Overworld_Icon.png",
     "hasMythic": false,
     "tags": [],
-    "chance": 1,
+    "chance": 100,
     "hatchable": false,
     "available": true,
     "dateAdded": "2025-05-17",
@@ -2415,7 +2515,8 @@
     "hasMythic": false,
     "tags": [],
     "chance": 90,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-25"
   },
   {
     "name": "Rune Guardian",
@@ -2435,7 +2536,8 @@
     "hasMythic": false,
     "tags": [],
     "chance": 10,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-25"
   },
   {
     "name": "Runic Defender",
@@ -2457,7 +2559,8 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.5,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-25"
   },
   {
     "name": "Glyph Warrior",
@@ -2479,7 +2582,8 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.01,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-25"
   },
   {
     "name": "Runic Master",
@@ -2498,8 +2602,9 @@
     ],
     "hasMythic": false,
     "tags": [],
-    "chance": 1,
-    "hatchable": false
+    "chance": 100,
+    "hatchable": false,
+    "dateAdded": "2025-05-25"
   },
   {
     "name": "Runic Prism",
@@ -2518,8 +2623,9 @@
     ],
     "hasMythic": false,
     "tags": [],
-    "chance": 1,
-    "hatchable": false
+    "chance": 100,
+    "hatchable": false,
+    "dateAdded": "2025-05-25"
   },
   {
     "name": "Ancient One",
@@ -2541,7 +2647,8 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.1,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-25"
   },
   {
     "name": "Monolith",
@@ -2563,7 +2670,8 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.005,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-25"
   },
   {
     "name": "Sleepy Bunny",
@@ -2585,7 +2693,9 @@
       "Season 2"
     ],
     "chance": 90,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-04",
+    "dateRemoved": "2025-05-22"
   },
   {
     "name": "Starry Lamb",
@@ -2607,7 +2717,9 @@
       "Season 2"
     ],
     "chance": 10,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-04",
+    "dateRemoved": "2025-05-22"
   },
   {
     "name": "Moon Deer",
@@ -2631,7 +2743,9 @@
       "Season 2"
     ],
     "chance": 0.5,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-04",
+    "dateRemoved": "2025-05-22"
   },
   {
     "name": "Nebula",
@@ -2655,7 +2769,9 @@
       "Season 2"
     ],
     "chance": 0.01,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-04",
+    "dateRemoved": "2025-05-22"
   },
   {
     "name": "Dusk",
@@ -2676,8 +2792,10 @@
     "tags": [
       "Season 2"
     ],
-    "chance": 1,
-    "hatchable": false
+    "chance": 100,
+    "hatchable": false,
+    "dateAdded": "2025-05-04",
+    "dateRemoved": "2025-05-22"
   },
   {
     "name": "Dawn",
@@ -2698,8 +2816,10 @@
     "tags": [
       "Season 2"
     ],
-    "chance": 1,
-    "hatchable": false
+    "chance": 100,
+    "hatchable": false,
+    "dateAdded": "2025-05-04",
+    "dateRemoved": "2025-05-22"
   },
   {
     "name": "Moonlight",
@@ -2723,7 +2843,9 @@
       "Season 2"
     ],
     "chance": 0.1,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-04",
+    "dateRemoved": "2025-05-22"
   },
   {
     "name": "Luminosity",
@@ -2747,7 +2869,9 @@
       "Season 2"
     ],
     "chance": 0.005,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-04",
+    "dateRemoved": "2025-05-22"
   },
   {
     "name": "Enlightened Kitty",
@@ -2769,7 +2893,9 @@
       "Season 1"
     ],
     "chance": 90,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11",
+    "dateRemoved": "2025-05-03"
   },
   {
     "name": "Judgement",
@@ -2791,7 +2917,9 @@
       "Season 1"
     ],
     "chance": 10,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11",
+    "dateRemoved": "2025-05-03"
   },
   {
     "name": "Ophanim",
@@ -2815,7 +2943,9 @@
       "Season 1"
     ],
     "chance": 0.5,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11",
+    "dateRemoved": "2025-05-03"
   },
   {
     "name": "Seraph",
@@ -2839,7 +2969,9 @@
       "Season 1"
     ],
     "chance": 0.01,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11",
+    "dateRemoved": "2025-05-03"
   },
   {
     "name": "Lunar Deity",
@@ -2860,8 +2992,10 @@
     "tags": [
       "Season 1"
     ],
-    "chance": 1,
-    "hatchable": false
+    "chance": 100,
+    "hatchable": false,
+    "dateAdded": "2025-04-11",
+    "dateRemoved": "2025-05-03"
   },
   {
     "name": "Solar Deity",
@@ -2882,8 +3016,10 @@
     "tags": [
       "Season 1"
     ],
-    "chance": 1,
-    "hatchable": false
+    "chance": 100,
+    "hatchable": false,
+    "dateAdded": "2025-04-11",
+    "dateRemoved": "2025-05-03"
   },
   {
     "name": "Crescent Empress",
@@ -2907,7 +3043,9 @@
       "Season 1"
     ],
     "chance": 0.1,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11",
+    "dateRemoved": "2025-05-03"
   },
   {
     "name": "Avernus",
@@ -2931,7 +3069,9 @@
       "Season 1"
     ],
     "chance": 0.005,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11",
+    "dateRemoved": "2025-05-03"
   },
   {
     "name": "Ground Golem",
@@ -2953,7 +3093,9 @@
       "Series 2"
     ],
     "chance": 90,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-17",
+    "dateRemoved": "2025-05-22"
   },
   {
     "name": "Wind Fairy",
@@ -2975,7 +3117,9 @@
       "Series 2"
     ],
     "chance": 9.9,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-17",
+    "dateRemoved": "2025-05-22"
   },
   {
     "name": "Water Serpent",
@@ -2999,7 +3143,9 @@
       "Series 2"
     ],
     "chance": 0.075,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-17",
+    "dateRemoved": "2025-05-22"
   },
   {
     "name": "Fire Guardian",
@@ -3023,7 +3169,9 @@
       "Series 2"
     ],
     "chance": 0.005,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-17",
+    "dateRemoved": "2025-05-22"
   },
   {
     "name": "The Moon",
@@ -3044,9 +3192,11 @@
     "tags": [
       "Competitive"
     ],
-    "chance": 1,
+    "chance": 100,
     "hatchable": false,
-    "obtainedFromInfo": "Top 500"
+    "obtainedFromInfo": "Top 500",
+    "dateAdded": "2025-05-17",
+    "dateRemoved": "2025-05-22"
   },
   {
     "name": "The Sun",
@@ -3069,9 +3219,11 @@
     "tags": [
       "Competitive"
     ],
-    "chance": 1,
+    "chance": 100,
     "hatchable": false,
-    "obtainedFromInfo": "Top 200"
+    "obtainedFromInfo": "Top 200",
+    "dateAdded": "2025-05-17",
+    "dateRemoved": "2025-05-22"
   },
   {
     "name": "Competitor Doggy",
@@ -3093,7 +3245,9 @@
       "Series 1"
     ],
     "chance": 90,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-26",
+    "dateRemoved": "2025-04-30"
   },
   {
     "name": "Golden Golem",
@@ -3115,7 +3269,9 @@
       "Series 1"
     ],
     "chance": 9.9,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-26",
+    "dateRemoved": "2025-04-30"
   },
   {
     "name": "Parasite",
@@ -3139,7 +3295,9 @@
       "Series 1"
     ],
     "chance": 0.1,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-26",
+    "dateRemoved": "2025-04-30"
   },
   {
     "name": "Starlight",
@@ -3163,7 +3321,9 @@
       "Series 1"
     ],
     "chance": 0.01,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-26",
+    "dateRemoved": "2025-04-30"
   },
   {
     "name": "Overseer",
@@ -3187,7 +3347,9 @@
       "Series 1"
     ],
     "chance": 0.001,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-26",
+    "dateRemoved": "2025-04-30"
   },
   {
     "name": "Elite Challenger",
@@ -3208,9 +3370,11 @@
     "tags": [
       "Competitive"
     ],
-    "chance": 1,
+    "chance": 100,
     "hatchable": false,
-    "obtainedFromInfo": "Top 500"
+    "obtainedFromInfo": "Top 500",
+    "dateAdded": "2025-04-26",
+    "dateRemoved": "2025-04-30"
   },
   {
     "name": "Elite Soul",
@@ -3233,9 +3397,11 @@
     "tags": [
       "Competitive"
     ],
-    "chance": 1,
+    "chance": 100,
     "hatchable": false,
-    "obtainedFromInfo": "Top 200"
+    "obtainedFromInfo": "Top 200",
+    "dateAdded": "2025-04-26",
+    "dateRemoved": "2025-04-30"
   },
   {
     "name": "Tourist Doggy",
@@ -3255,7 +3421,8 @@
     "tags": [],
     "chance": 55,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-25"
   },
   {
     "name": "Seagull",
@@ -3275,7 +3442,8 @@
     "tags": [],
     "chance": 35,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-25"
   },
   {
     "name": "Beach Boi",
@@ -3295,7 +3463,8 @@
     "tags": [],
     "chance": 10,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-25"
   },
   {
     "name": "Sundae Doggy",
@@ -3315,7 +3484,8 @@
     "tags": [],
     "chance": 59.4,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-25"
   },
   {
     "name": "Bunny Cone",
@@ -3335,7 +3505,8 @@
     "tags": [],
     "chance": 28.5,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-25"
   },
   {
     "name": "Neapolitan Stack",
@@ -3355,7 +3526,8 @@
     "tags": [],
     "chance": 6,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-25"
   },
   {
     "name": "Popsicle Trio",
@@ -3377,7 +3549,8 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.1,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-25"
   },
   {
     "name": "Soarin' Surfer",
@@ -3399,7 +3572,8 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.01,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-25"
   },
   {
     "name": "Sundae Cone",
@@ -3421,7 +3595,8 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.00008,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-25"
   },
   {
     "name": "Mint Sundae Champion",
@@ -3443,7 +3618,8 @@
     "tags": [],
     "chance": 0.000002,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-25"
   },
   {
     "name": "Vanilla Sundae Champion",
@@ -3465,7 +3641,8 @@
     "tags": [],
     "chance": 0.000002,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-25"
   },
   {
     "name": "Chocolate Sundae Champion",
@@ -3487,7 +3664,8 @@
     "tags": [],
     "chance": 0.000002,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-25"
   },
   {
     "name": "Strawberry Sundae Champion",
@@ -3509,7 +3687,8 @@
     "tags": [],
     "chance": 0.000002,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-25"
   },
   {
     "name": "Strawberry Doggy",
@@ -3529,7 +3708,8 @@
     "tags": [],
     "chance": 67,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-25"
   },
   {
     "name": "Lemon Dragon",
@@ -3549,7 +3729,8 @@
     "tags": [],
     "chance": 30,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-25"
   },
   {
     "name": "Watermelon Boi",
@@ -3569,7 +3750,8 @@
     "tags": [],
     "chance": 3,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-25"
   },
   {
     "name": "Kiwi Dragon",
@@ -3591,7 +3773,8 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.02,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-25"
   },
   {
     "name": "Mangorium",
@@ -3613,7 +3796,8 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.002,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-25"
   },
   {
     "name": "Pineapple Tourist",
@@ -3635,7 +3819,8 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.00015,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-25"
   },
   {
     "name": "Dragonfruit",
@@ -3657,7 +3842,8 @@
     "hasMythic": true,
     "tags": [],
     "chance": 2e-7,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-25"
   },
   {
     "name": "Researcher Doggy",
@@ -3677,7 +3863,8 @@
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/d/db/Researcher_Doggy.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/3/3f/Shiny_Researcher_Doggy.png"
-    ]
+    ],
+    "dateAdded": "2025-05-31"
   },
   {
     "name": "Monkey",
@@ -3697,7 +3884,8 @@
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/2/27/Monkey.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/7/72/Shiny_Monkey.png"
-    ]
+    ],
+    "dateAdded": "2025-05-31"
   },
   {
     "name": "Fossil Dragon",
@@ -3717,7 +3905,8 @@
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/f/f0/Fossil_Dragon.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/9/90/Shiny_Fossil_Dragon.png"
-    ]
+    ],
+    "dateAdded": "2025-05-31"
   },
   {
     "name": "Fossilus",
@@ -3739,7 +3928,8 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/4/4f/Shiny_Fossilus.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/5/53/Mythic_Fossilus.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/f/f0/Shiny_Mythic_Fossilus.png"
-    ]
+    ],
+    "dateAdded": "2025-05-31"
   },
   {
     "name": "Bug Amber",
@@ -3761,7 +3951,8 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/d/da/Shiny_Bug_Amber.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/d/df/Mythic_Bug_Amber.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/3/37/Shiny_Mythic_Bug_Amber.png"
-    ]
+    ],
+    "dateAdded": "2025-05-31"
   },
   {
     "name": "Fossil Ghost",
@@ -3783,7 +3974,8 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/f/f0/Shiny_Fossil_Ghost.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/9/9a/Mythic_Fossil_Ghost.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/9/97/Shiny_Mythic_Fossil_Ghost.png"
-    ]
+    ],
+    "dateAdded": "2025-05-31"
   },
   {
     "name": "Kraken",
@@ -3805,7 +3997,8 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/b/b8/Shiny_Kraken.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/a/a1/Mythic_Kraken.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/a/ac/Shiny_Mythic_Kraken.png"
-    ]
+    ],
+    "dateAdded": "2025-05-31"
   },
   {
     "name": "Air Basilisk",
@@ -3827,7 +4020,8 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/e/e1/Shiny_Air_Basilisk.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/1/1c/Mythic_Air_Basilisk.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/b/bd/Shiny_Mythic_Air_Basilisk.png"
-    ]
+    ],
+    "dateAdded": "2025-05-31"
   },
   {
     "name": "Electric Basilisk",
@@ -3849,7 +4043,8 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/7/7c/Shiny_Electric_Basilisk.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/3/34/Mythic_Electric_Basilisk.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/a/ad/Shiny_Mythic_Electric_Basilisk.png"
-    ]
+    ],
+    "dateAdded": "2025-05-31"
   },
   {
     "name": "Fire Basilisk",
@@ -3871,7 +4066,8 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/2/21/Shiny_Fire_Basilisk.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/3/32/Mythic_Fire_Basilisk.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/5/5a/Shiny_Mythic_Fire_Basilisk.png"
-    ]
+    ],
+    "dateAdded": "2025-05-31"
   },
   {
     "name": "Ice Basilisk",
@@ -3893,7 +4089,8 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/6/69/Shiny_Ice_Basilisk.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/8/88/Mythic_Ice_Basilisk.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/8/81/Shiny_Mythic_Ice_Basilisk.png"
-    ]
+    ],
+    "dateAdded": "2025-05-31"
   },
   {
     "name": "Pirate Kitty",
@@ -3913,7 +4110,8 @@
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/0/09/Pirate_Kitty.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/9/9c/Shiny_Pirate_Kitty.png"
-    ]
+    ],
+    "dateAdded": "2025-05-31"
   },
   {
     "name": "Strawhat Dragon",
@@ -3933,7 +4131,8 @@
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/e/e5/Strawhat_Dragon.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/a/af/Shiny_Strawhat_Dragon.png"
-    ]
+    ],
+    "dateAdded": "2025-05-31"
   },
   {
     "name": "Captain Monkey",
@@ -3955,7 +4154,8 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/f/f2/Shiny_Captain_Monkey.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/b/b5/Mythic_Captain_Monkey.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/b/b3/Shiny_Mythic_Captain_Monkey.png"
-    ]
+    ],
+    "dateAdded": "2025-05-31"
   },
   {
     "name": "Chest Mimic",
@@ -3977,7 +4177,8 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/c/cd/Shiny_Chest_Mimic.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/d/d0/Mythic_Chest_Mimic.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/8/8b/Shiny_Mythic_Chest_Mimic.png"
-    ]
+    ],
+    "dateAdded": "2025-05-31"
   },
   {
     "name": "Captains Curse",
@@ -3999,7 +4200,8 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/e/ec/Shiny_Captains_Curse.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/d/d2/Mythic_Captains_Curse.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/c/cc/Shiny_Mythic_Captains_Curse.png"
-    ]
+    ],
+    "dateAdded": "2025-05-31"
   },
   {
     "name": "Infernal",
@@ -4021,12 +4223,13 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/9/90/Shiny_Infernal.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/0/05/Mythic_Infernal.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/3/32/Shiny_Mythic_Infernal.png"
-    ]
+    ],
+    "dateAdded": "2025-05-31"
   },
   {
     "name": "Doggy Pile",
     "rarity": "legendary",
-    "chance": 1,
+    "chance": 100,
     "bubbles": 2500,
     "gems": 35,
     "currency": 700,
@@ -4041,7 +4244,8 @@
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/7/72/Doggy_Pile.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
-    ]
+    ],
+    "dateAdded": "2025-05-31"
   },
   {
     "name": "Cute Deer",
@@ -4061,7 +4265,9 @@
     "hasMythic": false,
     "tags": [],
     "chance": 65,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-10",
+    "dateRemoved": "2025-05-17"
   },
   {
     "name": "Emerald Wolf",
@@ -4081,7 +4287,9 @@
     "hasMythic": false,
     "tags": [],
     "chance": 30,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-10",
+    "dateRemoved": "2025-05-17"
   },
   {
     "name": "Prismatic",
@@ -4103,7 +4311,9 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.04,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-10",
+    "dateRemoved": "2025-05-17"
   },
   {
     "name": "Darkness Creature",
@@ -4125,7 +4335,9 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.002,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-10",
+    "dateRemoved": "2025-05-17"
   },
   {
     "name": "Corrupt Glitch",
@@ -4147,7 +4359,9 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.000125,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-10",
+    "dateRemoved": "2025-05-17"
   },
   {
     "name": "Wolflord",
@@ -4169,7 +4383,9 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.000001,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-10",
+    "dateRemoved": "2025-05-17"
   },
   {
     "name": "Bronze Bunny",
@@ -4189,7 +4405,9 @@
     "hasMythic": false,
     "tags": [],
     "chance": 64,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-26",
+    "dateRemoved": "2025-05-04"
   },
   {
     "name": "Silver Fox",
@@ -4209,7 +4427,9 @@
     "hasMythic": false,
     "tags": [],
     "chance": 30,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-26",
+    "dateRemoved": "2025-05-04"
   },
   {
     "name": "Golden Dragon",
@@ -4229,7 +4449,9 @@
     "hasMythic": false,
     "tags": [],
     "chance": 3,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-26",
+    "dateRemoved": "2025-05-04"
   },
   {
     "name": "Diamond Serpent",
@@ -4251,7 +4473,9 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.04,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-26",
+    "dateRemoved": "2025-05-04"
   },
   {
     "name": "Diamond Hexarium",
@@ -4273,7 +4497,9 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.002,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-26",
+    "dateRemoved": "2025-05-04"
   },
   {
     "name": "King Pufferfish",
@@ -4295,7 +4521,9 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.000125,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-26",
+    "dateRemoved": "2025-05-04"
   },
   {
     "name": "Royal Trophy",
@@ -4317,7 +4545,9 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.000002,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-26",
+    "dateRemoved": "2025-05-04"
   },
   {
     "name": "Easter Fluffle",
@@ -4338,8 +4568,10 @@
     "tags": [
       "2025 Egg Hunt"
     ],
-    "chance": 1,
-    "hatchable": false
+    "chance": 100,
+    "hatchable": false,
+    "dateAdded": "2025-04-18",
+    "dateRemoved": "2025-04-26"
   },
   {
     "name": "Chocolate Bunny",
@@ -4362,8 +4594,10 @@
     "tags": [
       "2025 Egg Hunt"
     ],
-    "chance": 1,
-    "hatchable": false
+    "chance": 100,
+    "hatchable": false,
+    "dateAdded": "2025-04-18",
+    "dateRemoved": "2025-04-26"
   },
   {
     "name": "Midas",
@@ -4387,7 +4621,9 @@
       "Golden Mystery Box"
     ],
     "chance": 0.1,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-18",
+    "dateRemoved": "2025-04-26"
   },
   {
     "name": "Patronus",
@@ -4411,7 +4647,9 @@
       "Golden Mystery Box"
     ],
     "chance": 0.01,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-18",
+    "dateRemoved": "2025-04-26"
   },
   {
     "name": "Bow Bunny",
@@ -4431,7 +4669,9 @@
     "hasMythic": false,
     "tags": [],
     "chance": 64,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-23",
+    "dateRemoved": "2025-04-30"
   },
   {
     "name": "Easter Egg",
@@ -4451,7 +4691,9 @@
     "hasMythic": false,
     "tags": [],
     "chance": 30,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-23",
+    "dateRemoved": "2025-04-30"
   },
   {
     "name": "Flying Bunny",
@@ -4471,7 +4713,9 @@
     "hasMythic": false,
     "tags": [],
     "chance": 3,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-23",
+    "dateRemoved": "2025-04-30"
   },
   {
     "name": "Easter Serpent",
@@ -4493,7 +4737,9 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.04,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-23",
+    "dateRemoved": "2025-04-30"
   },
   {
     "name": "Dualcorn",
@@ -4515,7 +4761,9 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.002,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-23",
+    "dateRemoved": "2025-04-30"
   },
   {
     "name": "Holy Egg",
@@ -4537,7 +4785,9 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.0002,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-23",
+    "dateRemoved": "2025-04-30"
   },
   {
     "name": "Godly Gem",
@@ -4559,7 +4809,9 @@
     "hasMythic": true,
     "tags": [],
     "chance": 4e-7,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-23",
+    "dateRemoved": "2025-04-30"
   },
   {
     "name": "Dementor",
@@ -4581,7 +4833,9 @@
     "hasMythic": true,
     "tags": [],
     "chance": 1e-7,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-23",
+    "dateRemoved": "2025-04-30"
   },
   {
     "name": "Bunny Doggy",
@@ -4601,7 +4855,9 @@
     "hasMythic": false,
     "tags": [],
     "chance": 64,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-18",
+    "dateRemoved": "2025-04-26"
   },
   {
     "name": "Egg Bunny",
@@ -4621,7 +4877,9 @@
     "hasMythic": false,
     "tags": [],
     "chance": 30,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-18",
+    "dateRemoved": "2025-04-26"
   },
   {
     "name": "Angel Bunny",
@@ -4641,7 +4899,9 @@
     "hasMythic": false,
     "tags": [],
     "chance": 3,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-18",
+    "dateRemoved": "2025-04-26"
   },
   {
     "name": "Seraphic Bunny",
@@ -4663,7 +4923,9 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.02,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-18",
+    "dateRemoved": "2025-04-26"
   },
   {
     "name": "Ethereal Bunny",
@@ -4685,7 +4947,9 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.001,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-18",
+    "dateRemoved": "2025-04-26"
   },
   {
     "name": "Cardinal Bunny",
@@ -4707,7 +4971,9 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.0001,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-18",
+    "dateRemoved": "2025-04-26"
   },
   {
     "name": "Easter Basket",
@@ -4729,7 +4995,9 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.000001,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-18",
+    "dateRemoved": "2025-04-26"
   },
   {
     "name": "Paper Doggy",
@@ -4749,7 +5017,9 @@
     "hasMythic": false,
     "tags": [],
     "chance": 60,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-18",
+    "dateRemoved": "2025-04-26"
   },
   {
     "name": "Paper Bunny",
@@ -4769,7 +5039,9 @@
     "hasMythic": false,
     "tags": [],
     "chance": 29.9,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-18",
+    "dateRemoved": "2025-04-26"
   },
   {
     "name": "Chubby Bunny",
@@ -4789,7 +5061,9 @@
     "hasMythic": false,
     "tags": [],
     "chance": 7,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-18",
+    "dateRemoved": "2025-04-26"
   },
   {
     "name": "Hatchling",
@@ -4809,7 +5083,9 @@
     "hasMythic": false,
     "tags": [],
     "chance": 2.2,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-18",
+    "dateRemoved": "2025-04-26"
   },
   {
     "name": "Sweet Treat",
@@ -4831,7 +5107,9 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.004,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-18",
+    "dateRemoved": "2025-04-26"
   },
   {
     "name": "Rainbow Marshmellow",
@@ -4853,7 +5131,9 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.0008,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-18",
+    "dateRemoved": "2025-04-26"
   },
   {
     "name": "Giant Chocolate Chicken",
@@ -4875,7 +5155,9 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.000002,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-18",
+    "dateRemoved": "2025-04-26"
   },
   {
     "name": "Hell Demon",
@@ -4895,7 +5177,9 @@
     "hasMythic": false,
     "tags": [],
     "chance": 65,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-10",
+    "dateRemoved": "2025-05-25"
   },
   {
     "name": "Demon Angel",
@@ -4915,7 +5199,9 @@
     "hasMythic": false,
     "tags": [],
     "chance": 30,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-10",
+    "dateRemoved": "2025-05-25"
   },
   {
     "name": "Crimson Butterfly",
@@ -4937,7 +5223,9 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.05,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-10",
+    "dateRemoved": "2025-05-25"
   },
   {
     "name": "Demonweb",
@@ -4959,7 +5247,9 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.0025,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-10",
+    "dateRemoved": "2025-05-25"
   },
   {
     "name": "Crimson Bloodmoon",
@@ -4981,7 +5271,9 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.00012,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-10",
+    "dateRemoved": "2025-05-25"
   },
   {
     "name": "Lord Shock",
@@ -5003,7 +5295,9 @@
     "hasMythic": true,
     "tags": [],
     "chance": 2e-7,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-10",
+    "dateRemoved": "2025-05-25"
   },
   {
     "name": "Bunnnny",
@@ -5025,7 +5319,8 @@
     ],
     "chance": 65,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-26"
   },
   {
     "name": "Long Kitty",
@@ -5047,7 +5342,8 @@
     ],
     "chance": 30,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-26"
   },
   {
     "name": "DOOF",
@@ -5071,7 +5367,8 @@
     ],
     "chance": 0.01,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-26"
   },
   {
     "name": "ROUND",
@@ -5095,7 +5392,8 @@
     ],
     "chance": 0.0004,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-26"
   },
   {
     "name": "Silly Doggy :)",
@@ -5119,7 +5417,8 @@
     ],
     "chance": 0.0001,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-26"
   },
   {
     "name": "Manny",
@@ -5141,7 +5440,9 @@
       "Aura"
     ],
     "chance": 65,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11",
+    "dateRemoved": "2025-04-26"
   },
   {
     "name": "Manicorn",
@@ -5163,7 +5464,9 @@
       "Aura"
     ],
     "chance": 30,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11",
+    "dateRemoved": "2025-04-26"
   },
   {
     "name": "Sigma Serpent",
@@ -5187,7 +5490,9 @@
       "Aura"
     ],
     "chance": 0.01,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11",
+    "dateRemoved": "2025-04-26"
   },
   {
     "name": "Manarium",
@@ -5211,7 +5516,9 @@
       "Aura"
     ],
     "chance": 0.005,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11",
+    "dateRemoved": "2025-04-26"
   },
   {
     "name": "MAN FACE GOD",
@@ -5235,7 +5542,9 @@
       "Aura"
     ],
     "chance": 0.0001,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11",
+    "dateRemoved": "2025-04-26"
   },
   {
     "name": "Overlord Plushie",
@@ -5257,7 +5566,8 @@
     "hasMythic": true,
     "tags": [],
     "chance": 8e-7,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-25"
   },
   {
     "name": "Everblaze",
@@ -5279,7 +5589,8 @@
     "hasMythic": true,
     "tags": [],
     "chance": 4e-7,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-25"
   },
   {
     "name": "Beelzebub",
@@ -5301,7 +5612,8 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.000002,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-25"
   },
   {
     "name": "Queen Kitty",
@@ -5323,7 +5635,9 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.00000125,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-10",
+    "dateRemoved": "2025-05-25"
   },
   {
     "name": "D0GGY1337",
@@ -5345,7 +5659,9 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.000002,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-10",
+    "dateRemoved": "2025-05-25"
   },
   {
     "name": "Prophet",
@@ -5367,12 +5683,14 @@
     "hasMythic": true,
     "tags": [],
     "chance": 4e-7,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-05-10",
+    "dateRemoved": "2025-05-25"
   },
   {
     "name": "Carrot Pufferfish",
     "rarity": "legendary",
-    "chance": 1,
+    "chance": 100,
     "bubbles": 1100,
     "gems": 22,
     "currency": 100,
@@ -5391,12 +5709,14 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/e/e9/Shiny_Carrot_Pufferfish.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/6/64/Mythic_Carrot_Pufferfish.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/7/75/Shiny_Mythic_Carrot_Pufferfish.png"
-    ]
+    ],
+    "dateAdded": "2025-05-31",
+    "dateRemoved": "2025-06-06"
   },
   {
     "name": "Crystal Teddy",
     "rarity": "legendary",
-    "chance": 1,
+    "chance": 100,
     "bubbles": 1500,
     "gems": 27,
     "currency": 150,
@@ -5415,7 +5735,9 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/c/c4/Shiny_Crystal_Teddy.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/c/c0/Mythic_Crystal_Teddy.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/2/22/Shiny_Mythic_Crystal_Teddy.png"
-    ]
+    ],
+    "dateAdded": "2025-05-31",
+    "dateRemoved": "2025-06-06"
   },
   {
     "name": "Rigby",
@@ -5438,8 +5760,10 @@
     "tags": [
       "Exclusive Pet"
     ],
-    "chance": 1,
-    "hatchable": false
+    "chance": 100,
+    "hatchable": false,
+    "dateAdded": "2025-05-25",
+    "dateRemoved": "2025-05-30"
   },
   {
     "name": "Dreamscape",
@@ -5462,8 +5786,10 @@
     "tags": [
       "Exclusive Pet"
     ],
-    "chance": 1,
-    "hatchable": false
+    "chance": 100,
+    "hatchable": false,
+    "dateAdded": "2025-05-25",
+    "dateRemoved": "2025-05-30"
   },
   {
     "name": "Noctis",
@@ -5486,8 +5812,10 @@
     "tags": [
       "Exclusive Pet"
     ],
-    "chance": 1,
-    "hatchable": false
+    "chance": 100,
+    "hatchable": false,
+    "dateAdded": "2025-05-17",
+    "dateRemoved": "2025-05-24"
   },
   {
     "name": "Bongo Kitty",
@@ -5510,8 +5838,10 @@
     "tags": [
       "Exclusive Pet"
     ],
-    "chance": 1,
-    "hatchable": false
+    "chance": 100,
+    "hatchable": false,
+    "dateAdded": "2025-05-17",
+    "dateRemoved": "2025-05-24"
   },
   {
     "name": "Toilet Doggy",
@@ -5534,8 +5864,10 @@
     "tags": [
       "Exclusive Pet"
     ],
-    "chance": 1,
-    "hatchable": false
+    "chance": 100,
+    "hatchable": false,
+    "dateAdded": "2025-05-10",
+    "dateRemoved": "2025-05-14"
   },
   {
     "name": "Capybara Plushie",
@@ -5558,8 +5890,10 @@
     "tags": [
       "Exclusive Pet"
     ],
-    "chance": 1,
-    "hatchable": false
+    "chance": 100,
+    "hatchable": false,
+    "dateAdded": "2025-05-10",
+    "dateRemoved": "2025-05-14"
   },
   {
     "name": "Enraged Phoenix",
@@ -5580,8 +5914,10 @@
     "tags": [
       "Exclusive Pet"
     ],
-    "chance": 1,
-    "hatchable": false
+    "chance": 100,
+    "hatchable": false,
+    "dateAdded": "2025-04-26",
+    "dateRemoved": "2025-04-29"
   },
   {
     "name": "Electra Hydra",
@@ -5602,8 +5938,10 @@
     "tags": [
       "Exclusive Pet"
     ],
-    "chance": 1,
-    "hatchable": false
+    "chance": 100,
+    "hatchable": false,
+    "dateAdded": "2025-04-26",
+    "dateRemoved": "2025-04-29"
   },
   {
     "name": "Dark Serpent",
@@ -5624,8 +5962,10 @@
     "tags": [
       "Exclusive Pet"
     ],
-    "chance": 1,
-    "hatchable": false
+    "chance": 100,
+    "hatchable": false,
+    "dateAdded": "2025-04-19",
+    "dateRemoved": "2025-04-21"
   },
   {
     "name": "Infernus",
@@ -5646,8 +5986,10 @@
     "tags": [
       "Exclusive Pet"
     ],
-    "chance": 1,
-    "hatchable": false
+    "chance": 100,
+    "hatchable": false,
+    "dateAdded": "2025-04-19",
+    "dateRemoved": "2025-04-21"
   },
   {
     "name": "Beta TV",
@@ -5668,8 +6010,10 @@
     "tags": [
       "Exclusive Pet"
     ],
-    "chance": 1,
-    "hatchable": false
+    "chance": 100,
+    "hatchable": false,
+    "dateAdded": "2025-04-11",
+    "dateRemoved": "2025-04-14"
   },
   {
     "name": "Dowodle",
@@ -5690,8 +6034,10 @@
     "tags": [
       "Exclusive Pet"
     ],
-    "chance": 1,
-    "hatchable": false
+    "chance": 100,
+    "hatchable": false,
+    "dateAdded": "2025-04-11",
+    "dateRemoved": "2025-04-14"
   },
   {
     "name": "Flying Gem",
@@ -5713,7 +6059,8 @@
     ],
     "chance": 10,
     "available": true,
-    "hatchable": true
+    "hatchable": true,
+    "dateAdded": "2025-04-11"
   },
   {
     "name": "Discord Imp",
@@ -5734,7 +6081,9 @@
     "tags": [
       "Reward Pet"
     ],
-    "chance": 1,
-    "hatchable": false
+    "chance": 100,
+    "hatchable": false,
+    "dateAdded": "2025-04-11",
+    "dateRemoved": "2025-04-12"
   }
 ]
