@@ -2016,7 +2016,8 @@
     "chance": 100,
     "hatchable": false,
     "available": true,
-    "dateAdded": "2025-04-11"
+    "dateAdded": "2025-04-11",
+    "obtainedFromInfo": "The Overworld"
   },
   {
     "name": "Sir Doggyton",
@@ -2038,7 +2039,8 @@
     "chance": 100,
     "hatchable": false,
     "available": true,
-    "dateAdded": "2025-05-04"
+    "dateAdded": "2025-05-04",
+    "obtainedFromInfo": "Minigame Paradise"
   },
   {
     "name": "Sunburst",
@@ -4243,7 +4245,7 @@
     "obtainedFrom": "Summer Login Rewards",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/7/72/Doggy_Pile.png",
-      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+      "https://static.wikia.nocookie.net/bgs-infinity/images/6/6a/Shiny_Doggy_Pile.png"
     ],
     "dateAdded": "2025-05-31"
   },
@@ -4597,7 +4599,8 @@
     "chance": 100,
     "hatchable": false,
     "dateAdded": "2025-04-18",
-    "dateRemoved": "2025-04-26"
+    "dateRemoved": "2025-04-26",
+    "obtainedFromInfo": "Easter Event 2025"
   },
   {
     "name": "Midas",
@@ -5453,7 +5456,7 @@
     "currencyVariant": "coins",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/6/64/Manicorn.png",
-      "https://static.wikia.nocookie.net/bgs-infinity/images/b/ba/ShinyManicorn.png"
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/18/Shiny_Manicorn.png"
     ],
     "limited": true,
     "available": false,
@@ -6085,5 +6088,422 @@
     "hatchable": false,
     "dateAdded": "2025-04-11",
     "dateRemoved": "2025-04-12"
+  },
+  {
+    "name": "Captain Bruh",
+    "rarity": "legendary",
+    "chance": 100,
+    "bubbles": 3200,
+    "gems": 65,
+    "currency": 3000,
+    "currencyVariant": "coins",
+    "hasMythic": false,
+    "tags": [],
+    "limited": true,
+    "available": true,
+    "hatchable": false,
+    "obtainedFrom": "Quests",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c2/Quests_Icon.png",
+    "obtainedFromInfo": "Captain Bruh's Ancient Discovery",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/e/e6/Captain_Bruh.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Shiny_Captain_Bruh.png"
+    ],
+    "dateAdded": "2025-06-07",
+    "dateRemoved": ""
+  },
+  {
+    "name": "BGS Box",
+    "rarity": "secret",
+    "chance": 100,
+    "bubbles": 4000,
+    "gems": 80,
+    "currency": 4000,
+    "currencyVariant": "coins",
+    "hasMythic": false,
+    "tags": [],
+    "limited": false,
+    "available": true,
+    "hatchable": false,
+    "obtainedFrom": "Traveling Merchant",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/01/Shops_Mastery.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/28/BGS_Box.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/8/80/Shiny_BGS_Box.png"
+    ],
+    "dateAdded": "2025-06-7",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Light Doggy",
+    "rarity": "common",
+    "chance": 65,
+    "bubbles": 25,
+    "gems": 0,
+    "currency": 6,
+    "currencyVariant": "coins",
+    "hasMythic": false,
+    "tags": [],
+    "limited": true,
+    "available": true,
+    "hatchable": true,
+    "obtainedFrom": "Light Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3c/Light_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/e/e3/Light_Doggy.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/9/9a/Shiny_Light_Doggy.png"
+    ],
+    "dateAdded": "2025-06-07",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Light Orb",
+    "rarity": "rare",
+    "chance": 30,
+    "bubbles": 100,
+    "gems": 0,
+    "currency": 15,
+    "currencyVariant": "coins",
+    "hasMythic": false,
+    "tags": [],
+    "limited": true,
+    "available": true,
+    "hatchable": true,
+    "obtainedFrom": "Light Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3c/Light_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/9/9c/Light_Orb.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/8/84/Shiny_Light_Orb.png"
+    ],
+    "dateAdded": "2025-06-07",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Light Cube",
+    "rarity": "legendary",
+    "chance": 0.02,
+    "bubbles": 1000,
+    "gems": 22,
+    "currency": 850,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "tags": [],
+    "limited": true,
+    "available": true,
+    "hatchable": true,
+    "obtainedFrom": "Light Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3c/Light_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/f/fb/Light_Cube.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/9/9e/Shiny_Light_Cube.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/f/f5/Mythic_Light_Cube.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/17/Shiny_Mythic_Light_Cube.png"
+    ],
+    "dateAdded": "2025-06-07",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Radiant Elemental",
+    "rarity": "legendary",
+    "chance": 0.0015,
+    "bubbles": 2400,
+    "gems": 35,
+    "currency": 1600,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "tags": [],
+    "limited": true,
+    "available": true,
+    "hatchable": true,
+    "obtainedFrom": "Light Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3c/Light_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/f/f8/Radiant_Elemental.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2f/Shiny_Radiant_Elemental.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/c/c4/Mythic_Radiant_Elemental.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/4e/Shiny_Mythic_Radiant_Elemental.png"
+    ],
+    "dateAdded": "2025-06-07",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Guardian of Light",
+    "rarity": "legendary",
+    "chance": 0.0001,
+    "bubbles": 2900,
+    "gems": 55,
+    "currency": 2800,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "tags": [],
+    "limited": true,
+    "available": true,
+    "hatchable": true,
+    "obtainedFrom": "Light Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3c/Light_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/5/54/Guardian_of_Light.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/6/66/Shiny_Guardian_of_Light.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/5/5b/Mythic_Guardian_of_Light.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/7/70/Shiny_Mythic_Guardian_of_Light.png"
+    ],
+    "dateAdded": "2025-06-07",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Shimmering Shard",
+    "rarity": "secret",
+    "chance": 0.000001,
+    "bubbles": 4600,
+    "gems": 100,
+    "currency": 4000,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "tags": [],
+    "limited": true,
+    "available": true,
+    "hatchable": true,
+    "obtainedFrom": "Light Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3c/Light_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/3/3e/Shimmering_Shard.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/22/Shiny_Shimmering_Shard.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/0/06/Mythic_Shimmering_Shard.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/f/fc/Shiny_Mythic_Shimmering_Shard.png"
+    ],
+    "dateAdded": "2025-06-07",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Immortal One",
+    "rarity": "secret",
+    "chance": 5e-8,
+    "bubbles": 5500,
+    "gems": 125,
+    "currency": 3000,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "tags": [],
+    "limited": true,
+    "available": true,
+    "hatchable": true,
+    "obtainedFrom": "Light Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3c/Light_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/0/0f/Immortal_One.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/f/f3/Shiny_Immortal_One.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/4d/Mythic_Immortal_One.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/6/64/Shiny_Mythic_Immortal_One.png"
+    ],
+    "dateAdded": "2025-06-07",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Dark Kitty",
+    "rarity": "common",
+    "chance": 65,
+    "bubbles": 25,
+    "gems": 0,
+    "currency": 6,
+    "currencyVariant": "coins",
+    "hasMythic": false,
+    "tags": [],
+    "limited": true,
+    "available": true,
+    "hatchable": true,
+    "obtainedFrom": "Dark Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2c/Dark_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/c/cf/Dark_Kitty.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/0/06/Shiny_Dark_Kitty.png"
+    ],
+    "dateAdded": "2025-06-07",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Dark Golem",
+    "rarity": "rare",
+    "chance": 30,
+    "bubbles": 100,
+    "gems": 0,
+    "currency": 15,
+    "currencyVariant": "coins",
+    "hasMythic": false,
+    "tags": [],
+    "limited": true,
+    "available": true,
+    "hatchable": true,
+    "obtainedFrom": "Dark Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2c/Dark_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/f/fa/Dark_Golem.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/6/64/Shiny_Dark_Golem.png"
+    ],
+    "dateAdded": "2025-06-07",
+    "dateRemoved": ""
+  },
+  {
+    "name": "EVIL",
+    "rarity": "legendary",
+    "chance": 0.02,
+    "bubbles": 1000,
+    "gems": 22,
+    "currency": 850,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "tags": [],
+    "limited": true,
+    "available": true,
+    "hatchable": true,
+    "obtainedFrom": "Dark Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2c/Dark_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/3/3e/EVIL.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/3/3d/Shiny_EVIL.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/e/e2/Mythic_EVIL.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/43/Shiny_Mythic_EVIL.png"
+    ],
+    "dateAdded": "2025-06-07",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Voidflame",
+    "rarity": "legendary",
+    "chance": 0.0015,
+    "bubbles": 2400,
+    "gems": 35,
+    "currency": 1600,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "tags": [],
+    "limited": true,
+    "available": true,
+    "hatchable": true,
+    "obtainedFrom": "Dark Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2c/Dark_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/21/Voidflame.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/6/62/Shiny_Voidflame.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/6/6f/Mythic_Voidflame.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/20/Shiny_Mythic_Voidflame.png"
+    ],
+    "dateAdded": "2025-06-07",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Darkness",
+    "rarity": "legendary",
+    "chance": 0.0001,
+    "bubbles": 2900,
+    "gems": 55,
+    "currency": 2800,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "tags": [],
+    "limited": true,
+    "available": true,
+    "hatchable": true,
+    "obtainedFrom": "Dark Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2c/Dark_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/c/c0/Darkness.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/0/02/Shiny_Darkness.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/a/af/Mythic_Darkness.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/e/e9/Shiny_Mythic_Darkness.png"
+    ],
+    "dateAdded": "2025-06-07",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Shinigami",
+    "rarity": "secret",
+    "chance": 0.000001,
+    "bubbles": 4600,
+    "gems": 100,
+    "currency": 4000,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "tags": [],
+    "limited": true,
+    "available": true,
+    "hatchable": true,
+    "obtainedFrom": "Dark Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2c/Dark_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/3/37/Shinigami.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/6/65/Shiny_Shinigami.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/8/8c/Mythic_Shinigami.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/c/ce/Shiny_Mythic_Shinigami.png"
+    ],
+    "dateAdded": "2025-06-07",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Galaxium",
+    "rarity": "legendary",
+    "chance": 100,
+    "bubbles": 1100,
+    "gems": 22,
+    "currency": 100,
+    "currencyVariant": "seashells",
+    "hasMythic": true,
+    "tags": [
+      "Exclusive Pet"
+    ],
+    "limited": true,
+    "available": true,
+    "hatchable": false,
+    "obtainedFrom": "Robux Shop",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/f/f1/Galaxium.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/3/34/Shiny_Galaxium.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/e/e1/Mythic_Galaxium.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/26/Shiny_Mythic_Galaxium.png"
+    ],
+    "dateAdded": "2025-06-07",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Dowominus",
+    "rarity": "legendary",
+    "chance": 100,
+    "bubbles": 1500,
+    "gems": 27,
+    "currency": 150,
+    "currencyVariant": "seashells",
+    "hasMythic": true,
+    "tags": [
+      "Exclusive Pet"
+    ],
+    "limited": true,
+    "available": true,
+    "hatchable": false,
+    "obtainedFrom": "Robux Shop",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/4d/Dowominus.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/f/f0/Mythic_Dowominus.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/d/d0/Shiny_Mythic_Dowominus.png"
+    ],
+    "dateAdded": "2025-06-07",
+    "dateRemoved": ""
   }
 ]

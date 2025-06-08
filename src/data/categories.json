@@ -41,9 +41,10 @@
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/67/Playtime_Icon.png",
     "eggs": [
       "Index",
+      "Quests",
       "Mystery Box",
       "Playtime",
-      "Quests",
+      "Traveling Merchant",
       "World Rewards"
     ]
   },
@@ -74,6 +75,14 @@
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d4/Daily.png",
     "categories": [
       {
+        "name": "Light and Dark Event",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3c/Light_Egg.png",
+        "eggs": [
+          "Light Egg",
+          "Dark Egg"
+        ]
+      },
+      {
         "name": "Beach Festival",
         "image": "https://static.wikia.nocookie.net/bgs-infinity/images/4/49/Seashells.png",
         "eggs": [
@@ -83,7 +92,8 @@
           "Fossil Egg",
           "Pirate Egg",
           "Ancient Chest",
-          "Summer Login Rewards"
+          "Summer Login Rewards",
+          "Beach Festival Quests"
         ]
       },
       {

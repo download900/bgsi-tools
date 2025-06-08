@@ -366,7 +366,11 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
                 percentString = percentString.replace("e-", "e-0");
             }
             else {
-                percentString = `${(percent).toLocaleString(undefined, { maximumFractionDigits: 6 })}%`;
+                percentString = `${(percent).toLocaleString(undefined, { maximumFractionDigits: 6, maximumSignificantDigits: 6 })}%`;
+                if (percentString.length > 7) {
+                    percentString = `${percent.toFixed(6)}%`;
+                }
+                //percentString = `${percent.toFixed(6)}%`;
             }
             oddsString = `1 / ${odds.toLocaleString(undefined, { maximumFractionDigits: 1})}`;
         }
@@ -375,7 +379,7 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
             percentString = "Cannot divide by 0.";
         }
 
-        return usePercentResults ? (<Tooltip title={oddsString}><b>{percentString}</b></Tooltip>) : (<Tooltip title={percentString} arrow><b>{oddsString}</b></Tooltip>
+        return usePercentResults ? (<Tooltip title={oddsString}><b>{percentString}</b></Tooltip>) : (<Tooltip title={percentString}><b>{oddsString}</b></Tooltip>
         );
     }
 

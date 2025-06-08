@@ -411,6 +411,15 @@
     "available": true
   },
   {
+    "name": "Traveling Merchant",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/01/Shops_Mastery.png",
+    "pets": [
+      "BGS Box"
+    ],
+    "luckIgnored": true,
+    "available": true
+  },
+  {
     "name": "Wheel Spin",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/5/54/Wheel_Spin_Icon.png",
     "pets": [
@@ -644,6 +653,56 @@
     "dateRemoved": "2025-04-30"
   },
   {
+    "name": "Light Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3c/Light_Egg.png",
+    "pets": [
+      "Light Doggy",
+      "Light Orb",
+      "Light Cube",
+      "Radiant Elemental",
+      "Guardian of Light",
+      "Shimmering Shard",
+      "Immortal One"
+    ],
+    "hatchCost": 2500000,
+    "hatchCurrency": "coins",
+    "world": "The Overworld",
+    "zone": "W1 Surface",
+    "limited": true,
+    "available": true,
+    "luckIgnored": false,
+    "infinityEgg": "",
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-06-07",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Dark Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2c/Dark_Egg.png",
+    "pets": [
+      "Dark Kitty",
+      "Dark Golem",
+      "EVIL",
+      "Voidflame",
+      "Darkness",
+      "Shinigami",
+      "Immortal One"
+    ],
+    "hatchCost": 2500000,
+    "hatchCurrency": "coins",
+    "world": "The Overworld",
+    "zone": "W1 Surface",
+    "limited": true,
+    "available": true,
+    "luckIgnored": false,
+    "infinityEgg": "",
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-06-07",
+    "dateRemoved": ""
+  },
+  {
     "name": "Beach Egg",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/cd/Beach_Egg.png",
     "pets": [
@@ -759,6 +818,18 @@
     "limited": true,
     "available": true,
     "dateAdded": "2025-05-31"
+  },
+  {
+    "name": "Beach Festival Quests",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c2/Quests_Icon.png",
+    "pets": [
+      "Captain Bruh"
+    ],
+    "luckIgnored": true,
+    "limited": true,
+    "available": true,
+    "world": "Beach Festival",
+    "dateAdded": "2025-06-07"
   },
   {
     "name": "200M Egg",
