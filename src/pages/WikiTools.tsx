@@ -224,6 +224,7 @@ const processEgg = (egg: Egg, existingData: PetData, newData: PetData) => {
   if (existingEgg) {
     // Update existing egg properties
     for (const key of Object.keys(egg) as (keyof Egg)[]) {
+      if (key == 'pets') continue; // Skip pets, they are handled separately
       const value = egg[key];
       if (value != '' && value !== undefined && value !== null) {
         // @ts-ignore
@@ -236,6 +237,10 @@ const processEgg = (egg: Egg, existingData: PetData, newData: PetData) => {
 
     // remove the egg from the eggs array if it already exists
     newData.eggs = newData.eggs.filter(e => e.name !== egg.name);
+  }
+  else if (egg.pets.length === 0) {
+    newData.eggs = newData.eggs.filter(e => e.name !== egg.name);
+    return;
   }
 }
 

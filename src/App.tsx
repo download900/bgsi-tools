@@ -24,7 +24,7 @@ export default function App() {
   const [currentTab, setCurrentTab] = useState<"Completion" | "Odds" | "Stats" | "WikiTools">("Odds");
 
   // only show WikiTools if running in localhost
-  const isLocalhost = true;// window.location.hostname === "localhost";
+  const isLocalhost = window.location.hostname === "localhost";
 
   useEffect(() => {
     setData(loadData());

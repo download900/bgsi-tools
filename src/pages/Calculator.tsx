@@ -148,7 +148,7 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
             const infinityEggNames: string[] = [];
 
             // Load secret bounty pets
-            const secretPets = data?.categoryLookup["Secret Bounty"].eggs.flatMap((egg) => egg.pets) || [];
+            const secretPets = data?.categoryLookup["Secret Bounty"].eggs.filter((egg) => egg.available).flatMap((egg) => egg.pets) || [];
             setSecretBountyPets(secretPets);
 
             // Process eggs for calculator
