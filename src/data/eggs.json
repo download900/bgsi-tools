@@ -654,6 +654,41 @@
     "dateRemoved": "2025-04-30"
   },
   {
+    "name": "Voidcrystal Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/a/a5/Voidcrystal_Egg.png",
+    "pets": [
+      "Void Crystal Doggy",
+      "Light Kitty",
+      "Voidsight",
+      "Void Eye",
+      "Void Crystal Parasite",
+      "Void Scorpion",
+      "Radiant Crystal Dragon",
+      "Void Crystal Dragon"
+    ],
+    "hatchCost": 2000000,
+    "hatchCurrency": "coins",
+    "world": "The Overworld",
+    "zone": "The Dark Island",
+    "limited": true,
+    "available": true,
+    "dateAdded": "2025-06-17",
+    "dateRemoved": "2025-06-22"
+  },
+  {
+    "name": "Light Box",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/5/50/Light_Box.png",
+    "pets": [
+      "Dream Catcher",
+      "Stained Star"
+    ],
+    "limited": true,
+    "available": true,
+    "dateAdded": "2025-06-17",
+    "dateRemoved": "2025-06-22",
+    "luckIgnored": true
+  },
+  {
     "name": "Light Egg",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3c/Light_Egg.png",
     "pets": [
@@ -1007,6 +1042,19 @@
     "dateRemoved": "2025-04-26"
   },
   {
+    "name": "Secret Bounty Wave 3",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png",
+    "pets": [
+      "King Slime",
+      "Golden Retreiver",
+      "True Titan"
+    ],
+    "luckIgnored": true,
+    "limited": true,
+    "available": true,
+    "dateAdded": "2025-06-13"
+  },
+  {
     "name": "Secret Bounty Wave 2",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png",
     "pets": [
@@ -1017,7 +1065,8 @@
     "luckIgnored": true,
     "limited": true,
     "available": true,
-    "dateAdded": "2025-05-25"
+    "dateAdded": "2025-05-25",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Secret Bounty Wave 1",
@@ -1032,6 +1081,19 @@
     "available": false,
     "dateAdded": "2025-05-10",
     "dateRemoved": "2025-05-25"
+  },
+  {
+    "name": "Exclusive Wave 9",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
+    "pets": [
+      "Excabot",
+      "Broken TV"
+    ],
+    "luckIgnored": true,
+    "limited": true,
+    "available": true,
+    "dateAdded": "2025-06-17",
+    "dateRemoved": "2025-06-22"
   },
   {
     "name": "Exclusive Wave 8",

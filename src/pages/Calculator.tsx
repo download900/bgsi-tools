@@ -13,6 +13,8 @@ type MythicPotion = 0 | 10 | 20 | 30 | 75 | 150 | 250;
 type SpeedPotion = 0 | 10 | 15 | 20 | 25 | 40 | 100;
 type RiftMultiplier = 0 | 5 | 10 | 25;
 type LuckyStreak = 0 | 20 | 30;
+type LuckDayBonus = "None" | "Free" | "Premium";
+type HatchDayBonus = "None" | "Free" | "Premium";
 
 interface CalculatorSettings {
     // egg settings
@@ -31,11 +33,13 @@ interface CalculatorSettings {
     boardGameLuckBoost: boolean;
     doubleLuckEvent: boolean;
     fastHatchEvent: boolean;
+    luckDayBonus: LuckDayBonus;
     // speed buffs
     speedPotion: SpeedPotion;
     fastHatchGamepass: boolean;
     fastHatchMastery: boolean;
     eggsPerHatch: number;
+    hatchDayBonus: HatchDayBonus;
     // secret bounty
     secretsBountyPet: string;
     secretsBountyEgg: string;
@@ -87,6 +91,8 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
         highRoller: 0,
         friendBoost: 0,
         boardGameLuckBoost: false,
+        luckDayBonus: "None",
+        hatchDayBonus: "None",
         fastHatchGamepass: false,
         fastHatchMastery: false,
         eggsPerHatch: 1,
@@ -282,6 +288,11 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
             + calculatorSettings.luckyStreak 
             + (calculatorSettings.normalIndex.includes(egg.index) ? 50 : 0) 
             + (calculatorSettings.highRoller * 10);
+        // TODO: Not sure exactly how this is calculated, need to wait until Luck Day.
+        // For now, assuming it's treated like basic luck buffs.
+        if (calculatorSettings.luckDayBonus !== "None") {
+            luckyBuff += calculatorSettings.luckDayBonus === "Free" ? 100 : 250;
+        }
         // Double luck gamepass
         if (calculatorSettings.doubleLuckGamepass) luckyBuff *= 2;
         if (calculatorSettings.doubleLuckGamepass) luckyBuff += 100;
@@ -318,6 +329,9 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
         if (calculatorSettings.infinityElixir) speed *= 2;
         if (calculatorSettings.fastHatchGamepass) speed += 50;
         if (calculatorSettings.fastHatchEvent) speed += 30;
+        if (calculatorSettings.hatchDayBonus !== "None") {
+            speed += calculatorSettings.hatchDayBonus === "Free" ? 50 : 100;
+        }
         // base hatches per second is 1 egg per 4.5 seconds. multipy that by speed, then by eggsPerHatch
         const hatchesPerSecond = (1 / 4.5) * (speed / 100) * calculatorSettings.eggsPerHatch;
 
@@ -652,6 +666,23 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
                                         onChange={(e) => setCalculatorSettings({ ...calculatorSettings, doubleLuckEvent: e.target.checked })}
                                     />
                                 </Box>
+
+                                <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
+                                    <Typography variant="subtitle1" sx={{width: 250}}>
+                                        {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/3/39/Luck_Icon.png", 24, 0, 4)}
+                                        Luck Day Bonus:
+                                    </Typography>
+                                    <Select
+                                        value={calculatorSettings.luckDayBonus}
+                                        size="small"
+                                        sx={{ flexGrow: 1, mr: 1 }}
+                                        onChange={(e) => setCalculatorSettings({ ...calculatorSettings, luckDayBonus: e.target.value as LuckDayBonus })}
+                                    >
+                                        <MenuItem value="None">None</MenuItem>
+                                        <MenuItem value="Free">Free (100%)</MenuItem>
+                                        <MenuItem value="Premium">Premium (250%)</MenuItem>
+                                    </Select>
+                                </Box>
                                 </>
                             )
                         }
@@ -735,6 +766,23 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
                                         checked={calculatorSettings.fastHatchEvent}
                                         onChange={(e) => setCalculatorSettings({ ...calculatorSettings, fastHatchEvent: e.target.checked })}
                                     />
+                                </Box>
+
+                                <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
+                                    <Typography variant="subtitle1" sx={{width: 250}}>
+                                        {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/d/df/Golden_Egg_Icon.png", 24, 0, 4)}
+                                        Hatch Day Bonus Speed:
+                                    </Typography>
+                                    <Select
+                                        value={calculatorSettings.hatchDayBonus}
+                                        size="small"
+                                        sx={{ flexGrow: 1, mr: 1 }}
+                                        onChange={(e) => setCalculatorSettings({ ...calculatorSettings, hatchDayBonus: e.target.value as HatchDayBonus })}
+                                    >
+                                        <MenuItem value="None">None</MenuItem>
+                                        <MenuItem value="Free">Free (15%)</MenuItem>
+                                        <MenuItem value="Premium">Premium (30%)</MenuItem>
+                                    </Select>
                                 </Box>
                                 </>
                             )

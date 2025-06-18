@@ -13,10 +13,7 @@
       "Void Egg",
       "Hell Egg",
       "Nightmare Egg",
-      "Rainbow Egg",
-      "Wheel Spin",
-      "Golden Chest",
-      "Royal Chest"
+      "Rainbow Egg"
     ]
   },
   {
@@ -29,11 +26,7 @@
       "Neon Egg",
       "Chance Egg",
       "Game Egg",
-      "Underworld Egg",
-      "Dice Chest",
-      "Cart Escape",
-      "Robot Claw",
-      "Hyper Darts"
+      "Underworld Egg"
     ]
   },
   {
@@ -45,7 +38,14 @@
       "Mystery Box",
       "Playtime",
       "Traveling Merchant",
-      "World Rewards"
+      "World Rewards",
+      "Wheel Spin",
+      "Golden Chest",
+      "Royal Chest",
+      "Dice Chest",
+      "Cart Escape",
+      "Robot Claw",
+      "Hyper Darts"
     ]
   },
   {
@@ -74,6 +74,14 @@
     "name": "Events",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d4/Daily.png",
     "categories": [
+      {
+        "name": "The Dark Island",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/a/a5/Voidcrystal_Egg.png",
+        "eggs": [
+          "Voidcrystal Egg",
+          "Light Box"
+        ]
+      },
       {
         "name": "Light and Dark Event",
         "image": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3c/Light_Egg.png",
@@ -128,6 +136,7 @@
     "name": "Secret Bounty",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png",
     "eggs": [
+      "Secret Bounty Wave 3",
       "Secret Bounty Wave 2",
       "Secret Bounty Wave 1"
     ]
@@ -136,6 +145,7 @@
     "name": "Robux Shop",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
     "eggs": [
+      "Exclusive Wave 9",
       "Exclusive Wave 8",
       "Exclusive Wave 7",
       "Exclusive Wave 6",
