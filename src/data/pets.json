@@ -2505,7 +2505,7 @@
     "bubbles": 40,
     "gems": 0,
     "currency": 4,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "limited": true,
     "available": true,
     "obtainedFrom": "Season 3 Egg",
@@ -2515,10 +2515,13 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/9/97/Shiny_Rune_Stone.png"
     ],
     "hasMythic": false,
-    "tags": [],
+    "tags": [
+      "Season 3"
+    ],
     "chance": 90,
     "hatchable": true,
-    "dateAdded": "2025-05-25"
+    "dateAdded": "2025-05-25",
+    "dateRemoved": "2025-06-25"
   },
   {
     "name": "Rune Guardian",
@@ -2526,7 +2529,7 @@
     "bubbles": 210,
     "gems": 0,
     "currency": 30,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "limited": true,
     "available": true,
     "obtainedFrom": "Season 3 Egg",
@@ -2536,10 +2539,13 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/b/b2/Shiny_Rune_Guardian.png"
     ],
     "hasMythic": false,
-    "tags": [],
+    "tags": [
+      "Season 3"
+    ],
     "chance": 10,
     "hatchable": true,
-    "dateAdded": "2025-05-25"
+    "dateAdded": "2025-05-25",
+    "dateRemoved": "2025-06-25"
   },
   {
     "name": "Runic Defender",
@@ -2547,7 +2553,7 @@
     "bubbles": 1600,
     "gems": 30,
     "currency": 150,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "limited": true,
     "available": true,
     "obtainedFrom": "Season 3 Egg",
@@ -2559,17 +2565,20 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/a/a1/Shiny_Mythic_Runic_Defender.png"
     ],
     "hasMythic": true,
-    "tags": [],
+    "tags": [
+      "Season 3"
+    ],
     "chance": 0.5,
     "hatchable": true,
-    "dateAdded": "2025-05-25"
+    "dateAdded": "2025-05-25",
+    "dateRemoved": "2025-06-25"
   },
   {
     "name": "Glyph Warrior",
     "rarity": "legendary",
     "bubbles": 3500,
     "gems": 80,
-    "currency": 0,
+    "currency": 1000,
     "currencyVariant": "coins",
     "limited": true,
     "available": true,
@@ -2582,10 +2591,13 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/9/95/Shiny_Mythic_Glyph_Warrior.png"
     ],
     "hasMythic": true,
-    "tags": [],
+    "tags": [
+      "Season 3"
+    ],
     "chance": 0.01,
     "hatchable": true,
-    "dateAdded": "2025-05-25"
+    "dateAdded": "2025-05-25",
+    "dateRemoved": "2025-06-25"
   },
   {
     "name": "Runic Master",
@@ -2593,7 +2605,7 @@
     "bubbles": 1000,
     "gems": 20,
     "currency": 35,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "limited": true,
     "available": true,
     "obtainedFrom": "Season 3 Bubble Pass",
@@ -2603,10 +2615,13 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/d/d1/Shiny_Runic_Master.png"
     ],
     "hasMythic": false,
-    "tags": [],
+    "tags": [
+      "Season 3"
+    ],
     "chance": 100,
     "hatchable": false,
-    "dateAdded": "2025-05-25"
+    "dateAdded": "2025-05-25",
+    "dateRemoved": "2025-06-25"
   },
   {
     "name": "Runic Prism",
@@ -2614,7 +2629,7 @@
     "bubbles": 1200,
     "gems": 30,
     "currency": 50,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "limited": true,
     "available": true,
     "obtainedFrom": "Season 3 Bubble Pass",
@@ -2624,10 +2639,13 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/6/64/Shiny_Runic_Prism.png"
     ],
     "hasMythic": false,
-    "tags": [],
+    "tags": [
+      "Season 3"
+    ],
     "chance": 100,
     "hatchable": false,
-    "dateAdded": "2025-05-25"
+    "dateAdded": "2025-05-25",
+    "dateRemoved": "2025-06-25"
   },
   {
     "name": "Ancient One",
@@ -2635,7 +2653,7 @@
     "bubbles": 2700,
     "gems": 55,
     "currency": 800,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "limited": true,
     "available": true,
     "obtainedFrom": "Season 3 Infinite Track",
@@ -2650,7 +2668,8 @@
     "tags": [],
     "chance": 0.1,
     "hatchable": true,
-    "dateAdded": "2025-05-25"
+    "dateAdded": "2025-05-25",
+    "dateRemoved": "2025-06-25"
   },
   {
     "name": "Monolith",
@@ -2658,7 +2677,7 @@
     "bubbles": 4200,
     "gems": 90,
     "currency": 2000,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "limited": true,
     "available": true,
     "obtainedFrom": "Season 3 Infinite Track",
@@ -2673,7 +2692,8 @@
     "tags": [],
     "chance": 0.005,
     "hatchable": true,
-    "dateAdded": "2025-05-25"
+    "dateAdded": "2025-05-25",
+    "dateRemoved": "2025-06-25"
   },
   {
     "name": "Sleepy Bunny",
@@ -3411,7 +3431,7 @@
     "bubbles": 1,
     "gems": 0,
     "currency": 1.5,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "limited": true,
     "obtainedFrom": "Beach Egg",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/cd/Beach_Egg.png",
@@ -3422,9 +3442,10 @@
     "hasMythic": false,
     "tags": [],
     "chance": 55,
-    "available": true,
+    "available": false,
     "hatchable": true,
-    "dateAdded": "2025-05-25"
+    "dateAdded": "2025-05-25",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Seagull",
@@ -3432,7 +3453,7 @@
     "bubbles": 1,
     "gems": 0,
     "currency": 2,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "limited": true,
     "obtainedFrom": "Beach Egg",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/cd/Beach_Egg.png",
@@ -3443,9 +3464,10 @@
     "hasMythic": false,
     "tags": [],
     "chance": 35,
-    "available": true,
+    "available": false,
     "hatchable": true,
-    "dateAdded": "2025-05-25"
+    "dateAdded": "2025-05-25",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Beach Boi",
@@ -3453,7 +3475,7 @@
     "bubbles": 2,
     "gems": 0,
     "currency": 4,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "limited": true,
     "obtainedFrom": "Beach Egg",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/cd/Beach_Egg.png",
@@ -3464,9 +3486,10 @@
     "hasMythic": false,
     "tags": [],
     "chance": 10,
-    "available": true,
+    "available": false,
     "hatchable": true,
-    "dateAdded": "2025-05-25"
+    "dateAdded": "2025-05-25",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Sundae Doggy",
@@ -3474,7 +3497,7 @@
     "bubbles": 20,
     "gems": 0,
     "currency": 4,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "limited": true,
     "obtainedFrom": "Icecream Egg",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d2/Icecream_Egg.png",
@@ -3485,9 +3508,10 @@
     "hasMythic": false,
     "tags": [],
     "chance": 59.4,
-    "available": true,
+    "available": false,
     "hatchable": true,
-    "dateAdded": "2025-05-25"
+    "dateAdded": "2025-05-25",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Bunny Cone",
@@ -3495,7 +3519,7 @@
     "bubbles": 35,
     "gems": 2.5,
     "currency": 6,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "limited": true,
     "obtainedFrom": "Icecream Egg",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d2/Icecream_Egg.png",
@@ -3506,9 +3530,10 @@
     "hasMythic": false,
     "tags": [],
     "chance": 28.5,
-    "available": true,
+    "available": false,
     "hatchable": true,
-    "dateAdded": "2025-05-25"
+    "dateAdded": "2025-05-25",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Neapolitan Stack",
@@ -3516,7 +3541,7 @@
     "bubbles": 80,
     "gems": 0,
     "currency": 9.5,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "limited": true,
     "obtainedFrom": "Icecream Egg",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d2/Icecream_Egg.png",
@@ -3527,9 +3552,10 @@
     "hasMythic": false,
     "tags": [],
     "chance": 6,
-    "available": true,
+    "available": false,
     "hatchable": true,
-    "dateAdded": "2025-05-25"
+    "dateAdded": "2025-05-25",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Popsicle Trio",
@@ -3537,9 +3563,9 @@
     "bubbles": 720,
     "gems": 18,
     "currency": 50,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "limited": true,
-    "available": true,
+    "available": false,
     "obtainedFrom": "Icecream Egg",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d2/Icecream_Egg.png",
     "image": [
@@ -3552,7 +3578,8 @@
     "tags": [],
     "chance": 0.1,
     "hatchable": true,
-    "dateAdded": "2025-05-25"
+    "dateAdded": "2025-05-25",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Soarin' Surfer",
@@ -3560,9 +3587,9 @@
     "bubbles": 1600,
     "gems": 30,
     "currency": 200,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "limited": true,
-    "available": true,
+    "available": false,
     "obtainedFrom": "Icecream Egg",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d2/Icecream_Egg.png",
     "image": [
@@ -3575,7 +3602,8 @@
     "tags": [],
     "chance": 0.01,
     "hatchable": true,
-    "dateAdded": "2025-05-25"
+    "dateAdded": "2025-05-25",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Sundae Cone",
@@ -3583,9 +3611,9 @@
     "bubbles": 2600,
     "gems": 50,
     "currency": 750,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "limited": true,
-    "available": true,
+    "available": false,
     "obtainedFrom": "Icecream Egg",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d2/Icecream_Egg.png",
     "image": [
@@ -3598,7 +3626,8 @@
     "tags": [],
     "chance": 0.00008,
     "hatchable": true,
-    "dateAdded": "2025-05-25"
+    "dateAdded": "2025-05-25",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Mint Sundae Champion",
@@ -3606,7 +3635,7 @@
     "bubbles": 3800,
     "gems": 80,
     "currency": 1500,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "limited": true,
     "obtainedFrom": "Icecream Egg",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d2/Icecream_Egg.png",
@@ -3619,9 +3648,10 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.000002,
-    "available": true,
+    "available": false,
     "hatchable": true,
-    "dateAdded": "2025-05-25"
+    "dateAdded": "2025-05-25",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Vanilla Sundae Champion",
@@ -3629,7 +3659,7 @@
     "bubbles": 3800,
     "gems": 80,
     "currency": 1500,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "limited": true,
     "obtainedFrom": "Icecream Egg",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d2/Icecream_Egg.png",
@@ -3642,9 +3672,10 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.000002,
-    "available": true,
+    "available": false,
     "hatchable": true,
-    "dateAdded": "2025-05-25"
+    "dateAdded": "2025-05-25",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Chocolate Sundae Champion",
@@ -3652,7 +3683,7 @@
     "bubbles": 3800,
     "gems": 80,
     "currency": 1500,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "limited": true,
     "obtainedFrom": "Icecream Egg",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d2/Icecream_Egg.png",
@@ -3665,9 +3696,10 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.000002,
-    "available": true,
+    "available": false,
     "hatchable": true,
-    "dateAdded": "2025-05-25"
+    "dateAdded": "2025-05-25",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Strawberry Sundae Champion",
@@ -3675,7 +3707,7 @@
     "bubbles": 3800,
     "gems": 80,
     "currency": 1500,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "limited": true,
     "obtainedFrom": "Icecream Egg",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d2/Icecream_Egg.png",
@@ -3688,9 +3720,10 @@
     "hasMythic": true,
     "tags": [],
     "chance": 0.000002,
-    "available": true,
+    "available": false,
     "hatchable": true,
-    "dateAdded": "2025-05-25"
+    "dateAdded": "2025-05-25",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Strawberry Doggy",
@@ -3698,7 +3731,7 @@
     "bubbles": 20,
     "gems": 0,
     "currency": 15,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "limited": true,
     "obtainedFrom": "Fruit Egg",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/7/73/Fruit_Egg.png",
@@ -3709,9 +3742,10 @@
     "hasMythic": false,
     "tags": [],
     "chance": 67,
-    "available": true,
+    "available": false,
     "hatchable": true,
-    "dateAdded": "2025-05-25"
+    "dateAdded": "2025-05-25",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Lemon Dragon",
@@ -3719,7 +3753,7 @@
     "bubbles": 35,
     "gems": 2.5,
     "currency": 18,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "limited": true,
     "obtainedFrom": "Fruit Egg",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/7/73/Fruit_Egg.png",
@@ -3730,9 +3764,10 @@
     "hasMythic": false,
     "tags": [],
     "chance": 30,
-    "available": true,
+    "available": false,
     "hatchable": true,
-    "dateAdded": "2025-05-25"
+    "dateAdded": "2025-05-25",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Watermelon Boi",
@@ -3740,7 +3775,7 @@
     "bubbles": 80,
     "gems": 0,
     "currency": 30,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "limited": true,
     "obtainedFrom": "Fruit Egg",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/7/73/Fruit_Egg.png",
@@ -3751,9 +3786,10 @@
     "hasMythic": false,
     "tags": [],
     "chance": 3,
-    "available": true,
+    "available": false,
     "hatchable": true,
-    "dateAdded": "2025-05-25"
+    "dateAdded": "2025-05-25",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Kiwi Dragon",
@@ -3761,9 +3797,9 @@
     "bubbles": 740,
     "gems": 18,
     "currency": 95,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "limited": true,
-    "available": true,
+    "available": false,
     "obtainedFrom": "Fruit Egg",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/7/73/Fruit_Egg.png",
     "image": [
@@ -3776,7 +3812,8 @@
     "tags": [],
     "chance": 0.02,
     "hatchable": true,
-    "dateAdded": "2025-05-25"
+    "dateAdded": "2025-05-25",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Mangorium",
@@ -3784,9 +3821,9 @@
     "bubbles": 1850,
     "gems": 30,
     "currency": 300,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "limited": true,
-    "available": true,
+    "available": false,
     "obtainedFrom": "Fruit Egg",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/7/73/Fruit_Egg.png",
     "image": [
@@ -3799,7 +3836,8 @@
     "tags": [],
     "chance": 0.002,
     "hatchable": true,
-    "dateAdded": "2025-05-25"
+    "dateAdded": "2025-05-25",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Pineapple Tourist",
@@ -3807,9 +3845,9 @@
     "bubbles": 2300,
     "gems": 45,
     "currency": 680,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "limited": true,
-    "available": true,
+    "available": false,
     "obtainedFrom": "Fruit Egg",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/7/73/Fruit_Egg.png",
     "image": [
@@ -3822,7 +3860,8 @@
     "tags": [],
     "chance": 0.00015,
     "hatchable": true,
-    "dateAdded": "2025-05-25"
+    "dateAdded": "2025-05-25",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Dragonfruit",
@@ -3830,9 +3869,9 @@
     "bubbles": 4200,
     "gems": 90,
     "currency": 2000,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "limited": true,
-    "available": true,
+    "available": false,
     "obtainedFrom": "Fruit Egg",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/7/73/Fruit_Egg.png",
     "image": [
@@ -3845,7 +3884,8 @@
     "tags": [],
     "chance": 2e-7,
     "hatchable": true,
-    "dateAdded": "2025-05-25"
+    "dateAdded": "2025-05-25",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Researcher Doggy",
@@ -3854,10 +3894,10 @@
     "bubbles": 25,
     "gems": 0,
     "currency": 6,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "hasMythic": false,
     "limited": true,
-    "available": true,
+    "available": false,
     "hatchable": true,
     "tags": [],
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Fossil_Egg.png",
@@ -3866,7 +3906,8 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/d/db/Researcher_Doggy.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/3/3f/Shiny_Researcher_Doggy.png"
     ],
-    "dateAdded": "2025-05-31"
+    "dateAdded": "2025-05-31",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Monkey",
@@ -3875,10 +3916,10 @@
     "bubbles": 40,
     "gems": 2.5,
     "currency": 8,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "hasMythic": false,
     "limited": true,
-    "available": true,
+    "available": false,
     "hatchable": true,
     "tags": [],
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Fossil_Egg.png",
@@ -3887,7 +3928,8 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/2/27/Monkey.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/7/72/Shiny_Monkey.png"
     ],
-    "dateAdded": "2025-05-31"
+    "dateAdded": "2025-05-31",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Fossil Dragon",
@@ -3896,10 +3938,10 @@
     "bubbles": 100,
     "gems": 0,
     "currency": 15,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "hasMythic": false,
     "limited": true,
-    "available": true,
+    "available": false,
     "hatchable": true,
     "tags": [],
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Fossil_Egg.png",
@@ -3908,7 +3950,8 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/f/f0/Fossil_Dragon.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/9/90/Shiny_Fossil_Dragon.png"
     ],
-    "dateAdded": "2025-05-31"
+    "dateAdded": "2025-05-31",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Fossilus",
@@ -3917,10 +3960,10 @@
     "bubbles": 800,
     "gems": 18,
     "currency": 75,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "hasMythic": true,
     "limited": true,
-    "available": true,
+    "available": false,
     "hatchable": true,
     "tags": [],
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Fossil_Egg.png",
@@ -3931,7 +3974,8 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/5/53/Mythic_Fossilus.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/f/f0/Shiny_Mythic_Fossilus.png"
     ],
-    "dateAdded": "2025-05-31"
+    "dateAdded": "2025-05-31",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Bug Amber",
@@ -3940,10 +3984,10 @@
     "bubbles": 2000,
     "gems": 30,
     "currency": 225,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "hasMythic": true,
     "limited": true,
-    "available": true,
+    "available": false,
     "hatchable": true,
     "tags": [],
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Fossil_Egg.png",
@@ -3954,7 +3998,8 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/d/df/Mythic_Bug_Amber.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/3/37/Shiny_Mythic_Bug_Amber.png"
     ],
-    "dateAdded": "2025-05-31"
+    "dateAdded": "2025-05-31",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Fossil Ghost",
@@ -3963,10 +4008,10 @@
     "bubbles": 2750,
     "gems": 45,
     "currency": 850,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "hasMythic": true,
     "limited": true,
-    "available": true,
+    "available": false,
     "hatchable": true,
     "tags": [],
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Fossil_Egg.png",
@@ -3977,7 +4022,8 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/9/9a/Mythic_Fossil_Ghost.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/9/97/Shiny_Mythic_Fossil_Ghost.png"
     ],
-    "dateAdded": "2025-05-31"
+    "dateAdded": "2025-05-31",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Kraken",
@@ -3986,10 +4032,10 @@
     "bubbles": 4500,
     "gems": 95,
     "currency": 2250,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "hasMythic": true,
     "limited": true,
-    "available": true,
+    "available": false,
     "hatchable": true,
     "tags": [],
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Fossil_Egg.png",
@@ -4000,7 +4046,8 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/a/a1/Mythic_Kraken.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/a/ac/Shiny_Mythic_Kraken.png"
     ],
-    "dateAdded": "2025-05-31"
+    "dateAdded": "2025-05-31",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Air Basilisk",
@@ -4009,10 +4056,10 @@
     "bubbles": 4750,
     "gems": 100,
     "currency": 2500,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "hasMythic": true,
     "limited": true,
-    "available": true,
+    "available": false,
     "hatchable": true,
     "tags": [],
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Fossil_Egg.png",
@@ -4023,7 +4070,8 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/1/1c/Mythic_Air_Basilisk.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/b/bd/Shiny_Mythic_Air_Basilisk.png"
     ],
-    "dateAdded": "2025-05-31"
+    "dateAdded": "2025-05-31",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Electric Basilisk",
@@ -4032,10 +4080,10 @@
     "bubbles": 4750,
     "gems": 100,
     "currency": 2500,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "hasMythic": true,
     "limited": true,
-    "available": true,
+    "available": false,
     "hatchable": true,
     "tags": [],
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Fossil_Egg.png",
@@ -4046,7 +4094,8 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/3/34/Mythic_Electric_Basilisk.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/a/ad/Shiny_Mythic_Electric_Basilisk.png"
     ],
-    "dateAdded": "2025-05-31"
+    "dateAdded": "2025-05-31",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Fire Basilisk",
@@ -4055,10 +4104,10 @@
     "bubbles": 4750,
     "gems": 100,
     "currency": 2500,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "hasMythic": true,
     "limited": true,
-    "available": true,
+    "available": false,
     "hatchable": true,
     "tags": [],
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Fossil_Egg.png",
@@ -4069,7 +4118,8 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/3/32/Mythic_Fire_Basilisk.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/5/5a/Shiny_Mythic_Fire_Basilisk.png"
     ],
-    "dateAdded": "2025-05-31"
+    "dateAdded": "2025-05-31",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Ice Basilisk",
@@ -4078,10 +4128,10 @@
     "bubbles": 4750,
     "gems": 100,
     "currency": 2500,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "hasMythic": true,
     "limited": true,
-    "available": true,
+    "available": false,
     "hatchable": true,
     "tags": [],
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Fossil_Egg.png",
@@ -4092,7 +4142,8 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/8/88/Mythic_Ice_Basilisk.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/8/81/Shiny_Mythic_Ice_Basilisk.png"
     ],
-    "dateAdded": "2025-05-31"
+    "dateAdded": "2025-05-31",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Pirate Kitty",
@@ -4101,10 +4152,10 @@
     "bubbles": 25,
     "gems": 0,
     "currency": 6,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "hasMythic": false,
     "limited": true,
-    "available": true,
+    "available": false,
     "hatchable": true,
     "tags": [],
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d1/Pirate_Egg.png",
@@ -4113,7 +4164,8 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/0/09/Pirate_Kitty.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/9/9c/Shiny_Pirate_Kitty.png"
     ],
-    "dateAdded": "2025-05-31"
+    "dateAdded": "2025-05-31",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Strawhat Dragon",
@@ -4122,10 +4174,10 @@
     "bubbles": 100,
     "gems": 0,
     "currency": 15,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "hasMythic": false,
     "limited": true,
-    "available": true,
+    "available": false,
     "hatchable": true,
     "tags": [],
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d1/Pirate_Egg.png",
@@ -4134,7 +4186,8 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/e/e5/Strawhat_Dragon.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/a/af/Shiny_Strawhat_Dragon.png"
     ],
-    "dateAdded": "2025-05-31"
+    "dateAdded": "2025-05-31",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Captain Monkey",
@@ -4143,10 +4196,10 @@
     "bubbles": 1500,
     "gems": 35,
     "currency": 300,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "hasMythic": true,
     "limited": true,
-    "available": true,
+    "available": false,
     "hatchable": true,
     "tags": [],
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d1/Pirate_Egg.png",
@@ -4157,7 +4210,8 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/b/b5/Mythic_Captain_Monkey.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/b/b3/Shiny_Mythic_Captain_Monkey.png"
     ],
-    "dateAdded": "2025-05-31"
+    "dateAdded": "2025-05-31",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Chest Mimic",
@@ -4166,10 +4220,10 @@
     "bubbles": 2750,
     "gems": 45,
     "currency": 850,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "hasMythic": true,
     "limited": true,
-    "available": true,
+    "available": false,
     "hatchable": true,
     "tags": [],
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d1/Pirate_Egg.png",
@@ -4180,7 +4234,8 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/d/d0/Mythic_Chest_Mimic.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/8/8b/Shiny_Mythic_Chest_Mimic.png"
     ],
-    "dateAdded": "2025-05-31"
+    "dateAdded": "2025-05-31",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Captains Curse",
@@ -4189,10 +4244,10 @@
     "bubbles": 4350,
     "gems": 92,
     "currency": 2100,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "hasMythic": true,
     "limited": true,
-    "available": true,
+    "available": false,
     "hatchable": true,
     "tags": [],
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d1/Pirate_Egg.png",
@@ -4203,7 +4258,8 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/d/d2/Mythic_Captains_Curse.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/c/cc/Shiny_Mythic_Captains_Curse.png"
     ],
-    "dateAdded": "2025-05-31"
+    "dateAdded": "2025-05-31",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Infernal",
@@ -4212,12 +4268,14 @@
     "bubbles": 4600,
     "gems": 97,
     "currency": 2300,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "hasMythic": true,
     "limited": true,
-    "available": true,
+    "available": false,
     "hatchable": true,
-    "tags": [],
+    "tags": [
+      "Ancient Chest"
+    ],
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/b/b8/Ancient_Chest.png",
     "obtainedFrom": "Ancient Chest",
     "image": [
@@ -4226,7 +4284,8 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/0/05/Mythic_Infernal.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/3/32/Shiny_Mythic_Infernal.png"
     ],
-    "dateAdded": "2025-05-31"
+    "dateAdded": "2025-05-31",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Doggy Pile",
@@ -4235,10 +4294,10 @@
     "bubbles": 2500,
     "gems": 35,
     "currency": 700,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "hasMythic": false,
     "limited": true,
-    "available": true,
+    "available": false,
     "hatchable": false,
     "tags": [],
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/a/ad/Beach_Festival_Icon.png",
@@ -4247,7 +4306,8 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/7/72/Doggy_Pile.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/6/6a/Shiny_Doggy_Pile.png"
     ],
-    "dateAdded": "2025-05-31"
+    "dateAdded": "2025-05-31",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Cute Deer",
@@ -5321,9 +5381,10 @@
       "Silly"
     ],
     "chance": 65,
-    "available": true,
+    "available": false,
     "hatchable": true,
-    "dateAdded": "2025-04-26"
+    "dateAdded": "2025-04-26",
+    "dateRemoved": "2025-05-10"
   },
   {
     "name": "Long Kitty",
@@ -5344,9 +5405,10 @@
       "Silly"
     ],
     "chance": 30,
-    "available": true,
+    "available": false,
     "hatchable": true,
-    "dateAdded": "2025-04-26"
+    "dateAdded": "2025-04-26",
+    "dateRemoved": "2025-05-10"
   },
   {
     "name": "DOOF",
@@ -5369,9 +5431,10 @@
       "Silly"
     ],
     "chance": 0.01,
-    "available": true,
+    "available": false,
     "hatchable": true,
-    "dateAdded": "2025-04-26"
+    "dateAdded": "2025-04-26",
+    "dateRemoved": "2025-05-10"
   },
   {
     "name": "ROUND",
@@ -5394,9 +5457,10 @@
       "😂Silly😂"
     ],
     "chance": 0.0004,
-    "available": true,
+    "available": false,
     "hatchable": true,
-    "dateAdded": "2025-04-26"
+    "dateAdded": "2025-04-26",
+    "dateRemoved": "2025-05-10"
   },
   {
     "name": "Silly Doggy :)",
@@ -5419,9 +5483,10 @@
       "Silly"
     ],
     "chance": 0.0001,
-    "available": true,
+    "available": false,
     "hatchable": true,
-    "dateAdded": "2025-04-26"
+    "dateAdded": "2025-04-26",
+    "dateRemoved": "2025-05-10"
   },
   {
     "name": "Manny",
@@ -5554,10 +5619,10 @@
     "rarity": "secret",
     "bubbles": 4000,
     "gems": 80,
-    "currency": 0,
+    "currency": 1500,
     "currencyVariant": "coins",
     "limited": true,
-    "available": true,
+    "available": false,
     "obtainedFrom": "Secret Bounty",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png",
     "image": [
@@ -5567,20 +5632,23 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/a/a0/Shiny_Mythic_Overlord_Plushie.png"
     ],
     "hasMythic": true,
-    "tags": [],
+    "tags": [
+      "Secret Bounty"
+    ],
     "chance": 8e-7,
     "hatchable": true,
-    "dateAdded": "2025-05-25"
+    "dateAdded": "2025-05-25",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Everblaze",
     "rarity": "secret",
     "bubbles": 4200,
     "gems": 90,
-    "currency": 0,
+    "currency": 2000,
     "currencyVariant": "coins",
     "limited": true,
-    "available": true,
+    "available": false,
     "obtainedFrom": "Secret Bounty",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png",
     "image": [
@@ -5590,10 +5658,13 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/f/fc/Shiny_Mythic_Everblaze.png"
     ],
     "hasMythic": true,
-    "tags": [],
+    "tags": [
+      "Secret Bounty"
+    ],
     "chance": 4e-7,
     "hatchable": true,
-    "dateAdded": "2025-05-25"
+    "dateAdded": "2025-05-25",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Beelzebub",
@@ -5601,9 +5672,9 @@
     "bubbles": 3800,
     "gems": 80,
     "currency": 1350,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "limited": true,
-    "available": true,
+    "available": false,
     "obtainedFrom": "Secret Bounty",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png",
     "image": [
@@ -5613,10 +5684,13 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/5/5a/Shiny_Mythic_Beelzebub.png"
     ],
     "hasMythic": true,
-    "tags": [],
+    "tags": [
+      "Secret Bounty"
+    ],
     "chance": 0.000002,
     "hatchable": true,
-    "dateAdded": "2025-05-25"
+    "dateAdded": "2025-05-25",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Queen Kitty",
@@ -5636,7 +5710,9 @@
     "obtainedFrom": "Secret Bounty",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png",
     "hasMythic": true,
-    "tags": [],
+    "tags": [
+      "Secret Bounty"
+    ],
     "chance": 0.00000125,
     "hatchable": true,
     "dateAdded": "2025-05-10",
@@ -5660,7 +5736,9 @@
     "obtainedFrom": "Secret Bounty",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png",
     "hasMythic": true,
-    "tags": [],
+    "tags": [
+      "Secret Bounty"
+    ],
     "chance": 0.000002,
     "hatchable": true,
     "dateAdded": "2025-05-10",
@@ -5684,7 +5762,9 @@
     "obtainedFrom": "Secret Bounty",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png",
     "hasMythic": true,
-    "tags": [],
+    "tags": [
+      "Secret Bounty"
+    ],
     "chance": 4e-7,
     "hatchable": true,
     "dateAdded": "2025-05-10",
@@ -5697,10 +5777,10 @@
     "bubbles": 1100,
     "gems": 22,
     "currency": 100,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "hasMythic": true,
     "limited": true,
-    "available": true,
+    "available": false,
     "hatchable": false,
     "tags": [
       "Exclusive Pet"
@@ -5723,10 +5803,10 @@
     "bubbles": 1500,
     "gems": 27,
     "currency": 150,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "hasMythic": true,
     "limited": true,
-    "available": true,
+    "available": false,
     "hatchable": true,
     "tags": [
       "Exclusive Pet"
@@ -5748,7 +5828,7 @@
     "bubbles": 1000,
     "gems": 20,
     "currency": 80,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "limited": true,
     "available": false,
     "obtainedFrom": "Robux Shop",
@@ -5774,7 +5854,7 @@
     "bubbles": 1350,
     "gems": 25,
     "currency": 125,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "limited": true,
     "available": false,
     "obtainedFrom": "Robux Shop",
@@ -5783,7 +5863,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/1/1b/Dreamscape.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/3/36/Shiny_Dreamscape.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/6/67/Mythic_Dreamscape.png",
-      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+      "https://static.wikia.nocookie.net/bgs-infinity/images/f/f5/Shiny_Mythic_Dreamscape.png"
     ],
     "hasMythic": true,
     "tags": [
@@ -6098,19 +6178,21 @@
     "currency": 3000,
     "currencyVariant": "coins",
     "hasMythic": false,
-    "tags": [],
+    "tags": [
+      "Bruh Quest Reward"
+    ],
     "limited": true,
-    "available": true,
+    "available": false,
     "hatchable": false,
     "obtainedFrom": "Quests",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c2/Quests_Icon.png",
-    "obtainedFromInfo": "Captain Bruh's Ancient Discovery",
+    "obtainedFromInfo": "[[Captain Bruh (NPC)|Captain Bruh's Ancient Discovery]]",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/e/e6/Captain_Bruh.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Shiny_Captain_Bruh.png"
     ],
     "dateAdded": "2025-06-07",
-    "dateRemoved": ""
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "BGS Box",
@@ -6132,7 +6214,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/2/28/BGS_Box.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/8/80/Shiny_BGS_Box.png"
     ],
-    "dateAdded": "2025-06-7",
+    "dateAdded": "2025-06-07",
     "dateRemoved": ""
   },
   {
@@ -6146,7 +6228,7 @@
     "hasMythic": false,
     "tags": [],
     "limited": true,
-    "available": true,
+    "available": false,
     "hatchable": true,
     "obtainedFrom": "Light Egg",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3c/Light_Egg.png",
@@ -6156,7 +6238,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/9/9a/Shiny_Light_Doggy.png"
     ],
     "dateAdded": "2025-06-07",
-    "dateRemoved": ""
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Light Orb",
@@ -6169,7 +6251,7 @@
     "hasMythic": false,
     "tags": [],
     "limited": true,
-    "available": true,
+    "available": false,
     "hatchable": true,
     "obtainedFrom": "Light Egg",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3c/Light_Egg.png",
@@ -6179,7 +6261,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/8/84/Shiny_Light_Orb.png"
     ],
     "dateAdded": "2025-06-07",
-    "dateRemoved": ""
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Light Cube",
@@ -6192,7 +6274,7 @@
     "hasMythic": true,
     "tags": [],
     "limited": true,
-    "available": true,
+    "available": false,
     "hatchable": true,
     "obtainedFrom": "Light Egg",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3c/Light_Egg.png",
@@ -6204,7 +6286,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/1/17/Shiny_Mythic_Light_Cube.png"
     ],
     "dateAdded": "2025-06-07",
-    "dateRemoved": ""
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Radiant Elemental",
@@ -6217,7 +6299,7 @@
     "hasMythic": true,
     "tags": [],
     "limited": true,
-    "available": true,
+    "available": false,
     "hatchable": true,
     "obtainedFrom": "Light Egg",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3c/Light_Egg.png",
@@ -6229,7 +6311,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/4/4e/Shiny_Mythic_Radiant_Elemental.png"
     ],
     "dateAdded": "2025-06-07",
-    "dateRemoved": ""
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Guardian of Light",
@@ -6242,7 +6324,7 @@
     "hasMythic": true,
     "tags": [],
     "limited": true,
-    "available": true,
+    "available": false,
     "hatchable": true,
     "obtainedFrom": "Light Egg",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3c/Light_Egg.png",
@@ -6254,7 +6336,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/7/70/Shiny_Mythic_Guardian_of_Light.png"
     ],
     "dateAdded": "2025-06-07",
-    "dateRemoved": ""
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Shimmering Shard",
@@ -6267,7 +6349,7 @@
     "hasMythic": true,
     "tags": [],
     "limited": true,
-    "available": true,
+    "available": false,
     "hatchable": true,
     "obtainedFrom": "Light Egg",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3c/Light_Egg.png",
@@ -6279,7 +6361,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/f/fc/Shiny_Mythic_Shimmering_Shard.png"
     ],
     "dateAdded": "2025-06-07",
-    "dateRemoved": ""
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Immortal One",
@@ -6292,9 +6374,12 @@
     "hasMythic": true,
     "tags": [],
     "limited": true,
-    "available": true,
+    "available": false,
     "hatchable": true,
-    "obtainedFrom": "Light Egg",
+    "obtainedFrom": [
+      "Light Egg",
+      "Dark Egg"
+    ],
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3c/Light_Egg.png",
     "obtainedFromInfo": "",
     "image": [
@@ -6304,7 +6389,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/6/64/Shiny_Mythic_Immortal_One.png"
     ],
     "dateAdded": "2025-06-07",
-    "dateRemoved": ""
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Dark Kitty",
@@ -6317,7 +6402,7 @@
     "hasMythic": false,
     "tags": [],
     "limited": true,
-    "available": true,
+    "available": false,
     "hatchable": true,
     "obtainedFrom": "Dark Egg",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2c/Dark_Egg.png",
@@ -6327,7 +6412,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/0/06/Shiny_Dark_Kitty.png"
     ],
     "dateAdded": "2025-06-07",
-    "dateRemoved": ""
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Dark Golem",
@@ -6340,7 +6425,7 @@
     "hasMythic": false,
     "tags": [],
     "limited": true,
-    "available": true,
+    "available": false,
     "hatchable": true,
     "obtainedFrom": "Dark Egg",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2c/Dark_Egg.png",
@@ -6350,7 +6435,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/6/64/Shiny_Dark_Golem.png"
     ],
     "dateAdded": "2025-06-07",
-    "dateRemoved": ""
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "EVIL",
@@ -6363,7 +6448,7 @@
     "hasMythic": true,
     "tags": [],
     "limited": true,
-    "available": true,
+    "available": false,
     "hatchable": true,
     "obtainedFrom": "Dark Egg",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2c/Dark_Egg.png",
@@ -6375,7 +6460,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/4/43/Shiny_Mythic_EVIL.png"
     ],
     "dateAdded": "2025-06-07",
-    "dateRemoved": ""
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Voidflame",
@@ -6388,7 +6473,7 @@
     "hasMythic": true,
     "tags": [],
     "limited": true,
-    "available": true,
+    "available": false,
     "hatchable": true,
     "obtainedFrom": "Dark Egg",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2c/Dark_Egg.png",
@@ -6400,7 +6485,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/2/20/Shiny_Mythic_Voidflame.png"
     ],
     "dateAdded": "2025-06-07",
-    "dateRemoved": ""
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Darkness",
@@ -6413,7 +6498,7 @@
     "hasMythic": true,
     "tags": [],
     "limited": true,
-    "available": true,
+    "available": false,
     "hatchable": true,
     "obtainedFrom": "Dark Egg",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2c/Dark_Egg.png",
@@ -6425,7 +6510,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/e/e9/Shiny_Mythic_Darkness.png"
     ],
     "dateAdded": "2025-06-07",
-    "dateRemoved": ""
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Shinigami",
@@ -6438,7 +6523,7 @@
     "hasMythic": true,
     "tags": [],
     "limited": true,
-    "available": true,
+    "available": false,
     "hatchable": true,
     "obtainedFrom": "Dark Egg",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2c/Dark_Egg.png",
@@ -6450,7 +6535,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/c/ce/Shiny_Mythic_Shinigami.png"
     ],
     "dateAdded": "2025-06-07",
-    "dateRemoved": ""
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Galaxium",
@@ -6459,13 +6544,13 @@
     "bubbles": 1100,
     "gems": 22,
     "currency": 100,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "hasMythic": true,
     "tags": [
       "Exclusive Pet"
     ],
     "limited": true,
-    "available": true,
+    "available": false,
     "hatchable": false,
     "obtainedFrom": "Robux Shop",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
@@ -6477,7 +6562,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/2/26/Shiny_Mythic_Galaxium.png"
     ],
     "dateAdded": "2025-06-07",
-    "dateRemoved": ""
+    "dateRemoved": "2025-06-13"
   },
   {
     "name": "Dowominus",
@@ -6486,24 +6571,24 @@
     "bubbles": 1500,
     "gems": 27,
     "currency": 150,
-    "currencyVariant": "seashells",
+    "currencyVariant": "coins",
     "hasMythic": true,
     "tags": [
       "Exclusive Pet"
     ],
     "limited": true,
-    "available": true,
+    "available": false,
     "hatchable": false,
     "obtainedFrom": "Robux Shop",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
     "obtainedFromInfo": "",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/4/4d/Dowominus.png",
-      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/d/d7/Shiny_Dowominus.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/f/f0/Mythic_Dowominus.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/d/d0/Shiny_Mythic_Dowominus.png"
     ],
     "dateAdded": "2025-06-07",
-    "dateRemoved": ""
+    "dateRemoved": "2025-06-13"
   }
 ]

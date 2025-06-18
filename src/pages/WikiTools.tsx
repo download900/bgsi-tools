@@ -1,9 +1,102 @@
 import { JSX, useEffect, useRef, useState } from "react";
-import { Box, Button, Container, Typography } from "@mui/material";
+import { Box, Button, capitalize, Container, Typography } from "@mui/material";
 import { Pet, Rarity, PetVariant, CurrencyVariant, Egg, PetData } from "../util/DataUtil";
 import Decimal from "decimal.js";
 import * as cheerio from 'cheerio';
 const { format, parse } = require('lua-json')
+
+
+// New scraper: Items
+
+export async function scrapeItems(debug: (msg: string) => void): Promise<void> {
+  debug('Fetching item data from Lua modules...');
+  // Fetch "Category:Items" pages
+  const itemPages = await fetchCategoryPages('Category:Items');
+  debug(`Found ${itemPages.length} item pages.`);
+  const items: { [key: string]: any } = {};
+  for (const page of itemPages) {
+    const item: any = {
+      name: page,
+      description: '',
+      type: '',
+      rarity: 'Common',
+      effects: '',
+      duration: '',
+    };
+    debug('Fetching HTML for item: ' + page);
+    const html = await fetchHTML(page);
+    const $ = cheerio.load(html);
+    // Extract item properties from HTML
+
+    const descriptionMatch = $('figure.pi-item.pi-image[data-source="item-image"] figcaption.pi-caption').text().trim();
+    if (descriptionMatch) {
+      item.description = descriptionMatch;
+    }
+
+    const typeMatch = $('div.pi-item.pi-data.pi-item-spacing.pi-border-color[data-source="type"] .pi-data-value span').text().trim();
+    if (typeMatch) {
+      item.type = typeMatch;
+    }
+
+    const rarityMatch = $('div.pi-item.pi-data.pi-item-spacing.pi-border-color[data-source="rarity"] .pi-data-value span').text().trim();
+    if (rarityMatch) {
+      item.rarity = rarityMatch;
+    }
+
+    const durationMatch = $('div.pi-item.pi-data.pi-item-spacing.pi-border-color[data-source="duration"] .pi-data-value').text().trim();
+    if (durationMatch) {
+      // Convert "23 minutes" to seconds
+      const durationParts = durationMatch.split(' ');
+      const durationValue = parseInt(durationParts[0]);
+      const durationUnit = durationParts[1];
+      if (durationUnit === 'minutes') {
+        item.duration = durationValue * 60;
+      } else if (durationUnit === 'seconds') {
+        item.duration = durationValue;
+      }
+    }
+
+    items[item.name] = item;
+  }
+
+  // export to Lua
+  let lua = 'return {\n';
+  for (const itemName in items) {
+    const item = items[itemName];
+    lua += `  ["${itemName}"] = {\n`;
+    lua += `    description = "${item.description}",\n`;
+    lua += `    type = "${item.type}",\n`;
+    lua += `    rarity = "${item.rarity}",\n`;
+    lua += `    effects = "${item.effects}",\n`;
+    lua += `    duration = "${item.duration}",\n`;
+    lua += '  },\n';
+  }
+  lua += '}\n';
+  debug('Exporting item data to Lua file...');
+  const blob = new Blob([lua], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'item_data.lua';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  debug('Item data exported successfully.');
+}
+
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+function isAvailable(dateRemoved: string | undefined): boolean {
+  if (!dateRemoved) return true; // If no dateRemoved, pet is available
+  // Date format is YYYY-MM-DD, so we clear time components for a proper comparison
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const removedDate = new Date(dateRemoved);
+  removedDate.setHours(0, 0, 0, 0);
+  return removedDate > today; // If removed date is in the future, pet is available
+}
 
 // (1) Orchestrator
 export async function scrapeWiki(data: PetData, debug: (msg: string) => void): Promise<void> {
@@ -36,7 +129,7 @@ export async function scrapeWiki(data: PetData, debug: (msg: string) => void): P
       hasMythic: petInfo.hasMythic || false,
       tags: petInfo.tag ? petInfo.tag.split(',').map((tag: string) => tag.trim()) : [],
       limited: petInfo.limited || false,
-      available: petInfo.available !== undefined ? petInfo.available : true,
+      available: isAvailable(petInfo.dateUnavailable),
       hatchable: petInfo.hatchable !== undefined ? petInfo.hatchable : true,
       obtainedFrom: petInfo.obtainedFrom || '',
       obtainedFromImage: '',
@@ -87,7 +180,7 @@ export async function scrapeWiki(data: PetData, debug: (msg: string) => void): P
     egg.world = eggInfo.world || '';
     egg.zone = eggInfo.zone || '';
     egg.limited = eggInfo.limited || false;
-    egg.available = eggInfo.available !== undefined ? eggInfo.available : true;
+    egg.available = isAvailable(eggInfo.dateUnavailable);
     egg.luckIgnored = eggInfo.luckIgnored || false;
     egg.infinityEgg = eggInfo.infinityEgg || '';
     egg.canSpawnAsRift = eggInfo.hasEggRift || false;
@@ -104,6 +197,33 @@ export async function scrapeWiki(data: PetData, debug: (msg: string) => void): P
   data.petLookup = petLookup;
   data.eggs = eggs;
   data.eggLookup = eggLookup;
+}
+
+async function fetchCategoryPages(categoryName: string, continueToken?: string): Promise<string[]> {
+  try {
+    const api =
+      `https://bgs-infinity.fandom.com/api.php` +
+      `?action=query` +
+      `&list=categorymembers` +
+      `&cmtitle=${encodeURIComponent(categoryName)}` +
+      `&cmlimit=max` +
+      `&format=json` +
+      `&origin=*` +
+      (continueToken ? `&cmcontinue=${encodeURIComponent(continueToken)}` : '');
+
+    const res = await fetch(api);
+    const json = await res.json() as any;
+    const pages = json.query.categorymembers;
+    // Limit is 500, check if there are more pages
+    if (json.continue) {
+      const morePages = await fetchCategoryPages(categoryName, json.continue);
+      pages.push(...morePages);
+    }
+    return pages.map((page: any) => page.title);
+  } catch (error) {
+    console.error(`Error fetching category pages for ${categoryName}:`, error);
+    return [];
+  }
 }
 
 async function fetchWikitext(pageName: string): Promise<string> {
@@ -193,29 +313,30 @@ const processEggs = (wikiData: PetData, existingData: PetData) => {
   }
 
   // Save JSONs
-  exportDataToJson(existingData, '-existing');
+  exportDataToJson(existingData, '');
   if (wikiData.eggs.length > 0) {
     exportDataToJson(wikiData, '-new');
   }
 }
 
 const processEgg = (egg: Egg, existingData: PetData, newData: PetData) => {
-  for (const pet of egg.pets) {
+  for (const newPet of egg.pets) {
     // Check if the pet already exists in the existing data
-    const existingPet = existingData.petLookup[pet.name];
+    const existingPet = existingData.petLookup[newPet.name];
     if (existingPet) {
       // Update existing pet properties
-      for (const key of Object.keys(pet) as (keyof Pet)[]) {
-        const value = pet[key];
+      for (const key of Object.keys(newPet) as (keyof Pet)[]) {
+        const value = newPet[key];
         if (value != '' && value !== undefined && value !== null) {
           // @ts-ignore
           existingPet[key] = value;
         }
       }
+      existingPet.available = existingPet.available && isAvailable(newPet.dateRemoved);
 
       // remove the pet from the pets arrays if it already exists
-      egg.pets = egg.pets.filter(p => p.name !== pet.name);
-      newData.pets = newData.pets.filter(p => p.name !== pet.name);
+      egg.pets = egg.pets.filter(p => p.name !== newPet.name);
+      newData.pets = newData.pets.filter(p => p.name !== newPet.name);
     }
   }
 
@@ -225,6 +346,7 @@ const processEgg = (egg: Egg, existingData: PetData, newData: PetData) => {
     // Update existing egg properties
     for (const key of Object.keys(egg) as (keyof Egg)[]) {
       if (key == 'pets') continue; // Skip pets, they are handled separately
+      if (key == 'available') continue; // Skip available, it is handled separately
       const value = egg[key];
       if (value != '' && value !== undefined && value !== null) {
         // @ts-ignore
@@ -232,6 +354,7 @@ const processEgg = (egg: Egg, existingData: PetData, newData: PetData) => {
       }
     }
 
+    existingEgg.available = existingEgg.available && isAvailable(egg.dateRemoved);
     existingEgg.pets.push(...egg.pets); // Add new pets to existing egg
     existingEgg.pets.sort((a, b) => { return b.chance - a.chance; });
 
@@ -389,6 +512,12 @@ export function WikiTools(props: WikiToolsProps): JSX.Element {
     processEggs(newData, props.data!);
   }
 
+  const handleScrapeItems = async () => {
+    setDebug([ 'Scraping items...' ]);
+    await scrapeItems(debugLog);
+    setDebug((prev) => [...prev, 'Item data scraped and exported to item_data.lua']);
+  }
+
   const handlePetsLuaExport = () => {
     const lua = exportPetsToLua(props.data!);
     exportLuaToFile(lua, 'Pet_Data');
@@ -433,6 +562,14 @@ export function WikiTools(props: WikiToolsProps): JSX.Element {
         style={{ maxWidth: '200px' }}
       >
         Scrape Pet Pages
+      </Button>
+      <Button
+        variant="contained"
+        onClick={handleScrapeItems}
+        sx={{ mb: 2 }}
+        style={{ maxWidth: '200px' }}
+      >
+        Scrape Item Pages
       </Button>
       <pre ref={preRef} style={{ maxHeight: '400px', overflowY: 'auto', width: '100%', backgroundColor: '#333', color: '#fff', padding: '10px', borderRadius: '5px' }}>
         <code style={{ whiteSpace: 'pre-wrap', wordWrap: 'break-word' }}>

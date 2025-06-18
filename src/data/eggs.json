@@ -519,7 +519,8 @@
     "luckIgnored": true,
     "limited": true,
     "available": true,
-    "dateAdded": "2025-05-25"
+    "dateAdded": "2025-05-25",
+    "dateRemoved": "2025-06-25"
   },
   {
     "name": "Season 3 Bubble Pass",
@@ -669,13 +670,13 @@
     "world": "The Overworld",
     "zone": "W1 Surface",
     "limited": true,
-    "available": true,
+    "available": false,
     "luckIgnored": false,
     "infinityEgg": "",
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-06-07",
-    "dateRemoved": ""
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Dark Egg",
@@ -694,13 +695,13 @@
     "world": "The Overworld",
     "zone": "W1 Surface",
     "limited": true,
-    "available": true,
+    "available": false,
     "luckIgnored": false,
     "infinityEgg": "",
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-06-07",
-    "dateRemoved": ""
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Beach Egg",
@@ -713,9 +714,11 @@
     "hatchCost": 50,
     "hatchCurrency": "seashells",
     "limited": true,
-    "available": true,
+    "available": false,
     "world": "Beach Festival",
-    "dateAdded": "2025-05-25"
+    "dateAdded": "2025-05-25",
+    "zone": "The Beach",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Icecream Egg",
@@ -735,9 +738,11 @@
     "hatchCost": 1750,
     "hatchCurrency": "seashells",
     "limited": true,
-    "available": true,
+    "available": false,
     "world": "Beach Festival",
-    "dateAdded": "2025-05-25"
+    "dateAdded": "2025-05-25",
+    "zone": "The Beach",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Fruit Egg",
@@ -754,9 +759,11 @@
     "hatchCost": 50000,
     "hatchCurrency": "seashells",
     "limited": true,
-    "available": true,
+    "available": false,
     "world": "Beach Festival",
-    "dateAdded": "2025-05-25"
+    "dateAdded": "2025-05-25",
+    "zone": "The Beach",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Fossil Egg",
@@ -777,9 +784,11 @@
     "hatchCost": 10000000,
     "hatchCurrency": "seashells",
     "limited": true,
-    "available": true,
+    "available": false,
     "world": "Beach Festival",
-    "dateAdded": "2025-05-31"
+    "dateAdded": "2025-05-31",
+    "zone": "Ancient Island",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Pirate Egg",
@@ -793,9 +802,11 @@
     ],
     "luckIgnored": true,
     "limited": true,
-    "available": true,
+    "available": false,
     "world": "Beach Festival",
-    "dateAdded": "2025-05-31"
+    "dateAdded": "2025-05-31",
+    "zone": "Ancient Island",
+    "dateRemoved": "2025-06-17"
   },
   {
     "name": "Ancient Chest",
@@ -968,11 +979,12 @@
     "hatchCost": 10000000,
     "hatchCurrency": "coins",
     "limited": true,
-    "available": true,
+    "available": false,
     "canSpawnAsRift": true,
     "riftChance": 0.002,
     "world": "The Overworld",
-    "dateAdded": "2025-04-26"
+    "dateAdded": "2025-04-26",
+    "dateRemoved": "2025-05-10"
   },
   {
     "name": "Aura Egg",
