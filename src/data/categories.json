@@ -32,42 +32,90 @@
   {
     "name": "Rewards",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/67/Playtime_Icon.png",
-    "eggs": [
-      "Index",
-      "Quests",
-      "Mystery Box",
-      "Playtime",
-      "Traveling Merchant",
-      "World Rewards",
-      "Wheel Spin",
-      "Golden Chest",
-      "Royal Chest",
-      "Dice Chest",
-      "Cart Escape",
-      "Robot Claw",
-      "Hyper Darts"
+    "categories": [
+      {
+        "name": "Global",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/8/87/Mystery_Box.png",
+        "eggs": [
+          "Index",
+          "Quests",
+          "Mystery Box",
+          "Playtime",
+          "World Rewards"
+        ]
+      },
+      {
+        "name": "The Overworld Rewards",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/dc/The_Overworld_Icon.png",
+        "eggs": [
+          "Wheel Spin",
+          "Golden Chest",
+          "Royal Chest",
+          "Traveling Merchant"
+        ]
+      },
+      {
+        "name": "Minigame Paradise Rewards",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/1/1d/Minigame_Paradise_Icon.png",
+        "eggs": [
+          "Dice Chest",
+          "Cart Escape",
+          "Robot Claw",
+          "Hyper Darts"
+        ]
+      }
     ]
   },
   {
-    "name": "Seasonal",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Bubble_Pass_Icon.png",
-    "eggs": [
-      "Season 3 Egg",
-      "Season 3 Bubble Pass",
-      "Season 2 Egg",
-      "Season 2 Bubble Pass",
-      "Season 1 Egg",
-      "Season 1 Bubble Pass"
+    "name": "Bubble Pass",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/7d/Infinite_Track_Icon.png",
+    "categories": [
+      {
+        "name": "Season 3",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Bubble_Pass_Icon.png",
+        "eggs": [
+          "Season 3 Egg",
+          "Season 3 Bubble Pass"
+        ]
+      },
+      {
+        "name": "Season 2",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Bubble_Pass_Icon.png",
+        "eggs": [
+          "Season 2 Egg",
+          "Season 2 Bubble Pass"
+        ]
+      },
+      {
+        "name": "Season 1",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Bubble_Pass_Icon.png",
+        "eggs": [
+          "Season 1 Egg",
+          "Season 1 Bubble Pass"
+        ]
+      }
     ]
   },
   {
     "name": "Competitive",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/79/Competitive_Icon.png",
-    "eggs": [
-      "Series 2 Egg",
-      "Series 2 Leaderboards",
-      "Series 1 Egg",
-      "Series 1 Leaderboards"
+    "categories": [
+      {
+        "name": "Series 2",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/79/Competitive_Icon.png",
+        "eggs": [
+          "Series 2 Egg",
+          "Series 2 Leaderboards"
+        ]
+      },
+      {
+        "name": "Series 1",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/79/Competitive_Icon.png",
+        "eggs": [
+          "Series 1 Egg",
+          "Series 1 Leaderboards"
+        ]
+      }
     ]
   },
   {

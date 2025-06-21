@@ -288,10 +288,9 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
             + calculatorSettings.luckyStreak 
             + (calculatorSettings.normalIndex.includes(egg.index) ? 50 : 0) 
             + (calculatorSettings.highRoller * 10);
-        // TODO: Not sure exactly how this is calculated, need to wait until Luck Day.
-        // For now, assuming it's treated like basic luck buffs.
         if (calculatorSettings.luckDayBonus !== "None") {
-            luckyBuff += calculatorSettings.luckDayBonus === "Free" ? 100 : 250;
+            // Luck Day free and premium actually stack together if you have premium, so its 350 (may be a bug)
+            luckyBuff += calculatorSettings.luckDayBonus === "Free" ? 100 : 350;
         }
         // Double luck gamepass
         if (calculatorSettings.doubleLuckGamepass) luckyBuff *= 2;
@@ -330,7 +329,7 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
         if (calculatorSettings.fastHatchGamepass) speed += 50;
         if (calculatorSettings.fastHatchEvent) speed += 30;
         if (calculatorSettings.hatchDayBonus !== "None") {
-            speed += calculatorSettings.hatchDayBonus === "Free" ? 50 : 100;
+            speed += calculatorSettings.hatchDayBonus === "Free" ? 15 : 30;
         }
         // base hatches per second is 1 egg per 4.5 seconds. multipy that by speed, then by eggsPerHatch
         const hatchesPerSecond = (1 / 4.5) * (speed / 100) * calculatorSettings.eggsPerHatch;
@@ -421,7 +420,7 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
             color = "#00ff00";
         } else if (seconds < 3600) {
             const percent = seconds / 3600;
-            const hue = Math.floor(60 - (60 * percent));
+            const hue = Math.floor(60 - (30 * percent));
             color = `hsl(${hue}, 100%, 50%)`;
         } else if (seconds < 86400) {
             const percent = seconds / 86400;
