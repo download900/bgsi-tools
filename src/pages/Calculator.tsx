@@ -3,98 +3,13 @@ import { Container, Typography, Box, TextField, Select, MenuItem, Checkbox, Pape
 import { getRarityStyle, imgIcon } from "../util/StyleUtil";
 import { Egg, Pet, PetData } from "../util/DataUtil";
 import Decimal from "decimal.js";
+import { calculate, CalculatorResults, CalculatorSettings, HatchDayBonus, InfinityEgg, LuckDayBonus, LuckyPotion, LuckyStreak, MythicPotion, RiftMultiplier, SpeedPotion } from "../util/CalculatorUtil";
 
 const STORAGE_KEY = "oddsCalculatorSettings";
-
-// Buff data
-type LuckyPotion = 0 | 10 | 20 | 30 | 65 | 150 | 400;
-type MythicPotion = 0 | 10 | 20 | 30 | 75 | 150 | 250;
-type SpeedPotion = 0 | 10 | 15 | 20 | 25 | 40 | 100;
-type RiftMultiplier = 0 | 5 | 10 | 25;
-type LuckyStreak = 0 | 20 | 30;
-type LuckDayBonus = "None" | "Free" | "Premium";
-type HatchDayBonus = "None" | "Free" | "Premium";
-
-interface CalculatorSettings {
-    // egg settings
-    selectedEgg: string,
-    riftMultiplier: RiftMultiplier;
-    // luck buffs
-    luckyPotion: LuckyPotion;
-    mythicPotion: MythicPotion;
-    infinityElixir: boolean;
-    doubleLuckGamepass: boolean;
-    normalIndex: string[];
-    shinyIndex: string[];
-    luckyStreak: LuckyStreak;
-    highRoller: number;
-    friendBoost: number;
-    boardGameLuckBoost: boolean;
-    doubleLuckEvent: boolean;
-    fastHatchEvent: boolean;
-    luckDayBonus: LuckDayBonus;
-    bubbleShrineLevel: number; // 1-50
-    // speed buffs
-    speedPotion: SpeedPotion;
-    fastHatchGamepass: boolean;
-    fastHatchMastery: boolean;
-    eggsPerHatch: number;
-    hatchDayBonus: HatchDayBonus;
-    // secret bounty
-    secretsBountyPet: string;
-    secretsBountyEgg: string;
-}
-
-interface CalculatorResults {
-    luckyBuff: number;
-    shinyChance: number;
-    mythicChance: number;
-    shinyMythicChance: number;
-    speed: number;
-    hatchesPerSecond: number;
-    petResults: PetResult[];
-}
-
-interface PetResult {
-    pet: Pet;
-    normalChance: number;
-    shinyChance: number;
-    mythicChance: number;
-    shinyMythicChance: number;
-    normalDroptime: number;
-    shinyDroptime: number;
-    mythicDroptime: number;
-    shinyMythicDroptime: number;
-}
-
-export interface InfinityEgg {
-    name: string;
-    pets: Pet[];
-}
 
 interface OddsCalculatorProps {
   data: PetData | undefined;
 }
-
-function getBubbleShrineStat(stat: string, level: number): number {
-    const buffData: Record<string, { level: number; stat: number }[]> = {
-        luck: [{ level: 1, stat: 15 }, { level: 50, stat: 150 }],
-        hatchSpeed: [{ level: 20, stat: 5 }, { level: 50, stat: 25 }],
-    };
-
-    const data = buffData[stat];
-    if (level < data[0].level) return 0;
-
-    // interpolate between min buff and max buff based on level
-    const min = data[0].stat;
-    const max = data[1].stat;
-    const minLevel = data[0].level;
-    const maxLevel = data[1].level;
-    const buff = min + (max - min) * (level - minLevel) / (maxLevel - minLevel);
-    
-    return buff;
-}
-
 
 export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
     const [calculatorSettings, setCalculatorSettings] = useState<CalculatorSettings>({
@@ -111,8 +26,7 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
         highRoller: 0,
         friendBoost: 0,
         boardGameLuckBoost: false,
-        luckDayBonus: "None",
-        hatchDayBonus: "None",
+        premiumDailyPerks: false,
         bubbleShrineLevel: 1,
         fastHatchGamepass: false,
         fastHatchMastery: false,
@@ -287,110 +201,9 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
 
     // ~~~~~~~~~~~~~ Calculation ~~~~~~~~~~~~~
 
-    const calculateChance = (baseChance:number, luckyBuff: number) => {
-        // Calculate base drop chance
-        const n = Decimal(1).plus(luckyBuff / 100);
-        // (baseChance) * (1 + (luckyBuff / 100))
-        const dropRate = n.times(baseChance);
-        return dropRate as unknown as any;
-    }
-
     const handleCalculate = (egg: Egg) => {
-        if (!egg)
-            return;
-
-        let luckyBuff = 0;
-        let shinyChance = 0;
-        let mythicChance = 0;
-
-        // Calculate Lucky buff:
-        // Add Raw buffs:
-        luckyBuff = calculatorSettings.luckyPotion 
-            + calculatorSettings.luckyStreak 
-            + (calculatorSettings.normalIndex.includes(egg.index) ? 50 : 0) 
-            + (calculatorSettings.highRoller * 10);
-        if (calculatorSettings.luckDayBonus !== "None") {
-            // Luck Day free and premium actually stack together if you have premium, so its 350 (may be a bug)
-            // Also, Free buff seems to be permanently active even on other days.
-            luckyBuff += calculatorSettings.luckDayBonus === "Free" ? 100 : 350;
-        }
-        if (calculatorSettings.bubbleShrineLevel > 0) {
-            luckyBuff += getBubbleShrineStat("luck", calculatorSettings.bubbleShrineLevel);
-        }
-        // Double luck gamepass
-        if (calculatorSettings.doubleLuckGamepass) luckyBuff *= 2;
-        if (calculatorSettings.doubleLuckGamepass) luckyBuff += 100;
-        // Double Luck Event and Infinity Elixir don't multiply together, they each double the value so far:
-        const luckyBuffSubtotal = luckyBuff;
-        // Double luck event
-        if (calculatorSettings.doubleLuckEvent) luckyBuff += luckyBuffSubtotal;
-        if (calculatorSettings.doubleLuckEvent) luckyBuff += 100;
-        // Infinity Elixir
-        if (calculatorSettings.infinityElixir) luckyBuff += luckyBuffSubtotal;
-        if (calculatorSettings.infinityElixir) luckyBuff += 100;
-        // Add External buffs:
-        // Friend boost
-        luckyBuff += calculatorSettings.friendBoost * 10;
-        // Board Game Luck Boost
-        if (calculatorSettings.boardGameLuckBoost) luckyBuff += 200;
-        // Rift egg multiplier
-        if (selectedEgg?.canSpawnAsRift && calculatorSettings.riftMultiplier > 0) luckyBuff += calculatorSettings.riftMultiplier * 100;
-
-        // Calculate Shiny rate:
-        let shinyBuff = 0;
-        if (calculatorSettings.normalIndex.includes(egg.index)) shinyBuff += 50;
-        shinyChance = 1 / 40 * (1 + (shinyBuff / 100)) * (calculatorSettings.infinityElixir ? 2 : 1);
-
-        // Calculate Mythic rate:
-        let mythicBuff = 0;
-        if (calculatorSettings.shinyIndex.includes(egg.index)) mythicBuff += 50;
-        mythicBuff += calculatorSettings.mythicPotion;
-        mythicChance = 1 / 100 * (1 + (mythicBuff / 100)) * (calculatorSettings.infinityElixir ? 2 : 1);
-
-        // Calculate speed:
-        let speed = 100 + calculatorSettings.speedPotion;
-        if (calculatorSettings.fastHatchMastery) speed += 10;
-        if (calculatorSettings.infinityElixir) speed *= 2;
-        if (calculatorSettings.fastHatchGamepass) speed += 50;
-        if (calculatorSettings.fastHatchEvent) speed += 30;
-        if (calculatorSettings.hatchDayBonus !== "None") {
-            speed += calculatorSettings.hatchDayBonus === "Free" ? 15 : 30;
-        }
-        if (calculatorSettings.bubbleShrineLevel > 0) {
-            // Bubble Shrine speed buff seems to be giving 100 + buff (may be a bug)
-            speed += 100 + getBubbleShrineStat("hatchSpeed", calculatorSettings.bubbleShrineLevel);
-        }
-        // base hatches per second is 1 egg per 4.5 seconds. multipy that by speed, then by eggsPerHatch
-        const hatchesPerSecond = (1 / 4.5) * (speed / 100) * calculatorSettings.eggsPerHatch;
-
-        const results: CalculatorResults = { 
-            luckyBuff: luckyBuff, 
-            shinyChance: shinyChance, 
-            mythicChance: mythicChance, 
-            shinyMythicChance: shinyChance * mythicChance,
-            speed: speed,
-            hatchesPerSecond: hatchesPerSecond,
-            petResults: [] 
-        };
-
-        egg.pets.forEach((pet) => {
-            if (pet.rarity && pet.rarity !== 'secret' && !pet.rarity.includes('legendary')) return;
-            const normalChance = calculateChance(pet.chance, luckyBuff);
-            results.petResults.push({
-                pet: pet,
-                normalChance: normalChance,
-                shinyChance: normalChance * shinyChance,
-                mythicChance: normalChance * mythicChance,
-                shinyMythicChance: normalChance * shinyChance * mythicChance,
-                normalDroptime: 100 / normalChance / hatchesPerSecond,
-                shinyDroptime: (100 / (normalChance * shinyChance)) / hatchesPerSecond,
-                mythicDroptime: (100 / (normalChance * mythicChance)) / hatchesPerSecond,
-                shinyMythicDroptime: (100 / (normalChance * shinyChance * mythicChance)) / hatchesPerSecond,
-            });
-        });
-
-
-        setCalculatorResults(results);
+        if (!egg || !selectedEgg || !data) return;
+        calculate(egg, calculatorSettings, setCalculatorResults, selectedEgg!);
     }
 
     // ~~~~~~~~~~~~~ Render ~~~~~~~~~~~~~
@@ -665,30 +478,16 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
                                         onChange={(e) => setCalculatorSettings({ ...calculatorSettings, boardGameLuckBoost: e.target.checked })}
                                     />
                                 </Box>
-                            
-                                <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
-                                    <Typography variant="subtitle1" sx={{width: 250}}>🎉 Double Luck event:</Typography>
-                                    <Checkbox
-                                        checked={calculatorSettings.doubleLuckEvent}
-                                        onChange={(e) => setCalculatorSettings({ ...calculatorSettings, doubleLuckEvent: e.target.checked })}
-                                    />
-                                </Box>
 
                                 <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
                                     <Typography variant="subtitle1" sx={{width: 250}}>
                                         {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/3/39/Luck_Icon.png", 24, 0, 4)}
-                                        Luck Day Bonus:
+                                        Premium Daily Perks:
                                     </Typography>
-                                    <Select
-                                        value={calculatorSettings.luckDayBonus}
-                                        size="small"
-                                        sx={{ flexGrow: 1, mr: 1 }}
-                                        onChange={(e) => setCalculatorSettings({ ...calculatorSettings, luckDayBonus: e.target.value as LuckDayBonus })}
-                                    >
-                                        <MenuItem value="None">None</MenuItem>
-                                        <MenuItem value="Free">Free (100%)</MenuItem>
-                                        <MenuItem value="Premium">Premium (250%)</MenuItem>
-                                    </Select>
+                                    <Checkbox 
+                                        checked={calculatorSettings.premiumDailyPerks}
+                                        onChange={(e) => setCalculatorSettings({ ...calculatorSettings, premiumDailyPerks: e.target.checked })}
+                                    />
                                 </Box>
 
                                 <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
@@ -705,12 +504,35 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
                                         sx={{ flexGrow: 1, mr: 1, ml: 7.7 }}
                                     />
                                 </Box>
+                            
+                                <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
+                                    <Typography variant="subtitle1" sx={{width: 250}}>🎉 Double Luck event:</Typography>
+                                    <Checkbox
+                                        checked={calculatorSettings.doubleLuckEvent}
+                                        onChange={(e) => setCalculatorSettings({ ...calculatorSettings, doubleLuckEvent: e.target.checked })}
+                                    />
+                                </Box>
                                 </>
                             )
                         }
                         {
                             settingsTab === 1 && (
                                 <>
+                                <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
+                                    <Typography variant="subtitle1" sx={{width: 250}}>
+                                        {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/8/89/Multi_Egg_Icon.png", 20, 0, 4)}
+                                        Eggs per Hatch:
+                                    </Typography>
+                                    <TextField
+                                        label="Eggs"
+                                        variant="outlined"
+                                        size="small"
+                                        value={calculatorSettings.eggsPerHatch}
+                                        onChange={(e) => setCalculatorSettings({ ...calculatorSettings, eggsPerHatch: e.target.value ? Number(e.target.value) : 1 })}
+                                        sx={{ flexGrow: 1, mr: 1, ml: 7.7 }}
+                                    />
+                                </Box>
+
                                 <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
                                     <Typography variant="subtitle1" sx={{width: 250}}>
                                         {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/2/2e/Speed_Evolved.png", 24)} 
@@ -767,44 +589,13 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
 
                                 <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
                                     <Typography variant="subtitle1" sx={{width: 250}}>
-                                        {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/8/89/Multi_Egg_Icon.png", 20, 0, 4)}
-                                        Eggs per Hatch:
-                                    </Typography>
-                                    <TextField
-                                        label="Eggs"
-                                        variant="outlined"
-                                        size="small"
-                                        value={calculatorSettings.eggsPerHatch}
-                                        onChange={(e) => setCalculatorSettings({ ...calculatorSettings, eggsPerHatch: e.target.value ? Number(e.target.value) : 1 })}
-                                        sx={{ flexGrow: 1, mr: 1, ml: 7.7 }}
-                                    />
-                                </Box>
-
-                                <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
-                                    <Typography variant="subtitle1" sx={{width: 250}}>
-                                        🚀 Fast Hatch Event:
-                                    </Typography>
-                                    <Checkbox
-                                        checked={calculatorSettings.fastHatchEvent}
-                                        onChange={(e) => setCalculatorSettings({ ...calculatorSettings, fastHatchEvent: e.target.checked })}
-                                    />
-                                </Box>
-
-                                <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
-                                    <Typography variant="subtitle1" sx={{width: 250}}>
                                         {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/d/df/Golden_Egg_Icon.png", 24, 0, 4)}
-                                        Hatch Day Bonus Speed:
+                                        Premium Daily Perks:
                                     </Typography>
-                                    <Select
-                                        value={calculatorSettings.hatchDayBonus}
-                                        size="small"
-                                        sx={{ flexGrow: 1, mr: 1 }}
-                                        onChange={(e) => setCalculatorSettings({ ...calculatorSettings, hatchDayBonus: e.target.value as HatchDayBonus })}
-                                    >
-                                        <MenuItem value="None">None</MenuItem>
-                                        <MenuItem value="Free">Free (15%)</MenuItem>
-                                        <MenuItem value="Premium">Premium (30%)</MenuItem>
-                                    </Select>
+                                    <Checkbox 
+                                        checked={calculatorSettings.premiumDailyPerks}
+                                        onChange={(e) => setCalculatorSettings({ ...calculatorSettings, premiumDailyPerks: e.target.checked })}
+                                    />
                                 </Box>
 
                                 <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
@@ -819,6 +610,16 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
                                         value={calculatorSettings.bubbleShrineLevel}
                                         onChange={(e) => setCalculatorSettings({ ...calculatorSettings, bubbleShrineLevel: e.target.value ? Number(e.target.value) : 0 })}
                                         sx={{ flexGrow: 1, mr: 1, ml: 7.7 }}
+                                    />
+                                </Box>
+
+                                <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
+                                    <Typography variant="subtitle1" sx={{width: 250}}>
+                                        🚀 Fast Hatch Event:
+                                    </Typography>
+                                    <Checkbox
+                                        checked={calculatorSettings.fastHatchEvent}
+                                        onChange={(e) => setCalculatorSettings({ ...calculatorSettings, fastHatchEvent: e.target.checked })}
                                     />
                                 </Box>
                                 </>
