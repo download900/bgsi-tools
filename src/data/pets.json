@@ -6969,5 +6969,292 @@
     ],
     "dateAdded": "2025-06-17",
     "dateRemoved": "2025-06-22"
+  },
+  {
+    "name": "Glorp Bruh",
+    "rarity": "legendary",
+    "chance": 100,
+    "bubbles": 3250,
+    "gems": 65,
+    "currency": 3100,
+    "currencyVariant": "coins",
+    "hasMythic": false,
+    "tags": [
+      "Bruhlien Quest Reward"
+    ],
+    "limited": true,
+    "available": true,
+    "hatchable": false,
+    "obtainedFrom": "Quests",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c2/Quests_Icon.png",
+    "obtainedFromInfo": "[[Bruhlien|The Bruh Invasion]]",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/28/Glorp_Bruh.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/b/b8/Shiny_Glorp_Bruh.png"
+    ],
+    "dateAdded": "2025-06-22",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Pyramidium",
+    "rarity": "secret",
+    "chance": 1e-7,
+    "bubbles": 5500,
+    "gems": 110,
+    "currency": 4500,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "tags": [],
+    "limited": true,
+    "available": true,
+    "hatchable": true,
+    "obtainedFrom": "Voidcrystal Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/a/a5/Voidcrystal_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/0/0a/Pyramidium.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/b/b9/Shiny_Pyramidium.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/9/9a/Mythic_Pyramidium.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/5/54/Shiny_Mythic_Pyramidium.png"
+    ],
+    "dateAdded": "2025-06-22",
+    "dateRemoved": "2025-06-29"
+  },
+  {
+    "name": "Bruh",
+    "rarity": "common",
+    "chance": 64,
+    "bubbles": 25,
+    "gems": 0,
+    "currency": 6,
+    "currencyVariant": "coins",
+    "hasMythic": false,
+    "tags": [
+      "Bruh"
+    ],
+    "limited": true,
+    "available": true,
+    "hatchable": true,
+    "obtainedFrom": "Bruh Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/8/8a/Bruh_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/19/Bruh.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/a/a4/Shiny_Bruh.png"
+    ],
+    "dateAdded": "2025-06-22",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Bruh Cat",
+    "rarity": "rare",
+    "chance": 30,
+    "bubbles": 220,
+    "gems": 0,
+    "currency": 15,
+    "currencyVariant": "coins",
+    "hasMythic": false,
+    "tags": [
+      "Bruh"
+    ],
+    "limited": true,
+    "available": true,
+    "hatchable": true,
+    "obtainedFrom": "Bruh Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/8/8a/Bruh_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/b/be/Bruh_Cat.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/b/be/Shiny_Bruh_Cat.png"
+    ],
+    "dateAdded": "2025-06-22",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Bruhette",
+    "rarity": "epic",
+    "chance": 3,
+    "bubbles": 220,
+    "gems": 0,
+    "currency": 25,
+    "currencyVariant": "coins",
+    "hasMythic": false,
+    "tags": [
+      "Bruh"
+    ],
+    "limited": true,
+    "available": true,
+    "hatchable": true,
+    "obtainedFrom": "Bruh Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/8/8a/Bruh_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/8/89/Bruhette.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/45/Shiny_Bruhette.png"
+    ],
+    "dateAdded": "2025-06-22",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Bruh Split",
+    "rarity": "legendary",
+    "chance": 0.01,
+    "bubbles": 1100,
+    "gems": 25,
+    "currency": 900,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "tags": [
+      "Bruh"
+    ],
+    "limited": true,
+    "available": true,
+    "hatchable": true,
+    "obtainedFrom": "Bruh Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/8/8a/Bruh_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/29/Bruh_Split.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/8/88/Shiny_Bruh_Split.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/7/75/Mythic_Bruh_Split.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/a/a5/Shiny_Mythic_Bruh_Split.png"
+    ],
+    "dateAdded": "2025-06-22",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Celestial Bruh",
+    "rarity": "legendary",
+    "chance": 0.0002,
+    "bubbles": 2600,
+    "gems": 38,
+    "currency": 1850,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "tags": [
+      "Bruh"
+    ],
+    "limited": true,
+    "available": true,
+    "hatchable": true,
+    "obtainedFrom": "Bruh Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/8/8a/Bruh_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/9/9c/Celestial_Bruh.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/44/Shiny_Celestial_Bruh.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/a/a2/Mythic_Celestial_Bruh.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/5/56/Shiny_Mythic_Celestial_Bruh.png"
+    ],
+    "dateAdded": "2025-06-22",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Seraphic Bruh",
+    "rarity": "legendary",
+    "chance": 0.0001,
+    "bubbles": 3250,
+    "gems": 65,
+    "currency": 3100,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "tags": [
+      "Bruh"
+    ],
+    "limited": true,
+    "available": true,
+    "hatchable": true,
+    "obtainedFrom": "Bruh Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/8/8a/Bruh_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/6/66/Seraphic_Bruh.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/9/91/Shiny_Seraphic_Bruh.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/8/84/Mythic_Seraphic_Bruh.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/48/Shiny_Mythic_Seraphic_Bruh.png"
+    ],
+    "dateAdded": "2025-06-22",
+    "dateRemoved": ""
+  },
+  {
+    "name": "BRUH GOD",
+    "rarity": "secret",
+    "chance": 0.00002,
+    "bubbles": 5000,
+    "gems": 108,
+    "currency": 4350,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "tags": [
+      "Bruh"
+    ],
+    "limited": true,
+    "available": true,
+    "hatchable": true,
+    "obtainedFrom": "Bruh Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/8/8a/Bruh_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/12/BRUH_GOD.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/e/e8/Shiny_BRUH_GOD.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Mythic_BRUH_GOD.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/7/75/Shiny_Mythic_BRUH_GOD.png"
+    ],
+    "dateAdded": "2025-06-22",
+    "dateRemoved": ""
+  },
+  {
+    "name": "ROUND BRUH",
+    "rarity": "legendary",
+    "chance": 100,
+    "bubbles": 1225,
+    "gems": 26,
+    "currency": 650,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "tags": [
+      "Exclusive Pet"
+    ],
+    "limited": true,
+    "available": true,
+    "hatchable": false,
+    "obtainedFrom": "Robux Shop",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/d/d0/ROUND_BRUH.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/4c/Shiny_ROUND_BRUH.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/8/87/Mythic_ROUND_BRUH.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/6/6a/Shiny_Mythic_ROUND_BRUH.png"
+    ],
+    "dateAdded": "2025-06-22",
+    "dateRemoved": "2025-06-28"
+  },
+  {
+    "name": "Bruhodle",
+    "rarity": "legendary",
+    "chance": 100,
+    "bubbles": 1650,
+    "gems": 35,
+    "currency": 850,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "tags": [
+      "Exclusive Pet"
+    ],
+    "limited": true,
+    "available": true,
+    "hatchable": false,
+    "obtainedFrom": "Robux Shop",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/f/f8/Bruhodle.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/21/Shiny_Bruhodle.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/3/35/Mythic_Bruhodle.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/a/a1/Shiny_Mythic_Bruhodle.png"
+    ],
+    "dateAdded": "2025-06-22",
+    "dateRemoved": "2025-06-28"
   }
 ]

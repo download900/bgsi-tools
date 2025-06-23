@@ -1088,6 +1088,19 @@
     "dateRemoved": "2025-05-25"
   },
   {
+    "name": "Exclusive Wave 10",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
+    "pets": [
+      "ROUND BRUH",
+      "Bruhodle"
+    ],
+    "luckIgnored": true,
+    "limited": true,
+    "available": true,
+    "dateAdded": "2025-06-22",
+    "dateRemoved": "2025-06-28"
+  },
+  {
     "name": "Exclusive Wave 9",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
     "pets": [
@@ -1096,7 +1109,7 @@
     ],
     "luckIgnored": true,
     "limited": true,
-    "available": true,
+    "available": false,
     "dateAdded": "2025-06-17",
     "dateRemoved": "2025-06-22"
   },
@@ -1109,7 +1122,7 @@
     ],
     "luckIgnored": true,
     "limited": true,
-    "available": true,
+    "available": false,
     "dateAdded": "2025-06-07",
     "dateRemoved": "2025-06-13"
   },
@@ -1226,5 +1239,31 @@
     "available": false,
     "dateAdded": "2025-04-11",
     "dateRemoved": "2025-04-12"
+  },
+  {
+    "name": "Bruh Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/8/8a/Bruh_Egg.png",
+    "pets": [
+      "Bruh",
+      "Bruh Cat",
+      "Bruhette",
+      "Bruh Split",
+      "Celestial Bruh",
+      "Seraphic Bruh",
+      "BRUH GOD"
+    ],
+    "hatchCost": 15000000,
+    "hatchCurrency": "coins",
+    "world": "The Overworld",
+    "zone": "Bruh Egg Rift Island",
+    "limited": true,
+    "available": true,
+    "luckIgnored": false,
+    "infinityEgg": "",
+    "canSpawnAsRift": true,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-06-22",
+    "dateRemoved": "",
+    "riftChance": 0
   }
 ]
