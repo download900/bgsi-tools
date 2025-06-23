@@ -1,9 +1,8 @@
 import { JSX, useEffect, useState } from "react";
 import { Container, Typography, Box, TextField, Select, MenuItem, Checkbox, Paper, Tooltip, Table, TableBody, TableCell, TableHead,TableRow, Link, Tabs, Tab, List, ListItem, FormControlLabel } from "@mui/material";
 import { getRarityStyle, imgIcon } from "../util/StyleUtil";
-import { Category, Egg, Pet, PetData } from "../util/DataUtil";
+import { Egg, Pet, PetData } from "../util/DataUtil";
 import Decimal from "decimal.js";
-import { index } from "cheerio/dist/commonjs/api/traversing";
 
 const STORAGE_KEY = "oddsCalculatorSettings";
 
@@ -34,6 +33,7 @@ interface CalculatorSettings {
     doubleLuckEvent: boolean;
     fastHatchEvent: boolean;
     luckDayBonus: LuckDayBonus;
+    bubbleShrineLevel: number; // 1-50
     // speed buffs
     speedPotion: SpeedPotion;
     fastHatchGamepass: boolean;
@@ -76,6 +76,26 @@ interface OddsCalculatorProps {
   data: PetData | undefined;
 }
 
+function getBubbleShrineStat(stat: string, level: number): number {
+    const buffData: Record<string, { level: number; stat: number }[]> = {
+        luck: [{ level: 1, stat: 15 }, { level: 50, stat: 150 }],
+        hatchSpeed: [{ level: 20, stat: 5 }, { level: 50, stat: 25 }],
+    };
+
+    const data = buffData[stat];
+    if (level < data[0].level) return 0;
+
+    // interpolate between min buff and max buff based on level
+    const min = data[0].stat;
+    const max = data[1].stat;
+    const minLevel = data[0].level;
+    const maxLevel = data[1].level;
+    const buff = min + (max - min) * (level - minLevel) / (maxLevel - minLevel);
+    
+    return buff;
+}
+
+
 export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
     const [calculatorSettings, setCalculatorSettings] = useState<CalculatorSettings>({
         selectedEgg: "",
@@ -93,6 +113,7 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
         boardGameLuckBoost: false,
         luckDayBonus: "None",
         hatchDayBonus: "None",
+        bubbleShrineLevel: 1,
         fastHatchGamepass: false,
         fastHatchMastery: false,
         eggsPerHatch: 1,
@@ -109,7 +130,7 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
 
     // list of pets
     const [eggs, setEggs] = useState<Egg[]>([]);
-    const [secretBountyEggs, setSecretBountyEggs] = useState<Egg[]>([]);
+    const [secretBountyEggs ] = useState<Egg[]>([]);
     const [secretBountyPets, setSecretBountyPets] = useState<Pet[]>([]);
     const [selectedEgg, setSelectedEgg] = useState<Egg | null>(null);
 
@@ -290,7 +311,11 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
             + (calculatorSettings.highRoller * 10);
         if (calculatorSettings.luckDayBonus !== "None") {
             // Luck Day free and premium actually stack together if you have premium, so its 350 (may be a bug)
+            // Also, Free buff seems to be permanently active even on other days.
             luckyBuff += calculatorSettings.luckDayBonus === "Free" ? 100 : 350;
+        }
+        if (calculatorSettings.bubbleShrineLevel > 0) {
+            luckyBuff += getBubbleShrineStat("luck", calculatorSettings.bubbleShrineLevel);
         }
         // Double luck gamepass
         if (calculatorSettings.doubleLuckGamepass) luckyBuff *= 2;
@@ -330,6 +355,10 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
         if (calculatorSettings.fastHatchEvent) speed += 30;
         if (calculatorSettings.hatchDayBonus !== "None") {
             speed += calculatorSettings.hatchDayBonus === "Free" ? 15 : 30;
+        }
+        if (calculatorSettings.bubbleShrineLevel > 0) {
+            // Bubble Shrine speed buff seems to be giving 100 + buff (may be a bug)
+            speed += 100 + getBubbleShrineStat("hatchSpeed", calculatorSettings.bubbleShrineLevel);
         }
         // base hatches per second is 1 egg per 4.5 seconds. multipy that by speed, then by eggsPerHatch
         const hatchesPerSecond = (1 / 4.5) * (speed / 100) * calculatorSettings.eggsPerHatch;
@@ -431,27 +460,6 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
         }
 
         return <span style={{ color: color }}>{timeString}</span>;
-    }
-
-    const horizontalLine = () => {
-        return (
-            <Box sx={{ width: "100%", height: '1px !important', backgroundColor: "#555", my: 1, px: 2 }} />
-        )
-    }
-
-    const verticalLine = () => {
-        return (
-            <Box sx={{ width: "1px !important", height: '20px !important', backgroundColor: "#777", ml: 1, mr: 0.5, mt: 0.2 }} />
-        )
-    }
-
-    // small supertext allcaps title
-    const subheading = (text: string) => {
-        return (
-            <Typography variant="subtitle2" sx={{ textTransform: "uppercase", fontSize: 10, fontWeight: "bold",  textAlign: "center", color: "#bbb" }}>
-                {text}
-            </Typography>
-        )
     }
 
     return (
@@ -682,6 +690,21 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
                                         <MenuItem value="Premium">Premium (250%)</MenuItem>
                                     </Select>
                                 </Box>
+
+                                <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
+                                    <Typography variant="subtitle1" sx={{width: 250}}>
+                                        {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/c/c0/Bubble_Shrine_Icon.png", 24, 0, 4)}
+                                        Bubble Shrine Level:
+                                    </Typography>
+                                    <TextField
+                                        label="Level"
+                                        variant="outlined"
+                                        size="small"
+                                        value={calculatorSettings.bubbleShrineLevel}
+                                        onChange={(e) => setCalculatorSettings({ ...calculatorSettings, bubbleShrineLevel: e.target.value ? Number(e.target.value) : 0 })}
+                                        sx={{ flexGrow: 1, mr: 1, ml: 7.7 }}
+                                    />
+                                </Box>
                                 </>
                             )
                         }
@@ -782,6 +805,21 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
                                         <MenuItem value="Free">Free (15%)</MenuItem>
                                         <MenuItem value="Premium">Premium (30%)</MenuItem>
                                     </Select>
+                                </Box>
+
+                                <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
+                                    <Typography variant="subtitle1" sx={{width: 250}}>
+                                        {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/c/c0/Bubble_Shrine_Icon.png", 24, 0, 4)}
+                                        Bubble Shrine Level:
+                                    </Typography>
+                                    <TextField
+                                        label="Level"
+                                        variant="outlined"
+                                        size="small"
+                                        value={calculatorSettings.bubbleShrineLevel}
+                                        onChange={(e) => setCalculatorSettings({ ...calculatorSettings, bubbleShrineLevel: e.target.value ? Number(e.target.value) : 0 })}
+                                        sx={{ flexGrow: 1, mr: 1, ml: 7.7 }}
+                                    />
                                 </Box>
                                 </>
                             )

@@ -2171,7 +2171,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/9/9c/Shiny_Mythic_Abyssal_Dragon.png"
     ],
     "obtainedFrom": "Golden Chest",
-    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/0a/Golden_Chest.png",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/e/ec/Golden_Key.png",
     "hasMythic": true,
     "tags": [
       "Rift Chest"
@@ -2195,7 +2195,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/e/e0/Shiny_Mythic_Hacker_Prism.png"
     ],
     "obtainedFrom": "Royal Chest",
-    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/8/81/Royal_Chest.png",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/e/eb/Royal_Key.png",
     "hasMythic": true,
     "tags": [
       "Rift Chest"
@@ -2219,7 +2219,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/4/45/Shiny_Mythic_Dice_Split.png"
     ],
     "obtainedFrom": "Dice Chest",
-    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/1/18/Dice_Chest.png",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/e/e4/Dice_Key.png",
     "hasMythic": true,
     "tags": [
       "Dice Chest"
@@ -5454,7 +5454,7 @@
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3a/Silly_Egg.png",
     "hasMythic": true,
     "tags": [
-      "😂Silly😂"
+      "Silly"
     ],
     "chance": 0.0004,
     "available": false,
@@ -6612,7 +6612,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/f/fa/Shiny_Void_Crystal_Doggy.png"
     ],
     "dateAdded": "2025-06-17",
-    "dateRemoved": "2025-06-22"
+    "dateRemoved": "2025-06-29"
   },
   {
     "name": "Light Kitty",
@@ -6635,7 +6635,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Shiny_Light_Kitty.png"
     ],
     "dateAdded": "2025-06-17",
-    "dateRemoved": "2025-06-22"
+    "dateRemoved": "2025-06-29"
   },
   {
     "name": "Voidsight",
@@ -6658,7 +6658,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/0/0c/Shiny_Voidsight.png"
     ],
     "dateAdded": "2025-06-17",
-    "dateRemoved": "2025-06-22"
+    "dateRemoved": "2025-06-29"
   },
   {
     "name": "Void Eye",
@@ -6683,7 +6683,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/1/19/Shiny_Mythic_Void_Eye.png"
     ],
     "dateAdded": "2025-06-17",
-    "dateRemoved": "2025-06-22"
+    "dateRemoved": "2025-06-29"
   },
   {
     "name": "Void Crystal Parasite",
@@ -6708,7 +6708,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/a/a9/Shiny_Mythic_Void_Crystal_Parasite.png"
     ],
     "dateAdded": "2025-06-17",
-    "dateRemoved": "2025-06-22"
+    "dateRemoved": "2025-06-29"
   },
   {
     "name": "Void Scorpion",
@@ -6733,7 +6733,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Shiny_Mythic_Void_Scorpion.png"
     ],
     "dateAdded": "2025-06-17",
-    "dateRemoved": "2025-06-22"
+    "dateRemoved": "2025-06-29"
   },
   {
     "name": "Radiant Crystal Dragon",
@@ -6758,7 +6758,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/6/68/Shiny_Mythic_Radiant_Crystal_Dragon.png"
     ],
     "dateAdded": "2025-06-17",
-    "dateRemoved": "2025-06-22"
+    "dateRemoved": "2025-06-29"
   },
   {
     "name": "Void Crystal Dragon",
@@ -6783,7 +6783,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/0/05/Shiny_Mythic_Void_Crystal_Dragon.png"
     ],
     "dateAdded": "2025-06-17",
-    "dateRemoved": "2025-06-22"
+    "dateRemoved": "2025-06-29"
   },
   {
     "name": "Dream Catcher",
@@ -6808,7 +6808,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/f/f7/Shiny_Mythic_Dream_Catcher.png"
     ],
     "dateAdded": "2025-06-17",
-    "dateRemoved": "2025-06-22"
+    "dateRemoved": "2025-06-29"
   },
   {
     "name": "Stained Star",
@@ -6833,7 +6833,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/3/3f/Shiny_Mythic_Stained_Star.png"
     ],
     "dateAdded": "2025-06-17",
-    "dateRemoved": "2025-06-22"
+    "dateRemoved": "2025-06-29"
   },
   {
     "name": "King Slime",
@@ -6929,7 +6929,7 @@
       "Exclusive Pet"
     ],
     "limited": true,
-    "available": true,
+    "available": false,
     "hatchable": false,
     "obtainedFrom": "Robux Shop",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
@@ -6956,7 +6956,7 @@
       "Exclusive Pet"
     ],
     "limited": true,
-    "available": true,
+    "available": false,
     "hatchable": false,
     "obtainedFrom": "Robux Shop",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",

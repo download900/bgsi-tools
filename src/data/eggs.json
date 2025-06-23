@@ -378,7 +378,8 @@
     "canSpawnAsRift": true,
     "world": "Minigame Paradise",
     "dateAdded": "2025-05-10",
-    "dateRemoved": "2025-05-25"
+    "dateRemoved": "2025-05-25",
+    "zone": "Underworld Egg Rift Island"
   },
   {
     "name": "Index",
@@ -430,7 +431,7 @@
   },
   {
     "name": "Golden Chest",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/0a/Golden_Chest.png",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/e/ec/Golden_Key.png",
     "pets": [
       "Abyssal Dragon"
     ],
@@ -439,7 +440,7 @@
   },
   {
     "name": "Royal Chest",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/8/81/Royal_Chest.png",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/e/eb/Royal_Key.png",
     "pets": [
       "Hacker Prism"
     ],
@@ -448,7 +449,7 @@
   },
   {
     "name": "Dice Chest",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/1/18/Dice_Chest.png",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/e/e4/Dice_Key.png",
     "pets": [
       "Dice Split"
     ],
@@ -492,7 +493,8 @@
       "King Soul",
       "Demonic Dogcat",
       "Chronos",
-      "Dark Lord"
+      "Dark Lord",
+      "Glorp Bruh"
     ],
     "luckIgnored": true,
     "available": true
@@ -664,7 +666,8 @@
       "Void Crystal Parasite",
       "Void Scorpion",
       "Radiant Crystal Dragon",
-      "Void Crystal Dragon"
+      "Void Crystal Dragon",
+      "Pyramidium"
     ],
     "hatchCost": 2000000,
     "hatchCurrency": "coins",
@@ -673,7 +676,7 @@
     "limited": true,
     "available": true,
     "dateAdded": "2025-06-17",
-    "dateRemoved": "2025-06-22"
+    "dateRemoved": "2025-06-29"
   },
   {
     "name": "Light Box",
@@ -1019,7 +1022,8 @@
     "riftChance": 0.002,
     "world": "The Overworld",
     "dateAdded": "2025-04-26",
-    "dateRemoved": "2025-05-10"
+    "dateRemoved": "2025-05-10",
+    "zone": "Silly Egg Rift Island"
   },
   {
     "name": "Aura Egg",
@@ -1039,7 +1043,8 @@
     "riftChance": 0.002,
     "world": "The Overworld",
     "dateAdded": "2025-04-11",
-    "dateRemoved": "2025-04-26"
+    "dateRemoved": "2025-04-26",
+    "zone": "Aura Egg Rift Island"
   },
   {
     "name": "Secret Bounty Wave 3",
