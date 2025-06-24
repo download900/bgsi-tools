@@ -96,7 +96,7 @@ export function calculateChance(baseChance:number, luckyBuff: number) {
     return dropRate as unknown as any;
 }
 
-function isBuffDay(buff: string) {
+export function isBuffDay(buff: string) {
     // Check if the current day (UTC) is the right day for a buff
     // Saturday: Luck day
     // Tuesday: Hatch day

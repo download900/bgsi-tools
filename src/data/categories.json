@@ -173,6 +173,13 @@
     ]
   },
   {
+    "name": "Daily Perks",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/df/Golden_Egg_Icon.png",
+    "eggs": [
+      "Daily Perks"
+    ]
+  },
+  {
     "name": "Rare Rifts",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/f/fe/Floating_Island_Icon.png",
     "eggs": [

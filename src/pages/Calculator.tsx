@@ -3,7 +3,7 @@ import { Container, Typography, Box, TextField, Select, MenuItem, Checkbox, Pape
 import { getRarityStyle, imgIcon } from "../util/StyleUtil";
 import { Egg, Pet, PetData } from "../util/DataUtil";
 import Decimal from "decimal.js";
-import { calculate, CalculatorResults, CalculatorSettings, HatchDayBonus, InfinityEgg, LuckDayBonus, LuckyPotion, LuckyStreak, MythicPotion, RiftMultiplier, SpeedPotion } from "../util/CalculatorUtil";
+import { calculate, CalculatorResults, CalculatorSettings, HatchDayBonus, InfinityEgg, isBuffDay, LuckDayBonus, LuckyPotion, LuckyStreak, MythicPotion, RiftMultiplier, SpeedPotion } from "../util/CalculatorUtil";
 
 const STORAGE_KEY = "oddsCalculatorSettings";
 
@@ -92,6 +92,9 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
             const secretPets = data?.categoryLookup["Secret Bounty"].eggs.filter((egg) => egg.available).flatMap((egg) => egg.pets) || [];
             setSecretBountyPets(secretPets);
 
+            // Load Daily Perks pets
+            const dailyPerksPets = data?.categoryLookup["Daily Perks"].eggs.filter((egg) => egg.available).flatMap((egg) => egg.pets) || [];
+
             // Process eggs for calculator
             const eggs: Egg[] = [];
             // make a clone to avoid mutating the original data
@@ -107,6 +110,14 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
 
                 if (egg.secretBountyRotation && !egg.limited && !egg.luckIgnored && !egg.name.includes("Infinity Egg")) {
                     secretBountyEggs.push(egg);
+                }
+
+                // Check Daily Perks pets
+                if (isBuffDay("Luck")) {
+                    egg.pets.push(...dailyPerksPets.filter(pet => pet.name === "WOMAN FACE GOD"));
+                }
+                else if (isBuffDay("Hatch")) {
+                    egg.pets.push(...dailyPerksPets.filter(pet => pet.name === "Dogcat"));
                 }
 
                 if (!shouldCalculateEgg(egg)) return;
@@ -145,6 +156,19 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
             // Process Infinity Eggs:
             infinityEggNames.forEach((eggName) => {
                 const egg = infinityEggs[eggName];
+
+                // Remove "Any X" pets and duplicate pets from infinity eggs (leave 1 of each)
+                const seen = new Set<string>();
+                egg.pets = egg.pets.filter((pet: Pet) => {
+                    if (pet.name.includes("Any ")) return false;
+                    if (seen.has(pet.name)) {
+                        return false;
+                    } else {
+                        seen.add(pet.name);
+                        return true;
+                    }
+                });
+
                 const { pets, name } = egg;
 
                 const legendaryRate = 200;

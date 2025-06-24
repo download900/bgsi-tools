@@ -7256,5 +7256,57 @@
     ],
     "dateAdded": "2025-06-22",
     "dateRemoved": "2025-06-28"
+  },
+  {
+    "name": "Dogcat",
+    "rarity": "secret",
+    "chance": 0.0000001,
+    "bubbles": 5000,
+    "gems": 108,
+    "currency": 4350,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "tags": [
+      "Daily Perks"
+    ],
+    "limited": false,
+    "available": true,
+    "hatchable": true,
+    "obtainedFrom": "Daily Perks",
+    "obtainedFromInfo": "Hatch Day",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/d/df/Golden_Egg_Icon.png",
+    "dateAdded": "2025-06-22",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/d/d3/Dogcat.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/44/Shiny_Dogcat.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/5/55/Mythic_Dogcat.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/a/a4/Shiny_Mythic_Dogcat.png"
+    ]
+  },
+  {
+    "name": "WOMAN FACE GOD",
+    "rarity": "secret",
+    "chance": 0.0000001,
+    "bubbles": 5000,
+    "gems": 108,
+    "currency": 4350,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "tags": [
+      "Daily Perks"
+    ],
+    "limited": false,
+    "available": true,
+    "hatchable": true,
+    "obtainedFrom": "Daily Perks",
+    "obtainedFromInfo": "Luck Day",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/3/39/Luck_Icon.png",
+    "dateAdded": "2025-06-22",
+    "image": [
+      "",
+      "",
+      "",
+      ""
+    ]
   }
 ]

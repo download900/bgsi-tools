@@ -1047,6 +1047,18 @@
     "zone": "Aura Egg Rift Island"
   },
   {
+    "name": "Daily Perks",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/df/Golden_Egg_Icon.png",
+    "pets": [
+      "WOMAN FACE GOD",
+      "Dogcat"
+    ],
+    "luckIgnored": true,
+    "limited": false,
+    "available": true,
+    "dateAdded": "2025-06-22"
+  },
+  {
     "name": "Secret Bounty Wave 3",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png",
     "pets": [
