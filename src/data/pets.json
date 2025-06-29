@@ -7260,7 +7260,7 @@
   {
     "name": "Dogcat",
     "rarity": "secret",
-    "chance": 0.0000001,
+    "chance": 0.00000001,
     "bubbles": 5000,
     "gems": 108,
     "currency": 4350,
@@ -7269,7 +7269,7 @@
     "tags": [
       "Daily Perks"
     ],
-    "limited": false,
+    "limited": true,
     "available": true,
     "hatchable": true,
     "obtainedFrom": "Daily Perks",
@@ -7286,7 +7286,7 @@
   {
     "name": "WOMAN FACE GOD",
     "rarity": "secret",
-    "chance": 0.0000001,
+    "chance": 0.00000001,
     "bubbles": 5000,
     "gems": 108,
     "currency": 4350,
@@ -7295,18 +7295,18 @@
     "tags": [
       "Daily Perks"
     ],
-    "limited": false,
+    "limited": true,
     "available": true,
     "hatchable": true,
     "obtainedFrom": "Daily Perks",
     "obtainedFromInfo": "Luck Day",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/3/39/Luck_Icon.png",
-    "dateAdded": "2025-06-22",
+    "dateAdded": "2025-06-28",
     "image": [
-      "",
-      "",
-      "",
-      ""
+      "https://static.wikia.nocookie.net/bgs-infinity/images/3/30/WOMAN_FACE_GOD.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Shiny_WOMAN_FACE_GOD.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/9/93/Mythic_WOMAN_FACE_GOD.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/9/9e/Shiny_Mythic_WOMAN_FACE_GOD.png"
     ]
   }
 ]

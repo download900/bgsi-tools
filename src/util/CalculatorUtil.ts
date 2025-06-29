@@ -1,5 +1,6 @@
 import Decimal from "decimal.js";
 import { Egg, Pet, PetData } from "./DataUtil";
+import { get } from "http";
 
 // Buff data
 export type LuckyPotion = 0 | 10 | 20 | 30 | 65 | 150 | 400;
@@ -90,23 +91,40 @@ export function getBubbleShrineStat(stat: string, level: number): number {
 
 export function calculateChance(baseChance:number, luckyBuff: number) {
     // Calculate base drop chance
-    const n = Decimal(1).plus(luckyBuff / 100);
     // (baseChance) * (1 + (luckyBuff / 100))
+    const n = Decimal(1).plus(luckyBuff / 100);
     const dropRate = n.times(baseChance);
     return dropRate as unknown as any;
 }
 
-export function isBuffDay(buff: string) {
-    // Check if the current day (UTC) is the right day for a buff
-    // Saturday: Luck day
-    // Tuesday: Hatch day
-    const day = new Date().getUTCDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
-    if (buff === "Luck") {
-        return day === 6; // Saturday
-    } else if (buff === "Hatch") {
-        return day === 2; // Tuesday
+const BuffDays: { [key: string]: { day: number; bonus: (premium: boolean) => number; offDays: () => number } } = {
+    Luck: {
+        day: 6, // Saturday
+        bonus: (premium: boolean) => premium ? 450 : 250,
+        offDays: () => 100,
+    },
+    Hatch: {
+        day: 2, // Tuesday
+        bonus: (premium: boolean) => premium ? 30 : 15,
+        offDays: () => 0
     }
-    return false; // No buff day
+};
+
+export function isBuffDay(buff: string): boolean {
+    const day = new Date().getUTCDay();
+    if (BuffDays[buff]) {
+        return BuffDays[buff].day === day;
+    }
+    return false; // No buff for this day
+}
+
+export function getBuffDayBonus(buff: string, premium: boolean): number {
+    const day = new Date().getUTCDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+    if (BuffDays[buff]) {
+        if (BuffDays[buff].day === day) return BuffDays[buff].bonus(premium);
+        return BuffDays[buff].offDays();
+    }
+    return 0; // No bonus for this buff on this day
 }
 
 export function calculate(egg: Egg, calculatorSettings: CalculatorSettings, setCalculatorResults: any, selectedEgg: Egg) {
@@ -119,18 +137,10 @@ export function calculate(egg: Egg, calculatorSettings: CalculatorSettings, setC
     luckyBuff = calculatorSettings.luckyPotion 
         + calculatorSettings.luckyStreak 
         + (calculatorSettings.normalIndex.includes(egg.index) ? 50 : 0) 
-        + (calculatorSettings.highRoller * 10);
-    if (isBuffDay("Luck")) {
-        // Luck Day free and premium actually stack together if you have premium, so its 350 (may be a bug)
-        luckyBuff += calculatorSettings.premiumDailyPerks ? 350 : 100;
-    }
-    else {
-        // Free buff seems to be permanently active even on other days.
-        luckyBuff += 100;
-    }
-    if (calculatorSettings.bubbleShrineLevel > 0) {
-        luckyBuff += getBubbleShrineStat("luck", calculatorSettings.bubbleShrineLevel);
-    }
+        + (calculatorSettings.highRoller * 10)
+        + getBuffDayBonus("Luck", calculatorSettings.premiumDailyPerks)
+        + getBubbleShrineStat("luck", calculatorSettings.bubbleShrineLevel);
+
     // Double luck gamepass
     if (calculatorSettings.doubleLuckGamepass) luckyBuff *= 2;
     if (calculatorSettings.doubleLuckGamepass) luckyBuff += 100;
@@ -167,9 +177,7 @@ export function calculate(egg: Egg, calculatorSettings: CalculatorSettings, setC
     if (calculatorSettings.infinityElixir) speed *= 2;
     if (calculatorSettings.fastHatchGamepass) speed += 50;
     if (calculatorSettings.fastHatchEvent) speed += 30;
-    if (isBuffDay("Hatch")) {
-        speed += calculatorSettings.premiumDailyPerks ? 30 : 15;
-    }
+    speed += getBuffDayBonus("Hatch", calculatorSettings.premiumDailyPerks);
     if (calculatorSettings.bubbleShrineLevel > 0) {
         // Bubble Shrine speed buff seems to be giving 100 + buff (may be a bug)
         speed += 100 + getBubbleShrineStat("hatchSpeed", calculatorSettings.bubbleShrineLevel);

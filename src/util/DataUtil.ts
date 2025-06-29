@@ -12,6 +12,15 @@ export type PetData = {
   petLookup: { [key: string]: Pet };
 }
 
+export function isAvailable(dateRemoved: string | undefined): boolean {
+  if (!dateRemoved) return true;
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const removedDate = new Date(dateRemoved);
+  removedDate.setHours(0, 0, 0, 0);
+  return removedDate > today;
+}
+
 export function loadData(): PetData {
   // load pets
   const petLookup: { [key: string]: Pet } = {};
@@ -90,7 +99,6 @@ export interface Egg {
   world: string;
   zone: string;
   limited: boolean;
-  available: boolean;
   luckIgnored: boolean; 
   infinityEgg: string;
   index: string;
@@ -112,7 +120,6 @@ export interface Pet {
   hasMythic: boolean;
   tags: string[];
   limited: boolean;
-  available: boolean;
   hatchable: boolean;
   obtainedFrom: string;
   obtainedFromImage: string;

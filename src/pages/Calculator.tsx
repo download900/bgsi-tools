@@ -1,7 +1,7 @@
 import { JSX, useEffect, useState } from "react";
 import { Container, Typography, Box, TextField, Select, MenuItem, Checkbox, Paper, Tooltip, Table, TableBody, TableCell, TableHead,TableRow, Link, Tabs, Tab, List, ListItem, FormControlLabel } from "@mui/material";
 import { getRarityStyle, imgIcon } from "../util/StyleUtil";
-import { Egg, Pet, PetData } from "../util/DataUtil";
+import { Egg, isAvailable, Pet, PetData } from "../util/DataUtil";
 import Decimal from "decimal.js";
 import { calculate, CalculatorResults, CalculatorSettings, HatchDayBonus, InfinityEgg, isBuffDay, LuckDayBonus, LuckyPotion, LuckyStreak, MythicPotion, RiftMultiplier, SpeedPotion } from "../util/CalculatorUtil";
 
@@ -61,8 +61,8 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
     }, [data]);
 
     const shouldCalculateEgg = (egg: Egg) => {
-        if (egg.luckIgnored || !egg.available) return false;
-        return egg.pets.some((pet: Pet) => pet.available && (pet.rarity === "secret" || pet.rarity === "legendary"));
+        if (egg.luckIgnored || !isAvailable(egg.dateRemoved)) return false;
+        return egg.pets.some((pet: Pet) => isAvailable(pet.dateRemoved) && (pet.rarity === "secret" || pet.rarity === "legendary"));
     }
     
     const loadCalculator = () => {
@@ -89,11 +89,11 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
             const infinityEggNames: string[] = [];
 
             // Load secret bounty pets
-            const secretPets = data?.categoryLookup["Secret Bounty"].eggs.filter((egg) => egg.available).flatMap((egg) => egg.pets) || [];
+            const secretPets = data?.categoryLookup["Secret Bounty"].eggs.filter((egg) => isAvailable(egg.dateRemoved)).flatMap((egg) => egg.pets) || [];
             setSecretBountyPets(secretPets);
 
             // Load Daily Perks pets
-            const dailyPerksPets = data?.categoryLookup["Daily Perks"].eggs.filter((egg) => egg.available).flatMap((egg) => egg.pets) || [];
+            const dailyPerksPets = data?.categoryLookup["Daily Perks"].eggs.filter((egg) => isAvailable(egg.dateRemoved)).flatMap((egg) => egg.pets) || [];
 
             // Process eggs for calculator
             const eggs: Egg[] = [];

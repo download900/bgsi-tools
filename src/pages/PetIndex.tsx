@@ -28,7 +28,8 @@ import {
   PetVariant,
   petVariants,
   currencyImages,
-  PetData
+  PetData,
+  isAvailable
 } from "../util/DataUtil";
 import {
   getRarityStyle,
@@ -324,7 +325,7 @@ export function PetIndex({ data }: PetIndexProps) {
                     {stats.raw.owned} / {stats.raw.total} ({stats.overall}
                     %)
                   </span>
-                  { !egg.available && (
+                  { !isAvailable(egg.dateRemoved) && (
                     <span style={{ color: "#666", fontSize: "0.8em" }}>
                       {" "}
                       (Discontinued)
