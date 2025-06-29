@@ -89,11 +89,14 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
             const infinityEggNames: string[] = [];
 
             // Load secret bounty pets
-            const secretPets = data?.categoryLookup["Secret Bounty"].eggs.filter((egg) => isAvailable(egg.dateRemoved)).flatMap((egg) => egg.pets) || [];
+            const secretPets = data?.categoryLookup["Secret Bounty"].categories
+                .flatMap((cat) => cat.pets || [])
+                .filter((pet: Pet) => isAvailable(pet.dateRemoved)) || [];
             setSecretBountyPets(secretPets);
 
             // Load Daily Perks pets
-            const dailyPerksPets = data?.categoryLookup["Daily Perks"].eggs.filter((egg) => isAvailable(egg.dateRemoved)).flatMap((egg) => egg.pets) || [];
+            const dailyPerksPets = data?.categoryLookup["Daily Perks"].pets!
+                .filter((pet: Pet) => isAvailable(pet.dateRemoved)) || [];
 
             // Process eggs for calculator
             const eggs: Egg[] = [];
@@ -108,7 +111,7 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
                     }
                 }
 
-                if (egg.secretBountyRotation && !egg.limited && !egg.luckIgnored && !egg.name.includes("Infinity Egg")) {
+                if (egg.secretBountyRotation) {
                     secretBountyEggs.push(egg);
                 }
 

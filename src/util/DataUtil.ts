@@ -3,6 +3,17 @@ import categoriesJson from "../data/categories.json";
 import eggsJson from "../data/eggs.json";
 import petsJson from "../data/pets.json";
 
+// --------------------------
+//           Types
+// --------------------------
+
+export type Rarity = "common" | "unique" | "rare" | "epic" | "legendary" | "secret";
+export type PetVariant = "Normal" | "Shiny" | "Mythic" | "Shiny Mythic";
+export const petVariants: PetVariant[] = ["Normal", "Shiny", "Mythic", "Shiny Mythic"];
+export type CurrencyVariant = "coins" | "tickets";
+export type PetStat = "bubbles" | "currency" | "gems";
+export type Enchant = "bubbler" | "looter";
+
 export type PetData = {
   categories: Category[];
   categoryLookup: { [key: string]: Category };
@@ -12,81 +23,11 @@ export type PetData = {
   petLookup: { [key: string]: Pet };
 }
 
-export function isAvailable(dateRemoved: string | undefined): boolean {
-  if (!dateRemoved) return true;
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  const removedDate = new Date(dateRemoved);
-  removedDate.setHours(0, 0, 0, 0);
-  return removedDate > today;
-}
-
-export function loadData(): PetData {
-  // load pets
-  const petLookup: { [key: string]: Pet } = {};
-  const pets: Pet[] = [];
-  (petsJson as unknown as any).forEach((pet: Pet) => {
-    petLookup[pet.name] = pet;
-    pets.push(pet);
-  });
-  // load eggs
-  const eggLookup: { [key: string]: Egg } = {};
-  const eggs: Egg[] = [];
-  (eggsJson as unknown as any).forEach((e: any) => {
-    const egg: Egg = {
-      ...e,
-      pets: e.pets.map((petName: string) => petLookup[petName]),
-    };
-    eggLookup[egg.name] = egg;
-    eggs.push(egg);
-  });
-  // load categories
-  const categoryLookup: { [key: string]: Category } = {};
-  const categories: Category[] = [];
-  (categoriesJson as unknown as any).forEach((c: any) => {
-    const subCats: Category[] = [];
-    for (const sc of c.categories || []) {
-      const subCat: Category = {
-        ...sc,
-        eggs: sc.eggs?.map((eggName: string) => eggLookup[eggName]) || [],
-      };
-      categoryLookup[subCat.name] = subCat;
-      //categories.push(subCat);
-      subCats.push(subCat);
-    }
-    const cat: Category = {
-      ...c,
-      eggs: c.eggs?.map((eggName: string) => eggLookup[eggName]) || [],
-      categories: subCats.length > 0 ? subCats : undefined,
-    };
-    categoryLookup[cat.name] = cat;
-    categories.push(cat);
-  });
-
-  // return the data
-  return {
-    categories: categories,
-    categoryLookup: categoryLookup,
-    eggs: eggs,
-    eggLookup: eggLookup,
-    pets: pets,
-    petLookup: petLookup,
-  };
-}
-
-// ~~~~~~~~~~ Types ~~~~~~~~~~
-
-export type Rarity = "common" | "unique" | "rare" | "epic" | "legendary" | "secret";
-export type PetVariant = "Normal" | "Shiny" | "Mythic" | "Shiny Mythic";
-export const petVariants: PetVariant[] = ["Normal", "Shiny", "Mythic", "Shiny Mythic"];
-export type CurrencyVariant = "coins" | "tickets" | "seashells";
-export type PetStat = "bubbles" | "currency" | "gems";
-export type Enchant = "bubbler" | "looter";
-
 export interface Category { 
   name: string, 
   image: string,
-  eggs: Egg[],
+  egg?: Egg,
+  pets?: Pet[],
   categories: Category[],
 }
 
@@ -94,16 +35,10 @@ export interface Egg {
   name: string; 
   image: string; 
   pets: Pet[], 
-  hatchCost: number;
-  hatchCurrency: CurrencyVariant;
-  world: string;
-  zone: string;
-  limited: boolean;
   luckIgnored: boolean; 
   infinityEgg: string;
   index: string;
   canSpawnAsRift: boolean;
-  riftChance: number;
   secretBountyRotation: boolean;
   dateAdded: string;
   dateRemoved: string;
@@ -118,8 +53,6 @@ export interface Pet {
   currency: number;
   gems: number; 
   hasMythic: boolean;
-  tags: string[];
-  limited: boolean;
   hatchable: boolean;
   obtainedFrom: string;
   obtainedFromImage: string;
@@ -129,7 +62,6 @@ export interface Pet {
   dateRemoved: string;
 }
 
-// for the pet stat list - to store an individual Normal/Shiny/Mythic variant of a pet.
 export interface PetInstance { 
   name: string; 
   chance: number; 
@@ -145,7 +77,9 @@ export interface PetInstance {
   obtainedFromImage: string;
 }
 
-// ~~~~~~~~~~ Data ~~~~~~~~~~
+// --------------------------
+//           Data
+// --------------------------
 
 export const variantData: { [key in PetVariant]: { baseScale: number, chanceMultiplier: number } } = { 
     Normal: { baseScale: 1, chanceMultiplier: 1 },
@@ -157,10 +91,22 @@ export const variantData: { [key in PetVariant]: { baseScale: number, chanceMult
 export const currencyImages: { [key in CurrencyVariant]: string } = {
   coins: "https://static.wikia.nocookie.net/bgs-infinity/images/f/f0/Coins.png",
   tickets: "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Tickets.png",
-  seashells: "https://static.wikia.nocookie.net/bgs-infinity/images/4/49/Seashells.png"
 };
 
-// ~~~~~~~~~~ Functions ~~~~~~~~~~
+const PLACEHOLDER_IMAGE = "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png";
+
+// --------------------------
+//         Functions
+// --------------------------
+
+export function isAvailable(dateRemoved: string | undefined): boolean {
+  if (!dateRemoved) return true;
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const removedDate = new Date(dateRemoved);
+  removedDate.setHours(0, 0, 0, 0);
+  return removedDate > today;
+}
 
 export const getPetChance = (pet: Pet, variant: PetVariant) => {
   const variantChance = pet.chance / variantData[variant].chanceMultiplier;
@@ -169,9 +115,9 @@ export const getPetChance = (pet: Pet, variant: PetVariant) => {
 
 export const getPetImage = (pet: PetInstance, variantIndex: number) => {
   if (variantIndex === -1) {
-    return pet.image[0]; // Fallback to the first image if the variant is not found
+    return PLACEHOLDER_IMAGE; 
   }
-  return pet.image[variantIndex];
+  return pet.image[variantIndex] || PLACEHOLDER_IMAGE;
 }
 
 export const getPetStat = (pet: Pet, variant: PetVariant, stat: PetStat, maxLevel: boolean, enchanted: boolean, enchantTeamSize: number, secondEnchant: Enchant) => {
@@ -188,4 +134,84 @@ export const getPetStat = (pet: Pet, variant: PetVariant, stat: PetStat, maxLeve
     multiplier += (enchantTeamSize * 0.25);
   }
   return Math.floor(baseStat * scale * multiplier);
+}
+
+// export const getCategoryName = (category: Category): string => {
+//   return category.name || category.egg?.name || "Unknown Category";
+// };
+
+// export const getCategoryImage = (category: Category): string => {
+//   return category.image || (category.egg?.image) || PLACEHOLDER_IMAGE;
+// };
+
+export let PET_DATA: PetData | undefined = undefined;
+
+export function loadData(): PetData {
+  // load pets
+  const petLookup: { [key: string]: Pet } = {};
+  const pets: Pet[] = [];
+  (petsJson as unknown as any).forEach((pet: Pet) => {
+    petLookup[pet.name] = pet;
+    pets.push(pet);
+  });
+  // load eggs
+  const eggLookup: { [key: string]: Egg } = {};
+  const eggs: Egg[] = [];
+  (eggsJson as unknown as any).forEach((e: any) => {
+    const egg: Egg = {
+      ...e,
+      pets: e.pets.map((petName: string) => petLookup[petName]),
+    }
+    eggLookup[egg.name] = egg;
+    eggs.push(egg);
+  });
+  // load categories
+  const categoryLookup: { [key: string]: Category } = {};
+  const categories: Category[] = [];
+  function processCategory(cat: any) {
+    if (cat.pets) {
+      cat.pets = cat.pets.map((petName: string) => petLookup[petName]);
+    }
+    if (cat.egg) {
+      cat.egg = eggLookup[cat.egg];
+      if (cat.egg) {
+        cat.pets = cat.pets || [];
+        for (const pet of cat.egg.pets) {
+          if (!cat.pets.some((p: Pet) => p.name === pet.name)) {
+            cat.pets.push(pet);
+          }
+        }
+      }
+    }
+    if (cat.categories) {
+      cat.categories = cat.categories.map((subCat: any) => {
+        if (subCat?.egg === 'Inferno Egg') return undefined;
+        processCategory(subCat);
+        return subCat;
+      }).filter((subCat: any) => subCat !== undefined);
+    }
+    if (!cat.name) {
+      cat.name = cat.egg?.name || "Unknown Category";
+    }
+    if (!cat.image) {
+      cat.image = cat.egg?.image || PLACEHOLDER_IMAGE;
+    }
+    return cat;
+  }
+  (categoriesJson as unknown as any).forEach((c: Category) => {
+    const cat: Category = processCategory(c) as any as Category;
+    categoryLookup[cat.name] = cat;
+    categories.push(cat);
+  });
+
+  PET_DATA = {
+    categories: categories,
+    categoryLookup: categoryLookup,
+    eggs: eggs,
+    eggLookup: eggLookup,
+    pets: pets,
+    petLookup: petLookup,
+  };
+
+  return PET_DATA;
 }

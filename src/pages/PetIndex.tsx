@@ -1,41 +1,34 @@
-// src/pages/CompletionTracker.tsx
-import React, { useEffect, useState } from "react";
+// src/pages/PetIndex.tsx
+import React, { useEffect, useMemo, useState } from "react";
 import {
+  Avatar,
   Box,
+  Checkbox,
   Drawer,
   List,
   ListItemButton,
   ListItemIcon,
   ListItemText,
-  Avatar,
-  Typography,
   Paper,
   Table,
+  TableBody,
+  TableCell,
   TableHead,
   TableRow,
-  TableCell,
-  TableBody,
-  Checkbox,
+  Typography,
   Link,
-  Button,
-  Tab
 } from "@mui/material";
 
 import {
   Category,
-  Egg,
   Pet,
-  PetVariant,
-  petVariants,
-  currencyImages,
   PetData,
-  isAvailable
+  PetVariant,
+  Rarity,
+  isAvailable,
+  petVariants,
 } from "../util/DataUtil";
-import {
-  getRarityStyle,
-  getPercentStyle,
-  imgIcon,
-} from "../util/StyleUtil";
+import { getPercentStyle, getRarityStyle } from "../util/StyleUtil";
 import { theme } from "..";
 
 const STORAGE_KEY = "petTrackerState";
@@ -43,17 +36,111 @@ const drawerWidth = 340;
 type PetKey = `${string}__${PetVariant}`;
 type OwnedPets = Record<PetKey, boolean>;
 
-interface PetIndexProps {
-    data: PetData | undefined;
+/* ---------- helpers ---------- */
+
+/** Remove duplicate pets (by name) while preserving order. */
+const uniquePets = (pets: Pet[]): Pet[] => {
+  const seen = new Set<string>();
+  const out: Pet[] = [];
+  for (const p of pets) {
+    if (!seen.has(p.name)) {
+      seen.add(p.name);
+      out.push(p);
+    }
+  }
+  return out;
+};
+
+const collectPets = (cat: Category | undefined): Pet[] => {
+  if (!cat) return [];
+  const out: Pet[] = [];
+  const dfs = (c: Category) => {
+    if (c.pets?.length) out.push(...c.pets);
+    c.categories?.forEach(dfs);
+  };
+  dfs(cat);
+  return uniquePets(out);
+};
+
+const getCategoryByPath = (
+  root: Category[],
+  path: string
+): Category | undefined => {
+  if (!path || path === "All") return undefined;
+  let current: Category | undefined;
+  let branch = root;
+  for (const segment of path.split("|")) {
+    current = branch.find((c) => c.name === segment);
+    if (!current) return undefined;
+    branch = current.categories ?? [];
+  }
+  return current;
+};
+
+const rarityOrder: Rarity[] = [
+  "common",
+  "unique",
+  "rare",
+  "epic",
+  "legendary",
+  "secret",
+];
+
+const calcCompletion = (pets: Pet[], owned: OwnedPets) => {
+  const totals: Record<PetVariant, number> = {
+    Normal: 0,
+    Shiny: 0,
+    Mythic: 0,
+    "Shiny Mythic": 0,
+  };
+  const ownedTotals: Record<PetVariant, number> = { ...totals };
+
+  for (const pet of pets) {
+    for (const v of petVariants) {
+      if (!pet.hasMythic && v.includes("Mythic")) continue;
+      totals[v]++;
+      if (owned[`${pet.name}__${v}`]) ownedTotals[v]++;
+    }
+  }
+
+  const totalAll = Object.values(totals).reduce((a, b) => a + b, 0);
+  const ownedAll = Object.values(ownedTotals).reduce(
+    (a, b) => a + b,
+    0
+  );
+
+  return {
+    overall: totalAll
+      ? Math.round((ownedAll / totalAll) * 100)
+      : 0,
+    perVariant: Object.fromEntries(
+      petVariants.map((v) => [
+        v,
+        totals[v]
+          ? Math.round((ownedTotals[v] / totals[v]) * 100)
+          : 0,
+      ])
+    ) as Record<PetVariant, number>,
+    raw: {
+      owned: ownedAll,
+      total: totalAll,
+      perVariant: ownedTotals,
+      totals,
+    },
+  };
+};
+
+/* ---------- component ---------- */
+interface Props {
+  data: PetData | undefined;
 }
 
-export function PetIndex({ data }: PetIndexProps) {
+export function PetIndex({ data }: Props) {
   const [ownedPets, setOwnedPets] = useState<OwnedPets>({});
-  const [selectedCategory, setSelectedCategory] = useState<string>("All");
-  
-  const [visibleCount, setVisibleCount] = useState(10);
+  const [selectedPath, setSelectedPath] = useState<string>("All");
+  const [visibleCount, setVisibleCount] = useState(20);
 
-  // load saved state
+  /* restore */
   useEffect(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
@@ -61,177 +148,124 @@ export function PetIndex({ data }: PetIndexProps) {
     } catch {}
   }, []);
 
-  // scroll to top on category/subcategory change
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [selectedCategory]);
+  const saveState = (o: OwnedPets) =>
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(o));
 
-  const saveState = (pets: OwnedPets) => {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(pets));
-    } catch {}
-  };
-
-  const togglePet = (pet: string, variant: PetVariant) => {
-    const key: PetKey = `${pet}__${variant}`;
-    setOwnedPets((prev) => {
-      const updated = { ...prev, [key]: !prev[key] };
-      saveState(updated);
-      return updated;
+  const togglePet = (pet: string, v: PetVariant) => {
+    const key: PetKey = `${pet}__${v}`;
+    setOwnedPets((prv) => {
+      const nxt = { ...prv, [key]: !prv[key] };
+      saveState(nxt);
+      return nxt;
     });
   };
 
-  const getEggsInCategory = (category: Category): Egg[] => {
-    // Flatten all eggs in the category and its subcategories
-    const eggs: Egg[] = [];
-    const collectEggs = (cat: Category) => {
-      if (cat.eggs) {
-        eggs.push(...cat.eggs);
-      }
-      if (cat.categories) {
-        cat.categories.forEach(collectEggs);
-      }
-    }
-    collectEggs(category);
-    return eggs;
-  }
+  /* data */
+  const allPets = uniquePets(data?.pets ?? []);
+  const allStats = useMemo(
+    () => calcCompletion(allPets, ownedPets),
+    [allPets, ownedPets]
+  );
 
-  const calculateCompletion = (eggs: Egg[]) => {
-    const totals: Record<PetVariant, number> = {
-      Normal: 0,
-      Shiny: 0,
-      Mythic: 0,
-      "Shiny Mythic": 0
-    };
-    const owned: Record<PetVariant, number> = { ...totals };
+  const currentCat = getCategoryByPath(
+    data?.categories ?? [],
+    selectedPath
+  );
+  const petsToShow =
+    selectedPath === "All"
+      ? allPets
+      : collectPets(currentCat);
 
-    for (const egg of eggs) {
-      if (!egg) continue;
-      for (const pet of egg.pets) {
-        petVariants.forEach((v) => {
-          if (!pet.hasMythic && v.includes("Mythic")) return;
-          totals[v]++;
-          if (ownedPets[`${pet.name}__${v}`]) owned[v]++;
-        });
-      }
-    }
+  const sortedPets = useMemo(
+    () =>
+      [...petsToShow].sort((a, b) => {
+        const byRarity =
+          rarityOrder.indexOf(a.rarity) -
+          rarityOrder.indexOf(b.rarity);
+        return byRarity !== 0 ? byRarity : b.chance - a.chance;
+      }),
+    [petsToShow]
+  );
 
-    const totalAll = Object.values(totals).reduce((a, b) => a + b, 0);
-    const ownedAll = Object.values(owned).reduce((a, b) => a + b, 0);
+  const headerStats = useMemo(
+    () => calcCompletion(petsToShow, ownedPets),
+    [petsToShow, ownedPets]
+  );
 
-    return {
-      overall: totalAll ? Math.round((ownedAll / totalAll) * 100) : 0,
-      perVariant: Object.fromEntries(
-        petVariants.map((v) => [
-          v,
-          totals[v] ? Math.round((owned[v] / totals[v]) * 100) : 0
-        ])
-      ) as Record<PetVariant, number>,
-      raw: {
-        owned: ownedAll,
-        total: totalAll,
-        perVariant: { ...owned },
-        totals: { ...totals }
+  /* scroll */
+  useEffect(() => {
+    setVisibleCount(20);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [selectedPath]);
+
+  useEffect(() => {
+    const onScroll = () => {
+      if (
+        window.innerHeight + window.scrollY >=
+          document.documentElement.scrollHeight - 150 &&
+        visibleCount < sortedPets.length
+      ) {
+        setVisibleCount((c) =>
+          Math.min(c + 20, sortedPets.length)
+        );
       }
     };
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [visibleCount, sortedPets.length]);
+
+  /* drawer */
+  const renderItem = (
+    cat: Category,
+    depth: number,
+    parentPath = ""
+  ) => {
+    const path = parentPath
+      ? `${parentPath}|${cat.name}`
+      : cat.name;
+
+    const selected = path === selectedPath;
+    const isAncestor = selectedPath.startsWith(`${path}|`);
+    const expanded = selected || isAncestor;
+
+    const stats = calcCompletion(collectPets(cat), ownedPets);
+    const bg = selected ? "#111122" : depth === 0 ? "#111" : "#222";
+
+    return (
+      <Box key={path}>
+        <ListItemButton
+          sx={{ pl: (depth + 1) * 2, backgroundColor: bg }}
+          selected={selected}
+          onClick={() =>
+            setSelectedPath(selected ? "All" : path)
+          }
+        >
+          <ListItemIcon>
+            <Avatar
+              src={cat.image}
+              variant="square"
+              sx={{ width: 24, height: 24 }}
+            />
+          </ListItemIcon>
+          <ListItemText>
+            <Typography sx={{ fontWeight: "bold" }}>
+              {cat.name} ({stats.overall}%)
+            </Typography>
+          </ListItemText>
+        </ListItemButton>
+
+        {expanded &&
+          cat.categories?.map((sub) =>
+            renderItem(sub, depth + 1, path)
+          )}
+      </Box>
+    );
   };
 
-  // flatten all categories
-  const allCats: Category[] = [];
-  for (const cat of data?.categories || []) {
-    allCats.push(cat);
-    if (cat.categories) {
-      allCats.push(...cat.categories);
-    }
-  }
-  const allStats = calculateCompletion(data?.eggs || []);
-
-  // determine subcategories/eggs to show
-  const isAll = selectedCategory === "All";
-  let categoryData = null;
-  if (!isAll) {
-    categoryData = data?.categoryLookup[selectedCategory];
-  }
-
-  // eggs to show in main content
-  const eggsToShow: Egg[] = categoryData ? getEggsInCategory(categoryData) : data?.eggs || [];
-
-  const headerName = categoryData ? categoryData.name : "All Pets";
-  const headerStats = calculateCompletion(eggsToShow);
-
-  // infinite‐scroll effect
-  useEffect(() => {
-    const handleScroll = () => {
-      // how close to the bottom before loading more (px)
-      const threshold = 150;
-      const scrolledToBottom =
-        window.innerHeight + window.scrollY >=
-        document.documentElement.scrollHeight - threshold;
-    
-      if (scrolledToBottom && visibleCount < eggsToShow.length) {
-        setVisibleCount((c) => Math.min(c + 10, eggsToShow.length));
-      }
-    };
-  
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [visibleCount, eggsToShow]);
-
-  const displayCategoryDrawerItem = (cat: Category, depth: number) => {
-    const catStats = calculateCompletion(getEggsInCategory(cat));
-    const catSelected = selectedCategory === cat.name;
-    const childSelected = cat.categories && cat.categories.some((c) => selectedCategory === c.name);
-    const hex = depth === 0 ? '#111' : '#222';
-    return (
-    <Box key={cat.name}>
-      <ListItemButton
-      sx={{ pl: (depth + 1) * 2, backgroundColor: catSelected ? '#111122' : hex }}
-        selected={catSelected}
-        onClick={() => {
-          if (catSelected || childSelected) {
-            setSelectedCategory("All");
-          } else {
-            setSelectedCategory(cat.name);
-          }
-        }}
-      >
-        <ListItemIcon>
-          <Avatar src={cat.image} variant="square" sx={{ width: 24, height: 24 }} />
-        </ListItemIcon>
-        <ListItemText>
-          <Typography sx={{ fontWeight: "bold" }}>
-            {cat.name} ({catStats.overall}%)
-          </Typography>
-        </ListItemText>
-      </ListItemButton>
-      {
-        (catSelected || childSelected) && cat.categories?.length > 0 ? cat.categories.map((subCat) => displayCategoryDrawerItem(subCat, depth + 1)) : null
-      }
-      {
-        (catSelected || childSelected) && cat.eggs?.length > 1 && (
-          cat.eggs.map((egg) => {
-            const id = egg.name.replace(/\s+/g, "_");
-            const eggStats = calculateCompletion([ egg ]);
-            return (
-              <ListItemButton key={egg.name} component="a" href={`#${id}`} sx={{ pl: 4 * (depth + 1), backgroundColor: '#222' }} >
-                <ListItemIcon>
-                  <Avatar src={egg.image} variant="square" sx={{ width: 24, height: 24 }} />
-                </ListItemIcon>
-                <ListItemText primary={egg.name} />
-                  <Typography sx={{ ...getPercentStyle(eggStats.overall) }} >
-                    ({eggStats.overall}%)
-                  </Typography>
-              </ListItemButton>
-            );
-          })
-        )
-      }
-    </Box>);
-  }
-
+  /* render */
   return (
     <Box sx={{ display: "flex", flexGrow: 1 }}>
-      {/* Left drawer */}
+      {/* drawer */}
       <Drawer
         variant="permanent"
         anchor="left"
@@ -242,43 +276,50 @@ export function PetIndex({ data }: PetIndexProps) {
             width: drawerWidth,
             boxSizing: "border-box",
             mt: 8,
-            // make its height fill the rest of the screen
             height: `calc(100% - ${theme.mixins.toolbar.minHeight}px)`,
             overflowY: "auto",
-          }
+          },
         }}
       >
         <List disablePadding>
-          {/* "All" */}
           <ListItemButton
-            selected={isAll}
-            onClick={() => {
-              setSelectedCategory("All");
-            }}
+            selected={selectedPath === "All"}
+            onClick={() => setSelectedPath("All")}
           >
             <ListItemText
               primary={`All (${allStats.overall}%)`}
             />
           </ListItemButton>
 
-          {/* Categories */}
-          {data?.categories.map((cat) => displayCategoryDrawerItem(cat, 0))}
-          <Box sx={{ height: '50px' }} />
+          {data?.categories.map((c) => renderItem(c, 0))}
+          <Box sx={{ height: "50px" }} />
         </List>
       </Drawer>
 
-      {/* Main content */}
-      <Box component="main" sx={{ flexGrow: 1, p: 3, mt: 1, mx: "auto", maxWidth: "1000px" }} >
-        {/* Header */}
+      {/* main */}
+      <Box
+        component="main"
+        sx={{
+          flexGrow: 1,
+          p: 3,
+          mt: 1,
+          mx: "auto",
+          maxWidth: "1000px",
+        }}
+      >
+        {/* header */}
         <Typography variant="h4" gutterBottom>
-          {headerName}:{" "}
+          {selectedPath === "All"
+            ? "All Pets"
+            : selectedPath.replace(/\|/g, " › ")}
+          :{" "}
           <span style={getPercentStyle(headerStats.overall)}>
             {headerStats.raw.owned} / {headerStats.raw.total} (
             {headerStats.overall}%)
           </span>
         </Typography>
 
-        {/* Variant stats */}
+        {/* variant stats */}
         <Paper sx={{ p: 2, mb: 4, width: "fit-content" }}>
           <Table size="small">
             <TableHead>
@@ -295,7 +336,9 @@ export function PetIndex({ data }: PetIndexProps) {
                 {petVariants.map((v) => (
                   <TableCell
                     key={v}
-                    sx={getPercentStyle(headerStats.perVariant[v])}
+                    sx={getPercentStyle(
+                      headerStats.perVariant[v]
+                    )}
                   >
                     {headerStats.raw.perVariant[v]} /{" "}
                     {headerStats.raw.totals[v]} (
@@ -307,140 +350,131 @@ export function PetIndex({ data }: PetIndexProps) {
           </Table>
         </Paper>
 
-        {/* Eggs list */}
-        {eggsToShow.slice(0, visibleCount).map((egg) => {
-          const stats = calculateCompletion([ egg ]);
-          const id = egg.name.replace(/\s+/g, "_");
-          return (
-            <Box key={egg.name} id={id} sx={{ mb: 6, scrollMarginTop: "80px" }}>
-              <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
-                <Avatar
-                  src={egg.image}
-                  variant="square"
-                  sx={{ width: 32, height: 32, mr: 1 }}
-                />
-                <Typography variant="h6">
-                  <b>{egg.name}</b>:{" "}
-                  <span style={getPercentStyle(stats.overall)}>
-                    {stats.raw.owned} / {stats.raw.total} ({stats.overall}
-                    %)
-                  </span>
-                  { !isAvailable(egg.dateRemoved) && (
-                    <span style={{ color: "#666", fontSize: "0.8em" }}>
-                      {" "}
-                      (Discontinued)
-                    </span>
-                  )}
-                </Typography>
-              </Box>
-              <Paper sx={{ p: 1 }} elevation={2}>
-                <Table size="small" sx={{ "& .MuiTableCell-root": { p: 0.5 } }}>
-                  <TableHead>
-                    <TableRow>
-                      <TableCell sx={{ width: 24 }} />
-                      <TableCell sx={{ width: 150, fontWeight: "bold" }}>
-                        Pet
-                      </TableCell>
-                      <TableCell sx={{ width: 150, fontWeight: "bold" }}>
-                        Drop Rate
-                      </TableCell>
-                      {/* <TableCell sx={{ width: 100, textAlign: "center" }}>
-                        {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/0/0c/Bubbles.png")}
-                      </TableCell>
-                      <TableCell sx={{ width: 100, textAlign: "center" }}>
-                        💰
-                      </TableCell>
-                      <TableCell sx={{ width: 100, textAlign: "center" }}>
-                        {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Gems.png")}
-                      </TableCell> */}
-                      {petVariants.map((v) => (
-                        <TableCell
-                          key={v}
-                          sx={{ width: 100, fontWeight: "bold", textAlign: "left" }}
-                        >
-                          {v}
-                        </TableCell>
-                      ))}
-                      {/* Egg image column */}
-                      <TableCell sx={{ width: 24 }} />
-                      <TableCell sx={{ width: 150, fontWeight: "bold" }}>
-                          Source
-                      </TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {egg.pets.map((pet) => {
-                      const style = getRarityStyle(pet.rarity);
-                      return (
-                        <TableRow key={pet.name}>
-                          <TableCell>
-                            <Link
-                              href={`https://bgs-infinity.fandom.com/wiki/${pet.name}`}
-                              target="_blank"
+        {/* pet list */}
+        <Paper sx={{ p: 1 }} elevation={2}>
+          <Table
+            size="small"
+            sx={{ "& .MuiTableCell-root": { p: 0.5 } }}
+          >
+            <TableHead>
+              <TableRow>
+                <TableCell sx={{ width: 24 }} />
+                <TableCell sx={{ width: 180, fontWeight: "bold" }}>
+                  Pet
+                </TableCell>
+                <TableCell sx={{ width: 120, fontWeight: "bold" }}>
+                  Drop Rate
+                </TableCell>
+                {petVariants.map((v) => (
+                  <TableCell
+                    key={v}
+                    sx={{
+                      width: 80,
+                      fontWeight: "bold",
+                      textAlign: "left",
+                    }}
+                  >
+                    {v}
+                  </TableCell>
+                ))}
+                <TableCell sx={{ width: 24 }} />
+                <TableCell sx={{ width: 150, fontWeight: "bold" }}>
+                  Source
+                </TableCell>
+              </TableRow>
+            </TableHead>
+
+            <TableBody>
+              {sortedPets.slice(0, visibleCount).map((pet) => {
+                const style = getRarityStyle(pet.rarity);
+                const discontinued = !isAvailable(pet.dateRemoved);
+
+                const dropDisplay = pet.hatchable
+                  ? pet.chance >= 1
+                    ? `${pet.chance.toLocaleString(undefined, {
+                        maximumFractionDigits: 2,
+                      })}%`
+                    : `1/${(100 / pet.chance).toLocaleString(
+                        undefined,
+                        { maximumFractionDigits: 0 }
+                      )}`
+                  : "100%";
+
+                return (
+                  <TableRow key={pet.name}>
+                    <TableCell>
+                      <Link
+                        href={`https://bgs-infinity.fandom.com/wiki/${pet.name}`}
+                        target="_blank"
+                      >
+                        <Avatar
+                          src={pet.image[0]}
+                          variant="square"
+                          sx={{ width: 24, height: 24 }}
+                        />
+                      </Link>
+                    </TableCell>
+
+                    <TableCell>
+                      <Link
+                        href={`https://bgs-infinity.fandom.com/wiki/${pet.name}`}
+                        target="_blank"
+                        sx={{ textDecoration: "none" }}
+                      >
+                        <Typography variant="body2" sx={style}>
+                          {pet.name}
+                        </Typography>
+                        {discontinued && (
+                            <span
+                              style={{
+                                color: "#666",
+                                fontSize: "0.8em",
+                              }}
                             >
-                              <Avatar
-                                src={pet.image[0]}
-                                variant="square"
-                                sx={{ width: 24, height: 24 }}
-                              />
-                            </Link>
-                          </TableCell>
-                          <TableCell>
-                            <Link
-                              href={`https://bgs-infinity.fandom.com/wiki/${pet.name}`}
-                              target="_blank"
-                              sx={{ textDecoration: "none" }}
-                            >
-                              <Typography variant="body2" sx={style}>
-                                {pet.name}
-                              </Typography>
-                            </Link>
-                          </TableCell>
-                          <TableCell>
-                            <Typography variant="body2" sx={style}>
-                              { /* If drop rate below 100, show as percent. */
-                                pet.hatchable ?
-                                pet.chance > 1 ? 
-                                (<>{pet.chance.toLocaleString(undefined, { maximumFractionDigits: 2 })}%</>) 
-                                : 
-                                (<>1/{(100 / pet.chance).toLocaleString(undefined, { maximumFractionDigits: 0 })}</>)
-                                :
-                                '100%'
-                              }
-                            </Typography>
-                          </TableCell>
-                          {petVariants.map((v) => (
-                            <TableCell key={v}>
-                              {(!v.includes("Mythic") || (v.includes("Mythic") && pet.hasMythic)) && (
-                                <Checkbox
-                                  size="small"
-                                  checked={!!ownedPets[`${pet.name}__${v}`]}
-                                  onChange={() => togglePet(pet.name, v)}
-                                />
-                              )}
-                            </TableCell>
-                          ))}
-                          <TableCell>
-                            <Avatar
-                              src={pet.obtainedFromImage}
-                              alt={pet.obtainedFrom}
-                              sx={{ width: 24, height: 24 }}
-                            />
-                          </TableCell>
-                          <TableCell>
-                            <Typography variant="body2">
-                              {pet.obtainedFrom}
-                            </Typography>
-                          </TableCell>
-                        </TableRow>
-                      );
-                    })}
-                  </TableBody>
-                </Table>
-              </Paper>
-            </Box>
-          );
-        })}
+                              {" "}
+                              (Discontinued)
+                            </span>
+                          )}
+                      </Link>
+                    </TableCell>
+
+                    <TableCell>
+                      <Typography variant="body2" sx={style}>
+                        {dropDisplay}
+                      </Typography>
+                    </TableCell>
+
+                    {petVariants.map((v) => (
+                      <TableCell key={v}>
+                        {(!v.includes("Mythic") ||
+                          (v.includes("Mythic") && pet.hasMythic)) && (
+                          <Checkbox
+                            size="small"
+                            checked={!!ownedPets[`${pet.name}__${v}`]}
+                            onChange={() => togglePet(pet.name, v)}
+                          />
+                        )}
+                      </TableCell>
+                    ))}
+
+                    <TableCell>
+                      <Avatar
+                        src={pet.obtainedFromImage}
+                        alt={pet.obtainedFrom}
+                        sx={{ width: 24, height: 24 }}
+                      />
+                    </TableCell>
+                    <TableCell>
+                      <Typography variant="body2">
+                        {pet.obtainedFrom}
+                      </Typography>
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
+            </TableBody>
+          </Table>
+        </Paper>
       </Box>
     </Box>
   );

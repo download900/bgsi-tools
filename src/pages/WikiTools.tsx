@@ -1,108 +1,12 @@
 import { JSX, useEffect, useRef, useState } from "react";
 import { Box, Button, capitalize, Container, Typography } from "@mui/material";
-import { Pet, Rarity, PetVariant, CurrencyVariant, Egg, PetData } from "../util/DataUtil";
-import Decimal from "decimal.js";
+import { Pet, Rarity, PetVariant, CurrencyVariant, Egg, PetData, Category } from "../util/DataUtil";
 import * as cheerio from 'cheerio';
 const { format, parse } = require('lua-json')
 
-// (1) Orchestrator
-export async function scrapeWiki(data: PetData, debug: (msg: string) => void): Promise<void> {
-  debug('Fetching pet data from Lua modules...');
-  // Result will be a function, and then "return processData({ <MATCH ALL OF THIS> })"
-  const petsLua = `return ${(await fetchWikitext('Module:Pet_Data')).match(/return processData\((\{[\s\S]*?\})\)/)?.[1]}` || '{}';
-  const eggsLua = `return ${(await fetchWikitext('Module:Egg_Data')).match(/return processData\((\{[\s\S]*?\})\)/)?.[1]}` || '{}';
-  debug('Parsing Lua data...');
-  const petsData = parse(petsLua) as { [key: string]: any };
-  const eggsData = parse(eggsLua) as { [key: string]: any };
-  debug(`Found ${Object.keys(petsData).length} pets and ${Object.keys(eggsData).length} eggs in Lua modules.`);
-
-  // Convert Lua data to our PetData structure
-  const pets: Pet[] = [];
-  const petLookup: { [key: string]: Pet } = {};
-  const eggs: Egg[] = [];
-  const eggLookup: { [key: string]: Egg } = {};
-
-  for (const petName in petsData) {
-    debug(`Processing pet: ${petName}`);
-    const petInfo = petsData[petName];
-    let pet: Pet = {
-      name: petName,
-      rarity: petInfo.rarity.toLowerCase() as Rarity,
-      chance: petInfo.chance,
-      bubbles: petInfo.bubbles || 0,
-      gems: petInfo.gems || 0,
-      currency: petInfo.currency || 0,
-      currencyVariant: (petInfo.currencyType || 'coins').toLowerCase() as CurrencyVariant,
-      hasMythic: petInfo.hasMythic || false,
-      tags: petInfo.tag ? petInfo.tag.split(',').map((tag: string) => tag.trim()) : [],
-      limited: petInfo.limited || false,
-      hatchable: petInfo.hatchable !== undefined ? petInfo.hatchable : true,
-      obtainedFrom: petInfo.obtainedFrom || '',
-      obtainedFromImage: '',
-      obtainedFromInfo: petInfo.obtainedFromInfo || '',
-      image: [],
-      dateAdded: petInfo.dateAdded || '',
-      dateRemoved: petInfo.dateUnavailable || '',
-    };
-
-    pet = await parsePet(pet); // Fetch additional info from the pet page
-
-    // add obtainedFrom as new Egg property
-    if (eggLookup[pet.obtainedFrom]) {
-      const egg = eggLookup[pet.obtainedFrom];
-      egg.pets.push(pet);
-    }
-    else {
-      // If the egg doesn't exist, create a new one
-      const egg = {
-        name: pet.obtainedFrom,
-        image: pet.obtainedFromImage || '',
-        pets: [pet],
-      } as Egg;
-      eggs.push(egg);
-      eggLookup[pet.obtainedFrom] = egg;
-    }
-
-    pets.push(pet);
-    petLookup[petName] = pet;
-  }
-
-  debug(`Parsed ${pets.length} pets from Lua modules.`);
-
-  // Convert eggs data to our Egg structure
-  for (const eggName in eggsData) {
-    debug(`Processing egg: ${eggName}`);
-    const eggInfo = eggsData[eggName];
-    const egg = eggLookup[eggName];
-    if (!egg) {
-      debug(`Egg ${eggName} not found in pet data. Skipping...`);
-      continue; // Skip if egg is not found
-    }
-    // Update egg properties from eggInfo
-    egg.name = eggName;
-    egg.pets.sort((a, b) => { return b.chance - a.chance; });
-    egg.hatchCost = eggInfo.hatchCost || 0;
-    egg.hatchCurrency = (eggInfo.hatchCurrency?.toLowerCase() as CurrencyVariant) || undefined;
-    egg.world = eggInfo.world || '';
-    egg.zone = eggInfo.zone || '';
-    egg.limited = eggInfo.limited || false;
-    egg.luckIgnored = eggInfo.luckIgnored || false;
-    egg.infinityEgg = eggInfo.infinityEgg || '';
-    egg.canSpawnAsRift = eggInfo.hasEggRift || false;
-    egg.secretBountyRotation = eggInfo.secretBountyRotation || false;
-    egg.dateAdded = eggInfo.dateAdded || '';
-    egg.dateRemoved = eggInfo.dateUnavailable || '';
-    egg.riftChance = eggInfo.riftChance || 0; // Default to 0, can be updated later
-  }
-
-  debug(`Parsed ${eggs.length} eggs from Lua modules.`);
-
-  // Add data to the existing PetData structure
-  data.pets = pets;
-  data.petLookup = petLookup;
-  data.eggs = eggs;
-  data.eggLookup = eggLookup;
-}
+// ---------------------------------------------------------------
+//                        Helper Functions
+// ---------------------------------------------------------------
 
 async function fetchWikitext(pageName: string): Promise<string> {
   try {
@@ -147,7 +51,148 @@ async function fetchHTML(petName: string): Promise<string> {
     return json.parse.text['*'];  // the HTML fragment you can feed into cheerio.load()
 }
 
-async function parsePet(pet: Pet): Promise<Pet> {
+// ---------------------------------------------------------------
+//                          Orchestrator
+// ---------------------------------------------------------------
+
+export async function scrapeWiki(data: PetData, debug: (msg: string) => void): Promise<void> {
+  debug('Fetching pet data from Lua modules...');
+  const ctgLua  = `return ${(await fetchWikitext('Module:Category_Data')).match(/return processData\((\{[\s\S]*?\})\)/)?.[1]}` || '{}';
+  const eggsLua = `return ${(await fetchWikitext('Module:Egg_Data')).match(/return processData\((\{[\s\S]*?\})\)/)?.[1]}` || '{}';
+  const petsLua = `return ${(await fetchWikitext('Module:Pet_Data')).match(/return processData\((\{[\s\S]*?\})\)/)?.[1]}` || '{}';
+
+  debug('Parsing Lua data...');
+  const categoriesData = parse(ctgLua) as any[];
+  const eggsData = parse(eggsLua) as { [key: string]: any };
+  const petsData = parse(petsLua) as { [key: string]: any };
+
+  debug(`Found ${Object.keys(categoriesData).length} categories, ${Object.keys(petsData).length} pets and ${Object.keys(eggsData).length} eggs in Lua modules.`);
+
+  // Process categories
+  debug('Processing categories...');
+  const categories: Category[] = [];
+  const categoryLookup: { [key: string]: Category } = {};
+
+  function processCategory(catData: any): Category | undefined {
+    try {
+      if (catData.name === 'Inferno Egg' || catData.name === 'Infinity Egg') {
+        return undefined;
+      }
+      debug(`Processing category: ${catData.name || catData.egg}`);
+      const cat: Category = {
+        name: catData.name,
+        image: catData.image
+      } as any;
+      if (catData.egg) {
+        cat.egg = catData.egg;
+      }
+      if (catData.pets) {
+        cat.pets = catData.pets;
+      }
+      if (catData.groups) {
+        cat.categories = catData.groups.map((subCat: any) => {
+          return processCategory(subCat);
+        });
+      }
+      return cat;
+    } catch {
+      return undefined;
+    }
+  }
+
+  for (const category of categoriesData) {
+    const cat = processCategory(category);
+    if (cat) {
+      categories.push(cat);
+      categoryLookup[cat.name] = cat;
+    }
+  }
+  debug(`Processed ${categories.length} categories.`);
+
+  // Process eggs
+  debug('Processing eggs...');
+  const eggs: Egg[] = [];
+  const eggLookup: { [key: string]: Egg } = {};
+  for (const eggName in eggsData) {
+    if (eggName === 'Inferno Egg' || eggName === 'Infinity Egg') {
+      continue;
+    }
+    debug(`Processing egg: ${eggName}`);
+    const eggInfo = eggsData[eggName];
+    const egg: Egg = {
+      name: eggName,
+      image: eggInfo.image || '',
+      pets: eggInfo.pets,
+      luckIgnored: eggInfo.luckIgnored || false,
+      infinityEgg: eggInfo.infinityEgg || undefined,
+      canSpawnAsRift: eggInfo.hasEggRift || false,
+      secretBountyRotation: eggInfo.secretBountyRotation || false,
+      dateAdded: eggInfo.dateAdded || '',
+      dateRemoved: eggInfo.dateUnavailable || '',
+    } as any;
+    // Add egg to the lookup
+    eggs.push(egg);
+    eggLookup[eggName] = egg;
+  }
+
+  // Process pets
+  debug('Processing pets...');
+  const pets: Pet[] = [];
+  const petLookup: { [key: string]: Pet } = {};
+  for (const petName in petsData) {
+    debug(`Processing pet: ${petName}`);
+    const petInfo = petsData[petName];
+    let pet: Pet = {
+      name: petName,
+      rarity: petInfo.rarity.toLowerCase() as Rarity,
+      chance: petInfo.chance,
+      bubbles: petInfo.bubbles || 0,
+      gems: petInfo.gems || 0,
+      currency: petInfo.currency || 0,
+      currencyVariant: (petInfo.currencyType || 'coins').toLowerCase() as CurrencyVariant,
+      hasMythic: petInfo.hasMythic || false,
+      hatchable: petInfo.hatchable !== undefined ? petInfo.hatchable : true,
+      obtainedFrom: petInfo.obtainedFrom || '',
+      obtainedFromImage: '',
+      obtainedFromInfo: petInfo.obtainedFromInfo || '',
+      image: [],
+      dateAdded: petInfo.dateAdded || '',
+      dateRemoved: petInfo.dateUnavailable || '',
+    };
+
+    // Add pet to the lookup
+    pets.push(pet);
+    petLookup[petName] = pet;
+  }
+
+  // await Promise.all for getting pet images:
+  debug('Fetching pet images...');
+  const petImagePromises = pets.map(async (pet) => {
+    try {
+      return await getPetImages(pet);
+    }
+    catch (error) {
+      debug(`Error fetching images for pet ${pet.name}: ${error}`);
+      return pet; // Return the pet without images if there's an error
+    }
+  }
+  );
+  await Promise.all(petImagePromises);
+
+  debug(`Processed ${pets.length} pets.`);
+
+  // Add data to the existing PetData structure
+  data.categories = categories;
+  data.categoryLookup = categoryLookup;
+  data.eggs = eggs;
+  data.eggLookup = eggLookup;
+  data.pets = pets;
+  data.petLookup = petLookup;
+
+  debug('Scraping completed successfully.');
+}
+
+async function getPetImages(pet: Pet): Promise<Pet> {
   const petName = pet.name;
 
   // Load HTML to find more info not included in wikitext
@@ -167,7 +212,7 @@ async function parsePet(pet: Pet): Promise<Pet> {
     ['shiny-mythic-image', 'Shiny Mythic'],
   ];
 
-  variantDataSourceMap.forEach(([ds, variant]) => {
+  variantDataSourceMap.forEach(([ds, _]) => {
     const img = $(`figure.pi-item.pi-image[data-source="${ds}"] a.image-thumbnail`);
     if (img.length > 0) {
       const imgSrc = img.attr('href')?.split('/revision')[0];
@@ -180,92 +225,92 @@ async function parsePet(pet: Pet): Promise<Pet> {
 
   return pet;
 }
+// ---------------------------------------------------------------
+//                      Data Processing
+// ---------------------------------------------------------------
 
-const processEggs = (wikiData: PetData, existingData: PetData) => {
-
+const processNewData = (wikiData: PetData, existingData: PetData) => {
+  for (const cat of wikiData.categories) {
+    processCategory(cat, existingData, wikiData);
+  }
   for (const egg of wikiData.eggs) {
     processEgg(egg, existingData, wikiData);
   }
+  for (const pet of wikiData.pets) {
+    processPet(pet, existingData, wikiData);
+  }
 
-  // Save JSONs
-  exportDataToJson(existingData, '');
-  if (wikiData.eggs.length > 0) {
-    exportDataToJson(wikiData, '-new');
+  exportDataToJson(existingData);
+}
+
+function processCategory(cat: Category, existingData: PetData, newData: PetData) {
+  // Check if the category already exists in the existing data
+  const existingCat = existingData.categoryLookup[cat.name];
+  if (existingCat) {
+    // Update existing category properties
+    for (const key of Object.keys(cat) as (keyof Category)[]) {
+      const value = cat[key];
+      if (value != '' && value !== undefined && value !== null) {
+        // @ts-ignore
+        existingCat[key] = value;
+      }
+    }
+  }
+  else {
+    // Push the new category to the existing data
+    existingData.categories.push(cat);
+    existingData.categoryLookup[cat.name] = cat;
   }
 }
 
-const processEgg = (egg: Egg, existingData: PetData, newData: PetData) => {
-  for (const newPet of egg.pets) {
-    // Check if the pet already exists in the existing data
-    const existingPet = existingData.petLookup[newPet.name];
-    if (existingPet) {
-      // Update existing pet properties
-      for (const key of Object.keys(newPet) as (keyof Pet)[]) {
-        const value = newPet[key];
-        if (value != '' && value !== undefined && value !== null) {
-          // @ts-ignore
-          existingPet[key] = value;
-        }
-      }
-
-      // remove the pet from the pets arrays if it already exists
-      egg.pets = egg.pets.filter(p => p.name !== newPet.name);
-      newData.pets = newData.pets.filter(p => p.name !== newPet.name);
-    }
-  }
-
+function processEgg(egg: Egg, existingData: PetData, newData: PetData) {
   // Check if the egg already exists in the existing data
   const existingEgg = existingData.eggLookup[egg.name];
   if (existingEgg) {
     // Update existing egg properties
     for (const key of Object.keys(egg) as (keyof Egg)[]) {
-      if (key == 'pets') continue; // Skip pets, they are handled separately
       const value = egg[key];
       if (value != '' && value !== undefined && value !== null) {
         // @ts-ignore
         existingEgg[key] = value;
       }
     }
-
-    existingEgg.pets.push(...egg.pets); // Add new pets to existing egg
-    existingEgg.pets.sort((a, b) => { return b.chance - a.chance; });
-
-    // remove the egg from the eggs array if it already exists
-    newData.eggs = newData.eggs.filter(e => e.name !== egg.name);
   }
-  else if (egg.pets.length === 0) {
-    newData.eggs = newData.eggs.filter(e => e.name !== egg.name);
-    return;
+  else {
+    // Push the new egg to the existing data
+    existingData.eggs.push(egg);
+    existingData.eggLookup[egg.name] = egg;
   }
 }
 
-// ────────────────────────────────────────────────────────────
-
-function exportDataToJson(data: PetData, suffix: string ): void {
-  saveJSON(data.pets, `pets${suffix}`);
-  const eggsJson = data.eggs.map((egg) => {
-    return {
-      ...egg,
-      pets: egg.pets.map((pet) => pet.name)
-    };
-  });
-  saveJSON(eggsJson, `eggs${suffix}`);
-  if (data.categories?.length > 0) {
-    const categories = data.categories.map((cat) => {
-      return {
-        name: cat.name,
-        image: cat.image,
-        eggs: cat.eggs?.map((egg) => egg.name),
-        categories: cat.categories?.map((subCat) => {
-          return {
-            ...subCat,
-            eggs: subCat.eggs?.map((egg) => egg.name)
-          }
-        })
-      };
-    });
-    saveJSON(categories, `categories${suffix}`);
+function processPet(pet: Pet, existingData: PetData, newData: PetData) {
+  // Check if the pet already exists in the existing data
+  const existingPet = existingData.petLookup[pet.name];
+  if (existingPet) {
+    // Update existing pet properties
+    for (const key of Object.keys(pet) as (keyof Pet)[]) {
+      const value = pet[key];
+      if (value != '' && value !== undefined && value !== null) {
+        // @ts-ignore
+        existingPet[key] = value;
+      }
+    }
   }
+  else {
+    // Push the new pet to the existing data
+    existingData.pets.push(pet);
+    existingData.petLookup[pet.name] = pet;
+  }
+}
+
+// ---------------------------------------------------------------
+//                      Export Functions
+// ---------------------------------------------------------------
+
+function exportDataToJson(data: PetData): void {
+  saveJSON(data.pets, `pets`);
+  saveJSON(data.eggs, `eggs`);
+  saveJSON(data.categories, `categories`);
 }
 
 export const saveJSON = (data: any, filename: string) => {
@@ -298,19 +343,13 @@ export function WikiTools(props: WikiToolsProps): JSX.Element {
 
   const handleScrape = async () => {
     setDebug([ 'Scraping...' ]);
-    const newData = {
-      pets: [],
-      petLookup: {},
-      eggs: [],
-      eggLookup: {},
-      categories: [],
-    } as any as PetData;
+    const newData = {} as any as PetData;
     await scrapeWiki(newData, debugLog);
-    processEggs(newData, props.data!);
+    processNewData(newData, props.data!);
   }
 
   const handlePetsJsonExport = () => {
-    exportDataToJson(props.data!, '');
+    exportDataToJson(props.data!);
   };
 
   useEffect(() => {

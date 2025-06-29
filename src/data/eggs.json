@@ -9,15 +9,13 @@
       "Bear",
       "King Doggy"
     ],
-    "hatchCost": 10,
-    "hatchCurrency": "coins",
+    "luckIgnored": false,
     "infinityEgg": "The Overworld",
-    "index": "The Overworld",
-    "available": true,
     "canSpawnAsRift": false,
-    "world": "The Overworld",
-    "zone": "W1 Surface",
-    "dateAdded": "2025-04-11"
+    "secretBountyRotation": false,
+    "dateAdded": "2025-04-11",
+    "dateRemoved": "",
+    "index": "The Overworld"
   },
   {
     "name": "Spotted Egg",
@@ -29,15 +27,13 @@
       "Polar Bear",
       "Panda"
     ],
-    "hatchCost": 110,
-    "hatchCurrency": "coins",
+    "luckIgnored": false,
     "infinityEgg": "The Overworld",
-    "index": "The Overworld",
-    "available": true,
     "canSpawnAsRift": false,
-    "world": "The Overworld",
-    "zone": "W1 Surface",
-    "dateAdded": "2025-04-11"
+    "secretBountyRotation": false,
+    "dateAdded": "2025-04-11",
+    "dateRemoved": "",
+    "index": "The Overworld"
   },
   {
     "name": "Iceshard Egg",
@@ -50,15 +46,13 @@
       "Ice Deer",
       "Ice Dragon"
     ],
-    "hatchCost": 450,
-    "hatchCurrency": "coins",
+    "luckIgnored": false,
     "infinityEgg": "The Overworld",
-    "index": "The Overworld",
-    "available": true,
     "canSpawnAsRift": false,
-    "world": "The Overworld",
-    "zone": "W1 Surface",
-    "dateAdded": "2025-04-11"
+    "secretBountyRotation": false,
+    "dateAdded": "2025-04-11",
+    "dateRemoved": "",
+    "index": "The Overworld"
   },
   {
     "name": "Spikey Egg",
@@ -71,16 +65,13 @@
       "Dark Dragon",
       "Emerald Golem"
     ],
-    "hatchCost": 5000,
-    "hatchCurrency": "coins",
+    "luckIgnored": false,
     "infinityEgg": "The Overworld",
-    "index": "The Overworld",
-    "available": true,
     "canSpawnAsRift": true,
-    "world": "The Overworld",
-    "zone": "Floating Island",
+    "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
-    "secretBountyRotation": true
+    "dateRemoved": "",
+    "index": "The Overworld"
   },
   {
     "name": "Magma Egg",
@@ -93,16 +84,13 @@
       "Demon",
       "Inferno Dragon"
     ],
-    "hatchCost": 15000,
-    "hatchCurrency": "coins",
+    "luckIgnored": false,
     "infinityEgg": "The Overworld",
-    "index": "The Overworld",
-    "available": true,
     "canSpawnAsRift": true,
-    "world": "The Overworld",
-    "zone": "Outer Space",
+    "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
-    "secretBountyRotation": true
+    "dateRemoved": "",
+    "index": "The Overworld"
   },
   {
     "name": "Crystal Egg",
@@ -115,16 +103,13 @@
       "Unicorn",
       "Flying Pig"
     ],
-    "hatchCost": 75000,
-    "hatchCurrency": "coins",
+    "luckIgnored": false,
     "infinityEgg": "The Overworld",
-    "index": "The Overworld",
-    "available": true,
     "canSpawnAsRift": true,
-    "world": "The Overworld",
-    "zone": "Outer Space",
+    "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
-    "secretBountyRotation": true
+    "dateRemoved": "",
+    "index": "The Overworld"
   },
   {
     "name": "Lunar Egg",
@@ -137,16 +122,13 @@
       "Lunar Serpent",
       "Electra"
     ],
-    "hatchCost": 100000,
-    "hatchCurrency": "coins",
+    "luckIgnored": false,
     "infinityEgg": "The Overworld",
-    "index": "The Overworld",
-    "available": true,
     "canSpawnAsRift": true,
-    "world": "The Overworld",
-    "zone": "Twilight",
+    "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
-    "secretBountyRotation": true
+    "dateRemoved": "",
+    "index": "The Overworld"
   },
   {
     "name": "Void Egg",
@@ -159,16 +141,13 @@
       "Neon Elemental",
       "NULLVoid"
     ],
-    "hatchCost": 175000,
-    "hatchCurrency": "coins",
+    "luckIgnored": false,
     "infinityEgg": "The Overworld",
-    "index": "The Overworld",
-    "available": true,
     "canSpawnAsRift": true,
-    "world": "The Overworld",
-    "zone": "The Void",
+    "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
-    "secretBountyRotation": true
+    "dateRemoved": "",
+    "index": "The Overworld"
   },
   {
     "name": "Hell Egg",
@@ -181,16 +160,13 @@
       "Inferno Cube",
       "Virus"
     ],
-    "hatchCost": 300000,
-    "hatchCurrency": "coins",
+    "luckIgnored": false,
     "infinityEgg": "The Overworld",
-    "index": "The Overworld",
-    "available": true,
     "canSpawnAsRift": true,
-    "world": "The Overworld",
-    "zone": "The Void",
+    "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
-    "secretBountyRotation": true
+    "dateRemoved": "",
+    "index": "The Overworld"
   },
   {
     "name": "Nightmare Egg",
@@ -204,16 +180,13 @@
       "Demonic Hydra",
       "The Overlord"
     ],
-    "hatchCost": 900000,
-    "hatchCurrency": "coins",
+    "luckIgnored": false,
     "infinityEgg": "The Overworld",
-    "index": "The Overworld",
-    "available": true,
     "canSpawnAsRift": true,
-    "world": "The Overworld",
-    "zone": "The Void",
+    "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
-    "secretBountyRotation": true
+    "dateRemoved": "",
+    "index": "The Overworld"
   },
   {
     "name": "Rainbow Egg",
@@ -226,16 +199,13 @@
       "Hexarium",
       "Rainbow Shock"
     ],
-    "hatchCost": 1500000,
-    "hatchCurrency": "coins",
+    "luckIgnored": false,
     "infinityEgg": "The Overworld",
-    "index": "The Overworld",
-    "available": true,
     "canSpawnAsRift": true,
-    "world": "The Overworld",
-    "zone": "Zen",
+    "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
-    "secretBountyRotation": true
+    "dateRemoved": "",
+    "index": "The Overworld"
   },
   {
     "name": "Showman Egg",
@@ -245,15 +215,13 @@
       "Gamer Boi",
       "Queen of Hearts"
     ],
-    "hatchCost": 1000,
-    "hatchCurrency": "tickets",
+    "luckIgnored": false,
     "infinityEgg": "Minigame Paradise",
-    "index": "Minigame Paradise",
-    "available": true,
     "canSpawnAsRift": false,
-    "world": "Minigame Paradise",
-    "zone": "Dice Island",
-    "dateAdded": "2025-05-04"
+    "secretBountyRotation": false,
+    "dateAdded": "2025-05-04",
+    "dateRemoved": "",
+    "index": "Minigame Paradise"
   },
   {
     "name": "Mining Egg",
@@ -266,16 +234,13 @@
       "Crystal Unicorn",
       "Stone Gargoyle"
     ],
-    "hatchCost": 120000,
-    "hatchCurrency": "tickets",
+    "luckIgnored": false,
     "infinityEgg": "Minigame Paradise",
-    "index": "Minigame Paradise",
-    "available": true,
     "canSpawnAsRift": true,
-    "world": "Minigame Paradise",
-    "zone": "Minecart Forest",
+    "secretBountyRotation": true,
     "dateAdded": "2025-05-04",
-    "secretBountyRotation": true
+    "dateRemoved": "",
+    "index": "Minigame Paradise"
   },
   {
     "name": "Cyber Egg",
@@ -289,16 +254,13 @@
       "Bionic Shard",
       "Mech Robot"
     ],
-    "hatchCost": 450000,
-    "hatchCurrency": "tickets",
+    "luckIgnored": false,
     "infinityEgg": "Minigame Paradise",
-    "index": "Minigame Paradise",
-    "available": true,
     "canSpawnAsRift": true,
-    "world": "Minigame Paradise",
-    "zone": "Robot Factory",
+    "secretBountyRotation": true,
     "dateAdded": "2025-05-04",
-    "secretBountyRotation": true
+    "dateRemoved": "",
+    "index": "Minigame Paradise"
   },
   {
     "name": "Neon Egg",
@@ -312,16 +274,13 @@
       "Equalizer",
       "Hyperwave Kitty"
     ],
-    "hatchCost": 1300000,
-    "hatchCurrency": "tickets",
+    "luckIgnored": false,
     "infinityEgg": "Minigame Paradise",
-    "index": "Minigame Paradise",
-    "available": true,
     "canSpawnAsRift": true,
-    "world": "Minigame Paradise",
-    "zone": "Hyperwave Island",
+    "secretBountyRotation": true,
     "dateAdded": "2025-05-17",
-    "secretBountyRotation": true
+    "dateRemoved": "",
+    "index": "Minigame Paradise"
   },
   {
     "name": "Chance Egg",
@@ -332,14 +291,11 @@
       "Ring Master",
       "Royal Guardian"
     ],
-    "hatchCost": 1500000,
-    "hatchCurrency": "tickets",
-    "limited": false,
-    "available": true,
+    "luckIgnored": false,
     "canSpawnAsRift": false,
-    "world": "Minigame Paradise",
-    "zone": "W2 Surface",
-    "dateAdded": "2025-05-17"
+    "secretBountyRotation": false,
+    "dateAdded": "2025-05-17",
+    "dateRemoved": ""
   },
   {
     "name": "Game Egg",
@@ -350,13 +306,9 @@
       "Game Master",
       "Jackpot"
     ],
-    "hatchCost": 10000,
-    "hatchCurrency": "tickets",
-    "limited": true,
-    "available": false,
+    "luckIgnored": false,
     "canSpawnAsRift": false,
-    "world": "Minigame Paradise",
-    "zone": "W2 Surface",
+    "secretBountyRotation": false,
     "dateAdded": "2025-05-04",
     "dateRemoved": "2025-05-17"
   },
@@ -371,143 +323,11 @@
       "Crimson Bloodmoon",
       "Lord Shock"
     ],
-    "hatchCost": 5000000,
-    "hatchCurrency": "tickets",
-    "limited": true,
-    "available": false,
+    "luckIgnored": false,
     "canSpawnAsRift": true,
-    "world": "Minigame Paradise",
+    "secretBountyRotation": false,
     "dateAdded": "2025-05-10",
-    "dateRemoved": "2025-05-25",
-    "zone": "Underworld Egg Rift Island"
-  },
-  {
-    "name": "Index",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/da/Index_Icon.png",
-    "pets": [
-      "Trio Cube",
-      "Sir Doggyton"
-    ],
-    "luckIgnored": true,
-    "available": true
-  },
-  {
-    "name": "Mystery Box",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/8/87/Mystery_Box.png",
-    "pets": [
-      "Sunburst",
-      "Moonburst"
-    ],
-    "luckIgnored": true,
-    "available": true
-  },
-  {
-    "name": "Playtime",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/67/Playtime_Icon.png",
-    "pets": [
-      "Kitsune",
-      "Vaporium"
-    ],
-    "luckIgnored": true,
-    "available": true
-  },
-  {
-    "name": "Traveling Merchant",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/01/Shops_Mastery.png",
-    "pets": [
-      "BGS Box"
-    ],
-    "luckIgnored": true,
-    "available": true
-  },
-  {
-    "name": "Wheel Spin",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/5/54/Wheel_Spin_Icon.png",
-    "pets": [
-      "Umbra"
-    ],
-    "luckIgnored": true,
-    "available": true
-  },
-  {
-    "name": "Golden Chest",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/e/ec/Golden_Key.png",
-    "pets": [
-      "Abyssal Dragon"
-    ],
-    "luckIgnored": true,
-    "available": true
-  },
-  {
-    "name": "Royal Chest",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/e/eb/Royal_Key.png",
-    "pets": [
-      "Hacker Prism"
-    ],
-    "luckIgnored": true,
-    "available": true
-  },
-  {
-    "name": "Dice Chest",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/e/e4/Dice_Key.png",
-    "pets": [
-      "Dice Split"
-    ],
-    "luckIgnored": true,
-    "available": true
-  },
-  {
-    "name": "Cart Escape",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/f/f9/Cart_Escape_Minigame_Icon.png",
-    "pets": [
-      "Magmas"
-    ],
-    "luckIgnored": true,
-    "available": true
-  },
-  {
-    "name": "Robot Claw",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/4/47/Robot_Claw_Minigame_Icon.png",
-    "pets": [
-      "Dragon Plushie"
-    ],
-    "luckIgnored": true,
-    "available": true
-  },
-  {
-    "name": "Hyper Darts",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/9/90/Multi_Darts.png",
-    "pets": [
-      "Star Charm"
-    ],
-    "luckIgnored": true,
-    "available": true
-  },
-  {
-    "name": "Quests",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c2/Quests_Icon.png",
-    "pets": [
-      "Holy Shock",
-      "Evil Shock",
-      "Rainbow Blitz",
-      "King Soul",
-      "Demonic Dogcat",
-      "Chronos",
-      "Dark Lord",
-      "Glorp Bruh"
-    ],
-    "luckIgnored": true,
-    "available": true
-  },
-  {
-    "name": "World Rewards",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/dc/The_Overworld_Icon.png",
-    "pets": [
-      "Cerberus",
-      "Security System"
-    ],
-    "luckIgnored": true,
-    "available": true
+    "dateRemoved": "2025-05-25"
   },
   {
     "name": "Season 3 Egg",
@@ -519,24 +339,10 @@
       "Glyph Warrior"
     ],
     "luckIgnored": true,
-    "limited": true,
-    "available": true,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
     "dateAdded": "2025-05-25",
     "dateRemoved": "2025-06-25"
-  },
-  {
-    "name": "Season 3 Bubble Pass",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Bubble_Pass_Icon.png",
-    "pets": [
-      "Runic Master",
-      "Runic Prism",
-      "Ancient One",
-      "Monolith"
-    ],
-    "luckIgnored": true,
-    "limited": true,
-    "available": true,
-    "dateAdded": "2025-05-25"
   },
   {
     "name": "Season 2 Egg",
@@ -548,23 +354,8 @@
       "Nebula"
     ],
     "luckIgnored": true,
-    "limited": true,
-    "available": false,
-    "dateAdded": "2025-05-04",
-    "dateRemoved": "2025-05-22"
-  },
-  {
-    "name": "Season 2 Bubble Pass",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Bubble_Pass_Icon.png",
-    "pets": [
-      "Dusk",
-      "Dawn",
-      "Moonlight",
-      "Luminosity"
-    ],
-    "luckIgnored": true,
-    "limited": true,
-    "available": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
     "dateAdded": "2025-05-04",
     "dateRemoved": "2025-05-22"
   },
@@ -578,23 +369,8 @@
       "Seraph"
     ],
     "luckIgnored": true,
-    "limited": true,
-    "available": false,
-    "dateAdded": "2025-04-11",
-    "dateRemoved": "2025-05-03"
-  },
-  {
-    "name": "Season 1 Bubble Pass",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Bubble_Pass_Icon.png",
-    "pets": [
-      "Lunar Deity",
-      "Solar Deity",
-      "Crescent Empress",
-      "Avernus"
-    ],
-    "luckIgnored": true,
-    "limited": true,
-    "available": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
     "dateAdded": "2025-04-11",
     "dateRemoved": "2025-05-03"
   },
@@ -608,21 +384,8 @@
       "Fire Guardian"
     ],
     "luckIgnored": true,
-    "limited": true,
-    "available": false,
-    "dateAdded": "2025-05-17",
-    "dateRemoved": "2025-05-22"
-  },
-  {
-    "name": "Series 2 Leaderboards",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/79/Competitive_Icon.png",
-    "pets": [
-      "The Moon",
-      "The Sun"
-    ],
-    "luckIgnored": true,
-    "limited": true,
-    "available": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
     "dateAdded": "2025-05-17",
     "dateRemoved": "2025-05-22"
   },
@@ -637,21 +400,8 @@
       "Overseer"
     ],
     "luckIgnored": true,
-    "limited": true,
-    "available": false,
-    "dateAdded": "2025-04-26",
-    "dateRemoved": "2025-04-30"
-  },
-  {
-    "name": "Series 1 Leaderboards",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/79/Competitive_Icon.png",
-    "pets": [
-      "Elite Challenger",
-      "Elite Soul"
-    ],
-    "luckIgnored": true,
-    "limited": true,
-    "available": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
     "dateAdded": "2025-04-26",
     "dateRemoved": "2025-04-30"
   },
@@ -669,27 +419,11 @@
       "Void Crystal Dragon",
       "Pyramidium"
     ],
-    "hatchCost": 2000000,
-    "hatchCurrency": "coins",
-    "world": "The Overworld",
-    "zone": "The Dark Island",
-    "limited": true,
-    "available": true,
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
     "dateAdded": "2025-06-17",
-    "dateRemoved": "2025-06-29"
-  },
-  {
-    "name": "Light Box",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/5/50/Light_Box.png",
-    "pets": [
-      "Dream Catcher",
-      "Stained Star"
-    ],
-    "limited": true,
-    "available": true,
-    "dateAdded": "2025-06-17",
-    "dateRemoved": "2025-06-22",
-    "luckIgnored": true
+    "dateRemoved": ""
   },
   {
     "name": "Light Egg",
@@ -703,14 +437,7 @@
       "Shimmering Shard",
       "Immortal One"
     ],
-    "hatchCost": 2500000,
-    "hatchCurrency": "coins",
-    "world": "The Overworld",
-    "zone": "W1 Surface",
-    "limited": true,
-    "available": false,
     "luckIgnored": false,
-    "infinityEgg": "",
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-06-07",
@@ -728,14 +455,7 @@
       "Shinigami",
       "Immortal One"
     ],
-    "hatchCost": 2500000,
-    "hatchCurrency": "coins",
-    "world": "The Overworld",
-    "zone": "W1 Surface",
-    "limited": true,
-    "available": false,
     "luckIgnored": false,
-    "infinityEgg": "",
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-06-07",
@@ -749,13 +469,10 @@
       "Seagull",
       "Beach Boi"
     ],
-    "hatchCost": 50,
-    "hatchCurrency": "seashells",
-    "limited": true,
-    "available": false,
-    "world": "Beach Festival",
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
     "dateAdded": "2025-05-25",
-    "zone": "The Beach",
     "dateRemoved": "2025-06-17"
   },
   {
@@ -773,13 +490,10 @@
       "Chocolate Sundae Champion",
       "Strawberry Sundae Champion"
     ],
-    "hatchCost": 1750,
-    "hatchCurrency": "seashells",
-    "limited": true,
-    "available": false,
-    "world": "Beach Festival",
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
     "dateAdded": "2025-05-25",
-    "zone": "The Beach",
     "dateRemoved": "2025-06-17"
   },
   {
@@ -794,13 +508,10 @@
       "Pineapple Tourist",
       "Dragonfruit"
     ],
-    "hatchCost": 50000,
-    "hatchCurrency": "seashells",
-    "limited": true,
-    "available": false,
-    "world": "Beach Festival",
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
     "dateAdded": "2025-05-25",
-    "zone": "The Beach",
     "dateRemoved": "2025-06-17"
   },
   {
@@ -819,13 +530,10 @@
       "Fire Basilisk",
       "Ice Basilisk"
     ],
-    "hatchCost": 10000000,
-    "hatchCurrency": "seashells",
-    "limited": true,
-    "available": false,
-    "world": "Beach Festival",
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
     "dateAdded": "2025-05-31",
-    "zone": "Ancient Island",
     "dateRemoved": "2025-06-17"
   },
   {
@@ -839,46 +547,10 @@
       "Captains Curse"
     ],
     "luckIgnored": true,
-    "limited": true,
-    "available": false,
-    "world": "Beach Festival",
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
     "dateAdded": "2025-05-31",
-    "zone": "Ancient Island",
     "dateRemoved": "2025-06-17"
-  },
-  {
-    "name": "Ancient Chest",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/b/b8/Ancient_Chest.png",
-    "pets": [
-      "Infernal"
-    ],
-    "luckIgnored": true,
-    "limited": true,
-    "available": true,
-    "dateAdded": "2025-05-31"
-  },
-  {
-    "name": "Summer Login Rewards",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/a/ad/Beach_Festival_Icon.png",
-    "pets": [
-      "Doggy Pile"
-    ],
-    "luckIgnored": true,
-    "limited": true,
-    "available": true,
-    "dateAdded": "2025-05-31"
-  },
-  {
-    "name": "Beach Festival Quests",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c2/Quests_Icon.png",
-    "pets": [
-      "Captain Bruh"
-    ],
-    "luckIgnored": true,
-    "limited": true,
-    "available": true,
-    "world": "Beach Festival",
-    "dateAdded": "2025-06-07"
   },
   {
     "name": "200M Egg",
@@ -891,12 +563,9 @@
       "Corrupt Glitch",
       "Wolflord"
     ],
-    "hatchCost": 2000000,
-    "hatchCurrency": "coins",
-    "limited": true,
-    "available": false,
-    "world": "The Overworld",
-    "zone": "W1 Surface",
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
     "dateAdded": "2025-05-10",
     "dateRemoved": "2025-05-17"
   },
@@ -912,30 +581,11 @@
       "King Pufferfish",
       "Royal Trophy"
     ],
-    "hatchCost": 1000000,
-    "hatchCurrency": "coins",
-    "limited": true,
-    "available": false,
-    "world": "The Overworld",
-    "zone": "W1 Surface",
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
     "dateAdded": "2025-04-26",
     "dateRemoved": "2025-05-04"
-  },
-  {
-    "name": "Easter Event 2025",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/4/47/Easter_Egg.png",
-    "pets": [
-      "Easter Fluffle",
-      "Chocolate Bunny",
-      "Midas",
-      "Patronus"
-    ],
-    "luckIgnored": true,
-    "limited": true,
-    "available": true,
-    "world": "The Overworld",
-    "dateAdded": "2025-04-18",
-    "dateRemoved": "2025-04-26"
   },
   {
     "name": "Throwback Egg",
@@ -950,13 +600,9 @@
       "Godly Gem",
       "Dementor"
     ],
-    "hatchCost": 1400000,
-    "hatchCurrency": "coins",
-    "limited": true,
-    "available": false,
+    "luckIgnored": false,
     "canSpawnAsRift": true,
-    "world": "The Overworld",
-    "zone": "Hatching Zone",
+    "secretBountyRotation": false,
     "dateAdded": "2025-04-23",
     "dateRemoved": "2025-04-30"
   },
@@ -972,13 +618,9 @@
       "Cardinal Bunny",
       "Easter Basket"
     ],
-    "hatchCost": 1200000,
-    "hatchCurrency": "coins",
-    "limited": true,
-    "available": false,
+    "luckIgnored": false,
     "canSpawnAsRift": true,
-    "world": "The Overworld",
-    "zone": "Easter Event 2025",
+    "secretBountyRotation": false,
     "dateAdded": "2025-04-18",
     "dateRemoved": "2025-04-26"
   },
@@ -994,263 +636,11 @@
       "Rainbow Marshmellow",
       "Giant Chocolate Chicken"
     ],
-    "hatchCost": 800000,
-    "hatchCurrency": "coins",
-    "limited": true,
-    "available": false,
+    "luckIgnored": false,
     "canSpawnAsRift": true,
-    "world": "The Overworld",
-    "zone": "Easter Event 2025",
+    "secretBountyRotation": false,
     "dateAdded": "2025-04-18",
     "dateRemoved": "2025-04-26"
-  },
-  {
-    "name": "Silly Egg",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3a/Silly_Egg.png",
-    "pets": [
-      "Bunnnny",
-      "Long Kitty",
-      "DOOF",
-      "ROUND",
-      "Silly Doggy :)"
-    ],
-    "hatchCost": 10000000,
-    "hatchCurrency": "coins",
-    "limited": true,
-    "available": false,
-    "canSpawnAsRift": true,
-    "riftChance": 0.002,
-    "world": "The Overworld",
-    "dateAdded": "2025-04-26",
-    "dateRemoved": "2025-05-10",
-    "zone": "Silly Egg Rift Island"
-  },
-  {
-    "name": "Aura Egg",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2e/Aura_Egg.png",
-    "pets": [
-      "Manny",
-      "Manicorn",
-      "Sigma Serpent",
-      "Manarium",
-      "MAN FACE GOD"
-    ],
-    "hatchCost": 7800000,
-    "hatchCurrency": "coins",
-    "limited": true,
-    "available": false,
-    "canSpawnAsRift": true,
-    "riftChance": 0.002,
-    "world": "The Overworld",
-    "dateAdded": "2025-04-11",
-    "dateRemoved": "2025-04-26",
-    "zone": "Aura Egg Rift Island"
-  },
-  {
-    "name": "Daily Perks",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/df/Golden_Egg_Icon.png",
-    "pets": [
-      "WOMAN FACE GOD",
-      "Dogcat"
-    ],
-    "luckIgnored": true,
-    "limited": false,
-    "available": true,
-    "dateAdded": "2025-06-22"
-  },
-  {
-    "name": "Secret Bounty Wave 3",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png",
-    "pets": [
-      "King Slime",
-      "Golden Retreiver",
-      "True Titan"
-    ],
-    "luckIgnored": true,
-    "limited": true,
-    "available": true,
-    "dateAdded": "2025-06-13"
-  },
-  {
-    "name": "Secret Bounty Wave 2",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png",
-    "pets": [
-      "Beelzebub",
-      "Overlord Plushie",
-      "Everblaze"
-    ],
-    "luckIgnored": true,
-    "limited": true,
-    "available": true,
-    "dateAdded": "2025-05-25",
-    "dateRemoved": "2025-06-17"
-  },
-  {
-    "name": "Secret Bounty Wave 1",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png",
-    "pets": [
-      "D0GGY1337",
-      "Queen Kitty",
-      "Prophet"
-    ],
-    "luckIgnored": true,
-    "limited": true,
-    "available": false,
-    "dateAdded": "2025-05-10",
-    "dateRemoved": "2025-05-25"
-  },
-  {
-    "name": "Exclusive Wave 10",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
-    "pets": [
-      "ROUND BRUH",
-      "Bruhodle"
-    ],
-    "luckIgnored": true,
-    "limited": true,
-    "available": true,
-    "dateAdded": "2025-06-22",
-    "dateRemoved": "2025-06-28"
-  },
-  {
-    "name": "Exclusive Wave 9",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
-    "pets": [
-      "Excabot",
-      "Broken TV"
-    ],
-    "luckIgnored": true,
-    "limited": true,
-    "available": false,
-    "dateAdded": "2025-06-17",
-    "dateRemoved": "2025-06-22"
-  },
-  {
-    "name": "Exclusive Wave 8",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
-    "pets": [
-      "Galaxium",
-      "Dowominus"
-    ],
-    "luckIgnored": true,
-    "limited": true,
-    "available": false,
-    "dateAdded": "2025-06-07",
-    "dateRemoved": "2025-06-13"
-  },
-  {
-    "name": "Exclusive Wave 7",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
-    "pets": [
-      "Carrot Pufferfish",
-      "Crystal Teddy"
-    ],
-    "luckIgnored": true,
-    "limited": true,
-    "available": false,
-    "dateAdded": "2025-05-31",
-    "dateRemoved": "2025-06-06"
-  },
-  {
-    "name": "Exclusive Wave 6",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
-    "pets": [
-      "Rigby",
-      "Dreamscape"
-    ],
-    "luckIgnored": true,
-    "limited": true,
-    "available": false,
-    "dateAdded": "2025-05-25",
-    "dateRemoved": "2025-05-30"
-  },
-  {
-    "name": "Exclusive Wave 5",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
-    "pets": [
-      "Noctis",
-      "Bongo Kitty"
-    ],
-    "luckIgnored": true,
-    "limited": true,
-    "available": false,
-    "dateAdded": "2025-05-17",
-    "dateRemoved": "2025-05-24"
-  },
-  {
-    "name": "Exclusive Wave 4",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
-    "pets": [
-      "Toilet Doggy",
-      "Capybara Plushie"
-    ],
-    "luckIgnored": true,
-    "limited": true,
-    "available": false,
-    "dateAdded": "2025-05-10",
-    "dateRemoved": "2025-05-14"
-  },
-  {
-    "name": "Exclusive Wave 3",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
-    "pets": [
-      "Enraged Phoenix",
-      "Electra Hydra"
-    ],
-    "luckIgnored": true,
-    "limited": true,
-    "available": false,
-    "dateAdded": "2025-04-26",
-    "dateRemoved": "2025-04-29"
-  },
-  {
-    "name": "Exclusive Wave 2",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
-    "pets": [
-      "Dark Serpent",
-      "Infernus"
-    ],
-    "luckIgnored": true,
-    "limited": true,
-    "available": false,
-    "dateAdded": "2025-04-19",
-    "dateRemoved": "2025-04-21"
-  },
-  {
-    "name": "Exclusive Wave 1",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
-    "pets": [
-      "Beta TV",
-      "Dowodle"
-    ],
-    "luckIgnored": true,
-    "limited": true,
-    "available": false,
-    "dateAdded": "2025-04-11",
-    "dateRemoved": "2025-04-14"
-  },
-  {
-    "name": "Gem Bundles",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Gems.png",
-    "pets": [
-      "Flying Gem"
-    ],
-    "luckIgnored": true,
-    "limited": true,
-    "available": false,
-    "dateAdded": "2025-04-11"
-  },
-  {
-    "name": "Robux Shop Quest",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
-    "pets": [
-      "Discord Imp"
-    ],
-    "luckIgnored": true,
-    "limited": true,
-    "available": false,
-    "dateAdded": "2025-04-11",
-    "dateRemoved": "2025-04-12"
   },
   {
     "name": "Bruh Egg",
@@ -1264,18 +654,42 @@
       "Seraphic Bruh",
       "BRUH GOD"
     ],
-    "hatchCost": 15000000,
-    "hatchCurrency": "coins",
-    "world": "The Overworld",
-    "zone": "Bruh Egg Rift Island",
-    "limited": true,
-    "available": true,
     "luckIgnored": false,
-    "infinityEgg": "",
     "canSpawnAsRift": true,
     "secretBountyRotation": false,
     "dateAdded": "2025-06-22",
-    "dateRemoved": "",
-    "riftChance": 0
+    "dateRemoved": "2025-07-06"
+  },
+  {
+    "name": "Silly Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3a/Silly_Egg.png",
+    "pets": [
+      "Bunnnny",
+      "Long Kitty",
+      "DOOF",
+      "ROUND",
+      "Silly Doggy :)"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": true,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-04-26",
+    "dateRemoved": "2025-05-10"
+  },
+  {
+    "name": "Aura Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2e/Aura_Egg.png",
+    "pets": [
+      "Manny",
+      "Manicorn",
+      "Sigma Serpent",
+      "Manarium",
+      "MAN FACE GOD"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": true,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-04-11",
+    "dateRemoved": "2025-04-26"
   }
 ]

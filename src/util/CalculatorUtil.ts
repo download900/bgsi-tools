@@ -1,5 +1,5 @@
 import Decimal from "decimal.js";
-import { Egg, Pet, PetData } from "./DataUtil";
+import { Egg, Pet, PET_DATA, PetData } from "./DataUtil";
 import { get } from "http";
 
 // Buff data
@@ -211,8 +211,7 @@ export function calculate(egg: Egg, calculatorSettings: CalculatorSettings, setC
         });
     });
 
-
     setCalculatorResults(results);
 }
 
-export default {}
+ export default {}

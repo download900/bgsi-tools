@@ -38,7 +38,7 @@ export default function App() {
           <Typography variant="h6" sx={{ flexGrow:1 }}>BGSI Tools</Typography>
           <Tabs value={currentTab} onChange={(event, newValue) => setCurrentTab(newValue)} sx={{ flexGrow: 1 }}>
             <Tab label="Calculator" value="Odds" />
-            <Tab label="Index" value="Completion" /> 
+            <Tab label="Index" value="Completion" />
             <Tab label="Pet Stats" value="Stats" /> 
             { isLocalhost && <Tab label="WikiTools" value="WikiTools" /> }
           </Tabs>
