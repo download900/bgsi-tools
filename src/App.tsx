@@ -61,7 +61,7 @@ export default function App() {
           {
             isLocalhost && 
             <Box sx={{ display: currentTab === 'WikiTools' ? 'flex' : 'none', flexGrow: '1', justifyContent: 'center', alignItems: 'middle', maxWidth: '100% !important' }}>
-              <WikiTools data={data} />
+              <WikiTools />
             </Box>
           }
         </Container>

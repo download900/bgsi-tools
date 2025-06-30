@@ -5,6 +5,7 @@
     "categories": [
       {
         "name": "The Overworld",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/dc/The_Overworld_Icon.png",
         "categories": [
           {
             "egg": "Common Egg"
@@ -46,6 +47,7 @@
       },
       {
         "name": "Minigame Paradise",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/1/1d/Minigame_Paradise_Icon.png",
         "categories": [
           {
             "egg": "Showman Egg"
@@ -72,6 +74,7 @@
     "categories": [
       {
         "name": "Index",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/da/Index_Icon.png",
         "pets": [
           "Trio Cube",
           "Sir Doggyton"
@@ -79,6 +82,7 @@
       },
       {
         "name": "Quests",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c2/Quests_Icon.png",
         "pets": [
           "Holy Shock",
           "Evil Shock",
@@ -93,6 +97,7 @@
       },
       {
         "name": "Lootable",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/8/87/Mystery_Box.png",
         "pets": [
           "Moonburst",
           "Sunburst",
@@ -103,24 +108,19 @@
           "Kitsune",
           "Magmas",
           "Dragon Plushie",
-          "Star Charm",
-          "Pixel Hydra"
+          "Star Charm"
         ]
       },
       {
         "name": "Shops",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/01/Shops_Mastery.png",
         "pets": [
-          "BGS Box",
-          "Doggy Tophat",
-          "Kitty Tophat",
-          "Bunny Tophat",
-          "Dragon Tophat",
-          "Rainbow Shock Tophat",
-          "Dementor Tophat"
+          "BGS Box"
         ]
       },
       {
         "name": "Limited Rewards",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/a/a2/Golden_Box.png",
         "pets": [
           "Discord Imp",
           "Easter Fluffle",
@@ -139,7 +139,7 @@
     ]
   },
   {
-    "name": "Limited",
+    "name": "Limited Eggs",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/8/86/Throwback_Egg.png",
     "categories": [
       {
@@ -177,7 +177,7 @@
       },
       {
         "name": "Beach Festival",
-        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/a/ad/Beach_Festival_Icon.png",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/4/49/Seashells.png",
         "categories": [
           {
             "egg": "Beach Egg"
@@ -213,9 +213,6 @@
       },
       {
         "egg": "Bruh Egg"
-      },
-      {
-        "egg": "July4th Egg"
       }
     ]
   },
@@ -252,16 +249,6 @@
           "Ancient One",
           "Monolith"
         ]
-      },
-      {
-        "name": "Season 4",
-        "egg": "Season 4 Egg",
-        "pets": [
-          "Honeycomb Blast",
-          "Big Bee",
-          "Lovely Rose",
-          "Lucid Leaf"
-        ]
       }
     ]
   },
@@ -293,6 +280,7 @@
     "categories": [
       {
         "name": "Wave 1",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png",
         "pets": [
           "D0GGY1337",
           "Queen Kitty",
@@ -301,6 +289,7 @@
       },
       {
         "name": "Wave 2",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png",
         "pets": [
           "Beelzebub",
           "Overlord Plushie",
@@ -309,6 +298,7 @@
       },
       {
         "name": "Wave 3",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png",
         "pets": [
           "King Slime",
           "Golden Retreiver",
@@ -331,12 +321,14 @@
     "categories": [
       {
         "name": "Gem Bundles",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Gems.png",
         "pets": [
           "Flying Gem"
         ]
       },
       {
         "name": "Wave 1",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
         "pets": [
           "Beta TV",
           "Dowodle"
@@ -344,6 +336,7 @@
       },
       {
         "name": "Wave 2",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
         "pets": [
           "Dark Serpent",
           "Infernus"
@@ -351,6 +344,7 @@
       },
       {
         "name": "Wave 3",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
         "pets": [
           "Enraged Phoenix",
           "Electra Hydra"
@@ -358,6 +352,7 @@
       },
       {
         "name": "Wave 4",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
         "pets": [
           "Toilet Doggy",
           "Capybara Plushie"
@@ -365,6 +360,7 @@
       },
       {
         "name": "Wave 5",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
         "pets": [
           "Noctis",
           "Bongo Kitty"
@@ -372,6 +368,7 @@
       },
       {
         "name": "Wave 6",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
         "pets": [
           "Rigby",
           "Dreamscape"
@@ -379,6 +376,7 @@
       },
       {
         "name": "Wave 7",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
         "pets": [
           "Carrot Pufferfish",
           "Crystal Teddy"
@@ -386,6 +384,7 @@
       },
       {
         "name": "Wave 8",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
         "pets": [
           "Galaxium",
           "Dowominus"
@@ -393,6 +392,7 @@
       },
       {
         "name": "Wave 9",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
         "pets": [
           "Excabot",
           "Broken TV"
@@ -400,16 +400,10 @@
       },
       {
         "name": "Wave 10",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
         "pets": [
           "ROUND BRUH",
           "Bruhodle"
-        ]
-      },
-      {
-        "name": "Wave 11",
-        "pets": [
-          "Tole Cat",
-          "Starry Kitsune"
         ]
       }
     ]

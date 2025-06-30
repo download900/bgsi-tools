@@ -2,7 +2,46 @@ import { JSX, useEffect, useRef, useState } from "react";
 import { Box, Button, capitalize, Container, Typography } from "@mui/material";
 import { Pet, Rarity, PetVariant, CurrencyVariant, Egg, PetData, Category } from "../util/DataUtil";
 import * as cheerio from 'cheerio';
+import categoriesJson from "../data/categories.json";
+import eggsJson from "../data/eggs.json";
+import petsJson from "../data/pets.json";
+
 const { format, parse } = require('lua-json')
+
+function loadData(): any {
+  // load pets
+  const petLookup: { [key: string]: Pet } = {};
+  const pets: Pet[] = [];
+  (petsJson as unknown as any).forEach((pet: any) => {
+    petLookup[pet.name] = pet;
+    pets.push(pet);
+  });
+  // load eggs
+  const eggLookup: { [key: string]: Egg } = {};
+  const eggs: Egg[] = [];
+  (eggsJson as unknown as any).forEach((egg: any) => {
+    eggLookup[egg.name] = egg;
+    eggs.push(egg);
+  });
+  // load categories
+  const categoryLookup: { [key: string]: Category } = {};
+  const categories: Category[] = [];
+  (categoriesJson as unknown as any).forEach((cat: any) => {
+    categoryLookup[cat.name] = cat;
+    categories.push(cat);
+  });
+
+  let PET_DATA = {
+    categories: categories,
+    categoryLookup: categoryLookup,
+    eggs: eggs,
+    eggLookup: eggLookup,
+    pets: pets,
+    petLookup: petLookup,
+  };
+
+  return PET_DATA;
+}
 
 // ---------------------------------------------------------------
 //                        Helper Functions
@@ -229,21 +268,21 @@ async function getPetImages(pet: Pet): Promise<Pet> {
 //                      Data Processing
 // ---------------------------------------------------------------
 
-const processNewData = (wikiData: PetData, existingData: PetData) => {
+const processNewData = (wikiData: PetData, existingData: any) => {
   for (const cat of wikiData.categories) {
-    processCategory(cat, existingData, wikiData);
+    processCategory(cat, existingData);
   }
   for (const egg of wikiData.eggs) {
-    processEgg(egg, existingData, wikiData);
+    processEgg(egg, existingData);
   }
   for (const pet of wikiData.pets) {
-    processPet(pet, existingData, wikiData);
+    processPet(pet, existingData);
   }
 
   exportDataToJson(existingData);
 }
 
-function processCategory(cat: Category, existingData: PetData, newData: PetData) {
+function processCategory(cat: any, existingData: any) {
   // Check if the category already exists in the existing data
   const existingCat = existingData.categoryLookup[cat.name];
   if (existingCat) {
@@ -263,7 +302,7 @@ function processCategory(cat: Category, existingData: PetData, newData: PetData)
   }
 }
 
-function processEgg(egg: Egg, existingData: PetData, newData: PetData) {
+function processEgg(egg: any, existingData: any) {
   // Check if the egg already exists in the existing data
   const existingEgg = existingData.eggLookup[egg.name];
   if (existingEgg) {
@@ -283,7 +322,7 @@ function processEgg(egg: Egg, existingData: PetData, newData: PetData) {
   }
 }
 
-function processPet(pet: Pet, existingData: PetData, newData: PetData) {
+function processPet(pet: any, existingData: any) {
   // Check if the pet already exists in the existing data
   const existingPet = existingData.petLookup[pet.name];
   if (existingPet) {
@@ -326,11 +365,11 @@ export const saveJSON = (data: any, filename: string) => {
 
 // ────────────────────────────────────────────────────────────
 
-export interface WikiToolsProps {
-  data: PetData | undefined;
-}
+// export interface WikiToolsProps {
+//   data: PetData | undefined;
+// }
 
-export function WikiTools(props: WikiToolsProps): JSX.Element {
+export function WikiTools(): JSX.Element {
   const [debug, setDebug] = useState<string[]>([ 'Ready to scrape...' ]); 
   const preRef = useRef<HTMLPreElement>(null);
   
@@ -345,12 +384,12 @@ export function WikiTools(props: WikiToolsProps): JSX.Element {
     setDebug([ 'Scraping...' ]);
     const newData = {} as any as PetData;
     await scrapeWiki(newData, debugLog);
-    processNewData(newData, props.data!);
+    processNewData(newData, loadData());
   }
 
-  const handlePetsJsonExport = () => {
-    exportDataToJson(props.data!);
-  };
+  // const handlePetsJsonExport = () => {
+  //   exportDataToJson(props.data!);
+  // };
 
   useEffect(() => {
     const pre = preRef.current;
@@ -378,7 +417,7 @@ export function WikiTools(props: WikiToolsProps): JSX.Element {
           ))}
         </code>
       </pre>
-      <Typography variant="h4" sx={{ mb: 2 }}>JSON Data Export</Typography>
+      {/* <Typography variant="h4" sx={{ mb: 2 }}>JSON Data Export</Typography>
       <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', mb: 2 }}>
         <Button
           variant="contained"
@@ -387,7 +426,7 @@ export function WikiTools(props: WikiToolsProps): JSX.Element {
         >
           Export JSON Data
         </Button>
-      </Box>
+      </Box> */}
     </Container>
   );
 }

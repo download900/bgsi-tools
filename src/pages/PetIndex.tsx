@@ -179,10 +179,17 @@ export function PetIndex({ data }: Props) {
   const sortedPets = useMemo(
     () =>
       [...petsToShow].sort((a, b) => {
-        const byRarity =
-          rarityOrder.indexOf(a.rarity) -
-          rarityOrder.indexOf(b.rarity);
-        return byRarity !== 0 ? byRarity : b.chance - a.chance;
+        if (a.obtainedFrom !== b.obtainedFrom) {
+          return -1;
+        }
+        if (a.dateAdded !== b.dateAdded) {
+          return a.dateAdded < b.dateAdded ? -1 : 1;
+        }
+        if (a.rarity !== b.rarity) {
+          return rarityOrder.indexOf(a.rarity) -
+            rarityOrder.indexOf(b.rarity);
+        }
+        return b.chance - a.chance;
       }),
     [petsToShow]
   );
@@ -363,7 +370,7 @@ export function PetIndex({ data }: Props) {
                   Pet
                 </TableCell>
                 <TableCell sx={{ width: 120, fontWeight: "bold" }}>
-                  Drop Rate
+                  Chance
                 </TableCell>
                 {petVariants.map((v) => (
                   <TableCell

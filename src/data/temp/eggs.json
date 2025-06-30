@@ -12,7 +12,7 @@
     "luckIgnored": false,
     "infinityEgg": "The Overworld",
     "canSpawnAsRift": false,
-    "secretBountyRotation": true,
+    "secretBountyRotation": false,
     "dateAdded": "2025-04-11",
     "dateRemoved": "",
     "index": "The Overworld"
@@ -423,7 +423,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-06-17",
-    "dateRemoved": "2025-06-30"
+    "dateRemoved": ""
   },
   {
     "name": "Light Egg",
@@ -691,40 +691,5 @@
     "secretBountyRotation": false,
     "dateAdded": "2025-04-11",
     "dateRemoved": "2025-04-26"
-  },
-  {
-    "name": "Season 4 Egg",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/4/40/Season_4_Egg.png",
-    "pets": [
-      "Black Rain Frog",
-      "Stickbug",
-      "Wilted Branch",
-      "Soul of Plant"
-    ],
-    "luckIgnored": true,
-    "canSpawnAsRift": false,
-    "secretBountyRotation": false,
-    "dateAdded": "2025-06-30",
-    "dateRemoved": "2025-07-14"
-  },
-  {
-    "name": "July4th Egg",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c0/July4th_Egg.png",
-    "pets": [
-      "Patriotic Doggy",
-      "Eagle",
-      "Sparkler Man",
-      "Patriotic Penguin",
-      "Patriotic Shock",
-      "Star Lord",
-      "Liberty",
-      "Patriotic Robot",
-      "Da Cool Trio"
-    ],
-    "luckIgnored": false,
-    "canSpawnAsRift": true,
-    "secretBountyRotation": false,
-    "dateAdded": "2025-06-30",
-    "dateRemoved": ""
   }
 ]
