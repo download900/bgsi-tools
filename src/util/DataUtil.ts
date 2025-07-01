@@ -29,6 +29,7 @@ export interface Category {
   egg?: Egg,
   pets?: Pet[],
   categories: Category[],
+  reverseTabs?: boolean;
 }
 
 export interface Egg { 
@@ -178,7 +179,7 @@ export function loadData(): PetData {
         cat.pets = cat.pets || [];
         for (const pet of cat.egg.pets) {
           if (!cat.pets.some((p: Pet) => p.name === pet.name)) {
-            cat.pets.push(pet);
+            cat.pets.unshift(pet);
           }
         }
       }

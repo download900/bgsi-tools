@@ -1,7 +1,6 @@
 [
   {
     "name": "Worlds",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/dc/The_Overworld_Icon.png",
     "categories": [
       {
         "name": "The Overworld",
@@ -42,7 +41,8 @@
           {
             "egg": "Rainbow Egg"
           }
-        ]
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/dc/The_Overworld_Icon.png"
       },
       {
         "name": "Minigame Paradise",
@@ -62,20 +62,22 @@
           {
             "egg": "Chance Egg"
           }
-        ]
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/1/1d/Minigame_Paradise_Icon.png"
       }
-    ]
+    ],
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/dc/The_Overworld_Icon.png"
   },
   {
     "name": "Rewards",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/67/Playtime_Icon.png",
     "categories": [
       {
         "name": "Index",
         "pets": [
           "Trio Cube",
           "Sir Doggyton"
-        ]
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/da/Index_Icon.png"
       },
       {
         "name": "Quests",
@@ -89,7 +91,8 @@
           "Dark Lord",
           "Cerberus",
           "Security System"
-        ]
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c2/Quests_Icon.png"
       },
       {
         "name": "Lootable",
@@ -105,7 +108,8 @@
           "Dragon Plushie",
           "Star Charm",
           "Pixel Hydra"
-        ]
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/8/87/Mystery_Box.png"
       },
       {
         "name": "Shops",
@@ -115,9 +119,9 @@
           "Kitty Tophat",
           "Bunny Tophat",
           "Dragon Tophat",
-          "Rainbow Shock Tophat",
-          "Dementor Tophat"
-        ]
+          "Rainbow Shock Tophat"
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/01/Shops_Mastery.png"
       },
       {
         "name": "Limited Rewards",
@@ -133,21 +137,23 @@
           "Captain Bruh",
           "Dream Catcher",
           "Stained Star",
-          "Glorp Bruh"
-        ]
+          "Glorp Bruh",
+          "Dementor Tophat"
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/a/a2/Golden_Box.png"
       }
-    ]
+    ],
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/67/Playtime_Icon.png"
   },
   {
     "name": "Limited",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/8/86/Throwback_Egg.png",
+    "reverseTabs": true,
     "categories": [
       {
         "egg": "Aura Egg"
       },
       {
         "name": "Easter Event 2025",
-        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/4/47/Easter_Egg.png",
         "categories": [
           {
             "egg": "Pastel Egg"
@@ -158,7 +164,8 @@
           {
             "egg": "Throwback Egg"
           }
-        ]
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/4/47/Easter_Egg.png"
       },
       {
         "egg": "100M Egg"
@@ -177,7 +184,6 @@
       },
       {
         "name": "Beach Festival",
-        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/a/ad/Beach_Festival_Icon.png",
         "categories": [
           {
             "egg": "Beach Egg"
@@ -194,11 +200,11 @@
           {
             "egg": "Pirate Egg"
           }
-        ]
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/a/ad/Beach_Festival_Icon.png"
       },
       {
         "name": "Light and Dark",
-        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3c/Light_Egg.png",
         "categories": [
           {
             "egg": "Light Egg"
@@ -206,7 +212,8 @@
           {
             "egg": "Dark Egg"
           }
-        ]
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3c/Light_Egg.png"
       },
       {
         "egg": "Voidcrystal Egg"
@@ -217,11 +224,12 @@
       {
         "egg": "July4th Egg"
       }
-    ]
+    ],
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/8/86/Throwback_Egg.png"
   },
   {
     "name": "Bubble Pass",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/7d/Infinite_Track_Icon.png",
+    "reverseTabs": true,
     "categories": [
       {
         "name": "Season 1",
@@ -231,7 +239,8 @@
           "Solar Deity",
           "Crescent Empress",
           "Avernus"
-        ]
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/7c/Season_1_Egg.png"
       },
       {
         "name": "Season 2",
@@ -241,7 +250,8 @@
           "Dawn",
           "Moonlight",
           "Luminosity"
-        ]
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/f/f9/Season_2_Egg.png"
       },
       {
         "name": "Season 3",
@@ -251,7 +261,8 @@
           "Runic Prism",
           "Ancient One",
           "Monolith"
-        ]
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/e/ed/Season_3_Egg.png"
       },
       {
         "name": "Season 4",
@@ -261,13 +272,15 @@
           "Big Bee",
           "Lovely Rose",
           "Lucid Leaf"
-        ]
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/4/40/Season_4_Egg.png"
       }
-    ]
+    ],
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/7d/Infinite_Track_Icon.png"
   },
   {
     "name": "Competitive",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/79/Competitive_Icon.png",
+    "reverseTabs": true,
     "categories": [
       {
         "name": "Series 1",
@@ -275,7 +288,8 @@
         "pets": [
           "Elite Challenger",
           "Elite Soul"
-        ]
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/70/Series_1_Egg.png"
       },
       {
         "name": "Series 2",
@@ -283,13 +297,15 @@
         "pets": [
           "The Moon",
           "The Sun"
-        ]
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/75/Series_2_Egg.png"
       }
-    ]
+    ],
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/79/Competitive_Icon.png"
   },
   {
     "name": "Secret Bounty",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png",
+    "reverseTabs": true,
     "categories": [
       {
         "name": "Wave 1",
@@ -297,7 +313,8 @@
           "D0GGY1337",
           "Queen Kitty",
           "Prophet"
-        ]
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png"
       },
       {
         "name": "Wave 2",
@@ -305,7 +322,8 @@
           "Beelzebub",
           "Overlord Plushie",
           "Everblaze"
-        ]
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png"
       },
       {
         "name": "Wave 3",
@@ -313,105 +331,120 @@
           "King Slime",
           "Golden Retreiver",
           "True Titan"
-        ]
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png"
       }
-    ]
+    ],
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png"
   },
   {
     "name": "Daily Perks",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/df/Golden_Egg_Icon.png",
     "pets": [
       "Dogcat",
       "WOMAN FACE GOD"
-    ]
+    ],
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/df/Golden_Egg_Icon.png"
   },
   {
     "name": "Robux Shop",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
+    "reverseTabs": true,
     "categories": [
       {
         "name": "Gem Bundles",
         "pets": [
           "Flying Gem"
-        ]
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Gems.png"
       },
       {
         "name": "Wave 1",
         "pets": [
           "Beta TV",
           "Dowodle"
-        ]
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png"
       },
       {
         "name": "Wave 2",
         "pets": [
           "Dark Serpent",
           "Infernus"
-        ]
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png"
       },
       {
         "name": "Wave 3",
         "pets": [
           "Enraged Phoenix",
           "Electra Hydra"
-        ]
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png"
       },
       {
         "name": "Wave 4",
         "pets": [
           "Toilet Doggy",
           "Capybara Plushie"
-        ]
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png"
       },
       {
         "name": "Wave 5",
         "pets": [
           "Noctis",
           "Bongo Kitty"
-        ]
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png"
       },
       {
         "name": "Wave 6",
         "pets": [
           "Rigby",
           "Dreamscape"
-        ]
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png"
       },
       {
         "name": "Wave 7",
         "pets": [
           "Carrot Pufferfish",
           "Crystal Teddy"
-        ]
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png"
       },
       {
         "name": "Wave 8",
         "pets": [
           "Galaxium",
           "Dowominus"
-        ]
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png"
       },
       {
         "name": "Wave 9",
         "pets": [
           "Excabot",
           "Broken TV"
-        ]
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png"
       },
       {
         "name": "Wave 10",
         "pets": [
           "ROUND BRUH",
           "Bruhodle"
-        ]
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png"
       },
       {
         "name": "Wave 11",
         "pets": [
           "Tole Cat",
           "Starry Kitsune"
-        ]
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png"
       }
-    ]
+    ],
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png"
   }
 ]

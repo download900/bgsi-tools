@@ -248,23 +248,29 @@ export function PetIndex({ data }: Props) {
           }
         >
           <ListItemIcon>
-            <Avatar
-              src={cat.image}
-              variant="square"
-              sx={{ width: 24, height: 24 }}
-            />
+        <Avatar
+          src={cat.image}
+          variant="square"
+          sx={{ width: 24, height: 24 }}
+        />
           </ListItemIcon>
           <ListItemText>
-            <Typography sx={{ fontWeight: "bold" }}>
-              {cat.name} ({stats.overall}%)
-            </Typography>
+        <Typography sx={{ fontWeight: "bold" }}>
+          {cat.name} ({stats.overall}%)
+        </Typography>
           </ListItemText>
         </ListItemButton>
 
         {expanded &&
-          cat.categories?.map((sub) =>
+          (cat.reverseTabs
+        ? [...(cat.categories || [])]
+            .reverse()
+            .map((sub) =>
+              renderItem(sub, depth + 1, path)
+            )
+        : cat.categories?.map((sub) =>
             renderItem(sub, depth + 1, path)
-          )}
+          ))}
       </Box>
     );
   };

@@ -67,7 +67,7 @@
     ],
     "luckIgnored": false,
     "infinityEgg": "The Overworld",
-    "canSpawnAsRift": true,
+    "canSpawnAsRift": false,
     "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
     "dateRemoved": "",
@@ -86,7 +86,7 @@
     ],
     "luckIgnored": false,
     "infinityEgg": "The Overworld",
-    "canSpawnAsRift": true,
+    "canSpawnAsRift": false,
     "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
     "dateRemoved": "",
@@ -105,7 +105,7 @@
     ],
     "luckIgnored": false,
     "infinityEgg": "The Overworld",
-    "canSpawnAsRift": true,
+    "canSpawnAsRift": false,
     "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
     "dateRemoved": "",
@@ -124,7 +124,7 @@
     ],
     "luckIgnored": false,
     "infinityEgg": "The Overworld",
-    "canSpawnAsRift": true,
+    "canSpawnAsRift": false,
     "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
     "dateRemoved": "",
@@ -143,7 +143,7 @@
     ],
     "luckIgnored": false,
     "infinityEgg": "The Overworld",
-    "canSpawnAsRift": true,
+    "canSpawnAsRift": false,
     "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
     "dateRemoved": "",
@@ -162,7 +162,7 @@
     ],
     "luckIgnored": false,
     "infinityEgg": "The Overworld",
-    "canSpawnAsRift": true,
+    "canSpawnAsRift": false,
     "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
     "dateRemoved": "",
@@ -182,7 +182,7 @@
     ],
     "luckIgnored": false,
     "infinityEgg": "The Overworld",
-    "canSpawnAsRift": true,
+    "canSpawnAsRift": false,
     "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
     "dateRemoved": "",
@@ -201,7 +201,7 @@
     ],
     "luckIgnored": false,
     "infinityEgg": "The Overworld",
-    "canSpawnAsRift": true,
+    "canSpawnAsRift": false,
     "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
     "dateRemoved": "",
@@ -236,7 +236,7 @@
     ],
     "luckIgnored": false,
     "infinityEgg": "Minigame Paradise",
-    "canSpawnAsRift": true,
+    "canSpawnAsRift": false,
     "secretBountyRotation": true,
     "dateAdded": "2025-05-04",
     "dateRemoved": "",
@@ -256,7 +256,7 @@
     ],
     "luckIgnored": false,
     "infinityEgg": "Minigame Paradise",
-    "canSpawnAsRift": true,
+    "canSpawnAsRift": false,
     "secretBountyRotation": true,
     "dateAdded": "2025-05-04",
     "dateRemoved": "",
@@ -276,7 +276,7 @@
     ],
     "luckIgnored": false,
     "infinityEgg": "Minigame Paradise",
-    "canSpawnAsRift": true,
+    "canSpawnAsRift": false,
     "secretBountyRotation": true,
     "dateAdded": "2025-05-17",
     "dateRemoved": "",
@@ -298,36 +298,19 @@
     "dateRemoved": ""
   },
   {
-    "name": "Game Egg",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/9/98/Game_Egg.png",
+    "name": "Season 4 Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/4/40/Season_4_Egg.png",
     "pets": [
-      "Fancy Demon",
-      "Happy Dice",
-      "Game Master",
-      "Jackpot"
+      "Black Rain Frog",
+      "Stickbug",
+      "Wilted Branch",
+      "Soul of Plant"
     ],
-    "luckIgnored": false,
+    "luckIgnored": true,
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
-    "dateAdded": "2025-05-04",
-    "dateRemoved": "2025-05-17"
-  },
-  {
-    "name": "Underworld Egg",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/f/ff/Underworld_Egg.png",
-    "pets": [
-      "Hell Demon",
-      "Demon Angel",
-      "Crimson Butterfly",
-      "Demonweb",
-      "Crimson Bloodmoon",
-      "Lord Shock"
-    ],
-    "luckIgnored": false,
-    "canSpawnAsRift": true,
-    "secretBountyRotation": false,
-    "dateAdded": "2025-05-10",
-    "dateRemoved": "2025-05-25"
+    "dateAdded": "2025-06-30",
+    "dateRemoved": "2025-07-14"
   },
   {
     "name": "Season 3 Egg",
@@ -404,6 +387,44 @@
     "secretBountyRotation": false,
     "dateAdded": "2025-04-26",
     "dateRemoved": "2025-04-30"
+  },
+  {
+    "name": "July4th Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c0/July4th_Egg.png",
+    "pets": [
+      "Patriotic Doggy",
+      "Eagle",
+      "Sparkler Man",
+      "Patriotic Penguin",
+      "Patriotic Shock",
+      "Star Lord",
+      "Liberty",
+      "Patriotic Robot",
+      "Da Cool Trio"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-06-30",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Bruh Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/8/8a/Bruh_Egg.png",
+    "pets": [
+      "Bruh",
+      "Bruh Cat",
+      "Bruhette",
+      "Bruh Split",
+      "Celestial Bruh",
+      "Seraphic Bruh",
+      "BRUH GOD"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-06-22",
+    "dateRemoved": "2025-07-06"
   },
   {
     "name": "Voidcrystal Egg",
@@ -553,6 +574,23 @@
     "dateRemoved": "2025-06-17"
   },
   {
+    "name": "Underworld Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/f/ff/Underworld_Egg.png",
+    "pets": [
+      "Hell Demon",
+      "Demon Angel",
+      "Crimson Butterfly",
+      "Demonweb",
+      "Crimson Bloodmoon",
+      "Lord Shock"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-05-10",
+    "dateRemoved": "2025-05-25"
+  },
+  {
     "name": "200M Egg",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/f/f7/200M_Egg.png",
     "pets": [
@@ -568,6 +606,37 @@
     "secretBountyRotation": false,
     "dateAdded": "2025-05-10",
     "dateRemoved": "2025-05-17"
+  },
+  {
+    "name": "Game Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/9/98/Game_Egg.png",
+    "pets": [
+      "Fancy Demon",
+      "Happy Dice",
+      "Game Master",
+      "Jackpot"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-05-04",
+    "dateRemoved": "2025-05-17"
+  },
+  {
+    "name": "Silly Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3a/Silly_Egg.png",
+    "pets": [
+      "Bunnnny",
+      "Long Kitty",
+      "DOOF",
+      "ROUND",
+      "Silly Doggy :)"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-04-26",
+    "dateRemoved": "2025-05-10"
   },
   {
     "name": "100M Egg",
@@ -601,7 +670,7 @@
       "Dementor"
     ],
     "luckIgnored": false,
-    "canSpawnAsRift": true,
+    "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-04-23",
     "dateRemoved": "2025-04-30"
@@ -619,7 +688,7 @@
       "Easter Basket"
     ],
     "luckIgnored": false,
-    "canSpawnAsRift": true,
+    "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-04-18",
     "dateRemoved": "2025-04-26"
@@ -637,44 +706,10 @@
       "Giant Chocolate Chicken"
     ],
     "luckIgnored": false,
-    "canSpawnAsRift": true,
+    "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-04-18",
     "dateRemoved": "2025-04-26"
-  },
-  {
-    "name": "Bruh Egg",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/8/8a/Bruh_Egg.png",
-    "pets": [
-      "Bruh",
-      "Bruh Cat",
-      "Bruhette",
-      "Bruh Split",
-      "Celestial Bruh",
-      "Seraphic Bruh",
-      "BRUH GOD"
-    ],
-    "luckIgnored": false,
-    "canSpawnAsRift": true,
-    "secretBountyRotation": false,
-    "dateAdded": "2025-06-22",
-    "dateRemoved": "2025-07-06"
-  },
-  {
-    "name": "Silly Egg",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/3/3a/Silly_Egg.png",
-    "pets": [
-      "Bunnnny",
-      "Long Kitty",
-      "DOOF",
-      "ROUND",
-      "Silly Doggy :)"
-    ],
-    "luckIgnored": false,
-    "canSpawnAsRift": true,
-    "secretBountyRotation": false,
-    "dateAdded": "2025-04-26",
-    "dateRemoved": "2025-05-10"
   },
   {
     "name": "Aura Egg",
@@ -687,44 +722,9 @@
       "MAN FACE GOD"
     ],
     "luckIgnored": false,
-    "canSpawnAsRift": true,
+    "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-04-11",
     "dateRemoved": "2025-04-26"
-  },
-  {
-    "name": "Season 4 Egg",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/4/40/Season_4_Egg.png",
-    "pets": [
-      "Black Rain Frog",
-      "Stickbug",
-      "Wilted Branch",
-      "Soul of Plant"
-    ],
-    "luckIgnored": true,
-    "canSpawnAsRift": false,
-    "secretBountyRotation": false,
-    "dateAdded": "2025-06-30",
-    "dateRemoved": "2025-07-14"
-  },
-  {
-    "name": "July4th Egg",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c0/July4th_Egg.png",
-    "pets": [
-      "Patriotic Doggy",
-      "Eagle",
-      "Sparkler Man",
-      "Patriotic Penguin",
-      "Patriotic Shock",
-      "Star Lord",
-      "Liberty",
-      "Patriotic Robot",
-      "Da Cool Trio"
-    ],
-    "luckIgnored": false,
-    "canSpawnAsRift": true,
-    "secretBountyRotation": false,
-    "dateAdded": "2025-06-30",
-    "dateRemoved": ""
   }
 ]
