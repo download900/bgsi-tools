@@ -177,7 +177,8 @@ export function loadData(): PetData {
       cat.egg = eggLookup[cat.egg];
       if (cat.egg) {
         cat.pets = cat.pets || [];
-        for (const pet of cat.egg.pets) {
+        for (let i = cat.egg.pets.length - 1; i >= 0; i--) {
+          const pet = cat.egg.pets[i];
           if (!cat.pets.some((p: Pet) => p.name === pet.name)) {
             cat.pets.unshift(pet);
           }

@@ -17,6 +17,7 @@ import {
   TableRow,
   Typography,
   Link,
+  TextField,
 } from "@mui/material";
 
 import {
@@ -139,6 +140,7 @@ export function PetIndex({ data }: Props) {
   const [ownedPets, setOwnedPets] = useState<OwnedPets>({});
   const [selectedPath, setSelectedPath] = useState<string>("All");
   const [visibleCount, setVisibleCount] = useState(20);
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
   /* restore */
   useEffect(() => {
@@ -175,10 +177,19 @@ export function PetIndex({ data }: Props) {
     selectedPath === "All"
       ? allPets
       : collectPets(currentCat);
+  const filteredPets = useMemo(
+    () =>
+      searchQuery.trim()
+        ? petsToShow.filter((p) =>
+            p.name.toLowerCase().includes(searchQuery.toLowerCase())
+          )
+        : petsToShow,
+    [petsToShow, searchQuery]
+  );
 
   const sortedPets = useMemo(
     () =>
-      [...petsToShow].sort((a, b) => {
+      [...filteredPets].sort((a, b) => {
         if (a.obtainedFrom !== b.obtainedFrom) {
           return -1;
         }
@@ -191,19 +202,19 @@ export function PetIndex({ data }: Props) {
         }
         return b.chance - a.chance;
       }),
-    [petsToShow]
+    [filteredPets]
   );
 
   const headerStats = useMemo(
-    () => calcCompletion(petsToShow, ownedPets),
-    [petsToShow, ownedPets]
+    () => calcCompletion(filteredPets, ownedPets),
+    [filteredPets, ownedPets]
   );
 
   /* scroll */
   useEffect(() => {
     setVisibleCount(20);
     window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [selectedPath]);
+  }, [selectedPath, searchQuery]);
 
   useEffect(() => {
     const onScroll = () => {
@@ -236,7 +247,8 @@ export function PetIndex({ data }: Props) {
     const expanded = selected || isAncestor;
 
     const stats = calcCompletion(collectPets(cat), ownedPets);
-    const bg = selected ? "#111122" : depth === 0 ? "#111" : "#222";
+    const bgVal = (10 + depth * 7).toString().padStart(2, "0");
+    const bg = selected ? "#111122" : `#${bgVal}${bgVal}${bgVal}`;
 
     return (
       <Box key={path}>
@@ -248,16 +260,16 @@ export function PetIndex({ data }: Props) {
           }
         >
           <ListItemIcon>
-        <Avatar
-          src={cat.image}
-          variant="square"
-          sx={{ width: 24, height: 24 }}
-        />
+            <Avatar
+              src={cat.image}
+              variant="square"
+              sx={{ width: 24, height: 24 }}
+            />
           </ListItemIcon>
           <ListItemText>
-        <Typography sx={{ fontWeight: "bold" }}>
-          {cat.name} ({stats.overall}%)
-        </Typography>
+            <Typography sx={{ fontWeight: "bold" }}>
+              {cat.name} ({stats.overall}%)
+            </Typography>
           </ListItemText>
         </ListItemButton>
 
@@ -315,7 +327,7 @@ export function PetIndex({ data }: Props) {
         sx={{
           flexGrow: 1,
           p: 3,
-          mt: 1,
+          mt: -5,
           mx: "auto",
           maxWidth: "1000px",
         }}
@@ -362,6 +374,17 @@ export function PetIndex({ data }: Props) {
             </TableBody>
           </Table>
         </Paper>
+
+        {/* search */}
+        <Box sx={{ mb: 2 }}>
+          <TextField
+            
+            size="small"
+            placeholder="Search pets…"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+        </Box>
 
         {/* pet list */}
         <Paper sx={{ p: 1 }} elevation={2}>

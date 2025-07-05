@@ -162,7 +162,7 @@ export async function scrapeWiki(data: PetData, debug: (msg: string) => void): P
       pets: eggInfo.pets,
       luckIgnored: eggInfo.luckIgnored || false,
       infinityEgg: eggInfo.infinityEgg || undefined,
-      canSpawnAsRift: eggInfo.hasEggRift || false,
+      canSpawnAsRift: eggInfo.rift != null && eggInfo.rift != '',
       secretBountyRotation: eggInfo.secretBountyRotation || false,
       dateAdded: eggInfo.dateAdded || '',
       dateRemoved: eggInfo.dateUnavailable || '',

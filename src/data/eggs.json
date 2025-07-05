@@ -67,7 +67,7 @@
     ],
     "luckIgnored": false,
     "infinityEgg": "The Overworld",
-    "canSpawnAsRift": false,
+    "canSpawnAsRift": true,
     "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
     "dateRemoved": "",
@@ -86,7 +86,7 @@
     ],
     "luckIgnored": false,
     "infinityEgg": "The Overworld",
-    "canSpawnAsRift": false,
+    "canSpawnAsRift": true,
     "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
     "dateRemoved": "",
@@ -105,7 +105,7 @@
     ],
     "luckIgnored": false,
     "infinityEgg": "The Overworld",
-    "canSpawnAsRift": false,
+    "canSpawnAsRift": true,
     "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
     "dateRemoved": "",
@@ -124,7 +124,7 @@
     ],
     "luckIgnored": false,
     "infinityEgg": "The Overworld",
-    "canSpawnAsRift": false,
+    "canSpawnAsRift": true,
     "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
     "dateRemoved": "",
@@ -143,7 +143,7 @@
     ],
     "luckIgnored": false,
     "infinityEgg": "The Overworld",
-    "canSpawnAsRift": false,
+    "canSpawnAsRift": true,
     "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
     "dateRemoved": "",
@@ -162,7 +162,7 @@
     ],
     "luckIgnored": false,
     "infinityEgg": "The Overworld",
-    "canSpawnAsRift": false,
+    "canSpawnAsRift": true,
     "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
     "dateRemoved": "",
@@ -182,7 +182,7 @@
     ],
     "luckIgnored": false,
     "infinityEgg": "The Overworld",
-    "canSpawnAsRift": false,
+    "canSpawnAsRift": true,
     "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
     "dateRemoved": "",
@@ -201,7 +201,7 @@
     ],
     "luckIgnored": false,
     "infinityEgg": "The Overworld",
-    "canSpawnAsRift": false,
+    "canSpawnAsRift": true,
     "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
     "dateRemoved": "",
@@ -236,7 +236,7 @@
     ],
     "luckIgnored": false,
     "infinityEgg": "Minigame Paradise",
-    "canSpawnAsRift": false,
+    "canSpawnAsRift": true,
     "secretBountyRotation": true,
     "dateAdded": "2025-05-04",
     "dateRemoved": "",
@@ -256,7 +256,7 @@
     ],
     "luckIgnored": false,
     "infinityEgg": "Minigame Paradise",
-    "canSpawnAsRift": false,
+    "canSpawnAsRift": true,
     "secretBountyRotation": true,
     "dateAdded": "2025-05-04",
     "dateRemoved": "",
@@ -276,7 +276,7 @@
     ],
     "luckIgnored": false,
     "infinityEgg": "Minigame Paradise",
-    "canSpawnAsRift": false,
+    "canSpawnAsRift": true,
     "secretBountyRotation": true,
     "dateAdded": "2025-05-17",
     "dateRemoved": "",
@@ -403,7 +403,7 @@
       "Da Cool Trio"
     ],
     "luckIgnored": false,
-    "canSpawnAsRift": false,
+    "canSpawnAsRift": true,
     "secretBountyRotation": false,
     "dateAdded": "2025-06-30",
     "dateRemoved": ""
@@ -421,7 +421,7 @@
       "BRUH GOD"
     ],
     "luckIgnored": false,
-    "canSpawnAsRift": false,
+    "canSpawnAsRift": true,
     "secretBountyRotation": false,
     "dateAdded": "2025-06-22",
     "dateRemoved": "2025-07-06"
@@ -585,7 +585,7 @@
       "Lord Shock"
     ],
     "luckIgnored": false,
-    "canSpawnAsRift": false,
+    "canSpawnAsRift": true,
     "secretBountyRotation": false,
     "dateAdded": "2025-05-10",
     "dateRemoved": "2025-05-25"
@@ -633,7 +633,7 @@
       "Silly Doggy :)"
     ],
     "luckIgnored": false,
-    "canSpawnAsRift": false,
+    "canSpawnAsRift": true,
     "secretBountyRotation": false,
     "dateAdded": "2025-04-26",
     "dateRemoved": "2025-05-10"
@@ -670,7 +670,7 @@
       "Dementor"
     ],
     "luckIgnored": false,
-    "canSpawnAsRift": false,
+    "canSpawnAsRift": true,
     "secretBountyRotation": false,
     "dateAdded": "2025-04-23",
     "dateRemoved": "2025-04-30"
@@ -688,7 +688,7 @@
       "Easter Basket"
     ],
     "luckIgnored": false,
-    "canSpawnAsRift": false,
+    "canSpawnAsRift": true,
     "secretBountyRotation": false,
     "dateAdded": "2025-04-18",
     "dateRemoved": "2025-04-26"
@@ -706,7 +706,7 @@
       "Giant Chocolate Chicken"
     ],
     "luckIgnored": false,
-    "canSpawnAsRift": false,
+    "canSpawnAsRift": true,
     "secretBountyRotation": false,
     "dateAdded": "2025-04-18",
     "dateRemoved": "2025-04-26"
@@ -722,7 +722,7 @@
       "MAN FACE GOD"
     ],
     "luckIgnored": false,
-    "canSpawnAsRift": false,
+    "canSpawnAsRift": true,
     "secretBountyRotation": false,
     "dateAdded": "2025-04-11",
     "dateRemoved": "2025-04-26"
