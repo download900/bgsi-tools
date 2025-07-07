@@ -41,6 +41,8 @@ export interface CalculatorSettings {
     bubbleShrineLevel: number; // 1-50
     // daily perks
     premiumDailyPerks: boolean;
+    // milestones
+    hatchingTier: number; // 1-10
 }
 
 export interface CalculatorResults {
@@ -89,12 +91,14 @@ export function getBubbleShrineStat(stat: string, level: number): number {
     return buff;
 }
 
-export function calculateChance(baseChance:number, luckyBuff: number) {
-    // Calculate base drop chance
-    // (baseChance) * (1 + (luckyBuff / 100))
-    const n = Decimal(1).plus(luckyBuff / 100);
-    const dropRate = n.times(baseChance);
-    return dropRate as unknown as any;
+export function getHatchingTierBuff (hatchingTier: number, buffType: "luck" | "speed"): number {
+    const buffData: Record<string, number[]> = {
+        luck: [5, 5, 10, 15, 20, 25, 35, 50, 75, 150],
+        speed: [0, 5, 5, 10, 15, 15, 20, 25, 30, 35]
+    };
+
+    if (hatchingTier < 1 || hatchingTier > 10) return 0;
+    return buffData[buffType][hatchingTier - 1];
 }
 
 const BuffDays: { [key: string]: { day: number; bonus: (premium: boolean) => number; offDays: () => number } } = {
@@ -127,6 +131,14 @@ export function getBuffDayBonus(buff: string, premium: boolean): number {
     return 0; // No bonus for this buff on this day
 }
 
+export function calculateChance(baseChance:number, luckyBuff: number) {
+    // Calculate base drop chance
+    // (baseChance) * (1 + (luckyBuff / 100))
+    const n = Decimal(1).plus(luckyBuff / 100);
+    const dropRate = n.times(baseChance);
+    return dropRate as unknown as any;
+}
+
 export function calculate(egg: Egg, calculatorSettings: CalculatorSettings, setCalculatorResults: any, selectedEgg: Egg) {
     let luckyBuff = 0;
     let shinyChance = 0;
@@ -139,7 +151,8 @@ export function calculate(egg: Egg, calculatorSettings: CalculatorSettings, setC
         + (calculatorSettings.normalIndex.includes(egg.index) ? 50 : 0) 
         + (calculatorSettings.highRoller * 10)
         + getBuffDayBonus("Luck", calculatorSettings.premiumDailyPerks)
-        + getBubbleShrineStat("luck", calculatorSettings.bubbleShrineLevel);
+        + getBubbleShrineStat("luck", calculatorSettings.bubbleShrineLevel)
+        + getHatchingTierBuff(calculatorSettings.hatchingTier, "luck");
 
     // Double luck gamepass
     if (calculatorSettings.doubleLuckGamepass) luckyBuff *= 2;
@@ -178,6 +191,7 @@ export function calculate(egg: Egg, calculatorSettings: CalculatorSettings, setC
     if (calculatorSettings.fastHatchGamepass) speed += 50;
     if (calculatorSettings.fastHatchEvent) speed += 30;
     speed += getBuffDayBonus("Hatch", calculatorSettings.premiumDailyPerks);
+    speed += getHatchingTierBuff(calculatorSettings.hatchingTier, "speed");
     if (calculatorSettings.bubbleShrineLevel > 0) {
         // Bubble Shrine speed buff seems to be giving 100 + buff (may be a bug)
         speed += 100 + getBubbleShrineStat("hatchSpeed", calculatorSettings.bubbleShrineLevel);

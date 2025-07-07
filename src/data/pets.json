@@ -2380,6 +2380,26 @@
     "dateRemoved": "2025-07-06"
   },
   {
+    "name": "Light Lord",
+    "rarity": "secret",
+    "chance": 100,
+    "bubbles": 5400,
+    "gems": 115,
+    "currency": 4700,
+    "currencyVariant": "coins",
+    "hasMythic": false,
+    "hatchable": false,
+    "obtainedFrom": "Milestones",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/20/Milestones_Icon.png",
+    "obtainedFromInfo": "Bubbling Platinum II",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/c/cc/Light_Lord.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/d/df/Shiny_Light_Lord.png"
+    ],
+    "dateAdded": "2025-07-06",
+    "dateRemoved": ""
+  },
+  {
     "name": "Cerberus",
     "rarity": "legendary",
     "chance": 100,
@@ -2686,7 +2706,7 @@
   {
     "name": "Lovely Rose",
     "rarity": "legendary",
-    "chance": 0.1,
+    "chance": 0,
     "bubbles": 3400,
     "gems": 65,
     "currency": 3500,
@@ -2708,7 +2728,7 @@
   {
     "name": "Lucid Leaf",
     "rarity": "secret",
-    "chance": 0.005,
+    "chance": 0,
     "bubbles": 5000,
     "gems": 110,
     "currency": 4400,
@@ -6461,6 +6481,72 @@
     "dateRemoved": ""
   },
   {
+    "name": "King Mush",
+    "rarity": "secret",
+    "chance": 0.00000285,
+    "bubbles": 4600,
+    "gems": 100,
+    "currency": 4000,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Secret Bounty",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/King_Mush.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/3/39/Shiny_King_Mush.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/b/b9/Mythic_King_Mush.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/f/f6/Shiny_Mythic_King_Mush.png"
+    ],
+    "dateAdded": "2025-07-06",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Frost Defender",
+    "rarity": "secret",
+    "chance": 0.000001,
+    "bubbles": 5200,
+    "gems": 105,
+    "currency": 4500,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Secret Bounty",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/c/ce/Frost_Defender.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/f/f4/Shiny_Frost_Defender.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/b/be/Mythic_Frost_Defender.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/3/3a/Shiny_Mythic_Frost_Defender.png"
+    ],
+    "dateAdded": "2025-07-06",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Dark Guardian",
+    "rarity": "secret",
+    "chance": 4e-7,
+    "bubbles": 5400,
+    "gems": 115,
+    "currency": 4700,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Secret Bounty",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/7/79/Dark_Guardian.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/1a/Shiny_Dark_Guardian.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/1c/Mythic_Dark_Guardian.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/5/5f/Shiny_Mythic_Dark_Guardian.png"
+    ],
+    "dateAdded": "2025-07-06",
+    "dateRemoved": ""
+  },
+  {
     "name": "King Slime",
     "rarity": "secret",
     "chance": 0.000002,
@@ -6480,7 +6566,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/3/35/Shiny_Mythic_King_Slime.png"
     ],
     "dateAdded": "2025-06-17",
-    "dateRemoved": ""
+    "dateRemoved": "2025-07-06"
   },
   {
     "name": "Golden Retreiver",
@@ -6502,7 +6588,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/5/5d/Shiny_Mythic_Golden_Retreiver.png"
     ],
     "dateAdded": "2025-06-17",
-    "dateRemoved": ""
+    "dateRemoved": "2025-07-06"
   },
   {
     "name": "True Titan",
@@ -6524,7 +6610,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/d/df/Shiny_Mythic_True_Titan.png"
     ],
     "dateAdded": "2025-06-17",
-    "dateRemoved": ""
+    "dateRemoved": "2025-07-06"
   },
   {
     "name": "Beelzebub",
@@ -6657,6 +6743,210 @@
     ],
     "dateAdded": "2025-05-10",
     "dateRemoved": "2025-05-25"
+  },
+  {
+    "name": "Archduke Federation",
+    "rarity": "legendary",
+    "chance": 12.5,
+    "bubbles": 1500,
+    "gems": 30,
+    "currency": 750,
+    "currencyVariant": "coins",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "Federation Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c0/Federation_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/3/35/Archduke_Federation.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/1f/Shiny_Archduke_Federation.png"
+    ],
+    "dateAdded": "2025-07-06",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Duchess Federation",
+    "rarity": "legendary",
+    "chance": 12.5,
+    "bubbles": 1500,
+    "gems": 30,
+    "currency": 750,
+    "currencyVariant": "coins",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "Federation Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c0/Federation_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/21/Duchess_Federation.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/28/Shiny_Duchess_Federation.png"
+    ],
+    "dateAdded": "2025-07-06",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Archduchess Federation",
+    "rarity": "legendary",
+    "chance": 12.5,
+    "bubbles": 1500,
+    "gems": 30,
+    "currency": 750,
+    "currencyVariant": "coins",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "Federation Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c0/Federation_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/8/80/Archduchess_Federation.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/6/69/Shiny_Archduchess_Federation.png"
+    ],
+    "dateAdded": "2025-07-06",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Duke Federation",
+    "rarity": "legendary",
+    "chance": 12.5,
+    "bubbles": 1500,
+    "gems": 30,
+    "currency": 750,
+    "currencyVariant": "coins",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "Federation Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c0/Federation_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/e/e1/Duke_Federation.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/49/Shiny_Duke_Federation.png"
+    ],
+    "dateAdded": "2025-07-06",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Lord Federation",
+    "rarity": "legendary",
+    "chance": 12.5,
+    "bubbles": 1500,
+    "gems": 30,
+    "currency": 750,
+    "currencyVariant": "coins",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "Federation Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c0/Federation_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/6/64/Lord_Federation.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Shiny_Lord_Federation.png"
+    ],
+    "dateAdded": "2025-07-06",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Lady Federation",
+    "rarity": "legendary",
+    "chance": 12.5,
+    "bubbles": 1500,
+    "gems": 30,
+    "currency": 750,
+    "currencyVariant": "coins",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "Federation Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c0/Federation_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/c/c5/Lady_Federation.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/e/e2/Shiny_Lady_Federation.png"
+    ],
+    "dateAdded": "2025-07-06",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Countess Federation",
+    "rarity": "legendary",
+    "chance": 12.5,
+    "bubbles": 1500,
+    "gems": 30,
+    "currency": 750,
+    "currencyVariant": "coins",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "Federation Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c0/Federation_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/b/b3/Countess_Federation.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/0/0b/Shiny_Countess_Federation.png"
+    ],
+    "dateAdded": "2025-07-06",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Earl Federation",
+    "rarity": "legendary",
+    "chance": 12.5,
+    "bubbles": 1500,
+    "gems": 30,
+    "currency": 750,
+    "currencyVariant": "coins",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "Federation Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c0/Federation_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/0/02/Earl_Federation.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/6/6f/Shiny_Earl_Federation.png"
+    ],
+    "dateAdded": "2025-07-06",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Geometric Dominus",
+    "rarity": "legendary",
+    "chance": 100,
+    "bubbles": 1300,
+    "gems": 26,
+    "currency": 650,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": false,
+    "obtainedFrom": "Robux Shop",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/0/0c/Geometric_Dominus.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/b/b6/Shiny_Geometric_Dominus.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/0/0b/Mythic_Geometric_Dominus.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/0/05/Shiny_Mythic_Geometric_Dominus.png"
+    ],
+    "dateAdded": "2025-07-06",
+    "dateRemoved": "2025-07-13"
+  },
+  {
+    "name": "Patriotic Soul",
+    "rarity": "legendary",
+    "chance": 100,
+    "bubbles": 1700,
+    "gems": 35,
+    "currency": 850,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": false,
+    "obtainedFrom": "Robux Shop",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/5/5f/Patriotic_Soul.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/8/8c/Shiny_Patriotic_Soul.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/5/53/Mythic_Patriotic_Soul.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/e/e4/Shiny_Mythic_Patriotic_Soul.png"
+    ],
+    "dateAdded": "2025-07-06",
+    "dateRemoved": "2025-07-13"
   },
   {
     "name": "Tole Cat",

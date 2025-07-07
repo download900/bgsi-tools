@@ -90,7 +90,8 @@
           "Chronos",
           "Dark Lord",
           "Cerberus",
-          "Security System"
+          "Security System",
+          "Light Lord"
         ],
         "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c2/Quests_Icon.png"
       },
@@ -333,6 +334,15 @@
           "True Titan"
         ],
         "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png"
+      },
+      {
+        "name": "Wave 4",
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png",
+        "pets": [
+          "King Mush",
+          "Frost Defender",
+          "Dark Guardian"
+        ]
       }
     ],
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png"
@@ -347,102 +357,125 @@
   },
   {
     "name": "Robux Shop",
-    "reverseTabs": true,
     "categories": [
       {
-        "name": "Gem Bundles",
+        "name": "Exclusive Pet Waves",
+		    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
+        "reverseTabs": true,
+        "categories": [
+          {
+            "name": "Wave 1",
+			"image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
+            "pets": [
+              "Beta TV",
+              "Dowodle"
+            ]
+          },
+          {
+            "name": "Wave 2",
+			"image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
+            "pets": [
+              "Dark Serpent",
+              "Infernus"
+            ]
+          },
+          {
+            "name": "Wave 3",
+			"image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
+            "pets": [
+              "Enraged Phoenix",
+              "Electra Hydra"
+            ]
+          },
+          {
+            "name": "Wave 4",
+			"image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
+            "pets": [
+              "Toilet Doggy",
+              "Capybara Plushie"
+            ]
+          },
+          {
+            "name": "Wave 5",
+			"image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
+            "pets": [
+              "Noctis",
+              "Bongo Kitty"
+            ]
+          },
+          {
+            "name": "Wave 6",
+			"image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
+            "pets": [
+              "Rigby",
+              "Dreamscape"
+            ]
+          },
+          {
+            "name": "Wave 7",
+			"image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
+            "pets": [
+              "Carrot Pufferfish",
+              "Crystal Teddy"
+            ]
+          },
+          {
+            "name": "Wave 8",
+			"image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
+            "pets": [
+              "Galaxium",
+              "Dowominus"
+            ]
+          },
+          {
+            "name": "Wave 9",
+			"image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
+            "pets": [
+              "Excabot",
+              "Broken TV"
+            ]
+          },
+          {
+            "name": "Wave 10",
+			"image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
+            "pets": [
+              "ROUND BRUH",
+              "Bruhodle"
+            ]
+          },
+          {
+            "name": "Wave 11",
+			"image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
+            "pets": [
+              "Tole Cat",
+              "Starry Kitsune"
+            ]
+          },
+          {
+            "name": "Wave 12",
+			"image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
+            "pets": [
+              "Geometric Dominus",
+              "Patriotic Soul"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Exclusive Eggs",
+		"image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png",
+        "categories": [
+          {
+            "egg": "Federation Egg"
+          }
+        ]
+      },
+      {
+        "name": "Other",
+		"image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Gems.png",
         "pets": [
           "Flying Gem"
-        ],
-        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Gems.png"
-      },
-      {
-        "name": "Wave 1",
-        "pets": [
-          "Beta TV",
-          "Dowodle"
-        ],
-        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png"
-      },
-      {
-        "name": "Wave 2",
-        "pets": [
-          "Dark Serpent",
-          "Infernus"
-        ],
-        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png"
-      },
-      {
-        "name": "Wave 3",
-        "pets": [
-          "Enraged Phoenix",
-          "Electra Hydra"
-        ],
-        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png"
-      },
-      {
-        "name": "Wave 4",
-        "pets": [
-          "Toilet Doggy",
-          "Capybara Plushie"
-        ],
-        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png"
-      },
-      {
-        "name": "Wave 5",
-        "pets": [
-          "Noctis",
-          "Bongo Kitty"
-        ],
-        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png"
-      },
-      {
-        "name": "Wave 6",
-        "pets": [
-          "Rigby",
-          "Dreamscape"
-        ],
-        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png"
-      },
-      {
-        "name": "Wave 7",
-        "pets": [
-          "Carrot Pufferfish",
-          "Crystal Teddy"
-        ],
-        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png"
-      },
-      {
-        "name": "Wave 8",
-        "pets": [
-          "Galaxium",
-          "Dowominus"
-        ],
-        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png"
-      },
-      {
-        "name": "Wave 9",
-        "pets": [
-          "Excabot",
-          "Broken TV"
-        ],
-        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png"
-      },
-      {
-        "name": "Wave 10",
-        "pets": [
-          "ROUND BRUH",
-          "Bruhodle"
-        ],
-        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png"
-      },
-      {
-        "name": "Wave 11",
-        "pets": [
-          "Tole Cat",
-          "Starry Kitsune"
-        ],
-        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png"
+        ]
       }
     ],
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png"

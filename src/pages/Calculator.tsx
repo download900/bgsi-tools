@@ -35,6 +35,7 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
         fastHatchEvent: false,
         secretsBountyPet: "",
         secretsBountyEgg: "",
+        hatchingTier: 0,
     });
     const [calculatorResults, setCalculatorResults] = useState<CalculatorResults>();
 
@@ -531,6 +532,31 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
                                         sx={{ flexGrow: 1, mr: 1, ml: 7.7 }}
                                     />
                                 </Box>
+
+                                <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
+                                    <Typography variant="subtitle1" sx={{width: 250}}>
+                                        {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/8/89/Multi_Egg_Icon.png", 20, 0, 4)}
+                                        Hatching Milestone:
+                                    </Typography>
+                                    <Select
+                                        value={calculatorSettings.hatchingTier}
+                                        size="small"
+                                        sx={{ flexGrow: 1, mr: 1 }}
+                                        onChange={(e) => setCalculatorSettings({ ...calculatorSettings, hatchingTier: e.target.value as number })}
+                                    >
+                                        <MenuItem value={0}>Unranked</MenuItem>
+                                        <MenuItem value={1}>Bronze I</MenuItem>
+                                        <MenuItem value={2}>Bronze II</MenuItem>
+                                        <MenuItem value={3}>Bronze III</MenuItem>
+                                        <MenuItem value={4}>Silver I</MenuItem>
+                                        <MenuItem value={5}>Silver II</MenuItem>
+                                        <MenuItem value={6}>Silver III</MenuItem>
+                                        <MenuItem value={7}>Gold I</MenuItem>
+                                        <MenuItem value={8}>Gold II</MenuItem>
+                                        <MenuItem value={9}>Gold III</MenuItem>
+                                        <MenuItem value={10}>Platinum I</MenuItem>
+                                    </Select>
+                                </Box>
                             
                                 <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
                                     <Typography variant="subtitle1" sx={{width: 250}}>🎉 Double Luck event:</Typography>
@@ -638,6 +664,31 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
                                         onChange={(e) => setCalculatorSettings({ ...calculatorSettings, bubbleShrineLevel: e.target.value ? Number(e.target.value) : 0 })}
                                         sx={{ flexGrow: 1, mr: 1, ml: 7.7 }}
                                     />
+                                </Box>
+                                
+                                <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
+                                    <Typography variant="subtitle1" sx={{width: 250}}>
+                                        {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/8/89/Multi_Egg_Icon.png", 20, 0, 4)}
+                                        Hatching Milestone:
+                                    </Typography>
+                                    <Select
+                                        value={calculatorSettings.hatchingTier}
+                                        size="small"
+                                        sx={{ flexGrow: 1, mr: 1 }}
+                                        onChange={(e) => setCalculatorSettings({ ...calculatorSettings, hatchingTier: e.target.value as number })}
+                                    >
+                                        <MenuItem value={0}>Unranked</MenuItem>
+                                        <MenuItem value={1}>Bronze I</MenuItem>
+                                        <MenuItem value={2}>Bronze II</MenuItem>
+                                        <MenuItem value={3}>Bronze III</MenuItem>
+                                        <MenuItem value={4}>Silver I</MenuItem>
+                                        <MenuItem value={5}>Silver II</MenuItem>
+                                        <MenuItem value={6}>Silver III</MenuItem>
+                                        <MenuItem value={7}>Gold I</MenuItem>
+                                        <MenuItem value={8}>Gold II</MenuItem>
+                                        <MenuItem value={9}>Gold III</MenuItem>
+                                        <MenuItem value={10}>Platinum I</MenuItem>
+                                    </Select>
                                 </Box>
 
                                 <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>

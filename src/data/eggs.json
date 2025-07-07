@@ -14,8 +14,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
-    "dateRemoved": "",
-    "index": "The Overworld"
+    "dateRemoved": ""
   },
   {
     "name": "Spotted Egg",
@@ -32,8 +31,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-04-11",
-    "dateRemoved": "",
-    "index": "The Overworld"
+    "dateRemoved": ""
   },
   {
     "name": "Iceshard Egg",
@@ -51,8 +49,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-04-11",
-    "dateRemoved": "",
-    "index": "The Overworld"
+    "dateRemoved": ""
   },
   {
     "name": "Spikey Egg",
@@ -70,8 +67,7 @@
     "canSpawnAsRift": true,
     "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
-    "dateRemoved": "",
-    "index": "The Overworld"
+    "dateRemoved": ""
   },
   {
     "name": "Magma Egg",
@@ -89,8 +85,7 @@
     "canSpawnAsRift": true,
     "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
-    "dateRemoved": "",
-    "index": "The Overworld"
+    "dateRemoved": ""
   },
   {
     "name": "Crystal Egg",
@@ -108,8 +103,7 @@
     "canSpawnAsRift": true,
     "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
-    "dateRemoved": "",
-    "index": "The Overworld"
+    "dateRemoved": ""
   },
   {
     "name": "Lunar Egg",
@@ -127,8 +121,7 @@
     "canSpawnAsRift": true,
     "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
-    "dateRemoved": "",
-    "index": "The Overworld"
+    "dateRemoved": ""
   },
   {
     "name": "Void Egg",
@@ -146,8 +139,7 @@
     "canSpawnAsRift": true,
     "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
-    "dateRemoved": "",
-    "index": "The Overworld"
+    "dateRemoved": ""
   },
   {
     "name": "Hell Egg",
@@ -165,8 +157,7 @@
     "canSpawnAsRift": true,
     "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
-    "dateRemoved": "",
-    "index": "The Overworld"
+    "dateRemoved": ""
   },
   {
     "name": "Nightmare Egg",
@@ -185,8 +176,7 @@
     "canSpawnAsRift": true,
     "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
-    "dateRemoved": "",
-    "index": "The Overworld"
+    "dateRemoved": ""
   },
   {
     "name": "Rainbow Egg",
@@ -204,8 +194,7 @@
     "canSpawnAsRift": true,
     "secretBountyRotation": true,
     "dateAdded": "2025-04-11",
-    "dateRemoved": "",
-    "index": "The Overworld"
+    "dateRemoved": ""
   },
   {
     "name": "Showman Egg",
@@ -220,8 +209,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-05-04",
-    "dateRemoved": "",
-    "index": "Minigame Paradise"
+    "dateRemoved": ""
   },
   {
     "name": "Mining Egg",
@@ -239,8 +227,7 @@
     "canSpawnAsRift": true,
     "secretBountyRotation": true,
     "dateAdded": "2025-05-04",
-    "dateRemoved": "",
-    "index": "Minigame Paradise"
+    "dateRemoved": ""
   },
   {
     "name": "Cyber Egg",
@@ -259,8 +246,7 @@
     "canSpawnAsRift": true,
     "secretBountyRotation": true,
     "dateAdded": "2025-05-04",
-    "dateRemoved": "",
-    "index": "Minigame Paradise"
+    "dateRemoved": ""
   },
   {
     "name": "Neon Egg",
@@ -276,11 +262,10 @@
     ],
     "luckIgnored": false,
     "infinityEgg": "Minigame Paradise",
-    "canSpawnAsRift": true,
+    "canSpawnAsRift": false,
     "secretBountyRotation": true,
     "dateAdded": "2025-05-17",
-    "dateRemoved": "",
-    "index": "Minigame Paradise"
+    "dateRemoved": ""
   },
   {
     "name": "Chance Egg",
@@ -726,5 +711,24 @@
     "secretBountyRotation": false,
     "dateAdded": "2025-04-11",
     "dateRemoved": "2025-04-26"
+  },
+  {
+    "name": "Federation Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c0/Federation_Egg.png",
+    "pets": [
+      "Archduke Federation",
+      "Duchess Federation",
+      "Archduchess Federation",
+      "Duke Federation",
+      "Lord Federation",
+      "Lady Federation",
+      "Countess Federation",
+      "Earl Federation"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-07-06",
+    "dateRemoved": ""
   }
 ]
