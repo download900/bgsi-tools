@@ -5,6 +5,7 @@ import * as cheerio from 'cheerio';
 import categoriesJson from "../data/categories.json";
 import eggsJson from "../data/eggs.json";
 import petsJson from "../data/pets.json";
+import { index } from "cheerio/dist/commonjs/api/traversing";
 
 const { format, parse } = require('lua-json')
 
@@ -99,7 +100,7 @@ export async function scrapeWiki(data: PetData, debug: (msg: string) => void): P
   const ctgLua  = `return ${(await fetchWikitext('Module:Category_Data')).match(/return processData\((\{[\s\S]*?\})\)/)?.[1]}` || '{}';
   const eggsLua = `return ${(await fetchWikitext('Module:Egg_Data')).match(/return processData\((\{[\s\S]*?\})\)/)?.[1]}` || '{}';
   const petsLua = `return ${(await fetchWikitext('Module:Pet_Data')).match(/return processData\((\{[\s\S]*?\})\)/)?.[1]}` || '{}';
-  const indexLua = `return ${((await fetchWikitext('Module:Index_Data')).match(/return\s+({[\s\S]*})/)?.[1]) || '{}'}`;
+  const indexLua = `return ${(await fetchWikitext('Module:Index_Data')).match(/return processData\((\{[\s\S]*?\})\)/)?.[1]}` || '{}';
 
   debug('Parsing Lua data...');
   const categoriesData = parse(ctgLua) as any[];
