@@ -262,101 +262,105 @@ export function PetList(props: PetListProps) {
             sx={{ marginRight: 1, width: "200px" }}
           />
         </Box>
-        <Box sx={{ width: '700px', display: "flex", flexWrap: 'wrap', flexShrink: 0,  flexDirection: "row", justifyContent: 'space-evenly' }}>
-          <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", p: 1 }}>
-            <Typography variant="subtitle1" sx={{ marginRight: 1 }}>Obtained:</Typography>
-            <Select
-              value={obtainedFilter}
-              onChange={(event) => setObtainedFilter(event.target.value as ObtainedFilter)}
-              displayEmpty
-              sx={{ minWidth: 120 }}
-            >
-              <MenuItem value="all">All</MenuItem>
-              <MenuItem value="obtained">Obtained</MenuItem>
-              <MenuItem value="unobtained">Unobtained</MenuItem>
-            </Select>
+        <Box sx={{ width: '1100px', display: "flex", flexWrap: 'wrap', flexShrink: 0, flexDirection: "column", }}>
+          <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: 'space-evenly' }}>
+            <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", p: 1 }}>
+              <Typography variant="subtitle1" sx={{ marginRight: 1 }}>Obtained:</Typography>
+              <Select
+                value={obtainedFilter}
+                onChange={(event) => setObtainedFilter(event.target.value as ObtainedFilter)}
+                displayEmpty
+                sx={{ minWidth: 120 }}
+              >
+                <MenuItem value="all">All</MenuItem>
+                <MenuItem value="obtained">Obtained</MenuItem>
+                <MenuItem value="unobtained">Unobtained</MenuItem>
+              </Select>
+            </Box>
+            <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", p: 1 }}>
+              <Typography variant="subtitle1" sx={{ marginRight: 1 }}>Rarity:</Typography>
+              <Select
+                value={rarityFilter}
+                onChange={(event) => setRarityFilter(event.target.value as RarityFilter)}
+                displayEmpty
+                sx={{ minWidth: 120 }}
+              >
+                <MenuItem value="all">All</MenuItem>
+                <MenuItem value="legendary">Legendary</MenuItem>
+                <MenuItem value="secret">Secret</MenuItem>
+              </Select>
+            </Box>
+            <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", p: 1 }}>
+              <Typography variant="subtitle1" sx={{ marginRight: 1 }}>Variant:</Typography>
+              <Select
+                value={Array.isArray(variantFilter) && variantFilter.length > 0 ? variantFilter : []}
+                renderValue={(selected) => { return selected.length === 0 ? "All" : selected.join(", ").substring(0, 10); }}
+                multiple
+                onChange={(event) => setVariantFilter(event.target.value as PetVariant[])}
+                displayEmpty
+                sx={{ minWidth: 120 }}
+              >
+                {petVariants.map((variant) => (
+                  <MenuItem key={variant} value={variant}>
+                    <Checkbox checked={variantFilter.includes(variant)} />
+                    {variant}
+                  </MenuItem>
+                ))}
+              </Select>
+            </Box>
+            <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", p: 1 }}>
+              <Typography variant="subtitle1" sx={{ marginRight: 1 }}>Currency:</Typography>
+              <Select
+                value={currencyFilter || ""}
+                onChange={(event) => setCurrencyFilter(event.target.value as CurrencyVariant)}
+                displayEmpty
+                sx={{ minWidth: 120 }}
+              >
+                <MenuItem value="">All</MenuItem>
+                {Object.keys(currencyImages).map((currency) => (
+                  <MenuItem key={currency} value={currency}>
+                    <img src={currencyImages[currency as CurrencyVariant]} alt={currency} style={{ width: 16, height: 16, verticalAlign: "middle", marginRight: 4 }} />
+                    {currency}
+                  </MenuItem>
+                ))}
+              </Select>
+            </Box>
           </Box>
-          <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", p: 1 }}>
-            <Typography variant="subtitle1" sx={{ marginRight: 1 }}>Rarity:</Typography>
-            <Select
-              value={rarityFilter}
-              onChange={(event) => setRarityFilter(event.target.value as RarityFilter)}
-              displayEmpty
-              sx={{ minWidth: 120 }}
-            >
-              <MenuItem value="all">All</MenuItem>
-              <MenuItem value="legendary">Legendary</MenuItem>
-              <MenuItem value="secret">Secret</MenuItem>
-            </Select>
-          </Box>
-          <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", p: 1 }}>
-            <Typography variant="subtitle1" sx={{ marginRight: 1 }}>Variant:</Typography>
-            <Select
-              value={Array.isArray(variantFilter) && variantFilter.length > 0 ? variantFilter : []}
-              renderValue={(selected) => { return selected.length === 0 ? "All" : selected.join(", ").substring(0, 10); }}
-              multiple
-              onChange={(event) => setVariantFilter(event.target.value as PetVariant[])}
-              displayEmpty
-              sx={{ minWidth: 120 }}
-            >
-              {petVariants.map((variant) => (
-                <MenuItem key={variant} value={variant}>
-                  <Checkbox checked={variantFilter.includes(variant)} />
-                  {variant}
-                </MenuItem>
-              ))}
-            </Select>
-          </Box>
-          <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", p: 1 }}>
-            <Typography variant="subtitle1" sx={{ marginRight: 1 }}>Currency:</Typography>
-            <Select
-              value={currencyFilter || ""}
-              onChange={(event) => setCurrencyFilter(event.target.value as CurrencyVariant)}
-              displayEmpty
-              sx={{ minWidth: 120 }}
-            >
-              <MenuItem value="">All</MenuItem>
-              {Object.keys(currencyImages).map((currency) => (
-                <MenuItem key={currency} value={currency}>
-                  <img src={currencyImages[currency as CurrencyVariant]} alt={currency} style={{ width: 16, height: 16, verticalAlign: "middle", marginRight: 4 }} />
-                  {currency}
-                </MenuItem>
-              ))}
-            </Select>
-          </Box>
-          <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", p: 1  }}>
-            <Typography variant="subtitle1" sx={{ marginRight: 1 }}>Preview max level:</Typography>
-            <Checkbox
-              checked={previewMaxLevel}
-              onChange={() => setPreviewMaxLevel(!previewMaxLevel)}
-            />
-          </Box>
-          <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", p: 1  }}>
-            <Typography variant="subtitle1" sx={{ marginRight: 1 }}>Preview Enchant:</Typography>
-            <Checkbox
-              checked={previewEnchant}
-              onChange={() => setPreviewEnchant(!previewEnchant)}
-            />
-          </Box>
-          <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", p: 1  }}>
-            <Typography variant="subtitle1" sx={{ marginRight: 1 }}>Team Size:</Typography>
-            <Input
-              value={enchantTeamSize}
-              onChange={(event) => setEnchantTeamSize(Number(event.target.value))}
-              sx={{ width: "80px", marginLeft: 1 }}
-            />
-          </Box>
-          <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", p: 1  }}>
-            <Typography variant="subtitle1" sx={{ marginRight: 1 }}>Second Enchant (Shinies):</Typography>
-            <Select 
-              value={secondEnchant}
-              onChange={(event) => setSecondEnchant(event.target.value as "looter" | "bubbler")}
-              displayEmpty
-              sx={{ minWidth: 120, marginLeft: 1 }}
-            >
-              <MenuItem value="bubbler">Bubbler</MenuItem>
-              <MenuItem value="looter">Looter</MenuItem>
-            </Select>
+          <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: 'space-evenly' }}>
+            <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", p: 1  }}>
+              <Typography variant="subtitle1" sx={{ marginRight: 1 }}>Preview max level:</Typography>
+              <Checkbox
+                checked={previewMaxLevel}
+                onChange={() => setPreviewMaxLevel(!previewMaxLevel)}
+              />
+            </Box>
+            <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", p: 1  }}>
+              <Typography variant="subtitle1" sx={{ marginRight: 1 }}>Preview Team Up/Determination:</Typography>
+              <Checkbox
+                checked={previewEnchant}
+                onChange={() => setPreviewEnchant(!previewEnchant)}
+              />
+            </Box>
+            <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", p: 1  }}>
+              <Typography variant="subtitle1" sx={{ marginRight: 1 }}>Team Size:</Typography>
+              <Input
+                value={enchantTeamSize}
+                onChange={(event) => setEnchantTeamSize(Number(event.target.value))}
+                sx={{ width: "50px", marginLeft: 1 }}
+              />
+            </Box>
+            <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", p: 1  }}>
+              <Typography variant="subtitle1" sx={{ marginRight: 1 }}>Second Enchant:</Typography>
+              <Select 
+                value={secondEnchant}
+                onChange={(event) => setSecondEnchant(event.target.value as "looter" | "bubbler")}
+                displayEmpty
+                sx={{ minWidth: 120, marginLeft: 1 }}
+              >
+                <MenuItem value="bubbler">Bubbler</MenuItem>
+                <MenuItem value="looter">Looter</MenuItem>
+              </Select>
+            </Box>
           </Box>
         </Box>
       </Paper>

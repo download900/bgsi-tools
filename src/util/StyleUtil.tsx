@@ -6,7 +6,8 @@ export const rarityColorMap: Record<Rarity, string> = {
   rare: "#ff6161",
   epic: "#d166fd",
   legendary: "rainbow",
-  secret: "#ff9900"
+  secret: "#ff9900",
+  infinity: "#c0058e",
 };
 
 export const variantStyles: { [key in PetVariant]: React.CSSProperties } = {
@@ -29,7 +30,7 @@ export const getRarityStyle = (rarity: Rarity): React.CSSProperties => {
       color: "transparent", fontWeight: "bold"
     };
   }
-  if (rarity === "secret") {
+  if (rarity === "secret" || rarity === "infinity") {
     return { color, fontWeight: "bold" };
   }
   return { color };

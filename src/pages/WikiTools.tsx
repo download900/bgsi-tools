@@ -323,7 +323,7 @@ function processCategoryData(catData: any, existingCat: any) {
   catData.image = existingCat.image || '';
   if (catData.categories) {
     catData.categories.forEach((subCat: any) => {
-      const existingSubCat = existingCat.categories.find((c: Category) => c.name === subCat.name);
+      const existingSubCat = existingCat.categories?.find((c: Category) => c.name === subCat.name);
       if (existingSubCat) {
         processCategoryData(subCat, existingSubCat);
       }

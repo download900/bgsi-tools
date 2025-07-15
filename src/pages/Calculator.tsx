@@ -24,6 +24,9 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
         shinyIndex: [],
         luckyStreak: 0,
         highRoller: 0,
+        secretHunter: 0,
+        ultraRoller: 0,
+        shinySeeker: 0,
         friendBoost: 0,
         boardGameLuckBoost: false,
         premiumDailyPerks: false,
@@ -63,7 +66,7 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
 
     const shouldCalculateEgg = (egg: Egg) => {
         if (egg.luckIgnored || !isAvailable(egg.dateRemoved)) return false;
-        return egg.pets.some((pet: Pet) => isAvailable(pet.dateRemoved) && (pet.rarity === "secret" || pet.rarity === "legendary"));
+        return egg.pets.some((pet: Pet) => isAvailable(pet.dateRemoved) && (pet.rarity === "secret" || pet.rarity === "legendary" || pet.rarity === "infinity"));
     }
     
     const loadCalculator = () => {
@@ -83,6 +86,11 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
             }
             if (!settings.normalIndex) settings.normalIndex = [];
             if (!settings.shinyIndex) settings.shinyIndex = [];
+            if (settings.bubbleShrineLevel === undefined) settings.bubbleShrineLevel = 0;
+            if (settings.hatchingTier === undefined) settings.hatchingTier = 0;
+            if (settings.ultraRoller === undefined) settings.ultraRoller = 0;
+            if (settings.secretHunter === undefined) settings.secretHunter = 0;
+            if (settings.shinySeeker === undefined) settings.shinySeeker = 0;
             setCalculatorSettings(settings);
             
             // Set up infinity eggs
@@ -134,7 +142,7 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
                     const totalSecretChance = egg.pets
                         .filter((pet: Pet) => pet.rarity === 'secret')
                         .reduce((sum, pet) => sum + pet.chance, 0);
-                    egg.pets.push({
+                    egg.pets.unshift({
                         name: "Any Secret",
                         chance: totalSecretChance,
                         image: ["https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png"],
@@ -148,7 +156,7 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
                         infinityEggs[egg.infinityEgg] = { name: egg.infinityEgg, pets: [] };
                         infinityEggNames.push(egg.infinityEgg);
                     }
-                    const newPets = structuredClone(egg.pets.filter((pet: Pet) => pet.rarity.includes('legendary') || pet.rarity === 'secret'));
+                    const newPets = structuredClone(egg.pets.filter((pet: Pet) => pet.rarity.includes('legendary') || pet.rarity === 'secret' || pet.rarity === 'infinity'));
                     infinityEggs[egg.infinityEgg].pets.push(...newPets);
                 }
             }
@@ -196,8 +204,8 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
 
                 // After processing, add "Any Legendary" and "Any Secret" to top of the pet list.
                 updatedPets = [
-                    { name: "Any Legendary", chance: 100 / legendaryRate, image: ["https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png"] } as Pet,
-                    { name: "Any Secret", chance: 100 / secretRate, image: ["https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png"] } as Pet,
+                    { name: "Any Legendary", rarity: "legendary", chance: 100 / legendaryRate, image: ["https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png"] } as Pet,
+                    { name: "Any Secret", rarity: "secret", chance: 100 / secretRate, image: ["https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png"] } as Pet,
                     ...updatedPets
                 ];
               
@@ -349,6 +357,8 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
                                     <MenuItem value={0}>None</MenuItem>
                                     <MenuItem value={5}>5x (500%)</MenuItem>
                                     <MenuItem value={10}>10x (1000%)</MenuItem>
+                                    <MenuItem value={15}>15x (1500%)</MenuItem>
+                                    <MenuItem value={20}>20x (2000%)</MenuItem>
                                     <MenuItem value={25}>25x (2500%)</MenuItem>
                                 </Select>
                             </Box>
@@ -373,6 +383,7 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
                                         onChange={(e) => setCalculatorSettings({ ...calculatorSettings, luckyPotion: e.target.value as LuckyPotion })}
                                     >
                                         <MenuItem value={0}>None</MenuItem>
+                                        <MenuItem value={600}>Lucky Infinity</MenuItem>
                                         <MenuItem value={400}>Lucky Evolved</MenuItem>
                                         <MenuItem value={150}>Lucky V</MenuItem>
                                         <MenuItem value={65}>Lucky IV</MenuItem>
@@ -394,6 +405,7 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
                                         onChange={(e) => setCalculatorSettings({ ...calculatorSettings, mythicPotion: e.target.value as MythicPotion })}
                                     >
                                         <MenuItem value={0}>None</MenuItem>
+                                        <MenuItem value={375}>Mythic Infinity</MenuItem>
                                         <MenuItem value={250}>Mythic Evolved</MenuItem>
                                         <MenuItem value={150}>Mythic V</MenuItem>
                                         <MenuItem value={75}>Mythic IV</MenuItem>
@@ -477,6 +489,42 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
                                         size="small"
                                         value={calculatorSettings.highRoller}
                                         onChange={(e) => setCalculatorSettings({ ...calculatorSettings, highRoller: e.target.value ? Number(e.target.value) : 0 })}
+                                        sx={{ flexGrow: 1, mr: 1, ml: 7.7 }}
+                                    />
+                                </Box>
+                            
+                                <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
+                                    <Typography variant="subtitle1" sx={{width: 250}}>🎲 Ultra Roller Pets:</Typography>
+                                    <TextField
+                                        label="Pets"
+                                        variant="outlined"
+                                        size="small"
+                                        value={calculatorSettings.ultraRoller}
+                                        onChange={(e) => setCalculatorSettings({ ...calculatorSettings, ultraRoller: e.target.value ? Number(e.target.value) : 0 })}
+                                        sx={{ flexGrow: 1, mr: 1, ml: 7.7 }}
+                                    />
+                                </Box>
+                            
+                                <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
+                                    <Typography variant="subtitle1" sx={{width: 250}}>🔮 Secret Hunter Pets:</Typography>
+                                    <TextField
+                                        label="Pets"
+                                        variant="outlined"
+                                        size="small"
+                                        value={calculatorSettings.secretHunter}
+                                        onChange={(e) => setCalculatorSettings({ ...calculatorSettings, secretHunter: e.target.value ? Number(e.target.value) : 0 })}
+                                        sx={{ flexGrow: 1, mr: 1, ml: 7.7 }}
+                                    />
+                                </Box>
+                            
+                                <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
+                                    <Typography variant="subtitle1" sx={{width: 250}}>🌟 Shiny Seeker Pets:</Typography>
+                                    <TextField
+                                        label="Pets"
+                                        variant="outlined"
+                                        size="small"
+                                        value={calculatorSettings.shinySeeker}
+                                        onChange={(e) => setCalculatorSettings({ ...calculatorSettings, shinySeeker: e.target.value ? Number(e.target.value) : 0 })}
                                         sx={{ flexGrow: 1, mr: 1, ml: 7.7 }}
                                     />
                                 </Box>
@@ -598,6 +646,7 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
                                         onChange={(e) => setCalculatorSettings({ ...calculatorSettings, speedPotion: e.target.value as SpeedPotion })}
                                     >
                                         <MenuItem value={0}>None</MenuItem>
+                                        <MenuItem value={125}>Speed Infinity</MenuItem>
                                         <MenuItem value={100}>Speed Evolved</MenuItem>
                                         <MenuItem value={40}>Speed V</MenuItem>
                                         <MenuItem value={25}>Speed IV</MenuItem>

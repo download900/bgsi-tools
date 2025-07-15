@@ -7,7 +7,7 @@ import petsJson from "../data/pets.json";
 //           Types
 // --------------------------
 
-export type Rarity = "common" | "unique" | "rare" | "epic" | "legendary" | "secret";
+export type Rarity = "common" | "unique" | "rare" | "epic" | "legendary" | "secret" | "infinity";
 export type PetVariant = "Normal" | "Shiny" | "Mythic" | "Shiny Mythic";
 export const petVariants: PetVariant[] = ["Normal", "Shiny", "Mythic", "Shiny Mythic"];
 export type CurrencyVariant = "coins" | "tickets";
@@ -132,18 +132,16 @@ export const getPetStat = (pet: Pet, variant: PetVariant, stat: PetStat, maxLeve
         multiplier += 0.5;
       }
     }
-    multiplier += (enchantTeamSize * 0.25);
+    let teamUpMultiplier = 0;
+    if (pet.rarity === 'secret' || pet.rarity === 'infinity') {
+      teamUpMultiplier = 0.5;
+    } else {
+      teamUpMultiplier = 0.25;
+    }
+    multiplier += (enchantTeamSize * teamUpMultiplier);
   }
   return Math.floor(baseStat * scale * multiplier);
 }
-
-// export const getCategoryName = (category: Category): string => {
-//   return category.name || category.egg?.name || "Unknown Category";
-// };
-
-// export const getCategoryImage = (category: Category): string => {
-//   return category.image || (category.egg?.image) || PLACEHOLDER_IMAGE;
-// };
 
 export let PET_DATA: PetData | undefined = undefined;
 

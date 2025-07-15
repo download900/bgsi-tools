@@ -389,6 +389,29 @@
     "dateRemoved": "2025-04-30"
   },
   {
+    "name": "500M Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/500M_Egg.png",
+    "pets": [
+      "Winged Doggy",
+      "Spitty",
+      "Paragon",
+      "Platinum Dualcorn",
+      "Super Hexarium",
+      "Glitch",
+      "Diamond Overlord",
+      "Super Trophy",
+      "Eternal Star",
+      "Fallen Angel",
+      "King Kitty",
+      "Giant Robot"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-07-12",
+    "dateRemoved": ""
+  },
+  {
     "name": "July4th Egg",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c0/July4th_Egg.png",
     "pets": [
@@ -406,7 +429,7 @@
     "canSpawnAsRift": true,
     "secretBountyRotation": false,
     "dateAdded": "2025-06-30",
-    "dateRemoved": ""
+    "dateRemoved": "2025-07-12"
   },
   {
     "name": "Bruh Egg",
@@ -740,7 +763,7 @@
       "Countess Federation",
       "Earl Federation"
     ],
-    "luckIgnored": false,
+    "luckIgnored": true,
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-07-06",

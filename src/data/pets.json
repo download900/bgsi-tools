@@ -2391,7 +2391,7 @@
     "hatchable": false,
     "obtainedFrom": "Milestones",
     "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/2/20/Milestones_Icon.png",
-    "obtainedFromInfo": "Bubbling Platinum II",
+    "obtainedFromInfo": "Bubbling - Season 1",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/c/cc/Light_Lord.png",
       "https://static.wikia.nocookie.net/bgs-infinity/images/d/df/Shiny_Light_Lord.png"
@@ -2450,7 +2450,7 @@
     "hasMythic": false,
     "hatchable": false,
     "obtainedFrom": "Festival Shop",
-    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/01/Shops_Mastery.png",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/6/6f/Bubble_Festival_Icon.png",
     "obtainedFromInfo": "",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/0/05/Doggy_Tophat.png",
@@ -2470,7 +2470,7 @@
     "hasMythic": false,
     "hatchable": false,
     "obtainedFrom": "Festival Shop",
-    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/01/Shops_Mastery.png",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/6/6f/Bubble_Festival_Icon.png",
     "obtainedFromInfo": "",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/9/94/Kitty_Tophat.png",
@@ -2490,7 +2490,7 @@
     "hasMythic": false,
     "hatchable": false,
     "obtainedFrom": "Festival Shop",
-    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/01/Shops_Mastery.png",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/6/6f/Bubble_Festival_Icon.png",
     "obtainedFromInfo": "",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/7/73/Bunny_Tophat.png",
@@ -2510,7 +2510,7 @@
     "hasMythic": false,
     "hatchable": false,
     "obtainedFrom": "Festival Shop",
-    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/01/Shops_Mastery.png",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/6/6f/Bubble_Festival_Icon.png",
     "obtainedFromInfo": "",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/9/9b/Dragon_Tophat.png",
@@ -2530,7 +2530,7 @@
     "hasMythic": false,
     "hatchable": false,
     "obtainedFrom": "Festival Shop",
-    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/01/Shops_Mastery.png",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/6/6f/Bubble_Festival_Icon.png",
     "obtainedFromInfo": "",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/d/d2/Rainbow_Shock_Tophat.png",
@@ -2550,7 +2550,7 @@
     "hasMythic": false,
     "hatchable": false,
     "obtainedFrom": "Festival Shop",
-    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/01/Shops_Mastery.png",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/6/6f/Bubble_Festival_Icon.png",
     "obtainedFromInfo": "",
     "image": [
       "https://static.wikia.nocookie.net/bgs-infinity/images/2/28/Dementor_Tophat.png",
@@ -2706,7 +2706,7 @@
   {
     "name": "Lovely Rose",
     "rarity": "legendary",
-    "chance": 0,
+    "chance": 0.1,
     "bubbles": 3400,
     "gems": 65,
     "currency": 3500,
@@ -2728,7 +2728,7 @@
   {
     "name": "Lucid Leaf",
     "rarity": "secret",
-    "chance": 0,
+    "chance": 0.005,
     "bubbles": 5000,
     "gems": 110,
     "currency": 4400,
@@ -2745,7 +2745,29 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/e/e7/Shiny_Mythic_Lucid_Leaf.png"
     ],
     "dateAdded": "2025-06-30",
-    "dateRemoved": "2025-07-14"
+    "dateRemoved": "2025-07-12"
+  },
+  {
+    "name": "Destiny",
+    "rarity": "secret",
+    "chance": 0.005,
+    "bubbles": 5700,
+    "gems": 115,
+    "currency": 4700,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "Season 4 Infinite Track",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/7/7d/Infinite_Track_Icon.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/1f/Destiny.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/9/9d/Shiny_Destiny.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/9/9b/Mythic_Destiny.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/c/c0/Shiny_Mythic_Destiny.png"
+    ],
+    "dateAdded": "2025-07-12",
+    "dateRemoved": "2025-07-24"
   },
   {
     "name": "Rune Stone",
@@ -3526,6 +3548,266 @@
     "dateRemoved": "2025-04-30"
   },
   {
+    "name": "Winged Doggy",
+    "rarity": "common",
+    "chance": 64,
+    "bubbles": 25,
+    "gems": 0,
+    "currency": 6,
+    "currencyVariant": "coins",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "500M Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/500M_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/a/a1/Winged_Doggy.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/1e/Shiny_Winged_Doggy.png"
+    ],
+    "dateAdded": "2025-07-12",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Spitty",
+    "rarity": "rare",
+    "chance": 30,
+    "bubbles": 100,
+    "gems": 0,
+    "currency": 15,
+    "currencyVariant": "coins",
+    "hasMythic": false,
+    "hatchable": true,
+    "obtainedFrom": "500M Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/500M_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/6/67/Spitty.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Shiny_Spitty.png"
+    ],
+    "dateAdded": "2025-07-12",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Paragon",
+    "rarity": "legendary",
+    "chance": 0.035,
+    "bubbles": 1300,
+    "gems": 25,
+    "currency": 1000,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "500M Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/500M_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/1e/Paragon.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/b/b2/Shiny_Paragon.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/7/70/Mythic_Paragon.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/7/76/Shiny_Mythic_Paragon.png"
+    ],
+    "dateAdded": "2025-07-12",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Platinum Dualcorn",
+    "rarity": "legendary",
+    "chance": 0.002,
+    "bubbles": 2900,
+    "gems": 38,
+    "currency": 2150,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "500M Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/500M_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/42/Platinum_Dualcorn.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/22/Shiny_Platinum_Dualcorn.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/5/54/Mythic_Platinum_Dualcorn.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/8/83/Shiny_Mythic_Platinum_Dualcorn.png"
+    ],
+    "dateAdded": "2025-07-12",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Super Hexarium",
+    "rarity": "legendary",
+    "chance": 0.0001,
+    "bubbles": 3350,
+    "gems": 70,
+    "currency": 3400,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "500M Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/500M_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/26/Super_Hexarium.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/f/fc/Shiny_Super_Hexarium.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/11/Mythic_Super_Hexarium.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/f/ff/Shiny_Mythic_Super_Hexarium.png"
+    ],
+    "dateAdded": "2025-07-12",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Glitch",
+    "rarity": "legendary",
+    "chance": 0.00005,
+    "bubbles": 3500,
+    "gems": 75,
+    "currency": 3600,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "500M Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/500M_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/0/01/Glitch.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/27/Shiny_Glitch.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/e/e2/Mythic_Glitch.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/a/a1/Shiny_Mythic_Glitch.png"
+    ],
+    "dateAdded": "2025-07-12",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Diamond Overlord",
+    "rarity": "secret",
+    "chance": 0.000003,
+    "bubbles": 5100,
+    "gems": 110,
+    "currency": 4500,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "500M Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/500M_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/d/d3/Diamond_Overlord.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/d/d7/Shiny_Diamond_Overlord.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/6/64/Mythic_Diamond_Overlord.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/1e/Shiny_Mythic_Diamond_Overlord.png"
+    ],
+    "dateAdded": "2025-07-12",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Super Trophy",
+    "rarity": "secret",
+    "chance": 0.000001,
+    "bubbles": 5200,
+    "gems": 112,
+    "currency": 4550,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "500M Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/500M_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/8/8b/Super_Trophy.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/d/dd/Shiny_Super_Trophy.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/e/e8/Mythic_Super_Trophy.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/b/b8/Shiny_Mythic_Super_Trophy.png"
+    ],
+    "dateAdded": "2025-07-12",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Fallen Angel",
+    "rarity": "secret",
+    "chance": 7.5e-7,
+    "bubbles": 5350,
+    "gems": 114,
+    "currency": 4600,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "500M Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/500M_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/1d/Fallen_Angel.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Shiny_Fallen_Angel.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/3/30/Mythic_Fallen_Angel.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/4/4f/Shiny_Mythic_Fallen_Angel.png"
+    ],
+    "dateAdded": "2025-07-12",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Eternal Star",
+    "rarity": "secret",
+    "chance": 5e-7,
+    "bubbles": 5500,
+    "gems": 116,
+    "currency": 4650,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "500M Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/500M_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/1b/Eternal_Star.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/18/Shiny_Eternal_Star.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/a/aa/Mythic_Eternal_Star.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/2e/Shiny_Mythic_Eternal_Star.png"
+    ],
+    "dateAdded": "2025-07-12",
+    "dateRemoved": ""
+  },
+  {
+    "name": "King Kitty",
+    "rarity": "secret",
+    "chance": 1e-7,
+    "bubbles": 5700,
+    "gems": 115,
+    "currency": 4700,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "500M Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/500M_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/3/3d/King_Kitty.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/c/ce/Shiny_King_Kitty.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/13/Mythic_King_Kitty.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/5/50/Shiny_Mythic_King_Kitty.png"
+    ],
+    "dateAdded": "2025-07-12",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Giant Robot",
+    "rarity": "infinity",
+    "chance": 2.5e-9,
+    "bubbles": 7500,
+    "gems": 175,
+    "currency": 6000,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": true,
+    "obtainedFrom": "500M Egg",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/500M_Egg.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/a/a2/Giant_Robot.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/c/cd/Shiny_Giant_Robot.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Mythic_Giant_Robot.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/5/5f/Shiny_Mythic_Giant_Robot.png"
+    ],
+    "dateAdded": "2025-07-12",
+    "dateRemoved": ""
+  },
+  {
     "name": "Patriotic Doggy",
     "rarity": "common",
     "chance": 59.5,
@@ -3543,7 +3825,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/0/0e/Shiny_Patriotic_Doggy.png"
     ],
     "dateAdded": "2025-06-30",
-    "dateRemoved": ""
+    "dateRemoved": "2025-07-12"
   },
   {
     "name": "Eagle",
@@ -3563,7 +3845,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/5/50/Shiny_Eagle.png"
     ],
     "dateAdded": "2025-06-30",
-    "dateRemoved": ""
+    "dateRemoved": "2025-07-12"
   },
   {
     "name": "Sparkler Man",
@@ -3583,7 +3865,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/3/38/Shiny_Sparkler_Man.png"
     ],
     "dateAdded": "2025-06-30",
-    "dateRemoved": ""
+    "dateRemoved": "2025-07-12"
   },
   {
     "name": "Patriotic Penguin",
@@ -3605,7 +3887,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/c/c1/Shiny_Mythic_Patriotic_Penguin.png"
     ],
     "dateAdded": "2025-06-30",
-    "dateRemoved": ""
+    "dateRemoved": "2025-07-12"
   },
   {
     "name": "Patriotic Shock",
@@ -3627,7 +3909,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/Shiny_Mythic_Patriotic_Shock.png"
     ],
     "dateAdded": "2025-06-30",
-    "dateRemoved": ""
+    "dateRemoved": "2025-07-12"
   },
   {
     "name": "Star Lord",
@@ -3649,7 +3931,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/3/33/Shiny_Mythic_Star_Lord.png"
     ],
     "dateAdded": "2025-06-30",
-    "dateRemoved": ""
+    "dateRemoved": "2025-07-12"
   },
   {
     "name": "Liberty",
@@ -3671,7 +3953,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/e/e4/Shiny_Mythic_Liberty.png"
     ],
     "dateAdded": "2025-06-30",
-    "dateRemoved": ""
+    "dateRemoved": "2025-07-12"
   },
   {
     "name": "Patriotic Robot",
@@ -3693,7 +3975,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/d/d9/Shiny_Mythic_Patriotic_Robot.png"
     ],
     "dateAdded": "2025-06-30",
-    "dateRemoved": ""
+    "dateRemoved": "2025-07-12"
   },
   {
     "name": "Da Cool Trio",
@@ -3713,7 +3995,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/3/38/Shiny_Da_Cool_Trio.png"
     ],
     "dateAdded": "2025-06-30",
-    "dateRemoved": ""
+    "dateRemoved": "2025-07-12"
   },
   {
     "name": "Void Crystal Doggy",
@@ -6745,6 +7027,26 @@
     "dateRemoved": "2025-05-25"
   },
   {
+    "name": "Dowodle Pile",
+    "rarity": "legendary",
+    "chance": 100,
+    "bubbles": 2000,
+    "gems": 40,
+    "currency": 1000,
+    "currencyVariant": "coins",
+    "hasMythic": false,
+    "hatchable": false,
+    "obtainedFrom": "Robux Shop",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/2/28/Dowodle_Pile.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/1/11/Shiny_Dowodle_Pile.png"
+    ],
+    "dateAdded": "2025-07-12",
+    "dateRemoved": "2025-07-25"
+  },
+  {
     "name": "Archduke Federation",
     "rarity": "legendary",
     "chance": 12.5,
@@ -6905,6 +7207,50 @@
     "dateRemoved": ""
   },
   {
+    "name": "D.I.Y Robot",
+    "rarity": "legendary",
+    "chance": 100,
+    "bubbles": 1700,
+    "gems": 35,
+    "currency": 850,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": false,
+    "obtainedFrom": "Robux Shop",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/f/fb/D.I.Y_Robot.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/0/0d/Shiny_D.I.Y_Robot.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/a/a4/Mythic_D.I.Y_Robot.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/9/90/Shiny_Mythic_D.I.Y_Robot.png"
+    ],
+    "dateAdded": "2025-07-12",
+    "dateRemoved": "2025-07-19"
+  },
+  {
+    "name": "Jawbreaker Elemental",
+    "rarity": "legendary",
+    "chance": 100,
+    "bubbles": 1300,
+    "gems": 26,
+    "currency": 650,
+    "currencyVariant": "coins",
+    "hasMythic": true,
+    "hatchable": false,
+    "obtainedFrom": "Robux Shop",
+    "obtainedFromImage": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png",
+    "obtainedFromInfo": "",
+    "image": [
+      "https://static.wikia.nocookie.net/bgs-infinity/images/d/d0/Jawbreaker_Elemental.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/6/66/Shiny_Jawbreaker_Elemental.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/a/a8/Mythic_Jawbreaker_Elemental.png",
+      "https://static.wikia.nocookie.net/bgs-infinity/images/b/bc/Shiny_Mythic_Jawbreaker_Elemental.png"
+    ],
+    "dateAdded": "2025-07-12",
+    "dateRemoved": "2025-07-19"
+  },
+  {
     "name": "Geometric Dominus",
     "rarity": "legendary",
     "chance": 100,
@@ -6924,7 +7270,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/0/05/Shiny_Mythic_Geometric_Dominus.png"
     ],
     "dateAdded": "2025-07-06",
-    "dateRemoved": "2025-07-13"
+    "dateRemoved": "2025-07-12"
   },
   {
     "name": "Patriotic Soul",
@@ -6946,7 +7292,7 @@
       "https://static.wikia.nocookie.net/bgs-infinity/images/e/e4/Shiny_Mythic_Patriotic_Soul.png"
     ],
     "dateAdded": "2025-07-06",
-    "dateRemoved": "2025-07-13"
+    "dateRemoved": "2025-07-12"
   },
   {
     "name": "Tole Cat",

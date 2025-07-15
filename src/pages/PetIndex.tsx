@@ -85,6 +85,7 @@ const rarityOrder: Rarity[] = [
   "epic",
   "legendary",
   "secret",
+  "infinity",
 ];
 
 const calcCompletion = (pets: Pet[], owned: OwnedPets) => {

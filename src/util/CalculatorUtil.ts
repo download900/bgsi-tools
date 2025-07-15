@@ -3,10 +3,10 @@ import { Egg, Pet, PET_DATA, PetData } from "./DataUtil";
 import { get } from "http";
 
 // Buff data
-export type LuckyPotion = 0 | 10 | 20 | 30 | 65 | 150 | 400;
-export type MythicPotion = 0 | 10 | 20 | 30 | 75 | 150 | 250;
-export type SpeedPotion = 0 | 10 | 15 | 20 | 25 | 40 | 100;
-export type RiftMultiplier = 0 | 5 | 10 | 25;
+export type LuckyPotion = 0 | 10 | 20 | 30 | 65 | 150 | 400 | 600;
+export type MythicPotion = 0 | 10 | 20 | 30 | 75 | 150 | 250 | 375;
+export type SpeedPotion = 0 | 10 | 15 | 20 | 25 | 40 | 100 | 150;
+export type RiftMultiplier = 0 | 5 | 10 | 15 | 20 | 25;
 export type LuckyStreak = 0 | 20 | 30;
 export type LuckDayBonus = "None" | "Free" | "Premium";
 export type HatchDayBonus = "None" | "Free" | "Premium";
@@ -27,6 +27,9 @@ export interface CalculatorSettings {
     shinyIndex: string[];
     luckyStreak: LuckyStreak;
     highRoller: number;
+    secretHunter: number;
+    ultraRoller: number;
+    shinySeeker: number;
     friendBoost: number;
     boardGameLuckBoost: boolean;
     // speed buffs
@@ -104,7 +107,7 @@ export function getHatchingTierBuff (hatchingTier: number, buffType: "luck" | "s
 const BuffDays: { [key: string]: { day: number; bonus: (premium: boolean) => number; offDays: () => number } } = {
     Luck: {
         day: 6, // Saturday
-        bonus: (premium: boolean) => premium ? 450 : 250,
+        bonus: (premium: boolean) => premium ? 450 : 300,
         offDays: () => 100,
     },
     Hatch: {
@@ -150,6 +153,7 @@ export function calculate(egg: Egg, calculatorSettings: CalculatorSettings, setC
         + calculatorSettings.luckyStreak 
         + (calculatorSettings.normalIndex.includes(egg.index) ? 50 : 0) 
         + (calculatorSettings.highRoller * 10)
+        + (calculatorSettings.ultraRoller * 25)
         + getBuffDayBonus("Luck", calculatorSettings.premiumDailyPerks)
         + getBubbleShrineStat("luck", calculatorSettings.bubbleShrineLevel)
         + getHatchingTierBuff(calculatorSettings.hatchingTier, "luck");
@@ -176,6 +180,7 @@ export function calculate(egg: Egg, calculatorSettings: CalculatorSettings, setC
     // Calculate Shiny rate:
     let shinyBuff = 0;
     if (calculatorSettings.normalIndex.includes(egg.index)) shinyBuff += 50;
+    shinyBuff += calculatorSettings.shinySeeker * 0.2;
     shinyChance = 1 / 40 * (1 + (shinyBuff / 100)) * (calculatorSettings.infinityElixir ? 2 : 1);
 
     // Calculate Mythic rate:
@@ -200,7 +205,7 @@ export function calculate(egg: Egg, calculatorSettings: CalculatorSettings, setC
     const hatchesPerSecond = (1 / 4.5) * (speed / 100) * calculatorSettings.eggsPerHatch;
 
     const results: CalculatorResults = { 
-        luckyBuff: luckyBuff, 
+        luckyBuff: luckyBuff,
         shinyChance: shinyChance, 
         mythicChance: mythicChance, 
         shinyMythicChance: shinyChance * mythicChance,
@@ -210,8 +215,13 @@ export function calculate(egg: Egg, calculatorSettings: CalculatorSettings, setC
     };
 
     egg.pets.forEach((pet) => {
-        if (pet.rarity && pet.rarity !== 'secret' && !pet.rarity.includes('legendary')) return;
-        const normalChance = calculateChance(pet.chance, luckyBuff);
+        if (pet.rarity && pet.rarity !== 'secret' && !pet.rarity.includes('legendary') && !pet.rarity.includes('infinity')) return;
+        let lucky = luckyBuff;
+        if (pet.rarity === 'secret' || pet.rarity === 'infinity') {
+            let secretBuff = 1 + ((calculatorSettings.secretHunter * 5) / 100);
+            lucky *= secretBuff;
+        }
+        const normalChance = calculateChance(pet.chance, lucky);
         results.petResults.push({
             pet: pet,
             normalChance: normalChance,
