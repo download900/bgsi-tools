@@ -216,12 +216,13 @@ export function calculate(egg: Egg, calculatorSettings: CalculatorSettings, setC
 
     egg.pets.forEach((pet) => {
         if (pet.rarity && pet.rarity !== 'secret' && !pet.rarity.includes('legendary') && !pet.rarity.includes('infinity')) return;
-        let lucky = luckyBuff;
+
+        let normalChance = calculateChance(pet.chance, luckyBuff);
+
         if (pet.rarity === 'secret' || pet.rarity === 'infinity') {
-            let secretBuff = 1 + ((calculatorSettings.secretHunter * 5) / 100);
-            lucky *= secretBuff;
+            normalChance = calculateChance(normalChance, calculatorSettings.secretHunter * 5);
         }
-        const normalChance = calculateChance(pet.chance, lucky);
+
         results.petResults.push({
             pet: pet,
             normalChance: normalChance,
