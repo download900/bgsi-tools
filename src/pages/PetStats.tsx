@@ -1,42 +1,8 @@
 // src/pages/CompletionTracker.tsx
 import React, { useEffect, useState, useRef } from "react";
-import {
-  Box,
-  Avatar,
-  Typography,
-  Paper,
-  Table,
-  TableHead,
-  TableRow,
-  TableCell,
-  TableBody,
-  Checkbox,
-  Link,
-  Button,
-  Select,
-  MenuItem,
-  Input,
-  alpha
-} from "@mui/material";
-
-import {
-  Category,
-  PetInstance,
-  PetVariant,
-  CurrencyVariant,
-  petVariants,
-  currencyImages,
-  getPetChance,
-  getPetStat,
-  Egg,
-  PetData,
-  Pet
-} from "../util/DataUtil";
-import {
-  getRarityStyle,
-  imgIcon,
-  variantStyles
-} from "../util/StyleUtil";
+import { Box, Avatar, Typography, Paper, Table, TableHead, TableRow, TableCell, TableBody, Checkbox, Link, Button, Select, MenuItem, Input } from "@mui/material";
+import { PetInstance, PetVariant, CurrencyVariant, petVariants, currencyImages, getPetChance, getPetStat, Egg, PetData, Pet } from "../util/DataUtil";
+import { imgIcon, variantStyle } from "../util/StyleUtil";
 
 const STORAGE_KEY = "petTrackerState";
 type PetKey = `${string}__${PetVariant}`;
@@ -184,7 +150,7 @@ export function PetList(props: PetListProps) {
     if (!props.data || props.data.eggs.length < 1) return [];
 
     const addPet = (pet: Pet) => {
-      if (pet.rarity !== 'legendary' && pet.rarity !== 'secret') return;
+      if (pet.rarity !== 'legendary' && pet.rarity !== 'secret' && pet.rarity !== 'infinity') return;
       petVariants.forEach((variant) => {
         if (variant.includes("Mythic") && !pet.hasMythic) return; // skip Mythic if pet doesn't have it
         allPets.push({
@@ -286,8 +252,9 @@ export function PetList(props: PetListProps) {
                 sx={{ minWidth: 120 }}
               >
                 <MenuItem value="all">All</MenuItem>
-                <MenuItem value="legendary">Legendary</MenuItem>
-                <MenuItem value="secret">Secret</MenuItem>
+                <MenuItem value="legendary" className="legendary">Legendary</MenuItem>
+                <MenuItem value="secret" className="secret">Secret</MenuItem>
+                <MenuItem value="infinity" className="infinity">Infinity</MenuItem>
               </Select>
             </Box>
             <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", p: 1 }}>
@@ -301,7 +268,7 @@ export function PetList(props: PetListProps) {
                 sx={{ minWidth: 120 }}
               >
                 {petVariants.map((variant) => (
-                  <MenuItem key={variant} value={variant}>
+                  <MenuItem key={variant} value={variant} className={variantStyle(variant)}>
                     <Checkbox checked={variantFilter.includes(variant)} />
                     {variant}
                   </MenuItem>
@@ -444,8 +411,8 @@ export function PetList(props: PetListProps) {
                   <TableCell>
                     <Typography variant="body2">
                       <Link href={`https://bgs-infinity.fandom.com/wiki/${pet.name}`} target="_blank">
-                        <span style={{ ...getRarityStyle(pet.rarity) }}>{variant === "Normal" ? pet.name : `${pet.name}`}</span>{" "}
-                        {variant !== "Normal" && <span style={variantStyles[variant]}>{`(${variant})`}</span>}
+                        <span className={pet.rarity}>{pet.name}</span>{" "}
+                        {variant !== "Normal" && <span className={variantStyle(variant)}>{`(${variant})`}</span>}
                       </Link>
                     </Typography>
                   </TableCell>

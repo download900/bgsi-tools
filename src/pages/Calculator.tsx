@@ -1,6 +1,6 @@
 import { JSX, useEffect, useState } from "react";
 import { Container, Typography, Box, TextField, Select, MenuItem, Checkbox, Paper, Tooltip, Table, TableBody, TableCell, TableHead,TableRow, Link, Tabs, Tab, List, ListItem, FormControlLabel } from "@mui/material";
-import { getRarityStyle, imgIcon } from "../util/StyleUtil";
+import { imgIcon } from "../util/StyleUtil";
 import { Egg, isAvailable, Pet, PetData } from "../util/DataUtil";
 import Decimal from "decimal.js";
 import { calculate, CalculatorResults, CalculatorSettings, HatchDayBonus, InfinityEgg, isBuffDay, LuckDayBonus, LuckyPotion, LuckyStreak, MythicPotion, RiftMultiplier, SpeedPotion } from "../util/CalculatorUtil";
@@ -908,7 +908,7 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
                                                       style={{ textDecoration: "none", color: "inherit", display: "flex", alignItems: "center" }}
                                                     >
                                                         <img src={result.pet.image[0]} alt={result.pet.name} style={{ width: 24, height: 24, marginRight: 8 }} />
-                                                        <span style={getRarityStyle(result.pet.rarity)}>{result.pet.name}</span>
+                                                        <span className={result.pet.rarity}>{result.pet.name}</span>
                                                     </Link>
                                                 </TableCell>
                                                 <TableCell sx={{ display: 'table-cell !important' }}>

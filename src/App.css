@@ -1,38 +1,77 @@
-.App {
-  text-align: center;
+
+/*---- PET RARITIES ----*/
+.common {
+  font-weight: bold !important;
+  color: #ffffff;
+  filter: drop-shadow(0 0 1px #000000) !important;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.unique {
+  font-weight: bold !important;
+  color: #fec394 !important;
+  filter: drop-shadow(0 0 1px #000000) !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.rare {
+  font-weight: bold !important;
+  color: #ff6161 !important;
+  filter: drop-shadow(0 0 1px #000000) !important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.epic {
+  font-weight: bold !important;
+  color: #d166fd !important;
+  filter: drop-shadow(0 0 1px #000000) !important;
 }
 
-.App-link {
-  color: #61dafb;
+.legendary {
+  font-weight: bold !important;
+  background: linear-gradient(90deg, #ff9999, #ffd699, #fffd99, #99ffb4, #99ffff, #99b3ff, #c599ff) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  color: transparent !important;
+  filter: drop-shadow(0 0 1px #000000) !important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.secret {
+  font-weight: bold !important;
+  color: #F700FF !important;
+  filter: drop-shadow(0 0 1px #000000) !important;
+}
+
+.infinity {
+  font-weight: bold !important;
+  background: linear-gradient(90deg, #c0058e, #7b29ff) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  color: transparent !important;
+  filter: drop-shadow(0 0 1px #000000) !important;
+}
+
+/*---- PET VARIANTS ----*/
+
+.normal {
+  color: #ffffff !important;
+  filter: drop-shadow(0 0 1px #000000) !important;
+}
+
+.shiny {
+  background: linear-gradient(90deg, #f6d317, #ff7d04) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  color: transparent !important;
+}
+
+.mythic {
+  background: linear-gradient(90deg, #915ffc, #ed7bfd) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  color: transparent !important;
+}
+
+.shiny-mythic {
+  background: linear-gradient(-90deg, #9868ff, #ed7bfd, #f6d317, #ff7d04) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  color: transparent !important;
 }

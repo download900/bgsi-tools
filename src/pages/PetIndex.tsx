@@ -1,35 +1,8 @@
 // src/pages/PetIndex.tsx
-import React, { useEffect, useMemo, useState } from "react";
-import {
-  Avatar,
-  Box,
-  Checkbox,
-  Drawer,
-  List,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-  Typography,
-  Link,
-  TextField,
-} from "@mui/material";
-
-import {
-  Category,
-  Pet,
-  PetData,
-  PetVariant,
-  Rarity,
-  isAvailable,
-  petVariants,
-} from "../util/DataUtil";
-import { getPercentStyle, getRarityStyle } from "../util/StyleUtil";
+import { useEffect, useMemo, useState } from "react";
+import { Avatar, Box, Checkbox, Drawer, List, ListItemButton, ListItemIcon, ListItemText, Paper, Table, TableBody, TableCell, TableHead, TableRow, Typography, Link, TextField, Select, MenuItem } from "@mui/material";
+import { Category, Pet, PetData, PetVariant, Rarity, isAvailable, petVariants } from "../util/DataUtil";
+import { getPercentStyle, variantStyle } from "../util/StyleUtil";
 import { theme } from "..";
 
 const STORAGE_KEY = "petTrackerState";
@@ -142,6 +115,7 @@ export function PetIndex({ data }: Props) {
   const [selectedPath, setSelectedPath] = useState<string>("All");
   const [visibleCount, setVisibleCount] = useState(20);
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [rarityFilter, setRarityFilter] = useState<Rarity | "All">("All");
 
   /* restore */
   useEffect(() => {
@@ -178,15 +152,20 @@ export function PetIndex({ data }: Props) {
     selectedPath === "All"
       ? allPets
       : collectPets(currentCat);
-  const filteredPets = useMemo(
-    () =>
-      searchQuery.trim()
-        ? petsToShow.filter((p) =>
-            p.name.toLowerCase().includes(searchQuery.toLowerCase())
-          )
-        : petsToShow,
-    [petsToShow, searchQuery]
-  );
+
+  const filteredPets = useMemo(() => {
+      let pets = petsToShow;
+      const query = searchQuery.trim().toLowerCase();
+      if (query) {
+        pets = pets.filter((p) =>
+          p.name.toLowerCase().includes(query)
+        );
+      }
+      if (rarityFilter !== "All") {
+        pets = pets.filter((p) => p.rarity === rarityFilter);
+      }
+      return pets;
+  }, [petsToShow, searchQuery, rarityFilter]);
 
   const sortedPets = useMemo(
     () =>
@@ -376,15 +355,32 @@ export function PetIndex({ data }: Props) {
           </Table>
         </Paper>
 
-        {/* search */}
-        <Box sx={{ mb: 2 }}>
-          <TextField
-            
-            size="small"
-            placeholder="Search pets…"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
+        {/* search and filter */}
+        <Box sx={{ display: "flex", flexDirection: "row", width: 800 }}>
+          <Box sx={{ mb: 2, mr: 2 }}>
+            <TextField
+              size="small"
+              placeholder="Search pets…"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </Box>
+          <Box sx={{ mb: 2 }}>
+            <Select
+                size="small"
+                value={rarityFilter}
+                onChange={(e) => setRarityFilter(e.target.value as "All" | Rarity)}
+            >
+              <MenuItem value="All">All Rarities</MenuItem>
+              <MenuItem value="infinity" className='infinity'>Infinity</MenuItem>
+              <MenuItem value="secret" className='secret'>Secret</MenuItem>
+              <MenuItem value="legendary" className='legendary'>Legendary</MenuItem>
+              <MenuItem value="epic" className='epic'>Epic</MenuItem>
+              <MenuItem value="rare" className='rare'>Rare</MenuItem>
+              <MenuItem value="unique" className='unique'>Unique</MenuItem>
+              <MenuItem value="common" className='common'>Common</MenuItem>
+            </Select>
+          </Box>
         </Box>
 
         {/* pet list */}
@@ -405,8 +401,10 @@ export function PetIndex({ data }: Props) {
                 {petVariants.map((v) => (
                   <TableCell
                     key={v}
+                    className={variantStyle(v)}
                     sx={{
                       width: 80,
+                      fontSize: "0.8em",
                       fontWeight: "bold",
                       textAlign: "left",
                     }}
@@ -423,7 +421,7 @@ export function PetIndex({ data }: Props) {
 
             <TableBody>
               {sortedPets.slice(0, visibleCount).map((pet) => {
-                const style = getRarityStyle(pet.rarity);
+                //const style = getRarityStyle(pet.rarity);
                 const discontinued = !isAvailable(pet.dateRemoved);
 
                 const dropDisplay = pet.hatchable
@@ -458,7 +456,7 @@ export function PetIndex({ data }: Props) {
                         target="_blank"
                         sx={{ textDecoration: "none" }}
                       >
-                        <Typography variant="body2" sx={style}>
+                        <Typography variant="body2" className={pet.rarity}>
                           {pet.name}
                         </Typography>
                         {discontinued && (
@@ -476,7 +474,7 @@ export function PetIndex({ data }: Props) {
                     </TableCell>
 
                     <TableCell>
-                      <Typography variant="body2" sx={style}>
+                      <Typography variant="body2" className={pet.rarity}>
                         {dropDisplay}
                       </Typography>
                     </TableCell>

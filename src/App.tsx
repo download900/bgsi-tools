@@ -1,13 +1,5 @@
-import React, { useEffect, useState } from "react";
-import {
-  AppBar,
-  Toolbar,
-  Tabs,
-  Tab,
-  Container,
-  Box,
-  Typography,
-  Link} from "@mui/material";
+import { useEffect, useState } from "react";
+import { AppBar, Toolbar, Tabs, Tab, Container, Box, Typography, Link } from "@mui/material";
 import headerImage from "./assets/favicon.png";
 import { PetList } from "./pages/PetStats";
 import { OddsCalculator } from "./pages/Calculator";
