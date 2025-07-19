@@ -40,6 +40,7 @@ export interface CalculatorSettings {
     // events
     doubleLuckEvent: boolean;
     fastHatchEvent: boolean;
+    doubleSecretEvent: boolean;
     // bubble shrine
     bubbleShrineLevel: number; // 1-50
     // daily perks
@@ -134,18 +135,16 @@ export function getBuffDayBonus(buff: string, premium: boolean): number {
     return 0; // No bonus for this buff on this day
 }
 
-export function calculateChance(baseChance:number, luckyBuff: number) {
+export function calculateChance(baseChance:number, buff: number) {
     // Calculate base drop chance
-    // (baseChance) * (1 + (luckyBuff / 100))
-    const n = Decimal(1).plus(luckyBuff / 100);
+    // (baseChance) * (1 + (buff / 100))
+    const n = Decimal(1).plus(buff / 100);
     const dropRate = n.times(baseChance);
     return dropRate as unknown as any;
 }
 
 export function calculate(egg: Egg, calculatorSettings: CalculatorSettings, setCalculatorResults: any, selectedEgg: Egg) {
     let luckyBuff = 0;
-    let shinyChance = 0;
-    let mythicChance = 0;
 
     // Calculate Lucky buff:
     // Add Raw buffs:
@@ -178,16 +177,19 @@ export function calculate(egg: Egg, calculatorSettings: CalculatorSettings, setC
     if (selectedEgg?.canSpawnAsRift && calculatorSettings.riftMultiplier > 0) luckyBuff += calculatorSettings.riftMultiplier * 100;
 
     // Calculate Shiny rate:
+    let shinyChance = 2.5; // 1/40 base rate
+    shinyChance += calculatorSettings.shinySeeker * 0.2;
     let shinyBuff = 0;
     if (calculatorSettings.normalIndex.includes(egg.index)) shinyBuff += 50;
-    shinyBuff += calculatorSettings.shinySeeker * 0.2;
-    shinyChance = 1 / 40 * (1 + (shinyBuff / 100)) * (calculatorSettings.infinityElixir ? 2 : 1);
+    if (calculatorSettings.infinityElixir) shinyBuff *= 2;
+    shinyChance = (shinyChance * (1 + (shinyBuff / 100)) * (calculatorSettings.infinityElixir ? 2 : 1)) / 100;
 
     // Calculate Mythic rate:
+    let mythicChance = 1; // 1/100 base rate
     let mythicBuff = 0;
-    if (calculatorSettings.shinyIndex.includes(egg.index)) mythicBuff += 50;
     mythicBuff += calculatorSettings.mythicPotion;
-    mythicChance = 1 / 100 * (1 + (mythicBuff / 100)) * (calculatorSettings.infinityElixir ? 2 : 1);
+    if (calculatorSettings.shinyIndex.includes(egg.index)) mythicBuff += 50;
+    mythicChance = (mythicChance * (1 + (mythicBuff / 100)) * (calculatorSettings.infinityElixir ? 2 : 1)) / 100;
 
     // Calculate speed:
     let speed = 100 + calculatorSettings.speedPotion;
@@ -220,7 +222,11 @@ export function calculate(egg: Egg, calculatorSettings: CalculatorSettings, setC
         let normalChance = calculateChance(pet.chance, luckyBuff);
 
         if (pet.rarity === 'secret' || pet.rarity === 'infinity') {
-            normalChance = calculateChance(normalChance, calculatorSettings.secretHunter * 5);
+            let secretBuff = 0;
+            if (calculatorSettings.secretHunter) secretBuff += calculatorSettings.secretHunter * 5;
+            if (calculatorSettings.doubleSecretEvent) secretBuff += 100;
+
+            normalChance = calculateChance(normalChance, secretBuff);
         }
 
         results.petResults.push({

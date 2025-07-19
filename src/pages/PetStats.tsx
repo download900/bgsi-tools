@@ -2,7 +2,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Box, Avatar, Typography, Paper, Table, TableHead, TableRow, TableCell, TableBody, Checkbox, Link, Button, Select, MenuItem, Input } from "@mui/material";
 import { PetInstance, PetVariant, CurrencyVariant, petVariants, currencyImages, getPetChance, getPetStat, Egg, PetData, Pet } from "../util/DataUtil";
-import { imgIcon, variantStyle } from "../util/StyleUtil";
+import { capitalize, imgIcon, variantStyle } from "../util/StyleUtil";
 
 const STORAGE_KEY = "petTrackerState";
 type PetKey = `${string}__${PetVariant}`;
@@ -231,7 +231,7 @@ export function PetList(props: PetListProps) {
         <Box sx={{ width: '1100px', display: "flex", flexWrap: 'wrap', flexShrink: 0, flexDirection: "column", }}>
           <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: 'space-evenly' }}>
             <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", p: 1 }}>
-              <Typography variant="subtitle1" sx={{ marginRight: 1 }}>Obtained:</Typography>
+              <Typography variant="subtitle1" sx={{ marginRight: 1, fontWeight: 'bold' }}>Obtained:</Typography>
               <Select
                 value={obtainedFilter}
                 onChange={(event) => setObtainedFilter(event.target.value as ObtainedFilter)}
@@ -244,7 +244,7 @@ export function PetList(props: PetListProps) {
               </Select>
             </Box>
             <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", p: 1 }}>
-              <Typography variant="subtitle1" sx={{ marginRight: 1 }}>Rarity:</Typography>
+              <Typography variant="subtitle1" className='legendary' sx={{ marginRight: 1, fontWeight: 'bold' }}>Rarity:</Typography>
               <Select
                 value={rarityFilter}
                 onChange={(event) => setRarityFilter(event.target.value as RarityFilter)}
@@ -258,7 +258,7 @@ export function PetList(props: PetListProps) {
               </Select>
             </Box>
             <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", p: 1 }}>
-              <Typography variant="subtitle1" sx={{ marginRight: 1 }}>Variant:</Typography>
+              <Typography variant="subtitle1" className='shiny-mythic' sx={{ marginRight: 1, fontWeight: 'bold' }}>Variant:</Typography>
               <Select
                 value={Array.isArray(variantFilter) && variantFilter.length > 0 ? variantFilter : []}
                 renderValue={(selected) => { return selected.length === 0 ? "All" : selected.join(", ").substring(0, 10); }}
@@ -276,7 +276,7 @@ export function PetList(props: PetListProps) {
               </Select>
             </Box>
             <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", p: 1 }}>
-              <Typography variant="subtitle1" sx={{ marginRight: 1 }}>Currency:</Typography>
+              <Typography variant="subtitle1" sx={{ marginRight: 1 }}>{imgIcon(currencyImages['coins'], 25)} Currency:</Typography>
               <Select
                 value={currencyFilter || ""}
                 onChange={(event) => setCurrencyFilter(event.target.value as CurrencyVariant)}
@@ -287,7 +287,7 @@ export function PetList(props: PetListProps) {
                 {Object.keys(currencyImages).map((currency) => (
                   <MenuItem key={currency} value={currency}>
                     <img src={currencyImages[currency as CurrencyVariant]} alt={currency} style={{ width: 16, height: 16, verticalAlign: "middle", marginRight: 4 }} />
-                    {currency}
+                    {capitalize(currency)}
                   </MenuItem>
                 ))}
               </Select>
@@ -295,21 +295,25 @@ export function PetList(props: PetListProps) {
           </Box>
           <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: 'space-evenly' }}>
             <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", p: 1  }}>
-              <Typography variant="subtitle1" sx={{ marginRight: 1 }}>Preview max level:</Typography>
+              <Typography variant="subtitle1" sx={{ marginRight: 1 }}>
+                {imgIcon('https://static.wikia.nocookie.net/bgs-infinity/images/2/29/Experienced_Icon.png', 25)} Level 25:
+              </Typography>
               <Checkbox
                 checked={previewMaxLevel}
                 onChange={() => setPreviewMaxLevel(!previewMaxLevel)}
               />
             </Box>
             <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", p: 1  }}>
-              <Typography variant="subtitle1" sx={{ marginRight: 1 }}>Preview Team Up/Determination:</Typography>
+              <Typography variant="subtitle1" sx={{ marginRight: 1 }}>💖 Team Up/Determination:</Typography>
               <Checkbox
                 checked={previewEnchant}
                 onChange={() => setPreviewEnchant(!previewEnchant)}
               />
             </Box>
             <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", p: 1  }}>
-              <Typography variant="subtitle1" sx={{ marginRight: 1 }}>Team Size:</Typography>
+              <Typography variant="subtitle1" sx={{ marginRight: 1 }}>
+                {imgIcon('https://static.wikia.nocookie.net/bgs-infinity/images/5/5e/Pet_Equips_III_Icon.png', 25)} Team Size:
+                </Typography>
               <Input
                 value={enchantTeamSize}
                 onChange={(event) => setEnchantTeamSize(Number(event.target.value))}
@@ -317,7 +321,9 @@ export function PetList(props: PetListProps) {
               />
             </Box>
             <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", p: 1  }}>
-              <Typography variant="subtitle1" sx={{ marginRight: 1 }}>Second Enchant:</Typography>
+              <Typography variant="subtitle1" sx={{ marginRight: 1 }}>
+                {imgIcon('https://static.wikia.nocookie.net/bgs-infinity/images/2/2f/Special_Enchants.png', 25)} Second Enchant:
+                </Typography>
               <Select 
                 value={secondEnchant}
                 onChange={(event) => setSecondEnchant(event.target.value as "looter" | "bubbler")}

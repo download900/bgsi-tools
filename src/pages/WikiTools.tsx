@@ -1,11 +1,10 @@
 import { JSX, useEffect, useRef, useState } from "react";
-import { Box, Button, capitalize, Container, Typography } from "@mui/material";
+import { Button, Container, Typography } from "@mui/material";
 import { Pet, Rarity, PetVariant, CurrencyVariant, Egg, PetData, Category } from "../util/DataUtil";
 import * as cheerio from 'cheerio';
 import categoriesJson from "../data/categories.json";
 import eggsJson from "../data/eggs.json";
 import petsJson from "../data/pets.json";
-import { index } from "cheerio/dist/commonjs/api/traversing";
 
 const { format, parse } = require('lua-json')
 

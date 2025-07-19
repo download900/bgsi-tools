@@ -36,6 +36,7 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
         eggsPerHatch: 1,
         doubleLuckEvent: false,
         fastHatchEvent: false,
+        doubleSecretEvent: false,
         secretsBountyPet: "",
         secretsBountyEgg: "",
         hatchingTier: 0,
@@ -613,6 +614,14 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
                                         onChange={(e) => setCalculatorSettings({ ...calculatorSettings, doubleLuckEvent: e.target.checked })}
                                     />
                                 </Box>
+                            
+                                <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
+                                    <Typography variant="subtitle1" sx={{width: 250}}>🥳 Double Secret event:</Typography>
+                                    <Checkbox
+                                        checked={calculatorSettings.doubleSecretEvent}
+                                        onChange={(e) => setCalculatorSettings({ ...calculatorSettings, doubleSecretEvent: e.target.checked })}
+                                    />
+                                </Box>
                                 </>
                             )
                         }
@@ -832,13 +841,13 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
                                                 🍀 Luck: <b>{calculatorResults.luckyBuff || 0}%</b>
                                             </Box>
                                             <Box>
-                                                ✨ Shiny: <b>1 / {(1 / calculatorResults.shinyChance || 0).toLocaleString(undefined, { maximumFractionDigits: 1})}</b>
+                                                ✨ <span className='shiny'>Shiny:</span> <b>1 / {(1 / calculatorResults.shinyChance || 0).toLocaleString(undefined, { maximumFractionDigits: 1})}</b>
                                             </Box>
                                             <Box>
-                                                🔮 Mythic: <b>1 / {(1 / calculatorResults.mythicChance || 0).toLocaleString(undefined, { maximumFractionDigits: 1})}</b>
+                                                🔮 <span className='mythic'>Mythic:</span> <b>1 / {(1 / calculatorResults.mythicChance || 0).toLocaleString(undefined, { maximumFractionDigits: 1})}</b>
                                             </Box>
                                             <Box>
-                                                💫 Shiny Mythic: <b>1 / {(1 / calculatorResults.shinyMythicChance || 0).toLocaleString(undefined, { maximumFractionDigits: 1})}</b>
+                                                💫 <span className='shiny-mythic'>Shiny Mythic:</span> <b>1 / {(1 / calculatorResults.shinyMythicChance || 0).toLocaleString(undefined, { maximumFractionDigits: 1})}</b>
                                             </Box>
                                             </>
                                         ) : (
@@ -886,13 +895,13 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
                                  🥚 Normal
                                 </TableCell>
                                 <TableCell sx={{ width: 200, fontWeight: "bold" }}>
-                                  ✨ Shiny
+                                  ✨ <span className='shiny'>Shiny</span>
                                 </TableCell>
                                 <TableCell sx={{ width: 200, fontWeight: "bold" }}>
-                                  🔮 Mythic
+                                  🔮 <span className='mythic'>Mythic</span>
                                 </TableCell>
                                 <TableCell sx={{ width: 200, fontWeight: "bold" }}>
-                                  💫 Shiny Mythic
+                                  💫 <span className='shiny-mythic'>Shiny Mythic</span>
                                 </TableCell>
                               </TableRow>
                             </TableHead>

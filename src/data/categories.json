@@ -128,6 +128,7 @@
         "categories": [
           {
             "name": "Lootables",
+            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/a/a2/Golden_Box.png",
             "pets": [
               "Midas",
               "Patronus",
@@ -140,6 +141,7 @@
           },
           {
             "name": "Quests",
+            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c2/Quests_Icon.png",
             "pets": [
               "Discord Imp",
               "Easter Fluffle",
@@ -150,18 +152,20 @@
           },
           {
             "name": "Index",
+            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/da/Index_Icon.png",
             "pets": [
               "Chocolate Bunny"
             ]
           },
           {
             "name": "Shops",
+            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/01/Shops_Mastery.png",
             "pets": [
               "Dementor Tophat"
             ]
           }
         ],
-        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/a/a2/Golden_Box.png"
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/78/Timer_Icon.png"
       }
     ],
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/67/Playtime_Icon.png"
@@ -249,7 +253,7 @@
         "egg": "500M Egg"
       }
     ],
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/8/86/Throwback_Egg.png"
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/78/Timer_Icon.png"
   },
   {
     "name": "Bubble Pass",

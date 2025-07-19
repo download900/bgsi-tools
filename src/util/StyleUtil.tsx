@@ -15,3 +15,7 @@ export const getPercentStyle = (percent: number): React.CSSProperties => {
 export function variantStyle(variant: PetVariant): string {
   return variant.toLowerCase().replace(" ", "-");
 }
+
+export function capitalize(str: string): string {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
