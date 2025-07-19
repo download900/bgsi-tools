@@ -143,7 +143,7 @@ export function calculateChance(baseChance:number, buff: number) {
     return dropRate as unknown as any;
 }
 
-export function calculate(egg: Egg, calculatorSettings: CalculatorSettings, setCalculatorResults: any, selectedEgg: Egg) {
+export function calculate(egg: Egg, calculatorSettings: CalculatorSettings, selectedEgg: Egg) : CalculatorResults {
     let luckyBuff = 0;
 
     // Calculate Lucky buff:
@@ -242,7 +242,7 @@ export function calculate(egg: Egg, calculatorSettings: CalculatorSettings, setC
         });
     });
 
-    setCalculatorResults(results);
+    return results;
 }
 
  export default {}

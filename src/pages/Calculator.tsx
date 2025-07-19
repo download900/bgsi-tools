@@ -240,7 +240,9 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
 
     const handleCalculate = (egg: Egg) => {
         if (!egg || !selectedEgg || !data) return;
-        calculate(egg, calculatorSettings, setCalculatorResults, selectedEgg!);
+        const results = calculate(egg, calculatorSettings, selectedEgg!);
+        results.petResults.sort((a, b) => b.normalChance - a.normalChance);
+        setCalculatorResults(results);
     }
 
     // ~~~~~~~~~~~~~ Render ~~~~~~~~~~~~~
