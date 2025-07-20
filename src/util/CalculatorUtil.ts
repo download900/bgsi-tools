@@ -180,7 +180,7 @@ export function calculate(egg: Egg, calculatorSettings: CalculatorSettings, sele
 
     //Calculate Secret Buff:
     let secretBuff = 0;
-    if (calculatorSettings.secretHunter) secretBuff += calculatorSettings.secretHunter * 5;
+    if (calculatorSettings.secretHunter) secretBuff += 5; // (currently bugged, doesn't stack) calculatorSettings.secretHunter * 5;
     //if (calculatorSettings.doubleSecretEvent) secretBuff += 100;
     if (calculatorSettings.infinityElixir) secretBuff *= 2;
     if (calculatorSettings.infinityElixir) secretBuff += 100;

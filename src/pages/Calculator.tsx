@@ -2,7 +2,7 @@ import { JSX, useEffect, useState } from "react";
 import { Container, Typography, Box, TextField, Select, MenuItem, Checkbox, Paper, Tooltip, Table, TableBody, TableCell, TableHead,TableRow, Link, Tabs, Tab, List, ListItem, FormControlLabel } from "@mui/material";
 import { imgIcon } from "../util/StyleUtil";
 import { Egg, isAvailable, Pet, PetData } from "../util/DataUtil";
-import Decimal from "decimal.js";
+import { FaInfoCircle } from "react-icons/fa";
 import { calculate, CalculatorResults, CalculatorSettings, HatchDayBonus, InfinityEgg, isBuffDay, LuckDayBonus, LuckyPotion, LuckyStreak, MythicPotion, RiftMultiplier, SpeedPotion } from "../util/CalculatorUtil";
 
 const STORAGE_KEY = "oddsCalculatorSettings";
@@ -442,17 +442,6 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
                                     />
                                 </Box>
 
-                                <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
-                                    <Typography variant="subtitle1" sx={{width: 250}}>
-                                        {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/1/1f/Gamepass_-_Double_Luck.png", 16, 3, 5)}
-                                        Double Luck Gamepass:
-                                    </Typography>
-                                    <Checkbox
-                                        checked={calculatorSettings.doubleLuckGamepass}
-                                        onChange={(e) => setCalculatorSettings({ ...calculatorSettings, doubleLuckGamepass: e.target.checked })}
-                                    />
-                                </Box>
-
                                 {
                                     selectedEgg?.index && (
                                         <>
@@ -496,9 +485,49 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
                                         <MenuItem value={20}>Lucky I (20%)</MenuItem>
                                     </Select>
                                 </Box>
+
+                                <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
+                                    <Typography variant="subtitle1" sx={{width: 250}}>
+                                        {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/c/c0/Bubble_Shrine_Icon.png", 24, 0, 4)}
+                                        Shrine Blessing:
+                                    </Typography>
+                                    <TextField
+                                        label="Level"
+                                        variant="outlined"
+                                        size="small"
+                                        value={calculatorSettings.bubbleShrineLevel}
+                                        onChange={(e) => setCalculatorSettings({ ...calculatorSettings, bubbleShrineLevel: e.target.value ? Number(e.target.value) : 0 })}
+                                        sx={{ flexGrow: 1, mr: 1, ml: 7.7 }}
+                                    />
+                                </Box>
+
+                                <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
+                                    <Typography variant="subtitle1" sx={{width: 250}}>
+                                        {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/8/89/Multi_Egg_Icon.png", 20, 0, 4)}
+                                        Hatching Milestone:
+                                    </Typography>
+                                    <Select
+                                        value={calculatorSettings.hatchingTier}
+                                        size="small"
+                                        sx={{ flexGrow: 1, mr: 1 }}
+                                        onChange={(e) => setCalculatorSettings({ ...calculatorSettings, hatchingTier: e.target.value as number })}
+                                    >
+                                        <MenuItem value={0}>Unranked</MenuItem>
+                                        <MenuItem value={1}>Bronze I</MenuItem>
+                                        <MenuItem value={2}>Bronze II</MenuItem>
+                                        <MenuItem value={3}>Bronze III</MenuItem>
+                                        <MenuItem value={4}>Silver I</MenuItem>
+                                        <MenuItem value={5}>Silver II</MenuItem>
+                                        <MenuItem value={6}>Silver III</MenuItem>
+                                        <MenuItem value={7}>Gold I</MenuItem>
+                                        <MenuItem value={8}>Gold II</MenuItem>
+                                        <MenuItem value={9}>Gold III</MenuItem>
+                                        <MenuItem value={10}>Platinum I</MenuItem>
+                                    </Select>
+                                </Box>
                             
                                 <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
-                                    <Typography variant="subtitle1" sx={{width: 250}}>🎲 High Roller Pets:</Typography>
+                                    <Typography variant="subtitle1" sx={{width: 250}}>🎲 High Roller:</Typography>
                                     <TextField
                                         label="Pets"
                                         variant="outlined"
@@ -510,7 +539,7 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
                                 </Box>
                             
                                 <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
-                                    <Typography variant="subtitle1" sx={{width: 250}}>🎲 Ultra Roller Pets:</Typography>
+                                    <Typography variant="subtitle1" sx={{width: 250}}>🎲 Ultra Roller:</Typography>
                                     <TextField
                                         label="Pets"
                                         variant="outlined"
@@ -522,7 +551,12 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
                                 </Box>
                             
                                 <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
-                                    <Typography variant="subtitle1" sx={{width: 250}}>🔮 Secret Hunter Pets:</Typography>
+                                    <Typography variant="subtitle1" sx={{width: 250}}>
+                                        🔮 <s><i>Secret Hunter:</i></s>{' '}
+                                        <Tooltip title="Secret Hunter is currently bugged and doesn't stack.">
+                                            <FaInfoCircle />
+                                        </Tooltip>
+                                    </Typography>
                                     <TextField
                                         label="Pets"
                                         variant="outlined"
@@ -534,7 +568,7 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
                                 </Box>
                             
                                 <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
-                                    <Typography variant="subtitle1" sx={{width: 250}}>🌟 Shiny Seeker Pets:</Typography>
+                                    <Typography variant="subtitle1" sx={{width: 250}}>🌟 Shiny Seeker:</Typography>
                                     <TextField
                                         label="Pets"
                                         variant="outlined"
@@ -584,46 +618,17 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
 
                                 <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
                                     <Typography variant="subtitle1" sx={{width: 250}}>
-                                        {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/c/c0/Bubble_Shrine_Icon.png", 24, 0, 4)}
-                                        Bubble Shrine Level:
+                                        {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/1/1f/Gamepass_-_Double_Luck.png", 16, 3, 5)}
+                                        Double Luck Gamepass:
                                     </Typography>
-                                    <TextField
-                                        label="Level"
-                                        variant="outlined"
-                                        size="small"
-                                        value={calculatorSettings.bubbleShrineLevel}
-                                        onChange={(e) => setCalculatorSettings({ ...calculatorSettings, bubbleShrineLevel: e.target.value ? Number(e.target.value) : 0 })}
-                                        sx={{ flexGrow: 1, mr: 1, ml: 7.7 }}
+                                    <Checkbox
+                                        checked={calculatorSettings.doubleLuckGamepass}
+                                        onChange={(e) => setCalculatorSettings({ ...calculatorSettings, doubleLuckGamepass: e.target.checked })}
                                     />
-                                </Box>
-
-                                <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
-                                    <Typography variant="subtitle1" sx={{width: 250}}>
-                                        {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/8/89/Multi_Egg_Icon.png", 20, 0, 4)}
-                                        Hatching Milestone:
-                                    </Typography>
-                                    <Select
-                                        value={calculatorSettings.hatchingTier}
-                                        size="small"
-                                        sx={{ flexGrow: 1, mr: 1 }}
-                                        onChange={(e) => setCalculatorSettings({ ...calculatorSettings, hatchingTier: e.target.value as number })}
-                                    >
-                                        <MenuItem value={0}>Unranked</MenuItem>
-                                        <MenuItem value={1}>Bronze I</MenuItem>
-                                        <MenuItem value={2}>Bronze II</MenuItem>
-                                        <MenuItem value={3}>Bronze III</MenuItem>
-                                        <MenuItem value={4}>Silver I</MenuItem>
-                                        <MenuItem value={5}>Silver II</MenuItem>
-                                        <MenuItem value={6}>Silver III</MenuItem>
-                                        <MenuItem value={7}>Gold I</MenuItem>
-                                        <MenuItem value={8}>Gold II</MenuItem>
-                                        <MenuItem value={9}>Gold III</MenuItem>
-                                        <MenuItem value={10}>Platinum I</MenuItem>
-                                    </Select>
                                 </Box>
                             
                                 <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
-                                    <Typography variant="subtitle1" sx={{width: 250}}>🎉 Double Luck event:</Typography>
+                                    <Typography variant="subtitle1" sx={{width: 250}}>🎉 Double Luck Event:</Typography>
                                     <Checkbox
                                         checked={calculatorSettings.doubleLuckEvent}
                                         onChange={(e) => setCalculatorSettings({ ...calculatorSettings, doubleLuckEvent: e.target.checked })}
@@ -631,7 +636,7 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
                                 </Box>
                             
                                 {/*<Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
-                                    <Typography variant="subtitle1" sx={{width: 250}}>🥳 Double Secret event:</Typography>
+                                    <Typography variant="subtitle1" sx={{width: 250}}>🥳 Double Secret Event:</Typography>
                                     <Checkbox
                                         checked={calculatorSettings.doubleSecretEvent}
                                         onChange={(e) => setCalculatorSettings({ ...calculatorSettings, doubleSecretEvent: e.target.checked })}
@@ -693,17 +698,6 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
 
                                 <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
                                     <Typography variant="subtitle1" sx={{width: 250}}>
-                                        {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/0/0d/Gamepass_-_Fast_Hatch.png", 20, 0, 4)}
-                                        Fast Hatch Gamepass:
-                                    </Typography>
-                                    <Checkbox
-                                        checked={calculatorSettings.fastHatchGamepass}
-                                        onChange={(e) => setCalculatorSettings({ ...calculatorSettings, fastHatchGamepass: e.target.checked })}
-                                    />
-                                </Box>
-
-                                <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
-                                    <Typography variant="subtitle1" sx={{width: 250}}>
                                         {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/4/4b/Fast_Hatch_Icon.png", 20, 0, 4)}
                                         Fast Hatch Mastery:
                                     </Typography>
@@ -715,19 +709,8 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
 
                                 <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
                                     <Typography variant="subtitle1" sx={{width: 250}}>
-                                        {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/d/df/Golden_Egg_Icon.png", 24, 0, 4)}
-                                        Premium Daily Perks:
-                                    </Typography>
-                                    <Checkbox 
-                                        checked={calculatorSettings.premiumDailyPerks}
-                                        onChange={(e) => setCalculatorSettings({ ...calculatorSettings, premiumDailyPerks: e.target.checked })}
-                                    />
-                                </Box>
-
-                                <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
-                                    <Typography variant="subtitle1" sx={{width: 250}}>
                                         {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/c/c0/Bubble_Shrine_Icon.png", 24, 0, 4)}
-                                        Bubble Shrine Level:
+                                        Shrine Blessing:
                                     </Typography>
                                     <TextField
                                         label="Level"
@@ -762,6 +745,28 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
                                         <MenuItem value={9}>Gold III</MenuItem>
                                         <MenuItem value={10}>Platinum I</MenuItem>
                                     </Select>
+                                </Box>
+
+                                <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
+                                    <Typography variant="subtitle1" sx={{width: 250}}>
+                                        {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/0/0d/Gamepass_-_Fast_Hatch.png", 20, 0, 4)}
+                                        Fast Hatch Gamepass:
+                                    </Typography>
+                                    <Checkbox
+                                        checked={calculatorSettings.fastHatchGamepass}
+                                        onChange={(e) => setCalculatorSettings({ ...calculatorSettings, fastHatchGamepass: e.target.checked })}
+                                    />
+                                </Box>
+
+                                <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
+                                    <Typography variant="subtitle1" sx={{width: 250}}>
+                                        {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/d/df/Golden_Egg_Icon.png", 24, 0, 4)}
+                                        Premium Daily Perks:
+                                    </Typography>
+                                    <Checkbox 
+                                        checked={calculatorSettings.premiumDailyPerks}
+                                        onChange={(e) => setCalculatorSettings({ ...calculatorSettings, premiumDailyPerks: e.target.checked })}
+                                    />
                                 </Box>
 
                                 <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
