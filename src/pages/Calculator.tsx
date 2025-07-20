@@ -19,6 +19,7 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
         mythicPotion: 0,
         speedPotion: 0,
         infinityElixir: false,
+        secretElixir: false,
         doubleLuckGamepass: false,
         normalIndex: [],
         shinyIndex: [],
@@ -105,7 +106,8 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
             setSecretBountyPets(secretPets);
 
             // Load Daily Perks pets
-            const dailyPerksPets = data?.categoryLookup["Daily Perks"].pets!
+            const dailyPerksPets = data?.categoryLookup["Daily Perks"].categories
+                .flatMap((cat) => cat.pets || [])
                 .filter((pet: Pet) => isAvailable(pet.dateRemoved)) || [];
 
             // Process eggs for calculator
@@ -431,6 +433,17 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
 
                                 <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
                                     <Typography variant="subtitle1" sx={{width: 250}}>
+                                        {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/2/21/Secret_Elixir.png", 24)}
+                                        Secret Elixir:
+                                    </Typography>
+                                    <Checkbox
+                                        checked={calculatorSettings.secretElixir}
+                                        onChange={(e) => setCalculatorSettings({ ...calculatorSettings, secretElixir: e.target.checked })}
+                                    />
+                                </Box>
+
+                                <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
+                                    <Typography variant="subtitle1" sx={{width: 250}}>
                                         {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/1/1f/Gamepass_-_Double_Luck.png", 16, 3, 5)}
                                         Double Luck Gamepass:
                                     </Typography>
@@ -617,13 +630,13 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
                                     />
                                 </Box>
                             
-                                <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
+                                {/*<Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
                                     <Typography variant="subtitle1" sx={{width: 250}}>🥳 Double Secret event:</Typography>
                                     <Checkbox
                                         checked={calculatorSettings.doubleSecretEvent}
                                         onChange={(e) => setCalculatorSettings({ ...calculatorSettings, doubleSecretEvent: e.target.checked })}
                                     />
-                                </Box>
+                                </Box>*/}
                                 </>
                             )
                         }
@@ -840,16 +853,24 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
                                         resultsTab === 0 ? (
                                             <>
                                             <Box>
-                                                🍀 Luck: <b>{calculatorResults.luckyBuff || 0}%</b>
+                                                {imgIcon('https://static.wikia.nocookie.net/bgs-infinity/images/3/39/Luck_Icon.png', 24)}{' '}
+                                                <b>{calculatorResults.luckyBuff || 0}%</b>
                                             </Box>
                                             <Box>
-                                                ✨ <span className='shiny'>Shiny:</span> <b>1 / {(1 / calculatorResults.shinyChance || 0).toLocaleString(undefined, { maximumFractionDigits: 1})}</b>
+                                                {imgIcon('https://static.wikia.nocookie.net/bgs-infinity/images/a/a1/Secret_Luck_Icon.png', 24)}{' '}
+                                                <b>{1 + calculatorResults.secretBuff / 100 || 0}x</b>
                                             </Box>
                                             <Box>
-                                                🔮 <span className='mythic'>Mythic:</span> <b>1 / {(1 / calculatorResults.mythicChance || 0).toLocaleString(undefined, { maximumFractionDigits: 1})}</b>
+                                                {imgIcon('https://static.wikia.nocookie.net/bgs-infinity/images/1/10/Shiny.png', 24)}{' '}
+                                                <b>1 / {(1 / calculatorResults.shinyChance || 0).toLocaleString(undefined, { maximumFractionDigits: 1})}</b>
                                             </Box>
                                             <Box>
-                                                💫 <span className='shiny-mythic'>Shiny Mythic:</span> <b>1 / {(1 / calculatorResults.shinyMythicChance || 0).toLocaleString(undefined, { maximumFractionDigits: 1})}</b>
+                                                {imgIcon('https://static.wikia.nocookie.net/bgs-infinity/images/e/ec/Mythic.png', 24)}{' '}
+                                                <b>1 / {(1 / calculatorResults.mythicChance || 0).toLocaleString(undefined, { maximumFractionDigits: 1})}</b>
+                                            </Box>
+                                            <Box>
+                                                {imgIcon('https://static.wikia.nocookie.net/bgs-infinity/images/5/58/Shiny_Mythic.png', 24)}{' '}
+                                                <b>1 / {(1 / calculatorResults.shinyMythicChance || 0).toLocaleString(undefined, { maximumFractionDigits: 1})}</b>
                                             </Box>
                                             </>
                                         ) : (

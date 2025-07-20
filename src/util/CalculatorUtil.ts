@@ -22,6 +22,7 @@ export interface CalculatorSettings {
     luckyPotion: LuckyPotion;
     mythicPotion: MythicPotion;
     infinityElixir: boolean;
+    secretElixir: boolean;
     doubleLuckGamepass: boolean;
     normalIndex: string[];
     shinyIndex: string[];
@@ -51,6 +52,7 @@ export interface CalculatorSettings {
 
 export interface CalculatorResults {
     luckyBuff: number;
+    secretBuff: number;
     shinyChance: number;
     mythicChance: number;
     shinyMythicChance: number;
@@ -176,12 +178,20 @@ export function calculate(egg: Egg, calculatorSettings: CalculatorSettings, sele
     // Rift egg multiplier
     if (selectedEgg?.canSpawnAsRift && calculatorSettings.riftMultiplier > 0) luckyBuff += calculatorSettings.riftMultiplier * 100;
 
+    //Calculate Secret Buff:
+    let secretBuff = 0;
+    if (calculatorSettings.secretHunter) secretBuff += calculatorSettings.secretHunter * 5;
+    //if (calculatorSettings.doubleSecretEvent) secretBuff += 100;
+    if (calculatorSettings.infinityElixir) secretBuff *= 2;
+    if (calculatorSettings.infinityElixir) secretBuff += 100;
+    if (calculatorSettings.secretElixir) secretBuff *= 2;
+    if (calculatorSettings.secretElixir) secretBuff += 100;
+
     // Calculate Shiny rate:
     let shinyChance = 2.5; // 1/40 base rate
     shinyChance += calculatorSettings.shinySeeker * 0.2;
     let shinyBuff = 0;
     if (calculatorSettings.normalIndex.includes(egg.index)) shinyBuff += 50;
-    if (calculatorSettings.infinityElixir) shinyBuff *= 2;
     shinyChance = (shinyChance * (1 + (shinyBuff / 100)) * (calculatorSettings.infinityElixir ? 2 : 1)) / 100;
 
     // Calculate Mythic rate:
@@ -189,7 +199,10 @@ export function calculate(egg: Egg, calculatorSettings: CalculatorSettings, sele
     let mythicBuff = 0;
     mythicBuff += calculatorSettings.mythicPotion;
     if (calculatorSettings.shinyIndex.includes(egg.index)) mythicBuff += 50;
-    mythicChance = (mythicChance * (1 + (mythicBuff / 100)) * (calculatorSettings.infinityElixir ? 2 : 1)) / 100;
+    let mythicMultiplier = 1;
+    if (calculatorSettings.secretElixir) mythicMultiplier = 0.2;
+    else if (calculatorSettings.infinityElixir) mythicMultiplier = 2;
+    mythicChance = (mythicChance * (1 + (mythicBuff / 100)) * mythicMultiplier) / 100;
 
     // Calculate speed:
     let speed = 100 + calculatorSettings.speedPotion;
@@ -208,6 +221,7 @@ export function calculate(egg: Egg, calculatorSettings: CalculatorSettings, sele
 
     const results: CalculatorResults = { 
         luckyBuff: luckyBuff,
+        secretBuff: secretBuff,
         shinyChance: shinyChance, 
         mythicChance: mythicChance, 
         shinyMythicChance: shinyChance * mythicChance,
@@ -222,10 +236,6 @@ export function calculate(egg: Egg, calculatorSettings: CalculatorSettings, sele
         let normalChance = calculateChance(pet.chance, luckyBuff);
 
         if (pet.rarity === 'secret' || pet.rarity === 'infinity') {
-            let secretBuff = 0;
-            if (calculatorSettings.secretHunter) secretBuff += calculatorSettings.secretHunter * 5;
-            if (calculatorSettings.doubleSecretEvent) secretBuff += 100;
-
             normalChance = calculateChance(normalChance, secretBuff);
         }
 

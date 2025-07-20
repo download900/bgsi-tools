@@ -310,7 +310,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-06-30",
-    "dateRemoved": "2025-07-14"
+    "dateRemoved": "2025-07-25"
   },
   {
     "name": "Season 3 Egg",
@@ -389,6 +389,23 @@
     "dateRemoved": "2025-04-30"
   },
   {
+    "name": "Bee Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/e/eb/Bee_Egg.png",
+    "pets": [
+      "Bumble Bee",
+      "Baby Blue Bee",
+      "Angel Bee",
+      "Evil Bee",
+      "Bee Bee Bee",
+      "Queen Bee"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": true,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-07-19",
+    "dateRemoved": ""
+  },
+  {
     "name": "500M Egg",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/500M_Egg.png",
     "pets": [
@@ -403,6 +420,7 @@
       "Fallen Angel",
       "Eternal Star",
       "King Kitty",
+      "Shard",
       "Giant Robot"
     ],
     "luckIgnored": false,
@@ -767,6 +785,6 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-07-06",
-    "dateRemoved": ""
+    "dateRemoved": "2025-07-19"
   }
 ]

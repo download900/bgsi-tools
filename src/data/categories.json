@@ -128,7 +128,6 @@
         "categories": [
           {
             "name": "Lootables",
-            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/a/a2/Golden_Box.png",
             "pets": [
               "Midas",
               "Patronus",
@@ -137,32 +136,33 @@
               "Infernal",
               "Dream Catcher",
               "Stained Star"
-            ]
+            ],
+            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/a/a2/Golden_Box.png"
           },
           {
             "name": "Quests",
-            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c2/Quests_Icon.png",
             "pets": [
               "Discord Imp",
               "Easter Fluffle",
               "Captain Bruh",
               "Glorp Bruh",
               "Light Lord"
-            ]
+            ],
+            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c2/Quests_Icon.png"
           },
           {
             "name": "Index",
-            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/da/Index_Icon.png",
             "pets": [
               "Chocolate Bunny"
-            ]
+            ],
+            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/da/Index_Icon.png"
           },
           {
             "name": "Shops",
-            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/01/Shops_Mastery.png",
             "pets": [
               "Dementor Tophat"
-            ]
+            ],
+            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/01/Shops_Mastery.png"
           }
         ],
         "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/78/Timer_Icon.png"
@@ -251,6 +251,9 @@
       },
       {
         "egg": "500M Egg"
+      },
+      {
+        "egg": "Bee Egg"
       }
     ],
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/78/Timer_Icon.png"
@@ -377,9 +380,22 @@
   },
   {
     "name": "Daily Perks",
-    "pets": [
-      "Dogcat",
-      "WOMAN FACE GOD"
+    "reverseTabs": true,
+    "categories": [
+      {
+        "name": "Wave 1",
+        "pets": [
+          "Dogcat",
+          "WOMAN FACE GOD"
+        ]
+      },
+      {
+        "name": "Wave 2",
+        "pets": [
+          "Super Pufferfish",
+          "OwOlord"
+        ]
+      }
     ],
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/df/Golden_Egg_Icon.png"
   },
@@ -491,6 +507,14 @@
             "pets": [
               "Jawbreaker Elemental",
               "D.I.Y Robot"
+            ],
+            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+          },
+          {
+            "name": "Wave 14",
+            "pets": [
+              "Dominus Astra",
+              "Pearl Goddess"
             ]
           }
         ],
@@ -509,8 +533,10 @@
         "name": "Bundles",
         "pets": [
           "Flying Gem",
-          "Dowodle Pile"
-        ]
+          "Dowodle Pile",
+          "Eternal Heart"
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
       }
     ],
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png"
