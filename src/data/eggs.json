@@ -276,7 +276,7 @@
     ],
     "luckIgnored": false,
     "infinityEgg": "Minigame Paradise",
-    "canSpawnAsRift": false,
+    "canSpawnAsRift": true,
     "secretBountyRotation": true,
     "dateAdded": "2025-05-17",
     "dateRemoved": "",
