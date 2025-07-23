@@ -35,6 +35,7 @@ export function PetList(props: PetListProps) {
   const [previewEnchant, setPreviewEnchant] = useState<boolean>(true);
   const [enchantTeamSize, setEnchantTeamSize] = useState<number>(11);
   const [secondEnchant, setSecondEnchant] = useState<"looter" | "bubbler">("bubbler");
+  const [secondSecretEnchant, setSecondSecretEnchant] = useState<"bubbler" | "looter" | "teamUpV">("teamUpV");
 
   const [visibleCount, setVisibleCount] = useState(20);
 
@@ -52,7 +53,8 @@ export function PetList(props: PetListProps) {
           previewMaxLevel: boolean;
           previewEnchant: boolean;
           enchantTeamSize: number;
-          secondEnchant: "looter" | "bubbler";
+          secondEnchant: "bubbler" | "looter";
+          secondSecretEnchant: "bubbler" | "looter" | "teamUpV";
         };
         setObtainedFilter(settings.obtainedFilter || "all");
         setRarityFilter(settings.rarityFilter || "all");
@@ -62,6 +64,7 @@ export function PetList(props: PetListProps) {
         setPreviewEnchant(settings.previewEnchant || true);
         setEnchantTeamSize(settings.enchantTeamSize || 11);
         setSecondEnchant(settings.secondEnchant || "bubbler");
+        setSecondSecretEnchant(settings.secondSecretEnchant || "teamUpV");
       }
     } catch (e) {
       console.warn("could not load settings", e);
@@ -85,7 +88,7 @@ export function PetList(props: PetListProps) {
     } catch (e) {
       console.warn("could not save settings", e);
     }
-  }, [ obtainedFilter, rarityFilter, variantFilter, currencyFilter, previewMaxLevel, previewEnchant, enchantTeamSize, secondEnchant ]);
+  }, [ obtainedFilter, rarityFilter, variantFilter, currencyFilter, previewMaxLevel, previewEnchant, enchantTeamSize, secondEnchant, secondSecretEnchant ]);
 
   useEffect(() => {
     try {
@@ -103,7 +106,7 @@ export function PetList(props: PetListProps) {
     const pets = buildPetList();
     setAllPets(pets);
     sortAndFilterPets(pets);
-  }, [previewMaxLevel, previewEnchant, enchantTeamSize, secondEnchant]);
+  }, [previewMaxLevel, previewEnchant, enchantTeamSize, secondEnchant, secondSecretEnchant]);
 
   useEffect(() => {
     if (!props.data || props.data?.eggs.length < 1 || allPets?.length < 1) return;
@@ -153,15 +156,16 @@ export function PetList(props: PetListProps) {
       if (pet.rarity !== 'legendary' && pet.rarity !== 'secret' && pet.rarity !== 'infinity') return;
       petVariants.forEach((variant) => {
         if (variant.includes("Mythic") && !pet.hasMythic) return; // skip Mythic if pet doesn't have it
+        const second = pet.rarity === 'secret' || pet.rarity === 'infinity' ? secondSecretEnchant : secondEnchant;
         allPets.push({
           name: pet.name,
           chance: getPetChance(pet, variant),
           hatchable: pet.hatchable,
           rarity: pet.rarity,
-          bubbles: getPetStat(pet, variant, "bubbles", previewMaxLevel, previewEnchant, enchantTeamSize, secondEnchant),
+          bubbles: getPetStat(pet, variant, "bubbles", previewMaxLevel, previewEnchant, enchantTeamSize, second),
           currencyVariant: pet.currencyVariant,
-          currency: getPetStat(pet, variant, "currency", previewMaxLevel, previewEnchant, enchantTeamSize, secondEnchant),
-          gems: getPetStat(pet, variant, "gems", previewMaxLevel, previewEnchant, enchantTeamSize, secondEnchant),
+          currency: getPetStat(pet, variant, "currency", previewMaxLevel, previewEnchant, enchantTeamSize, second),
+          gems: getPetStat(pet, variant, "gems", previewMaxLevel, previewEnchant, enchantTeamSize, second),
           variant,
           image: pet.image[petVariants.indexOf(variant)],
           obtainedFrom: pet.obtainedFrom,
@@ -217,7 +221,7 @@ export function PetList(props: PetListProps) {
   });
 
   return (
-        <Box component="main" sx={{ display: "flex", flexDirection: "column", alignItems: 'center', flexGrow: 1, p: 3, mt: 1, mx: "auto", maxWidth: "1200px" }} >
+    <Box component="main" sx={{ display: "flex", flexDirection: "column", alignItems: 'center', flexGrow: 1, p: 3, mt: -5, mx: "auto", maxWidth: "1200px" }} >
       { /* Filters */ }
       <Paper sx={{  padding: 2, marginBottom: 2, display: "flex", flexDirection: "column", alignItems: "center" }}>
         <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", p: 1 }}>
@@ -296,7 +300,7 @@ export function PetList(props: PetListProps) {
           <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: 'space-evenly' }}>
             <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", p: 1  }}>
               <Typography variant="subtitle1" sx={{ marginRight: 1 }}>
-                {imgIcon('https://static.wikia.nocookie.net/bgs-infinity/images/2/29/Experienced_Icon.png', 25)} Level 25:
+                {imgIcon('https://static.wikia.nocookie.net/bgs-infinity/images/2/29/Experienced_Icon.png', 25)} 25:
               </Typography>
               <Checkbox
                 checked={previewMaxLevel}
@@ -304,7 +308,7 @@ export function PetList(props: PetListProps) {
               />
             </Box>
             <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", p: 1  }}>
-              <Typography variant="subtitle1" sx={{ marginRight: 1 }}>💖 Team Up/Determination:</Typography>
+              <Typography variant="subtitle1" sx={{ marginRight: 1 }}>💖 Enchanted:</Typography>
               <Checkbox
                 checked={previewEnchant}
                 onChange={() => setPreviewEnchant(!previewEnchant)}
@@ -312,7 +316,7 @@ export function PetList(props: PetListProps) {
             </Box>
             <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", p: 1  }}>
               <Typography variant="subtitle1" sx={{ marginRight: 1 }}>
-                {imgIcon('https://static.wikia.nocookie.net/bgs-infinity/images/5/5e/Pet_Equips_III_Icon.png', 25)} Team Size:
+                {imgIcon('https://static.wikia.nocookie.net/bgs-infinity/images/5/5e/Pet_Equips_III_Icon.png', 25)} Team:
                 </Typography>
               <Input
                 value={enchantTeamSize}
@@ -322,7 +326,7 @@ export function PetList(props: PetListProps) {
             </Box>
             <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", p: 1  }}>
               <Typography variant="subtitle1" sx={{ marginRight: 1 }}>
-                {imgIcon('https://static.wikia.nocookie.net/bgs-infinity/images/2/2f/Special_Enchants.png', 25)} Second Enchant:
+                {imgIcon('https://static.wikia.nocookie.net/bgs-infinity/images/2/2f/Special_Enchants.png', 25)} 2nd (Legendaries):
                 </Typography>
               <Select 
                 value={secondEnchant}
@@ -334,8 +338,26 @@ export function PetList(props: PetListProps) {
                 <MenuItem value="looter">Looter</MenuItem>
               </Select>
             </Box>
+            <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", p: 1  }}>
+              <Typography variant="subtitle1" sx={{ marginRight: 1 }}>
+                {imgIcon('https://static.wikia.nocookie.net/bgs-infinity/images/2/2f/Special_Enchants.png', 25)} 2nd (Secrets):
+                </Typography>
+              <Select 
+                value={secondSecretEnchant}
+                onChange={(event) => setSecondSecretEnchant(event.target.value as "looter" | "bubbler" | "teamUpV")}
+                displayEmpty
+                sx={{ minWidth: 120, marginLeft: 1 }}
+              >
+                <MenuItem value="teamUpV">Team Up V</MenuItem>
+                <MenuItem value="bubbler">Bubbler</MenuItem>
+                <MenuItem value="looter">Looter</MenuItem>
+              </Select>
+            </Box>
           </Box>
         </Box>
+        <Typography variant="subtitle2" sx={{ marginTop: 1, fontStyle: "italic", color: "text.secondary" }}>
+          Note: Due to Determination + Team Up interaction, this tool is outdated and needs a rework. It will be replaced by a Team Builder tool soon.
+        </Typography>
       </Paper>
 
       <Table size="small" sx={{ "& .MuiTableCell-root": { p: 0.5 } }}>

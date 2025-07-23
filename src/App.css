@@ -41,7 +41,7 @@
 
 .infinity {
   font-weight: bold !important;
-  background: linear-gradient(90deg, #c0058e, #7b29ff) !important;
+  background: linear-gradient(90deg, #FF0000, #7a38ff) !important;
   background-clip: text !important;
   -webkit-background-clip: text !important;
   color: transparent !important;

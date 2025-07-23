@@ -12,7 +12,7 @@ export type PetVariant = "Normal" | "Shiny" | "Mythic" | "Shiny Mythic";
 export const petVariants: PetVariant[] = ["Normal", "Shiny", "Mythic", "Shiny Mythic"];
 export type CurrencyVariant = "coins" | "tickets";
 export type PetStat = "bubbles" | "currency" | "gems";
-export type Enchant = "bubbler" | "looter";
+export type Enchant = "bubbler" | "looter" | "teamUpV";
 
 export type PetData = {
   categories: Category[];
@@ -135,6 +135,9 @@ export const getPetStat = (pet: Pet, variant: PetVariant, stat: PetStat, maxLeve
     let teamUpMultiplier = 0;
     if (pet.rarity === 'secret' || pet.rarity === 'infinity') {
       teamUpMultiplier = 0.5;
+      if ((variant === "Shiny" || variant === "Shiny Mythic") && (secondEnchant === "teamUpV")) {
+        teamUpMultiplier += 0.25;
+      }
     } else {
       teamUpMultiplier = 0.25;
     }

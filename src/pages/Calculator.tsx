@@ -350,7 +350,7 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
                             selectedEgg?.canSpawnAsRift && (
                             <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
                                 <Typography variant="subtitle1" sx={{width: 250}}>
-                                    {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/f/fe/Floating_Island_Icon.png", 24, 0, 2)}
+                                    {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/f/fb/Egg_Rift_Icon.png", 24, 0, 2)}
                                     Rift:
                                 </Typography>
                                 <Select
