@@ -167,11 +167,11 @@ export async function scrapeWiki(data: PetData, debug: (msg: string) => void): P
       dateAdded: eggInfo.dateAdded || '',
       dateRemoved: eggInfo.dateUnavailable || '',
     } as any;
-    // Check Index_Data and see if any category contains this egg
-    for (const index in indexData) {
-      const indexInfo = indexData[index];
-      if (indexInfo.luckBoost && indexInfo.eggs?.some((e: any) => e[0] === eggName)) {
-        egg.index = index;
+    // Check Index_Data and see if any world contains this egg
+    for (const world of indexData.worlds) {
+      if (world.luckBoost && world.eggs?.some((e: any) => e[0] === eggName)) {
+        egg.index = world.name;
+      break;
       }
     }
     // Add egg to the lookup
