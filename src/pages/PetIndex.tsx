@@ -6,9 +6,9 @@ import { getPercentStyle, variantStyle } from "../util/StyleUtil";
 import { theme } from "..";
 
 const STORAGE_KEY = "petTrackerState";
-const drawerWidth = 340;
 type PetKey = `${string}__${PetVariant}`;
 type OwnedPets = Record<PetKey, boolean>;
+const drawerWidth = 340;
 
 /* ---------- helpers ---------- */
 

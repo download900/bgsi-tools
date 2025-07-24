@@ -12,7 +12,7 @@ export type PetVariant = "Normal" | "Shiny" | "Mythic" | "Shiny Mythic";
 export const petVariants: PetVariant[] = ["Normal", "Shiny", "Mythic", "Shiny Mythic"];
 export type CurrencyVariant = "coins" | "tickets";
 export type PetStat = "bubbles" | "currency" | "gems";
-export type Enchant = "bubbler" | "looter" | "teamUpV";
+export type Enchant = "bubbler" | "looter" | "teamUpV" | "determination";
 
 export type PetData = {
   categories: Category[];
@@ -121,7 +121,7 @@ export const getPetImage = (pet: PetInstance, variantIndex: number) => {
   return pet.image[variantIndex] || PLACEHOLDER_IMAGE;
 }
 
-export const getPetStat = (pet: Pet, variant: PetVariant, stat: PetStat, maxLevel: boolean, enchanted: boolean, enchantTeamSize: number, secondEnchant: Enchant) => {
+export const getPetStat = (pet: Pet, variant: PetVariant, stat: PetStat, maxLevel: boolean, enchanted?: boolean, enchantTeamSize?: number, secondEnchant?: Enchant) => {
   let scale = variantData[variant].baseScale;
   if (maxLevel) scale += 0.35;
   let baseStat = pet[stat];
@@ -141,7 +141,7 @@ export const getPetStat = (pet: Pet, variant: PetVariant, stat: PetStat, maxLeve
     } else {
       teamUpMultiplier = 0.25;
     }
-    multiplier += (enchantTeamSize * teamUpMultiplier);
+    multiplier += (enchantTeamSize! * teamUpMultiplier);
   }
   return Math.floor(baseStat * scale * multiplier);
 }
