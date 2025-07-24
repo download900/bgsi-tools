@@ -150,7 +150,8 @@ export function calculate(egg: Egg, calculatorSettings: CalculatorSettings, sele
 
     // Calculate Lucky buff:
     // Add Raw buffs:
-    luckyBuff = calculatorSettings.luckyPotion 
+    luckyBuff = 100 // base 100% luck (invisible) 
+        + calculatorSettings.luckyPotion 
         + calculatorSettings.luckyStreak 
         + (calculatorSettings.normalIndex.includes(egg.index) ? 50 : 0) 
         + (calculatorSettings.highRoller * 10)
@@ -158,51 +159,49 @@ export function calculate(egg: Egg, calculatorSettings: CalculatorSettings, sele
         + getBuffDayBonus("Luck", calculatorSettings.premiumDailyPerks)
         + getBubbleShrineStat("luck", calculatorSettings.bubbleShrineLevel)
         + getHatchingTierBuff(calculatorSettings.hatchingTier, "luck");
-
-    // Double luck gamepass
-    if (calculatorSettings.doubleLuckGamepass) luckyBuff *= 2;
-    if (calculatorSettings.doubleLuckGamepass) luckyBuff += 100;
-    // Double Luck Event and Infinity Elixir don't multiply together, they each double the value so far:
-    const luckyBuffSubtotal = luckyBuff;
-    // Double luck event
-    if (calculatorSettings.doubleLuckEvent) luckyBuff += luckyBuffSubtotal;
-    if (calculatorSettings.doubleLuckEvent) luckyBuff += 100;
-    // Infinity Elixir
-    if (calculatorSettings.infinityElixir) luckyBuff += luckyBuffSubtotal;
-    if (calculatorSettings.infinityElixir) luckyBuff += 100;
+    // Luck multipliers:
+    let luckMultiplier = 0;
+    if (calculatorSettings.doubleLuckGamepass) luckMultiplier += 2;
+    if (calculatorSettings.infinityElixir) luckMultiplier += 2;
+    if (calculatorSettings.doubleLuckEvent) luckMultiplier += 2;
+    if (luckMultiplier > 0) luckyBuff *= luckMultiplier + 0;
     // Add External buffs:
-    // Friend boost
     luckyBuff += calculatorSettings.friendBoost * 10;
-    // Board Game Luck Boost
     if (calculatorSettings.boardGameLuckBoost) luckyBuff += 200;
-    // Rift egg multiplier
     if (selectedEgg?.canSpawnAsRift && calculatorSettings.riftMultiplier > 0) luckyBuff += calculatorSettings.riftMultiplier * 100;
+    luckyBuff -= 100; // remove base 100% luck
 
-    //Calculate Secret Buff:
-    let secretBuff = 0;
+    // Calculate Secret Buff:
+    let secretBuff = 100;
     if (calculatorSettings.secretHunter) secretBuff += 5; // (currently bugged, doesn't stack) calculatorSettings.secretHunter * 5;
-    //if (calculatorSettings.doubleSecretEvent) secretBuff += 100;
-    if (calculatorSettings.infinityElixir) secretBuff *= 2;
-    if (calculatorSettings.infinityElixir) secretBuff += 100;
-    if (calculatorSettings.secretElixir) secretBuff *= 2;
-    if (calculatorSettings.secretElixir) secretBuff += 100;
+    let secretMultiplier = 0;
+    if (calculatorSettings.infinityElixir) secretMultiplier += 2;
+    if (calculatorSettings.secretElixir) secretMultiplier += 2;
+    if (secretMultiplier > 0) secretBuff *= secretMultiplier + 0;
+    secretBuff -= 100; // remove base 100% luck
 
     // Calculate Shiny rate:
     let shinyChance = 2.5; // 1/40 base rate
     shinyChance += calculatorSettings.shinySeeker * 0.2;
-    let shinyBuff = 0;
+    let shinyBuff = 100;
     if (calculatorSettings.normalIndex.includes(egg.index)) shinyBuff += 50;
-    shinyChance = (shinyChance * (1 + (shinyBuff / 100)) * (calculatorSettings.infinityElixir ? 2 : 1)) / 100;
+    let shinyMultiplier = 0;
+    if (calculatorSettings.infinityElixir) shinyMultiplier += 2;
+    if (shinyMultiplier > 0) shinyBuff *= shinyMultiplier + 0;
+    shinyBuff -= 100; // remove base 100% luck
+    shinyChance = calculateChance(shinyChance, shinyBuff) / 100;
 
     // Calculate Mythic rate:
     let mythicChance = 1; // 1/100 base rate
-    let mythicBuff = 0;
+    let mythicBuff = 100;
     mythicBuff += calculatorSettings.mythicPotion;
     if (calculatorSettings.shinyIndex.includes(egg.index)) mythicBuff += 50;
-    let mythicMultiplier = 1;
+    let mythicMultiplier = 0;
     if (calculatorSettings.secretElixir) mythicMultiplier = 0.2;
-    else if (calculatorSettings.infinityElixir) mythicMultiplier = 2;
-    mythicChance = (mythicChance * (1 + (mythicBuff / 100)) * mythicMultiplier) / 100;
+    else if (calculatorSettings.infinityElixir) mythicMultiplier += 2;
+    if (mythicMultiplier > 0) mythicBuff *= mythicMultiplier + 0;
+    mythicBuff -= 100; // remove base 100% luck
+    mythicChance = calculateChance(mythicChance, mythicBuff) / 100;
 
     // Calculate speed:
     let speed = 100 + calculatorSettings.speedPotion;
@@ -216,7 +215,7 @@ export function calculate(egg: Egg, calculatorSettings: CalculatorSettings, sele
         // Bubble Shrine speed buff seems to be giving 100 + buff (may be a bug)
         speed += 100 + getBubbleShrineStat("hatchSpeed", calculatorSettings.bubbleShrineLevel);
     }
-    // base hatches per second is 1 egg per 4.5 seconds. multipy that by speed, then by eggsPerHatch
+    // base hatches per second is 1 egg per 4.5 seconds.
     const hatchesPerSecond = (1 / 4.5) * (speed / 100) * calculatorSettings.eggsPerHatch;
 
     const results: CalculatorResults = { 
@@ -231,7 +230,7 @@ export function calculate(egg: Egg, calculatorSettings: CalculatorSettings, sele
     };
 
     egg.pets.forEach((pet) => {
-        if (pet.rarity && pet.rarity !== 'secret' && !pet.rarity.includes('legendary') && !pet.rarity.includes('infinity')) return;
+        if (pet.rarity !== 'secret' && !pet.rarity.includes('legendary') && !pet.rarity.includes('infinity')) return;
 
         let normalChance = calculateChance(pet.chance, luckyBuff);
 
