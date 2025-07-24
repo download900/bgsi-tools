@@ -164,7 +164,7 @@ export function calculate(egg: Egg, calculatorSettings: CalculatorSettings, sele
     if (calculatorSettings.doubleLuckGamepass) luckMultiplier += 2;
     if (calculatorSettings.infinityElixir) luckMultiplier += 2;
     if (calculatorSettings.doubleLuckEvent) luckMultiplier += 2;
-    if (luckMultiplier > 0) luckyBuff *= luckMultiplier + 0;
+    if (luckMultiplier > 0) luckyBuff *= luckMultiplier;
     // Add External buffs:
     luckyBuff += calculatorSettings.friendBoost * 10;
     if (calculatorSettings.boardGameLuckBoost) luckyBuff += 200;
@@ -177,7 +177,7 @@ export function calculate(egg: Egg, calculatorSettings: CalculatorSettings, sele
     let secretMultiplier = 0;
     if (calculatorSettings.infinityElixir) secretMultiplier += 2;
     if (calculatorSettings.secretElixir) secretMultiplier += 2;
-    if (secretMultiplier > 0) secretBuff *= secretMultiplier + 0;
+    if (secretMultiplier > 0) secretBuff *= secretMultiplier;
     secretBuff -= 100; // remove base 100% luck
 
     // Calculate Shiny rate:
@@ -187,7 +187,7 @@ export function calculate(egg: Egg, calculatorSettings: CalculatorSettings, sele
     if (calculatorSettings.normalIndex.includes(egg.index)) shinyBuff += 50;
     let shinyMultiplier = 0;
     if (calculatorSettings.infinityElixir) shinyMultiplier += 2;
-    if (shinyMultiplier > 0) shinyBuff *= shinyMultiplier + 0;
+    if (shinyMultiplier > 0) shinyBuff *= shinyMultiplier;
     shinyBuff -= 100; // remove base 100% luck
     shinyChance = calculateChance(shinyChance, shinyBuff) / 100;
 
@@ -199,7 +199,7 @@ export function calculate(egg: Egg, calculatorSettings: CalculatorSettings, sele
     let mythicMultiplier = 0;
     if (calculatorSettings.secretElixir) mythicMultiplier = 0.2;
     else if (calculatorSettings.infinityElixir) mythicMultiplier += 2;
-    if (mythicMultiplier > 0) mythicBuff *= mythicMultiplier + 0;
+    if (mythicMultiplier > 0) mythicBuff *= mythicMultiplier;
     mythicBuff -= 100; // remove base 100% luck
     mythicChance = calculateChance(mythicChance, mythicBuff) / 100;
 
