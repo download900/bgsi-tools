@@ -39,8 +39,8 @@ function loadProfiles(): TeamBuilderProfile[] {
   const stored = localStorage.getItem(STORAGE_KEY);
   let profiles: TeamBuilderProfile[] = stored ? JSON.parse(stored) : [];
 
-  // Ensure Default profile exists
-  if (!profiles.some((p) => p.name === "Default")) {
+  // Ensure Default profile exists if no other profiles found
+  if (profiles.length == 0) {
     profiles.unshift({ name: "Default", pets: {}, teamSize: 11 });
   }
 
@@ -128,7 +128,13 @@ interface TeamBuilderProps {
 
 export function TeamBuilder(props: TeamBuilderProps) {
   const [profile, setProfile] = useState<TeamBuilderProfile>(
-    () => loadProfiles().find((p) => p.name === "Default")!
+    () => {
+        const p = loadProfiles();
+        if (p.length > 0) {
+            return p[0]; // default to first profile
+        }
+        return p.find((p) => p.name === "Default")!
+    }
   );
   const [visibleCount, setVisibleCount] = useState(20);
   const [profiles, setProfiles] = useState<TeamBuilderProfile[]>(loadProfiles());
