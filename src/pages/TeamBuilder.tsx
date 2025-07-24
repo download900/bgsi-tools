@@ -163,8 +163,37 @@ export function TeamBuilder(props: TeamBuilderProps) {
         });
       }
     }
+    // sort by bubbles, then currency, then gems, then name
+    all.sort((a, b) => {
+      if (a.bubbles !== b.bubbles) return b.bubbles - a.bubbles;
+      if (a.currency !== b.currency) return b.currency - a.currency;
+      if (a.gems !== b.gems) return b.gems - a.gems;
+      return a.name.localeCompare(b.name);
+    });
     return all;
   }, [props.data]);
+
+  function sortProfilePets(pets: Record<PetKey, number>): Record<PetKey, number> {
+    return Object.fromEntries(
+      Object.entries(pets)
+        .filter(([_, count]) => count > 0)
+        .sort(([keyA], [keyB]) => {
+          const [nameA, variantA] = keyA.split("__") as [string, PetVariant];
+          const [nameB, variantB] = keyB.split("__") as [string, PetVariant];
+          const petA = allPetInstances.find(p => p.name === nameA && p.variant === variantA);
+          const petB = allPetInstances.find(p => p.name === nameB && p.variant === variantB);
+          if (!petA || !petB) return 0; // should not happen
+          return petA.bubbles !== petB.bubbles ? petB.bubbles - petA.bubbles : petA.name.localeCompare(petB.name);
+        })
+    );
+  }
+
+  // on profile change, or owned pets change, sort pets
+  useEffect(() => {
+      const sortedPets = sortProfilePets(profile.pets);
+      setProfile((prev) => ({ ...prev, pets: sortedPets }));
+      setVisibleCount(20); // reset scroll
+  }, [profile.name, profile.pets]);
 
   const filteredPets = useMemo(() => {
     return allPetInstances.filter((pet) =>
@@ -373,12 +402,14 @@ export function TeamBuilder(props: TeamBuilderProps) {
                     
                         const indexOwned = JSON.parse(saved) as Record<string, boolean>;
                     
-                        const newPets: Record<PetKey, number> = {};
+                        let newPets: Record<PetKey, number> = {};
                         for (const key in indexOwned) {
                           if (indexOwned[key]) {
                             newPets[key as PetKey] = 1; // Add each owned pet once
                           }
                         }
+
+                        newPets = sortProfilePets(newPets);
                     
                         const updatedProfile = { ...profile, pets: newPets };
                         const updatedProfiles = profiles.map((p) =>
@@ -483,7 +514,7 @@ export function TeamBuilder(props: TeamBuilderProps) {
                               sx={{ width: 24, height: 24, mr: 1 }}
                             />
                             <Typography variant="body2" sx={{ flex: 1 }}>
-                              {pet.name}
+                              <span className={pet.rarity}>{pet.name}</span>
                               <span
                                 style={{ marginLeft: 4, fontWeight: 500 }}
                                 className={variantStyle(variant)}
@@ -574,7 +605,7 @@ export function TeamBuilder(props: TeamBuilderProps) {
                                 sx={{ width: 24, height: 24, mr: 1 }}
                               />
                               <Typography variant="body2" sx={{ flex: 1 }}>
-                                {pet.name}
+                                <span className={pet.rarity}>{pet.name}</span>
                                 <span
                                   style={{ marginLeft: 4, fontWeight: 500 }}
                                   className={variantStyle(pet.variant)}

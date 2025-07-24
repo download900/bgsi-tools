@@ -43,21 +43,11 @@ export default function App() {
       </AppBar>
       <Box sx={{ mt:2 }}>
         <Container sx={{ mt: 4, display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'middle', maxWidth: '100% !important' }}>
-          <Box sx={{ display: currentTab === 'Calculator' ? 'flex' : 'none', flexGrow: '1', justifyContent: 'center', alignItems: 'middle', maxWidth: '100% !important' }}>
-            <OddsCalculator data={data} />
-          </Box>
-          <Box sx={{ display: currentTab === 'Index' ? 'flex' : 'none', flexGrow: '1', justifyContent: 'center', alignItems: 'middle', maxWidth: '100% !important' }}>
-            <PetIndex data={data} />
-          </Box>
-          <Box sx={{ display: currentTab === 'Stats' ? 'flex' : 'none', flexGrow: '1', justifyContent: 'center', alignItems: 'middle', maxWidth: '100% !important' }}>
-            <PetList data={data} />
-          </Box>
-          <Box sx={{ display: currentTab === 'TeamBuilder' ? 'flex' : 'none', flexGrow: '1', justifyContent: 'center', alignItems: 'middle', maxWidth: '100% !important' }}>
-            <TeamBuilder data={data} />
-          </Box>
-          <Box sx={{ display: currentTab === 'WikiTools' ? 'flex' : 'none', flexGrow: '1', justifyContent: 'center', alignItems: 'middle', maxWidth: '100% !important' }}>
-            <WikiTools />
-          </Box>
+          {currentTab === "Calculator" && <OddsCalculator data={data} />}
+          {currentTab === "Index" && <PetIndex data={data} />}
+          {currentTab === "Stats" && <PetList data={data} />}
+          {currentTab === "TeamBuilder" && <TeamBuilder data={data} />}
+          {currentTab === "WikiTools" && <WikiTools />}
         </Container>
       </Box>
     </>
