@@ -338,7 +338,7 @@ export function PetList(props: PetListProps) {
           </Box>
         </Box>
         <Typography variant="subtitle2" sx={{ marginTop: 1, fontStyle: "italic", color: "text.secondary" }}>
-          Note: Enchant calculation assumes your team is entirely entirely Secret or entirely Legendary. For accurate results in other cases, use the Team Builder page.
+          Note: Enchant calculation assumes every other pet on your team has Determination. For accurate results in other cases, use the Team Builder page.
         </Typography>
       </Paper>
 

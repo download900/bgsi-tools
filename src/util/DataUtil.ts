@@ -135,13 +135,10 @@ export const getPetStat = (pet: Pet, variant: PetVariant, stat: PetStat, maxLeve
     let teamUpMultiplier = 0;
     if (pet.rarity === 'secret' || pet.rarity === 'infinity') {
       teamUpMultiplier = 0.5;
-      if ((variant === "Shiny" || variant === "Shiny Mythic") && (secondEnchant === "teamUpV")) {
-        teamUpMultiplier += 0.25;
-      }
     } else {
       teamUpMultiplier = 0.25;
     }
-    multiplier += (enchantTeamSize! * teamUpMultiplier);
+    multiplier += ((enchantTeamSize! - 1) * 0.5) + teamUpMultiplier;
   }
   return Math.floor(baseStat * scale * multiplier);
 }
