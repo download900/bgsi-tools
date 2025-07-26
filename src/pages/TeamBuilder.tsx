@@ -9,6 +9,14 @@ const drawerWidth = 420;
 const STORAGE_KEY = "teamBuilderState";
 type PetKey = `${string}__${PetVariant}`;
 
+interface TeamBuilderState {
+  profiles: TeamBuilderProfile[];
+  currentProfileIndex: number;
+  lastTeamResult: TeamStatResult | undefined;
+  lastFocusStat: PetStat;
+  lastFocusCurrency: CurrencyVariant;
+}
+
 interface TeamBuilderProfile {
   name: string;
   pets: Record<PetKey, number>; // key = name + variant
@@ -35,20 +43,57 @@ interface TeamStatResult {
   }[];
 }
 
-function loadProfiles(): TeamBuilderProfile[] {
-  const stored = localStorage.getItem(STORAGE_KEY);
-  let profiles: TeamBuilderProfile[] = stored ? JSON.parse(stored) : [];
+// function loadProfiles(): TeamBuilderProfile[] {
+//   const stored = localStorage.getItem(STORAGE_KEY);
+//   let profiles: TeamBuilderProfile[] = stored ? JSON.parse(stored) : [];
 
-  // Ensure Default profile exists if no other profiles found
-  if (profiles.length == 0) {
-    profiles.unshift({ name: "Default", pets: {}, teamSize: 11 });
+//   // Ensure Default profile exists if no other profiles found
+//   if (profiles.length == 0) {
+//     profiles.unshift({ name: "Default", pets: {}, teamSize: 11 });
+//   }
+
+//   return profiles;
+// }
+
+// function saveProfiles(profiles: TeamBuilderProfile[]) {
+//     localStorage.setItem(STORAGE_KEY, JSON.stringify(profiles));
+// }
+
+function ensureValidSaveData(data: TeamBuilderState): TeamBuilderState {
+  // Ensure profiles are valid, and at least one profile exists
+  if (!data.profiles || !Array.isArray(data.profiles) || data.profiles.length === 0) {
+    data.profiles = [{ name: "Default", pets: {}, teamSize: 11 }];
+  }
+  // Ensure each profile has a valid name and pets
+  data.profiles = data.profiles.map(profile => {
+    if (!profile.name || typeof profile.name !== "string") {
+      profile.name = "Default";
+    }
+    if (!profile.pets || typeof profile.pets !== "object") {
+      profile.pets = {};
+    }
+    if (typeof profile.teamSize !== "number" || profile.teamSize < 1) {
+      profile.teamSize = 11;
+    }
+    return profile;
+  });
+  // Ensure currentProfileIndex is valid
+  if (typeof data.currentProfileIndex !== "number" || data.currentProfileIndex < 0 || data.currentProfileIndex >= data.profiles.length) {
+    data.currentProfileIndex = 0;
+  }
+  // Ensure lastTeamResult is valid
+  if (!data.lastTeamResult || typeof data.lastTeamResult !== "object") {
+    data.lastTeamResult = {
+      total: {
+        bubbles: 0,
+        currency: 0,
+        gems: 0
+      },
+      detailed: []
+    };
   }
 
-  return profiles;
-}
-
-function saveProfiles(profiles: TeamBuilderProfile[]) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(profiles));
+  return data;
 }
 
 function expandOwnedPets(profile: TeamBuilderProfile, all: PetInstance[]): PetInstance[] {
@@ -121,23 +166,14 @@ function calculateTeamStats(team: EnchantedPet[], currencyType?: CurrencyVariant
   return { total, detailed };
 }
 
-
 interface TeamBuilderProps {
     data: PetData | undefined;
 }
 
 export function TeamBuilder(props: TeamBuilderProps) {
-  const [profile, setProfile] = useState<TeamBuilderProfile>(
-    () => {
-        const p = loadProfiles();
-        if (p.length > 0) {
-            return p[0]; // default to first profile
-        }
-        return p.find((p) => p.name === "Default")!
-    }
-  );
+  const [profile, setProfile] = useState<TeamBuilderProfile | undefined>();
   const [visibleCount, setVisibleCount] = useState(20);
-  const [profiles, setProfiles] = useState<TeamBuilderProfile[]>(loadProfiles());
+  const [profiles, setProfiles] = useState<TeamBuilderProfile[] | undefined>();
   const [searchQuery, setSearchQuery] = useState("");
   const [tab, setTab] = useState(0); // 0 = Owned Pets, 1 = Add Pets
   const [focusStat, setFocusStat] = useState<PetStat>("bubbles");
@@ -145,6 +181,43 @@ export function TeamBuilder(props: TeamBuilderProps) {
   const [teamResult, setTeamResult] = useState<TeamStatResult | undefined>(undefined);
   const [isCalculating, setIsCalculating] = useState(false);
   const [progress, setProgress] = useState<number | null>(null);
+
+  // On component mount, load State data from localStorage
+  useEffect(() => {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) {
+      const state: TeamBuilderState = JSON.parse(stored);
+      const validState = ensureValidSaveData(state);
+      setProfiles(validState.profiles || []);
+      const currentProfile = validState.profiles[validState.currentProfileIndex] || validState.profiles[0];
+      setProfile(currentProfile);
+      setTeamResult(validState.lastTeamResult);
+      setFocusStat(validState.lastFocusStat || "bubbles");
+      setFocusCurrency(validState.lastFocusCurrency || "coins");
+    }
+    else {
+      // If no saved state, initialize with default profile
+      const defaultProfile: TeamBuilderProfile = { name: "Default", pets: {}, teamSize: 11 };
+      setProfiles([defaultProfile]);
+      setProfile(defaultProfile);
+      setTeamResult(undefined);
+      setFocusStat("bubbles");
+      setFocusCurrency("coins");
+    }
+  }, []);
+  
+  // On TeamBuilderState change, save to localStorage
+  useEffect(() => {
+    if (!profiles || !profile) return;
+    const state: TeamBuilderState = {
+      profiles: profiles!,
+      currentProfileIndex: profiles!.findIndex(p => p.name === profile!.name),
+      lastTeamResult: teamResult,
+      lastFocusStat: focusStat,
+      lastFocusCurrency: focusCurrency
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  }, [profiles, profile, teamResult, focusStat, focusCurrency]);
 
   const allPetInstances = useMemo(() => {
     if (!props.data || props.data.eggs.length < 1) return [];
@@ -179,27 +252,38 @@ export function TeamBuilder(props: TeamBuilderProps) {
     return all;
   }, [props.data]);
 
-  function sortProfilePets(pets: Record<PetKey, number>): Record<PetKey, number> {
-    return Object.fromEntries(
-      Object.entries(pets)
-        .filter(([_, count]) => count > 0)
-        .sort(([keyA], [keyB]) => {
-          const [nameA, variantA] = keyA.split("__") as [string, PetVariant];
-          const [nameB, variantB] = keyB.split("__") as [string, PetVariant];
-          const petA = allPetInstances.find(p => p.name === nameA && p.variant === variantA);
-          const petB = allPetInstances.find(p => p.name === nameB && p.variant === variantB);
-          if (!petA || !petB) return 0; // should not happen
-          return petA.bubbles !== petB.bubbles ? petB.bubbles - petA.bubbles : petA.name.localeCompare(petB.name);
-        })
-    );
-  }
+  // function sortProfilePets(pets: Record<PetKey, number>): Record<PetKey, number> {
+  //   return Object.fromEntries(
+  //     Object.entries(pets)
+  //       .filter(([_, count]) => count > 0)
+  //       .sort(([keyA], [keyB]) => {
+  //         const [nameA, variantA] = keyA.split("__") as [string, PetVariant];
+  //         const [nameB, variantB] = keyB.split("__") as [string, PetVariant];
+  //         const petA = allPetInstances.find(p => p.name === nameA && p.variant === variantA);
+  //         const petB = allPetInstances.find(p => p.name === nameB && p.variant === variantB);
+  //         if (!petA || !petB) return 0; // should not happen
+  //         return petA.bubbles !== petB.bubbles ? petB.bubbles - petA.bubbles : petA.name.localeCompare(petB.name);
+  //       })
+  //   );
+  // }
 
-  // on profile change, or owned pets change, sort pets
-  useEffect(() => {
-      const sortedPets = sortProfilePets(profile.pets);
-      setProfile((prev) => ({ ...prev, pets: sortedPets }));
-      setVisibleCount(20); // reset scroll
-  }, [profile.name, profile.pets]);
+  // // on profile change, or owned pets change, sort pets
+  // useEffect(() => {
+  //     if (profile) {
+  //       const sortedPets = sortProfilePets(profile.pets);
+  //       setProfile((prev) => ({ ...prev!, pets: sortedPets }));
+  //     }
+  //     setVisibleCount(20); // reset scroll
+  // }, [profile?.name, tab]);
+
+  // useEffect(() => {
+  //   // sort profile pets whenever profile pet list changes
+  //   if (profile) {
+  //     const sortedPets = sortProfilePets(profile.pets);
+  //     setProfile((prev) => ({ ...prev!, pets: sortedPets }));
+  //   }
+
+  // }, [profile?.pets])
 
   const filteredPets = useMemo(() => {
     return allPetInstances.filter((pet) =>
@@ -207,7 +291,52 @@ export function TeamBuilder(props: TeamBuilderProps) {
     );
   }, [allPetInstances, searchQuery]);
 
+  // Owned-pets list that is actually renderable (search + valid rarity) and sorted by bubbles
+  const ownedList = useMemo(() => {
+    if (!profile) {
+      return [] as Array<{
+        key: PetKey;
+        count: number;
+        pet: PetInstance;
+        variant: PetVariant;
+      }>;
+    }
+
+    const q = searchQuery.toLowerCase();
+    const out: Array<{ key: PetKey; count: number; pet: PetInstance; variant: PetVariant }> = [];
+
+    for (const [key, count] of Object.entries(profile.pets)) {
+      if (count <= 0) continue;
+      if (!key.toLowerCase().includes(q)) continue;
+
+      const [petName, variant] = key.split("__") as [string, PetVariant];
+      const pet = allPetInstances.find(p => p.name === petName && p.variant === variant);
+      if (!pet) continue;
+
+      // Only show Legendary / Secret / Infinity
+      if (!["legendary", "secret", "infinity"].includes(pet.rarity)) continue;
+
+      out.push({ key: key as PetKey, count, pet, variant });
+    }
+
+    out.sort((a, b) => {
+      if (a.pet.bubbles !== b.pet.bubbles) return b.pet.bubbles - a.pet.bubbles;
+      // Optional tie-breakers to keep ordering stable:
+      if (a.pet.currency !== b.pet.currency) return b.pet.currency - a.pet.currency;
+      if (a.pet.gems !== b.pet.gems) return b.pet.gems - a.pet.gems;
+      if (a.pet.name !== b.pet.name) return a.pet.name.localeCompare(b.pet.name);
+      return a.variant.localeCompare(b.variant);
+    });
+
+    return out;
+  }, [profile?.pets, allPetInstances, searchQuery]);
+
+
+
   const calculateTeam = async () => {
+    if (!profile) {
+      return;
+    }
     setIsCalculating(true);
     setProgress(0);
   
@@ -219,7 +348,16 @@ export function TeamBuilder(props: TeamBuilderProps) {
     const teamSize = profile.teamSize;
   
     // Step 1: Score pets with assumed max synergy values (naive, greedy approach, but should still produce the best results)
-    const scoredPets: EnchantedPetWithScore[] = pool.map((pet) => {
+    const batchSize = 50;
+    let i = 0;
+    const scoredPets: EnchantedPetWithScore[] = await Promise.all(pool.map((pet) => {
+      i++;
+      if (i % batchSize === 0) {
+        const progressValue = Math.min(100, Math.floor((i / pool.length) * 100));
+        setProgress(progressValue);
+        // yield for animation frame and let UI render
+        return new Promise((resolve) => requestAnimationFrame(resolve));
+      }
       const enchants = assignEnchants(pet, focus);
       let bubblesMultiplier = 1;
       let currencyMultiplier = 1;
@@ -251,18 +389,54 @@ export function TeamBuilder(props: TeamBuilderProps) {
           : currencyVal;
   
       return { pet, enchants, score };
-    });
-  
-    // Step 2: Sort by estimated stat value
+    })) as EnchantedPetWithScore[];
+
+    // Step 2: Pick our top "teamSize" pets based on score.
+    // Sort pets by score in descending order
+    scoredPets.sort((a, b) => b.score - a.score);
     const top = scoredPets
-      .sort((a, b) => b.score - a.score)
       .slice(0, teamSize)
       .map(({ pet, enchants }) => ({ pet, enchants }));
-  
-    // Step 3: Compute true team stats using synergy rules
-    const result = calculateTeamStats(top, currency);
-  
-    setTeamResult(result);
+
+    // Step 3: Determination and Team Up V synergy reduction.
+    // The best-scoring pets may not be the best team due to synergy rules.
+    // Let's pick the top teamSize pets which have Determination.
+    const selectedPets = scoredPets
+      .filter(({ enchants }) => enchants?.includes("determination"))
+      .slice(0, teamSize);
+    console.log("Selected pets with Determination:", selectedPets.length);
+    // Check if these two pools are the same pets. If so, we can use the top pets directly.
+    if (selectedPets.length === teamSize && selectedPets.every((p, i) => p.pet.name === top[i].pet.name && p.pet.variant === top[i].pet.variant)) {
+      // They are the same, we can skip the next step
+      console.log("Using best-scoring pets directly, no Determination synergy needed.");
+      setTeamResult(calculateTeamStats(selectedPets, currency));
+    }
+    else {
+      console.log("Best-scoring pets do not match Determination pets, checking synergy...");
+      // Our best-scoring pets don't all have Determination, so we need to check for synergy score.
+      // We'll try mixes of best-scoring pets and Determination pets.
+      // For teamSize = 11, we'll try 1 to 11 Determination pets.
+      const bestTeam: EnchantedPet[] = [];
+      let bestScore = 0;
+      console.log(`Trying mixes with up to ${profile.teamSize} pets...`);
+      for (let d = 1; d <= profile.teamSize; d++) {
+        if (selectedPets.length < d) break;
+        const determinationPets = selectedPets.slice(0, d);
+        const bestScorers = top.slice(0, profile.teamSize - d);
+        const currentTeam = [...bestScorers, ...determinationPets];
+        const result = calculateTeamStats(currentTeam, currency);
+        const score = focus === "bubbles" ? result.total.bubbles : focus === "gems" ? result.total.gems : result.total.currency;
+        console.log(`Checking team with ${d} Determination pet(s) and ${profile.teamSize - d} best scorers: Score = ${score}`);
+        if (score > bestScore) {
+          bestScore = score;
+          bestTeam.length = 0; // clear array
+          bestTeam.push(...currentTeam);
+        }
+      }
+      console.log(`Best team found with score: ${bestScore}`);
+      const result = calculateTeamStats(bestTeam, currency);
+      setTeamResult(result);
+    }
     setIsCalculating(false);
     setProgress(null);
   };
@@ -280,6 +454,14 @@ export function TeamBuilder(props: TeamBuilderProps) {
         default:
             return null;
     }
+  }
+
+  if (!profile || !profiles) {
+    return (
+      <Box sx={{ p: 2 }}>
+        <Typography variant="h6">Loading...</Typography>
+      </Box>
+    )
   }
 
   return (
@@ -334,7 +516,7 @@ export function TeamBuilder(props: TeamBuilderProps) {
                       const newProfiles = [...profiles, newProfile];
                       setProfiles(newProfiles);
                       setProfile(newProfile);
-                      saveProfiles(newProfiles);
+                      //saveProfiles(newProfiles);
                     }}
                   >
                     Add
@@ -351,7 +533,7 @@ export function TeamBuilder(props: TeamBuilderProps) {
                           );
                           setProfile(cleared);
                           setProfiles(updated);
-                          saveProfiles(updated);
+                          //saveProfiles(updated);
                         }}
                       >
                         Clear
@@ -366,7 +548,7 @@ export function TeamBuilder(props: TeamBuilderProps) {
                           const fallback = newProfiles[0];
                           setProfiles(newProfiles);
                           setProfile(fallback);
-                          saveProfiles(newProfiles);
+                          //saveProfiles(newProfiles);
                         }}
                       >
                         Delete
@@ -388,7 +570,7 @@ export function TeamBuilder(props: TeamBuilderProps) {
                       const newCurrent = { ...profile, name: newName };
                       setProfiles(updated);
                       setProfile(newCurrent);
-                      saveProfiles(updated);
+                      //saveProfiles(updated);
                     }}
                   >
                     Rename
@@ -397,7 +579,7 @@ export function TeamBuilder(props: TeamBuilderProps) {
                     variant="outlined"
                     size="small"
                     onClick={() => {
-                      if (!window.confirm("Import owned pets from Pet Index? This will replace your current team.")) return;
+                      if (!window.confirm("Import owned pets from Pet Index? This will ensure that each pet from Pet Index is owned at least once.")) return;
 
                       try {
                         const saved = localStorage.getItem("petTrackerState");
@@ -408,14 +590,14 @@ export function TeamBuilder(props: TeamBuilderProps) {
                     
                         const indexOwned = JSON.parse(saved) as Record<string, boolean>;
                     
-                        let newPets: Record<PetKey, number> = {};
+                        let newPets: Record<PetKey, number> = { ...profile.pets };
                         for (const key in indexOwned) {
                           if (indexOwned[key]) {
-                            newPets[key as PetKey] = 1; // Add each owned pet once
+                            newPets[key as PetKey] = Math.max(newPets[key as PetKey] || 0, 1);
                           }
                         }
 
-                        newPets = sortProfilePets(newPets);
+                        //newPets = sortProfilePets(newPets);
                     
                         const updatedProfile = { ...profile, pets: newPets };
                         const updatedProfiles = profiles.map((p) =>
@@ -424,7 +606,7 @@ export function TeamBuilder(props: TeamBuilderProps) {
                     
                         setProfile(updatedProfile);
                         setProfiles(updatedProfiles);
-                        saveProfiles(updatedProfiles);
+                        //saveProfiles(updatedProfiles);
                     
                         alert("Import successful.");
                       } catch (err) {
@@ -432,7 +614,6 @@ export function TeamBuilder(props: TeamBuilderProps) {
                         alert("Error importing data. Please check your Pet Index save.");
                       }
                     }}
-
                   >
                     Import
                   </Button>
@@ -449,117 +630,102 @@ export function TeamBuilder(props: TeamBuilderProps) {
                   sx={{ mb: 1 }}
                 >
                   <Tab label="Owned Pets" />
-                  <Tab label="Add Pets" />
+                  <Tab label="Edit Pets" />
                 </Tabs>
                 
                 {/* --- TAB: OWNED PETS --- */}
                 {tab === 0 && (
                   <>
-                  <Input
-                    placeholder="Search pets..."
-                    fullWidth
-                    size="small"
-                    sx={{ mb: 1 }}
-                    value={searchQuery}
-                    onChange={(e) => {
-                      setSearchQuery(e.target.value);
-                      setVisibleCount(20);
-                    }}
-                  />
-                  <Box
-                    sx={{ maxHeight: "60vh", overflowY: "auto", pr: 1 }}
-                    onScroll={(e) => {
-                      const target = e.currentTarget;
-                      const matching = Object.entries(profile.pets).filter(
-                        ([key, count]) =>
-                          count > 0 &&
-                          key.toLowerCase().includes(searchQuery.toLowerCase())
-                      );
-                      if (
-                        target.scrollTop + target.clientHeight >= target.scrollHeight - 100 &&
-                        visibleCount < matching.length
-                      ) {
-                        setVisibleCount((v) => Math.min(v + 20, matching.length));
-                      }
-                    }}
-                  >
-                    {Object.entries(profile.pets)
-                      .filter(
-                        ([key, count]) =>
-                          count > 0 &&
-                          key.toLowerCase().includes(searchQuery.toLowerCase())
-                      )
-                      //.slice(0, visibleCount)
-                      .map(([key, count]) => {
-                        const [petName, variant] = key.split("__") as [string, PetVariant];
-                        const pet = allPetInstances.find(
-                          (p) => p.name === petName && p.variant === variant
-                        );
-                        if (!pet || !["legendary", "secret", "infinity"].includes(pet.rarity))
-                          return null;
-                    
-                        const updateCount = (value: number) => {
-                          const newPets = { ...profile.pets, [key]: Math.max(0, value) };
-                          const updatedProfile = { ...profile, pets: newPets };
-                          const updatedProfiles = profiles.map((p) =>
-                            p.name === profile.name ? updatedProfile : p
-                          );
-                          setProfile(updatedProfile);
-                          setProfiles(updatedProfiles);
-                          saveProfiles(updatedProfiles);
-                        };
-                    
-                        return (
-                          <Box
-                            key={key}
-                            sx={{ display: "flex", alignItems: "center", mb: 0.5 }}
-                          >
-                            <Avatar
-                              src={pet.image}
-                              variant="square"
-                              sx={{ width: 24, height: 24, mr: 1 }}
-                            />
-                            <Typography variant="body2" sx={{ flex: 1 }}>
-                              <span className={pet.rarity}>{pet.name}</span>
-                              <span
-                                style={{ marginLeft: 4, fontWeight: 500 }}
-                                className={variantStyle(variant)}
-                              >
-                                ({variant})
-                              </span>
-                            </Typography>
-                            <Input
-                              type="text"
-                              size="small"
-                              value={count}
-                              onChange={(e) =>
-                                updateCount(parseInt(e.target.value || "0"))
-                              }
-                              inputProps={{
-                                style: { width: 50, textAlign: "center" },
-                              }}
-                            />
-                            <Button
-                              size="small"
-                              onClick={() => {
-                                const newPets = { ...profile.pets };
-                                delete newPets[key as PetKey];
-                                const updatedProfile = { ...profile, pets: newPets };
-                                const updatedProfiles = profiles.map((p) =>
-                                  p.name === profile.name ? updatedProfile : p
-                                );
-                                setProfile(updatedProfile);
-                                setProfiles(updatedProfiles);
-                                saveProfiles(updatedProfiles);
-                              }}
-                            >
-                              ❌
-                            </Button>
-                          </Box>
-                        );
-                      })}
-                  </Box>
+                    <Input
+                      placeholder="Search pets..."
+                      fullWidth
+                      size="small"
+                      sx={{ mb: 1 }}
+                      value={searchQuery}
+                      onChange={(e) => {
+                        setSearchQuery(e.target.value);
+                        setVisibleCount(20);
+                      }}
+                    />
 
+                    <Box
+                      sx={{ maxHeight: "60vh", overflowY: "auto", pr: 1 }}
+                      onScroll={(e) => {
+                        const target = e.currentTarget;
+                        const total = ownedList.length; // use the renderable list length
+                        if (
+                          target.scrollTop + target.clientHeight >= target.scrollHeight - 100 &&
+                          visibleCount < total
+                        ) {
+                          setVisibleCount((v) => Math.min(v + 20, total));
+                        }
+                      }}
+                    >
+                      {ownedList
+                        .slice(0, visibleCount)
+                        .map(({ key, count, pet, variant }) => {
+                          const updateCount = (value: number) => {
+                            const newPets = { ...profile.pets, [key]: Math.max(0, value) };
+                            const updatedProfile = { ...profile, pets: newPets };
+                            const updatedProfiles = profiles.map((p) =>
+                              p.name === profile.name ? updatedProfile : p
+                            );
+                            setProfile(updatedProfile);
+                            setProfiles(updatedProfiles);
+                          };
+                        
+                          return (
+                            <Box
+                              key={key}
+                              sx={{ display: "flex", alignItems: "center", mb: 0.5 }}
+                            >
+                              <Avatar
+                                src={pet.image}
+                                variant="square"
+                                sx={{ width: 24, height: 24, mr: 1 }}
+                              />
+                              <Typography variant="body2" sx={{ flex: 1 }}>
+                                <span className={pet.rarity}>{pet.name}</span>
+                                <span
+                                  style={{ marginLeft: 4, fontWeight: 500 }}
+                                  className={variantStyle(variant)}
+                                >
+                                  ({variant})
+                                </span>
+                              </Typography>
+                              <Input
+                                type="text"
+                                size="small"
+                                value={count === 0 ? "" : count}
+                                onChange={(e) => {
+                                  const raw = e.target.value.trim();
+                                  if (!/^\d*$/.test(raw)) return; // digits only
+                                  const newValue = raw === "" ? 0 : parseInt(raw, 10);
+                                  updateCount(newValue);
+                                }}
+                                inputProps={{
+                                  style: { width: 50, textAlign: "center" },
+                                }}
+                              />
+                              <Button
+                                size="small"
+                                onClick={() => {
+                                  const newPets = { ...profile.pets };
+                                  delete newPets[key as PetKey];
+                                  const updatedProfile = { ...profile, pets: newPets };
+                                  const updatedProfiles = profiles.map((p) =>
+                                    p.name === profile.name ? updatedProfile : p
+                                  );
+                                  setProfile(updatedProfile);
+                                  setProfiles(updatedProfiles);
+                                }}
+                              >
+                                ❌
+                              </Button>
+                            </Box>
+                          );
+                        })}
+                    </Box>
                   </>
                 )}
             
@@ -600,53 +766,59 @@ export function TeamBuilder(props: TeamBuilderProps) {
                             );
                             setProfile(updatedProfile);
                             setProfiles(updatedProfiles);
-                            saveProfiles(updatedProfiles);
-                            };
+                            //saveProfiles(updatedProfiles);
+                          };
                         
-                            return (
-                            <Box key={key} sx={{ display: "flex", alignItems: "center", mb: 0.5 }}>
-                              <Avatar
-                                src={pet.image}
-                                variant="square"
-                                sx={{ width: 24, height: 24, mr: 1 }}
-                              />
-                              <Typography variant="body2" sx={{ flex: 1 }}>
-                                <span className={pet.rarity}>{pet.name}</span>
-                                <span
-                                  style={{ marginLeft: 4, fontWeight: 500 }}
-                                  className={variantStyle(pet.variant)}
-                                >
-                                  ({pet.variant})
-                                </span>
-                              </Typography>
-                              <Input
-                                type="text"
-                                size="small"
-                                value={count}
-                                onChange={(e) =>
-                                  updateCount(parseInt(e.target.value || "0"))
+                          return (
+                          <Box key={key} sx={{ display: "flex", alignItems: "center", mb: 0.5 }}>
+                            <Avatar
+                              src={pet.image}
+                              variant="square"
+                              sx={{ width: 24, height: 24, mr: 1 }}
+                            />
+                            <Typography variant="body2" sx={{ flex: 1 }}>
+                              <span className={pet.rarity}>{pet.name}</span>
+                              <span
+                                style={{ marginLeft: 4, fontWeight: 500 }}
+                                className={variantStyle(pet.variant)}
+                              >
+                                ({pet.variant})
+                              </span>
+                            </Typography>
+                            <Input
+                              type="text"
+                              size="small"
+                              value={count}
+                              onChange={(e) =>
+                                {
+                                  const newValue = parseInt(e.target.value || "0");
+                                  if (isNaN(newValue) || newValue < 0) {
+                                      return;
+                                  }
+                                  updateCount(newValue);
                                 }
-                                inputProps={{
-                                  style: { width: 50, textAlign: "center" },
-                                }}
-                              />
-                              <Button
-                                size="small"
-                                onClick={() => updateCount(Math.max(0, count - 1))}
-                                sx={{ minWidth: 24, px: 0.5, ml: 1, backgroundColor: "#2c2c2c" }}
-                              >
-                                -
-                              </Button>
-                              <Button
-                                size="small"
-                                onClick={() => updateCount(count + 1)}
-                                sx={{ minWidth: 24, px: 0.5, ml: 1, mr: 1, backgroundColor: "#2c2c2c" }}
-                              >
-                                +
-                              </Button>
-                            </Box>
+                              }
+                              inputProps={{
+                                style: { width: 50, textAlign: "center" },
+                              }}
+                            />
+                            <Button
+                              size="small"
+                              onClick={() => updateCount(Math.max(0, count - 1))}
+                              sx={{ minWidth: 24, px: 0.5, ml: 1, backgroundColor: "#2c2c2c" }}
+                            >
+                              -
+                            </Button>
+                            <Button
+                              size="small"
+                              onClick={() => updateCount(count + 1)}
+                              sx={{ minWidth: 24, px: 0.5, ml: 1, mr: 1, backgroundColor: "#2c2c2c" }}
+                            >
+                              +
+                            </Button>
+                          </Box>
 
-                            );
+                          );
                         })}
                     </Box>
                 </>)}
@@ -679,9 +851,18 @@ export function TeamBuilder(props: TeamBuilderProps) {
                           setFocusStat(e.target.value as PetStat);
                         }}
                       >
-                        <MenuItem value="bubbles">Bubbles</MenuItem>
-                        <MenuItem value="currency">Currency</MenuItem>
-                        <MenuItem value="gems">Gems</MenuItem>
+                        <MenuItem value="bubbles">
+                          {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/0/0c/Bubbles.png", 25)}{' '}
+                          Bubbles
+                        </MenuItem>
+                        <MenuItem value="currency">
+                          {imgIcon(currencyImages[focusStat === 'currency' ? focusCurrency : 'coins'], 25)}{' '}
+                          Currency
+                        </MenuItem>
+                        <MenuItem value="gems">
+                          {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Gems.png", 25)}{' '}
+                          Gems
+                        </MenuItem>
                       </Select>
                     </Box>
                     
@@ -698,8 +879,8 @@ export function TeamBuilder(props: TeamBuilderProps) {
                             setFocusCurrency(e.target.value as CurrencyVariant)
                           }
                         >
-                          <MenuItem value="coins">Coins</MenuItem>
-                          <MenuItem value="tickets">Tickets</MenuItem>
+                          <MenuItem value="coins">{imgIcon(currencyImages['coins'])}{' '}Coins</MenuItem>
+                          <MenuItem value="tickets">{imgIcon(currencyImages['tickets'])}{' '}Tickets</MenuItem>
                         </Select>
                       </Box>
                     )}
@@ -720,7 +901,7 @@ export function TeamBuilder(props: TeamBuilderProps) {
                           );
                           setProfile(updatedProfile);
                           setProfiles(updatedProfiles);
-                          saveProfiles(updatedProfiles);
+                          //saveProfiles(updatedProfiles);
                         }}
                         inputProps={{
                           min: 1,
@@ -742,65 +923,80 @@ export function TeamBuilder(props: TeamBuilderProps) {
               </Typography>
             </Box>
           )}
-        </Paper>
-
-        <Paper sx={{ p: 2 }}>
-            <Typography variant="h6" gutterBottom>Result</Typography>
-                <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2 }}>
-                  {teamResult?.detailed.map((result, idx) => (
-                    <Paper
-                      key={`${result.pet.name}__${result.pet.variant}__${idx}`}
-                      sx={{
-                        width: 145,
-                        p: 1,
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        backgroundColor: "#111",
-                        border: "1px solid #444",
-                        borderRadius: 2,
-                      }}
-                    >
-                      <Avatar
-                        src={result.pet.image}
-                        variant="square"
-                        sx={{ width: 100, height: 100, mb: 1 }}
-                      />
-                      <Typography
-                        variant="subtitle1"
-                        sx={{ fontWeight: "bold", textAlign: "center" }}
-                        className={result.pet.rarity}
-                      >
-                        {result.pet.name}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary"
-                        className={variantStyle(result.pet.variant)}
-                      >
-                        ({result.pet.variant})
-                      </Typography>
-                      <Box sx={{ mt: 1, textAlign: "center" }}>
-                        <Typography variant="body2">
-                            {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/0/0c/Bubbles.png")}{' '}
-                            {result.bubbles.toLocaleString()}
+          </Paper>
+          <Paper sx={{ p: 2 }}>
+            <Box display='flex' flexDirection='row' alignItems='center' justifyContent='space-between' mb={2}>
+              <Typography sx={{flexShrink: 99}} variant="h6" gutterBottom>Team Result</Typography>
+              <Paper elevation={2} sx={{ml: 2, mr: 'auto', display:'flex', flexDirection:'row', alignItems:'center', gap:1, flexGrow: 0, padding: 1 }}>
+                <span style={{paddingRight: 10, fontSize: '0.9em'}}>
+                  {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/0/0c/Bubbles.png", 25)}{' +'}
+                  {teamResult?.total.bubbles.toLocaleString()}
+                </span>
+                <span style={{paddingRight: 10, fontSize: '0.9em'}}>
+                  {imgIcon(currencyImages[focusStat === 'currency' ? focusCurrency : 'coins'], 25)}{' x'}
+                  {teamResult?.total.currency.toLocaleString()}
+                </span>
+                <span style={{paddingRight: 10, fontSize: '0.9em'}}>
+                  {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Gems.png", 25)}{' x'}
+                  {teamResult?.total.gems.toLocaleString()}
+                </span>
+              </Paper>
+            </Box>
+            <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2 }}>
+              {teamResult?.detailed.map((result, idx) => (
+                <Paper
+                  key={`${result.pet.name}__${result.pet.variant}__${idx}`}
+                  sx={{
+                    width: 145,
+                    p: 1,
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    backgroundColor: "#111",
+                    border: "1px solid #444",
+                    borderRadius: 2,
+                  }}
+                >
+                  <Avatar
+                    src={result.pet.image}
+                    variant="square"
+                    sx={{ width: 100, height: 100, mb: 1 }}
+                  />
+                  <Typography
+                    variant="subtitle1"
+                    sx={{ fontWeight: "bold", textAlign: "center" }}
+                    className={result.pet.rarity}
+                  >
+                    {result.pet.name}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary"
+                    className={variantStyle(result.pet.variant)}
+                  >
+                    ({result.pet.variant})
+                  </Typography>
+                  <Box sx={{ mt: 1, textAlign: "center" }}>
+                    <Typography variant="body2">
+                        {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/0/0c/Bubbles.png")}{' +'}
+                        {result.bubbles.toLocaleString()}
+                    </Typography>
+                    <Typography variant="body2">
+                        {imgIcon(currencyImages[focusStat === 'currency' ? focusCurrency : result.pet.currencyVariant])}{' x'}
+                        {result.currency.toLocaleString()}
+                    </Typography>
+                    <Typography variant="body2">
+                        {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Gems.png")}{' x'}
+                        {result.gems.toLocaleString()}
+                    </Typography>
+                    {result.enchants.length > 0 && (
+                      <>{result.enchants.map((enchant) => (
+                        <Typography variant="body2" key={enchant}>
+                          {renderEnchant(enchant)}
                         </Typography>
-                        <Typography variant="body2">
-                            {imgIcon( currencyImages[focusStat === 'currency' ? focusCurrency : result.pet.currencyVariant])}{' '}
-                            {result.currency.toLocaleString()}
-                        </Typography>
-                        <Typography variant="body2">
-                            {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Gems.png")}{' '}
-                            {result.gems.toLocaleString()}
-                        </Typography>
-                        {result.enchants.length > 0 && (
-                          <>{result.enchants.map((enchant) => (
-                            <Typography variant="body2" key={enchant}>
-                              {renderEnchant(enchant)}
-                            </Typography>
-                          ))}</>
-                        )}
-                      </Box>
-                    </Paper>
-                ))}
+                      ))}</>
+                    )}
+                  </Box>
+                </Paper>
+              ))}
             </Box>
           </Paper>
         </Box>
