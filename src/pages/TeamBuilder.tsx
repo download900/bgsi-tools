@@ -103,7 +103,8 @@ function expandOwnedPets(profile: TeamBuilderProfile, all: PetInstance[]): PetIn
     const [name, variant] = key.split("__") as [string, PetVariant];
     const match = all.find(p => p.name === name && p.variant === variant);
     if (!match) continue;
-    for (let i = 0; i < count; i++) {
+    // We only need to produce up to teamSize pets, any more would be redundant.
+    for (let i = 0; i < count && i < profile.teamSize; i++) {
       pool.push(match);
     }
   }
@@ -252,39 +253,6 @@ export function TeamBuilder(props: TeamBuilderProps) {
     return all;
   }, [props.data]);
 
-  // function sortProfilePets(pets: Record<PetKey, number>): Record<PetKey, number> {
-  //   return Object.fromEntries(
-  //     Object.entries(pets)
-  //       .filter(([_, count]) => count > 0)
-  //       .sort(([keyA], [keyB]) => {
-  //         const [nameA, variantA] = keyA.split("__") as [string, PetVariant];
-  //         const [nameB, variantB] = keyB.split("__") as [string, PetVariant];
-  //         const petA = allPetInstances.find(p => p.name === nameA && p.variant === variantA);
-  //         const petB = allPetInstances.find(p => p.name === nameB && p.variant === variantB);
-  //         if (!petA || !petB) return 0; // should not happen
-  //         return petA.bubbles !== petB.bubbles ? petB.bubbles - petA.bubbles : petA.name.localeCompare(petB.name);
-  //       })
-  //   );
-  // }
-
-  // // on profile change, or owned pets change, sort pets
-  // useEffect(() => {
-  //     if (profile) {
-  //       const sortedPets = sortProfilePets(profile.pets);
-  //       setProfile((prev) => ({ ...prev!, pets: sortedPets }));
-  //     }
-  //     setVisibleCount(20); // reset scroll
-  // }, [profile?.name, tab]);
-
-  // useEffect(() => {
-  //   // sort profile pets whenever profile pet list changes
-  //   if (profile) {
-  //     const sortedPets = sortProfilePets(profile.pets);
-  //     setProfile((prev) => ({ ...prev!, pets: sortedPets }));
-  //   }
-
-  // }, [profile?.pets])
-
   const filteredPets = useMemo(() => {
     return allPetInstances.filter((pet) =>
       pet.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -331,8 +299,6 @@ export function TeamBuilder(props: TeamBuilderProps) {
     return out;
   }, [profile?.pets, allPetInstances, searchQuery]);
 
-
-
   const calculateTeam = async () => {
     if (!profile) {
       return;
@@ -347,7 +313,7 @@ export function TeamBuilder(props: TeamBuilderProps) {
     const currency = focusCurrency;
     const teamSize = profile.teamSize;
   
-    // Step 1: Score pets with assumed max synergy values (naive, greedy approach, but should still produce the best results)
+    // Step 1: Score pets with assumed max synergy values (greedy approach to produce shortlist)
     const batchSize = 50;
     let i = 0;
     const scoredPets: EnchantedPetWithScore[] = await Promise.all(pool.map((pet) => {
@@ -397,33 +363,44 @@ export function TeamBuilder(props: TeamBuilderProps) {
     const top = scoredPets
       .slice(0, teamSize)
       .map(({ pet, enchants }) => ({ pet, enchants }));
+      
+    // Calculate result with our naive top pets (This may be the best result in the end)
+    let selectedTeam = top;
+    const result = calculateTeamStats(selectedTeam, currency);
+    let bestScore = focus === "bubbles" ? result.total.bubbles : focus === "gems" ? result.total.gems : result.total.currency;
 
     // Step 3: Determination and Team Up V synergy reduction.
     // The best-scoring pets may not be the best team due to synergy rules.
-    // Let's pick the top teamSize pets which have Determination.
-    const selectedPets = scoredPets
-      .filter(({ enchants }) => enchants?.includes("determination"))
-      .slice(0, teamSize);
-    console.log("Selected pets with Determination:", selectedPets.length);
-    // Check if these two pools are the same pets. If so, we can use the top pets directly.
-    if (selectedPets.length === teamSize && selectedPets.every((p, i) => p.pet.name === top[i].pet.name && p.pet.variant === top[i].pet.variant)) {
-      // They are the same, we can skip the next step
-      console.log("Using best-scoring pets directly, no Determination synergy needed.");
-      setTeamResult(calculateTeamStats(selectedPets, currency));
+    if (selectedTeam.every((p => p.enchants.includes("determination")))) {
+      // Our best scoring team already has full Determination synergy, skip this step.
+      console.log("Using best-scoring pets directly, no Determination synergy check needed.");
     }
     else {
-      console.log("Best-scoring pets do not match Determination pets, checking synergy...");
-      // Our best-scoring pets don't all have Determination, so we need to check for synergy score.
+      console.log("Best-scoring pets do not all have Determination, checking synergy...");
+      // We need to check for synergy score.
       // We'll try mixes of best-scoring pets and Determination pets.
       // For teamSize = 11, we'll try 1 to 11 Determination pets.
+      // Let's pick the top teamSize pets which have Determination.
+      const determPets = scoredPets
+        .filter(({ enchants }) => enchants?.includes("determination"));
+      // For each pet in the "top" list, remove it from determPets.
+      // This is to ensure we don't double-count pets that are already in the top list.
+      for (const { pet } of top) {
+        const index = determPets.findIndex(({ pet: dPet }) => dPet.name === pet.name && dPet.variant === pet.variant);
+        if (index !== -1) {
+          determPets.splice(index, 1);
+        }
+      }
+      determPets.slice(0, teamSize);
+
+      console.log("Selected pets with Determination:", determPets.length);
       const bestTeam: EnchantedPet[] = [];
-      let bestScore = 0;
       console.log(`Trying mixes with up to ${profile.teamSize} pets...`);
       for (let d = 1; d <= profile.teamSize; d++) {
-        if (selectedPets.length < d) break;
-        const determinationPets = selectedPets.slice(0, d);
+        if (determPets.length < d) break;
+        const determSlice = determPets.slice(0, d);
         const bestScorers = top.slice(0, profile.teamSize - d);
-        const currentTeam = [...bestScorers, ...determinationPets];
+        const currentTeam = [...bestScorers, ...determSlice];
         const result = calculateTeamStats(currentTeam, currency);
         const score = focus === "bubbles" ? result.total.bubbles : focus === "gems" ? result.total.gems : result.total.currency;
         console.log(`Checking team with ${d} Determination pet(s) and ${profile.teamSize - d} best scorers: Score = ${score}`);
@@ -433,8 +410,65 @@ export function TeamBuilder(props: TeamBuilderProps) {
           bestTeam.push(...currentTeam);
         }
       }
-      console.log(`Best team found with score: ${bestScore}`);
-      const result = calculateTeamStats(bestTeam, currency);
+      if (bestTeam.length === 0) {
+        // This will happen if we have exactly teamSize Determination pets, and they were also the best scorers.
+        // Fallback to the top pets.
+        selectedTeam = top;
+        const result = calculateTeamStats(selectedTeam, currency);
+        bestScore = focus === "bubbles" ? result.total.bubbles : focus === "gems" ? result.total.gems : result.total.currency;
+      }
+      else {
+        console.log(`Best team found with score: ${bestScore}`);
+        selectedTeam = bestTeam;
+      }
+    }
+
+    // Step 4: Check the best-scoring non-Determination pets and see how they perform with the best Determination pets.
+    // Eg, maybe you have some really strong Legendary pets that don't have Determination, so our previous pass lost them,
+    // but they would out-perform our selectedTeam if they were on it.
+    const nonDetermPets = scoredPets
+      .filter(pet => pet.enchants && !pet.enchants.includes("determination"))
+    // For each pet in the "selectedTeam" list, remove it from nonDetermPets.
+    // This is to ensure we don't double-count pets that are already in the selected team.
+    for (const { pet } of selectedTeam) {
+      const index = nonDetermPets.findIndex(({ pet: nPet }) => nPet.name === pet.name && nPet.variant === pet.variant);
+      if (index !== -1) {
+        nonDetermPets.splice(index, 1);
+      }
+    }
+    nonDetermPets.slice(0, teamSize);
+
+    if (nonDetermPets.length > 0) {
+      console.log(`Checking non-Determination pets: ${nonDetermPets.length}`);
+      // We'll try mixes of best-scoring pets and Determination pets.
+      const bestMixTeam: EnchantedPet[] = [];
+      let bestMixScore = 0;
+      console.log(`Trying mixes with up to ${profile.teamSize} pets...`);
+      for (let d = 0; d <= profile.teamSize; d++) {
+        if (selectedTeam.length < d) break;
+        const bestSlice = selectedTeam.slice(0, d);
+        const bestScorers = nonDetermPets.slice(0, profile.teamSize - d);
+        const currentTeam = [...bestScorers, ...bestSlice];
+        const result = calculateTeamStats(currentTeam, currency);
+        const score = focus === "bubbles" ? result.total.bubbles : focus === "gems" ? result.total.gems : result.total.currency;
+        console.log(`Checking mix team with ${d} Determination pet(s) and ${profile.teamSize - d} best scorers: Score = ${score}`);
+        if (score > bestMixScore) {
+          bestMixScore = score;
+          bestMixTeam.length = 0; // clear array
+          bestMixTeam.push(...currentTeam);
+        }
+      }
+      console.log(`Best mix team found with score: ${bestMixScore}`);
+      if (bestScore < bestMixScore) {
+        console.log(`Using best mix team (${bestMixScore}) as it out-performs the best Determination team (${bestScore})`);
+        bestScore = bestMixScore;
+        selectedTeam = bestMixTeam;
+      }
+    }
+
+    // Step 5: Calculate final team stats
+    if (selectedTeam) {
+      const result = calculateTeamStats(selectedTeam, currency);
       setTeamResult(result);
     }
     setIsCalculating(false);
