@@ -173,10 +173,11 @@ export function calculate(egg: Egg, calculatorSettings: CalculatorSettings, sele
 
     // Calculate Secret Buff:
     let secretBuff = 100;
-    if (calculatorSettings.secretHunter) secretBuff += 5; // (currently bugged, doesn't stack) calculatorSettings.secretHunter * 5;
+    if (calculatorSettings.secretHunter) secretBuff += calculatorSettings.secretHunter * 5;
     let secretMultiplier = 0;
     if (calculatorSettings.infinityElixir) secretMultiplier += 2;
     if (calculatorSettings.secretElixir) secretMultiplier += 2;
+    if (calculatorSettings.doubleSecretEvent) secretMultiplier += 2;
     if (secretMultiplier > 0) secretBuff *= secretMultiplier;
     secretBuff -= 100; // remove base 100% luck
 

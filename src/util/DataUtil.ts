@@ -110,6 +110,7 @@ export function isAvailable(dateRemoved: string | undefined): boolean {
 }
 
 export const getPetChance = (pet: Pet, variant: PetVariant) => {
+  if (!pet.chance) return 100;
   const variantChance = pet.chance / variantData[variant].chanceMultiplier;
   return variantChance;
 }

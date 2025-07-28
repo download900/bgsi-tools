@@ -43,22 +43,6 @@ interface TeamStatResult {
   }[];
 }
 
-// function loadProfiles(): TeamBuilderProfile[] {
-//   const stored = localStorage.getItem(STORAGE_KEY);
-//   let profiles: TeamBuilderProfile[] = stored ? JSON.parse(stored) : [];
-
-//   // Ensure Default profile exists if no other profiles found
-//   if (profiles.length == 0) {
-//     profiles.unshift({ name: "Default", pets: {}, teamSize: 11 });
-//   }
-
-//   return profiles;
-// }
-
-// function saveProfiles(profiles: TeamBuilderProfile[]) {
-//     localStorage.setItem(STORAGE_KEY, JSON.stringify(profiles));
-// }
-
 function ensureValidSaveData(data: TeamBuilderState): TeamBuilderState {
   // Ensure profiles are valid, and at least one profile exists
   if (!data.profiles || !Array.isArray(data.profiles) || data.profiles.length === 0) {
@@ -142,7 +126,7 @@ function calculateTeamStats(team: EnchantedPet[], currencyType?: CurrencyVariant
     }
 
     const bubbles = pet.bubbles * bubblesMultiplier;
-    const currency = pet.currencyVariant === currencyType ? pet.currency* currencyMultiplier : 0;
+    const currency = pet.currency * currencyMultiplier;
     const gems = pet.gems * gemsMultiplier;
 
     return {
@@ -156,7 +140,7 @@ function calculateTeamStats(team: EnchantedPet[], currencyType?: CurrencyVariant
 
   const total = {
     bubbles: detailed.reduce((sum, p) => sum + p.bubbles, 0),
-    currency: detailed.reduce((sum, p) => sum + p.currency, 0),
+    currency: detailed.reduce((sum, p) => sum + (currencyType ? (p.pet.currencyVariant === currencyType ? p.currency : 0) : p.currency), 0),
     gems: detailed.reduce((sum, p) => sum + p.gems, 0)
   };
 
@@ -354,7 +338,7 @@ export function TeamBuilder(props: TeamBuilderProps) {
 
     scoredPets.sort((a, b) => b.score - a.score);
 
-    // Expand owned pets to include owned count. Once we have teamSize pets with and without Determination, we can stop.
+    // Step 2: Expand owned pets to include owned count. Once we have teamSize pets with and without Determination, we can stop.
     const expandedPets: EnchantedPet[] = [];
     let determCount = 0;
     let nonDetermCount = 0;
@@ -381,18 +365,18 @@ export function TeamBuilder(props: TeamBuilderProps) {
       }
     }
 
-    // Step 2: Pick the top teamSize pets with Determination, and the top teamSize pets without it.
+    // Step 3: Pick the top teamSize pets with Determination, and the top teamSize pets without it.
     const topDeterm = expandedPets.filter(p => p.enchants.includes("determination")).slice(0, teamSize);
     const topNonDeterm = expandedPets.filter(p => !p.enchants.includes("determination")).slice(0, teamSize);
 
-    // Step 3: Calculate the best team by mixing Determination and non-Determination pets (0 to teamSize Determination pets).
+    // Step 4: Calculate the best team by mixing Determination and non-Determination pets (0 to teamSize Determination pets).
     let selectedTeam: TeamStatResult | null = null;
-    let bestScore = 0;
+    let bestScore = -1;
     for (let d = 0; d <= teamSize; d++) {
       const determSlice = topDeterm.slice(0, d);
       const nonDetermSlice = topNonDeterm.slice(0, teamSize - d);
       const currentTeam = [...determSlice, ...nonDetermSlice];
-      const result = calculateTeamStats(currentTeam, currency);
+      const result = calculateTeamStats(currentTeam, focusStat === 'currency' ? currency : undefined);
       const score = focus === "bubbles" ? result.total.bubbles : focus === "gems" ? result.total.gems : result.total.currency;
 
       if (score > bestScore) {
@@ -401,7 +385,7 @@ export function TeamBuilder(props: TeamBuilderProps) {
       }
     }
 
-    // Step 4: Calculate final team stats
+    // Step 5: Calculate final team stats
     if (selectedTeam) {
       setTeamResult(selectedTeam);
     }
@@ -948,7 +932,7 @@ export function TeamBuilder(props: TeamBuilderProps) {
                         {result.bubbles.toLocaleString()}
                     </Typography>
                     <Typography variant="body2">
-                        {imgIcon(currencyImages[focusStat === 'currency' ? focusCurrency : result.pet.currencyVariant])}{' x'}
+                        {imgIcon(currencyImages[result.pet.currencyVariant])}{' x'}
                         {result.currency.toLocaleString()}
                     </Typography>
                     <Typography variant="body2">

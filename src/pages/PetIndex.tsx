@@ -424,7 +424,7 @@ export function PetIndex({ data }: Props) {
                 //const style = getRarityStyle(pet.rarity);
                 const discontinued = !isAvailable(pet.dateRemoved);
 
-                const dropDisplay = pet.hatchable
+                const dropDisplay = pet.chance
                   ? pet.chance >= 1
                     ? `${pet.chance.toLocaleString(undefined, {
                         maximumFractionDigits: 2,

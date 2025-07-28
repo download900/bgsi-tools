@@ -157,7 +157,7 @@ export function PetList(props: PetListProps) {
         allPets.push({
           name: pet.name,
           chance: getPetChance(pet, variant),
-          hatchable: pet.hatchable,
+          hatchable: pet.chance !== undefined,
           rarity: pet.rarity,
           bubbles: getPetStat(pet, variant, "bubbles", previewMaxLevel, previewEnchant, enchantTeamSize, secondEnchant),
           currencyVariant: pet.currencyVariant,
@@ -323,7 +323,7 @@ export function PetList(props: PetListProps) {
             </Box>
             <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", p: 1  }}>
               <Typography variant="subtitle1" sx={{ marginRight: 1 }}>
-                {imgIcon('https://static.wikia.nocookie.net/bgs-infinity/images/2/2f/Special_Enchants.png', 25)} Second Enchant:
+                {imgIcon('https://static.wikia.nocookie.net/bgs-infinity/images/c/c4/Special_Enchants_Icon.png', 25)} Second Enchant:
                 </Typography>
               <Select 
                 value={secondEnchant}

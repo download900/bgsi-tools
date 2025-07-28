@@ -552,10 +552,7 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
                             
                                 <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
                                     <Typography variant="subtitle1" sx={{width: 250}}>
-                                        🔮 <s><i>Secret Hunter:</i></s>{' '}
-                                        <Tooltip title="Secret Hunter is currently bugged and doesn't stack.">
-                                            <FaInfoCircle />
-                                        </Tooltip>
+                                        🔮 Secret Hunter:
                                     </Typography>
                                     <TextField
                                         label="Pets"
@@ -635,13 +632,13 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
                                     />
                                 </Box>
                             
-                                {/*<Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
+                                <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
                                     <Typography variant="subtitle1" sx={{width: 250}}>🥳 Double Secret Event:</Typography>
                                     <Checkbox
                                         checked={calculatorSettings.doubleSecretEvent}
                                         onChange={(e) => setCalculatorSettings({ ...calculatorSettings, doubleSecretEvent: e.target.checked })}
                                     />
-                                </Box>*/}
+                                </Box>
                                 </>
                             )
                         }

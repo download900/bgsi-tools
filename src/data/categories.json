@@ -121,7 +121,7 @@
           "Dragon Tophat",
           "Rainbow Shock Tophat"
         ],
-        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/01/Shops_Mastery.png"
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2f/Shops_Icon.png"
       },
       {
         "name": "Limited Rewards",
@@ -162,7 +162,7 @@
             "pets": [
               "Dementor Tophat"
             ],
-            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/01/Shops_Mastery.png"
+            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2f/Shops_Icon.png"
           }
         ],
         "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/78/Timer_Icon.png"
@@ -254,6 +254,9 @@
       },
       {
         "egg": "Bee Egg"
+      },
+      {
+        "egg": "Candy Egg"
       }
     ],
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/78/Timer_Icon.png"
@@ -306,6 +309,16 @@
           "Destiny"
         ],
         "image": "https://static.wikia.nocookie.net/bgs-infinity/images/4/40/Season_4_Egg.png"
+      },
+      {
+        "name": "Season 5",
+        "egg": "Season 5 Egg",
+        "pets": [
+          "Blaze",
+          "Sea Serpent",
+          "Amalgamation",
+          "False Prophet"
+        ]
       }
     ],
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/7d/Infinite_Track_Icon.png"
@@ -331,6 +344,14 @@
           "The Sun"
         ],
         "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/75/Series_2_Egg.png"
+      },
+      {
+        "name": "Series 3",
+        "egg": "Season 5 Egg",
+        "pets": [
+          "Clown Emoji",
+          "Sparkly Lemonade"
+        ]
       }
     ],
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/79/Competitive_Icon.png"
@@ -374,6 +395,13 @@
           "Dark Guardian"
         ],
         "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png"
+      },
+      {
+        "name": "Wave 5",
+        "pets": [
+          "Gumdrop King",
+          "Giant D.I.Y Robot"
+        ]
       }
     ],
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png"
@@ -387,14 +415,16 @@
         "pets": [
           "Dogcat",
           "WOMAN FACE GOD"
-        ]
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
       },
       {
         "name": "Wave 2",
         "pets": [
           "Super Pufferfish",
           "OwOlord"
-        ]
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
       }
     ],
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/df/Golden_Egg_Icon.png"
@@ -515,6 +545,14 @@
             "pets": [
               "Dominus Astra",
               "Pearl Goddess"
+            ],
+            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+          },
+          {
+            "name": "Wave 15",
+            "pets": [
+              "Super Beach Boi",
+              "Tiger's Eye"
             ]
           }
         ],
@@ -534,7 +572,8 @@
         "pets": [
           "Flying Gem",
           "Dowodle Pile",
-          "Eternal Heart"
+          "Eternal Heart",
+          "Fracture"
         ],
         "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
       }

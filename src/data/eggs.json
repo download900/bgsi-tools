@@ -298,6 +298,21 @@
     "dateRemoved": ""
   },
   {
+    "name": "Season 5 Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/0b/Season_5_Egg.png",
+    "pets": [
+      "Golem Bunny",
+      "Angel Demon",
+      "Dominus Serpent",
+      "The Shocklord"
+    ],
+    "luckIgnored": true,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-07-27",
+    "dateRemoved": "2025-08-14"
+  },
+  {
     "name": "Season 4 Egg",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/4/40/Season_4_Egg.png",
     "pets": [
@@ -389,6 +404,27 @@
     "dateRemoved": "2025-04-30"
   },
   {
+    "name": "Candy Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/67/Candy_Egg.png",
+    "pets": [
+      "Gummy Shark",
+      "Gummy Worm",
+      "Gummy Dragon",
+      "Rock Candy Golem",
+      "Candy Winged Hydra",
+      "Jelly Overlord",
+      "Blue Raspberry Snowcone",
+      "Cherry Snowcone",
+      "Cream Snowcone",
+      "Strawberry Snowcone"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": true,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-07-27",
+    "dateRemoved": ""
+  },
+  {
     "name": "Bee Egg",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/e/eb/Bee_Egg.png",
     "pets": [
@@ -427,7 +463,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-07-12",
-    "dateRemoved": ""
+    "dateRemoved": "2025-07-27"
   },
   {
     "name": "July4th Egg",
