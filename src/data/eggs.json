@@ -298,6 +298,79 @@
     "dateRemoved": ""
   },
   {
+    "name": "Icy Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/b/b2/Icy_Egg.png",
+    "pets": [
+      "Snow Fox",
+      "Penguin",
+      "Ice Bear",
+      "Marshmallow",
+      "Minty Serpent",
+      "Ice Winged Hydra",
+      "Giant Pearl"
+    ],
+    "luckIgnored": false,
+    "infinityEgg": "Seven Seas",
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-08-08",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Vine Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/f/fc/Vine_Egg.png",
+    "pets": [
+      "Vine Kitty",
+      "Vine Dinosaur",
+      "Vine Deer",
+      "Thorn Dragon",
+      "Flower Pot",
+      "Lovely Lotus",
+      "Earth Champion",
+      "Dark Champion",
+      "Fire Champion",
+      "Sky Champion"
+    ],
+    "luckIgnored": false,
+    "infinityEgg": "Seven Seas",
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-08-08",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Lava Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/4/48/Lava_Egg.png",
+    "pets": [
+      "Lava Golem",
+      "Lava Bat",
+      "Lava Imp",
+      "Magma Cube",
+      "Night Dweller",
+      "Fire King",
+      "Hellshard"
+    ],
+    "luckIgnored": false,
+    "infinityEgg": "Seven Seas",
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-08-08",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Secret Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2d/Placeholder_egg.png",
+    "pets": [
+      "Round Spitty",
+      "Gigantic Spitty"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-08-08",
+    "dateRemoved": ""
+  },
+  {
     "name": "Season 5 Egg",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/0b/Season_5_Egg.png",
     "pets": [
@@ -419,6 +492,7 @@
       "Strawberry Snowcone"
     ],
     "luckIgnored": false,
+    "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-07-27",
     "dateRemoved": ""
@@ -438,7 +512,7 @@
     "canSpawnAsRift": true,
     "secretBountyRotation": false,
     "dateAdded": "2025-07-19",
-    "dateRemoved": ""
+    "dateRemoved": "2025-08-08"
   },
   {
     "name": "500M Egg",

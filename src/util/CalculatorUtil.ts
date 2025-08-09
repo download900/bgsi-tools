@@ -177,7 +177,7 @@ export function calculate(egg: Egg, calculatorSettings: CalculatorSettings, sele
     let secretMultiplier = 0;
     if (calculatorSettings.infinityElixir) secretMultiplier += 2;
     if (calculatorSettings.secretElixir) secretMultiplier += 2;
-    if (calculatorSettings.doubleSecretEvent) secretMultiplier += 2;
+    if (calculatorSettings.doubleSecretEvent) secretMultiplier *= 2; // secret event is a separate multiplier apparently
     if (secretMultiplier > 0) secretBuff *= secretMultiplier;
     secretBuff -= 100; // remove base 100% luck
 

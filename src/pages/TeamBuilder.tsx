@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
-import { Box, Avatar, Typography, Paper, Table, TableHead, TableRow, TableCell, TableBody, Checkbox, Link, Button, Select, MenuItem, Input, Drawer, Tab, Tabs, LinearProgress } from "@mui/material";
-import { PetInstance, PetVariant, CurrencyVariant, petVariants, currencyImages, getPetChance, getPetStat, Egg, PetData, Pet, getPetImage, Rarity, Enchant, PetStat, variantData } from "../util/DataUtil";
-import { capitalize, imgIcon, variantStyle } from "../util/StyleUtil";
+import { Box, Avatar, Typography, Paper, Button, Select, MenuItem, Input, Drawer, Tab, Tabs, LinearProgress } from "@mui/material";
+import { PetInstance, PetVariant, CurrencyVariant, petVariants, currencyImages, getPetChance, getPetStat, PetData, Enchant, PetStat } from "../util/DataUtil";
+import { imgIcon, variantStyle } from "../util/StyleUtil";
 import { theme } from "..";
 
 const drawerWidth = 420;
@@ -26,24 +26,40 @@ interface TeamBuilderProfile {
 type EnchantedPet = { pet: PetInstance; enchants: Enchant[] };
 interface EnchantedPetWithScore extends EnchantedPet {
   score: number;
+  //tieBreakerScore: number; // for sorting purposes (TODO)
+}
+
+type CurrencyStat = {
+  currencyVariant: CurrencyVariant;
+  amount: number;
 }
 
 interface TeamStatResult {
   total: {
     bubbles: number;
-    currency: number;
+    currencies: Record<CurrencyVariant, number>;
     gems: number;
   };
   detailed: {
     pet: PetInstance;
     enchants: Enchant[];
     bubbles: number;
-    currency: number;
+    currency: CurrencyStat;
     gems: number;
   }[];
 }
 
-function ensureValidSaveData(data: TeamBuilderState): TeamBuilderState {
+function ensureValidSaveData(data?: TeamBuilderState): TeamBuilderState {
+  if (!data) {
+    const defaultProfile: TeamBuilderProfile = { name: "Default", pets: {}, teamSize: 11 };
+    data = {
+      profiles: [defaultProfile],
+      currentProfileIndex: 0,
+      lastTeamResult: undefined,
+      lastFocusStat: "bubbles",
+      lastFocusCurrency: "coins"
+    }
+  }
   // Ensure profiles are valid, and at least one profile exists
   if (!data.profiles || !Array.isArray(data.profiles) || data.profiles.length === 0) {
     data.profiles = [{ name: "Default", pets: {}, teamSize: 11 }];
@@ -66,16 +82,20 @@ function ensureValidSaveData(data: TeamBuilderState): TeamBuilderState {
     data.currentProfileIndex = 0;
   }
   // Ensure lastTeamResult is valid
-  if (!data.lastTeamResult || typeof data.lastTeamResult !== "object") {
-    data.lastTeamResult = {
-      total: {
-        bubbles: 0,
-        currency: 0,
-        gems: 0
-      },
-      detailed: []
-    };
+  if (data.lastTeamResult && (!data.lastTeamResult.total || !Array.isArray(data.lastTeamResult.detailed))) {
+    data.lastTeamResult = undefined;
   }
+  // Ensure detailed currency stats are valid (used to be a number, now it's an object)
+  if (data.lastTeamResult) {
+    data.lastTeamResult.detailed.forEach(p => {
+      if (typeof p.currency === "number") {
+        p.currency = { currencyVariant: "coins", amount: p.currency }; // default to coins
+      } else if (!p.currency || typeof p.currency !== "object" || !p.currency.currencyVariant || typeof p.currency.amount !== "number") {
+        p.currency = { currencyVariant: "coins", amount: 0 };
+      }
+    });
+  }
+
 
   return data;
 }
@@ -106,7 +126,7 @@ function assignEnchants(pet: PetInstance, focus: PetStat): Enchant[] {
   return enchants;
 }
 
-function calculateTeamStats(team: EnchantedPet[], currencyType?: CurrencyVariant): TeamStatResult {
+function calculateTeamStats(team: EnchantedPet[]): TeamStatResult {
   const teamUpCount = team.filter(p => p.enchants.includes("teamUpV")).length;
   const determCount = team.filter(p => p.enchants.includes("determination")).length;
 
@@ -133,14 +153,20 @@ function calculateTeamStats(team: EnchantedPet[], currencyType?: CurrencyVariant
       pet,
       enchants,
       bubbles: Math.floor(bubbles + 0.5),
-      currency: Math.floor(currency + 0.5),
+      currency: { currencyVariant: pet.currencyVariant, amount: Math.floor(currency + 0.5) } as CurrencyStat,
       gems: Math.floor(gems + 0.5)
     };
   });
 
+  const currencyMap: Record<CurrencyVariant, number> = { coins: 0, tickets: 0, pearls: 0 };
+  detailed.forEach(p => {
+    const { currencyVariant, amount } = p.currency;
+    currencyMap[currencyVariant] = (currencyMap[currencyVariant] || 0) + amount;
+  });
+
   const total = {
     bubbles: detailed.reduce((sum, p) => sum + p.bubbles, 0),
-    currency: detailed.reduce((sum, p) => sum + (currencyType ? (p.pet.currencyVariant === currencyType ? p.currency : 0) : p.currency), 0),
+    currencies: currencyMap,
     gems: detailed.reduce((sum, p) => sum + p.gems, 0)
   };
 
@@ -166,33 +192,28 @@ export function TeamBuilder(props: TeamBuilderProps) {
   // On component mount, load State data from localStorage
   useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY);
+    let validState: TeamBuilderState;
     if (stored) {
       const state: TeamBuilderState = JSON.parse(stored);
-      const validState = ensureValidSaveData(state);
-      setProfiles(validState.profiles || []);
-      const currentProfile = validState.profiles[validState.currentProfileIndex] || validState.profiles[0];
-      setProfile(currentProfile);
-      setTeamResult(validState.lastTeamResult);
-      setFocusStat(validState.lastFocusStat || "bubbles");
-      setFocusCurrency(validState.lastFocusCurrency || "coins");
+      validState = ensureValidSaveData(state);
     }
     else {
-      // If no saved state, initialize with default profile
-      const defaultProfile: TeamBuilderProfile = { name: "Default", pets: {}, teamSize: 11 };
-      setProfiles([defaultProfile]);
-      setProfile(defaultProfile);
-      setTeamResult(undefined);
-      setFocusStat("bubbles");
-      setFocusCurrency("coins");
+      validState = ensureValidSaveData();
     }
+    setProfiles(validState.profiles || []);
+    const currentProfile = validState.profiles[validState.currentProfileIndex] || validState.profiles[0];
+    setProfile(currentProfile);
+    setTeamResult(validState.lastTeamResult);
+    setFocusStat(validState.lastFocusStat || "bubbles");
+    setFocusCurrency(validState.lastFocusCurrency || "coins");
   }, []);
   
   // On TeamBuilderState change, save to localStorage
   useEffect(() => {
     if (!profiles || !profile) return;
     const state: TeamBuilderState = {
-      profiles: profiles!,
-      currentProfileIndex: profiles!.findIndex(p => p.name === profile!.name),
+      profiles: profiles,
+      currentProfileIndex: profiles.findIndex(p => p.name === profile.name),
       lastTeamResult: teamResult,
       lastFocusStat: focusStat,
       lastFocusCurrency: focusCurrency
@@ -376,8 +397,16 @@ export function TeamBuilder(props: TeamBuilderProps) {
       const determSlice = topDeterm.slice(0, d);
       const nonDetermSlice = topNonDeterm.slice(0, teamSize - d);
       const currentTeam = [...determSlice, ...nonDetermSlice];
-      const result = calculateTeamStats(currentTeam, focusStat === 'currency' ? currency : undefined);
-      const score = focus === "bubbles" ? result.total.bubbles : focus === "gems" ? result.total.gems : result.total.currency;
+      const result = calculateTeamStats(currentTeam);
+      //const score = focus === "bubbles" ? result.total.bubbles : focus === "gems" ? result.total.gems : result.total.currency;
+      let score = 0;
+      if (focus == "bubbles") {
+        score = result.total.bubbles;
+      } else if (focus == "gems") {
+        score = result.total.gems;
+      } else {
+        score = result.total.currencies[focusCurrency] || 0;
+      }
 
       if (score > bestScore) {
         bestScore = score;
@@ -387,6 +416,12 @@ export function TeamBuilder(props: TeamBuilderProps) {
 
     // Step 5: Calculate final team stats
     if (selectedTeam) {
+      // Sort the pets on the team by their final score
+      selectedTeam.detailed.sort((a, b) => {
+        const aScore = focus === "bubbles" ? a.bubbles : focus === "gems" ? a.gems : a.currency.currencyVariant == focusCurrency ? a.currency.amount : 0;
+        const bScore = focus === "bubbles" ? b.bubbles : focus === "gems" ? b.gems : b.currency.currencyVariant == focusCurrency ? b.currency.amount : 0;
+        return bScore - aScore;
+      });
       setTeamResult(selectedTeam);
     }
     setIsCalculating(false);
@@ -444,7 +479,9 @@ export function TeamBuilder(props: TeamBuilderProps) {
                   value={profile.name}
                   onChange={(e) => {
                     const selected = profiles.find(p => p.name === e.target.value);
-                    if (selected) setProfile(selected);
+                    if (selected) {
+                      setProfile(selected);
+                    }
                   }}
                   sx={{ mb: 1 }}
                 >
@@ -464,11 +501,10 @@ export function TeamBuilder(props: TeamBuilderProps) {
                         alert("Profile name already exists.");
                         return;
                       }
-                      const newProfile = { name, pets: {}, teamSize: 11 };
+                      const newProfile = { name, pets: {}, teamSize: 11, lastTeamResult: undefined, lastFocusStat: "bubbles", lastFocusCurrency: "coins" } as TeamBuilderProfile;
                       const newProfiles = [...profiles, newProfile];
                       setProfiles(newProfiles);
                       setProfile(newProfile);
-                      //saveProfiles(newProfiles);
                     }}
                   >
                     Add
@@ -485,7 +521,6 @@ export function TeamBuilder(props: TeamBuilderProps) {
                           );
                           setProfile(cleared);
                           setProfiles(updated);
-                          //saveProfiles(updated);
                         }}
                       >
                         Clear
@@ -500,7 +535,6 @@ export function TeamBuilder(props: TeamBuilderProps) {
                           const fallback = newProfiles[0];
                           setProfiles(newProfiles);
                           setProfile(fallback);
-                          //saveProfiles(newProfiles);
                         }}
                       >
                         Delete
@@ -522,7 +556,6 @@ export function TeamBuilder(props: TeamBuilderProps) {
                       const newCurrent = { ...profile, name: newName };
                       setProfiles(updated);
                       setProfile(newCurrent);
-                      //saveProfiles(updated);
                     }}
                   >
                     Rename
@@ -549,8 +582,6 @@ export function TeamBuilder(props: TeamBuilderProps) {
                           }
                         }
 
-                        //newPets = sortProfilePets(newPets);
-                    
                         const updatedProfile = { ...profile, pets: newPets };
                         const updatedProfiles = profiles.map((p) =>
                           p.name === profile.name ? updatedProfile : p
@@ -558,7 +589,6 @@ export function TeamBuilder(props: TeamBuilderProps) {
                     
                         setProfile(updatedProfile);
                         setProfiles(updatedProfiles);
-                        //saveProfiles(updatedProfiles);
                     
                         alert("Import successful.");
                       } catch (err) {
@@ -582,14 +612,14 @@ export function TeamBuilder(props: TeamBuilderProps) {
                   sx={{ mb: 1 }}
                 >
                   <Tab label="Owned Pets" />
-                  <Tab label="Edit Pets" />
+                  <Tab label="All Pets" />
                 </Tabs>
                 
                 {/* --- TAB: OWNED PETS --- */}
                 {tab === 0 && (
                   <>
                     <Input
-                      placeholder="Search pets..."
+                      placeholder="Search owned pets..."
                       fullWidth
                       size="small"
                       sx={{ mb: 1 }}
@@ -661,20 +691,19 @@ export function TeamBuilder(props: TeamBuilderProps) {
                               />
                               <Button
                                 size="small"
-                                onClick={() => {
-                                  const newPets = { ...profile.pets };
-                                  delete newPets[key as PetKey];
-                                  const updatedProfile = { ...profile, pets: newPets };
-                                  const updatedProfiles = profiles.map((p) =>
-                                    p.name === profile.name ? updatedProfile : p
-                                  );
-                                  setProfile(updatedProfile);
-                                  setProfiles(updatedProfiles);
-                                }}
+                                onClick={() => updateCount(Math.max(0, count - 1))}
+                                sx={{ minWidth: 24, px: 0.5, ml: 1, backgroundColor: "#2c2c2c" }}
                               >
-                                ❌
+                                -
                               </Button>
-                            </Box>
+                              <Button
+                                size="small"
+                                onClick={() => updateCount(count + 1)}
+                                sx={{ minWidth: 24, px: 0.5, ml: 1, mr: 1, backgroundColor: "#2c2c2c" }}
+                              >
+                                +
+                              </Button>
+                              </Box>
                           );
                         })}
                     </Box>
@@ -833,6 +862,7 @@ export function TeamBuilder(props: TeamBuilderProps) {
                         >
                           <MenuItem value="coins">{imgIcon(currencyImages['coins'])}{' '}Coins</MenuItem>
                           <MenuItem value="tickets">{imgIcon(currencyImages['tickets'])}{' '}Tickets</MenuItem>
+                          <MenuItem value="pearls">{imgIcon(currencyImages['pearls'])}{' '}Pearls</MenuItem>
                         </Select>
                       </Box>
                     )}
@@ -884,10 +914,14 @@ export function TeamBuilder(props: TeamBuilderProps) {
                   {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/0/0c/Bubbles.png", 25)}{' +'}
                   {teamResult?.total.bubbles.toLocaleString()}
                 </span>
-                <span style={{paddingRight: 10, fontSize: '0.9em'}}>
-                  {imgIcon(currencyImages[focusStat === 'currency' ? focusCurrency : 'coins'], 25)}{' x'}
-                  {teamResult?.total.currency.toLocaleString()}
-                </span>
+                {Object.entries(teamResult?.total.currencies || {}).map(([currency, amount]) => (
+                  amount > 0 && (
+                    <span key={currency} style={{paddingRight: 10, fontSize: '0.9em'}}>
+                      {imgIcon(currencyImages[currency as CurrencyVariant], 25)}{' x'}
+                      {amount.toLocaleString()}
+                    </span>
+                  )
+                ))}
                 <span style={{paddingRight: 10, fontSize: '0.9em'}}>
                   {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Gems.png", 25)}{' x'}
                   {teamResult?.total.gems.toLocaleString()}
@@ -933,7 +967,7 @@ export function TeamBuilder(props: TeamBuilderProps) {
                     </Typography>
                     <Typography variant="body2">
                         {imgIcon(currencyImages[result.pet.currencyVariant])}{' x'}
-                        {result.currency.toLocaleString()}
+                        {result.currency.amount.toLocaleString()}
                     </Typography>
                     <Typography variant="body2">
                         {imgIcon("https://static.wikia.nocookie.net/bgs-infinity/images/d/d5/Gems.png")}{' x'}

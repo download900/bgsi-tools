@@ -64,6 +64,23 @@
           }
         ],
         "image": "https://static.wikia.nocookie.net/bgs-infinity/images/1/1d/Minigame_Paradise_Icon.png"
+      },
+      {
+        "name": "Seven Seas",
+        "categories": [
+          {
+            "egg": "Icy Egg"
+          },
+          {
+            "egg": "Vine Egg"
+          },
+          {
+            "egg": "Lava Egg"
+          },
+          {
+            "egg": "Secret Egg"
+          }
+        ]
       }
     ],
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/dc/The_Overworld_Icon.png"
@@ -99,7 +116,8 @@
           "Chronos",
           "Dark Lord",
           "Cerberus",
-          "Security System"
+          "Security System",
+          "Sea Champion"
         ],
         "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c2/Quests_Icon.png"
       },
@@ -107,7 +125,8 @@
         "name": "Index",
         "pets": [
           "Trio Cube",
-          "Sir Doggyton"
+          "Sir Doggyton",
+          "Sea Turtle"
         ],
         "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/da/Index_Icon.png"
       },
@@ -146,7 +165,8 @@
               "Easter Fluffle",
               "Captain Bruh",
               "Glorp Bruh",
-              "Light Lord"
+              "Light Lord",
+              "The Elder"
             ],
             "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c2/Quests_Icon.png"
           },
@@ -318,7 +338,8 @@
           "Sea Serpent",
           "Amalgamation",
           "False Prophet"
-        ]
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/0b/Season_5_Egg.png"
       }
     ],
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/7d/Infinite_Track_Icon.png"
@@ -347,11 +368,11 @@
       },
       {
         "name": "Series 3",
-        "egg": "Season 5 Egg",
         "pets": [
           "Clown Emoji",
           "Sparkly Lemonade"
-        ]
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/0b/Season_5_Egg.png"
       }
     ],
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/79/Competitive_Icon.png"
@@ -401,7 +422,8 @@
         "pets": [
           "Gumdrop King",
           "Giant D.I.Y Robot"
-        ]
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png"
       }
     ],
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png"
@@ -416,7 +438,7 @@
           "Dogcat",
           "WOMAN FACE GOD"
         ],
-        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/61/Daily_Perks_Icon.png"
       },
       {
         "name": "Wave 2",
@@ -424,10 +446,10 @@
           "Super Pufferfish",
           "OwOlord"
         ],
-        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/61/Daily_Perks_Icon.png"
       }
     ],
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/df/Golden_Egg_Icon.png"
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/61/Daily_Perks_Icon.png"
   },
   {
     "name": "Robux Shop",
@@ -538,7 +560,7 @@
               "Jawbreaker Elemental",
               "D.I.Y Robot"
             ],
-            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png"
           },
           {
             "name": "Wave 14",
@@ -546,13 +568,21 @@
               "Dominus Astra",
               "Pearl Goddess"
             ],
-            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png"
           },
           {
             "name": "Wave 15",
             "pets": [
               "Super Beach Boi",
               "Tiger's Eye"
+            ],
+            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png"
+          },
+          {
+            "name": "Wave 16",
+            "pets": [
+              "King Seahorse",
+              "Axolotl Plushie"
             ]
           }
         ],
@@ -565,7 +595,7 @@
             "egg": "Federation Egg"
           }
         ],
-        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png"
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png"
       },
       {
         "name": "Bundles",
@@ -573,9 +603,10 @@
           "Flying Gem",
           "Dowodle Pile",
           "Eternal Heart",
-          "Fracture"
+          "Fracture",
+          "Sea Star"
         ],
-        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png"
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png"
       }
     ],
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png"

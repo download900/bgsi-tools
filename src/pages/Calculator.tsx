@@ -625,7 +625,7 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
                                 </Box>
                             
                                 <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
-                                    <Typography variant="subtitle1" sx={{width: 250}}>🎉 Double Luck Event:</Typography>
+                                    <Typography variant="subtitle1" sx={{width: 250}}>🍀 Lucky Event:</Typography>
                                     <Checkbox
                                         checked={calculatorSettings.doubleLuckEvent}
                                         onChange={(e) => setCalculatorSettings({ ...calculatorSettings, doubleLuckEvent: e.target.checked })}
@@ -633,7 +633,7 @@ export function OddsCalculator({ data }: OddsCalculatorProps): JSX.Element {
                                 </Box>
                             
                                 <Box sx={{ p: 0.5, display: "flex", alignItems: "center" }}>
-                                    <Typography variant="subtitle1" sx={{width: 250}}>🥳 Double Secret Event:</Typography>
+                                    <Typography variant="subtitle1" sx={{width: 250}}>🔮 Secret Chance Event:</Typography>
                                     <Checkbox
                                         checked={calculatorSettings.doubleSecretEvent}
                                         onChange={(e) => setCalculatorSettings({ ...calculatorSettings, doubleSecretEvent: e.target.checked })}

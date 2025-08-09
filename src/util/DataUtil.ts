@@ -10,7 +10,7 @@ import petsJson from "../data/pets.json";
 export type Rarity = "common" | "unique" | "rare" | "epic" | "legendary" | "secret" | "infinity";
 export type PetVariant = "Normal" | "Shiny" | "Mythic" | "Shiny Mythic";
 export const petVariants: PetVariant[] = ["Normal", "Shiny", "Mythic", "Shiny Mythic"];
-export type CurrencyVariant = "coins" | "tickets";
+export type CurrencyVariant = "coins" | "tickets" | "pearls";
 export type PetStat = "bubbles" | "currency" | "gems";
 export type Enchant = "bubbler" | "looter" | "teamUpV" | "determination";
 
@@ -92,6 +92,7 @@ export const variantData: { [key in PetVariant]: { baseScale: number, chanceMult
 export const currencyImages: { [key in CurrencyVariant]: string } = {
   coins: "https://static.wikia.nocookie.net/bgs-infinity/images/f/f0/Coins.png",
   tickets: "https://static.wikia.nocookie.net/bgs-infinity/images/1/14/Tickets.png",
+  pearls: "https://static.wikia.nocookie.net/bgs-infinity/images/7/76/Pearls.png",
 };
 
 const PLACEHOLDER_IMAGE = "https://static.wikia.nocookie.net/bgs-infinity/images/2/2a/Pet_Placeholder.png";
@@ -168,7 +169,7 @@ export function loadData(): PetData {
   // load categories
   const categoryLookup: { [key: string]: Category } = {};
   const categories: Category[] = [];
-  function processCategory(cat: any) {
+  function processCategory(cat: any, parentCategory?: Category): Category | undefined {
     if (cat.pets) {
       cat.pets = cat.pets.map((petName: string) => petLookup[petName]);
     }
@@ -187,7 +188,7 @@ export function loadData(): PetData {
     if (cat.categories) {
       cat.categories = cat.categories.map((subCat: any) => {
         if (subCat?.egg === 'Inferno Egg') return undefined;
-        processCategory(subCat);
+        processCategory(subCat, cat);
         return subCat;
       }).filter((subCat: any) => subCat !== undefined);
     }
@@ -195,7 +196,7 @@ export function loadData(): PetData {
       cat.name = cat.egg?.name || "Unknown Category";
     }
     if (!cat.image) {
-      cat.image = cat.egg?.image || PLACEHOLDER_IMAGE;
+      cat.image = cat.egg?.image || parentCategory?.image || PLACEHOLDER_IMAGE;
     }
     return cat;
   }
