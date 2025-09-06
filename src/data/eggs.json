@@ -477,6 +477,31 @@
     "dateRemoved": "2025-04-30"
   },
   {
+    "name": "Shadow Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/500M_Egg.png",
+    "pets": [
+      "Split",
+      "Dragon Split",
+      "Celestial Split",
+      "Demonarium",
+      "Contrast",
+      "ACE",
+      "Demonlord",
+      "Eternal Cucumber",
+      "Hellfire",
+      "Diamond Ring",
+      "Galactic Paladin",
+      "Plasma Wolflord",
+      "Mariposa",
+      "Shadow Leviathan"
+    ],
+    "luckIgnored": false,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-08-29",
+    "dateRemoved": ""
+  },
+  {
     "name": "Candy Egg",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/67/Candy_Egg.png",
     "pets": [
