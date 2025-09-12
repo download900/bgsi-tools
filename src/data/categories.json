@@ -79,8 +79,15 @@
           },
           {
             "egg": "Secret Egg"
+          },
+          {
+            "egg": "Atlantis Egg"
+          },
+          {
+            "egg": "Dreamer Egg"
           }
-        ]
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/3/38/Seven_Seas_Icon.png"
       }
     ],
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/dc/The_Overworld_Icon.png"
@@ -117,7 +124,9 @@
           "Dark Lord",
           "Cerberus",
           "Security System",
-          "Sea Champion"
+          "Cthulhu",
+          "Sea Champion",
+          "Bermuda Triangle"
         ],
         "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c2/Quests_Icon.png"
       },
@@ -154,7 +163,8 @@
               "Doggy Pile",
               "Infernal",
               "Dream Catcher",
-              "Stained Star"
+              "Stained Star",
+              "Deception"
             ],
             "image": "https://static.wikia.nocookie.net/bgs-infinity/images/a/a2/Golden_Box.png"
           },
@@ -180,7 +190,8 @@
           {
             "name": "Shops",
             "pets": [
-              "Dementor Tophat"
+              "Dementor Tophat",
+              "Giant Pixel Robot"
             ],
             "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/2f/Shops_Icon.png"
           }
@@ -343,6 +354,28 @@
           "False Prophet"
         ],
         "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/0b/Season_5_Egg.png"
+      },
+      {
+        "name": "Season 6",
+        "egg": "Season 6 Egg",
+        "pets": [
+          "Gleaming Tide",
+          "Serene Tide",
+          "Pond Queen",
+          "Gryphon",
+          "Danger of the Abyss"
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/db/Season_6_Egg.png"
+      },
+      {
+        "name": "Season 7",
+        "egg": "Season 7 Egg",
+        "pets": [
+          "Mysterious Bloom",
+          "Starry Moth",
+          "Yin Yang",
+          "Equilibrium"
+        ]
       }
     ],
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/7d/Infinite_Track_Icon.png"
@@ -376,6 +409,15 @@
           "Sparkly Lemonade"
         ],
         "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/0b/Season_5_Egg.png"
+      },
+      {
+        "name": "Series 4",
+        "egg": "Duality Egg",
+        "pets": [
+          "MISSING OBJECT",
+          "Surreal Seeker"
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/21/Duality_Egg.png"
       }
     ],
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/79/Competitive_Icon.png"
@@ -427,6 +469,14 @@
           "Giant D.I.Y Robot"
         ],
         "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png"
+      },
+      {
+        "name": "Wave 6",
+        "pets": [
+          "Ethereal One",
+          "Moonlit Gaze"
+        ],
+        "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png"
       }
     ],
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/24/Infinity_Egg.png"
@@ -450,6 +500,13 @@
           "OwOlord"
         ],
         "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/61/Daily_Perks_Icon.png"
+      },
+      {
+        "name": "Wave 3",
+        "pets": [
+          "Illumination",
+          "Snake Eyes"
+        ]
       }
     ],
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/61/Daily_Perks_Icon.png"
@@ -586,6 +643,36 @@
             "pets": [
               "King Seahorse",
               "Axolotl Plushie"
+            ],
+            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png"
+          },
+          {
+            "name": "Wave 17",
+            "pets": [
+              "Sailboat",
+              "Void Eclipse"
+            ],
+            "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/VIP_Crown.png"
+          },
+          {
+            "name": "Wave 18",
+            "pets": [
+              "Lunar Bloom",
+              "Lamp Ghost"
+            ]
+          },
+          {
+            "name": "Wave 19",
+            "pets": [
+              "Dreadful Dragon",
+              "Hallowed Spirit"
+            ]
+          },
+          {
+            "name": "Wave 20",
+            "pets": [
+              "Wyrm of Currents",
+              "Mad Hatter"
             ]
           }
         ],
@@ -607,7 +694,10 @@
           "Dowodle Pile",
           "Eternal Heart",
           "Fracture",
-          "Sea Star"
+          "Sea Star",
+          "Soul Jam",
+          "Venom Moth",
+          "Nephalem"
         ],
         "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/08/Robux_Shop_Icon.png"
       }

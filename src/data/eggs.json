@@ -314,7 +314,8 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-08-08",
-    "dateRemoved": ""
+    "dateRemoved": "",
+    "index": "Seven Seas"
   },
   {
     "name": "Vine Egg",
@@ -336,7 +337,8 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-08-08",
-    "dateRemoved": ""
+    "dateRemoved": "",
+    "index": "Seven Seas"
   },
   {
     "name": "Lava Egg",
@@ -355,7 +357,8 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-08-08",
-    "dateRemoved": ""
+    "dateRemoved": "",
+    "index": "Seven Seas"
   },
   {
     "name": "Secret Egg",
@@ -369,6 +372,82 @@
     "secretBountyRotation": false,
     "dateAdded": "2025-08-08",
     "dateRemoved": ""
+  },
+  {
+    "name": "Atlantis Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/dc/Atlantis_Egg.png",
+    "pets": [
+      "Shark",
+      "Crab",
+      "Octopus",
+      "Angler Fish",
+      "Jellyfish",
+      "Atlantis Guardian",
+      "Tidal God",
+      "Koi",
+      "Abyssal Sea Dragon"
+    ],
+    "luckIgnored": false,
+    "infinityEgg": "Seven Seas",
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-08-15",
+    "dateRemoved": "",
+    "index": "Seven Seas"
+  },
+  {
+    "name": "Dreamer Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/0/0e/Dreamer_Egg.png",
+    "pets": [
+      "Sleepy Fox",
+      "Stellar Goat",
+      "Cosmic Antlers",
+      "Dreamscape Influence",
+      "Serene Axolotl",
+      "Cosmic Herald",
+      "Eternity",
+      "Bloomshifter",
+      "Parasol Paladin"
+    ],
+    "luckIgnored": false,
+    "infinityEgg": "Seven Seas",
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-08-22",
+    "dateRemoved": "",
+    "index": "Seven Seas"
+  },
+  {
+    "name": "Season 7 Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/4/4b/Season_7_Egg.png",
+    "pets": [
+      "Virtual Kitty",
+      "Virtual Bat",
+      "Vectorlord",
+      "Rooted Ratio",
+      "The Missing Ones"
+    ],
+    "luckIgnored": true,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-09-05",
+    "dateRemoved": ""
+  },
+  {
+    "name": "Season 6 Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/d/db/Season_6_Egg.png",
+    "pets": [
+      "Abyss Kitty",
+      "Abyssal Wanderer",
+      "Sea Urchin",
+      "Dark Jellyfish",
+      "Royal Fishbowl"
+    ],
+    "luckIgnored": true,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-08-15",
+    "dateRemoved": "2025-09-03"
   },
   {
     "name": "Season 5 Egg",
@@ -446,6 +525,22 @@
     "dateRemoved": "2025-05-03"
   },
   {
+    "name": "Duality Egg",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/2/21/Duality_Egg.png",
+    "pets": [
+      "Disturbed Unicorn",
+      "Disturbed Dragon",
+      "Shadow Hunter",
+      "Duality",
+      "Prisma"
+    ],
+    "luckIgnored": true,
+    "canSpawnAsRift": false,
+    "secretBountyRotation": false,
+    "dateAdded": "2025-08-22",
+    "dateRemoved": "2025-08-27"
+  },
+  {
     "name": "Series 2 Egg",
     "image": "https://static.wikia.nocookie.net/bgs-infinity/images/7/75/Series_2_Egg.png",
     "pets": [
@@ -478,7 +573,7 @@
   },
   {
     "name": "Shadow Egg",
-    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/c/c6/500M_Egg.png",
+    "image": "https://static.wikia.nocookie.net/bgs-infinity/images/6/6b/Shadow_Egg.png",
     "pets": [
       "Split",
       "Dragon Split",
@@ -499,7 +594,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-08-29",
-    "dateRemoved": ""
+    "dateRemoved": "2025-09-12"
   },
   {
     "name": "Candy Egg",
@@ -520,7 +615,7 @@
     "canSpawnAsRift": false,
     "secretBountyRotation": false,
     "dateAdded": "2025-07-27",
-    "dateRemoved": ""
+    "dateRemoved": "2025-08-08"
   },
   {
     "name": "Bee Egg",
